@@ -8,6 +8,8 @@
 		"emitDecoratorMetadata": true,
 		"experimentalDecorators": true,
 		"strictPropertyInitialization": false,
+    "strictNullChecks": false,
+    "strictFunctionTypes": false,
 		"importHelpers": true,
 		"target": "es2015",
 		"module": "esnext",
