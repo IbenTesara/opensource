@@ -14,7 +14,22 @@
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
-    "paths": {}
+    "paths": {
+      "@iben/core": ["libs/javascript/core/src/index.ts"],
+      "@iben/ngx-authentication": ["libs/angular/authentication/src/index.ts"],
+      "@iben/ngx-cookies": ["libs/angular/cookies/src/index.ts"],
+      "@iben/ngx-core": ["libs/angular/core/src/index.ts"],
+      "@iben/ngx-forms": ["libs/angular/forms/src/index.ts"],
+      "@iben/ngx-i18n": ["libs/angular/i18n/src/index.ts"],
+      "@iben/ngx-inform": ["libs/angular/inform/src/index.ts"],
+      "@iben/ngx-layout": ["libs/angular/layout/src/index.ts"],
+      "@iben/ngx-store": ["libs/angular/store/src/index.ts"],
+      "@iben/ngx-utils": ["libs/angular/utils/src/index.ts"],
+      "@iben/rxjs": ["libs/javascript/rxjs/src/index.ts"],
+      "@iben/types/authentication": [
+        "libs/javascript/types/authentication/src/index.ts"
+      ]
+    }
   },
   "exclude": ["node_modules", "tmp"]
 }
