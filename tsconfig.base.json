@@ -1,35 +1,34 @@
 {
-  "compileOnSave": false,
-  "compilerOptions": {
-    "rootDir": ".",
-    "sourceMap": true,
-    "declaration": false,
-    "moduleResolution": "node",
-    "emitDecoratorMetadata": true,
-    "experimentalDecorators": true,
-    "importHelpers": true,
-    "target": "es2015",
-    "module": "esnext",
-    "lib": ["es2020", "dom"],
-    "skipLibCheck": true,
-    "skipDefaultLibCheck": true,
-    "baseUrl": ".",
-    "paths": {
-      "@iben/core": ["libs/javascript/core/src/index.ts"],
-      "@iben/ngx-authentication": ["libs/angular/authentication/src/index.ts"],
-      "@iben/ngx-cookies": ["libs/angular/cookies/src/index.ts"],
-      "@iben/ngx-core": ["libs/angular/core/src/index.ts"],
-      "@iben/ngx-forms": ["libs/angular/forms/src/index.ts"],
-      "@iben/ngx-i18n": ["libs/angular/i18n/src/index.ts"],
-      "@iben/ngx-inform": ["libs/angular/inform/src/index.ts"],
-      "@iben/ngx-layout": ["libs/angular/layout/src/index.ts"],
-      "@iben/ngx-store": ["libs/angular/store/src/index.ts"],
-      "@iben/ngx-utils": ["libs/angular/utils/src/index.ts"],
-      "@iben/rxjs": ["libs/javascript/rxjs/src/index.ts"],
-      "@iben/types/authentication": [
-        "libs/javascript/types/authentication/src/index.ts"
-      ]
-    }
-  },
-  "exclude": ["node_modules", "tmp"]
+	"compileOnSave": false,
+	"compilerOptions": {
+		"rootDir": ".",
+		"sourceMap": true,
+		"declaration": false,
+		"moduleResolution": "node",
+		"emitDecoratorMetadata": true,
+		"experimentalDecorators": true,
+		"strictPropertyInitialization": false,
+		"importHelpers": true,
+		"target": "es2015",
+		"module": "esnext",
+		"lib": ["es2020", "dom"],
+		"skipLibCheck": true,
+		"skipDefaultLibCheck": true,
+		"baseUrl": ".",
+		"paths": {
+			"@core": ["libs/javascript/core/src/index.ts"],
+			"@ngx-authentication": ["libs/angular/authentication/src/index.ts"],
+			"@ngx-cookies": ["libs/angular/cookies/src/index.ts"],
+			"@ngx-core": ["libs/angular/core/src/index.ts"],
+			"@ngx-forms": ["libs/angular/forms/src/index.ts"],
+			"@ngx-i18n": ["libs/angular/i18n/src/index.ts"],
+			"@ngx-inform": ["libs/angular/inform/src/index.ts"],
+			"@ngx-layout": ["libs/angular/layout/src/index.ts"],
+			"@ngx-store": ["libs/angular/store/src/index.ts"],
+			"@ngx-utils": ["libs/angular/utils/src/index.ts"],
+			"@rxjs": ["libs/javascript/rxjs/src/index.ts"],
+			"@types/authentication": ["libs/javascript/types/authentication/src/index.ts"]
+		}
+	},
+	"exclude": ["node_modules", "tmp"]
 }

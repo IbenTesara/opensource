@@ -1,9 +1,25 @@
 {
   "name": "@iben/ngx-core",
-  "version": "0.0.1",
+  "version": "20.0.0",
+  "description": "A library of core functionality used by the Angular packages by Iben Van de Veire.",
+  "keywords": [
+    "angular",
+    "ngx-tools"
+  ],
+  "license": "MIT",
+  "author": {
+    "name": "Iben Van de Veire",
+    "url": "https://github.com/IbenTesara"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/IbenTesara/opensource",
+    "directory": "libs/angular/core/src"
+  },
   "peerDependencies": {
     "@angular/common": "^20.0.0",
-    "@angular/core": "^20.0.0"
+    "@angular/core": "^20.0.0",
+    "rxjs": "~7.8.0"
   },
   "sideEffects": false
 }
