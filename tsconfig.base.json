@@ -16,18 +16,18 @@
 		"skipDefaultLibCheck": true,
 		"baseUrl": ".",
 		"paths": {
-			"@core": ["libs/javascript/core/src/index.ts"],
-			"@ngx-authentication": ["libs/angular/authentication/src/index.ts"],
-			"@ngx-cookies": ["libs/angular/cookies/src/index.ts"],
-			"@ngx-core": ["libs/angular/core/src/index.ts"],
-			"@ngx-forms": ["libs/angular/forms/src/index.ts"],
-			"@ngx-i18n": ["libs/angular/i18n/src/index.ts"],
-			"@ngx-inform": ["libs/angular/inform/src/index.ts"],
-			"@ngx-layout": ["libs/angular/layout/src/index.ts"],
-			"@ngx-store": ["libs/angular/store/src/index.ts"],
-			"@ngx-utils": ["libs/angular/utils/src/index.ts"],
-			"@rxjs": ["libs/javascript/rxjs/src/index.ts"],
-			"@types/authentication": ["libs/javascript/types/authentication/src/index.ts"]
+			"@lib/core": ["libs/javascript/core/src/index.ts"],
+			"@lib/ngx-authentication": ["libs/angular/authentication/src/index.ts"],
+			"@lib/ngx-cookies": ["libs/angular/cookies/src/index.ts"],
+			"@lib/ngx-core": ["libs/angular/core/src/index.ts"],
+			"@lib/ngx-forms": ["libs/angular/forms/src/index.ts"],
+			"@lib/ngx-i18n": ["libs/angular/i18n/src/index.ts"],
+			"@lib/ngx-inform": ["libs/angular/inform/src/index.ts"],
+			"@lib/ngx-layout": ["libs/angular/layout/src/index.ts"],
+			"@lib/ngx-store": ["libs/angular/store/src/index.ts"],
+			"@lib/ngx-utils": ["libs/angular/utils/src/index.ts"],
+			"@lib/rxjs": ["libs/javascript/rxjs/src/index.ts"],
+			"@lib/types/authentication": ["libs/javascript/types/authentication/src/index.ts"]
 		}
 	},
 	"exclude": ["node_modules", "tmp"]

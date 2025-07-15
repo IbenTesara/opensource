@@ -1,7 +1,8 @@
+import { DOCUMENT, PLATFORM_ID } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
+
 import { NgxWindowService } from './window.service';
 import { NgxWindowMock } from './window.service.mock';
-import { DOCUMENT, PLATFORM_ID } from '@angular/core';
 
 describe('NgxWindowService', () => {
 	describe('with no document', () => {

@@ -1,14 +1,20 @@
 import nx from '@nx/eslint-plugin';
+import eslintConfigPrettier from 'eslint-config-prettier/flat';
+import importPlugin from 'eslint-plugin-import';
 
 export default [
 	...nx.configs['flat/base'],
 	...nx.configs['flat/typescript'],
-	...nx.configs['flat/javascript'],
+  ...nx.configs['flat/javascript'],
+  eslintConfigPrettier,
 	{
 		ignores: ['**/dist'],
 	},
 	{
-		files: ['**/*.ts', '**/*.tsx', '**/*.js', '**/*.jsx'],
+    files: ['**/*.ts', '**/*.tsx', '**/*.js', '**/*.jsx'],
+    plugins: {
+			import: importPlugin
+		},
 		rules: {
 			'@nx/enforce-module-boundaries': [
 				'error',
@@ -24,6 +30,24 @@ export default [
 				},
 			],
 			'@typescript-eslint/no-inferrable-types': 'off',
+			'import/order': [
+				'error',
+				{
+					alphabetize: {
+						order: 'asc',
+						caseInsensitive: true
+					},
+					'newlines-between': 'always',
+					pathGroups: [
+						{
+							pattern: '@lib/**',
+							group: 'internal'
+						},
+					],
+					pathGroupsExcludedImportTypes: ['builtin', 'object'],
+					groups: ['index', 'external', 'type', 'internal', 'parent', 'sibling']
+				}
+			]
 		},
 	},
 	{

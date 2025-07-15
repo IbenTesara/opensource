@@ -1,4 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+
 import { I18n } from './i18n';
 
 describe('I18n', () => {
