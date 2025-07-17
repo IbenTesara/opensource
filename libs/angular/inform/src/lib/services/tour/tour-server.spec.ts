@@ -1,5 +1,5 @@
 import { subscribeSpyTo } from '@hirez_io/observer-spy';
-import { NgxWindowService, NgxWindowServiceMock } from '@studiohyperdrive/ngx-core';
+import { NgxWindowService, NgxWindowServiceMock } from '@iben/ngx-core';
 
 import { MockTourStepComponent, OverlayMock } from '../../mocks';
 

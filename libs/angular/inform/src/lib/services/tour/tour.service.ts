@@ -1,7 +1,7 @@
 import { ConnectedPosition, Overlay, OverlayConfig, OverlayRef } from '@angular/cdk/overlay';
 import { ComponentPortal } from '@angular/cdk/portal';
 import { ComponentRef, Injectable, OnDestroy, inject } from '@angular/core';
-import { NgxWindowService } from '@studiohyperdrive/ngx-core';
+import { NgxWindowService } from '@iben/ngx-core';
 import {
 	BehaviorSubject,
 	Observable,
