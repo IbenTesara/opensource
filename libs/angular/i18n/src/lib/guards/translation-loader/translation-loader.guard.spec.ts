@@ -1,8 +1,10 @@
 import { TestBed } from '@angular/core/testing';
 import { ActivatedRouteSnapshot, Router } from '@angular/router';
 import { Observable, of } from 'rxjs';
+
 import { NgxI18nTranslationLoaderResolver } from '../../resolvers';
 import { NgxI18nService } from '../../services';
+
 import { NgxI18nTranslationLoaderGuard } from './translation-loader.guard';
 
 describe('NgxI18nTranslationLoaderGuard', () => {

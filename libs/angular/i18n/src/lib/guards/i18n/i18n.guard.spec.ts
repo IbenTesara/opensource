@@ -1,8 +1,8 @@
 import { TestBed } from '@angular/core/testing';
 import { ActivatedRouteSnapshot, Router, convertToParamMap } from '@angular/router';
 import { subscribeSpyTo } from '@hirez_io/observer-spy';
-
 import { Observable, of } from 'rxjs';
+
 import { NgxI18nRootService } from '../../services';
 
 import { NgxI18nGuard } from './i18n.guard';

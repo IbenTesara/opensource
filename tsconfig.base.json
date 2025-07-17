@@ -8,6 +8,7 @@
 		"emitDecoratorMetadata": true,
 		"experimentalDecorators": true,
 		"strictPropertyInitialization": false,
+    "noImplicitAny": false,
     "strictNullChecks": false,
     "strictFunctionTypes": false,
 		"importHelpers": true,

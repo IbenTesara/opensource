@@ -1,7 +1,7 @@
-import { EnvironmentProviders, Provider, importProvidersFrom } from '@angular/core';
 import { HttpBackend } from '@angular/common/http';
-
+import { EnvironmentProviders, Provider, importProvidersFrom } from '@angular/core';
 import { Route } from '@angular/router';
+
 import { NgxI18nModule } from '../i18n.module';
 import { NgxI18nConfiguration } from '../i18n.types';
 import { NgxI18nMultiTranslationHttpLoader } from '../loader';

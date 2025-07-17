@@ -3,7 +3,12 @@
   "version": "0.0.1",
   "peerDependencies": {
     "@angular/common": "^20.0.0",
-    "@angular/core": "^20.0.0"
+    "@angular/core": "^20.0.0",
+    "@ngrx/store": "^19.2.1",
+    "rxjs": "~7.8.0",
+    "@ngrx/entity": "^19.2.1",
+    "@ngrx/effects": "^19.2.1",
+    "lodash": "^4.17.21"
   },
   "sideEffects": false
 }

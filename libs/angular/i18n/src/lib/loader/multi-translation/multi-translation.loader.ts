@@ -5,8 +5,8 @@ import { deepmerge } from 'deepmerge-ts';
 import { forkJoin, Observable, of } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
 
-import { NgxI18nLoadingService } from '../../services';
 import { NgxI18nConfiguration } from '../../i18n.types';
+import { NgxI18nLoadingService } from '../../services';
 import { NgxI18nConfigurationToken } from '../../tokens';
 
 export class NgxI18nMultiTranslationHttpLoader implements TranslateLoader {

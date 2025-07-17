@@ -1,7 +1,7 @@
 import { inject } from '@angular/core';
 import { ActivatedRouteSnapshot, CanActivateFn, Router } from '@angular/router';
-
 import { Observable, take, map } from 'rxjs';
+
 import { NgxI18nRootService } from '../../services';
 
 /**

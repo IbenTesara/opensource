@@ -1,4 +1,5 @@
 import { of, Subscription } from 'rxjs';
+
 import { NgxI18nService } from './i18n.service';
 
 const translateService: any = {

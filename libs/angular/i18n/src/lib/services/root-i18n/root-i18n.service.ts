@@ -1,6 +1,6 @@
 import { inject, Injectable } from '@angular/core';
-import { BehaviorSubject, filter, Observable } from 'rxjs';
 import { NgxWindowService } from '@iben/ngx-core';
+import { BehaviorSubject, filter, Observable } from 'rxjs';
 
 import { NgxI18nConfiguration } from '../../i18n.types';
 import { NgxI18nConfigurationToken } from '../../tokens';

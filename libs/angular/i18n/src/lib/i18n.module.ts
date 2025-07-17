@@ -1,12 +1,12 @@
+import { HttpBackend } from '@angular/common/http';
 import { ModuleWithProviders, NgModule, inject } from '@angular/core';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 
-import { HttpBackend } from '@angular/common/http';
 import { NgxI18nConfiguration } from './i18n.types';
-import { NgxI18nConfigurationToken } from './tokens/i18n.token';
 import { NgxI18nMultiTranslationHttpLoader } from './loader';
-import { NgxI18nService } from './services';
 import { NgxI18nTranslationLoaderResolver } from './resolvers';
+import { NgxI18nService } from './services';
+import { NgxI18nConfigurationToken } from './tokens/i18n.token';
 
 function FallBackTranslationLoader(http: HttpBackend) {
 	// Iben: Inject the config
