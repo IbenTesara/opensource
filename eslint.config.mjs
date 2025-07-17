@@ -15,7 +15,8 @@ export default [
     plugins: {
 			import: importPlugin
 		},
-		rules: {
+    rules: {
+      '@typescript-eslint/no-unused-expressions': 'off',
 			'@nx/enforce-module-boundaries': [
 				'error',
 				{
