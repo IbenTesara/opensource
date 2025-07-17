@@ -3,7 +3,15 @@
   "version": "0.0.1",
   "peerDependencies": {
     "@angular/common": "^20.0.0",
-    "@angular/core": "^20.0.0"
+    "@angular/core": "^20.0.0",
+    "rxjs": "~7.8.0",
+    "uuid": "^11.1.0",
+    "@angular/cdk": "^20.1.2",
+    "@angular/forms": "~20.0.0",
+    "lodash": "^4.17.21",
+    "dot-prop": "^9.0.0",
+    "markerjs2": "^2.32.4",
+    "markerjs-live": "^1.2.1"
   },
   "sideEffects": false
 }
