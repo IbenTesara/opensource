@@ -2,9 +2,7 @@ import {
 	ChangeDetectorRef,
 	ComponentRef,
 	Directive,
-	Inject,
 	Input,
-	Optional,
 	TemplateRef,
 	Type,
 	ViewContainerRef,
@@ -38,7 +36,8 @@ export class NgxHasCookieDirective implements OnDestroy {
 	private readonly ngxCookieService: NgxCookieService = inject(NgxCookieService);
 	private readonly cdRef: ChangeDetectorRef = inject(ChangeDetectorRef);
 	private readonly component: Type<NgxCookiesFallBackComponent> = inject(
-		NgxCookiesFallbackComponentToken
+		NgxCookiesFallbackComponentToken,
+		{ optional: true }
 	);
 
 	/**
