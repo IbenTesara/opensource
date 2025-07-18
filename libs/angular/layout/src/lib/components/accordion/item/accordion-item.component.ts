@@ -1,19 +1,19 @@
 import { NgTemplateOutlet } from '@angular/common';
 import {
-	AfterViewInit,
-	ChangeDetectionStrategy,
-	ChangeDetectorRef,
-	Component,
-	ContentChild,
-	ElementRef,
-	HostListener,
-	inject,
-	Input,
-	OnDestroy,
-	OnInit,
-	Renderer2,
-	TemplateRef,
-	ViewChild,
+  AfterViewInit,
+  ChangeDetectionStrategy,
+  ChangeDetectorRef,
+  Component,
+  ContentChild,
+  ElementRef,
+  HostListener,
+  inject,
+  OnDestroy,
+  OnInit,
+  Renderer2,
+  TemplateRef,
+  ViewChild,
+  input
 } from '@angular/core';
 import { v4 as uuid } from 'uuid';
 
@@ -102,7 +102,7 @@ export class NgxAccordionItemComponent implements OnInit, AfterViewInit, OnDestr
 	/**
 	 * Whether the accordion item is disabled
 	 */
-	@Input() public disabled: boolean = false;
+	public readonly disabled = input<boolean>(false);
 
 	/**
 	 * The id of the accordion item
@@ -163,7 +163,7 @@ export class NgxAccordionItemComponent implements OnInit, AfterViewInit, OnDestr
 
 		// Iben: Prevent the accordion from being opened if it is disabled
 		this.renderer.listen(this.detailsElement.nativeElement, 'click', (event: Event) => {
-			if (this.disabled) {
+			if (this.disabled()) {
 				event.preventDefault();
 				event.stopImmediatePropagation();
 			}

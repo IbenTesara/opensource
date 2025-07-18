@@ -1,4 +1,18 @@
-import { AfterViewInit, Directive, ElementRef, EventEmitter, HostBinding, HostListener, Input, OnInit, Output, signal, ViewChild, WritableSignal, inject } from '@angular/core';
+import {
+	AfterViewInit,
+	Directive,
+	ElementRef,
+	HostBinding,
+	HostListener,
+	OnInit,
+	signal,
+	ViewChild,
+	WritableSignal,
+	inject,
+	input,
+	OutputEmitterRef,
+	output,
+} from '@angular/core';
 import { v4 as uuid } from 'uuid';
 
 import { NgxTourService } from '../../services';
@@ -20,7 +34,7 @@ export abstract class NgxTourStepComponent<DataType = any> implements OnInit, Af
 	/**
 	 * Close the tour on escape pressed
 	 */
-	@HostListener('document:keydown.escape') private onEscape() {
+	@HostListener('document:keydown.escape') public onEscape() {
 		this.tourService.closeTour().subscribe();
 	}
 
@@ -32,7 +46,11 @@ export abstract class NgxTourStepComponent<DataType = any> implements OnInit, Af
 	/**
 	 * The id of the element that the tour-step describes
 	 */
-	@HostBinding('attr.aria-details') @Input({ required: true }) public elementId: string;
+	/**
+	 * The id of the element that the tour-step describes
+	 */
+	@HostBinding('attr.aria-details')
+	public readonly elementId = input.required<string>();
 
 	/**
 	 * The element of the tour-step that is seen as the title
@@ -42,46 +60,42 @@ export abstract class NgxTourStepComponent<DataType = any> implements OnInit, Af
 	/**
 	 * The position of the step
 	 */
-	@Input({
-		required: true,
-	})
-	public position: NgxTourStepPosition | undefined;
+	public readonly position = input.required<NgxTourStepPosition | undefined>();
 
 	/**
 	 * The title of the step
 	 */
-	@Input({ required: true }) public title: string;
+	public readonly title = input.required<string>();
 
 	/**
 	 * The content of the step
 	 */
-	@Input({ required: true }) public content: string;
+	public readonly content = input.required<string>();
 
 	/**
 	 * The index of the step
 	 */
-	@Input({ required: true }) public currentStep: number;
+	public readonly currentStep = input.required<number>();
 
 	/**
 	 * The total amount of steps
 	 */
-	@Input({ required: true }) public amountOfSteps: number;
+	public readonly amountOfSteps = input.required<number>();
 
 	/**
 	 * Optional data we wish to use in a step
 	 */
-	@Input() public data: DataType;
+	public readonly data = input<DataType>();
 
 	/**
 	 * A custom step class we can set
 	 */
-	@Input() public stepClass: string;
+	public readonly stepClass = input<string>();
 
 	/**
 	 * Emits the possible interactions with a step
 	 */
-	@Output() public handleInteraction: EventEmitter<NgxTourInteraction> =
-		new EventEmitter<NgxTourInteraction>();
+	public handleInteraction: OutputEmitterRef<NgxTourInteraction> = output<NgxTourInteraction>();
 
 	/**
 	 * The aria-labelledby id of the title element
@@ -90,8 +104,9 @@ export abstract class NgxTourStepComponent<DataType = any> implements OnInit, Af
 
 	public ngOnInit(): void {
 		// Iben: We set the correct host class. As this step is rendered and not changed afterwards, we do not have to adjust this in the onChanges
-		const positionClass = this.position ? `ngx-tour-step-position-${this.position}` : '';
-		this.rootClass = `ngx-tour-step ${positionClass} ${this.stepClass || ''}`;
+		const position = this.position();
+		const positionClass = position ? `ngx-tour-step-position-${position}` : '';
+		this.rootClass = `ngx-tour-step ${positionClass} ${this.stepClass() || ''}`;
 	}
 
 	public ngAfterViewInit(): void {

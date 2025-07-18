@@ -1,4 +1,4 @@
-import { AfterViewInit, ChangeDetectorRef, Directive, ElementRef, Input, OnDestroy, TemplateRef, Type, ViewContainerRef, inject } from '@angular/core';
+import { AfterViewInit, ChangeDetectorRef, Directive, ElementRef, Input, OnDestroy, TemplateRef, Type, ViewContainerRef, inject, input } from '@angular/core';
 import { Subject, distinctUntilChanged, takeUntil, tap } from 'rxjs';
 
 import { NgxDisplayContentComponent } from '../../abstracts';
@@ -76,7 +76,7 @@ export class NgxDisplayContentDirective implements AfterViewInit, OnDestroy {
 	 *
 	 * https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Live_Regions
 	 */
-	@Input() displayContentAriaLive: NgxDisplayContentAriaLive = 'polite';
+	readonly displayContentAriaLive = input<NgxDisplayContentAriaLive>('polite');
 
 	constructor() {
 		const configuration = this.configuration;
@@ -101,7 +101,7 @@ export class NgxDisplayContentDirective implements AfterViewInit, OnDestroy {
 
 	public ngAfterViewInit(): void {
 		// Iben: Set the aria-live and aria-busy tag of the parent
-		this.setAriaLiveTag(this.displayContentAriaLive);
+		this.setAriaLiveTag(this.displayContentAriaLive());
 
 		// Iben: Listen to whenever we need to update the view and act accordingly
 		this.updateViewSubject

@@ -3,14 +3,14 @@
 	cdk-table
 	multiTemplateDataRows
 	fixedLayout
-	[ngxTreeGrid]="detailRowTemplate !== undefined || selectable"
+	[ngxTreeGrid]="detailRowTemplate !== undefined || selectable()"
 	[ngxTreeGridExpandable]="detailRowTemplate !== undefined"
-	[class.ngx-table-hide-rows]="loading || (data || []).length === 0"
+	[class.ngx-table-hide-rows]="loading() || (data() || []).length === 0"
 	[class.ngx-table-clickable-rows]="detailRowTemplate || (rowClicked | ngxTableHasObservers)"
-	[attr.aria-multiselectable]="selectableType === 'checkbox'"
-	[dataSource]="!loading ? data : []"
+	[attr.aria-multiselectable]="selectableType() === 'checkbox'"
+	[dataSource]="!loading() ? data() : []"
 >
-	@if (selectable) {
+	@if (selectable()) {
 		<ng-container cdkColumnDef="ngxTableSelectColumn">
 			<th
 				*cdkHeaderCellDef
@@ -18,7 +18,7 @@
 				cdk-header-cell
 				[attr.aria-readonly]="headerControl.disabled"
 			>
-				@if (selectableType === 'checkbox') {
+				@if (selectableType() === 'checkbox') {
 					<ng-template
 						[ngTemplateOutlet]="checkboxTmpl"
 						[ngTemplateOutletContext]="{
@@ -37,16 +37,16 @@
 				[ngxTreeGridCellRow]="index"
 			>
 				@if (
-					selectableType === 'radio' ||
-						(selectableType === 'checkbox' &&
+					selectableType() === 'radio' ||
+						(selectableType() === 'checkbox' &&
 							rowsFormGroup.controls[
-								this.selectableKey ? row[selectableKey] : index
+								this.selectableKey() ? row[selectableKey()] : index
 							]);
 					as control
 				) {
 					<ng-template
 						[ngTemplateOutlet]="
-							selectableType === 'checkbox' ? checkboxTmpl : radioButtonTmpl
+							selectableType() === 'checkbox' ? checkboxTmpl : radioButtonTmpl
 						"
 						[ngTemplateOutletContext]="{
 							$implicit: control,
@@ -64,13 +64,13 @@
 			></td>
 		</ng-container>
 	}
-	@if (showOpenRowState) {
+	@if (showOpenRowState()) {
 		<ng-container cdkColumnDef="ngxOpenRowStateColumn">
 			<th *cdkHeaderCellDef class="ngx-table-cell ngx-table-header-cell" cdk-header-cell></th>
 			<td
 				*cdkCellDef="let row; let index = dataIndex"
 				class="ngx-table-cell ngx-table-row-cell ngx-table-open-row-state-cell"
-				[ngxTreeGridCell]="selectable ? columns.length + 1 : columns.length + 2"
+				[ngxTreeGridCell]="selectable() ? columns().length + 1 : columns().length + 2"
 				[ngxTreeGridCellRow]="index"
 				(click)="handleRowClicked(row, index)"
 			>
@@ -78,8 +78,8 @@
 					[ngTemplateOutlet]="openRowStateTemplate || defaultOpenRowStateTmpl"
 					[ngTemplateOutletContext]="{
 						$implicit:
-							showDetailRow === 'always' ||
-							(showDetailRow === 'on-single-item' && data?.length === 1) ||
+							showDetailRow() === 'always' ||
+							(showDetailRow() === 'on-single-item' && data()?.length === 1) ||
 							openRows.has(index),
 					}"
 				>
@@ -167,7 +167,7 @@
 					'ngx-table-row-cell',
 					tableCellTemplateRecord()[column]?.cellClass || '',
 				]"
-				[ngxTreeGridCell]="selectable ? columnIndex + 1 : columnIndex"
+				[ngxTreeGridCell]="selectable() ? columnIndex + 1 : columnIndex"
 				[ngxTreeGridCellRow]="index"
 				[attr.data-cy]="tableCypressRecord()[column]?.cell || ''"
 				[attr.role]="detailRowTemplate ? 'gridcell' : 'cell'"
@@ -182,8 +182,8 @@
 							row: row,
 							index: index,
 							isRowOpen:
-								showDetailRow === 'always' ||
-								(showDetailRow === 'on-single-item' && data?.length === 1) ||
+								showDetailRow() === 'always' ||
+								(showDetailRow() === 'on-single-item' && data()?.length === 1) ||
 								openRows.has(index),
 						}"
 					>
@@ -223,34 +223,34 @@
 			</td>
 		</ng-container>
 	}
-	@if ({ isLoading: loading, isEmpty: data?.length === 0 } | ngxTableShowHeader: hideHeaderWhen) {
+	@if ({ isLoading: loading(), isEmpty: data()?.length === 0 } | ngxTableShowHeader: hideHeaderWhen()) {
 		<tr *cdkHeaderRowDef="definedColumns()" cdk-header-row></tr>
 	}
-	@if (data) {
+	@if (data()) {
 		<tr
 			*cdkRowDef="let row; columns: definedColumns(); let rowIndex = dataIndex"
 			cdk-row
 			aria-level="1"
-			[attr.tabindex]="detailRowTemplate !== undefined || selectable ? 0 : -1"
+			[attr.tabindex]="detailRowTemplate !== undefined || selectable() ? 0 : -1"
 			[attr.aria-setsize]="detailRowTemplate ? 1 : 0"
 			[ngClass]="[
 				'ngx-table-row',
-				rowClass || '',
-				row[highlightKey] ? 'ngx-table-row-highlight' : '',
+				rowClass() || '',
+				row[highlightKey()] ? 'ngx-table-row-highlight' : '',
 			]"
 			[class.ngx-table-row-odd]="rowIndex % 2 !== 0"
 			[class.ngx-table-row-even]="rowIndex % 2 === 0"
 			[class.ngx-table-row-selected]="
-				showSelectedOpenRow &&
+				showSelectedOpenRow() &&
 				(selectedRow === rowIndex ||
-					(showDetailRow === 'on-single-item' && data?.length === 1))
+					(showDetailRow() === 'on-single-item' && data()?.length === 1))
 			"
 			[ngxTreeGridRow]="rowIndex"
-			[ngxTreeGridRowSelectable]="selectable"
+			[ngxTreeGridRowSelectable]="selectable()"
 			[ngxTreeGridRowExpanded]="openRows.has(rowIndex)"
 			[attr.aria-selected]="
 				rowsFormGroup.get(
-					selectableKey ? '' + data[rowIndex][selectableKey] : '' + rowIndex
+					selectableKey() ? '' + data()[rowIndex][selectableKey()] : '' + rowIndex
 				)?.value
 			"
 			(ngxTreeGridRowSelectRow)="selectRow(rowIndex)"
@@ -265,8 +265,8 @@
 				aria-level="2"
 				aria-posinset="1"
 				[class.ngx-table-detail-row-open]="
-					showDetailRow === 'always' ||
-					(showDetailRow === 'on-single-item' && data?.length === 1) ||
+					showDetailRow() === 'always' ||
+					(showDetailRow() === 'on-single-item' && data()?.length === 1) ||
 					openRows.has(index)
 				"
 			></tr>
@@ -281,12 +281,12 @@
 	}
 </table>
 
-@if (!loading && (!data || data.length === 0)) {
+@if (!loading() && (!data() || data().length === 0)) {
 	<div>
 		<ng-template [ngTemplateOutlet]="emptyTemplate"> </ng-template>
 	</div>
 }
-@if (loading) {
+@if (loading()) {
 	<div>
 		<ng-template [ngTemplateOutlet]="loadingTemplate"> </ng-template>
 	</div>
@@ -294,8 +294,8 @@
 
 <ng-template #detailRowTmpl let-row let-index="index">
 	@if (
-		showDetailRow === 'always' ||
-		(showDetailRow === 'on-single-item' && data?.length === 1) ||
+		showDetailRow() === 'always' ||
+		(showDetailRow() === 'on-single-item' && data()?.length === 1) ||
 		openRows.has(index)
 	) {
 		<ng-template
@@ -331,7 +331,7 @@
 			name="ngx-table-radio"
 			type="radio"
 			[id]="index"
-			[value]="selectableKey ? row[selectableKey] : index"
+			[value]="selectableKey() ? row[selectableKey()] : index"
 			[formControl]="radioControl"
 		/>
 	}

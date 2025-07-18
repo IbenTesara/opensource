@@ -1,4 +1,4 @@
-import { Directive } from '@angular/core';
+import { Directive, Signal } from '@angular/core';
 
 import { NgxHasFocusDragAndDropAbstractDirective } from './has-focus.directive';
 
@@ -10,7 +10,7 @@ export abstract class NgxAccessibleAbstractDragAndDropItemDirective extends NgxH
 	/**
 	 * An unique id of the draggable item
 	 */
-	abstract itemId: string;
+	abstract itemId: Signal<string>;
 
 	/**
 	 *  Marks the item as focussed and selected

@@ -1,4 +1,4 @@
-import { Component, Input, TemplateRef, ViewChild } from '@angular/core';
+import { Component, TemplateRef, ViewChild, input } from '@angular/core';
 
 /**
  * The layout item pairs with the `<ngx-configurable-layout>` container.
@@ -16,12 +16,12 @@ export class NgxConfigurableLayoutItemComponent {
 	/**
 	 * The unique key of the layout item.
 	 */
-	@Input({ required: true }) public key: string;
+	public readonly key = input.required<string>();
 
 	/**
 	 * An optional label for the layout item used for WCAG purposes.
 	 */
-	@Input() public label: string;
+	public readonly label = input<string>();
 
 	/**
 	 * The template reference of the;

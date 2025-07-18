@@ -1,14 +1,16 @@
 import {
-	ChangeDetectorRef,
-	Directive,
-	Injector,
-	Input,
-	OnDestroy,
-	Output,
-	QueryList,
-	ViewChildren,
-	inject,
+  ChangeDetectorRef,
+  Directive,
+  Injector,
+  Input,
+  OnDestroy,
+  OutputRef,
+  QueryList,
+  ViewChildren,
+  inject,
+  input
 } from '@angular/core';
+import { outputFromObservable, outputToObservable } from '@angular/core/rxjs-interop';
 import {
 	AbstractControl,
 	ControlValueAccessor,
@@ -121,7 +123,7 @@ export abstract class NgxFormsControlValueAccessor<
 			: true;
 
 		// Iben: Listen to the initialized state of the form
-		this.initialized$
+		outputToObservable(this.initialized$)
 			.pipe(
 				filter(Boolean),
 				tap(() => {
@@ -144,13 +146,12 @@ export abstract class NgxFormsControlValueAccessor<
 	 * Whether we want to skip the first setDisable (https://github.com/angular/angular/pull/47576).
 	 * By default, this is true
 	 */
-	@Input() public skipInitialSetDisable: boolean = true;
+	public readonly skipInitialSetDisable = input<boolean>(true);
 
 	/**
 	 * Stream to know whether the form has been initialized
 	 */
-	@Output()
-	public readonly initialized$: Observable<boolean> = this.initializedSubject$.asObservable();
+	public readonly initialized$: OutputRef<boolean> = outputFromObservable(this.initializedSubject$.asObservable());
 
 	constructor() {
 		// Iben: Use setTimeOut to avoid the circular dependency issue
@@ -359,7 +360,7 @@ export abstract class NgxFormsControlValueAccessor<
 	public setDisabledState(isDisabled: boolean) {
 		// Iben: Skip the initial setDisabled, as this messes up our form approach.
 		// https://github.com/angular/angular/pull/47576
-		if (this.skipInitialSetDisable && !this.initialSetDisableHasRun) {
+		if (this.skipInitialSetDisable() && !this.initialSetDisableHasRun) {
 			this.initialSetDisableHasRun = true;
 
 			return;

@@ -1,4 +1,4 @@
-import { ContentChildren, Directive, ElementRef, Input, QueryList, AfterViewInit, inject } from '@angular/core';
+import { ContentChildren, Directive, ElementRef, QueryList, AfterViewInit, inject, input } from '@angular/core';
 
 import {
 	NgxAccessibleAbstractDragAndDropItemDirective,
@@ -33,7 +33,7 @@ export class NgxAccessibleDragAndDropHostDirective implements AfterViewInit {
 	/**
 	 * An optional description describing how the drag and drop works.
 	 */
-	@Input({ alias: 'ngxAccessibleDragAndDropHostDescription' }) public description: string;
+	public readonly description = input<string>(undefined, { alias: "ngxAccessibleDragAndDropHostDescription" });
 
 	/**
 	 * Mark a specific drag and drop item as active
@@ -50,13 +50,13 @@ export class NgxAccessibleDragAndDropHostDirective implements AfterViewInit {
 	 * @param index - The index of the container
 	 */
 	public getContainer(index: number): NgxAccessibleDragAndDropContainerDirective {
-		return this.containers.find((container) => container.index === index);
+		return this.containers.find((container) => container.index() === index);
 	}
 
 	public ngAfterViewInit(): void {
 		// Iben: Add the description tag
 		this.dragAndDropService
-			.setDragAndDropDescription(this.elementRef.nativeElement, this.description)
+			.setDragAndDropDescription(this.elementRef.nativeElement, this.description())
 			.subscribe();
 	}
 

@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, Input } from '@angular/core';
+import { Component, input } from '@angular/core';
 
 import { NgxDisplayContentComponent } from '../../../abstracts';
 import { NgxDisplayContentConditions } from '../../../types';
@@ -28,17 +28,17 @@ export class TestOfflineComponent extends NgxDisplayContentComponent {}
 @Component({
 	selector: 'test-data-error',
 	standalone: true,
-	template: '<p class="error">Error {{data}}</p>',
+	template: '<p class="error">Error {{data()}}</p>',
 })
 export class TestErrorDataComponent extends NgxDisplayContentComponent {}
 
 @Component({
 	selector: 'test-data',
-	template: '<p *displayContent="conditions" class="content">Content</p>',
+	template: '<p *displayContent="conditions()" class="content">Content</p>',
 	imports: [NgxDisplayContentDirective],
 })
 export class TestDisplayContentComponent {
-	@Input() conditions: NgxDisplayContentConditions;
+	readonly conditions = input<NgxDisplayContentConditions>();
 }
 
 @Component({
@@ -46,8 +46,8 @@ export class TestDisplayContentComponent {
 	template: `
 		<p
 			*displayContent="
-				conditions;
-				configuration: { error: { data: errorData }, loading: { template: loadingTmpl } }
+				conditions();
+				configuration: { error: { data: errorData() }, loading: { template: loadingTmpl } }
 			"
 			class="content"
 		>
@@ -59,6 +59,6 @@ export class TestDisplayContentComponent {
 	imports: [NgxDisplayContentDirective, CommonModule],
 })
 export class TestOverrideDisplayContentComponent {
-	@Input() conditions: NgxDisplayContentConditions;
-	@Input() errorData: any;
+	readonly conditions = input<NgxDisplayContentConditions>();
+	readonly errorData = input<any>();
 }

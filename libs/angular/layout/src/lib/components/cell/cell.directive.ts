@@ -1,4 +1,4 @@
-import { Directive, EventEmitter, Input, Output, TemplateRef } from '@angular/core';
+import { Directive, OutputEmitterRef, TemplateRef, input, output } from '@angular/core';
 
 import { NgxTableSortDirection } from '../../enums/sort-direction.enum';
 import { NgxTableCypressDataTags, NgxTableSortEvent } from '../../types';
@@ -28,28 +28,28 @@ export class NgxAbstractTableCellDirective {
 	/**
 	 * The name of the column we want this cell to represent
 	 */
-	@Input({ required: true }) public column: string;
+	public readonly column = input.required<string>();
 
 	/**
 	 * Whether or not the cell is sortable
 	 */
-	@Input() public sortable: boolean = false;
+	public readonly sortable = input<boolean>(false);
 
 	/**
 	 * A tag that can be added to a column in the table, set according to the cypress best practices
 	 * See https://docs.cypress.io/guides/references/best-practices#Selecting-Elements
 	 */
-	@Input() public cypressDataTags: NgxTableCypressDataTags;
+	public readonly cypressDataTags = input<NgxTableCypressDataTags>();
 
 	/**
 	 * Whether the content of a cell is editable. By default, this is set to false
 	 */
-	@Input() public editable: boolean = false;
+	public readonly editable = input<boolean>(false);
 
 	/**
 	 * Emits the sortable event if a column is sortable
 	 */
-	@Output() sort = new EventEmitter<NgxTableSortEvent>();
+	public sort: OutputEmitterRef<NgxTableSortEvent> = output<NgxTableSortEvent>();
 
 	/**
 	 * Handles the sorting click events
@@ -72,7 +72,7 @@ export class NgxAbstractTableCellDirective {
 		// Iben: Emit the sorting event
 		this.sort.emit({
 			direction: this.sortDirection,
-			column: this.column,
+			column: this.column(),
 		});
 	}
 

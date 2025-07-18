@@ -1,17 +1,17 @@
 import {
-	AfterViewInit,
-	ChangeDetectorRef,
-	ComponentRef,
-	Directive,
-	ElementRef,
-	inject,
-	Inject,
-	Input,
-	OnDestroy,
-	Optional,
-	Renderer2,
-	TemplateRef,
-	ViewContainerRef,
+  AfterViewInit,
+  ChangeDetectorRef,
+  ComponentRef,
+  Directive,
+  ElementRef,
+  inject,
+  Inject,
+  OnDestroy,
+  Optional,
+  Renderer2,
+  TemplateRef,
+  ViewContainerRef,
+  input
 } from '@angular/core';
 import {
 	AbstractControl,
@@ -77,7 +77,7 @@ export class NgxFormsErrorsDirective implements AfterViewInit, OnDestroy {
 	/**
 	 * A reference to a control or a string reference to the control
 	 */
-	@Input('ngxFormsErrors') public control: AbstractControl | string;
+	public readonly control = input<AbstractControl | string>(undefined, { alias: "ngxFormsErrors" });
 
 	constructor() {
 		// Iben: Set the current template ref at constructor time so we actually have the provided template (as done in the *ngIf directive)
@@ -96,7 +96,8 @@ export class NgxFormsErrorsDirective implements AfterViewInit, OnDestroy {
 		this.viewContainer.createEmbeddedView(this.template);
 
 		// Iben: If no control was provided, we early exit and log an error
-		if (!this.control) {
+		const control = this.control();
+  if (!control) {
 			console.error('NgxForms: No control was provided to the NgxFormsErrorDirective');
 
 			return;
@@ -104,12 +105,12 @@ export class NgxFormsErrorsDirective implements AfterViewInit, OnDestroy {
 
 		// Iben: If the control is a string, we check the parent to find the actual control.
 		// If not, we use the provided control
-		if (typeof this.control === 'string') {
+		if (typeof control === 'string') {
 			this.abstractControl = this.formGroupDirective
-				? this.formGroupDirective.form.get(this.control)
-				: this.formNameDirective?.control.get(this.control);
+				? this.formGroupDirective.form.get(control)
+				: this.formNameDirective?.control.get(control);
 		} else {
-			this.abstractControl = this.control;
+			this.abstractControl = control;
 		}
 
 		// Iben: If no control was found, we early exit and log an error

@@ -1,4 +1,4 @@
-import { Directive, HostBinding, Input, OnChanges } from '@angular/core';
+import { Directive, HostBinding, OnChanges, input } from '@angular/core';
 
 import { NgxTreeGridRowDirective } from './tree-grid-row.directive';
 import { NgxTreeGridCellDirective } from './tree-grid.cell.directive';
@@ -23,12 +23,12 @@ export class NgxTreeGridDirective implements OnChanges {
 	/**
 	 * Whether the current item is a treegrid
 	 */
-	@Input({ required: true }) public ngxTreeGrid: boolean;
+	public readonly ngxTreeGrid = input.required<boolean>();
 
 	/**
 	 * Whether the treegrid has expandableRows
 	 */
-	@Input({ required: true }) public ngxTreeGridExpandable: boolean;
+	public readonly ngxTreeGridExpandable = input.required<boolean>();
 
 	/**
 	 * Registers a row to the rows array
@@ -55,7 +55,7 @@ export class NgxTreeGridDirective implements OnChanges {
 	 */
 	public getRow(index: number): NgxTreeGridRowDirective {
 		// Iben: Early exit if the row is not found
-		if (!this.ngxTreeGrid) {
+		if (!this.ngxTreeGrid()) {
 			return null;
 		}
 
@@ -97,6 +97,6 @@ export class NgxTreeGridDirective implements OnChanges {
 
 	ngOnChanges() {
 		// Iben: Set the role based on the tree grid
-		this.role = this.ngxTreeGrid ? 'treegrid' : 'table';
+		this.role = this.ngxTreeGrid() ? 'treegrid' : 'table';
 	}
 }

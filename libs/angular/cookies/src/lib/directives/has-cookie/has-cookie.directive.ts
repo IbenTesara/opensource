@@ -2,12 +2,14 @@ import {
 	ChangeDetectorRef,
 	ComponentRef,
 	Directive,
-	Input,
 	TemplateRef,
 	Type,
 	ViewContainerRef,
 	OnDestroy,
 	inject,
+	effect,
+	input,
+	InputSignal,
 } from '@angular/core';
 import { flatten } from 'lodash';
 import { Subject, tap, takeUntil, combineLatest, map } from 'rxjs';
@@ -59,21 +61,29 @@ export class NgxHasCookieDirective implements OnDestroy {
 	/**
 	 * A cookie or list of cookies the item should have
 	 */
-	@Input() public set hasCookie(cookie: NgxHasCookieConfiguration | NgxHasCookieConfiguration[]) {
-		this.cookies = Array.isArray(cookie) ? cookie : [cookie];
-		this.updateView();
-	}
+	public hasCookie: InputSignal<NgxHasCookieConfiguration | NgxHasCookieConfiguration[]> =
+		input.required();
 
 	/**
 	 * The else template in case the cookie is not accepted
 	 */
-	@Input() public set hasCookieElse(ngTemplate: TemplateRef<any>) {
-		this.elseTemplateRef = ngTemplate;
-		this.updateView();
-	}
+	public hasCookieElse: InputSignal<TemplateRef<any>> = input<TemplateRef<any>>();
 
 	constructor() {
 		this.thenTemplateRef = this.templateRef;
+
+		effect(() => {
+			const value = this.hasCookie();
+			this.cookies = Array.isArray(value) ? value : [value];
+
+			this.updateView();
+		});
+
+		effect(() => {
+			if (this.hasCookieElse()) {
+				this.updateView();
+			}
+		});
 	}
 
 	public ngOnDestroy(): void {
@@ -157,8 +167,8 @@ export class NgxHasCookieDirective implements OnDestroy {
 	 */
 	private renderElseTemplate(): void {
 		// Iben: If a custom template ref was provided, render the template and early exit
-		if (this.elseTemplateRef) {
-			this.viewContainer.createEmbeddedView(this.elseTemplateRef);
+		if (this.hasCookieElse()) {
+			this.viewContainer.createEmbeddedView(this.hasCookieElse());
 
 			return;
 		}

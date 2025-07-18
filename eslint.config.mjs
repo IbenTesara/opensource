@@ -19,6 +19,7 @@ export default [
       '@typescript-eslint/no-unused-expressions': 'off',
       '@typescript-eslint/no-empty-function': 'off',
       '@typescript-eslint/no-unsafe-function-type': 'off',
+      '@angular-eslint/no-input-rename': 'off',
 			'@nx/enforce-module-boundaries': [
 				'error',
 				{

@@ -9,22 +9,23 @@ import {
 } from '@angular/cdk/drag-drop';
 import { NgTemplateOutlet, NgStyle, CommonModule } from '@angular/common';
 import {
-	AfterContentChecked,
-	Component,
-	ContentChild,
-	ContentChildren,
-	Input,
-	OnChanges,
-	OnDestroy,
-	OnInit,
-	QueryList,
-	SimpleChanges,
-	TemplateRef,
-	WritableSignal,
-	forwardRef,
-	signal,
-	AfterViewInit,
-	ChangeDetectionStrategy,
+  AfterContentChecked,
+  Component,
+  ContentChild,
+  ContentChildren,
+  Input,
+  OnChanges,
+  OnDestroy,
+  OnInit,
+  QueryList,
+  SimpleChanges,
+  TemplateRef,
+  WritableSignal,
+  forwardRef,
+  signal,
+  AfterViewInit,
+  ChangeDetectionStrategy,
+  input
 } from '@angular/core';
 import {
 	ControlValueAccessor,
@@ -143,7 +144,7 @@ export class NgxConfigurableLayoutComponent
 	 * If the layout is `static`, a two dimensional array of key strings needs to be provided to the layout through the `keys` input.
 	 * If the layout is `editable`, a form control needs to be provided to the layout requiring a two dimensional array with {key, isActive} pairs.
 	 */
-	@Input({ required: true }) public layoutType: NgxConfigurableLayoutType;
+	public readonly layoutType = input.required<NgxConfigurableLayoutType>();
 
 	/**
 	 * The keys will determine the order of the `ngx-configurable-layout-item` layout items.
@@ -170,14 +171,14 @@ export class NgxConfigurableLayoutComponent
 	 *
 	 * This property can only be used when the layoutType is set to `editable`.
 	 */
-	@Input() public showInactive: boolean = undefined;
+	public readonly showInactive = input<boolean>();
 
 	/**
 	 * Whether drag and drop is enabled for the layout.
 	 *
 	 * This property can only be used when the layoutType is set to `editable`
 	 */
-	@Input() public allowDragAndDrop: boolean = undefined;
+	public readonly allowDragAndDrop = input<boolean>();
 
 	/**
 	 * Determines how much space each item takes in the row. By default, this is 'fill'
@@ -186,43 +187,43 @@ export class NgxConfigurableLayoutComponent
 	 * fit-content - Will make the items take up the space of the provided template
 	 * equal - Will make the items take up equal amount of space throughout the grid
 	 */
-	@Input() public itemSize: NgxConfigurableLayoutItemSizeOption = 'fill';
+	public readonly itemSize = input<NgxConfigurableLayoutItemSizeOption>('fill');
 
 	/**
 	 * An optional row gap we can provide to create a gap between the rows of the layout.
 	 *
 	 * This input requires an amount in px, rem, %, etc.
 	 */
-	@Input() public rowGap: string;
+	public readonly rowGap = input<string>();
 
 	/**
 	 * An optional predicate we can use to allow or disallow items to be dropped
 	 *
 	 * @memberof NgxConfigurableLayoutComponent
 	 */
-	@Input() public dropPredicate: (event: NgxConfigurableLayoutItemDropEvent) => boolean;
+	public readonly dropPredicate = input<(event: NgxConfigurableLayoutItemDropEvent) => boolean>();
 
 	/**
 	 * An optional label for the layout item used for WCAG purposes.
 	 */
-	@Input() public itemLabel: string;
+	public readonly itemLabel = input<string>();
 
 	/**
 	 * An optional label for the layout item used for WCAG purposes.
 	 */
-	@Input() public rowLabel: string;
+	public readonly rowLabel = input<string>();
 
 	/**
 	 * An optional description explaining how the drag and drop works used for WCAG purposes.
 	 */
-	@Input() public description: string;
+	public readonly description = input<string>();
 
 	/**
 	 * An optional column gap we can provide to create a gap between the columns of the layout.
 	 *
 	 * This input requires an amount in px, rem, %, etc.
 	 */
-	@Input() public columnGap: string;
+	public readonly columnGap = input<string>();
 	// Lifecycle methods
 	// ==============================
 	public ngOnInit(): void {
@@ -267,7 +268,7 @@ export class NgxConfigurableLayoutComponent
 	}
 
 	public ngOnChanges(changes: any) {
-		if ((changes.layoutType?.currentValue || this.layoutType) === 'static') {
+		if ((changes.layoutType?.currentValue || this.layoutType()) === 'static') {
 			// Iben: If no keys are provided, we return an error, as without it, there nothing will be rendered and the layout will not work.
 			if (!(changes.keys?.currentValue || this.keys)) {
 				console.error(
@@ -277,8 +278,8 @@ export class NgxConfigurableLayoutComponent
 
 			// Iben: If either of the properties was set, we simply warn the user that these will have no effect as this will not influence the setup.
 			if (
-				(changes.allowDragAndDrop?.currentValue || this.allowDragAndDrop) !== undefined ||
-				(changes.showInactive?.currentValue || this.showInactive) !== undefined
+				(changes.allowDragAndDrop?.currentValue || this.allowDragAndDrop()) !== undefined ||
+				(changes.showInactive?.currentValue || this.showInactive()) !== undefined
 			) {
 				console.warn(
 					'NgxLayout: The configurable layout was set to "static". Properties "allowDragAndDrop" and "showInactive" will have no effect. For more information, check the readme.'
@@ -440,7 +441,8 @@ export class NgxConfigurableLayoutComponent
 		list: CdkDropList
 	): boolean {
 		// Iben: If no predicate is passed, we always return true
-		if (!this.dropPredicate) {
+		const dropPredicate = this.dropPredicate();
+  if (!dropPredicate) {
 			return true;
 		}
 
@@ -451,11 +453,11 @@ export class NgxConfigurableLayoutComponent
 		const element = draggedElement.data;
 
 		// Iben: Call the dropPredicate with the needed information
-		return this.dropPredicate({
+		return dropPredicate({
 			eventType,
 			currentGrid: [...this.form.value],
 			element,
-			showInactive: this.showInactive,
+			showInactive: this.showInactive(),
 			targetRowIndex,
 		});
 	}
@@ -469,7 +471,9 @@ export class NgxConfigurableLayoutComponent
 		this.itemLabelRecord.set({});
 
 		Array.from(this.configurableItemTemplates).forEach((itemTemplate) => {
-			const { key, template, label } = itemTemplate;
+			const { key: keyInput, template, label: labelInput } = itemTemplate;
+   const key = keyInput();
+   const label = labelInput();
 
 			// Wouter: Update the item template record with the unique column key and its template ref
 			this.itemTemplateRecord.update((value) => ({ ...value, [key]: template }));

@@ -1,4 +1,4 @@
-import { Directive, Input } from '@angular/core';
+import { Directive, input } from '@angular/core';
 import { ValidationErrors } from '@angular/forms';
 
 @Directive()
@@ -6,13 +6,13 @@ export class NgxFormsErrorAbstractComponent {
 	/**
 	 * An array of error messages that can be rendered
 	 */
-	@Input({ required: true }) public errors: string[];
+	public readonly errors = input.required<string[]>();
 	/**
 	 * An array of error keys that can be rendered
 	 */
-	@Input({ required: true }) public errorKeys: string[];
+	public readonly errorKeys = input.required<string[]>();
 	/**
 	 * The error object provided by the control
 	 */
-	@Input({ required: true }) public data: ValidationErrors;
+	public readonly data = input.required<ValidationErrors>();
 }

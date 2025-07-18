@@ -1,5 +1,19 @@
 import { CdkDropList } from '@angular/cdk/drag-drop';
-import { Directive, ElementRef, EventEmitter, HostBinding, HostListener, Input, Output, signal, WritableSignal, OnInit, inject } from '@angular/core';
+import {
+	Directive,
+	ElementRef,
+	HostBinding,
+	HostListener,
+	Input,
+	signal,
+	WritableSignal,
+	OnInit,
+	inject,
+	input,
+	OutputEmitterRef,
+	output,
+  InputSignal,
+} from '@angular/core';
 
 import {
 	NgxAccessibleAbstractDragAndDropItemDirective,
@@ -58,55 +72,57 @@ export class NgxAccessibleDragAndDropItemDirective
 	/**
 	 * Handle the ArrowUp Press
 	 */
-	@HostListener('keydown.ArrowUp', ['$event']) public onArrowUp(event: KeyboardEvent): void {
-		this.moveItem('up', event);
+	@HostListener('keydown.ArrowUp', ['$event']) public onArrowUp(event: Event): void {
+		this.moveItem('up', event as KeyboardEvent);
 	}
 
 	/**
 	 * Handle the ArrowDown Press
 	 */
-	@HostListener('keydown.ArrowDown', ['$event']) public onArrowDown(event: KeyboardEvent): void {
-		this.moveItem('down', event);
+	@HostListener('keydown.ArrowDown', ['$event']) public onArrowDown(event: Event): void {
+		this.moveItem('down', event as KeyboardEvent);
 	}
 
 	/**
 	 * Handle the ArrowLeft Press
 	 */
-	@HostListener('keydown.ArrowLeft', ['$event']) public onArrowLeft(event: KeyboardEvent): void {
-		this.moveItem('left', event);
+	@HostListener('keydown.ArrowLeft', ['$event']) public onArrowLeft(event: Event): void {
+		this.moveItem('left', event as KeyboardEvent);
 	}
 
 	/**
 	 * Handle the ArrowRight Press
 	 */
 	@HostListener('keydown.ArrowRight', ['$event']) public onArrowRight(
-		event: KeyboardEvent
+		event: Event
 	): void {
-		this.moveItem('right', event);
+		this.moveItem('right', event as KeyboardEvent);
 	}
 
 	/**
 	 * The index of the draggable item
 	 */
-	// eslint-disable-next-line @angular-eslint/no-input-rename
-	@Input({ required: true, alias: 'ngxAccessibleDragAndDropItemIndex' }) public itemIndex: number;
+
+	public readonly itemIndex = input.required<number>({
+		alias: 'ngxAccessibleDragAndDropItemIndex',
+	});
 
 	/**
 	 * An unique id of the draggable item
 	 */
-	// eslint-disable-next-line @angular-eslint/no-input-rename
-	@Input({ required: true, alias: 'ngxAccessibleDragAndDropItemId' }) public itemId: string;
+
+	public readonly itemId: InputSignal<string> = input.required<string>({ alias: 'ngxAccessibleDragAndDropItemId' });
 
 	/**
 	 * An optional label for the draggable item
 	 */
-	// eslint-disable-next-line @angular-eslint/no-input-rename
-	@Input({ alias: 'ngxAccessibleDragAndDropLabel' }) public label: string;
+
+	public readonly label = input<string>(undefined, { alias: 'ngxAccessibleDragAndDropLabel' });
 
 	/**
 	 * Whether the draggable item  is disabled
 	 */
-	// eslint-disable-next-line @angular-eslint/no-input-rename
+
 	@Input({ alias: 'ngxAccessibleDragAndDropDisabled' }) public set disabled(isDisabled: boolean) {
 		this.tabIndex.set(isDisabled ? -1 : 0);
 	}
@@ -114,9 +130,8 @@ export class NgxAccessibleDragAndDropItemDirective
 	/**
 	 * Emits when the item has been moved through keyboard input
 	 */
-	@Output()
-	public ngxAccessibleDragAndDropItemMove: EventEmitter<NgxAccessibleDragAndDropMoveEvent> =
-		new EventEmitter<NgxAccessibleDragAndDropMoveEvent>();
+	public ngxAccessibleDragAndDropItemMove: OutputEmitterRef<NgxAccessibleDragAndDropMoveEvent> =
+		output<NgxAccessibleDragAndDropMoveEvent>();
 
 	/**
 	 *  Marks the item as focussed and selected
@@ -143,7 +158,7 @@ export class NgxAccessibleDragAndDropItemDirective
 		this.dragAndDropService
 			.setMessage({
 				type: 'deselected',
-				data: { item: `${this.itemIndex}`, itemLabel: this.label || undefined },
+				data: { item: `${this.itemIndex()}`, itemLabel: this.label() || undefined },
 			})
 			.subscribe();
 	}
@@ -164,7 +179,7 @@ export class NgxAccessibleDragAndDropItemDirective
 			this.dragAndDropService
 				.setMessage({
 					type: this.isSelected ? 'selected' : 'deselected',
-					data: { item: `${this.itemIndex}`, itemLabel: this.label || undefined },
+					data: { item: `${this.itemIndex()}`, itemLabel: this.label() || undefined },
 				})
 				.subscribe();
 		});
@@ -186,13 +201,13 @@ export class NgxAccessibleDragAndDropItemDirective
 			let newIndex: number;
 			let newContainer: number;
 
-			const currentContainer = this.dropContainer.index;
+			const currentContainer = this.dropContainer.index();
 			const isHorizontal = this.dropList.orientation === 'horizontal';
 			const isUpOrDown: boolean = key === 'up' || key === 'down';
 
 			// Iben: In this case we're changing the current container
 			if ((isUpOrDown && isHorizontal) || (!isUpOrDown && !isHorizontal)) {
-				newIndex = this.itemIndex;
+				newIndex = this.itemIndex();
 				newContainer =
 					key === 'up' || key === 'left' ? currentContainer - 1 : currentContainer + 1;
 
@@ -201,7 +216,8 @@ export class NgxAccessibleDragAndDropItemDirective
 
 			// Iben: In this case, we're changing the order of the items
 			if ((!isUpOrDown && isHorizontal) || (isUpOrDown && !isHorizontal)) {
-				newIndex = key === 'up' || key === 'left' ? this.itemIndex - 1 : this.itemIndex + 1;
+				newIndex =
+					key === 'up' || key === 'left' ? this.itemIndex() - 1 : this.itemIndex() + 1;
 				newContainer = currentContainer;
 				this.handleItemMove(newIndex, newContainer, 'reordered');
 			}
@@ -229,10 +245,12 @@ export class NgxAccessibleDragAndDropItemDirective
 		}
 
 		// Iben: Emit the move event
+		const index = this.dropContainer.index();
+		const itemIndex = this.itemIndex();
 		this.ngxAccessibleDragAndDropItemMove.emit({
-			previousIndex: this.itemIndex,
+			previousIndex: itemIndex,
 			newIndex,
-			previousContainer: this.dropContainer.index,
+			previousContainer: index,
 			newContainer,
 		});
 
@@ -241,22 +259,19 @@ export class NgxAccessibleDragAndDropItemDirective
 			.setMessage({
 				type: type,
 				data: {
-					item: this.itemId,
-					itemLabel: this.label || undefined,
-					from:
-						type === 'reordered'
-							? `${this.itemIndex + 1}`
-							: `${this.dropContainer.index + 1}`,
+					item: this.itemId(),
+					itemLabel: this.label() || undefined,
+					from: type === 'reordered' ? `${itemIndex + 1}` : `${index + 1}`,
 					to: type === 'reordered' ? `${newIndex + 1}` : `${newContainer + 1}`,
-					fromLabel: this.dropContainer.label || undefined,
-					toLabel: targetContainer.label || undefined,
+					fromLabel: this.dropContainer.label() || undefined,
+					toLabel: targetContainer.label() || undefined,
 				},
 			})
 			.subscribe();
 
 		// Iben: Set the focus and select the new item with the same id, using a setTimeOut so the correct item is rendered first
 		setTimeout(() => {
-			this.dropHost.markAsActive(this.itemId);
+			this.dropHost.markAsActive(this.itemId());
 		});
 	}
 }

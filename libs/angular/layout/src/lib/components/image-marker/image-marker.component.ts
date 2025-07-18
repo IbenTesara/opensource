@@ -3,13 +3,13 @@ import {
 	ChangeDetectionStrategy,
 	Component,
 	ElementRef,
-	EventEmitter,
 	inject,
-	Input,
 	OnChanges,
 	OnDestroy,
-	Output,
 	ViewChild,
+	input,
+	OutputEmitterRef,
+	output,
 } from '@angular/core';
 import { NgxWindowService, simpleChangeHasChanged } from '@iben/ngx-core';
 import { Subject, takeUntil, tap } from 'rxjs';
@@ -34,8 +34,8 @@ import {
 	template: `<img
 		class="ngx-image-marker-image"
 		#imageElement
-		[alt]="imageDescription"
-		[src]="image"
+		[alt]="imageDescription()"
+		[src]="image()"
 	/>`,
 	styleUrl: './image-marker.component.scss',
 	changeDetection: ChangeDetectionStrategy.OnPush,
@@ -66,51 +66,47 @@ export class NgxImageMarkerComponent implements AfterViewInit, OnChanges, OnDest
 	/**
 	 * The url to the image we wish to render
 	 */
-	@Input({ required: true }) public image: string;
+	public readonly image = input.required<string>();
 
 	/**
 	 * A WCAG/WAI-ARIA compliant description of the image
 	 */
-	@Input({ required: true }) public imageDescription: string;
+	public readonly imageDescription = input.required<string>();
 
 	/**
 	 * The start data we wish to render
 	 */
-	@Input() public startState: NgxImageMarkerState;
+	public readonly startState = input<NgxImageMarkerState>();
 
 	/**
 	 * Whether we can edit the view, by default this is true
 	 */
-	@Input() public canEdit: boolean = true;
+	public readonly canEdit = input<boolean>(true);
 
 	/**
 	 * An optional current zoom level
 	 */
-	@Input() public currentZoomLevel: number;
+	public readonly currentZoomLevel = input<number>();
 
 	/**
 	 * An optional amount of times we can zoom in and out
 	 */
-	@Input() public zoomLevels: number[];
+	public readonly zoomLevels = input<number[]>();
 
 	/**
 	 * An optional record of types of Markerjs markers we wish to render
 	 */
-	@Input() public markerTypes: NgxImageMarkerTypes;
+	public readonly markerTypes = input<NgxImageMarkerTypes>();
 
 	/**
 	 * Emits when the state has been updated
 	 */
-	@Output() public stateUpdated: EventEmitter<NgxImageMarkerState> =
-		new EventEmitter<NgxImageMarkerState>();
+	public stateUpdated: OutputEmitterRef<NgxImageMarkerState> = output<NgxImageMarkerState>();
 
 	/**
 	 * Emits when a marker is clicked when the view is in readonly mode
 	 */
-	@Output() public markerClicked: EventEmitter<NgxImageMarkerItem> =
-		new EventEmitter<NgxImageMarkerItem>();
-
-	constructor() {}
+	public markerClicked: OutputEmitterRef<NgxImageMarkerItem> = output<NgxImageMarkerItem>();
 
 	ngAfterViewInit(): void {
 		// Iben: Create the initial marker
@@ -160,17 +156,19 @@ export class NgxImageMarkerComponent implements AfterViewInit, OnChanges, OnDest
 			}
 
 			// Iben: Create a new marker view based on the provided configuration
+			const currentZoomLevel = this.currentZoomLevel();
+			const zoomLevels = this.zoomLevels();
 			this.currentMarker = this.imageMarkerService.createImageMarker(
 				this.imageElement.nativeElement,
 				this.elementRef.nativeElement,
 				{
-					mode: this.canEdit ? 'edit' : 'view',
+					mode: this.canEdit() ? 'edit' : 'view',
 					allowZoom: true,
-					defaultState: this.startState || undefined,
-					markerTypes: this.markerTypes,
+					defaultState: this.startState() || undefined,
+					markerTypes: this.markerTypes(),
 					zoom:
-						this.currentZoomLevel !== undefined && this.zoomLevels
-							? { current: this.currentZoomLevel, levels: this.zoomLevels }
+						currentZoomLevel !== undefined && zoomLevels
+							? { current: currentZoomLevel, levels: zoomLevels }
 							: undefined,
 				}
 			);
@@ -180,7 +178,7 @@ export class NgxImageMarkerComponent implements AfterViewInit, OnChanges, OnDest
 				this.currentMarker.valueChanges
 					.pipe(
 						tap((value) => {
-							this.stateUpdated.next(value);
+							this.stateUpdated.emit(value);
 						}),
 						takeUntil(this.markerDestroyedSubject)
 					)
@@ -189,7 +187,7 @@ export class NgxImageMarkerComponent implements AfterViewInit, OnChanges, OnDest
 				this.currentMarker.valueChanges
 					.pipe(
 						tap((value) => {
-							this.markerClicked.next(value);
+							this.markerClicked.emit(value);
 						}),
 						takeUntil(this.markerDestroyedSubject)
 					)

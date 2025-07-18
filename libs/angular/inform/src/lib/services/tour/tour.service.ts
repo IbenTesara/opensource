@@ -297,7 +297,7 @@ export class NgxTourService implements OnDestroy {
 	 */
 	public registerElement(element: NgxTourItemDirective): void {
 		this.registerElementSubject.next({
-			tourItem: element.tourItem,
+			tourItem: element.tourItem(),
 			element,
 			type: 'register',
 		});

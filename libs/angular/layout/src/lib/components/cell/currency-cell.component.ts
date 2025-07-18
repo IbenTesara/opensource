@@ -1,5 +1,5 @@
 import { CurrencyPipe } from '@angular/common';
-import { Component, ContentChild, Input, TemplateRef, ViewChild } from '@angular/core';
+import { Component, ContentChild, TemplateRef, ViewChild, input } from '@angular/core';
 
 import { NgxAbstractTableCellDirective } from './cell.directive';
 
@@ -13,7 +13,7 @@ import { NgxAbstractTableCellDirective } from './cell.directive';
 	],
 	template: `
 		<ng-template #cellTmpl let-item>
-			{{ item | currency: currency }}
+			{{ item | currency: currency() }}
 		</ng-template>
 	`,
 	imports: [CurrencyPipe],
@@ -22,7 +22,7 @@ export class NgxCurrencyTableCellComponent extends NgxAbstractTableCellDirective
 	/**
 	 * The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) format of the provided amount, by default `EUR`
 	 */
-	@Input() public currency = 'EUR';
+	public readonly currency = input('EUR');
 
 	/**
 	 * A template for the header of the cell

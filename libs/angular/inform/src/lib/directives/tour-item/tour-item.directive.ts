@@ -1,4 +1,4 @@
-import { AfterViewInit, ChangeDetectorRef, Directive, ElementRef, HostBinding, Input, OnDestroy, inject } from '@angular/core';
+import { AfterViewInit, ChangeDetectorRef, Directive, ElementRef, HostBinding, OnDestroy, inject, input } from '@angular/core';
 import { v4 as uuid } from 'uuid';
 
 import { NgxTourService } from '../../services';
@@ -23,7 +23,7 @@ export class NgxTourItemDirective implements AfterViewInit, OnDestroy {
 	/**
 	 * The id of the item that corresponds with the step
 	 */
-	@Input() public tourItem: string;
+	public readonly tourItem = input<string>();
 
 	/**
 	 * Mark an element as active or inactive
@@ -57,6 +57,6 @@ export class NgxTourItemDirective implements AfterViewInit, OnDestroy {
 
 	public ngOnDestroy(): void {
 		// Iben: Unregister the element when the element gets destroyed
-		this.tourService.unregisterElement(this.tourItem);
+		this.tourService.unregisterElement(this.tourItem());
 	}
 }

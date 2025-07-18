@@ -1,4 +1,4 @@
-import { Directive, Input } from '@angular/core';
+import { Directive, input } from '@angular/core';
 
 import { NgxHasCookieConfiguration } from '../../types';
 
@@ -10,5 +10,5 @@ export abstract class NgxCookiesFallBackComponent {
 	/**
 	 * The cookies that were required to show the original content
 	 */
-	@Input() cookies: NgxHasCookieConfiguration[] = [];
+	readonly cookies = input<NgxHasCookieConfiguration[]>([]);
 }

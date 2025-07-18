@@ -1,12 +1,15 @@
-import { Directive, EventEmitter, HostBinding, HostListener, Input, Output } from '@angular/core';
+import { Directive, HostListener, OutputEmitterRef, input, output } from '@angular/core';
 
 @Directive({
 	selector: '[focusClick]',
 	standalone: true,
+	host: {
+		'attr.tabIndex': '0',
+	},
 })
 export class FocusClickDirective {
 	// Allow the button to ignore click events when set to true
-	@Input() public disabled: boolean = false;
+	public readonly disabled = input<boolean>(false);
 
 	// Allow the function passed by the host to be executed
 	// when the emit() method gets called
@@ -18,16 +21,12 @@ export class FocusClickDirective {
 	 *
 	 * @memberof FocusClickDirective
 	 */
-	@Output() public readonly focusClick: EventEmitter<void | Event> =
-		new EventEmitter<void | Event>();
-
-	// Make every tag that uses this directive by default tabbable
-	@HostBinding('attr.tabindex') private readonly tabIndex: number = 0;
+	public readonly focusClick: OutputEmitterRef<void | Event> = output<void | Event>();
 
 	// Add eventhandler to the click event
 	@HostListener('click', ['$event'])
-	private isClicked(event: Event): void {
-		if (!this.disabled) {
+	public isClicked(event: Event): void {
+		if (!this.disabled()) {
 			this.focusClick.emit(event);
 		}
 	}
@@ -35,8 +34,8 @@ export class FocusClickDirective {
 	// Add eventhandler to keydown event When enter is pressed and the event
 	// isn't blocked, execute the click function of the host
 	@HostListener('keydown.enter')
-	private isEntered(): void {
-		if (!this.disabled) {
+	public isEntered(): void {
+		if (!this.disabled()) {
 			this.focusClick.emit();
 		}
 	}
