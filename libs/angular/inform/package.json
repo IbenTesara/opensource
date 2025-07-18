@@ -2,7 +2,6 @@
   "name": "@iben/ngx-inform",
   "version": "0.0.1",
   "peerDependencies": {
-    "@angular/common": "^20.0.0",
     "@angular/core": "^20.0.0",
     "uuid": "^11.1.0",
     "rxjs": "~7.8.0",
