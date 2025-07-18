@@ -9,7 +9,7 @@ describe('HasValuesPipe', () => {
 			url: 'youtube.com/@Iben',
 		};
 
-		expect(pipe.transform(test)).toBeTrue();
+		expect(pipe.transform(test)).toBeTruthy();
 	});
 
 	it('should return true if the object has no values', () => {
@@ -17,18 +17,18 @@ describe('HasValuesPipe', () => {
 			message: undefined,
 		};
 
-		expect(pipe.transform(test)).toBeFalse();
+		expect(pipe.transform(test)).toBeFalsy();
 
 		const testEmpty = {};
 
-		expect(pipe.transform(testEmpty)).toBeFalse();
+		expect(pipe.transform(testEmpty)).toBeFalsy();
 	});
 
 	it('should return false in case the provided value is not an object', () => {
-		expect(pipe.transform(undefined)).toBeFalse();
-		expect(pipe.transform(null)).toBeFalse();
-		expect(pipe.transform('test' as any)).toBeFalse();
-		expect(pipe.transform(['test'] as any)).toBeFalse();
-		expect(pipe.transform(0 as any)).toBeFalse();
+		expect(pipe.transform(undefined)).toBeFalsy();
+		expect(pipe.transform(null)).toBeFalsy();
+		expect(pipe.transform('test' as any)).toBeFalsy();
+		expect(pipe.transform(['test'] as any)).toBeFalsy();
+		expect(pipe.transform(0 as any)).toBeFalsy();
 	});
 });

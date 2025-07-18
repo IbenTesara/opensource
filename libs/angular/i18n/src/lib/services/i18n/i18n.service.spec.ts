@@ -1,29 +1,52 @@
+import { TestBed } from '@angular/core/testing';
+import { TranslateService } from '@ngx-translate/core';
 import { of, Subscription } from 'rxjs';
 
+import { NgxI18nRootService } from '../root-i18n/root-i18n.service';
+
 import { NgxI18nService } from './i18n.service';
+
 
 const translateService: any = {
 	currentLang: 'nl',
 	langs: ['nl', 'en'],
-	getDefaultLang: jasmine.createSpy().and.returnValue('nl'),
-	use: jasmine.createSpy(),
-	reloadLang: jasmine.createSpy().and.returnValue(of('nl')),
-	get: jasmine.createSpy().and.returnValue(of('something')),
-	instant: jasmine.createSpy().and.returnValue('something'),
+	getDefaultLang: jest.fn().mockReturnValue('nl'),
+	use: jest.fn(),
+	reloadLang: jest.fn().mockReturnValue(of('nl')),
+	get: jest.fn().mockReturnValue(of('something')),
+	instant: jest.fn().mockReturnValue('something'),
 	translations: {
 		nl: 'something',
 	},
 };
 
 const rootI18nService: any = {
-	setCurrentLanguage: jasmine.createSpy(),
+	setCurrentLanguage: jest.fn(),
 	currentLanguage: translateService.currentLang,
 };
 
 describe('NgxI18nService', () => {
-	const service = new NgxI18nService(translateService, rootI18nService);
+	let service;
 
 	const subscriptions: Subscription[] = [];
+
+	beforeEach(() => {
+		TestBed.configureTestingModule({
+			providers: [
+				NgxI18nService,
+				{
+					provide: NgxI18nRootService,
+					useValue: rootI18nService,
+				},
+				{
+					provide: TranslateService,
+					useValue: translateService,
+				},
+			],
+		});
+
+		service = TestBed.inject(NgxI18nService);
+	});
 
 	afterEach(() => {
 		subscriptions.forEach((sub: Subscription) => sub.unsubscribe());
@@ -48,7 +71,7 @@ describe('NgxI18nService', () => {
 	});
 
 	describe('initI18n', () => {
-		it('should set the language to use in the translateService & reload', (done: DoneFn) => {
+		it('should set the language to use in the translateService & reload', (done) => {
 			subscriptions.push(
 				service.initI18n('nl').subscribe(() => {
 					expect(translateService.use).toHaveBeenCalledWith('nl');
@@ -82,7 +105,7 @@ describe('NgxI18nService', () => {
 	});
 
 	describe('getTranslationObservable', () => {
-		it('should return the translation for a provided string by using the get method of the translateService', (done: DoneFn) => {
+		it('should return the translation for a provided string by using the get method of the translateService', (done) => {
 			subscriptions.push(
 				service
 					.getTranslationObservable('SOME_KEY', {

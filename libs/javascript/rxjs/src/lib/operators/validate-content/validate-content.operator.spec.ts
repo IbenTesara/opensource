@@ -11,15 +11,18 @@ describe('validateContent', () => {
 	});
 
 	describe('strict', () => {
-		it('should check the content for strict null/undefined values by default', async () => {
-			subscriptions.push(
-				from([undefined, null, 'some-value'])
-					.pipe(validateContent(), first())
-					.subscribe((value: string) => {
-						expect(value).toBe('some-value');
-					})
-			);
-		});
+		it(
+            'should check the content for strict null/undefined values by default',
+            async () => {
+                subscriptions.push(
+                    from([undefined, null, 'some-value'])
+                        .pipe(validateContent(), first())
+                        .subscribe((value: string) => {
+                            expect(value).toBe('some-value');
+                        })
+                );
+            }
+        );
 
 		it('should disallow falsy values by default', async () => {
 			subscriptions.push(

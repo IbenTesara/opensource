@@ -15,7 +15,6 @@ export class NgxReplaceElementsPipe implements PipeTransform {
 	private readonly configuration = inject<NgxReplaceElementsConfiguration>(NgxReplaceElementsConfigurationToken);
 	private readonly sanitizer = inject(DomSanitizer);
 
-
 	/**
 	 * Replaces all matches of a specific selector with provided WebComponents
 	 *

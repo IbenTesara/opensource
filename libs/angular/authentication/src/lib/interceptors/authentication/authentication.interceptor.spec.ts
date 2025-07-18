@@ -19,25 +19,31 @@ describe('NgxAuthenticatedHttpInterceptor', () => {
 		});
 	});
 
-	it('should call the handler when the request has an withCredentials value', () => {
-		TestBed.runInInjectionContext(() => {
-			const request = new HttpRequest('GET', 'test', { withCredentials: true });
-			handler.mockReturnValue(request);
+	it(
+        'should call the handler when the request has an withCredentials value',
+        () => {
+            TestBed.runInInjectionContext(() => {
+                const request = new HttpRequest('GET', 'test', { withCredentials: true });
+                handler.mockReturnValue(request);
 
-			NgxAuthenticatedHttpInterceptor(request, httpHandler).subscribe();
+                NgxAuthenticatedHttpInterceptor(request, httpHandler).subscribe();
 
-			expect(handler).toHaveBeenCalled();
-		});
-	});
+                expect(handler).toHaveBeenCalled();
+            });
+        }
+    );
 
-	it('should not call the handler when the request has an withCredentials value', () => {
-		TestBed.runInInjectionContext(() => {
-			const request = new HttpRequest('GET', 'test', { withCredentials: false });
-			handler.mockReturnValue(request);
+	it(
+        'should not call the handler when the request has an withCredentials value',
+        () => {
+            TestBed.runInInjectionContext(() => {
+                const request = new HttpRequest('GET', 'test', { withCredentials: false });
+                handler.mockReturnValue(request);
 
-			NgxAuthenticatedHttpInterceptor(request, httpHandler).subscribe();
+                NgxAuthenticatedHttpInterceptor(request, httpHandler).subscribe();
 
-			expect(handler).not.toHaveBeenCalled();
-		});
-	});
+                expect(handler).not.toHaveBeenCalled();
+            });
+        }
+    );
 });

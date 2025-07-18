@@ -21,19 +21,22 @@ describe('Store state', () => {
 		expect(service.state).toBeDefined();
 	});
 
-	it('should be able to listen to the changes using the state property', (done) => {
-		service
-			.setData(['hello', 'world'])
-			.pipe(
-				switchMap(() => service.state.data$),
-				tap((value) => {
-					expect(value).toEqual(['hello', 'world']);
-				})
-			)
-			.subscribe(() => {
-				done();
-			});
-	});
+	it(
+        'should be able to listen to the changes using the state property',
+        (done) => {
+            service
+                .setData(['hello', 'world'])
+                .pipe(
+                    switchMap(() => service.state.data$),
+                    tap((value) => {
+                        expect(value).toEqual(['hello', 'world']);
+                    })
+                )
+                .subscribe(() => {
+                    done();
+                });
+        }
+    );
 
 	it('should set the loading state correctly', () => {
 		const spy = subscribeSpyTo(service.state.dataLoading$);

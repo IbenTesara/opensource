@@ -180,9 +180,9 @@ export class NgxFormsErrorsDirective implements AfterViewInit, OnDestroy {
 		// Iben: Set the data of the error component
 		const { errors, errorKeys, data } = this.getErrors(this.abstractControl.errors);
 
-		this.errorComponent.errors = errors;
-		this.errorComponent.errorKeys = errorKeys;
-		this.errorComponent.data = data;
+    this.componentRef.setInput( 'errors',errors );
+    this.componentRef.setInput( 'errorKeys',errorKeys );
+    this.componentRef.setInput( 'data',data );
 	}
 
 	/**

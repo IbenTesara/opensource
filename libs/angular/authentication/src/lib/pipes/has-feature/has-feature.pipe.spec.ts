@@ -1,8 +1,12 @@
+import { ChangeDetectorRef } from '@angular/core';
+import { TestBed } from '@angular/core/testing';
 import { BehaviorSubject, of } from 'rxjs';
 
+import { NgxAuthenticationAbstractService } from '../../abstracts';
 import { NgxAuthenticationResponseMock, NgxAuthenticationServiceMock } from '../../mocks';
 
 import { NgxHasFeaturePipe } from './has-feature.pipe';
+
 
 describe('NgxHasFeaturePipe', () => {
 	let pipe: NgxHasFeaturePipe<'A' | 'B'>;
@@ -19,8 +23,21 @@ describe('NgxHasFeaturePipe', () => {
 	};
 
 	describe('transform', () => {
-		beforeEach(() => {
-			pipe = new NgxHasFeaturePipe(authenticationService, cdRef);
+    beforeEach( () => {
+      TestBed.configureTestingModule( {
+        providers: [
+          NgxHasFeaturePipe,
+          {
+            provide: NgxAuthenticationAbstractService,
+            useValue: authenticationService
+          },
+          {
+            provide: ChangeDetectorRef,
+            useValue: cdRef
+          }
+        ]
+      })
+			pipe = TestBed.inject(NgxHasFeaturePipe)
 		});
 
 		it('should transform a single feature to a boolean', () => {

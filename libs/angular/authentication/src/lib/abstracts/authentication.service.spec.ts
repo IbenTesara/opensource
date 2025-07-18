@@ -61,17 +61,23 @@ describe('NgxAuthenticationAbstractService', () => {
 			expect(spy.getLastValue()).toBe(true);
 		});
 
-		it('should return true if one of the features is present when not all are needed', () => {
-			const spy = subscribeSpyTo(service.hasFeature(['B', 'A'], false));
+		it(
+            'should return true if one of the features is present when not all are needed',
+            () => {
+                const spy = subscribeSpyTo(service.hasFeature(['B', 'A'], false));
 
-			expect(spy.getLastValue()).toBe(true);
-		});
+                expect(spy.getLastValue()).toBe(true);
+            }
+        );
 
-		it('should return false if one of the features is present when all are needed', () => {
-			const spy = subscribeSpyTo(service.hasFeature(['B', 'A']));
+		it(
+            'should return false if one of the features is present when all are needed',
+            () => {
+                const spy = subscribeSpyTo(service.hasFeature(['B', 'A']));
 
-			expect(spy.getLastValue()).toBe(false);
-		});
+                expect(spy.getLastValue()).toBe(false);
+            }
+        );
 	});
 
 	describe('Permissions', () => {
@@ -87,17 +93,23 @@ describe('NgxAuthenticationAbstractService', () => {
 			expect(spy.getLastValue()).toBe(true);
 		});
 
-		it('should return true if one of the permissions is present when not all are needed', () => {
-			const spy = subscribeSpyTo(service.hasPermission(['Admin', 'User'], false));
+		it(
+            'should return true if one of the permissions is present when not all are needed',
+            () => {
+                const spy = subscribeSpyTo(service.hasPermission(['Admin', 'User'], false));
 
-			expect(spy.getLastValue()).toBe(true);
-		});
+                expect(spy.getLastValue()).toBe(true);
+            }
+        );
 
-		it('should return false if one of the permissions is present when all are needed', () => {
-			const spy = subscribeSpyTo(service.hasPermission(['Admin', 'User']));
+		it(
+            'should return false if one of the permissions is present when all are needed',
+            () => {
+                const spy = subscribeSpyTo(service.hasPermission(['Admin', 'User']));
 
-			expect(spy.getLastValue()).toBe(false);
-		});
+                expect(spy.getLastValue()).toBe(false);
+            }
+        );
 	});
 
 	describe('Data', () => {

@@ -5,7 +5,6 @@ import { EntriesPipe } from './entries/entries.pipe';
 import { HasObserversPipe } from './has-observers/has-observers.pipe';
 import { HasOwnProperty } from './has-own-property/has-own-property.pipe';
 import { HasValuesPipe } from './has-values/has-values.pipe';
-import { NgxHighlightPipe } from './highlight/ngx-highlight.pipe';
 import { IbanPipe } from './iban/iban.pipe';
 import { IsNotEmptyPipe } from './is-not-empty/is-not-empty.pipe';
 import { JoinPipe } from './join/join.pipe';
@@ -19,7 +18,6 @@ import { ToArrayPipe } from './to-array/to-array.pipe';
 import { TransformPipe } from './transform/transform.pipe';
 import { TruncateTextPipe } from './truncate-text/truncate-text.pipe';
 import { UniqByPipe } from './unique-by/uniq-by.pipe';
-import { WithRouterLinkPipe } from './with-router-links/with-router-links.pipe';
 
 export const Pipes = [
 	ArrayContainsOnePipe,
@@ -30,7 +28,6 @@ export const Pipes = [
 	HasObserversPipe,
 	HasOwnProperty,
 	HasValuesPipe,
-	NgxHighlightPipe,
 	IbanPipe,
 	IsNotEmptyPipe,
 	JoinPipe,
@@ -43,7 +40,6 @@ export const Pipes = [
 	TransformPipe,
 	TruncateTextPipe,
 	UniqByPipe,
-	WithRouterLinkPipe,
 	NgxReplaceElementsPipe,
 ];
 
@@ -54,7 +50,6 @@ export { EntriesPipe } from './entries/entries.pipe';
 export { HasObserversPipe } from './has-observers/has-observers.pipe';
 export { HasOwnProperty } from './has-own-property/has-own-property.pipe';
 export { HasValuesPipe } from './has-values/has-values.pipe';
-export { NgxHighlightPipe } from './highlight/ngx-highlight.pipe';
 export { IbanPipe } from './iban/iban.pipe';
 export { IsNotEmptyPipe } from './is-not-empty/is-not-empty.pipe';
 export { JoinPipe } from './join/join.pipe';
@@ -67,5 +62,4 @@ export { ToArrayPipe } from './to-array/to-array.pipe';
 export { TransformPipe } from './transform/transform.pipe';
 export { TruncateTextPipe } from './truncate-text/truncate-text.pipe';
 export { UniqByPipe } from './unique-by/uniq-by.pipe';
-export { WithRouterLinkPipe } from './with-router-links/with-router-links.pipe';
 export { NgxReplaceElementsPipe } from './replace-elements/replace-elements.pipe';

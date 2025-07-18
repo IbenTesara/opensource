@@ -23,7 +23,7 @@ export const mockVideos = [
 describe('NgxStore', () => {
 	let service: SpecStoreService;
 	const httpClient: any = {
-		get: jasmine.createSpy(),
+		get: jest.fn(),
 	};
 
 	beforeEach(() => {
@@ -46,8 +46,8 @@ describe('NgxStore', () => {
 
 	describe('BaseStoreAssets', () => {
 		beforeEach(() => {
-			httpClient.get.calls.reset();
-			httpClient.get.and.returnValue(of(mockChannel));
+      jest.resetAllMocks();
+			httpClient.get.mockReturnValue(of(mockChannel));
 		});
 
 		it('dispatch the data to the store', () => {
@@ -94,8 +94,8 @@ describe('NgxStore', () => {
 
 	describe('EntityStoreAssets', () => {
 		beforeEach(() => {
-			httpClient.get.calls.reset();
-			httpClient.get.and.returnValue(of(mockVideos));
+      jest.clearAllMocks();
+			httpClient.get.mockReturnValue(of(mockVideos));
 		});
 
 		it('dispatch the data to the store', (done) => {

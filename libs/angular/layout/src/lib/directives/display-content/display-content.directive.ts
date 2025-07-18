@@ -1,4 +1,16 @@
-import { AfterViewInit, ChangeDetectorRef, Directive, ElementRef, Input, OnDestroy, TemplateRef, Type, ViewContainerRef, inject, input } from '@angular/core';
+import {
+	AfterViewInit,
+	ChangeDetectorRef,
+	Directive,
+	ElementRef,
+	Input,
+	OnDestroy,
+	TemplateRef,
+	Type,
+	ViewContainerRef,
+	inject,
+	input,
+} from '@angular/core';
 import { Subject, distinctUntilChanged, takeUntil, tap } from 'rxjs';
 
 import { NgxDisplayContentComponent } from '../../abstracts';
@@ -25,7 +37,9 @@ export class NgxDisplayContentDirective implements AfterViewInit, OnDestroy {
 	private readonly cdRef = inject(ChangeDetectorRef);
 	private readonly viewContainer = inject(ViewContainerRef);
 	private readonly onlineService = inject(NgxOnlineService);
-	private readonly configuration = inject<NgxDisplayContentConfiguration>(NgxDisplayContentConfigurationToken);
+	private readonly configuration = inject<NgxDisplayContentConfiguration>(
+		NgxDisplayContentConfigurationToken
+	);
 
 	/**
 	 * A subject to handle the destroyed flow
@@ -178,7 +192,7 @@ export class NgxDisplayContentDirective implements AfterViewInit, OnDestroy {
 				this.viewContainer.createComponent<NgxDisplayContentComponent>(component);
 
 			// Iben: Pass the data
-			componentRef.instance.data = this.overrideConfiguration[status]?.data;
+			componentRef.setInput('data', this.overrideConfiguration[status]?.data);
 
 			return;
 		}

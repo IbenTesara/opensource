@@ -1,4 +1,4 @@
-import { NgxWindowServiceMock } from '@studiohyperdrive/ngx-core';
+import { NgxWindowServiceMock } from '@iben/ngx-core';
 import { Subscription } from 'rxjs';
 
 import { NgxBroadcastChannelService } from './broadcast-channel.service';
@@ -38,7 +38,7 @@ class MockBroadcastChannel {
 // Replace the global BroadcastChannel with the mock
 (globalThis as any).BroadcastChannel = MockBroadcastChannel;
 // Prevent the window from reloading
-window.onbeforeunload = jasmine.createSpy();
+window.onbeforeunload = jest.fn();
 
 describe('NgxBroadcastChannelService', () => {
 	describe('in browser', () => {
@@ -116,16 +116,19 @@ describe('NgxBroadcastChannelService', () => {
 				);
 			});
 
-			it('should send a message to a selected BroadcastChannel instance', (done) => {
-				service.initChannel('testChannel');
+			it(
+                'should send a message to a selected BroadcastChannel instance',
+                (done) => {
+                    service.initChannel('testChannel');
 
-				service['broadcastChannel'].testChannel.addEventListener('message', (event) => {
-					expect(event.data).toBe('message');
-					done();
-				});
+                    service['broadcastChannel'].testChannel.addEventListener('message', (event) => {
+                        expect(event.data).toBe('message');
+                        done();
+                    });
 
-				service.postMessage('testChannel', 'message');
-			});
+                    service.postMessage('testChannel', 'message');
+                }
+            );
 		});
 
 		describe('selectChannelMessages', () => {
@@ -159,19 +162,22 @@ describe('NgxBroadcastChannelService', () => {
 				);
 			});
 
-			it('should select the broadcast channel and return an observable of its message event', (done) => {
-				service.initChannel('testChannel');
+			it(
+                'should select the broadcast channel and return an observable of its message event',
+                (done) => {
+                    service.initChannel('testChannel');
 
-				subscriptions.push(
-					service.selectChannelMessages('testChannel').subscribe((event) => {
-						expect(event.data).toBe('message');
+                    subscriptions.push(
+                        service.selectChannelMessages('testChannel').subscribe((event) => {
+                            expect(event.data).toBe('message');
 
-						done();
-					})
-				);
+                            done();
+                        })
+                    );
 
-				service.postMessage('testChannel', 'message');
-			});
+                    service.postMessage('testChannel', 'message');
+                }
+            );
 		});
 
 		describe('selectChannelMessageErrors', () => {

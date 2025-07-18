@@ -14,11 +14,14 @@ describe('CleanArrayPipe', () => {
 		expect(pipe.transform(allFalsyValues, [])).toEqual([]);
 	});
 
-	it('should ignore exception values that do not match the provided array', () => {
-		expect(pipe.transform([], [false, NaN])).toEqual([]);
-		expect(pipe.transform([], allFalsyValues)).toEqual([]);
-		expect(pipe.transform([], ['a', true, {}, [], 1])).toEqual([]);
-	});
+	it(
+        'should ignore exception values that do not match the provided array',
+        () => {
+            expect(pipe.transform([], [false, NaN])).toEqual([]);
+            expect(pipe.transform([], allFalsyValues)).toEqual([]);
+            expect(pipe.transform([], ['a', true, {}, [], 1])).toEqual([]);
+        }
+    );
 
 	it('should pass with a combination of truthy and falsy values', () => {
 		expect(pipe.transform([0, 'a', undefined, {}, false], [false, undefined])).toEqual([

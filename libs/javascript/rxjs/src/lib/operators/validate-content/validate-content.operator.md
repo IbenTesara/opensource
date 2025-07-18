@@ -12,7 +12,7 @@ A `customValidatorFn` can be passed which will overwrite the internal checks wit
 ### Strict
 
 ```typescript
-import { validateContent } from '@studiohyperdrive/rxjs-utils';
+import { validateContent } from '@iben/rxjs-utils';
 import { of } from 'rxjs';
 
 of(undefined)
@@ -31,7 +31,7 @@ of(0)
 ### Non-strict
 
 ```typescript
-import { validateContent } from '@studiohyperdrive/rxjs-utils';
+import { validateContent } from '@iben/rxjs-utils';
 import { of } from 'rxjs';
 
 of(undefined)
@@ -52,7 +52,7 @@ of(0)
 The `strict` flag will be ignored when adding a `customValidatorFn`.
 
 ```typescript
-import { validateContent } from '@studiohyperdrive/rxjs-utils';
+import { validateContent } from '@iben/rxjs-utils';
 import { of } from 'rxjs';
 
 of(0)

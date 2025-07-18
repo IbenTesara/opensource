@@ -12,7 +12,7 @@ describe('NgxI18nLoadingService', () => {
 
 	xdescribe('observables', () => {
 		describe('translationsLoaded$', () => {
-			it('should return false if no results have been found', (done: DoneFn) => {
+			it('should return false if no results have been found', (done) => {
 				const service = new NgxI18nLoadingService();
 
 				subscriptions.push(
@@ -24,7 +24,7 @@ describe('NgxI18nLoadingService', () => {
 							switchMap(() => service.translationsLoaded$)
 						)
 						.subscribe((loading: boolean) => {
-							expect(loading).toBeTrue();
+							expect(loading).toBeTruthy();
 
 							done();
 						})
@@ -36,7 +36,7 @@ describe('NgxI18nLoadingService', () => {
 				});
 			});
 
-			it('should return true if results have been found', (done: DoneFn) => {
+			it('should return true if results have been found', (done) => {
 				const service = new NgxI18nLoadingService();
 
 				subscriptions.push(
@@ -48,7 +48,7 @@ describe('NgxI18nLoadingService', () => {
 							switchMap(() => service.translationsLoaded$)
 						)
 						.subscribe((loading: boolean) => {
-							expect(loading).toBeTrue();
+							expect(loading).toBeTruthy();
 
 							done();
 						})
@@ -63,111 +63,123 @@ describe('NgxI18nLoadingService', () => {
 	});
 
 	describe('dispatchTranslationLoaderAction', () => {
-		it('should push a new action to the translationLoaderActionsSubject$', (done: DoneFn) => {
-			const service = new NgxI18nLoadingService();
-			const action: TranslationLoaderActionEntity = {
-				id: 'test-id',
-				state: 'LOADING',
-			};
+		it(
+            'should push a new action to the translationLoaderActionsSubject$',
+            (done) => {
+                const service = new NgxI18nLoadingService();
+                const action: TranslationLoaderActionEntity = {
+                    id: 'test-id',
+                    state: 'LOADING',
+                };
 
-			subscriptions.push(
-				service['translationLoaderActionsSubject$'].subscribe(
-					(action: TranslationLoaderActionEntity) => {
-						expect(action).toEqual(action);
+                subscriptions.push(
+                    service['translationLoaderActionsSubject$'].subscribe(
+                        (action: TranslationLoaderActionEntity) => {
+                            expect(action).toEqual(action);
 
-						done();
-					}
-				)
-			);
+                            done();
+                        }
+                    )
+                );
 
-			service.dispatchTranslationLoaderAction(action);
-		});
+                service.dispatchTranslationLoaderAction(action);
+            }
+        );
 	});
 
 	describe('addLoadedTranslations', () => {
-		it('should merge & push a new value to the translationsSubject$', (done: DoneFn) => {
-			const service = new NgxI18nLoadingService();
-			const existingTranslations: Record<string, unknown> = {
-				en: 'test-translation',
-			};
-			const newTranslations: Record<string, unknown> = {
-				nl: 'test-translation',
-			};
+		it(
+            'should merge & push a new value to the translationsSubject$',
+            (done) => {
+                const service = new NgxI18nLoadingService();
+                const existingTranslations: Record<string, unknown> = {
+                    en: 'test-translation',
+                };
+                const newTranslations: Record<string, unknown> = {
+                    nl: 'test-translation',
+                };
 
-			// Denis: push existing translations
-			service['translationsSubject$'].next(existingTranslations);
+                // Denis: push existing translations
+                service['translationsSubject$'].next(existingTranslations);
 
-			subscriptions.push(
-				service['translationsSubject$']
-					.pipe(
-						filter((translations) => !!translations),
-						switchMap(() => service['translationsSubject$']),
-						// Denis: only take the 2 values
-						take(2),
-						// Denis: proceed with the last of both
-						last()
-					)
-					.subscribe((translations: Record<string, unknown>) => {
-						expect(translations).toEqual({
-							...existingTranslations,
-							...newTranslations,
-						});
+                subscriptions.push(
+                    service['translationsSubject$']
+                        .pipe(
+                            filter((translations) => !!translations),
+                            switchMap(() => service['translationsSubject$']),
+                            // Denis: only take the 2 values
+                            take(2),
+                            // Denis: proceed with the last of both
+                            last()
+                        )
+                        .subscribe((translations: Record<string, unknown>) => {
+                            expect(translations).toEqual({
+                                ...existingTranslations,
+                                ...newTranslations,
+                            });
 
-						done();
-					})
-			);
+                            done();
+                        })
+                );
 
-			// Denis: test the method to see if it pushes new values to the subject
-			service.addLoadedTranslations(newTranslations);
-		});
+                // Denis: test the method to see if it pushes new values to the subject
+                service.addLoadedTranslations(newTranslations);
+            }
+        );
 	});
 
 	describe('getTranslations', () => {
-		it('should get return the current value of the translationsSubject$', (done: DoneFn) => {
-			const service = new NgxI18nLoadingService();
-			const existingTranslations: Record<string, unknown> = {
-				en: 'test-translation',
-			};
+		it(
+            'should get return the current value of the translationsSubject$',
+            (done) => {
+                const service = new NgxI18nLoadingService();
+                const existingTranslations: Record<string, unknown> = {
+                    en: 'test-translation',
+                };
 
-			service['translationsSubject$'].next(existingTranslations);
+                service['translationsSubject$'].next(existingTranslations);
 
-			service['translationsSubject$']
-				.pipe(filter((translations) => !!translations))
-				.subscribe((translations) => {
-					expect(service.getTranslations()).toEqual(translations);
+                service['translationsSubject$']
+                    .pipe(filter((translations) => !!translations))
+                    .subscribe((translations) => {
+                        expect(service.getTranslations()).toEqual(translations);
 
-					done();
-				});
-		});
+                        done();
+                    });
+            }
+        );
 	});
 
 	describe('loadTranslations', () => {
-		it('should create a new entries in the translationsLoading record if the path does not exist', (done: DoneFn) => {
-			const service = new NgxI18nLoadingService();
+		it(
+            'should create a new entries in the translationsLoading record if the path does not exist',
+            (done) => {
+                const service = new NgxI18nLoadingService();
 
-			service['translationsLoading'] = {};
+                service['translationsLoading'] = {};
 
-			expect(service['translationsLoading']['something']).toBeUndefined();
+                expect(service['translationsLoading']['something']).toBeUndefined();
 
-			service
-				.loadTranslations(
-					'something',
-					of({
-						en: 'test-translation',
-					})
-				)
-				.subscribe((value) => {
-					expect(value).toEqual({
-						en: 'test-translation',
-					});
+                service
+                    .loadTranslations(
+                        'something',
+                        of({
+                            en: 'test-translation',
+                        })
+                    )
+                    .subscribe((value) => {
+                        expect(value).toEqual({
+                            en: 'test-translation',
+                        });
 
-					expect(service['translationsLoading']['something']).toBeInstanceOf(Observable);
+                        expect(service['translationsLoading']['something']).toBeInstanceOf(Observable);
 
-					done();
-				});
-		});
+                        done();
+                    });
+            }
+        );
 
-		it('should return the existing observable if it exists', (done: DoneFn) => {
+		it('should return the existing observable if it exists', (done) => {
 			const service = new NgxI18nLoadingService();
 
 			service['translationsLoading'] = {
@@ -196,18 +208,21 @@ describe('NgxI18nLoadingService', () => {
 	});
 
 	describe('markTranslationsLoadedAsFailed', () => {
-		it('should push a false value the translationsFailedSubject$', (done: DoneFn) => {
-			const service = new NgxI18nLoadingService();
+		it(
+            'should push a false value the translationsFailedSubject$',
+            (done) => {
+                const service = new NgxI18nLoadingService();
 
-			service['translationsFailedSubject$']
-				.pipe(take(2), last())
-				.subscribe((failed: boolean) => {
-					expect(failed).toBeFalse();
+                service['translationsFailedSubject$']
+                    .pipe(take(2), last())
+                    .subscribe((failed: boolean) => {
+                        expect(failed).toBeFalsy();
 
-					done();
-				});
+                        done();
+                    });
 
-			service.markTranslationsLoadedAsFailed();
-		});
+                service.markTranslationsLoadedAsFailed();
+            }
+        );
 	});
 });

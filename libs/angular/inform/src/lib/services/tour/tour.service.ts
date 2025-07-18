@@ -35,6 +35,7 @@ import {
 	NgxTourTokenConfiguration,
 } from '../../types';
 import { elementIsVisibleInViewport } from '../../utils';
+import { outputToObservable } from '@angular/core/rxjs-interop';
 
 /**
  * A singleton service used to run help tours through an application.
@@ -540,17 +541,16 @@ export class NgxTourService implements OnDestroy {
 			);
 
 			const componentRef = this.overlayRef.attach(portal);
-			const component = componentRef.instance;
 
-			// Iben: Update the data of the component
-			component.content = currentStep.content;
-			component.title = currentStep.title;
-			component.data = currentStep.data;
-			component.currentStep = this.currentIndexSubject.getValue();
-			component.amountOfSteps = this.amountOfSteps;
-			component.position = item ? currentStep.position || 'below' : undefined;
-			component.stepClass = currentStep.stepClass;
-			component.elementId = item?.elementId;
+      // Iben: Update the data of the component
+      componentRef.setInput( 'content',currentStep.content );
+      componentRef.setInput('title', currentStep.title);
+      componentRef.setInput('data', currentStep.data);
+      componentRef.setInput('currentStep', this.currentIndexSubject.getValue());
+      componentRef.setInput('amountOfSteps', this.amountOfSteps);
+      componentRef.setInput('position', item ? currentStep.position || 'below' : undefined);
+      componentRef.setInput('stepClass', currentStep.stepClass);
+      componentRef.setInput('elementId', item?.elementId);
 
 			// Iben: Highlight the current html item as active if one is provided
 			if (item) {
@@ -586,7 +586,7 @@ export class NgxTourService implements OnDestroy {
 		return this.runStepFunction(currentStep.onVisible).pipe(
 			concatMap(() => {
 				// Iben: Listen to the component interactions and respond accordingly
-				return componentRef.instance.handleInteraction.pipe(
+				return outputToObservable(componentRef.instance.handleInteraction).pipe(
 					take(1),
 					concatMap((interaction: NgxTourInteraction) => {
 						return interaction === 'close'

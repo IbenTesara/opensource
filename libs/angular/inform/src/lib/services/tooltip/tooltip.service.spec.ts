@@ -1,6 +1,9 @@
+import { Overlay, OverlayPositionBuilder } from '@angular/cdk/overlay';
 import { Component } from '@angular/core';
+import { TestBed } from '@angular/core/testing';
 
 import { NgxTooltipAbstractComponent } from '../../abstracts';
+import { provideNgxTooltipConfiguration } from '../../providers';
 
 import { NgxTooltipService } from './tooltip.service';
 
@@ -35,11 +38,23 @@ describe('NgxTooltipService', () => {
 	let service: NgxTooltipService;
 
 	beforeEach(() => {
-		service = new NgxTooltipService(
-			{ component: TestTooltipComponent },
-			overlay,
-			overlayPositionBuilder
-		);
+		TestBed.configureTestingModule({
+			providers: [
+				NgxTooltipService,
+				provideNgxTooltipConfiguration({
+					component: TestTooltipComponent,
+				}),
+				{
+					provide: Overlay,
+					useValue: overlay,
+				},
+				{
+					provide: OverlayPositionBuilder,
+					useValue: overlayPositionBuilder,
+				},
+			],
+		});
+		service = TestBed.inject(NgxTooltipService);
 	});
 
 	it('should attach a tooltip', () => {

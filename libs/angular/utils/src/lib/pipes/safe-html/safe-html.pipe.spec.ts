@@ -1,12 +1,22 @@
-import { SecurityContext } from '@angular/core';
+import { Sanitizer, SecurityContext } from '@angular/core';
+import { TestBed } from '@angular/core/testing';
 
 import { SafeHtmlPipe } from './safe-html.pipe';
 
 describe('SafeHtmlPipe', () => {
 	const sanitizer: any = {
-		sanitize: jasmine.createSpy().and.returnValue('Test'),
+		sanitize: jest.fn().mockReturnValue('Test'),
 	};
-	const pipe = new SafeHtmlPipe(sanitizer);
+	TestBed.configureTestingModule({
+		providers: [
+			SafeHtmlPipe,
+			{
+				provide: Sanitizer,
+				useValue: sanitizer,
+			},
+		],
+	});
+	const pipe = TestBed.inject(SafeHtmlPipe);
 
 	it('should sanitize a string', () => {
 		const test = 'Test';

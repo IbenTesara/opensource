@@ -1,12 +1,14 @@
+import { TestBed } from '@angular/core/testing';
 import { DomSanitizer } from '@angular/platform-browser';
 
+import { provideNgxReplaceElementsConfiguration } from '../../providers';
 import { NgxReplaceElementsConfiguration } from '../../types';
 
 import { NgxReplaceElementsPipe } from './replace-elements.pipe';
 
 describe('NgxReplaceElementsPipe', () => {
 	const sanitizer: DomSanitizer = {
-		bypassSecurityTrustHtml: jasmine.createSpy().and.callFake((value) => value),
+		bypassSecurityTrustHtml: jest.fn().mockImplementation((value) => value),
 	} as any as DomSanitizer;
 
 	const configuration: NgxReplaceElementsConfiguration = {
@@ -24,7 +26,17 @@ describe('NgxReplaceElementsPipe', () => {
 	let pipe: NgxReplaceElementsPipe;
 
 	beforeEach(() => {
-		pipe = new NgxReplaceElementsPipe(configuration, sanitizer);
+		TestBed.configureTestingModule({
+			providers: [
+				NgxReplaceElementsPipe,
+				provideNgxReplaceElementsConfiguration(configuration),
+				{
+					provide: DomSanitizer,
+					usevalue: sanitizer,
+				},
+			],
+		});
+		pipe = TestBed.inject(NgxReplaceElementsPipe);
 	});
 
 	it('should return the original value if there is nothing to replace', () => {

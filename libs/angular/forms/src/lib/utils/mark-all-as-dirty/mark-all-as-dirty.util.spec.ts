@@ -17,8 +17,8 @@ describe('markAllAsDirty', () => {
 	it('should mark all controls as dirty', () => {
 		markAllAsDirty(form.controls);
 
-		expect(form.get('test').dirty).toBeTrue();
-		expect(form.get('hello').dirty).toBeTrue();
-		expect(form.get('hello.world').dirty).toBeTrue();
+		expect(form.get('test').dirty).toBeTruthy();
+		expect(form.get('hello').dirty).toBeTruthy();
+		expect(form.get('hello.world').dirty).toBeTruthy();
 	});
 });

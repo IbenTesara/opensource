@@ -1,7 +1,10 @@
+import { Overlay } from '@angular/cdk/overlay';
+import { TestBed } from '@angular/core/testing';
 import { subscribeSpyTo } from '@hirez_io/observer-spy';
 import { NgxWindowService, NgxWindowServiceMock } from '@iben/ngx-core';
 
 import { MockTourStepComponent, OverlayMock } from '../../mocks';
+import { provideNgxTourConfiguration } from '../../providers';
 
 import { NgxTourService } from './tour.service';
 
@@ -12,14 +15,25 @@ describe('NgxTourService Server', () => {
 		const windowServiceMock = NgxWindowServiceMock(undefined);
 		jest.spyOn(windowServiceMock, 'isBrowser').mockReturnValue(false);
 
-		service = new NgxTourService(
-			OverlayMock(new MockTourStepComponent(service)),
-			windowServiceMock as unknown as NgxWindowService,
-			{
-				component: MockTourStepComponent,
-				offset: {},
-			}
-		);
+		TestBed.configureTestingModule({
+			providers: [
+				NgxTourService,
+				{
+					provide: Overlay,
+					useValue: OverlayMock(new MockTourStepComponent()),
+				},
+				{
+					provide: NgxWindowService,
+					useValue: NgxWindowServiceMock,
+				},
+				provideNgxTourConfiguration({
+					component: MockTourStepComponent,
+					offset: {},
+				}),
+			],
+		});
+
+		service = TestBed.inject(NgxTourService);
 	});
 
 	it('should not start the tour', (done) => {

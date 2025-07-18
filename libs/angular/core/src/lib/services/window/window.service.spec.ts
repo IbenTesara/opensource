@@ -28,9 +28,12 @@ describe('NgxWindowService', () => {
 		});
 
 		describe('construct', () => {
-			it('should set the width$ BehaviorSubject to a default value of 1200 for SSR', () => {
-				expect((service as any).widthSubject$.getValue()).toBe(1200);
-			});
+			it(
+                'should set the width$ BehaviorSubject to a default value of 1200 for SSR',
+                () => {
+                    expect((service as any).widthSubject$.getValue()).toBe(1200);
+                }
+            );
 		});
 
 		describe('isBrowser', () => {
@@ -63,21 +66,27 @@ describe('NgxWindowService', () => {
 		});
 
 		describe('construct', () => {
-			it('should set the width$ BehaviorSubject to the value of the window-width', () => {
-				expect((service as any).widthSubject$.getValue()).toBe(
-					NgxWindowMock(jest.fn()).defaultView.innerWidth
-				);
-			});
+			it(
+                'should set the width$ BehaviorSubject to the value of the window-width',
+                () => {
+                    expect((service as any).widthSubject$.getValue()).toBe(
+                        NgxWindowMock(jest.fn()).defaultView.innerWidth
+                    );
+                }
+            );
 		});
 
 		describe('scrollTo', () => {
-			it('should use the window.scrollTo to move to a position on the page', () => {
-				service.window.scrollTo = jest.fn();
+			it(
+                'should use the window.scrollTo to move to a position on the page',
+                () => {
+                    service.window.scrollTo = jest.fn();
 
-				service.scrollTo(200);
+                    service.scrollTo(200);
 
-				expect(service.window.scrollTo).toHaveBeenCalledWith(0 as any, 200 as any);
-			});
+                    expect(service.window.scrollTo).toHaveBeenCalledWith(0 as any, 200 as any);
+                }
+            );
 		});
 
 		describe('hasDocument', () => {

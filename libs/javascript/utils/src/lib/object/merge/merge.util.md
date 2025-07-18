@@ -7,7 +7,7 @@ It requires a start Object to merge the remaining properties in.
 ## How to use
 
 ```typescript
-import { merge } from '@studiohyperdrive/utils';
+import { merge } from '@iben/utils';
 
 interface Example {
 	id: string;

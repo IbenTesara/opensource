@@ -15,12 +15,12 @@ describe('hasErrors', () => {
 	});
 
 	it('should return true if any of the child controls is invalid', () => {
-		expect(hasErrors(form)).toBeTrue();
+		expect(hasErrors(form)).toBeTruthy();
 	});
 
 	it('should return false if all controls are valid', () => {
 		form.patchValue({ test: 'Denis', hello: { world: 'Wouter' } });
 
-		expect(hasErrors(form)).toBeFalse();
+		expect(hasErrors(form)).toBeFalsy();
 	});
 });

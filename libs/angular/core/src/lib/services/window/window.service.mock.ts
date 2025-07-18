@@ -6,7 +6,7 @@ import { BehaviorSubject } from 'rxjs';
  * to work on both Jest and Jasmine based test-suites.
  *
  * example:
- * NgxWindowMock(jasmine.createSpy());
+ * NgxWindowMock(jest.fn());
  * */
 export const NgxWindowMock = (spy: unknown) => ({
 	addEventListener: spy,
@@ -24,7 +24,7 @@ export const NgxWindowMock = (spy: unknown) => ({
  * to work on both Jest and Jasmine based test-suites.
  *
  * example:
- * NgxWindowServiceMock(jasmine.createSpy(), 1440);
+ * NgxWindowServiceMock(jest.fn(), 1440);
  * */
 export const NgxWindowServiceMock = (spy: unknown, width: number = 1200) => {
 	const window = NgxWindowMock(spy) as unknown as Window;

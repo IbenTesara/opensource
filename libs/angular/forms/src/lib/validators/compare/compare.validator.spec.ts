@@ -37,7 +37,7 @@ describe('CompareValidator', () => {
 				controlB: 5,
 			});
 
-			expect(form.getError('compareError')).toBeTrue();
+			expect(form.getError('compareError')).toBeTruthy();
 			expect(form.get('controlA').getError('compareError')).toBe(null);
 			expect(form.get('controlB').getError('compareError')).toBe(null);
 		});
@@ -78,8 +78,8 @@ describe('CompareValidator', () => {
 				controlB: 5,
 			});
 
-			expect(form.getError('compareError')).toBeTrue();
-			expect(form.get('controlA').getError('compareError')).toBeTrue();
+			expect(form.getError('compareError')).toBeTruthy();
+			expect(form.get('controlA').getError('compareError')).toBeTruthy();
 			expect(form.get('controlB').getError('compareError')).toBe(null);
 		});
 	});

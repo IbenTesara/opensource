@@ -28,19 +28,22 @@ describe('Array Operators', () => {
 		});
 	});
 
-	it('should return an empty array if the original was undefined', async () => {
-		const source: Observable<string[]> = of(undefined);
+	it(
+        'should return an empty array if the original was undefined',
+        async () => {
+            const source: Observable<string[]> = of(undefined);
 
-		source.pipe(sliceArray(0, 2)).subscribe((result) => {
-			expect(result).toEqual([]);
-		});
+            source.pipe(sliceArray(0, 2)).subscribe((result) => {
+                expect(result).toEqual([]);
+            });
 
-		source.pipe(mapArray((item) => ({ item }))).subscribe((result) => {
-			expect(result).toEqual([]);
-		});
+            source.pipe(mapArray((item) => ({ item }))).subscribe((result) => {
+                expect(result).toEqual([]);
+            });
 
-		source.pipe(sortArray((a, b) => a.localeCompare(b))).subscribe((result) => {
-			expect(result).toEqual([]);
-		});
-	});
+            source.pipe(sortArray((a, b) => a.localeCompare(b))).subscribe((result) => {
+                expect(result).toEqual([]);
+            });
+        }
+    );
 });

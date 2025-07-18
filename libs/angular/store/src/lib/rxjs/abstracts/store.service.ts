@@ -1,4 +1,5 @@
-import { inject, Injectable } from '@angular/core';
+/* eslint-disable @angular-eslint/prefer-inject */
+import { Inject, inject, Injectable, Optional } from '@angular/core';
 import { select, Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 
@@ -9,13 +10,15 @@ export class NgxStoreService<StoreAssetsType extends StoreFlowAssets = any> {
 	/**
 	 * A wrapper object for the store state selectors
 	 */
-  private stateWrapper: StoreState<StoreAssetsType>;
+	private stateWrapper: StoreState<StoreAssetsType>;
 
-  protected readonly store: Store = inject( Store );
+	protected readonly store: Store = inject(Store);
 
-	constructor() {
-		const selectors = inject<NgxStoreSelectors<StoreAssetsType>>('selectors' as any, { optional: true });
-
+	constructor(
+		@Optional()
+		@Inject('selectors')
+		selectors?: NgxStoreSelectors<StoreAssetsType>
+	) {
 		// Iben: If the selectors are provided, we create an object that will create an object with selectors for each slice in the state
 		if (selectors) {
 			this.stateWrapper = Object.keys(selectors).reduce((previous, key) => {

@@ -43,32 +43,32 @@ describe('FormAccessor', () => {
 	it('should mark the form as touched', () => {
 		component.markAsTouched();
 
-		expect(component.form.get('hello').touched).toBeTrue();
-		expect(component.form.get('world').touched).toBeTrue();
+		expect(component.form.get('hello').touched).toBeTruthy();
+		expect(component.form.get('world').touched).toBeTruthy();
 	});
 
 	it('should mark the form as dirty', () => {
 		component.markAsDirty();
 
-		expect(component.form.get('hello').dirty).toBeTrue();
-		expect(component.form.get('world').dirty).toBeTrue();
+		expect(component.form.get('hello').dirty).toBeTruthy();
+		expect(component.form.get('world').dirty).toBeTruthy();
 	});
 
 	it('should mark the form as pristine', () => {
 		component.markAsPristine();
 
-		expect(component.form.get('hello').pristine).toBeTrue();
-		expect(component.form.get('world').pristine).toBeTrue();
+		expect(component.form.get('hello').pristine).toBeTruthy();
+		expect(component.form.get('world').pristine).toBeTruthy();
 	});
 
 	it('should disable the form', () => {
-		//Iben: Set this as the component is not rendered
-		component.skipInitialSetDisable = false;
+    //Iben: Set this as the component is not rendered
+    fixture.componentRef.setInput('skipInitialSetDisable', false)
 		component.setDisabledState(true);
 
-		expect(component.form.disabled).toBeTrue();
-		expect(component.form.get('hello').disabled).toBeTrue();
-		expect(component.form.get('world').disabled).toBeTrue();
+		expect(component.form.disabled).toBeTruthy();
+		expect(component.form.get('hello').disabled).toBeTruthy();
+		expect(component.form.get('world').disabled).toBeTruthy();
 	});
 
 	it('should validate the form', () => {
@@ -87,11 +87,11 @@ export class TestComponent extends FormAccessor<string, FormControl<number>, num
 		return new FormControl<number>(null);
 	}
 
-	public onChangeMapper(value: number): string {
+	public override onChangeMapper(value: number): string {
 		return `${value}`;
 	}
 
-	public onWriteValueMapper(value: string): number {
+	public override onWriteValueMapper(value: string): number {
 		return parseInt(value);
 	}
 }

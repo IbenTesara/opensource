@@ -39,8 +39,8 @@ describe('NgxDisplayContentDirective', () => {
 			}
 		});
 
-		it('should render the content if no conditions are provided', () => {
-			fixture.componentInstance.conditions = {};
+    it( 'should render the content if no conditions are provided',() => {
+      fixture.componentRef.setInput( 'conditions',{} );
 			fixture.detectChanges();
 
 			const content = fixture.nativeElement.querySelectorAll('.content');
@@ -48,8 +48,8 @@ describe('NgxDisplayContentDirective', () => {
 			expect(content[0].textContent).toEqual('Content');
 		});
 
-		it('should render the offline fallback if offline is set to true', () => {
-			fixture.componentInstance.conditions = { offline: true };
+    it( 'should render the offline fallback if offline is set to true',() => {
+      fixture.componentRef.setInput('conditions', {offline: true});
 			fixture.detectChanges();
 
 			const content = fixture.nativeElement.querySelectorAll('.content');
@@ -60,7 +60,7 @@ describe('NgxDisplayContentDirective', () => {
 		});
 
 		it('should render the loading fallback if loading is set to true', () => {
-			fixture.componentInstance.conditions = { loading: true };
+      fixture.componentRef.setInput( 'conditions',{loading: true} );
 			fixture.detectChanges();
 
 			const content = fixture.nativeElement.querySelectorAll('.content');
@@ -71,7 +71,7 @@ describe('NgxDisplayContentDirective', () => {
 		});
 
 		it('should render the error fallback if offline is set to true', () => {
-			fixture.componentInstance.conditions = { error: true };
+      fixture.componentRef.setInput('conditions', { error: true });
 			fixture.detectChanges();
 
 			const content = fixture.nativeElement.querySelectorAll('.content');
@@ -109,7 +109,7 @@ describe('NgxDisplayContentDirective', () => {
 		});
 
 		it('should render the content if no conditions are provided', () => {
-			fixture.componentInstance.conditions = {};
+      fixture.componentRef.setInput('conditions', { loading: true });
 			fixture.detectChanges();
 
 			const content = fixture.nativeElement.querySelectorAll('.content');
@@ -118,7 +118,7 @@ describe('NgxDisplayContentDirective', () => {
 		});
 
 		it('should render the nothing if offline is set to true', () => {
-			fixture.componentInstance.conditions = { offline: true };
+      fixture.componentRef.setInput('conditions', { offline: true });
 			fixture.detectChanges();
 
 			const content = fixture.nativeElement.querySelectorAll('.content');
@@ -127,7 +127,7 @@ describe('NgxDisplayContentDirective', () => {
 		});
 
 		it('should render the loading template if loading is set to true', () => {
-			fixture.componentInstance.conditions = { loading: true };
+      fixture.componentRef.setInput('conditions', { loading: true });
 			fixture.detectChanges();
 
 			const content = fixture.nativeElement.querySelectorAll('.content');
@@ -140,8 +140,8 @@ describe('NgxDisplayContentDirective', () => {
 		});
 
 		it('should render the error fallback if offline is set to true', () => {
-			fixture.componentInstance.conditions = { error: true };
-			fixture.componentInstance.errorData = 'Error';
+      fixture.componentRef.setInput('conditions', { error: true });
+      fixture.componentRef.setInput('errorData', 'Error');
 			fixture.detectChanges();
 
 			const content = fixture.nativeElement.querySelectorAll('.content');

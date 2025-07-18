@@ -9,7 +9,8 @@
     "rxjs": "~7.8.0",
     "lodash": "^4.17.21",
     "obj-clean": "^3.0.1",
-    "@angular/platform-browser": "~20.0.0"
+    "@angular/platform-browser": "~20.0.0",
+    "@iben/utils": "0.0.1"
   },
   "sideEffects": false
 }

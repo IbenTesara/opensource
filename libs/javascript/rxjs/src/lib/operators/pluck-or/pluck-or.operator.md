@@ -5,7 +5,7 @@ Selects a property from a provided Observable value if exists and emits the prop
 ## How to use
 
 ```typescript
-import { pluckOr } from '@studiohyperdrive/rxjs-utils';
+import { pluckOr } from '@iben/rxjs-utils';
 import { of } from 'rxjs';
 
 of({ name: undefined, firstName: 'Hello' })

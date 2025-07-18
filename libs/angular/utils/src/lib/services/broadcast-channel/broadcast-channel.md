@@ -11,7 +11,7 @@ It holds a Record of potential BroadcastChannels with the key being their name. 
 The `initChannel` method will create a new BroadcastChannel with the given name.
 
 ```typescript
-import { NgxBroadcastChannelService } from '@studiohyperdrive/ngx-utils';
+import { NgxBroadcastChannelService } from '@iben/ngx-utils';
 
 export class YourComponent {
 	constructor(private readonly broadcastChannelService: NgxBroadcastChannelService) {}
@@ -39,7 +39,7 @@ NgxUtils: There was an attempt to initialize a BroadcastChannel without providin
 The `closeChannel` will close a channel with the given name.
 
 ```typescript
-import { NgxBroadcastChannelService } from '@studiohyperdrive/ngx-utils';
+import { NgxBroadcastChannelService } from '@iben/ngx-utils';
 
 export class YourComponent {
 	constructor(private readonly broadcastChannelService: NgxBroadcastChannelService) {}
@@ -65,7 +65,7 @@ If the channel does not exist on the Record or the name is not provided, it will
 The `postMessage` method will post a message to a channel with the given name.
 
 ```typescript
-import { NgxBroadcastChannelService } from '@studiohyperdrive/ngx-utils';
+import { NgxBroadcastChannelService } from '@iben/ngx-utils';
 
 export class YourComponent {
 	constructor(private readonly broadcastChannelService: NgxBroadcastChannelService) {}
@@ -102,7 +102,7 @@ _This warning will include the message that has been included to give a better u
 The `selectChannelMessages` method will return a subscription wrapped around the `message` event of the channel with the given name.
 
 ```typescript
-import { NgxBroadcastChannelService } from '@studiohyperdrive/ngx-utils';
+import { NgxBroadcastChannelService } from '@iben/ngx-utils';
 
 export class YourComponent {
 	constructor(private readonly broadcastChannelService: NgxBroadcastChannelService) {}
@@ -148,7 +148,7 @@ NgxUtils: There was an attempt to select a BroadcastChannel's messages without p
 The `selectChannelMessageErrors` method will return a subscription wrapped around the `message` event of the channel with the given name.
 
 ```typescript
-import { NgxBroadcastChannelService } from '@studiohyperdrive/ngx-utils';
+import { NgxBroadcastChannelService } from '@iben/ngx-utils';
 
 export class YourComponent {
 	constructor(private readonly broadcastChannelService: NgxBroadcastChannelService) {}

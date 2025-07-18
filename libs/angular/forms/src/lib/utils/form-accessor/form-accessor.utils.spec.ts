@@ -10,16 +10,19 @@ describe('handleFormAccessorControlDisabling', () => {
 			control = new FormControl();
 		});
 
-		it('should disable the formControl when the self property is passed along', () => {
-			handleFormAccessorControlDisabling(control, new Set(['formAccessorSelf']), true);
+		it(
+            'should disable the formControl when the self property is passed along',
+            () => {
+                handleFormAccessorControlDisabling(control, new Set(['formAccessorSelf']), true);
 
-			expect(control.disabled).toBeTrue();
-		});
+                expect(control.disabled).toBeTruthy();
+            }
+        );
 
 		it('should enable the formControl when no key is passed along', () => {
 			handleFormAccessorControlDisabling(control, new Set([]), true);
 
-			expect(control.disabled).toBeFalse();
+			expect(control.disabled).toBeFalsy();
 		});
 	});
 
@@ -30,16 +33,19 @@ describe('handleFormAccessorControlDisabling', () => {
 			control = new FormArray([]);
 		});
 
-		it('should disable the formArray when the self property is passed along', () => {
-			handleFormAccessorControlDisabling(control, new Set(['formAccessorSelf']), true);
+		it(
+            'should disable the formArray when the self property is passed along',
+            () => {
+                handleFormAccessorControlDisabling(control, new Set(['formAccessorSelf']), true);
 
-			expect(control.disabled).toBeTrue();
-		});
+                expect(control.disabled).toBeTruthy();
+            }
+        );
 
 		it('should enable the formArray when no key is passed along', () => {
 			handleFormAccessorControlDisabling(control, new Set([]), true);
 
-			expect(control.disabled).toBeFalse();
+			expect(control.disabled).toBeFalsy();
 		});
 	});
 	describe('FormGroup', () => {
@@ -52,18 +58,21 @@ describe('handleFormAccessorControlDisabling', () => {
 			});
 		});
 
-		it('should disable the formControl when the self property is passed along', () => {
-			handleFormAccessorControlDisabling(control, new Set(['moustache']), true);
+		it(
+            'should disable the formControl when the self property is passed along',
+            () => {
+                handleFormAccessorControlDisabling(control, new Set(['moustache']), true);
 
-			expect(control.get('moustache').disabled).toBeTrue();
-			expect(control.get('wax').disabled).toBeFalse();
-		});
+                expect(control.get('moustache').disabled).toBeTruthy();
+                expect(control.get('wax').disabled).toBeFalsy();
+            }
+        );
 
 		it('should enable the formControl when no key is passed along', () => {
 			handleFormAccessorControlDisabling(control, new Set([]), true);
 
-			expect(control.get('moustache').disabled).toBeFalse();
-			expect(control.get('wax').disabled).toBeFalse();
+			expect(control.get('moustache').disabled).toBeFalsy();
+			expect(control.get('wax').disabled).toBeFalsy();
 		});
 	});
 });

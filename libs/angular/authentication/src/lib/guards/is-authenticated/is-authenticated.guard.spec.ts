@@ -60,18 +60,21 @@ describe('NgxIsAuthenticatedGuard', () => {
 			});
 		});
 
-		it('should return void if the user cannot continue when authenticated', () => {
-			TestBed.runInInjectionContext(() => {
-				const spy = subscribeSpyTo(
-					NgxIsAuthenticatedGuard(
-						{ data: { shouldBeAuthenticated: false } } as any,
-						undefined
-					) as Observable<boolean>
-				);
+		it(
+            'should return void if the user cannot continue when authenticated',
+            () => {
+                TestBed.runInInjectionContext(() => {
+                    const spy = subscribeSpyTo(
+                        NgxIsAuthenticatedGuard(
+                            { data: { shouldBeAuthenticated: false } } as any,
+                            undefined
+                        ) as Observable<boolean>
+                    );
 
-				expect(spy.getValues()).toEqual([]);
-			});
-		});
+                    expect(spy.getValues()).toEqual([]);
+                });
+            }
+        );
 	});
 
 	describe('Not authenticated', () => {
@@ -79,30 +82,36 @@ describe('NgxIsAuthenticatedGuard', () => {
 			authenticationResponse.next(undefined);
 			hasAuthenticated.next('signed-out');
 		});
-		it('should return true if the user can continue when not authenticated', () => {
-			TestBed.runInInjectionContext(() => {
-				const spy = subscribeSpyTo(
-					NgxIsAuthenticatedGuard(
-						{ data: { shouldBeAuthenticated: false } } as any,
-						undefined
-					) as Observable<boolean>
-				);
+		it(
+            'should return true if the user can continue when not authenticated',
+            () => {
+                TestBed.runInInjectionContext(() => {
+                    const spy = subscribeSpyTo(
+                        NgxIsAuthenticatedGuard(
+                            { data: { shouldBeAuthenticated: false } } as any,
+                            undefined
+                        ) as Observable<boolean>
+                    );
 
-				expect(spy.getValues()).toEqual([true]);
-			});
-		});
+                    expect(spy.getValues()).toEqual([true]);
+                });
+            }
+        );
 
-		it('should return void if the user cannot continue when not authenticated', () => {
-			TestBed.runInInjectionContext(() => {
-				const spy = subscribeSpyTo(
-					NgxIsAuthenticatedGuard(
-						{ data: { shouldBeAuthenticated: true } } as any,
-						undefined
-					) as Observable<boolean>
-				);
+		it(
+            'should return void if the user cannot continue when not authenticated',
+            () => {
+                TestBed.runInInjectionContext(() => {
+                    const spy = subscribeSpyTo(
+                        NgxIsAuthenticatedGuard(
+                            { data: { shouldBeAuthenticated: true } } as any,
+                            undefined
+                        ) as Observable<boolean>
+                    );
 
-				expect(spy.getValues()).toEqual([]);
-			});
-		});
+                    expect(spy.getValues()).toEqual([]);
+                });
+            }
+        );
 	});
 });

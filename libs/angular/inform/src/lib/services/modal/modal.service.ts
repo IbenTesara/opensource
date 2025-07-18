@@ -1,5 +1,6 @@
 import { Dialog } from '@angular/cdk/dialog';
 import { Injectable, Type, inject } from '@angular/core';
+import { outputToObservable } from '@angular/core/rxjs-interop';
 import {
 	BehaviorSubject,
 	combineLatest,
@@ -24,7 +25,9 @@ import { NgxModalActionType, NgxModalConfiguration, NgxModalOptions } from '../.
  */
 @Injectable({ providedIn: 'root' })
 export class NgxModalService {
-	private readonly configuration = inject<NgxModalConfiguration>(NgxModalConfigurationToken, { optional: true })!;
+	private readonly configuration = inject<NgxModalConfiguration>(NgxModalConfigurationToken, {
+		optional: true,
+	})!;
 	private readonly dialogService = inject(Dialog);
 
 	/**
@@ -74,8 +77,8 @@ export class NgxModalService {
 		// Iben: Return the modal action
 		return combineLatest([
 			// Iben: Set the start value to undefined so both actions at least emit once
-			modal.action.pipe(startWith(undefined)),
-			modal.close.pipe(
+			outputToObservable(modal.action).pipe(startWith(undefined)),
+			outputToObservable(modal.close).pipe(
 				// Iben: Map so we can keep the emit value void, but can work with the filter later down the line
 				map(() => 'NgxModalClose'),
 				// Iben: Set the start value to undefined so both actions at least emit once
@@ -199,9 +202,12 @@ export class NgxModalService {
 		const modal = dialogRef.componentInstance;
 
 		// Iben: Set the data of the modal
-		modal.data = this.getValue(configuration?.data, options.data, undefined);
-		modal.ariaDescribedBy = options.describedById;
-		modal.ariaLabelledBy = options.labelledById;
+		dialogRef.componentRef.setInput(
+			'data',
+			this.getValue(configuration?.data, options.data, undefined)
+		);
+		dialogRef.componentRef.setInput('ariaDescribedBy', options.describedById);
+		dialogRef.componentRef.setInput('ariaLabelledBy', options.labelledById);
 
 		return modal;
 	}

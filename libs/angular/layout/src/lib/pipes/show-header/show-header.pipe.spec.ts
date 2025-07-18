@@ -18,36 +18,45 @@ describe('NgxTableShowHeaderPipe', () => {
 		expect(pipe.transform({ isEmpty: false, isLoading: false }, 'never')).toEqual(true);
 	});
 
-	it('should return the correct value when the config is set to when-empty', () => {
-		expect(pipe.transform({ isEmpty: false, isLoading: true }, ['when-empty'])).toEqual(true);
-		expect(pipe.transform({ isEmpty: true, isLoading: true }, ['when-empty'])).toEqual(false);
-		expect(pipe.transform({ isEmpty: true, isLoading: false }, ['when-empty'])).toEqual(false);
-		expect(pipe.transform({ isEmpty: false, isLoading: false }, ['when-empty'])).toEqual(true);
-	});
+	it(
+        'should return the correct value when the config is set to when-empty',
+        () => {
+            expect(pipe.transform({ isEmpty: false, isLoading: true }, ['when-empty'])).toEqual(true);
+            expect(pipe.transform({ isEmpty: true, isLoading: true }, ['when-empty'])).toEqual(false);
+            expect(pipe.transform({ isEmpty: true, isLoading: false }, ['when-empty'])).toEqual(false);
+            expect(pipe.transform({ isEmpty: false, isLoading: false }, ['when-empty'])).toEqual(true);
+        }
+    );
 
-	it('should return the correct value when the config is set to when-loading', () => {
-		expect(pipe.transform({ isEmpty: false, isLoading: true }, ['when-loading'])).toEqual(
-			false
-		);
-		expect(pipe.transform({ isEmpty: true, isLoading: true }, ['when-loading'])).toEqual(false);
-		expect(pipe.transform({ isEmpty: true, isLoading: false }, ['when-loading'])).toEqual(true);
-		expect(pipe.transform({ isEmpty: false, isLoading: false }, ['when-loading'])).toEqual(
-			true
-		);
-	});
+	it(
+        'should return the correct value when the config is set to when-loading',
+        () => {
+            expect(pipe.transform({ isEmpty: false, isLoading: true }, ['when-loading'])).toEqual(
+                false
+            );
+            expect(pipe.transform({ isEmpty: true, isLoading: true }, ['when-loading'])).toEqual(false);
+            expect(pipe.transform({ isEmpty: true, isLoading: false }, ['when-loading'])).toEqual(true);
+            expect(pipe.transform({ isEmpty: false, isLoading: false }, ['when-loading'])).toEqual(
+                true
+            );
+        }
+    );
 
-	it('should return the correct value when the config is set to when-empty', () => {
-		expect(
-			pipe.transform({ isEmpty: false, isLoading: true }, ['when-empty', 'when-loading'])
-		).toEqual(false);
-		expect(
-			pipe.transform({ isEmpty: true, isLoading: true }, ['when-empty', 'when-loading'])
-		).toEqual(false);
-		expect(
-			pipe.transform({ isEmpty: true, isLoading: false }, ['when-empty', 'when-loading'])
-		).toEqual(false);
-		expect(
-			pipe.transform({ isEmpty: false, isLoading: false }, ['when-empty', 'when-loading'])
-		).toEqual(true);
-	});
+	it(
+        'should return the correct value when the config is set to when-empty',
+        () => {
+            expect(
+                pipe.transform({ isEmpty: false, isLoading: true }, ['when-empty', 'when-loading'])
+            ).toEqual(false);
+            expect(
+                pipe.transform({ isEmpty: true, isLoading: true }, ['when-empty', 'when-loading'])
+            ).toEqual(false);
+            expect(
+                pipe.transform({ isEmpty: true, isLoading: false }, ['when-empty', 'when-loading'])
+            ).toEqual(false);
+            expect(
+                pipe.transform({ isEmpty: false, isLoading: false }, ['when-empty', 'when-loading'])
+            ).toEqual(true);
+        }
+    );
 });

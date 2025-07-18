@@ -1,5 +1,5 @@
 import { subscribeSpyTo } from '@hirez_io/observer-spy';
-import { NgxWindowServiceMock } from '@studiohyperdrive/ngx-core';
+import { NgxWindowServiceMock } from '@iben/ngx-core';
 
 import { NgxStorageService } from './storage.service';
 
@@ -38,15 +38,18 @@ describe('NgxStorageService', () => {
 			expect(service.localStorage.getItem('World')).toEqual(null);
 		});
 
-		it('should correctly return the valueChanges of an item in the localStorage', () => {
-			const spy = subscribeSpyTo(service.localStorage.getItemObservable('Observe'));
+		it(
+            'should correctly return the valueChanges of an item in the localStorage',
+            () => {
+                const spy = subscribeSpyTo(service.localStorage.getItemObservable('Observe'));
 
-			service.localStorage.setItem('Observe', 1);
-			service.localStorage.setItem('Observe', 2);
-			service.localStorage.setItem('Observe', 3);
+                service.localStorage.setItem('Observe', 1);
+                service.localStorage.setItem('Observe', 2);
+                service.localStorage.setItem('Observe', 3);
 
-			expect(spy.getValues()).toEqual([undefined, 1, 2, 3]);
-		});
+                expect(spy.getValues()).toEqual([undefined, 1, 2, 3]);
+            }
+        );
 
 		it('should correctly return the events in the storageEvents$', () => {
 			const spy = subscribeSpyTo(service.storageEvents$);
@@ -104,15 +107,18 @@ describe('NgxStorageService', () => {
 			expect(service.sessionStorage.getItem('World')).toEqual(null);
 		});
 
-		it('should correctly return the valueChanges of an item in the sessionStorage', () => {
-			const spy = subscribeSpyTo(service.sessionStorage.getItemObservable('Observe'));
+		it(
+            'should correctly return the valueChanges of an item in the sessionStorage',
+            () => {
+                const spy = subscribeSpyTo(service.sessionStorage.getItemObservable('Observe'));
 
-			service.sessionStorage.setItem('Observe', 1);
-			service.sessionStorage.setItem('Observe', 2);
-			service.sessionStorage.setItem('Observe', 3);
+                service.sessionStorage.setItem('Observe', 1);
+                service.sessionStorage.setItem('Observe', 2);
+                service.sessionStorage.setItem('Observe', 3);
 
-			expect(spy.getValues()).toEqual([undefined, 1, 2, 3]);
-		});
+                expect(spy.getValues()).toEqual([undefined, 1, 2, 3]);
+            }
+        );
 
 		it('should correctly return the events in the storageEvents$', () => {
 			const spy = subscribeSpyTo(service.storageEvents$);

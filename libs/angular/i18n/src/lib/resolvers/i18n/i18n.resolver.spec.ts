@@ -4,11 +4,11 @@
 
 // const i18nService: any = {
 // 	currentLanguage: 'nl',
-// 	initI18n: jasmine.createSpy().and.returnValue(of(true)),
+// 	initI18n: jest.fn().mockReturnValue(of(true)),
 // };
 
 // const i18nLoadingService: any = {
-// 	dispatchTranslationLoaderAction: jasmine.createSpy(),
+// 	dispatchTranslationLoaderAction: jest.fn(),
 // };
 
 // describe('NgxI18nTranslationLoaderResolver', () => {
@@ -37,7 +37,7 @@
 // 						})
 // 					)
 // 					.subscribe((result: boolean) => {
-// 						expect(result).toBeTrue();
+// 						expect(result).toBeTruthy();
 
 // 						expect(
 // 							i18nLoadingService.dispatchTranslationLoaderAction

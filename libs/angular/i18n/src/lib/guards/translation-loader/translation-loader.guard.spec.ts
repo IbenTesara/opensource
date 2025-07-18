@@ -10,7 +10,7 @@ import { NgxI18nTranslationLoaderGuard } from './translation-loader.guard';
 describe('NgxI18nTranslationLoaderGuard', () => {
 	describe('with resolver provided', () => {
 		const router: any = {
-			navigate: jasmine.createSpy(),
+			navigate: jest.fn(),
 		};
 
 		beforeEach(() => {
@@ -39,13 +39,13 @@ describe('NgxI18nTranslationLoaderGuard', () => {
 
 	describe('without resolver provided', () => {
 		const router: any = {
-			navigate: jasmine.createSpy(),
+			navigate: jest.fn(),
 		};
 		const i18nService: any = {
 			currentLanguage: 'nl',
 			availableLanguages: ['nl', 'en'],
-			setLanguage: jasmine.createSpy(),
-			initI18n: jasmine.createSpy().and.returnValue(of(true)),
+			setLanguage: jest.fn(),
+			initI18n: jest.fn().mockReturnValue(of(true)),
 		};
 
 		beforeEach(() => {

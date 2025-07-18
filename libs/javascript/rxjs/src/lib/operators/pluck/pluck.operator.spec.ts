@@ -37,21 +37,24 @@ describe('pluck', () => {
 			.subscribe();
 	});
 
-	it('should return undefined if a property does not exist on the source', async () => {
-		const observable = of({
-			message: 'Like and subscribe!',
-			url: 'youtube.com/@Iben',
-		});
+	it(
+        'should return undefined if a property does not exist on the source',
+        async () => {
+            const observable = of({
+                message: 'Like and subscribe!',
+                url: 'youtube.com/@Iben',
+            });
 
-		observable
-			.pipe(
-				pluck('hello'),
-				tap((result) => {
-					expect(result).toEqual(undefined);
-				})
-			)
-			.subscribe();
-	});
+            observable
+                .pipe(
+                    pluck('hello'),
+                    tap((result) => {
+                        expect(result).toEqual(undefined);
+                    })
+                )
+                .subscribe();
+        }
+    );
 
 	it('should return undefined if the source does not exist', async () => {
 		const observable = of(undefined);

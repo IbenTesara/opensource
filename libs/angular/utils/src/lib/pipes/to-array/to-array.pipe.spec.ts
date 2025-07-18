@@ -2,12 +2,15 @@ import { ToArrayPipe } from './to-array.pipe';
 
 describe('toArray', () => {
 	describe('transform', () => {
-		it('should return an empty array when the given value is undefined or null', () => {
-			const pipe = new ToArrayPipe();
+		it(
+            'should return an empty array when the given value is undefined or null',
+            () => {
+                const pipe = new ToArrayPipe();
 
-			expect(pipe.transform(undefined)).toEqual([]);
-			expect(pipe.transform(null)).toEqual([]);
-		});
+                expect(pipe.transform(undefined)).toEqual([]);
+                expect(pipe.transform(null)).toEqual([]);
+            }
+        );
 
 		it('should return the original array when an array is given', () => {
 			const pipe = new ToArrayPipe();

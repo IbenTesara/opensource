@@ -1,7 +1,7 @@
 import { Pipe, PipeTransform } from '@angular/core';
 
-import { NgxTableShowHeaderRequirements } from '../../interfaces';
-import { HideHeaderRowOption } from '../../token';
+import { HideHeaderRowOption } from '../../tokens';
+import { NgxTableShowHeaderRequirements } from '../../types';
 
 /**
  * This pipe returns whether we want to show the header
