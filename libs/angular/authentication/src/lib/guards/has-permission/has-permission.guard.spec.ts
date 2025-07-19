@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { subscribeSpyTo } from '@hirez_io/observer-spy';
 import { BehaviorSubject, Observable, of } from 'rxjs';
 
+import { NgxAuthenticationAbstractService } from '../../abstracts';
 import { NgxAuthenticationServiceMock, NgxAuthenticationResponseMock } from '../../mocks';
 import { NgxAuthenticationServiceToken } from '../../tokens';
 

@@ -2,8 +2,8 @@ import { ChangeDetectorRef } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
 import { BehaviorSubject, of } from 'rxjs';
 
-import { NgxAuthenticationAbstractService } from '../../abstracts';
 import { NgxAuthenticationResponseMock, NgxAuthenticationServiceMock } from '../../mocks';
+import { NgxAuthenticationServiceToken } from '../../tokens';
 
 import { NgxHasFeaturePipe } from './has-feature.pipe';
 
@@ -28,7 +28,7 @@ describe('NgxHasFeaturePipe', () => {
         providers: [
           NgxHasFeaturePipe,
           {
-            provide: NgxAuthenticationAbstractService,
+            provide: NgxAuthenticationServiceToken,
             useValue: authenticationService
           },
           {

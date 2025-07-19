@@ -1,4 +1,14 @@
-import { Directive, EmbeddedViewRef, Input, OnDestroy, TemplateRef, ViewContainerRef, inject } from '@angular/core';
+import {
+	Directive,
+	EmbeddedViewRef,
+	InputSignal,
+	OnDestroy,
+	TemplateRef,
+	ViewContainerRef,
+	effect,
+	inject,
+	input,
+} from '@angular/core';
 import { Subject } from 'rxjs';
 import { takeUntil, tap } from 'rxjs/operators';
 
@@ -14,7 +24,9 @@ import { NgxAuthenticationServiceToken } from '../../tokens';
 	selector: '[ngxIsAuthenticated]',
 })
 export class NgxIsAuthenticatedDirective implements OnDestroy {
-	private readonly authenticationService = inject<NgxAuthenticationAbstractService>(NgxAuthenticationServiceToken);
+	private readonly authenticationService = inject<NgxAuthenticationAbstractService>(
+		NgxAuthenticationServiceToken
+	);
 	private viewContainer = inject(ViewContainerRef);
 
 	/**
@@ -39,25 +51,27 @@ export class NgxIsAuthenticatedDirective implements OnDestroy {
 		const templateRef = inject<TemplateRef<any>>(TemplateRef);
 
 		this.thenTemplateRef = templateRef;
+
+		effect(() => {
+			this.shouldBeAuthenticated = this.ngxIsAuthenticated();
+			this.updateView();
+		});
+
+		effect(() => {
+			this.elseTemplateRef = this.ngxIsAuthenticatedElse();
+			this.elseViewRef = null;
+			this.updateView();
+		});
 	}
 
 	/**
 	 * Whether the user has to be authenticated
 	 */
-	@Input()
-	public set ngxIsAuthenticated(authenticated: boolean) {
-		this.shouldBeAuthenticated = authenticated;
-		this.updateView();
-	}
+	public ngxIsAuthenticated: InputSignal<boolean> = input();
 	/**
 	 * The else template in case the condition is not matched
 	 */
-	@Input()
-	public set ngxIsAuthenticatedElse(ngTemplate: TemplateRef<any>) {
-		this.elseTemplateRef = ngTemplate;
-		this.elseViewRef = null;
-		this.updateView();
-	}
+	public ngxIsAuthenticatedElse: InputSignal<TemplateRef<any>> = input();
 
 	public ngOnDestroy(): void {
 		this.dispose();

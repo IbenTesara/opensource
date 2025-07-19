@@ -48,7 +48,7 @@ export const NgxHasFeatureGuard: CanActivateFn = <FeatureType extends string>(
 	 *
 	 * Default value is `false`.
 	 */
-	const shouldNavigateOnFeature: boolean = Boolean(snapshot.data?.shouldNavigateOnFeature);
+	const shouldNavigateOnFeature: boolean = Boolean(snapshot.data?.[ 'shouldNavigateOnFeature' ]);
 
 	// Iben: Early exit if there's no feature provided
 	if (!feature) {

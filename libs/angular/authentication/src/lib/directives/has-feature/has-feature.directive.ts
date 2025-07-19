@@ -1,4 +1,15 @@
-import { ChangeDetectorRef, Directive, EmbeddedViewRef, Input, OnDestroy, TemplateRef, ViewContainerRef, inject } from '@angular/core';
+import {
+	ChangeDetectorRef,
+	Directive,
+	EmbeddedViewRef,
+	InputSignal,
+	OnDestroy,
+	TemplateRef,
+	ViewContainerRef,
+	effect,
+	inject,
+	input,
+} from '@angular/core';
 import { Subject, takeUntil, tap } from 'rxjs';
 
 import { NgxAuthenticationAbstractService } from '../../abstracts';
@@ -16,9 +27,23 @@ import { convertToArray } from '../../utils';
 	selector: '[ngxHasFeature]',
 })
 export class NgxHasFeatureDirective<FeatureType extends string> implements OnDestroy {
+	/**
+	 * The provided template ref
+	 */
 	templateRef = inject<TemplateRef<any>>(TemplateRef);
+	/**
+	 * The provided ViewContainerRef
+	 */
 	private viewContainer = inject(ViewContainerRef);
-	private readonly authenticationService = inject<NgxAuthenticationAbstractService>(NgxAuthenticationServiceToken);
+	/**
+	 * The provided AuthenticationService implementation
+	 */
+	private readonly authenticationService = inject<NgxAuthenticationAbstractService>(
+		NgxAuthenticationServiceToken
+	);
+	/**
+	 * The provided ChangeDetectorRef
+	 */
 	private readonly cdRef = inject(ChangeDetectorRef);
 
 	/**
@@ -52,40 +77,40 @@ export class NgxHasFeatureDirective<FeatureType extends string> implements OnDes
 	/**
 	 * A feature or list of features the item should have
 	 */
-	@Input() public set ngxHasFeature(feature: FeatureType | FeatureType[]) {
-		this.feature = feature;
-		this.updateView();
-	}
+	public ngxHasFeature: InputSignal<FeatureType | FeatureType[]> = input();
 
 	/**
 	 * The else template in case the feature is not enabled
 	 */
-	@Input() public set ngxHasFeatureElse(ngTemplate: TemplateRef<any>) {
-		this.elseTemplateRef = ngTemplate;
-		this.elseViewRef = null;
-		this.updateView();
-	}
+	public ngxHasFeatureElse: InputSignal<TemplateRef<any>> = input();
 
 	/**
 	 * Whether the feature should be enabled, by default this is true
 	 */
-	@Input() public set ngxHasFeatureShouldHaveFeature(shouldHaveFeatureEnabled: boolean) {
-		this.shouldHaveFeature = shouldHaveFeatureEnabled;
-		this.updateView();
-	}
+	public ngxHasFeatureShouldHaveFeature: InputSignal<boolean> = input();
 
 	/**
 	 * Whether all features should be enabled, by default this is true
 	 */
-	@Input() public set ngxHasFeatureShouldHaveAllFeatures(shouldHaveAllFeatures: boolean) {
-		this.shouldHaveAllFeatures = shouldHaveAllFeatures;
-		this.updateView();
-	}
+	public ngxHasFeatureShouldHaveAllFeatures: InputSignal<boolean> = input();
 
 	constructor() {
 		const templateRef = this.templateRef;
 
 		this.thenTemplateRef = templateRef;
+
+		effect(() => {
+			this.shouldHaveAllFeatures = this.ngxHasFeatureShouldHaveAllFeatures();
+			this.shouldHaveFeature = this.ngxHasFeatureShouldHaveFeature();
+			this.feature = this.ngxHasFeature();
+
+			this.updateView();
+		});
+
+		effect(() => {
+			this.elseTemplateRef = this.ngxHasFeatureElse();
+			this.elseViewRef = null;
+		});
 	}
 
 	public ngOnDestroy(): void {

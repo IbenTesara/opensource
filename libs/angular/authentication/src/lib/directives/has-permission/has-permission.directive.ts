@@ -1,4 +1,15 @@
-import { ChangeDetectorRef, Directive, EmbeddedViewRef, Input, OnDestroy, TemplateRef, ViewContainerRef, inject } from '@angular/core';
+import {
+	ChangeDetectorRef,
+	Directive,
+	EmbeddedViewRef,
+	InputSignal,
+	OnDestroy,
+	TemplateRef,
+	ViewContainerRef,
+	effect,
+	inject,
+	input,
+} from '@angular/core';
 import { Subject, takeUntil, tap } from 'rxjs';
 
 import { NgxAuthenticationAbstractService } from '../../abstracts';
@@ -17,7 +28,9 @@ import { convertToArray } from '../../utils';
 })
 export class NgxHasPermissionDirective<PermissionType extends string> implements OnDestroy {
 	private viewContainer = inject(ViewContainerRef);
-	private readonly authenticationService = inject<NgxAuthenticationAbstractService>(NgxAuthenticationServiceToken);
+	private readonly authenticationService = inject<NgxAuthenticationAbstractService>(
+		NgxAuthenticationServiceToken
+	);
 	private readonly cdRef = inject(ChangeDetectorRef);
 
 	/**
@@ -51,42 +64,40 @@ export class NgxHasPermissionDirective<PermissionType extends string> implements
 	/**
 	 * A permission or list of permissions the item should have
 	 */
-	@Input() public set ngxHasPermission(permission: PermissionType | PermissionType[]) {
-		this.permission = permission;
-		this.updateView();
-	}
+	public ngxHasPermission: InputSignal<PermissionType | PermissionType[]> = input();
 
 	/**
 	 * The else template in case the permission is not enabled
 	 */
-	@Input() public set ngxHasPermissionElse(ngTemplate: TemplateRef<any>) {
-		this.elseTemplateRef = ngTemplate;
-		this.elseViewRef = null;
-		this.updateView();
-	}
+	public ngxHasPermissionElse: InputSignal<TemplateRef<any>> = input();
 
 	/**
 	 * Whether the permission should be enabled, by default this is true
 	 */
-	@Input() public set ngxHasPermissionShouldHavePermission(shouldHavePermissionEnabled: boolean) {
-		this.shouldHavePermission = shouldHavePermissionEnabled;
-		this.updateView();
-	}
+	public ngxHasPermissionShouldHavePermission: InputSignal<boolean> = input();
 
 	/**
 	 * Whether all permissions should be enabled, by default this is true
 	 */
-	@Input() public set ngxHasPermissionShouldHaveAllPermissions(
-		shouldHaveAllPermissions: boolean
-	) {
-		this.shouldHaveAllPermissions = shouldHaveAllPermissions;
-		this.updateView();
-	}
+	public ngxHasPermissionShouldHaveAllPermissions: InputSignal<boolean> = input();
 
 	constructor() {
 		const templateRef = inject<TemplateRef<any>>(TemplateRef);
 
 		this.thenTemplateRef = templateRef;
+
+		effect(() => {
+			this.shouldHaveAllPermissions = this.ngxHasPermissionShouldHaveAllPermissions();
+			this.shouldHavePermission = this.ngxHasPermissionShouldHavePermission();
+			this.permission = this.ngxHasPermission();
+
+			this.updateView();
+		});
+
+		effect(() => {
+			this.elseTemplateRef = this.ngxHasPermissionElse();
+			this.elseViewRef = null;
+		});
 	}
 
 	public ngOnDestroy(): void {

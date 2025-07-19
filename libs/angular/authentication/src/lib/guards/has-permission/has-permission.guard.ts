@@ -48,7 +48,7 @@ export const NgxHasPermissionGuard: CanActivateFn = <PermissionType extends stri
 	 *
 	 * Default value is `false`.
 	 */
-	const shouldNavigateOnPermission: boolean = Boolean(snapshot.data?.shouldNavigateOnPermission);
+	const shouldNavigateOnPermission: boolean = Boolean(snapshot.data?.[ 'shouldNavigateOnPermission' ]);
 
 	// Iben: Early exit if there's no permission provided
 	if (!permission) {

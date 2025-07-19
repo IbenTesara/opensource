@@ -2,8 +2,8 @@ import { ChangeDetectorRef } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
 import { BehaviorSubject, of } from 'rxjs';
 
-import { NgxAuthenticationAbstractService } from '../../abstracts';
 import { NgxAuthenticationResponseMock, NgxAuthenticationServiceMock } from '../../mocks';
+import { NgxAuthenticationServiceToken } from '../../tokens';
 
 import { NgxHasPermissionPipe } from './has-permission.pipe';
 
@@ -27,8 +27,8 @@ describe('NgxHasPermissionPipe', () => {
 				providers: [
 					NgxHasPermissionPipe,
 					{
-						provide: NgxAuthenticationAbstractService,
-						useValue: NgxAuthenticationServiceMock,
+						provide: NgxAuthenticationServiceToken,
+						useValue: authenticationService,
 					},
 					{
 						provide: ChangeDetectorRef,
