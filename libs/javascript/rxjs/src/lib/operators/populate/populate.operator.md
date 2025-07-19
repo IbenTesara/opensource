@@ -7,7 +7,7 @@ It expects a record of Observables that match with the keys of the object. An op
 ## How to use
 
 ```typescript
-import { populate } from '@iben/rxjs-utils';
+import { populate } from '@ibenvandeveire/rxjs-utils';
 import { of } from 'rxjs';
 
 of({ hello: 'world' })

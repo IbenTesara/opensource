@@ -11,7 +11,7 @@ import {
 	OutputEmitterRef,
 	output,
 } from '@angular/core';
-import { NgxWindowService, simpleChangeHasChanged } from '@iben/ngx-core';
+import { NgxWindowService, simpleChangeHasChanged } from '@ibenvandeveire/ngx-core';
 import { Subject, takeUntil, tap } from 'rxjs';
 
 import { NgxImageMarkerService } from '../../services';

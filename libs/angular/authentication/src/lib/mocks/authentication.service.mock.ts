@@ -1,4 +1,4 @@
-import { AuthenticationResponse } from '@iben/types-auth';
+import { AuthenticationResponse } from '@ibenvandeveire/types-authentication';
 import { map, Subject } from 'rxjs';
 
 import { NgxAuthenticationStatus } from '../types';

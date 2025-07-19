@@ -1,7 +1,8 @@
 import { ConnectedPosition, Overlay, OverlayConfig, OverlayRef } from '@angular/cdk/overlay';
 import { ComponentPortal } from '@angular/cdk/portal';
 import { ComponentRef, Injectable, OnDestroy, inject } from '@angular/core';
-import { NgxWindowService } from '@iben/ngx-core';
+import { outputToObservable } from '@angular/core/rxjs-interop';
+import { NgxWindowService } from '@ibenvandeveire/ngx-core';
 import {
 	BehaviorSubject,
 	Observable,
@@ -35,7 +36,6 @@ import {
 	NgxTourTokenConfiguration,
 } from '../../types';
 import { elementIsVisibleInViewport } from '../../utils';
-import { outputToObservable } from '@angular/core/rxjs-interop';
 
 /**
  * A singleton service used to run help tours through an application.
@@ -227,7 +227,7 @@ export class NgxTourService implements OnDestroy {
 			);
 
 			return of(null);
-		}
+    }
 
 		this.windowService.runInBrowser(({ browserWindow, browserDocument }) => {
 			// Iben: Save the current scroll position so we can return to it when we close the tour

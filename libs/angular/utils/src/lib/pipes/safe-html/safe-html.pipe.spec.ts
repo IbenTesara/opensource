@@ -7,16 +7,20 @@ describe('SafeHtmlPipe', () => {
 	const sanitizer: any = {
 		sanitize: jest.fn().mockReturnValue('Test'),
 	};
-	TestBed.configureTestingModule({
-		providers: [
-			SafeHtmlPipe,
-			{
-				provide: Sanitizer,
-				useValue: sanitizer,
-			},
-		],
+	let pipe;
+
+	beforeEach(() => {
+		TestBed.configureTestingModule({
+			providers: [
+				SafeHtmlPipe,
+				{
+					provide: Sanitizer,
+					useValue: sanitizer,
+				},
+			],
+		});
+		pipe = TestBed.inject(SafeHtmlPipe);
 	});
-	const pipe = TestBed.inject(SafeHtmlPipe);
 
 	it('should sanitize a string', () => {
 		const test = 'Test';

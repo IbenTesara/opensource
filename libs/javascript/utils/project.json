@@ -20,7 +20,7 @@
 				"main": "libs/javascript/utils/src/index.ts",
 				"tsConfig": "libs/javascript/utils/tsconfig.lib.json",
 				"assets": ["libs/javascript/utils/*.md"],
-				"format": ["cjs"],
+				"format": ["esm"],
 				"generatePackageJson": true
 			}
 		},

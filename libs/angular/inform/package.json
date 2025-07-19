@@ -1,5 +1,5 @@
 {
-  "name": "@iben/ngx-inform",
+  "name": "@ibenvandeveire/ngx-inform",
   "version": "0.0.1",
   "peerDependencies": {
     "@angular/core": "^20.0.0",

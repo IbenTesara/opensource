@@ -1,5 +1,5 @@
 import { inject, Injectable } from '@angular/core';
-import { NgxWindowService } from '@iben/ngx-core';
+import { NgxWindowService } from '@ibenvandeveire/ngx-core';
 import {
 	BehaviorSubject,
 	Observable,

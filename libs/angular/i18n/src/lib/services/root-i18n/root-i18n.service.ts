@@ -1,5 +1,5 @@
 import { inject, Injectable } from '@angular/core';
-import { NgxWindowService } from '@iben/ngx-core';
+import { NgxWindowService } from '@ibenvandeveire/ngx-core';
 import { BehaviorSubject, filter, Observable } from 'rxjs';
 
 import { NgxI18nConfiguration } from '../../i18n.types';
@@ -14,7 +14,7 @@ export class NgxI18nRootService {
 	private readonly configuration: NgxI18nConfiguration = inject(NgxI18nConfigurationToken);
 
 	/**
-	 * Instance of the @iben/ngx-core NgxWindowService
+	 * Instance of the @ibenvandeveire/ngx-core NgxWindowService
 	 */
 	private readonly windowsService: NgxWindowService = inject(NgxWindowService);
 

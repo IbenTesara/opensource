@@ -19,7 +19,7 @@ describe('NgxTooltipService', () => {
 		updatePositionStrategy: jest.fn(),
 		attach: jest
 			.fn()
-			.mockReturnValue({ instance: { text: '', position: '', postionClass: '' } }),
+			.mockReturnValue({ instance: { text: '', position: '', postionClass: '' }, setInput: jest.fn() }),
 		detach: jest.fn(),
 		hasAttached: jest.fn(),
 	};

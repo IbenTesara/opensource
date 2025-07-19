@@ -1,5 +1,5 @@
 import { subscribeSpyTo } from '@hirez_io/observer-spy';
-import { NgxWindowServiceMock } from '@iben/ngx-core';
+import { NgxWindowServiceMock } from '@ibenvandeveire/ngx-core';
 
 import { NgxStorageService } from './storage.service';
 

@@ -10,7 +10,7 @@ It is convenient for using the document or window without breaking SSR.
 The window-service exposes a `width$` observable to get the window-width. It defaults to `1200` when no window is defined.
 
 ```typescript
-import { NgxWindowService } from '@iben/ngx-core';
+import { NgxWindowService } from '@ibenvandeveire/ngx-core';
 
 export class YourComponent {
 	public windowWidth$: Observable<number>;
@@ -26,7 +26,7 @@ export class YourComponent {
 The window-service exposes a `scrollingUp$` observable to know when the scroll has ended.
 
 ```typescript
-import { NgxWindowService } from '@iben/ngx-core';
+import { NgxWindowService } from '@ibenvandeveire/ngx-core';
 
 export class YourComponent {
 	public scrollingUp$: Observable<number>;
@@ -42,7 +42,7 @@ export class YourComponent {
 The window-service exposes a `currentScrollPosition` property that contains the currentScrollPosition after handleContentScroll has been called.
 
 ```typescript
-import { NgxWindowService } from '@iben/ngx-core';
+import { NgxWindowService } from '@ibenvandeveire/ngx-core';
 
 export class YourComponent {
 	public currentScrollPosition: Observable<number>;
@@ -58,7 +58,7 @@ export class YourComponent {
 The window-service exposes the `window` property which is a link to the `Window` object.
 
 ```typescript
-import { NgxWindowService } from '@iben/ngx-core';
+import { NgxWindowService } from '@ibenvandeveire/ngx-core';
 
 export class YourComponent {
 	public window$: Observable<Window>;
@@ -74,7 +74,7 @@ export class YourComponent {
 The window-service also exposes the `document` property which is a link to the `Document` object.
 
 ```typescript
-import { NgxWindowService } from '@iben/ngx-core';
+import { NgxWindowService } from '@ibenvandeveire/ngx-core';
 
 export class YourComponent {
 	public document$: Observable<Document>;
@@ -94,7 +94,7 @@ A `scrollTo` method is provided to scroll to a position on the page. When there 
 The offset is set to `0` by default so triggering the method without a value will scroll to the top of the page.
 
 ```typescript
-import { NgxWindowService } from '@iben/ngx-core';
+import { NgxWindowService } from '@ibenvandeveire/ngx-core';
 
 export class YourComponent {
 	constructor(private windowService: NgxWindowService) {}
@@ -110,7 +110,7 @@ export class YourComponent {
 The `hasDocument`-method is provided to check if there is a document.
 
 ```typescript
-import { NgxWindowService } from '@iben/ngx-core';
+import { NgxWindowService } from '@ibenvandeveire/ngx-core';
 
 export class YourComponent {
 	constructor(private windowService: NgxWindowService) {}
@@ -130,7 +130,7 @@ The `isBrowser`-method is provided to check if the current platform is a browser
 It uses the `isPlatformBrowser` method with the `PLATFORM_ID` injection-token internally.
 
 ```typescript
-import { NgxWindowService } from '@iben/ngx-core';
+import { NgxWindowService } from '@ibenvandeveire/ngx-core';
 
 export class YourComponent {
 	constructor(private windowService: NgxWindowService) {}
@@ -150,7 +150,7 @@ The `runInBrowser`-method is provided to run a specific callback only when in th
 The callback has access to the window and the document elements provided in its parameters.
 
 ```typescript
-import { NgxWindowService } from '@iben/ngx-core';
+import { NgxWindowService } from '@ibenvandeveire/ngx-core';
 
 export class YourComponent {
 	constructor(private windowService: NgxWindowService) {}

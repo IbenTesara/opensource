@@ -154,7 +154,7 @@ export class NgxTooltipService implements OnDestroy {
 		const tooltipPortal = new ComponentPortal(component || this.configuration.component);
 
 		// Iben: Attach the tooltipPortal to the overlayRef
-		const tooltipRef = this.overlayRef.attach(tooltipPortal);
+    const tooltipRef = this.overlayRef.attach( tooltipPortal );
 
 		// Iben: Pass the data to the component
 		tooltipRef.setInput('text', text);

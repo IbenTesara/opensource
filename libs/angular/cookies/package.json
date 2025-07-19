@@ -1,5 +1,5 @@
 {
-  "name": "@iben/ngx-cookies",
+  "name": "@ibenvandeveire/ngx-cookies",
   "version": "0.0.1",
   "peerDependencies": {
     "@angular/core": "^20.0.0",

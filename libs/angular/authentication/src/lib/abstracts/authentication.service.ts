@@ -1,4 +1,4 @@
-import { AuthenticationResponse } from '@iben/types-auth';
+import { AuthenticationResponse } from '@ibenvandeveire/types-authentication';
 import {
 	BehaviorSubject,
 	combineLatest,
@@ -14,7 +14,7 @@ import {
 import { NgxAuthenticationResponseFeature, NgxAuthenticationStatus } from '../types';
 
 /**
- * An abstract service used by the directives, guards and other components of @iben/ngx-auth
+ * An abstract service used by the directives, guards and other components of @ibenvandeveire/ngx-auth
  *
  * @template AuthenticationResponseType - The type of authentication response
  * @template SignInDataType - The data type used to sign in a user

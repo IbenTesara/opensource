@@ -12,7 +12,7 @@
 		"strictNullChecks": false,
 		"strictFunctionTypes": false,
 		"importHelpers": true,
-    "esModuleInterop": true,
+		"esModuleInterop": true,
 		"target": "es2015",
 		"module": "esnext",
 		"lib": ["es2020", "dom"],
@@ -20,7 +20,7 @@
 		"skipDefaultLibCheck": true,
 		"baseUrl": ".",
 		"paths": {
-			"@iben/utils": ["libs/javascript/utils/src/index.ts"],
+			"@lib/utils": ["libs/javascript/utils/src/index.ts"],
 			"@lib/core": ["libs/javascript/core/src/index.ts"],
 			"@lib/ngx-authentication": ["libs/angular/authentication/src/index.ts"],
 			"@lib/ngx-cookies": ["libs/angular/cookies/src/index.ts"],

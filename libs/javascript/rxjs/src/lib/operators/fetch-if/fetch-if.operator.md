@@ -9,7 +9,7 @@ A common use-case for `fetchIf` is to check whether a property already exists wi
 ## How to use
 
 ```typescript
-import { fetchIf } from '@iben/rxjs-utils';
+import { fetchIf } from '@ibenvandeveire/rxjs-utils';
 import { of } from 'rxjs';
 
 fetchIf(
@@ -22,7 +22,7 @@ fetchIf(
 ```
 
 ```typescript
-import { fetchIf } from '@iben/rxjs-utils';
+import { fetchIf } from '@ibenvandeveire/rxjs-utils';
 import { of } from 'rxjs';
 
 fetchIf(

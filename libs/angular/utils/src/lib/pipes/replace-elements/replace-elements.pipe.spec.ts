@@ -32,7 +32,7 @@ describe('NgxReplaceElementsPipe', () => {
 				provideNgxReplaceElementsConfiguration(configuration),
 				{
 					provide: DomSanitizer,
-					usevalue: sanitizer,
+					useValue: sanitizer,
 				},
 			],
 		});

@@ -7,7 +7,7 @@ It expects an array of `Observable<boolean>`.
 ## How to use
 
 ```typescript
-import { combineBooleans } from '@iben/rxjs-utils';
+import { combineBooleans } from '@ibenvandeveire/rxjs-utils';
 import { of } from 'rxjs';
 
 combineBooleans([of(true), of(false)]).subscribe((result) => {

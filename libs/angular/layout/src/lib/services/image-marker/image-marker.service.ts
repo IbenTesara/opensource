@@ -1,5 +1,5 @@
 import { Injectable, OnDestroy, inject } from '@angular/core';
-import { NgxWindowService } from '@iben/ngx-core';
+import { NgxWindowService } from '@ibenvandeveire/ngx-core';
 import { MarkerView } from 'markerjs-live';
 import { MarkerArea, MarkerAreaState } from 'markerjs2';
 import { Observable, Subject } from 'rxjs';

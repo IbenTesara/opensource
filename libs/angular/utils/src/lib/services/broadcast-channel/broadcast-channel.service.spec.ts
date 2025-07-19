@@ -1,4 +1,4 @@
-import { NgxWindowServiceMock } from '@iben/ngx-core';
+import { NgxWindowServiceMock } from '@ibenvandeveire/ngx-core';
 import { Subscription } from 'rxjs';
 
 import { NgxBroadcastChannelService } from './broadcast-channel.service';

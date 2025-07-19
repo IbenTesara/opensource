@@ -1,4 +1,4 @@
-import { AuthenticationResponse } from '@iben/types-auth';
+import { AuthenticationResponse } from '@ibenvandeveire/types-authentication';
 
 export type NgxAuthenticationResponseFeature<
 	AuthenticationResponseType extends AuthenticationResponse<unknown>,

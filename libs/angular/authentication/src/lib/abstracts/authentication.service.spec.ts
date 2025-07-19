@@ -1,5 +1,5 @@
 import { subscribeSpyTo } from '@hirez_io/observer-spy';
-import { AuthenticationResponse, AuthenticatedUserSession } from '@iben/types-auth';
+import { AuthenticationResponse, AuthenticatedUserSession } from '@ibenvandeveire/types-authentication';
 import { Observable, of } from 'rxjs';
 
 import { NgxAuthenticationAbstractService } from './authentication.service';

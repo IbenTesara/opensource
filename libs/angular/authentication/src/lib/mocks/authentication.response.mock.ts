@@ -1,4 +1,4 @@
-import { AuthenticatedUserSession, AuthenticationResponse } from '@iben/types-auth';
+import { AuthenticatedUserSession, AuthenticationResponse } from '@ibenvandeveire/types-authentication';
 /**
  * Returns a mock authentication response
  */

@@ -23,7 +23,7 @@ Using `setItem` and `removeItem` will set and remove an item in/from the storage
 When using `clear`, the entire storage will be cleared, the Observables that were fetched using `getItemObservable` will be completed and an event will be emitted on the `storageEvents$` observable.
 
 ```typescript
-import { NgxStorageService } from '@iben/ngx-utils';
+import { NgxStorageService } from '@ibenvandeveire/ngx-utils';
 
 export class YourComponent {
 	constructor(private storageService: NgxStorageService) {
@@ -38,7 +38,7 @@ export class YourComponent {
 The `storageEvents$` property is an Observable that will emit a `NgxStorageEvent` whenever the session- or localStorage was updated (set or remove) or cleared.
 
 ```typescript
-import { NgxStorageService } from '@iben/ngx-utils';
+import { NgxStorageService } from '@ibenvandeveire/ngx-utils';
 
 export class YourComponent {
 	constructor(private storageService: NgxStorageService) {

@@ -7,7 +7,7 @@ It expects a callback function.
 ## How to use
 
 ```typescript
-import { catchAndCallThrough } from '@iben/rxjs-utils';
+import { catchAndCallThrough } from '@ibenvandeveire/rxjs-utils';
 import { throwError } from 'rxjs';
 
 of(throwError('Something went wrong'))
@@ -24,7 +24,7 @@ of(throwError('Something went wrong'))
 An optional `handle` can be passed which can be `'complete'`, `'throw'` or `'continue'` and will default to `'continue'`:
 
 ```typescript
-import { catchAndCallThrough } from '@iben/rxjs-utils';
+import { catchAndCallThrough } from '@ibenvandeveire/rxjs-utils';
 import { throwError } from 'rxjs';
 
 of(throwError('Something went wrong'))
