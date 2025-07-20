@@ -51,7 +51,9 @@ describe('FormAccessor', () => {
 	});
 
 	it('should create the form on the provided data', () => {
-		component.data = ['test', 'hello'];
+    fixture.componentRef.setInput( 'data',[ 'test','hello' ] );
+    fixture.detectChanges();
+
 		expect(component.form.get('test.world')).toBeDefined();
 		expect(component.form.get('test.hello')).toBeDefined();
 		expect(component.form.get('hello.world')).toBeDefined();

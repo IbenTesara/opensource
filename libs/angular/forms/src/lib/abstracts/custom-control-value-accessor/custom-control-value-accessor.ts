@@ -1,14 +1,15 @@
 import {
-  ChangeDetectorRef,
-  Directive,
-  Injector,
-  Input,
-  OnDestroy,
-  OutputRef,
-  QueryList,
-  ViewChildren,
-  inject,
-  input
+	ChangeDetectorRef,
+	Directive,
+	Injector,
+	InputSignal,
+	OnDestroy,
+	OutputRef,
+	QueryList,
+	ViewChildren,
+	effect,
+	inject,
+	input,
 } from '@angular/core';
 import { outputFromObservable, outputToObservable } from '@angular/core/rxjs-interop';
 import {
@@ -35,11 +36,10 @@ import { FormAccessor } from '../form/form.accessor';
 
 @Directive()
 export abstract class NgxFormsControlValueAccessor<
-		DataType = unknown,
-		FormAccessorFormType extends AbstractControl = FormControl,
-		FormValueType = DataType,
-	>
-	implements ControlValueAccessor, OnDestroy
+	DataType = unknown,
+	FormAccessorFormType extends AbstractControl = FormControl,
+	FormValueType = DataType
+> implements ControlValueAccessor, OnDestroy
 {
 	/**
 	 *  The Injector needed in the constructor
@@ -105,42 +105,8 @@ export abstract class NgxFormsControlValueAccessor<
 	 *
 	 * @memberof FormAccessor
 	 */
-	@Input() set disableFields(keys: FormAccessorControlsEntity<FormAccessorFormType>[]) {
-		// Iben: Early exit in case the keys are not provided
-		if (!keys) {
-			return;
-		}
-
-		// Iben: Setup a subject to track whether we're still disabling the fields
-		const disabling = new Subject();
-
-		// Iben: Add the keys to a set for more performant lookup and convert those to a string to not have Typescript issues later down the line
-		const controlKeys = new Set(keys);
-
-		// Iben: Check if we need to dispatch the disable or enable event
-		const emitEvent = this.emitValueWhenDisableFieldsUsingInput
-			? this.emitValueWhenDisableFieldsUsingInput(keys)
-			: true;
-
-		// Iben: Listen to the initialized state of the form
-		outputToObservable(this.initialized$)
-			.pipe(
-				filter(Boolean),
-				tap(() => {
-					// TODO: Iben: Remove this setTimeout once we're in a Signal based component
-					setTimeout(() => {
-						// Iben: Handle the disabling of the fields
-						handleFormAccessorControlDisabling(this.form, controlKeys, emitEvent);
-					});
-
-					// Iben: Set the disabling subject so that we can complete this subscription
-					disabling.next(undefined);
-					disabling.complete();
-				}),
-				takeUntil(disabling)
-			)
-			.subscribe();
-	}
+	public disableFields: InputSignal<FormAccessorControlsEntity<FormAccessorFormType>[]> =
+		input<FormAccessorControlsEntity<FormAccessorFormType>[]>();
 
 	/**
 	 * Whether we want to skip the first setDisable (https://github.com/angular/angular/pull/47576).
@@ -151,7 +117,9 @@ export abstract class NgxFormsControlValueAccessor<
 	/**
 	 * Stream to know whether the form has been initialized
 	 */
-	public readonly initialized$: OutputRef<boolean> = outputFromObservable(this.initializedSubject$.asObservable());
+	public readonly initialized$: OutputRef<boolean> = outputFromObservable(
+		this.initializedSubject$.asObservable()
+	);
 
 	constructor() {
 		// Iben: Use setTimeOut to avoid the circular dependency issue
@@ -246,6 +214,45 @@ export abstract class NgxFormsControlValueAccessor<
 					'NgxForms: No parent control was found while trying to set up the form accessor.'
 				);
 			}
+		});
+
+		effect(() => {
+			const keys = this.disableFields();
+
+			// Iben: Early exit in case the keys are not provided
+			if (!keys) {
+				return;
+			}
+
+			// Iben: Setup a subject to track whether we're still disabling the fields
+			const disabling = new Subject();
+
+			// Iben: Add the keys to a set for more performant lookup and convert those to a string to not have Typescript issues later down the line
+			const controlKeys = new Set(keys);
+
+			// Iben: Check if we need to dispatch the disable or enable event
+			const emitEvent = this.emitValueWhenDisableFieldsUsingInput
+				? this.emitValueWhenDisableFieldsUsingInput(keys)
+				: true;
+
+			// Iben: Listen to the initialized state of the form
+			outputToObservable(this.initialized$)
+				.pipe(
+					filter(Boolean),
+					tap(() => {
+						// TODO: Iben: Remove this setTimeout once we're in a Signal based component
+						setTimeout(() => {
+							// Iben: Handle the disabling of the fields
+							handleFormAccessorControlDisabling(this.form, controlKeys, emitEvent);
+						});
+
+						// Iben: Set the disabling subject so that we can complete this subscription
+						disabling.next(undefined);
+						disabling.complete();
+					}),
+					takeUntil(disabling)
+				)
+				.subscribe();
 		});
 	}
 

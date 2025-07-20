@@ -11,15 +11,15 @@ describe('customUpdateValueAndValidity', () => {
 	});
 
 	it('should call the original update value and validity', () => {
-		spyOn(form, 'updateValueAndValidity');
+		jest.spyOn(form, 'updateValueAndValidity');
 		updateAllValueAndValidity(form, { onlySelf: true });
 
 		expect(form.updateValueAndValidity).toHaveBeenCalledWith({ onlySelf: true });
 	});
 
 	it('should call the update value and validity on the controls', () => {
-		spyOn(form.get('hello.world'), 'updateValueAndValidity');
-		spyOn(form.get('test'), 'updateValueAndValidity');
+		jest.spyOn(form.get('hello.world'), 'updateValueAndValidity');
+		jest.spyOn(form.get('test'), 'updateValueAndValidity');
 
 		updateAllValueAndValidity(form, { onlySelf: true });
 

@@ -56,7 +56,7 @@ describe('NgxBroadcastChannelService', () => {
 
 		describe('initChannel', () => {
 			it('should return early if channelName is not provided', () => {
-				const consoleSpy = spyOn(console, 'error');
+				const consoleSpy = jest.spyOn(console, 'error');
 
 				service.initChannel('');
 
@@ -95,7 +95,7 @@ describe('NgxBroadcastChannelService', () => {
 
 		describe('postMessage', () => {
 			it('should return early if channelName is not provided', () => {
-				const consoleSpy = spyOn(console, 'error');
+				const consoleSpy = jest.spyOn(console, 'error');
 
 				service.postMessage('', 'message');
 
@@ -106,7 +106,7 @@ describe('NgxBroadcastChannelService', () => {
 			});
 
 			it('should return early if channel is not initialized', () => {
-				const consoleSpy = spyOn(console, 'error');
+				const consoleSpy = jest.spyOn(console, 'error');
 
 				service.postMessage('nonExistentChannel', 'message');
 
@@ -133,7 +133,7 @@ describe('NgxBroadcastChannelService', () => {
 
 		describe('selectChannelMessages', () => {
 			it('should return early if channelName is not provided', (done) => {
-				const consoleSpy = spyOn(console, 'error');
+				const consoleSpy = jest.spyOn(console, 'error');
 				subscriptions.push(
 					service.selectChannelMessages('').subscribe({
 						complete: () => {
@@ -148,7 +148,7 @@ describe('NgxBroadcastChannelService', () => {
 			});
 
 			it('should return early if the channel does not exist', (done) => {
-				const consoleSpy = spyOn(console, 'error');
+				const consoleSpy = jest.spyOn(console, 'error');
 				subscriptions.push(
 					service.selectChannelMessages('testChannel').subscribe({
 						complete: () => {
@@ -182,7 +182,7 @@ describe('NgxBroadcastChannelService', () => {
 
 		describe('selectChannelMessageErrors', () => {
 			it('should return early if channelName is not provided', (done) => {
-				const consoleSpy = spyOn(console, 'error');
+				const consoleSpy = jest.spyOn(console, 'error');
 				subscriptions.push(
 					service.selectChannelMessageErrors('').subscribe({
 						complete: () => {
@@ -197,7 +197,7 @@ describe('NgxBroadcastChannelService', () => {
 			});
 
 			it('should return early if the channel does not exist', (done) => {
-				const consoleSpy = spyOn(console, 'error');
+				const consoleSpy = jest.spyOn(console, 'error');
 				subscriptions.push(
 					service.selectChannelMessageErrors('testChannel').subscribe({
 						complete: () => {

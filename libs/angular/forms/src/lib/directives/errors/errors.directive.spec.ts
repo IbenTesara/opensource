@@ -53,7 +53,7 @@ export class FormAccessorComponent extends FormAccessor<any, any> {
 
 @Component({
 	selector: 'kp-error',
-	template: `<p class="kp-error">{{ errors[0] }}</p>`,
+	template: `<p class="kp-error">{{ errors()[0] }}</p>`,
 	imports: [ReactiveFormsModule],
 })
 export class FormErrorComponent extends NgxFormsErrorAbstractComponent {}
@@ -69,7 +69,7 @@ describe('NgxFormsErrorsDirective', () => {
 
 		beforeEach(() => {
 			TestBed.configureTestingModule({
-				imports: [ReactiveFormsModule, FormAccessorComponent],
+				imports: [ReactiveFormsModule, FormAccessorComponent, NgxFormsErrorsDirective],
 				providers: [
 					ChangeDetectorRef,
 					Injector,
@@ -79,7 +79,8 @@ describe('NgxFormsErrorsDirective', () => {
 						useValue: { showWhen: 'dirty', errors },
 					},
 				],
-			});
+      } );
+      TestBed.compileComponents();
 
 			fixture = TestBed.createComponent(FormAccessorComponent);
 
@@ -123,7 +124,12 @@ describe('NgxFormsErrorsDirective', () => {
 
 		beforeEach(() => {
 			TestBed.configureTestingModule({
-				imports: [ReactiveFormsModule, FormAccessorComponent, FormErrorComponent],
+				imports: [
+					ReactiveFormsModule,
+					FormAccessorComponent,
+					FormErrorComponent,
+					NgxFormsErrorsDirective,
+				],
 				providers: [
 					ChangeDetectorRef,
 					Injector,
@@ -134,6 +140,7 @@ describe('NgxFormsErrorsDirective', () => {
 					},
 				],
 			});
+      TestBed.compileComponents();
 
 			fixture = TestBed.createComponent(FormAccessorComponent);
 
@@ -151,9 +158,9 @@ describe('NgxFormsErrorsDirective', () => {
 		});
 
 		it('should show the error when the control is touched and invalid ', () => {
-			fixture.componentRef.instance.form.get('hello').markAsTouched();
+      fixture.componentRef.instance.form.get( 'hello' ).markAsTouched();
 			fixture.detectChanges();
-			const errorElements = fixture.nativeElement.querySelectorAll('.kp-error');
+      const errorElements = fixture.nativeElement.querySelectorAll( '.kp-error' );
 
 			expect(errorElements.length).toBe(1);
 			expect(errorElements[0].textContent).toEqual(errors.required);
