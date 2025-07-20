@@ -20,7 +20,6 @@
 		"skipDefaultLibCheck": true,
 		"baseUrl": ".",
 		"paths": {
-			"@lib/utils": ["libs/javascript/utils/src/index.ts"],
 			"@lib/core": ["libs/javascript/core/src/index.ts"],
 			"@lib/ngx-authentication": ["libs/angular/authentication/src/index.ts"],
 			"@lib/ngx-cookies": ["libs/angular/cookies/src/index.ts"],
@@ -32,7 +31,8 @@
 			"@lib/ngx-store": ["libs/angular/store/src/index.ts"],
 			"@lib/ngx-utils": ["libs/angular/utils/src/index.ts"],
 			"@lib/rxjs": ["libs/javascript/rxjs/src/index.ts"],
-			"@lib/types/authentication": ["libs/javascript/types/authentication/src/index.ts"]
+			"@lib/types/authentication": ["libs/javascript/types/authentication/src/index.ts"],
+			"@lib/utils": ["libs/javascript/utils/src/index.ts"]
 		}
 	},
 	"exclude": ["node_modules", "tmp"]

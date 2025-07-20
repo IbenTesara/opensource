@@ -5,7 +5,8 @@
     "@angular/core": "^20.0.0",
     "rxjs": "~7.8.0",
     "lodash": "^4.17.21",
-    "vanilla-cookieconsent": "^3.1.0"
+    "vanilla-cookieconsent": "^3.1.0",
+    "@ibenvandeveire/ngx-core": "^20.0.0"
   },
   "sideEffects": false
 }
