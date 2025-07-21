@@ -13,7 +13,7 @@ describe('NgxTourService Server', () => {
 
   beforeEach( () => {
 		const windowServiceMock = NgxWindowServiceMock(undefined);
-		jest.jest.spyOn(windowServiceMock, 'isBrowser').mockReturnValue(false);
+		jest.spyOn(windowServiceMock, 'isBrowser').mockReturnValue(false);
 
 		TestBed.configureTestingModule({
 			imports: [MockTourStepComponent],
@@ -43,7 +43,7 @@ describe('NgxTourService Server', () => {
 			const tourStartedSpy = subscribeSpyTo(service.tourStarted$);
 			const tourEndedSpy = subscribeSpyTo(service.tourEnded$);
 			const tourActiveSpy = subscribeSpyTo(service.tourActive$);
-			const consoleSpy = jest.jest.spyOn(console, 'warn');
+			const consoleSpy = jest.spyOn(console, 'warn');
 
 			service.startTour([{ title: 'hello', content: 'world' }]).subscribe(() => done());
 
