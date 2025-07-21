@@ -1,10 +1,4 @@
-import {
-	AbstractControl,
-	FormControl,
-	FormGroup,
-	ValidationErrors,
-	ValidatorFn,
-} from '@angular/forms';
+import { FormGroup, ValidationErrors, ValidatorFn } from '@angular/forms';
 
 import { allOrNothingRequiredValidator } from './all-or-nothing-required/all-or-nothing-required.validator';
 import {
@@ -12,28 +6,15 @@ import {
 	atLeastOneRequiredValidator,
 } from './at-least-one-required/at-least-one-required.validator';
 import { chronologicalDatesValidator } from './chronological-dates/chronological-dates.validator';
-import { CompareValidator } from './compare/compare.validator';
 import { dateRangeValidator } from './date-range/date-range.validator';
 import { decimalsAfterCommaValidator } from './decimals-after-comma/decimals-after-comma.validator';
 import { dependedRequiredValidator } from './depended-required/depended-required.validator';
-import { extendedEmailValidator } from './email/extended-email.validator';
-import { hasNoFutureDateValidator } from './has-no-future-date/has-no-future-date.validator';
-import { WordCountValidator } from './max-word-count/word-count.validator';
 
 /**
  * Exported Class
  */
 
 export class NgxValidators {
-	/**
-	 * A stricter validator for e-mail validation
-	 *
-	 * @param control - A form control
-	 */
-	static extendedEmail(control: AbstractControl): ValidationErrors | null {
-		return extendedEmailValidator(control);
-	}
-
 	/**
 	 * A validator to check if all or none of the values of a form group are filled in.
 	 * Particularly useful in situations where a form group field within itself is optional,
@@ -60,30 +41,6 @@ export class NgxValidators {
 		options?: AtLeastOneRequiredValidatorOptions<KeyType>
 	): ValidatorFn {
 		return atLeastOneRequiredValidator<KeyType>(options);
-	}
-
-	/**
-	 * The compareValidator will return a validator that compares the values of two FormControls
-	 * within a FormGroup based on a given comparator function.
-	 *
-	 * Returns a `compareError` on the provided FormGroup and on the individual controls if the `setErrorKey` argument is provided.
-	 *
-	 * @param keys {string[]}
-	 * @param comparatorFn {(...args: ValueType[]) => boolean}
-	 * @param setErrorOnKey {string}
-	 * @returns {(group: FormGroup<{ [key: string]: FormControl<ValueType>; }>) => ValidationErrors}
-	 *
-	 */
-	static compareValidator<ValueType = unknown>(
-		keys: string[],
-		comparatorFn: (...args: ValueType[]) => boolean,
-		setErrorOnKey?: string
-	): (
-		group: FormGroup<{
-			[key: string]: FormControl<ValueType>;
-		}>
-	) => ValidationErrors {
-		return CompareValidator(keys, comparatorFn, setErrorOnKey);
 	}
 
 	/**
@@ -143,24 +100,4 @@ export class NgxValidators {
 	static dateRangeValidator(min: string, max: string, format = 'yyyy-MM-dd'): ValidatorFn {
 		return dateRangeValidator(min, max, format);
 	}
-
-	/**
-	 * Form control validator which validates if a date is not in the future.
-	 *
-	 * Returns an `isFutureDate` error
-	 */
-	static hasNoFutureDateValidator = (): ValidatorFn => {
-		return hasNoFutureDateValidator();
-	};
-
-	/**
-	 * Form control validator which validates if a provided string does not contain more or less words than a provided min and/or max.
-	 *
-	 * Returns either a `minWordCountNotReached` or a `maxWordCountReached`
-	 */
-	static wordCountValidator = ({ min, max }: { min: number; max: number }): ValidatorFn => {
-		return WordCountValidator({ min, max });
-	};
-
-	// Add other custom validators :-)
 }
