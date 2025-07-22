@@ -1,15 +1,14 @@
 import {
-	ChangeDetectorRef,
-	Directive,
-	Injector,
-	InputSignal,
-	OnDestroy,
-	OutputRef,
-	QueryList,
-	ViewChildren,
-	effect,
-	inject,
-	input,
+  ChangeDetectorRef,
+  Directive,
+  Injector,
+  InputSignal,
+  OnDestroy,
+  OutputRef,
+  effect,
+  inject,
+  input,
+  viewChildren
 } from '@angular/core';
 import { outputFromObservable, outputToObservable } from '@angular/core/rxjs-interop';
 import {
@@ -97,7 +96,7 @@ export abstract class NgxFormsControlValueAccessor<
 	/**
 	 * A list of all DataFormAccessors en FormAccessors of this component
 	 */
-	@ViewChildren(BaseFormAccessor) accessors: QueryList<DataFormAccessor | FormAccessor>;
+	readonly accessors = viewChildren(BaseFormAccessor);
 
 	/**
 	 * Keys of the fields we wish to disable.
@@ -306,7 +305,7 @@ export abstract class NgxFormsControlValueAccessor<
 	 * Mark all controls of the form as touched
 	 */
 	public markAsTouched(options: FormStateOptionsEntity = {}): void {
-		handleFormAccessorMarkAsTouched(this.form, this.accessors?.toArray() || [], options);
+		handleFormAccessorMarkAsTouched(this.form, this.accessors || [], options);
 
 		// Iben: Detect changes so the changes are visible in the dom
 		this.cdRef.detectChanges();
@@ -316,7 +315,7 @@ export abstract class NgxFormsControlValueAccessor<
 	 * Mark all controls of the form as dirty
 	 */
 	public markAsDirty(options: FormStateOptionsEntity = {}): void {
-		handleFormAccessorMarkAsDirty(this.form, this.accessors?.toArray() || [], options);
+		handleFormAccessorMarkAsDirty(this.form, this.accessors || [], options);
 
 		// Iben: Detect changes so the changes are visible in the dom
 		this.cdRef.detectChanges();
@@ -326,7 +325,7 @@ export abstract class NgxFormsControlValueAccessor<
 	 * Mark all controls of the form as pristine
 	 */
 	public markAsPristine(options: FormStateOptionsEntity = {}): void {
-		handleFormAccessorMarkAsPristine(this.form, this.accessors?.toArray() || [], options);
+		handleFormAccessorMarkAsPristine(this.form, this.accessors || [], options);
 
 		// Iben: Detect changes so the changes are visible in the dom
 		this.cdRef.detectChanges();
@@ -338,7 +337,7 @@ export abstract class NgxFormsControlValueAccessor<
 	public updateAllValueAndValidity(options: FormStateOptionsEntity): void {
 		handleFormAccessorUpdateValueAndValidity(
 			this.form,
-			this.accessors?.toArray() || [],
+			this.accessors || [],
 			options
 		);
 

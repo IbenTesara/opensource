@@ -20,7 +20,7 @@ First, create a component that will be used to replace your target:
 export class LinkComponent {
 	// Keep in mind that Angular's innerHTML & outerHTML will convert attributes to lower casing.
 	// This input property will need to be lowercased to make this work.
-	@Input() public link: string;
+	public link: InputSignal: input();
 }
 ```
 

@@ -1,4 +1,4 @@
-import { ContentChildren, Directive, ElementRef, QueryList, AfterViewInit, inject, input } from '@angular/core';
+import { Directive, ElementRef, AfterViewInit, inject, input, contentChildren } from '@angular/core';
 
 import {
 	NgxAccessibleAbstractDragAndDropItemDirective,
@@ -27,8 +27,7 @@ export class NgxAccessibleDragAndDropHostDirective implements AfterViewInit {
 	/**
 	 * A list of all the drag and drop containers
 	 */
-	@ContentChildren(NgxAccessibleDragAndDropContainerDirective, { descendants: true })
-	public containers: QueryList<NgxAccessibleDragAndDropContainerDirective>;
+	public readonly containers = contentChildren(NgxAccessibleDragAndDropContainerDirective, { descendants: true });
 
 	/**
 	 * An optional description describing how the drag and drop works.
@@ -50,7 +49,7 @@ export class NgxAccessibleDragAndDropHostDirective implements AfterViewInit {
 	 * @param index - The index of the container
 	 */
 	public getContainer(index: number): NgxAccessibleDragAndDropContainerDirective {
-		return this.containers.find((container) => container.index() === index);
+		return this.containers().find((container) => container.index() === index);
 	}
 
 	public ngAfterViewInit(): void {

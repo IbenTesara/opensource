@@ -4,7 +4,6 @@ import {
   ChangeDetectionStrategy,
   ChangeDetectorRef,
   Component,
-  ContentChild,
   ElementRef,
   HostListener,
   inject,
@@ -12,8 +11,9 @@ import {
   OnInit,
   Renderer2,
   TemplateRef,
-  ViewChild,
-  input
+  input,
+  viewChild,
+  contentChild
 } from '@angular/core';
 import { v4 as uuid } from 'uuid';
 
@@ -42,22 +42,22 @@ export class NgxAccordionItemComponent implements OnInit, AfterViewInit, OnDestr
 	/**
 	 * The details element
 	 */
-	@ViewChild('details') public detailsElement: ElementRef;
+	public readonly detailsElement = viewChild<ElementRef>('details');
 
 	/**
 	 * The summary element
 	 */
-	@ViewChild('summary') public summaryElement: ElementRef;
+	public readonly summaryElement = viewChild<ElementRef>('summary');
 
 	/**
 	 * The template for the content
 	 */
-	@ContentChild('contentTmpl') public contentTemplate: TemplateRef<any>;
+	public readonly contentTemplate = contentChild<TemplateRef<any>>('contentTmpl');
 
 	/**
 	 * The template for the header
 	 */
-	@ContentChild('headerTmpl') public headerTemplate: TemplateRef<any>;
+	public readonly headerTemplate = contentChild<TemplateRef<any>>('headerTmpl');
 
 	/**
 	 * Moves the focus to the accordion item above the current one
@@ -133,7 +133,7 @@ export class NgxAccordionItemComponent implements OnInit, AfterViewInit, OnDestr
 	 * Set the focus on the summary item
 	 */
 	public focus() {
-		this.summaryElement?.nativeElement.focus();
+		this.summaryElement()?.nativeElement.focus();
 	}
 
 	/**
@@ -157,12 +157,13 @@ export class NgxAccordionItemComponent implements OnInit, AfterViewInit, OnDestr
 	 */
 	public ngAfterViewInit(): void {
 		// Iben: If for some reason no accordion item is found, we return
-		if (!this.detailsElement?.nativeElement) {
+		const detailsElement = this.detailsElement();
+  if (!detailsElement?.nativeElement) {
 			return;
 		}
 
 		// Iben: Prevent the accordion from being opened if it is disabled
-		this.renderer.listen(this.detailsElement.nativeElement, 'click', (event: Event) => {
+		this.renderer.listen(detailsElement.nativeElement, 'click', (event: Event) => {
 			if (this.disabled()) {
 				event.preventDefault();
 				event.stopImmediatePropagation();
@@ -170,7 +171,7 @@ export class NgxAccordionItemComponent implements OnInit, AfterViewInit, OnDestr
 		});
 
 		// Iben: Listen to the open state of details and update the internal one
-		this.renderer.listen(this.detailsElement.nativeElement, 'toggle', (event: ToggleEvent) => {
+		this.renderer.listen(detailsElement.nativeElement, 'toggle', (event: ToggleEvent) => {
 			this.updateAccordionItemState(event.newState === 'open');
 		});
 	}

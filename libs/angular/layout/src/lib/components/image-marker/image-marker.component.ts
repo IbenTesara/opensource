@@ -1,15 +1,15 @@
 import {
-	AfterViewInit,
-	ChangeDetectionStrategy,
-	Component,
-	ElementRef,
-	inject,
-	OnChanges,
-	OnDestroy,
-	ViewChild,
-	input,
-	OutputEmitterRef,
-	output,
+  AfterViewInit,
+  ChangeDetectionStrategy,
+  Component,
+  ElementRef,
+  inject,
+  OnChanges,
+  OnDestroy,
+  input,
+  OutputEmitterRef,
+  output,
+  viewChild
 } from '@angular/core';
 import { NgxWindowService, simpleChangeHasChanged } from '@ibenvandeveire/ngx-core';
 import { Subject, takeUntil, tap } from 'rxjs';
@@ -61,7 +61,7 @@ export class NgxImageMarkerComponent implements AfterViewInit, OnChanges, OnDest
 	/**
 	 * The rendered image element
 	 */
-	@ViewChild('imageElement') public readonly imageElement: ElementRef;
+	public readonly imageElement = viewChild<ElementRef>('imageElement');
 
 	/**
 	 * The url to the image we wish to render
@@ -115,7 +115,7 @@ export class NgxImageMarkerComponent implements AfterViewInit, OnChanges, OnDest
 
 	ngOnChanges(changes: any): void {
 		// Iben: If no marker exists or if the image has not rendered, early exit
-		if (!this.currentMarker || !this.imageElement) {
+		if (!this.currentMarker || !this.imageElement()) {
 			return;
 		}
 
@@ -159,7 +159,7 @@ export class NgxImageMarkerComponent implements AfterViewInit, OnChanges, OnDest
 			const currentZoomLevel = this.currentZoomLevel();
 			const zoomLevels = this.zoomLevels();
 			this.currentMarker = this.imageMarkerService.createImageMarker(
-				this.imageElement.nativeElement,
+				this.imageElement().nativeElement,
 				this.elementRef.nativeElement,
 				{
 					mode: this.canEdit() ? 'edit' : 'view',

@@ -1,26 +1,28 @@
 import { CdkTableModule } from '@angular/cdk/table';
 import { NgTemplateOutlet, NgClass } from '@angular/common';
 import {
-  AfterContentChecked,
-  ChangeDetectionStrategy,
-  ChangeDetectorRef,
-  Component,
-  ContentChild,
-  ContentChildren,
-  HostBinding,
-  Inject,
-  Input,
-  OnChanges,
-  OnDestroy,
-  OnInit,
-  QueryList,
-  TemplateRef,
-  WritableSignal,
-  inject,
-  signal,
-  input,
-  OutputEmitterRef,
-  output
+	AfterContentChecked,
+	ChangeDetectionStrategy,
+	ChangeDetectorRef,
+	Component,
+	ContentChild,
+	HostBinding,
+	Inject,
+	Input,
+	OnChanges,
+	OnDestroy,
+	OnInit,
+	TemplateRef,
+	WritableSignal,
+	inject,
+	signal,
+	input,
+	OutputEmitterRef,
+	output,
+	contentChildren,
+	contentChild,
+	effect,
+	InputSignal,
 } from '@angular/core';
 import {
 	ControlValueAccessor,
@@ -34,7 +36,12 @@ import { Subject } from 'rxjs';
 import { takeUntil, tap } from 'rxjs/operators';
 
 import { NgxTreeGrid } from '../../directives';
-import { NgxAriaSortPipe, NgxTableHasObserversPipe, NgxTableShowHeaderPipe, NgxTableSortIconPipe } from '../../pipes';
+import {
+	NgxAriaSortPipe,
+	NgxTableHasObserversPipe,
+	NgxTableShowHeaderPipe,
+	NgxTableSortIconPipe,
+} from '../../pipes';
 import {
 	HideHeaderRowOption,
 	NgxTableConfig,
@@ -50,7 +57,6 @@ import {
 	writeNgxTableValue,
 } from '../../utils';
 import { NgxAbstractTableCellDirective } from '../cell';
-
 
 interface TableCellTemplate {
 	headerTemplate?: TemplateRef<any>;
@@ -94,17 +100,16 @@ export class NgxTableComponent
 	/**
 	 * Default class that will be put on the ngx-table component
 	 */
-	@HostBinding('class') public readonly componentClass =
-		this.ngxTableConfig?.ngxTableClass || '';
+	@HostBinding('class') public readonly componentClass = this.ngxTableConfig?.ngxTableClass || '';
 
 	/**
 	 * The loading state of our table
 	 */
 	/**
- * The loading state of our table
- */
-@HostBinding('class.ngx-table-loading')
-public readonly loading = input<boolean>(false);
+	 * The loading state of our table
+	 */
+	@HostBinding('class.ngx-table-loading')
+	public readonly loading = input<boolean>(false);
 
 	/**
 	 * A subject to handle the observables when the component gets destroyed
@@ -203,50 +208,48 @@ public readonly loading = input<boolean>(false);
 	/**
 	 * A QueryList of all the table cell templates
 	 */
-	@ContentChildren(NgxAbstractTableCellDirective)
-	public tableCellTemplates: QueryList<NgxAbstractTableCellDirective>;
+	public readonly tableCellTemplates = contentChildren(NgxAbstractTableCellDirective);
 
 	/**
 	 * A template to provide a detail row
 	 */
-	@ContentChild('detailRowTmpl', { static: false })
-	public detailRowTemplate: TemplateRef<any>;
+	public readonly detailRowTemplate = contentChild<TemplateRef<any>>('detailRowTmpl');
 
 	/**
 	 * A template to provide an empty view
 	 */
-	@ContentChild('emptyTmpl', { static: false })
-	public emptyTemplate: TemplateRef<any>;
+	public readonly emptyTemplate = contentChild<TemplateRef<any>>('emptyTmpl');
 
 	/**
 	 * A template to provide a loading view
 	 */
-	@ContentChild('loadingTmpl', { static: false })
-	public loadingTemplate: TemplateRef<any>;
+	public readonly loadingTemplate = contentChild<TemplateRef<any>>('loadingTmpl');
 
 	/**
 	 * A template to provide a checkbox template
 	 */
+
 	@ContentChild('checkboxTmpl', { static: false })
 	public checkboxTemplate: TemplateRef<any>;
 
 	/**
 	 * A template to provide a radio button template
 	 */
+
 	@ContentChild('radioTmpl', { static: false })
 	public radioTemplate: TemplateRef<any>;
 
 	/**
 	 * A template to provide a sort template
 	 */
+
 	@ContentChild('sortTmpl', { static: false })
 	public sortTemplate: TemplateRef<any>;
 
 	/**
 	 * A template to provide a open state template
 	 */
-	@ContentChild('openRowStateTmpl', { static: false })
-	public openRowStateTemplate: TemplateRef<any>;
+	public readonly openRowStateTemplate = contentChild<TemplateRef<any>>('openRowStateTmpl');
 
 	/**
 	 * A list of all column names we want to represent in the table
@@ -267,7 +270,9 @@ public readonly loading = input<boolean>(false);
 	 * An optional property that defines whether multiple rows can be open at once.
 	 * By default, this is false. The default can be overwritten in the NgxTableConfig.
 	 */
-	public readonly allowMultipleOpenRows = input<boolean>(this.ngxTableConfig?.allowMultipleRowsOpen || false);
+	public readonly allowMultipleOpenRows = input<boolean>(
+		this.ngxTableConfig?.allowMultipleRowsOpen || false
+	);
 
 	/**
 	 * Whether or not rows in the table are selectable
@@ -297,16 +302,15 @@ public readonly loading = input<boolean>(false);
 	 *
 	 * The current sorting event.
 	 */
-	@Input() public set currentSorting(event: NgxTableSortEvent) {
-		this.currentSortingEvent.set(event);
-		this.handleCurrentSort(event);
-	}
+	public currentSorting: InputSignal<NgxTableSortEvent> = input();
 
 	/**
 	 * An optional property to define whether we want to add a class to the currently opened row.
 	 * By default this is false. The default can be overwritten in the NgxTableConfig.
 	 */
-	public readonly showSelectedOpenRow = input<boolean>(this.ngxTableConfig?.showSelectedOpenRow || false);
+	public readonly showSelectedOpenRow = input<boolean>(
+		this.ngxTableConfig?.showSelectedOpenRow || false
+	);
 
 	/**
 	 * An optional class to add to the rows of the table
@@ -317,54 +321,74 @@ public readonly loading = input<boolean>(false);
 	 * An optional key that can be used in the data in order to highlight a row. If this property is present and true, the highlight class will be provided.
 	 * By default, this key is ngx-highlight. The default can be overwritten in the NgxTableConfig
 	 */
-	public readonly highlightKey = input<string>(this.ngxTableConfig?.highlightKey || 'ngx-highlight');
+	public readonly highlightKey = input<string>(
+		this.ngxTableConfig?.highlightKey || 'ngx-highlight'
+	);
 
 	/**
 	 * An optional property to define whether we want to show a visual indicator of the open and closed state of a detail row.
 	 * By default this is false. The default can be overwritten in the NgxTableConfig.
 	 */
-	public readonly showOpenRowState = input<boolean>(this.ngxTableConfig?.showOpenRowState || false);
+	public readonly showOpenRowState = input<boolean>(
+		this.ngxTableConfig?.showOpenRowState || false
+	);
 
 	/**
 	 * An optional property to define the default open state of the detail row.
 	 * By default this is 'on-click'. The default can be overwritten in the NgxTableConfig.
 	 */
-	public readonly showDetailRow = input<ShowDetailRowOption>(this.ngxTableConfig?.showDetailRow || 'on-click');
+	public readonly showDetailRow = input<ShowDetailRowOption>(
+		this.ngxTableConfig?.showDetailRow || 'on-click'
+	);
 
 	/**
 	 * An optional property to define whether we want to emit the row when there's only one item in the table and the showDetailRow is set to `on-single-item`
 	 * By default this is false. The default can be overwritten in the NgxTableConfig.
 	 */
-	public readonly emitValueOnSingleItem = input<boolean>(this.ngxTableConfig?.showDetailRow === 'on-single-item' &&
-    this.ngxTableConfig?.emitValueOnSingleItem);
+	public readonly emitValueOnSingleItem = input<boolean>(
+		this.ngxTableConfig?.showDetailRow === 'on-single-item' &&
+			this.ngxTableConfig?.emitValueOnSingleItem
+	);
 
 	/**
 	 * An optional key to open a row by default upon rendering.
 	 */
-	@Input() public set defaultRowOpen(openedIndex: number) {
-		// Wouter: The function findIndex is most likely to be used. It returns
-		// -1 if the index was not found.
-		if (openedIndex < 0) {
-			return;
-		}
-
-		// Wouter: This timeout is needed to wait for the TemplateRefs to be found.
-		setTimeout(() => {
-			this.handleRowClicked(this.data()[openedIndex], openedIndex);
-			this.cdRef.detectChanges();
-		});
-	}
+	public defaultRowOpen: InputSignal<number> = input();
 
 	/**
 	 * An optional property to define whether we want the header to be hidden in certain cases.
 	 * By default this is never. The default can be overwritten in the NgxTableConfig
 	 */
-	public readonly hideHeaderWhen = input<HideHeaderRowOption>(this.ngxTableConfig?.hideHeaderWhen || 'never');
+	public readonly hideHeaderWhen = input<HideHeaderRowOption>(
+		this.ngxTableConfig?.hideHeaderWhen || 'never'
+	);
 
 	/**
 	 * Returns the data of the row that was clicked
 	 */
 	public rowClicked: OutputEmitterRef<any> = output<any>();
+
+	constructor() {
+		effect(() => {
+			this.currentSortingEvent.set(this.currentSorting());
+			this.handleCurrentSort(this.currentSorting());
+		});
+
+		effect(() => {
+			const openedIndex = this.defaultRowOpen();
+			// Wouter: The function findIndex is most likely to be used. It returns
+			// -1 if the index was not found.
+			if (openedIndex < 0) {
+				return;
+			}
+
+			// Wouter: This timeout is needed to wait for the TemplateRefs to be found.
+			setTimeout(() => {
+				this.handleRowClicked(this.data()[openedIndex], openedIndex);
+				this.cdRef.detectChanges();
+			});
+		});
+	}
 
 	/**
 	 * WriteValue method for the value accessor
@@ -469,7 +493,7 @@ public readonly loading = input<boolean>(false);
 	 */
 	public handleRowState(index: number, action: 'open' | 'close'): void {
 		// Iben: If there's no detail row we early exit
-		if (!this.detailRowTemplate) {
+		if (!this.detailRowTemplate()) {
 			return;
 		}
 
@@ -492,7 +516,7 @@ public readonly loading = input<boolean>(false);
 		this.editableTableCellRecord.set({});
 
 		// Iben: Loop over all provided table cell templates
-		Array.from(this.tableCellTemplates).forEach((tableCellTemplate) => {
+		Array.from(this.tableCellTemplates()).forEach((tableCellTemplate) => {
 			// Iben: Early exit in case for some reason the template is undefined
 			if (!tableCellTemplate) {
 				return;
@@ -509,10 +533,10 @@ public readonly loading = input<boolean>(false);
 				cypressDataTags: cypressDataTagsInput,
 				editable: editableInput,
 			} = tableCellTemplate;
-   const column = columnInput();
-   const sortable = sortableInput();
-   const cypressDataTags = cypressDataTagsInput();
-   const editable = editableInput();
+			const column = columnInput();
+			const sortable = sortableInput();
+			const cypressDataTags = cypressDataTagsInput();
+			const editable = editableInput();
 
 			this.tableCellTemplateRecord.update((value) => {
 				return {
@@ -559,7 +583,7 @@ public readonly loading = input<boolean>(false);
 
 		// Iben: Check if at least one template has a footer template, so that we know whether or not we have to render the footer row
 		this.hasFooterTemplates.set(
-			Array.from(this.tableCellTemplates).some((cellTemplate) =>
+			Array.from(this.tableCellTemplates()).some((cellTemplate) =>
 				Boolean(cellTemplate.footerTemplate)
 			)
 		);
@@ -594,7 +618,7 @@ public readonly loading = input<boolean>(false);
 
 	public selectRow(index: number): void {
 		const selectableKey = this.selectableKey();
-  this.rowsFormGroup
+		this.rowsFormGroup
 			.get(selectableKey ? `${this.data()[index][selectableKey]}` : `${index}`)
 			.patchValue(true);
 	}
@@ -635,12 +659,14 @@ public readonly loading = input<boolean>(false);
 	private handleRowColumns(): void {
 		// Iben: Make sure that the select option, the open row state and the defined actions are correctly placed
 		const columns = this.columns();
-  const actions = this.actions();
-  this.definedColumns.set([
+		const actions = this.actions();
+		this.definedColumns.set([
 			...(this.selectable() ? ['ngxTableSelectColumn'] : []),
 			...(columns || []),
 			...(actions || []),
-			...(this.showOpenRowState() && this.detailRowTemplate ? ['ngxOpenRowStateColumn'] : []),
+			...(this.showOpenRowState() && this.detailRowTemplate()
+				? ['ngxOpenRowStateColumn']
+				: []),
 		]);
 
 		// Iben: Set the actual table columns

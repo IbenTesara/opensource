@@ -3,11 +3,12 @@ import {
 	ChangeDetectorRef,
 	Directive,
 	ElementRef,
-	Input,
+	InputSignal,
 	OnDestroy,
 	TemplateRef,
 	Type,
 	ViewContainerRef,
+	effect,
 	inject,
 	input,
 } from '@angular/core';
@@ -64,26 +65,13 @@ export class NgxDisplayContentDirective implements AfterViewInit, OnDestroy {
 	/**
 	 * Renders the item or a default fallback based on the provided conditions
 	 */
-	@Input() set displayContent(conditions: NgxDisplayContentConditions) {
-		// Iben: Update the conditions
-		this.updateConditions(conditions);
-
-		// Iben: Notify that the view needs to be updated
-		this.updateViewSubject.next();
-	}
+	public displayContent: InputSignal<NgxDisplayContentConditions> = input.required();
 
 	/**
 	 * Override the existing configuration with custom configuration
 	 */
-	@Input() set displayContentConfiguration(
-		configuration: NgxDisplayContentOverrideConfiguration
-	) {
-		// Iben: Update the override configuration
-		this.overrideConfiguration = configuration;
-
-		// Iben: Notify that the view needs to be updated
-		this.updateViewSubject.next();
-	}
+	public displayContentConfiguration: InputSignal<NgxDisplayContentOverrideConfiguration> =
+		input();
 
 	/**
 	 * The aria-live label we wish to provide to the parent element. By default, this is 'polite'.
@@ -93,10 +81,8 @@ export class NgxDisplayContentDirective implements AfterViewInit, OnDestroy {
 	readonly displayContentAriaLive = input<NgxDisplayContentAriaLive>('polite');
 
 	constructor() {
-		const configuration = this.configuration;
-
 		// Iben: If we want to listen to the online status, we set up a listener to the status of the application
-		if (configuration.listenToOnlineStatus) {
+		if (this.configuration.listenToOnlineStatus) {
 			this.onlineService.online$
 				.pipe(
 					distinctUntilChanged(),
@@ -111,6 +97,22 @@ export class NgxDisplayContentDirective implements AfterViewInit, OnDestroy {
 				)
 				.subscribe();
 		}
+
+		effect(() => {
+			// Iben: Update the conditions
+			this.updateConditions(this.displayContent());
+
+			// Iben: Notify that the view needs to be updated
+			this.updateViewSubject.next();
+		});
+
+		effect(() => {
+			// Iben: Update the override configuration
+			this.overrideConfiguration = this.displayContentConfiguration();
+
+			// Iben: Notify that the view needs to be updated
+			this.updateViewSubject.next();
+		});
 	}
 
 	public ngAfterViewInit(): void {

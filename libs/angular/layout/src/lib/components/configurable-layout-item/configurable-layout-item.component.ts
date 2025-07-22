@@ -1,4 +1,4 @@
-import { Component, TemplateRef, ViewChild, input } from '@angular/core';
+import { Component, TemplateRef, input, viewChild } from '@angular/core';
 
 /**
  * The layout item pairs with the `<ngx-configurable-layout>` container.
@@ -26,5 +26,5 @@ export class NgxConfigurableLayoutItemComponent {
 	/**
 	 * The template reference of the;
 	 */
-	@ViewChild('contentTmpl', { static: false }) public template: TemplateRef<any>;
+	public readonly template = viewChild<TemplateRef<any>>('contentTmpl');
 }

@@ -9,23 +9,22 @@ import {
 } from '@angular/cdk/drag-drop';
 import { NgTemplateOutlet, NgStyle, CommonModule } from '@angular/common';
 import {
-  AfterContentChecked,
-  Component,
-  ContentChild,
-  ContentChildren,
-  Input,
-  OnChanges,
-  OnDestroy,
-  OnInit,
-  QueryList,
-  SimpleChanges,
-  TemplateRef,
-  WritableSignal,
-  forwardRef,
-  signal,
-  AfterViewInit,
-  ChangeDetectionStrategy,
-  input
+	AfterContentChecked,
+	Component,
+	OnChanges,
+	OnDestroy,
+	OnInit,
+	TemplateRef,
+	WritableSignal,
+	forwardRef,
+	signal,
+	AfterViewInit,
+	ChangeDetectionStrategy,
+	input,
+	contentChildren,
+	contentChild,
+	effect,
+	InputSignal,
 } from '@angular/core';
 import {
 	ControlValueAccessor,
@@ -109,13 +108,12 @@ export class NgxConfigurableLayoutComponent
 	/**
 	 * A list of the configurable item templates.
 	 */
-	@ContentChildren(NgxConfigurableLayoutItemComponent)
-	public readonly configurableItemTemplates: QueryList<NgxConfigurableLayoutItemComponent>;
+	public readonly configurableItemTemplates = contentChildren(NgxConfigurableLayoutItemComponent);
 
 	/**
 	 * An optional template to overwrite the default checkbox
 	 */
-	@ContentChild('checkboxTmpl') public readonly checkboxTemplate?: TemplateRef<any>;
+	public readonly checkboxTemplate = contentChild<TemplateRef<any>>('checkboxTmpl');
 
 	// This component uses the internal implementation of the `ngx-forms` library.
 	// Until we have moved to an NX workspace setup, we are unable to install the required
@@ -151,20 +149,7 @@ export class NgxConfigurableLayoutComponent
 	 *
 	 * This property can only be used when the layoutType  is set to `static`.
 	 */
-	@Input() public set keys(keys: string[][]) {
-		// Wouter: If no keys are provided, we prevent the patching of the control.
-		if (!keys) {
-			return;
-		}
-
-		// Wouter: Patch the provided keys onto the control.
-		this.form.patchValue(
-			[...keys].map((row) => {
-				return [...row].map((key) => ({ key, isActive: true }));
-			}),
-			{ emitEvent: false }
-		);
-	}
+	public keys: InputSignal<string[][]> = input();
 
 	/**
 	 * Whether the inactive items should be visible in the layout.
@@ -224,8 +209,26 @@ export class NgxConfigurableLayoutComponent
 	 * This input requires an amount in px, rem, %, etc.
 	 */
 	public readonly columnGap = input<string>();
-	// Lifecycle methods
-	// ==============================
+
+	constructor() {
+		effect(() => {
+			const keys = this.keys();
+
+			// Wouter: If no keys are provided, we prevent the patching of the control.
+			if (!keys) {
+				return;
+			}
+
+			// Wouter: Patch the provided keys onto the control.
+			this.form.patchValue(
+				[...keys].map((row) => {
+					return [...row].map((key) => ({ key, isActive: true }));
+				}),
+				{ emitEvent: false }
+			);
+		});
+	}
+
 	public ngOnInit(): void {
 		// Iben: Listen to the form
 		this.form.valueChanges
@@ -310,8 +313,6 @@ export class NgxConfigurableLayoutComponent
 		this.destroyedSubject.complete();
 	}
 
-	// Component methods
-	// ==============================
 	// TODO: use the ngx-forms formAccessor instead of copying its internal way of working
 	private onChanged: Function = () => {};
 	private onTouched: Function = () => {};
@@ -442,7 +443,7 @@ export class NgxConfigurableLayoutComponent
 	): boolean {
 		// Iben: If no predicate is passed, we always return true
 		const dropPredicate = this.dropPredicate();
-  if (!dropPredicate) {
+		if (!dropPredicate) {
 			return true;
 		}
 
@@ -470,10 +471,11 @@ export class NgxConfigurableLayoutComponent
 		this.itemTemplateRecord.set({});
 		this.itemLabelRecord.set({});
 
-		Array.from(this.configurableItemTemplates).forEach((itemTemplate) => {
-			const { key: keyInput, template, label: labelInput } = itemTemplate;
-   const key = keyInput();
-   const label = labelInput();
+		Array.from(this.configurableItemTemplates()).forEach((itemTemplate) => {
+			const { key: keyInput, template: templateInput, label: labelInput } = itemTemplate;
+			const template = templateInput();
+			const key = keyInput();
+			const label = labelInput();
 
 			// Wouter: Update the item template record with the unique column key and its template ref
 			this.itemTemplateRecord.update((value) => ({ ...value, [key]: template }));

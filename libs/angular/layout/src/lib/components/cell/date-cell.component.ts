@@ -54,17 +54,20 @@ export class NgxDateTableCellComponent extends NgxAbstractTableCellDirective {
 	/**
 	 * A template for the header of the cell
 	 */
+
 	@ContentChild('headerTmpl', { static: false })
 	public override headerTemplate: TemplateRef<unknown> = undefined;
 	/**
 	 * A template for the footer of the cell
 	 */
+
 	@ContentChild('footerTmpl', { static: false })
 	public override footerTemplate: TemplateRef<unknown> = undefined;
 
 	/**
 	 * ViewChild that represents the cell template
 	 */
+
 	@ViewChild('cellTmpl', { static: true })
 	public override cellTemplate: TemplateRef<any> = undefined;
 

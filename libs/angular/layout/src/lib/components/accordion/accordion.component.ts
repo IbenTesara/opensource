@@ -1,4 +1,11 @@
-import { ChangeDetectionStrategy, Component, Input, OnDestroy } from '@angular/core';
+import {
+	ChangeDetectionStrategy,
+	Component,
+	effect,
+	input,
+	InputSignal,
+	OnDestroy,
+} from '@angular/core';
 import { Subject, take, tap } from 'rxjs';
 
 import { NgxAccordionOpenBehavior } from '../../types';
@@ -38,9 +45,13 @@ export class NgxAccordionComponent implements OnDestroy {
 	/**
 	 * Open the specific items in the accordion
 	 */
-	@Input() public set open(open: NgxAccordionOpenBehavior) {
-		this.itemRegisteredSubject
-			.pipe(
+	public open: InputSignal<NgxAccordionOpenBehavior> = input();
+
+	constructor() {
+		effect(() => {
+			const open = this.open();
+
+			this.itemRegisteredSubject.pipe(
 				take(1),
 				tap(() => {
 					// Iben: Use a setTimeOut so we wait an extra tick
@@ -59,8 +70,8 @@ export class NgxAccordionComponent implements OnDestroy {
 						}
 					});
 				})
-			)
-			.subscribe();
+			);
+		});
 	}
 
 	/**

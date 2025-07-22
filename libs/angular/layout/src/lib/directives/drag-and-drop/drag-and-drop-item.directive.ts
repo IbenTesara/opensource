@@ -4,7 +4,6 @@ import {
 	ElementRef,
 	HostBinding,
 	HostListener,
-	Input,
 	signal,
 	WritableSignal,
 	OnInit,
@@ -12,7 +11,8 @@ import {
 	input,
 	OutputEmitterRef,
 	output,
-  InputSignal,
+	InputSignal,
+	effect,
 } from '@angular/core';
 
 import {
@@ -93,9 +93,7 @@ export class NgxAccessibleDragAndDropItemDirective
 	/**
 	 * Handle the ArrowRight Press
 	 */
-	@HostListener('keydown.ArrowRight', ['$event']) public onArrowRight(
-		event: Event
-	): void {
+	@HostListener('keydown.ArrowRight', ['$event']) public onArrowRight(event: Event): void {
 		this.moveItem('right', event as KeyboardEvent);
 	}
 
@@ -111,7 +109,9 @@ export class NgxAccessibleDragAndDropItemDirective
 	 * An unique id of the draggable item
 	 */
 
-	public readonly itemId: InputSignal<string> = input.required<string>({ alias: 'ngxAccessibleDragAndDropItemId' });
+	public readonly itemId: InputSignal<string> = input.required<string>({
+		alias: 'ngxAccessibleDragAndDropItemId',
+	});
 
 	/**
 	 * An optional label for the draggable item
@@ -122,16 +122,23 @@ export class NgxAccessibleDragAndDropItemDirective
 	/**
 	 * Whether the draggable item  is disabled
 	 */
-
-	@Input({ alias: 'ngxAccessibleDragAndDropDisabled' }) public set disabled(isDisabled: boolean) {
-		this.tabIndex.set(isDisabled ? -1 : 0);
-	}
+	public disabled: InputSignal<boolean> = input(false, {
+		alias: 'ngxAccessibleDragAndDropDisabled',
+	});
 
 	/**
 	 * Emits when the item has been moved through keyboard input
 	 */
 	public ngxAccessibleDragAndDropItemMove: OutputEmitterRef<NgxAccessibleDragAndDropMoveEvent> =
 		output<NgxAccessibleDragAndDropMoveEvent>();
+
+	constructor() {
+		super();
+
+		effect(() => {
+			this.tabIndex.set(this.disabled() ? -1 : 0);
+		});
+	}
 
 	/**
 	 *  Marks the item as focussed and selected

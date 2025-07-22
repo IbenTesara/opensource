@@ -1,17 +1,17 @@
 import {
-	AfterViewInit,
-	Directive,
-	ElementRef,
-	HostBinding,
-	HostListener,
-	OnInit,
-	signal,
-	ViewChild,
-	WritableSignal,
-	inject,
-	input,
-	OutputEmitterRef,
-	output,
+  AfterViewInit,
+  Directive,
+  ElementRef,
+  HostBinding,
+  HostListener,
+  OnInit,
+  signal,
+  WritableSignal,
+  inject,
+  input,
+  OutputEmitterRef,
+  output,
+  viewChild
 } from '@angular/core';
 import { v4 as uuid } from 'uuid';
 
@@ -55,7 +55,7 @@ export abstract class NgxTourStepComponent<DataType = any> implements OnInit, Af
 	/**
 	 * The element of the tour-step that is seen as the title
 	 */
-	@ViewChild('stepTitle') public titleElement: ElementRef<HTMLElement>;
+	public readonly titleElement = viewChild<ElementRef<HTMLElement>>('stepTitle');
 
 	/**
 	 * The position of the step
@@ -111,7 +111,8 @@ export abstract class NgxTourStepComponent<DataType = any> implements OnInit, Af
 
 	public ngAfterViewInit(): void {
 		// Iben: If no title element was found, we throw an error
-		if (!this.titleElement) {
+		const titleElement = this.titleElement();
+  if (!titleElement) {
 			console.error(
 				'NgxTourService: The tour step component does not have an element marked with `stepTitle`. Because of that, the necessary accessibility attributes could not be set. Please add the `stepTitle` tag to the element that represents the title of the step.'
 			);
@@ -120,12 +121,12 @@ export abstract class NgxTourStepComponent<DataType = any> implements OnInit, Af
 		}
 
 		// Iben: Connect the aria-labbledby tag to the title element
-		let id = this.titleElement.nativeElement.getAttribute('id');
+		let id = titleElement.nativeElement.getAttribute('id');
 
 		// Iben: If the title element does not have an id, we generate one
 		if (!id) {
 			id = uuid();
-			this.titleElement.nativeElement.setAttribute('id', id);
+			titleElement.nativeElement.setAttribute('id', id);
 		}
 
 		// Iben: To prevent issues with changeDetection, we use a signal here to update the id

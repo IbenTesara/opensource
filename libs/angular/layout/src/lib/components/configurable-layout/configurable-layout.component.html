@@ -49,7 +49,7 @@
 							></ng-template>
 							@if (!form.disabled && showInactive() && !item.disabled) {
 								<ng-template
-									[ngTemplateOutlet]="checkboxTemplate || defaultCheckBoxTmpl"
+									[ngTemplateOutlet]="checkboxTemplate() || defaultCheckBoxTmpl"
 									[ngTemplateOutletContext]="{
 										$implicit: isActiveFormRecord.controls[item.key],
 									}"

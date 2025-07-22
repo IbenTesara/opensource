@@ -1,4 +1,4 @@
-import { ViewChildren, QueryList, Directive, OnDestroy } from '@angular/core';
+import { Directive, OnDestroy, viewChildren } from '@angular/core';
 import { AbstractControl } from '@angular/forms';
 import { Subject } from 'rxjs';
 
@@ -17,7 +17,7 @@ export class FormAccessorContainer implements OnDestroy {
 	/**
 	 * A list of all DataFormAccessors en FormAccessors of this component
 	 */
-	@ViewChildren(BaseFormAccessor) accessors: QueryList<DataFormAccessor | FormAccessor>;
+	readonly accessors = viewChildren(BaseFormAccessor);
 
 	/**
 	 * Destroyed state of the component
@@ -34,7 +34,7 @@ export class FormAccessorContainer implements OnDestroy {
 	 */
 	public markAllAsDirty(form: AbstractControl, options: FormStateOptionsEntity = {}): void {
 		this.handleAccessorsAction(() => {
-			handleFormAccessorMarkAsDirty(form, this.accessors?.toArray() || [], options);
+			handleFormAccessorMarkAsDirty(form, this.accessors || [], options);
 		});
 	}
 
@@ -48,7 +48,7 @@ export class FormAccessorContainer implements OnDestroy {
 	 */
 	public markAllAsTouched(form: AbstractControl, options: FormStateOptionsEntity = {}): void {
 		this.handleAccessorsAction(() => {
-			handleFormAccessorMarkAsTouched(form, this.accessors?.toArray() || [], options);
+			handleFormAccessorMarkAsTouched(form, this.accessors || [], options);
 		});
 	}
 
@@ -65,7 +65,7 @@ export class FormAccessorContainer implements OnDestroy {
 		this.handleAccessorsAction(() => {
 			handleFormAccessorUpdateValueAndValidity(
 				form,
-				this.accessors?.toArray() || [],
+				this.accessors || [],
 				options
 			);
 		});
@@ -86,7 +86,8 @@ export class FormAccessorContainer implements OnDestroy {
 	 */
 	private handleAccessorsAction(action: () => void) {
 		// Iben: Throw a warn in case there are no accessors found
-		if (!this.accessors || this.accessors?.toArray().length === 0) {
+		const accessors = this.accessors();
+  if (!accessors || accessors.length === 0) {
 			console.warn(
 				'NgxForms: No (Data)FormAccessors were found in this component. Check if each (Data)FormAccessor also provides the BaseFormAccessor in its providers array. If this is intentional, this warning can be ignored.'
 			);
