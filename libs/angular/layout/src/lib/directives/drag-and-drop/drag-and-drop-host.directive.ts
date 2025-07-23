@@ -60,6 +60,6 @@ export class NgxAccessibleDragAndDropHostDirective implements AfterViewInit {
 	}
 
 	public registerDragAndDropItem(item: NgxAccessibleAbstractDragAndDropItemDirective): void {
-		this.items[item.itemId] = item;
+		this.items[item.itemId()] = item;
 	}
 }

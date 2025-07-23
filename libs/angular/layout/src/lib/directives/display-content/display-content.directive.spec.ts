@@ -109,7 +109,7 @@ describe('NgxDisplayContentDirective', () => {
 		});
 
 		it('should render the content if no conditions are provided', () => {
-      fixture.componentRef.setInput('conditions', { loading: true });
+      fixture.componentRef.setInput('conditions', {});
 			fixture.detectChanges();
 
 			const content = fixture.nativeElement.querySelectorAll('.content');

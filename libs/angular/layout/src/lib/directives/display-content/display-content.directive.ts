@@ -100,7 +100,7 @@ export class NgxDisplayContentDirective implements AfterViewInit, OnDestroy {
 
 		effect(() => {
 			// Iben: Update the conditions
-			this.updateConditions(this.displayContent());
+			this.updateConditions(this.displayContent() || {});
 
 			// Iben: Notify that the view needs to be updated
 			this.updateViewSubject.next();
@@ -108,7 +108,7 @@ export class NgxDisplayContentDirective implements AfterViewInit, OnDestroy {
 
 		effect(() => {
 			// Iben: Update the override configuration
-			this.overrideConfiguration = this.displayContentConfiguration();
+			this.overrideConfiguration = this.displayContentConfiguration() || {};
 
 			// Iben: Notify that the view needs to be updated
 			this.updateViewSubject.next();

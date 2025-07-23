@@ -1,6 +1,6 @@
 import { Pipe, PipeTransform } from '@angular/core';
 
-import { NgxTableSortDirection } from '../enums/sort-direction.enum';
+import { NgxTableSortDirection } from '../../enums';
 
 @Pipe({
 	name: 'ngxTableSortIcon',

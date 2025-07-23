@@ -1,6 +1,6 @@
 import { Directive, ElementRef, HostListener, AfterViewInit, inject, input } from '@angular/core';
 
-import { NgxTreeGridCellTarget, NgxTreeGridRowTarget } from '../../interfaces';
+import { NgxTreeGridCellTarget, NgxTreeGridRowTarget } from '../../types';
 import { NgxHasFocusDirective } from '../has-focus-action';
 
 import { NgxTreeGridRowDirective } from './tree-grid-row.directive';
@@ -33,7 +33,7 @@ export class NgxTreeGridCellDirective extends NgxHasFocusDirective implements Af
 	/**
 	 * Set focus on the previous cell to the left
 	 */
-	@HostListener('keydown.ArrowLeft', ['$event']) private moveLeft(event: Event): void {
+	@HostListener('keydown.ArrowLeft', ['$event']) moveLeft(event: Event): void {
 		this.handleWhenFocussed(() => {
 			// Iben: Stop the event from bubbling so that the row does not open when navigating through the row (see arrowLeft in the NgxTreeGridRowDirective )
 			const ngxTreeGridCell = this.ngxTreeGridCell();
@@ -49,42 +49,42 @@ export class NgxTreeGridCellDirective extends NgxHasFocusDirective implements Af
 	/**
 	 * Set focus on the next cell to the right
 	 */
-	@HostListener('keydown.ArrowRight') private moveRight(): void {
+	@HostListener('keydown.ArrowRight') moveRight(): void {
 		this.moveToCell(this.ngxTreeGridCell() + 1, 'current');
 	}
 
 	/**
 	 * Set focus on the cell above
 	 */
-	@HostListener('keydown.ArrowUp') private moveUp(): void {
+	@HostListener('keydown.ArrowUp') moveUp(): void {
 		this.moveToCell(this.ngxTreeGridCell(), 'above');
 	}
 
 	/**
 	 * Set focus on the cell below
 	 */
-	@HostListener('keydown.ArrowDown') private moveDown(): void {
+	@HostListener('keydown.ArrowDown') moveDown(): void {
 		this.moveToCell(this.ngxTreeGridCell(), 'below');
 	}
 
 	/**
 	 * Set focus on the first cell of the grid
 	 */
-	@HostListener('keydown.PageUp') private moveToFirstCellOfGrid(): void {
+	@HostListener('keydown.PageUp') moveToFirstCellOfGrid(): void {
 		this.moveToCell('first', 'first');
 	}
 
 	/**
 	 * Set focus on the first cell of the row
 	 */
-	@HostListener('keydown.Home') private moveToFirstOfRow(): void {
+	@HostListener('keydown.Home') moveToFirstOfRow(): void {
 		this.moveToCell('first', 'current');
 	}
 
 	/**
 	 * Set focus on the first cell of the same column of the grid
 	 */
-	@HostListener('keydown.control.Home') private moveToFirstColumnOfGrid(): void {
+	@HostListener('keydown.control.Home') moveToFirstColumnOfGrid(): void {
 		this.moveToCell(this.ngxTreeGridCell(), 'first');
 	}
 
@@ -98,14 +98,14 @@ export class NgxTreeGridCellDirective extends NgxHasFocusDirective implements Af
 	/**
 	 * Set focus on the last cell of the row
 	 */
-	@HostListener('keydown.End') private moveToBottomEnd(): void {
+	@HostListener('keydown.End') moveToBottomEnd(): void {
 		this.moveToCell('last', 'current');
 	}
 
 	/**
 	 * Set focus on the last cell of the same column of the grid
 	 */
-	@HostListener('keydown.control.End') private moveToBottomControlEnd(): void {
+	@HostListener('keydown.control.End') moveToBottomControlEnd(): void {
 		this.moveToCell(this.ngxTreeGridCell(), 'last');
 	}
 

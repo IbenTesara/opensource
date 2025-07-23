@@ -9,8 +9,6 @@ import {
 	handleFormAccessorUpdateValueAndValidity,
 } from '../../utils';
 import { BaseFormAccessor } from '../base-form/base-form.accessor';
-import { DataFormAccessor } from '../data-form/data-form.accessor';
-import { FormAccessor } from '../form/form.accessor';
 
 @Directive()
 export class FormAccessorContainer implements OnDestroy {
@@ -34,7 +32,7 @@ export class FormAccessorContainer implements OnDestroy {
 	 */
 	public markAllAsDirty(form: AbstractControl, options: FormStateOptionsEntity = {}): void {
 		this.handleAccessorsAction(() => {
-			handleFormAccessorMarkAsDirty(form, this.accessors || [], options);
+			handleFormAccessorMarkAsDirty(form, this.accessors() as any || [], options);
 		});
 	}
 
@@ -48,7 +46,7 @@ export class FormAccessorContainer implements OnDestroy {
 	 */
 	public markAllAsTouched(form: AbstractControl, options: FormStateOptionsEntity = {}): void {
 		this.handleAccessorsAction(() => {
-			handleFormAccessorMarkAsTouched(form, this.accessors || [], options);
+			handleFormAccessorMarkAsTouched(form, this.accessors() as any || [], options);
 		});
 	}
 
@@ -65,7 +63,7 @@ export class FormAccessorContainer implements OnDestroy {
 		this.handleAccessorsAction(() => {
 			handleFormAccessorUpdateValueAndValidity(
 				form,
-				this.accessors || [],
+				this.accessors() as any || [],
 				options
 			);
 		});

@@ -1,7 +1,8 @@
 import { Pipe, PipeTransform } from '@angular/core';
 
-import { NgxAbstractTableCellDirective } from '../../cell';
-import { NgxTableSortEvent } from '../../interfaces';
+import { NgxAbstractTableCellDirective } from '../../components';
+import { NgxTableSortEvent } from '../../types';
+
 
 @Pipe({
 	name: 'ngxAriaSort',

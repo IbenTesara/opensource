@@ -1,4 +1,4 @@
-import { Pipe, PipeTransform, EventEmitter } from '@angular/core';
+import { Pipe,PipeTransform,OutputEmitterRef } from '@angular/core';
 
 @Pipe({
 	name: 'ngxTableHasObservers',
@@ -10,7 +10,7 @@ export class NgxTableHasObserversPipe implements PipeTransform {
 	 *
 	 * @param output - The provided EventEmitter
 	 */
-	public transform(output: EventEmitter<unknown>): boolean {
-		return output && output.observers.length > 0;
+	public transform(output: OutputEmitterRef<unknown>): boolean {
+		return output && output['listeners'].length > 0;
 	}
 }
