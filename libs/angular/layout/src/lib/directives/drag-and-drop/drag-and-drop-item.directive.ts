@@ -79,7 +79,7 @@ export class NgxAccessibleDragAndDropItemDirective
 	/**
 	 * Handle the ArrowDown Press
 	 */
-	@HostListener('keydown.ArrowDown', ['$event']) public onArrowDown(event: Event): void {
+  @HostListener( 'keydown.ArrowDown',[ '$event' ] ) public onArrowDown ( event: Event ): void {
 		this.moveItem('down', event as KeyboardEvent);
 	}
 
@@ -198,11 +198,11 @@ export class NgxAccessibleDragAndDropItemDirective
 	 * @param key - The pressed key
 	 * @param event - The keyboard event
 	 */
-	private moveItem(key: 'up' | 'down' | 'left' | 'right', event: KeyboardEvent): void {
-		if (!this.disabled && this.hasFocus && this.isSelected) {
+  private moveItem ( key: 'up' | 'down' | 'left' | 'right',event: KeyboardEvent ): void {
+		if (!this.disabled() && this.hasFocus && this.isSelected) {
 			// Iben: Prevent the default action
 			event.preventDefault();
-			event.stopPropagation();
+      event.stopPropagation();
 
 			// Iben: Set up the needed items
 			let newIndex: number;

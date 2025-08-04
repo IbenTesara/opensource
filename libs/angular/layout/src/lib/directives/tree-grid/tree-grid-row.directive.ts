@@ -27,7 +27,7 @@ export class NgxTreeGridRowDirective extends NgxHasFocusDirective implements OnD
 	/**
 	 * Sets focus on to the previous row
 	 */
-	@HostListener('keydown.ArrowUp') public moveUp(): void {
+  @HostListener( 'keydown.ArrowUp' ) public moveUp (): void {
 		this.handleWhenFocussed(() => {
 			this.parent.getRow(this.ngxTreeGridRow() - 1)?.focus();
 		});

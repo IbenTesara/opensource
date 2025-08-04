@@ -1,0 +1,21 @@
+<ngx-configurable-layout
+	layoutType="editable"
+	itemSize="equal"
+	rowGap="10px"
+	columnGap="10px"
+	itemLabel="Blok"
+	rowLabel="rij"
+	[allowDragAndDrop]="true"
+	[formControl]="control"
+>
+	<ngx-configurable-layout-item key="action">
+		<button>This is an action!</button>
+	</ngx-configurable-layout-item>
+	<ngx-configurable-layout-item key="label"> This is a label! </ngx-configurable-layout-item>
+	<ngx-configurable-layout-item key="start">
+		<button>Start</button>
+	</ngx-configurable-layout-item>
+	<ngx-configurable-layout-item key="action2">
+		<button>This is another action!</button>
+	</ngx-configurable-layout-item>
+</ngx-configurable-layout>

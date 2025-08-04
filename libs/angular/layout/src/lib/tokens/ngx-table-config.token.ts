@@ -1,4 +1,11 @@
-import { InjectionToken } from '@angular/core';
+import { InjectionToken, Type } from '@angular/core';
+
+import {
+	NgxDisplayContentComponent,
+	NgxTableOpenRowStateTemplateAbstractComponent,
+	NgxTableSelectTemplateAbstractComponent,
+	NgxTableSortTemplateAbstractComponent,
+} from '../abstracts';
 
 type HideHeaderRowOptions = 'when-loading' | 'when-empty';
 export type HideHeaderRowOption =
@@ -18,8 +25,9 @@ export type ShowDetailRowOption = 'always' | 'on-click' | 'on-single-item';
  * showSelectedOpenRow - Defines whether we want a class to be added to the currently opened row
  * emitValueOnSingleItem - Defines whether we want to emit the rowClicked when there's only one item in the table and the showDetailRow is set to 'on-single-item'
  * hideHeaderWhen - Defines whether we want to show the header when the table is empty or loading
+ * components - A set of components we can use as defaults for the loading, error and empty state of the
  */
-export interface NgxTableConfig {
+export interface NgxTableConfiguration {
 	showDetailRow?: ShowDetailRowOption;
 	ngxTableClass?: string;
 	showOpenRowState?: boolean;
@@ -28,6 +36,16 @@ export interface NgxTableConfig {
 	showSelectedOpenRow?: boolean;
 	emitValueOnSingleItem?: boolean;
 	hideHeaderWhen?: HideHeaderRowOption;
+	components?: {
+		loading?: Type<NgxDisplayContentComponent>;
+		empty?: Type<NgxDisplayContentComponent>;
+		radio?: Type<NgxTableSelectTemplateAbstractComponent>;
+		checkbox?: Type<NgxTableSelectTemplateAbstractComponent>;
+		openRowState?: Type<NgxTableOpenRowStateTemplateAbstractComponent>;
+		sort?: Type<NgxTableSortTemplateAbstractComponent>;
+	};
 }
 
-export const NgxTableConfigToken = new InjectionToken<NgxTableConfig>('NgxTableConfig');
+export const NgxTableConfigurationToken = new InjectionToken<NgxTableConfiguration>(
+	'NgxTableConfiguration'
+);

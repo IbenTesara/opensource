@@ -6,7 +6,7 @@ import { NgxTableGetPipe } from '../../pipes/get-pipe/get.pipe';
 import { NgxAbstractTableCellDirective } from './cell.directive';
 
 @Component({
-	selector: 'ngx-date-table-cell',
+	selector: 'ngx-table-date-cell',
 	providers: [
 		{
 			provide: NgxAbstractTableCellDirective,

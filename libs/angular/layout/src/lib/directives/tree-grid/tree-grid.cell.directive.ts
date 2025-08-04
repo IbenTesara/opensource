@@ -20,6 +20,7 @@ import { NgxTreeGridDirective } from './tree-grid.directive';
 	},
 })
 export class NgxTreeGridCellDirective extends NgxHasFocusDirective implements AfterViewInit {
+	// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
 	private readonly parent: NgxTreeGridDirective = inject(NgxTreeGridDirective, {
 		optional: true,
 	})!;
@@ -155,7 +156,7 @@ export class NgxTreeGridCellDirective extends NgxHasFocusDirective implements Af
 		for (const element of [...this.elementRef.nativeElement.children]) {
 			if (!result) {
 				// Iben: Check if we can focus on the element
-				element.focus();
+        element.focus();
 
 				// Iben: If the current active element is the same as the element we focussed, on, we break
 				if (element === document?.activeElement) {

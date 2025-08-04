@@ -36,4 +36,11 @@ export abstract class NgxHasFocusDirective {
 			action();
 		}
 	}
+
+	/**
+   * Returns when the item has been focussed on
+   */
+  public isFocussedOn(): boolean {
+		return this.hasFocus;
+	}
 }

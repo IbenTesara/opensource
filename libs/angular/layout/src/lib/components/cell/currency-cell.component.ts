@@ -4,7 +4,7 @@ import { Component, ContentChild, TemplateRef, ViewChild, input } from '@angular
 import { NgxAbstractTableCellDirective } from './cell.directive';
 
 @Component({
-	selector: 'ngx-currency-table-cell',
+	selector: 'ngx-table-currency-cell',
 	providers: [
 		{
 			provide: NgxAbstractTableCellDirective,

@@ -1,15 +1,12 @@
 import { CdkTableModule } from '@angular/cdk/table';
-import { NgTemplateOutlet, NgClass } from '@angular/common';
+import { NgTemplateOutlet, NgClass, NgComponentOutlet, JsonPipe } from '@angular/common';
 import {
 	AfterContentChecked,
 	ChangeDetectionStrategy,
 	ChangeDetectorRef,
 	Component,
-	ContentChild,
 	HostBinding,
 	Inject,
-	Input,
-	OnChanges,
 	OnDestroy,
 	OnInit,
 	TemplateRef,
@@ -24,6 +21,7 @@ import {
 	effect,
 	InputSignal,
 } from '@angular/core';
+import { takeUntilDestroyed, toObservable } from '@angular/core/rxjs-interop';
 import {
 	ControlValueAccessor,
 	FormControl,
@@ -33,7 +31,7 @@ import {
 } from '@angular/forms';
 import { isEmpty } from 'lodash';
 import { Subject } from 'rxjs';
-import { takeUntil, tap } from 'rxjs/operators';
+import { pairwise, takeUntil, tap } from 'rxjs/operators';
 
 import { NgxTreeGrid } from '../../directives';
 import {
@@ -44,8 +42,8 @@ import {
 } from '../../pipes';
 import {
 	HideHeaderRowOption,
-	NgxTableConfig,
-	NgxTableConfigToken,
+	NgxTableConfiguration,
+	NgxTableConfigurationToken,
 	ShowDetailRowOption,
 } from '../../tokens';
 import { NgxTableCypressDataTags, NgxTableSortEvent } from '../../types';
@@ -87,29 +85,27 @@ interface TableCellTemplate {
 		NgxTableShowHeaderPipe,
 		NgxAriaSortPipe,
 		NgxTreeGrid,
+		NgComponentOutlet,
+		JsonPipe,
 	],
+	host: {
+		'class.ngx-table-loading': 'loading()',
+	},
 })
 export class NgxTableComponent
-	implements AfterContentChecked, ControlValueAccessor, OnInit, OnChanges, OnDestroy
+	implements AfterContentChecked, ControlValueAccessor, OnInit, OnDestroy
 {
 	private cdRef: ChangeDetectorRef = inject(ChangeDetectorRef);
-	@Inject(NgxTableConfigToken) private readonly ngxTableConfig: NgxTableConfig = inject(
-		NgxTableConfigToken,
+	@Inject(NgxTableConfigurationToken)
+	public readonly ngxTableConfiguration: NgxTableConfiguration = inject(
+		NgxTableConfigurationToken,
 		{ optional: true }
 	);
 	/**
 	 * Default class that will be put on the ngx-table component
 	 */
-	@HostBinding('class') public readonly componentClass = this.ngxTableConfig?.ngxTableClass || '';
-
-	/**
-	 * The loading state of our table
-	 */
-	/**
-	 * The loading state of our table
-	 */
-	@HostBinding('class.ngx-table-loading')
-	public readonly loading = input<boolean>(false);
+	@HostBinding('class') public readonly componentClass =
+		this.ngxTableConfiguration?.ngxTableClass || '';
 
 	/**
 	 * A subject to handle the observables when the component gets destroyed
@@ -129,6 +125,21 @@ export class NgxTableComponent
 	 * Whether or not the form was generated
 	 */
 	private formGenerated: WritableSignal<boolean> = signal(false);
+
+	/**
+	 * The loading state of our table
+	 */
+	public loading = input<boolean>(false);
+
+	/**
+	 * An optional set of data we pass if the loading state is shown
+	 */
+	public loadingData = input<any>();
+
+	/**
+	 * An optional set of data we pass if the empty state is shown
+	 */
+	public emptyData = input<any>();
 
 	/**
 	 * The current sorting event
@@ -229,22 +240,19 @@ export class NgxTableComponent
 	 * A template to provide a checkbox template
 	 */
 
-	@ContentChild('checkboxTmpl', { static: false })
-	public checkboxTemplate: TemplateRef<any>;
+	public checkboxTemplate = contentChild<TemplateRef<any>>('checkboxTmpl');
 
 	/**
 	 * A template to provide a radio button template
 	 */
 
-	@ContentChild('radioTmpl', { static: false })
-	public radioTemplate: TemplateRef<any>;
+	public radioTemplate = contentChild<TemplateRef<any>>('radioTmpl');
 
 	/**
 	 * A template to provide a sort template
 	 */
 
-	@ContentChild('sortTmpl', { static: false })
-	public sortTemplate: TemplateRef<any>;
+	public sortTemplate = contentChild<TemplateRef<any>>('sortTmpl');
 
 	/**
 	 * A template to provide a open state template
@@ -268,10 +276,10 @@ export class NgxTableComponent
 
 	/**
 	 * An optional property that defines whether multiple rows can be open at once.
-	 * By default, this is false. The default can be overwritten in the NgxTableConfig.
+	 * By default, this is false. The default can be overwritten in the NgxTableConfiguration.
 	 */
 	public readonly allowMultipleOpenRows = input<boolean>(
-		this.ngxTableConfig?.allowMultipleRowsOpen || false
+		this.ngxTableConfiguration?.allowMultipleRowsOpen || false
 	);
 
 	/**
@@ -293,7 +301,7 @@ export class NgxTableComponent
 	 * In case the rows are selectable, we can determine whether we want to reset the form based on new data. Setting this to false will add new controls to the FormGroup; but will not remove the earlier controls from the form.
 	 * This is a useful feature for when the data is being filtered or new data is added through a load more mechanic
 	 *
-	 * By default, this is true. This default cannot be overwritten in the NgxTableConfig.
+	 * By default, this is true. This default cannot be overwritten in the NgxTableConfiguration.
 	 */
 	public readonly resetFormOnNewData = input<boolean>(true);
 
@@ -306,10 +314,10 @@ export class NgxTableComponent
 
 	/**
 	 * An optional property to define whether we want to add a class to the currently opened row.
-	 * By default this is false. The default can be overwritten in the NgxTableConfig.
+	 * By default this is false. The default can be overwritten in the NgxTableConfiguration.
 	 */
 	public readonly showSelectedOpenRow = input<boolean>(
-		this.ngxTableConfig?.showSelectedOpenRow || false
+		this.ngxTableConfiguration?.showSelectedOpenRow || false
 	);
 
 	/**
@@ -319,35 +327,35 @@ export class NgxTableComponent
 
 	/**
 	 * An optional key that can be used in the data in order to highlight a row. If this property is present and true, the highlight class will be provided.
-	 * By default, this key is ngx-highlight. The default can be overwritten in the NgxTableConfig
+	 * By default, this key is ngx-highlight. The default can be overwritten in the NgxTableConfiguration
 	 */
 	public readonly highlightKey = input<string>(
-		this.ngxTableConfig?.highlightKey || 'ngx-highlight'
+		this.ngxTableConfiguration?.highlightKey || 'ngx-highlight'
 	);
 
 	/**
 	 * An optional property to define whether we want to show a visual indicator of the open and closed state of a detail row.
-	 * By default this is false. The default can be overwritten in the NgxTableConfig.
+	 * By default this is false. The default can be overwritten in the NgxTableConfiguration.
 	 */
 	public readonly showOpenRowState = input<boolean>(
-		this.ngxTableConfig?.showOpenRowState || false
+		this.ngxTableConfiguration?.showOpenRowState || false
 	);
 
 	/**
 	 * An optional property to define the default open state of the detail row.
-	 * By default this is 'on-click'. The default can be overwritten in the NgxTableConfig.
+	 * By default this is 'on-click'. The default can be overwritten in the NgxTableConfiguration.
 	 */
 	public readonly showDetailRow = input<ShowDetailRowOption>(
-		this.ngxTableConfig?.showDetailRow || 'on-click'
+		this.ngxTableConfiguration?.showDetailRow || 'on-click'
 	);
 
 	/**
 	 * An optional property to define whether we want to emit the row when there's only one item in the table and the showDetailRow is set to `on-single-item`
-	 * By default this is false. The default can be overwritten in the NgxTableConfig.
+	 * By default this is false. The default can be overwritten in the NgxTableConfiguration.
 	 */
 	public readonly emitValueOnSingleItem = input<boolean>(
-		this.ngxTableConfig?.showDetailRow === 'on-single-item' &&
-			this.ngxTableConfig?.emitValueOnSingleItem
+		this.ngxTableConfiguration?.showDetailRow === 'on-single-item' &&
+			this.ngxTableConfiguration?.emitValueOnSingleItem
 	);
 
 	/**
@@ -357,10 +365,10 @@ export class NgxTableComponent
 
 	/**
 	 * An optional property to define whether we want the header to be hidden in certain cases.
-	 * By default this is never. The default can be overwritten in the NgxTableConfig
+	 * By default this is never. The default can be overwritten in the NgxTableConfiguration
 	 */
 	public readonly hideHeaderWhen = input<HideHeaderRowOption>(
-		this.ngxTableConfig?.hideHeaderWhen || 'never'
+		this.ngxTableConfiguration?.hideHeaderWhen || 'never'
 	);
 
 	/**
@@ -387,6 +395,68 @@ export class NgxTableComponent
 				this.handleRowClicked(this.data()[openedIndex], openedIndex);
 				this.cdRef.detectChanges();
 			});
+		});
+
+		// Iben: Setup the form when the data or selectable state changes
+		effect(() => {
+			if (this.data() && this.selectable()) {
+				// Iben: If no form was generated, first generate the form we need
+				if (!this.formGenerated()) {
+					generateNgxTableForm(this.rowsFormGroup, this.data(), this.selectableKey());
+
+					this.formGenerated.set(true);
+				} else {
+					// Iben: If a form was generated, reset it as required
+					resetNgxTableForm(
+						this.rowsFormGroup,
+						this.data(),
+						this.selectableKey(),
+						this.resetFormOnNewData()
+					);
+				}
+			}
+		});
+
+		effect(() => {
+			if (this.data()) {
+				// Wouter: Deselect any row that was selected to prevent faulty class toggle.
+				this.selectedRow.set(undefined);
+			}
+		});
+
+		effect(() => {
+			// Iben: Add the selectableColumn if the rows are selectable and add an open row state when needed
+			if (this.selectable() || this.columns() || this.showOpenRowState()) {
+				this.handleRowColumns();
+			}
+		});
+
+		// Iben: If there's only one item in the data and we open the detail row by default, we emit the row clicked value
+		effect(() => {
+			if (
+				this.emitValueOnSingleItem() &&
+				this.data()?.length === 1 &&
+				this.showDetailRow() === 'on-single-item'
+			) {
+				this.handleRowClicked(this.data()[0], 0);
+			}
+		});
+
+		// Iben: Reset the open rows if the amount of items are no longer the same
+		effect(() => {
+			// Wouter: If all detail rows should be shown by default, we add all indices to the open rows
+			if (this.showDetailRow() === 'always') {
+				this.openRows = new Set(this.data().map((_, index) => index));
+			} else if (
+				// Wouter: If the detail row should be shown on single item and there is only one item, we add the first index to the open rows
+				this.showDetailRow() === 'on-single-item' &&
+				this.data().length === 1
+			) {
+				this.openRows = new Set([0]);
+			} else {
+				// Iben: If no detail row should be shown due to global config, we reset the open rows
+				this.openRows = new Set();
+			}
 		});
 	}
 
@@ -480,8 +550,6 @@ export class NgxTableComponent
 				this.selectedRow.set(index);
 			}
 		}
-
-		// Iben: Handle the row state
 		this.handleRowState(index, !this.openRows.has(index) ? 'open' : 'close');
 	}
 
@@ -497,8 +565,16 @@ export class NgxTableComponent
 			return;
 		}
 
+		// Wouter: When the detail row should be shown due to global config, we add the index to the open rows
+		if (
+			this.showDetailRow() === 'always' ||
+			(this.showDetailRow() === 'on-single-item' && this.data.length === 1)
+		) {
+			this.openRows.add(index);
+			// Iben: Depending on whether we allow multiple rows to be open at the same time, we toggle the open rows accordingly
+		}
 		// Iben: Depending on whether we allow multiple rows to be open at the same time, we toggle the open rows accordingly
-		if (this.allowMultipleOpenRows()) {
+		else if (this.allowMultipleOpenRows()) {
 			action === 'open' ? this.openRows.add(index) : this.openRows.delete(index);
 		} else {
 			this.openRows = action === 'open' ? new Set([index]) : new Set();
@@ -679,53 +755,6 @@ export class NgxTableComponent
 		// Iben: Run with content check so that we can dynamically add templates/columns
 		this.handleRowColumns();
 		this.handleTableCellTemplates();
-	}
-
-	public ngOnChanges(changes: any) {
-		if (changes.data) {
-			// Wouter: Deselect any row that was selected to prevent faulty class toggle.
-			this.selectedRow.set(undefined);
-		}
-
-		// Iben: Setup the form when the data or selectable state changes
-		if ((changes.data || changes.selectable) && this.selectable()) {
-			// Iben: If no form was generated, first generate the form we need
-			if (!this.formGenerated()) {
-				generateNgxTableForm(this.rowsFormGroup, this.data(), this.selectableKey());
-
-				this.formGenerated.set(true);
-			} else {
-				// Iben: If a form was generated, reset it as required
-				resetNgxTableForm(
-					this.rowsFormGroup,
-					this.data(),
-					this.selectableKey(),
-					this.resetFormOnNewData()
-				);
-			}
-		}
-
-		// Iben: Add the selectableColumn if the rows are selectable and add an open row state when needed
-		if (changes.selectable || changes.columns || changes.showOpenRowState) {
-			this.handleRowColumns();
-		}
-
-		// Iben: If there's only one item in the data and we open the detail row by default, we emit the row clicked value
-		if (
-			this.emitValueOnSingleItem() &&
-			changes.data?.currentValue.length === 1 &&
-			this.showDetailRow() === 'on-single-item'
-		) {
-			this.handleRowClicked(changes.data.currentValue[0], 0);
-		}
-
-		// Iben: Reset the open rows if the amount of items are no longer the same
-		if (
-			changes.data &&
-			changes.data.previousValue?.length !== changes.data.currentValue?.length
-		) {
-			this.openRows = new Set();
-		}
 	}
 
 	public ngOnInit() {

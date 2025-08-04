@@ -13,7 +13,9 @@ import {
   TemplateRef,
   input,
   viewChild,
-  contentChild
+  contentChild,
+  WritableSignal,
+  signal
 } from '@angular/core';
 import { v4 as uuid } from 'uuid';
 
@@ -112,19 +114,19 @@ export class NgxAccordionItemComponent implements OnInit, AfterViewInit, OnDestr
 	/**
 	 * Whether the accordion item is open
 	 */
-	public isOpen: boolean = false;
+	public isOpen: WritableSignal<boolean> = signal(false);
 
 	/**
 	 * Whether the accordion item is focussed
 	 */
-	private hasFocus: boolean = false;
+	private hasFocus: WritableSignal<boolean> = signal(false);
 
 	/**
 	 * Updates the current open/closed state of the accordion item, regardless of the disabled state
 	 */
 	public updateAccordionItemState(isOpen: boolean): void {
 		// Iben: Sets the item to open and updates the parent state
-		this.isOpen = isOpen;
+		this.isOpen.set(isOpen)
 
 		// Iben: Trigger the visual changes
 		this.cdRef.detectChanges();
@@ -142,7 +144,7 @@ export class NgxAccordionItemComponent implements OnInit, AfterViewInit, OnDestr
 	 * @param hasFocus - Whether the item has focus
 	 */
 	public setFocus(hasFocus: boolean) {
-		this.hasFocus = hasFocus;
+		this.hasFocus.set(hasFocus);
 	}
 
 	/**
@@ -158,7 +160,7 @@ export class NgxAccordionItemComponent implements OnInit, AfterViewInit, OnDestr
 	public ngAfterViewInit(): void {
 		// Iben: If for some reason no accordion item is found, we return
 		const detailsElement = this.detailsElement();
-  if (!detailsElement?.nativeElement) {
+		if (!detailsElement?.nativeElement) {
 			return;
 		}
 
@@ -190,7 +192,7 @@ export class NgxAccordionItemComponent implements OnInit, AfterViewInit, OnDestr
 	 */
 	private handleWhenFocussed(action: () => void) {
 		// Iben: Early exit if there's no focus
-		if (!this.hasFocus) {
+		if (!this.hasFocus()) {
 			return;
 		}
 

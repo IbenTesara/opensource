@@ -1,0 +1,26 @@
+:host {
+  .ngx-accordion {
+    ::ng-deep {
+      .ngx-accordion-item {
+        margin-bottom: 15px;
+      }
+
+      .ngx-accordion-header {
+        padding: 5px;
+        background-color: lightblue;
+
+        &.is-open {
+          background-color: darken(lightblue, 5);
+        }
+
+        &.is-disabled {
+          background-color: darken(lightblue, 15);
+        }
+      }
+
+      .ngx-accordion-content {
+        padding: 15px 0px;
+      }
+    }
+  }
+}

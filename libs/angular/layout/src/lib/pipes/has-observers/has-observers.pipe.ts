@@ -10,7 +10,7 @@ export class NgxTableHasObserversPipe implements PipeTransform {
 	 *
 	 * @param output - The provided EventEmitter
 	 */
-	public transform(output: OutputEmitterRef<unknown>): boolean {
-		return output && output['listeners'].length > 0;
+  public transform ( output: OutputEmitterRef<unknown> ): boolean {
+		return output && output['listeners']?.length > 0;
 	}
 }

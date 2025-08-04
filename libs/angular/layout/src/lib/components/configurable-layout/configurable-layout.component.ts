@@ -273,7 +273,7 @@ export class NgxConfigurableLayoutComponent
 	public ngOnChanges(changes: any) {
 		if ((changes.layoutType?.currentValue || this.layoutType()) === 'static') {
 			// Iben: If no keys are provided, we return an error, as without it, there nothing will be rendered and the layout will not work.
-			if (!(changes.keys?.currentValue || this.keys)) {
+			if (!(changes.keys?.currentValue || this.keys())) {
 				console.error(
 					'NgxLayout: The configurable layout was set to "static" but no 2D array of keys was provided. Provide an 2D array of keys to visualize the items. For more information, check the readme.'
 				);
@@ -290,7 +290,7 @@ export class NgxConfigurableLayoutComponent
 			}
 		} else {
 			// Iben: If keys are provided, there's possible inconsistent behavior. We return an error so the user is notified.
-			if (changes.keys?.currentValue || this.keys) {
+			if (changes.keys?.currentValue || this.keys()) {
 				console.error(
 					'NgxLayout: The configurable layout was set to "editable". The property "keys" will have cause inconsistent behavior. For more information, check the readme.'
 				);
@@ -462,6 +462,7 @@ export class NgxConfigurableLayoutComponent
 			targetRowIndex,
 		});
 	}
+
 	// Component internal working
 	/**
 	 * Update the item layout template order.
@@ -479,6 +480,7 @@ export class NgxConfigurableLayoutComponent
 
 			// Wouter: Update the item template record with the unique column key and its template ref
 			this.itemTemplateRecord.update((value) => ({ ...value, [key]: template }));
+
 			this.itemLabelRecord.update((value) => ({
 				...value,
 				[key]: label || key,
