@@ -1,101 +1,93 @@
-# Opensource
+# @ibenvandeveire open-source
 
-<a alt="Nx logo" href="https://nx.dev" target="_blank" rel="noreferrer"><img src="https://raw.githubusercontent.com/nrwl/nx/master/images/nx-logo.png" width="45"></a>
+`@ibenvandeveire` open source is a mono-repo providing several of Angular and non-Angular based packages created and maintained by [Iben Van de Veire](https://github.com/IbenTesara).
 
-✨ Your new, shiny [Nx workspace](https://nx.dev) is ready ✨.
 
-[Learn more about this workspace setup and its capabilities](https://nx.dev/getting-started/tutorials/angular-monorepo-tutorial?utm_source=nx_project&amp;utm_medium=readme&amp;utm_campaign=nx_projects) or run `npx nx graph` to visually explore what was created. Now, let's get you up to speed!
+## Installation
 
-## Run tasks
+To setup this project, clone the repo and run `npm i` to install the dependencies.
 
-To run the dev server for your app, use:
+## Documentation
 
-```sh
-npx nx serve opensource
-```
+You can find the documentation for all of the packages on the [Wiki](https://github.com/IbenTesara/opensource/wiki).
 
-To create a production bundle:
+## Packages
 
-```sh
-npx nx build opensource
-```
+- utils (`@ibenvandeveire/ngx-utils`) :
 
-To see all available targets to run for a project, run:
+    - This Angular package provides several independent utilities to facilitate common use-cases for users and developers.
 
-```sh
-npx nx show project opensource
-```
+- forms (`@ibenvandeveire/ngx-forms`):
 
-These targets are either [inferred automatically](https://nx.dev/concepts/inferred-tasks?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects) or defined in the `project.json` or `package.json` files.
+    - This Angular package provides multiple utilities for complex form use-cases.
 
-[More about running tasks in the docs &raquo;](https://nx.dev/features/run-tasks?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
+- store (`@ibenvandeveire/ngx-store`):
 
-## Add new projects
+    - This Angular package provides several utils and abstractions to improve the Redux workflow
 
-While you could add new projects to your workspace manually, you might want to leverage [Nx plugins](https://nx.dev/concepts/nx-plugins?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects) and their [code generation](https://nx.dev/features/generate-code?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects) feature.
+- i18n (`@ibenvandeveire/ngx-i18n`):
 
-Use the plugin's generator to create new projects.
+    - This Angular package provides a lazy-loaded modular approach to translations.
 
-To generate a new application, use:
+- cookies (`@ibenvandeveire/ngx-cookies`):
 
-```sh
-npx nx g @nx/angular:app demo
-```
+    - This Angular package provides a quick and easy wrapper for [CookieConsent V3](https://cookieconsent.orestbida.com).
 
-To generate a new library, use:
+- layout (`@ibenvandeveire/ngx-layout`):
 
-```sh
-npx nx g @nx/angular:lib mylib
-```
+    - This Angular package is a collection of Angular components related to layout.
 
-You can use `npx nx list` to get a list of installed plugins. Then, run `npx nx list <plugin-name>` to learn about more specific capabilities of a particular plugin. Alternatively, [install Nx Console](https://nx.dev/getting-started/editor-setup?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects) to browse plugins and generators in your IDE.
+- tour (`@ibenvandeveire/ngx-inform`):
+    - This Angular package provides the tools to build a guided walkthrough of one or more pages, tooltips, modals etc.
 
-[Learn more about Nx plugins &raquo;](https://nx.dev/concepts/nx-plugins?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects) | [Browse the plugin registry &raquo;](https://nx.dev/plugin-registry?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
+- core (`@ibenvandeveire/ngx-core`):
+    - This Angular package provides the core functionalities for the other packages.
 
-## Set up CI!
+- rxjs-utils (`@ibenvandeveire/rxjs-utils`):
+    - This package provides the common use-cases for RXJS based projects.
 
-### Step 1
+You can find detailed explanations in their respective README’s.
 
-To connect to Nx Cloud, run the following command:
+## Contributions
 
-```sh
-npx nx connect
-```
+In order to contribute to this repository you must:
 
-Connecting to Nx Cloud ensures a [fast and scalable CI](https://nx.dev/ci/intro/why-nx-cloud?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects) pipeline. It includes features such as:
+1. Start a new branch from `main` named either `fix/PACKAGE/FEATURE-NAME` or `feat/PACKAGE/FEATURE-NAME`.
+2. Commit all code regarding the fix or feature to this branch, but **do not include a version bump**. Your commit message should start with either `fix(PACKAGE)` or `feat(PACKAGE)` for a fix or feature respectively.
+3. Open a PR and add the correct package label, an `enhancement` or `bug` tag, the project and milestone.
 
-- [Remote caching](https://nx.dev/ci/features/remote-cache?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-- [Task distribution across multiple machines](https://nx.dev/ci/features/distribute-task-execution?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-- [Automated e2e test splitting](https://nx.dev/ci/features/split-e2e-tasks?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-- [Task flakiness detection and rerunning](https://nx.dev/ci/features/flaky-tasks?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
+## Contributors
 
-### Step 2
+- Benoît Dossoine
+- [Denis Valcke](https://github.com/DenisValcke)
+- [Iben Van de Veire](https://github.com/IbenTesara)
+- [Wouter Heirstrate](https://github.com/WHeirstrate)
+- [Abdurrahman Ekinci](https://github.com/ekincia)
+- [Ian Emsens](https://github.com/ian-emsens-shd)
+- [Femke Reunes](https://github.com/reunefe)
 
-Use the following command to configure a CI workflow for your workspace:
 
-```sh
-npx nx g ci-workflow
-```
+## License
+MIT License
 
-[Learn more about Nx on CI](https://nx.dev/ci/intro/ci-with-nx#ready-get-started-with-your-provider?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
+Copyright (c) 2023 Studio Hyperdrive
+Copyright (c) 2025 Iben Van de Veire
 
-## Install Nx Console
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
 
-Nx Console is an editor extension that enriches your developer experience. It lets you run tasks, generate code, and improves code autocompletion in your IDE. It is available for VSCode and IntelliJ.
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
 
-[Install Nx Console &raquo;](https://nx.dev/getting-started/editor-setup?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
 
-## Useful links
-
-Learn more:
-
-- [Learn more about this workspace setup](https://nx.dev/getting-started/tutorials/angular-monorepo-tutorial?utm_source=nx_project&amp;utm_medium=readme&amp;utm_campaign=nx_projects)
-- [Learn about Nx on CI](https://nx.dev/ci/intro/ci-with-nx?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-- [Releasing Packages with Nx release](https://nx.dev/features/manage-releases?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-- [What are Nx plugins?](https://nx.dev/concepts/nx-plugins?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-
-And join the Nx community:
-- [Discord](https://go.nx.dev/community)
-- [Follow us on X](https://twitter.com/nxdevtools) or [LinkedIn](https://www.linkedin.com/company/nrwl)
-- [Our Youtube channel](https://www.youtube.com/@nxdevtools)
-- [Our blog](https://nx.dev/blog?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
