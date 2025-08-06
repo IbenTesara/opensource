@@ -301,6 +301,12 @@
                             <a href="#NgxIsAuthenticatedGuard" title="libs/angular/authentication/src/lib/guards/is-authenticated/is-authenticated.guard.ts" ><b>NgxIsAuthenticatedGuard</b>&nbsp;&nbsp;&nbsp;(libs/.../is-authenticated.guard.ts)</a>
                         </li>
                         <li>
+                            <a href="#NgxMobileLayoutConfigurationToken" title="libs/angular/layout/src/lib/tokens/mobile-layout-configuration.token.ts" ><b>NgxMobileLayoutConfigurationToken</b>&nbsp;&nbsp;&nbsp;(libs/.../mobile-layout-configuration.token.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#NgxMobileLayoutGuard" title="libs/angular/layout/src/lib/guards/mobile-layout/mobile-layout.guard.ts" ><b>NgxMobileLayoutGuard</b>&nbsp;&nbsp;&nbsp;(libs/.../mobile-layout.guard.ts)</a>
+                        </li>
+                        <li>
                             <a href="#NgxMockAuthenticatedHttpClient" title="libs/angular/authentication/src/lib/mocks/authenticated-http-client.mock.ts" ><b>NgxMockAuthenticatedHttpClient</b>&nbsp;&nbsp;&nbsp;(libs/.../authenticated-http-client.mock.ts)</a>
                         </li>
                         <li>
@@ -359,6 +365,9 @@
                         </li>
                         <li>
                             <a href="#provideNgxDragAndDropService" title="libs/angular/layout/src/lib/providers/drag-and-drop/drag-and-drop.provider.ts" ><b>provideNgxDragAndDropService</b>&nbsp;&nbsp;&nbsp;(libs/.../drag-and-drop.provider.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#provideNgxMobileLayoutConfiguration" title="libs/angular/layout/src/lib/providers/mobile-layout/mobile-layout-configuration.provider.ts" ><b>provideNgxMobileLayoutConfiguration</b>&nbsp;&nbsp;&nbsp;(libs/.../mobile-layout-configuration.provider.ts)</a>
                         </li>
                         <li>
                             <a href="#provideNgxModalConfiguration" title="libs/angular/inform/src/lib/providers/modal/modal-configuration.provider.ts" ><b>provideNgxModalConfiguration</b>&nbsp;&nbsp;&nbsp;(libs/.../modal-configuration.provider.ts)</a>
@@ -3884,6 +3893,82 @@ By default, a take(1) is applied to the source, so the source observable can be 
         </tbody>
     </table>
 </section>
+    <h3>libs/angular/layout/src/lib/tokens/mobile-layout-configuration.token.ts</h3>
+    <section data-compodoc="block-properties">
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="NgxMobileLayoutConfigurationToken"></a>
+                    <span class="name">
+                        <span ><b>NgxMobileLayoutConfigurationToken</b></span>
+                        <a href="#NgxMobileLayoutConfigurationToken"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>new InjectionToken&lt;NgxMobileLayoutConfiguration&gt;(
+	&#x27;NgxMobileLayoutConfiguration&#x27;
+)</code>
+                    </td>
+                </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>An optional token to provide the base mobile configuration to the <code>NgxMobileLayoutService</code></p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+</section>
+    <h3>libs/angular/layout/src/lib/guards/mobile-layout/mobile-layout.guard.ts</h3>
+    <section data-compodoc="block-properties">
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="NgxMobileLayoutGuard"></a>
+                    <span class="name">
+                        <span ><b>NgxMobileLayoutGuard</b></span>
+                        <a href="#NgxMobileLayoutGuard"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>CanActivateFn</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>(route: ActivatedRouteSnapshot) &#x3D;&gt; {
+	// Iben: Get the layout service
+	const layoutService: NgxMobileLayoutService &#x3D; inject(NgxMobileLayoutService);
+
+  // Iben: Set the desired layout
+  // As the setLayout has a take one and we always want to continue routing, we can safely subscribe here
+	layoutService.setLayout(route.data[&#x27;mobileLayout&#x27;]).subscribe();
+
+	//Iben: Always return true as we merely set the layout
+	return true;
+}</code>
+                    </td>
+                </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>A guard that will set the mobile layout in the <code>NgxMobileLayoutService</code></p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+</section>
     <h3>libs/angular/authentication/src/lib/mocks/authenticated-http-client.mock.ts</h3>
     <section data-compodoc="block-properties">
     <h3></h3>    <table class="table table-sm table-bordered">
@@ -4572,6 +4657,42 @@ This implementation is provided given that pluck has a higher readability than a
             <tr>
                 <td class="col-md-4">
                     <div class="io-description"><p>Provides a custom implementation of the NgxDragAndDropService</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+</section>
+    <h3>libs/angular/layout/src/lib/providers/mobile-layout/mobile-layout-configuration.provider.ts</h3>
+    <section data-compodoc="block-properties">
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="provideNgxMobileLayoutConfiguration"></a>
+                    <span class="name">
+                        <span ><b>provideNgxMobileLayoutConfiguration</b></span>
+                        <a href="#provideNgxMobileLayoutConfiguration"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>(
+	configuration: NgxMobileLayoutConfiguration
+): Provider &#x3D;&gt; {
+	return {
+		provide: NgxMobileLayoutConfigurationToken,
+		useValue: configuration,
+	};
+}</code>
+                    </td>
+                </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Provides an optional configuration for the <code>NgxMobileLayoutService</code></p>
 </div>
                 </td>
             </tr>
