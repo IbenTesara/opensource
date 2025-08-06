@@ -1,13 +1,50 @@
-import { Component } from '@angular/core';
-import { RouterModule } from '@angular/router';
-import { NxWelcome } from './nx-welcome';
+import { Component, inject } from '@angular/core';
+import { Router, RouterModule } from '@angular/router';
+import { from, of, switchMap } from 'rxjs';
+
+import {
+	NgxModalService,
+	NgxTooltipDirective,
+	NgxTourService,
+	NgxTourShowWhenDirective,
+} from '@lib/ngx-inform';
 
 @Component({
-  imports: [NxWelcome, RouterModule],
-  selector: 'app-root',
-  templateUrl: './app.html',
-  styleUrl: './app.scss',
+	imports: [RouterModule, NgxTourShowWhenDirective, NgxTooltipDirective],
+	selector: 'app-root',
+	templateUrl: './app.html',
+	styleUrl: './app.scss',
 })
 export class App {
-  protected title = 'opensource';
+	private readonly tourService = inject(NgxTourService);
+	private readonly modalService = inject(NgxModalService);
+	private readonly router: Router = inject(Router);
+
+	public startTour() {
+		this.modalService
+			.open({ type: 'confirm', describedById: 'confirm', label: 'Confirm' })
+			.pipe(
+				switchMap((action) => {
+					return action === 'Decline'
+						? of()
+						: this.tourService.startTour([
+								{ title: 'Hello!', content: 'Welcome to the tour!' },
+								{
+									title: `Let's get started!`,
+									content: `During this tour we'll take you through the application`,
+								},
+								{
+									title: 'Display content',
+									delay: 100,
+									content: 'This is where we have the display content directive!',
+									tourItem: 'display-content',
+									beforeVisible: () => {
+										return from(this.router.navigate(['layout']));
+									},
+								},
+						  ]);
+				})
+			)
+			.subscribe();
+	}
 }

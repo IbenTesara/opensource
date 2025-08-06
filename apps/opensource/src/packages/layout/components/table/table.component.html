@@ -1,0 +1,37 @@
+<ngx-table
+	[formControl]="control"
+	[selectable]="true"
+	[selectableKey]="'id'"
+  [resetFormOnNewData]="false"
+	[loading]="loading()"
+	[data]="data()"
+	[columns]="['user', 'hello', 'amount']"
+>
+	<ngx-table-cell column="user">
+		<ng-template #headerTmpl> User </ng-template>
+		<ng-template #cellTmpl let-row="row"> {{ row.firstName }} {{ row.name }} </ng-template>
+	</ngx-table-cell>
+
+	<ngx-table-currency-cell column="amount">
+		<ng-template #headerTmpl> Amount </ng-template>
+	</ngx-table-currency-cell>
+
+	@if(hasDetailRow()) {
+	<ng-template #detailRowTmpl let-detail>
+		This is a detail row for {{ detail.firstName }};
+	</ng-template>
+	} @if(hasLoadingTemplate()) {
+	<ng-template #loadingTmpl> This is a custom loading template! </ng-template>
+	}
+</ngx-table>
+
+<br />
+
+Selected: {{ control.value | json }}
+
+<br />
+
+<button (click)="toggleDataSet()">Toggle data set</button>
+<button (click)="toggleDetailRow()">Toggle detail row</button>
+<button (click)="toggleLoading()">Toggle loading</button>
+<button (click)="toggleHasLoadingTemplate()">Toggle custom loading template</button>

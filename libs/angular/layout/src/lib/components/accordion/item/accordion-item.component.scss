@@ -1,0 +1,19 @@
+:host {
+  display: block;
+
+  details>summary {
+    list-style: none;
+  }
+
+  details>summary::-webkit-details-marker {
+    display: none;
+  }
+
+  summary {
+    cursor: pointer;
+
+    &.is-disabled {
+      cursor: not-allowed;
+    }
+  }
+}

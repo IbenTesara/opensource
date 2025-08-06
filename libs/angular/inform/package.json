@@ -1,0 +1,43 @@
+{
+  "name": "@ibenvandeveire/ngx-inform",
+  "version": "20.0.0",
+  "description": "A lightweight ARIA compliant customizable approach for common and complex inform flows in Angular, created by Iben Van de Veire.",
+  "keywords": [
+    "angular",
+    "angular2",
+    "inform",
+    "ARIA",
+    "WCAG",
+    "tooltip",
+    "tip",
+    "accessibility",
+    "modal",
+    "dialog",
+    "alertdialog",
+    "tour",
+    "help",
+    "help tour",
+    "joyride",
+    "guided tour",
+    "walkthrough"
+  ],
+  "homepage": "https://github.com/IbenTesara/opensource",
+  "author": {
+    "name": "Iben Van de Veire",
+    "url": "https://github.com/IbenTesara/opensource"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/IbenTesara/opensource",
+    "directory": "libs/angular/inform/src"
+  },
+  "peerDependencies": {
+    "@angular/core": "^20.0.0",
+    "uuid": "^11.1.0",
+    "rxjs": "~7.8.0",
+    "@angular/cdk": "^20.1.2",
+    "@angular/router": "20.1.2",
+    "@ibenvandeveire/ngx-core": "^20.0.0"
+  },
+  "sideEffects": false
+}

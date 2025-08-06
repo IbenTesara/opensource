@@ -1,0 +1,27 @@
+{
+  "name": "@ibenvandeveire/types-authentication",
+  "version": "1.0.0",
+  "description": "A package containing common authentication related types created by Iben Van de Veire.",
+  "keywords": [
+    "authentication",
+    "user",
+    "session",
+    "features",
+    "permissions"
+  ],
+  "homepage": "https://github.com/IbenTesara/opensource",
+  "author": {
+    "name": "Iben Van de Veire",
+    "url": "https://github.com/IbenTesara/opensource"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/IbenTesara/opensource",
+    "directory": "libs/javascript/types/authentication/src"
+  },
+  "license": "MIT",
+  "dependencies": {},
+  "main": "./index.js",
+  "module": "./index.mjs",
+  "typings": "./index.d.ts"
+}

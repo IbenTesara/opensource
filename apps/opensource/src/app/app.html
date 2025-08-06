@@ -1,2 +1,9 @@
-<app-nx-welcome></app-nx-welcome>
+<button
+	*ngxTourShowWhen="'whenInactive'"
+	ngxTooltip="Hello, this is a tooltip!"
+	(click)="startTour()"
+>
+	Start tour
+</button>
+
 <router-outlet></router-outlet>

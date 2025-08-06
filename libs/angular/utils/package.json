@@ -1,0 +1,45 @@
+{
+  "name": "@ibenvandeveire/ngx-utils",
+  "version": "20.0.0",
+  "description": "A series of abstracts, utils, pipes and services for Angular applications, created by Iben Van de Veire.",
+  "keywords": [
+    "angular",
+    "angular2",
+    "utils",
+    "storage",
+    "storage service",
+    "broadcast channel",
+    "broadcast channel service",
+    "iban",
+    "btw",
+    "has observers",
+    "query params",
+    "query param form sync",
+    "media query",
+    "window resize",
+    "match media",
+    "viewport",
+    "replace elements",
+    "web components"
+  ],
+  "homepage": "https://github.com/IbenTesara/opensource",
+  "author": {
+    "name": "Iben Van de Veire",
+    "url": "https://github.com/IbenTesara/opensource"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/IbenTesara/opensource",
+    "directory": "libs/angular/i18n/src"
+  },
+  "peerDependencies": {
+    "@angular/core": "^20.0.0",
+    "@angular/forms": "20.1.2",
+    "@angular/router": "20.1.2",
+    "rxjs": "~7.8.0",
+    "@angular/platform-browser": "20.1.2",
+    "@ibenvandeveire/ngx-core": "^20.0.0",
+    "lodash": "^4.17.21"
+  },
+  "sideEffects": false
+}

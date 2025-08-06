@@ -1,0 +1,31 @@
+{
+  "name": "@ibenvandeveire/rxjs-utils",
+  "version": "1.0.0",
+  "description": "A package containing common RXJS use-cases, created by Iben Van de Veire.",
+  "keywords": [
+    "rxjs",
+    "pluck",
+    "operators",
+    "operator",
+    "fetch-if",
+    "combineBoolean",
+    "populate",
+    "array"
+  ],
+  "license": "MIT",
+  "author": {
+    "name": "Iben Van de Veire",
+    "url": "https://github.com/IbenTesara"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/IbenTesara/opensource",
+    "directory": "libs/javascript/rxjs/src/lib"
+  },
+  "main": "./index.cjs",
+  "types": "./index.d.ts",
+  "dependencies": {
+    "rxjs": "~7.8.0",
+    "lodash": "^4.17.21"
+  }
+}

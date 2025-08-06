@@ -1,0 +1,32 @@
+<details #details [open]="isOpen()">
+	<summary
+		class="ngx-accordion-header"
+		#summary
+		[class.is-disabled]="disabled()"
+    [class.is-open]="isOpen()"
+		[attr.disabled]="disabled()"
+		[id]="id"
+		[attr.aria-controls]="'accordion-content-' + id"
+		[attr.aria-expanded]="isOpen()"
+		(focus)="setFocus(true)"
+		(blur)="setFocus(false)"
+	>
+		<ng-template
+			[ngTemplateOutlet]="headerTemplate()"
+			[ngTemplateOutletContext]="{ $implicit: isOpen }"
+		/>
+	</summary>
+
+	<div
+		class="ngx-accordion-content"
+    [class.is-open]="isOpen()"
+		role="region"
+		[id]="'accordion-content-' + id"
+		[attr.aria-labelledby]="id"
+	>
+		<ng-template
+			[ngTemplateOutlet]="contentTemplate()"
+			[ngTemplateOutletContext]="{ $implicit: isOpen }"
+		/>
+	</div>
+</details>

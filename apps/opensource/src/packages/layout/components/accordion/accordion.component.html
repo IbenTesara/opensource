@@ -1,0 +1,16 @@
+<ngx-accordion>
+	<ngx-accordion-item>
+		<ng-template #headerTmpl> Hello...? </ng-template>
+		<ng-template #contentTmpl> World! </ng-template>
+	</ngx-accordion-item>
+
+	<ngx-accordion-item>
+		<ng-template #headerTmpl> Planet...? </ng-template>
+		<ng-template #contentTmpl> Zoo! </ng-template>
+	</ngx-accordion-item>
+
+	<ngx-accordion-item [disabled]="true">
+		<ng-template #headerTmpl> Disabled...? </ng-template>
+		<ng-template #contentTmpl> Yes! </ng-template>
+	</ngx-accordion-item>
+</ngx-accordion>
