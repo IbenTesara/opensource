@@ -1,0 +1,4 @@
+{
+	"include": ["libs/**/*.ts"],
+	"exclude": ["src/test.ts", "src/**/*.spec.ts"]
+}

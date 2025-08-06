@@ -11,6 +11,8 @@ To setup this project, clone the repo and run `npm i` to install the dependencie
 
 You can find the documentation for all of the packages on the [Wiki](https://github.com/IbenTesara/opensource/wiki).
 
+For more in depth documentation relating to individual components of each package, please consult the [Compodoc Documentation](https://ibentesara.github.io/opensource/)
+
 ## Packages
 
 - utils (`@ibenvandeveire/ngx-utils`) :

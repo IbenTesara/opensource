@@ -1,0 +1,3051 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>@opensource/source documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+    </head>
+    <body>
+          <script>
+               // Blocking script to avoid flickering dark mode
+               // Dark mode toggle button
+               var useDark = window.matchMedia('(prefers-color-scheme: dark)');
+               var darkModeState = useDark.matches;
+               var $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               var $darkModeToggles = document.querySelectorAll('.dark-mode-switch');
+               var darkModeStateLocal = localStorage.getItem('compodoc_darkmode-state');
+
+               function checkToggle(check) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].checked = check;
+                    }
+               }
+
+               function toggleDarkMode(state) {
+                    if (window.localStorage) {
+                         localStorage.setItem('compodoc_darkmode-state', state);
+                    }
+
+                    checkToggle(state);
+
+                    const hasClass = document.body.classList.contains('dark');
+
+                    if (state) {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.add('dark');
+                         }
+                         if (!hasClass) {
+                              document.body.classList.add('dark');
+                         }
+                    } else {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.remove('dark');
+                         }
+                         if (hasClass) {
+                              document.body.classList.remove('dark');
+                         }
+                    }
+               }
+
+               useDark.addEventListener('change', function (evt) {
+                    toggleDarkMode(evt.matches);
+               });
+               if (darkModeStateLocal) {
+                    darkModeState = darkModeStateLocal === 'true';
+               }
+               toggleDarkMode(darkModeState);
+          </script>
+
+        <div class="navbar navbar-default navbar-fixed-top d-md-none p-0">
+               <div class="d-flex">
+                    <a href="../" class="navbar-brand">@opensource/source documentation</a>
+                    <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+               </div>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="d-none d-md-block menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content directive">
+                   <div class="content-data">
+
+
+
+
+
+
+
+<ol class="breadcrumb">
+  <li class="breadcrumb-item">Directives</li>
+  <li class="breadcrumb-item" >NgxTreeGridRowDirective</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item">
+            <a href="#info" 
+                class="nav-link"
+                class="nav-link active"
+                role="tab" id="info-tab" data-bs-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li class="nav-item">
+            <a href="#source" 
+                class="nav-link"
+                
+                role="tab" id="source-tab" data-bs-toggle="tab" data-link="source">Source</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="info">
+        <p class="comment">
+            <h3>File</h3>
+        </p>
+        <p class="comment">
+            <code>libs/angular/layout/src/lib/directives/tree-grid/tree-grid-row.directive.ts</code>
+        </p>
+
+
+            <p class="comment">
+                <h3>Description</h3>
+            </p>
+            <p class="comment">
+                <p>A row directive to handle navigation according to the WCAG treegrid pattern</p>
+<p>See <a href="https://www.w3.org/WAI/ARIA/apg/patterns/treegrid/">https://www.w3.org/WAI/ARIA/apg/patterns/treegrid/</a></p>
+
+            </p>
+
+            <p class="comment">
+                <h3>Extends</h3>
+            </p>
+            <p class="comment">
+                            <code><a href="../directives/NgxHasFocusDirective.html" target="_self" >NgxHasFocusDirective</a></code>
+            </p>
+
+            <p class="comment">
+                <h3>Implements</h3>
+            </p>
+            <p class="comment">
+                        <code>OnDestroy</code>
+            </p>
+
+
+        <section data-compodoc="block-metadata">
+            <h3>Metadata</h3>
+            <table class="table table-sm table-hover metadata">
+                <tbody>
+
+                    <tr>
+                        <td class="col-md-3">Selector</td>
+                        <td class="col-md-9"><code>[ngxTreeGridRow]</code></td>
+                    </tr>
+
+                    <tr>
+                        <td class="col-md-3">Standalone</td>
+                        <td class="col-md-9"><code>true</code></td>
+                    </tr>
+
+
+
+                </tbody>
+            </table>
+        </section>
+
+            <section data-compodoc="block-index">
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                    <span class="modifier">Private</span>
+                                    <span class="modifier">Readonly</span>
+                                <a href="#cells" >cells</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                    <span class="modifier">Readonly</span>
+                                <a href="#elementRef" >elementRef</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                    <span class="modifier">Readonly</span>
+                                <a href="#ngxTreeGridRow" >ngxTreeGridRow</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                    <span class="modifier">Readonly</span>
+                                <a href="#ngxTreeGridRowExpanded" >ngxTreeGridRowExpanded</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#ngxTreeGridRowExpandRow" >ngxTreeGridRowExpandRow</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                    <span class="modifier">Readonly</span>
+                                <a href="#ngxTreeGridRowSelectable" >ngxTreeGridRowSelectable</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#ngxTreeGridRowSelectRow" >ngxTreeGridRowSelectRow</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                    <span class="modifier">Readonly</span>
+                                <a href="#parent" >parent</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Protected</span>
+                                <a href="#hasFocus" >hasFocus</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                    <span class="modifier"></span>
+                                    <span class="modifier">Public</span>
+                                <a href="#arrowLeft" >arrowLeft</a>
+                            </li>
+                            <li>
+                                    <span class="modifier"></span>
+                                    <span class="modifier">Public</span>
+                                <a href="#arrowRight" >arrowRight</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#focus" >focus</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#getCell" >getCell</a>
+                            </li>
+                            <li>
+                                    <span class="modifier"></span>
+                                    <span class="modifier">Public</span>
+                                <a href="#moveDown" >moveDown</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#moveToBottom" >moveToBottom</a>
+                            </li>
+                            <li>
+                                    <span class="modifier"></span>
+                                    <span class="modifier">Public</span>
+                                <a href="#moveToBottomControlEnd" >moveToBottomControlEnd</a>
+                            </li>
+                            <li>
+                                    <span class="modifier"></span>
+                                    <span class="modifier">Public</span>
+                                <a href="#moveToBottomEnd" >moveToBottomEnd</a>
+                            </li>
+                            <li>
+                                    <span class="modifier"></span>
+                                    <span class="modifier">Public</span>
+                                <a href="#moveToBottomPageDown" >moveToBottomPageDown</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#moveToTop" >moveToTop</a>
+                            </li>
+                            <li>
+                                    <span class="modifier"></span>
+                                    <span class="modifier">Public</span>
+                                <a href="#moveToTopControlHome" >moveToTopControlHome</a>
+                            </li>
+                            <li>
+                                    <span class="modifier"></span>
+                                    <span class="modifier">Public</span>
+                                <a href="#moveToTopHome" >moveToTopHome</a>
+                            </li>
+                            <li>
+                                    <span class="modifier"></span>
+                                    <span class="modifier">Public</span>
+                                <a href="#moveToTopPageUp" >moveToTopPageUp</a>
+                            </li>
+                            <li>
+                                    <span class="modifier"></span>
+                                    <span class="modifier">Public</span>
+                                <a href="#moveUp" >moveUp</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#ngOnDestroy" >ngOnDestroy</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#registerCell" >registerCell</a>
+                            </li>
+                            <li>
+                                    <span class="modifier"></span>
+                                    <span class="modifier">Public</span>
+                                <a href="#selectNextRow" >selectNextRow</a>
+                            </li>
+                            <li>
+                                    <span class="modifier"></span>
+                                    <span class="modifier">Public</span>
+                                <a href="#selectPreviousRow" >selectPreviousRow</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#selectRow" >selectRow</a>
+                            </li>
+                            <li>
+                                    <span class="modifier"></span>
+                                    <span class="modifier">Public</span>
+                                <a href="#selectRowControl" >selectRowControl</a>
+                            </li>
+                            <li>
+                                    <span class="modifier"></span>
+                                    <span class="modifier">Public</span>
+                                <a href="#selectRowShift" >selectRowShift</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#handleWhenFocussed" >handleWhenFocussed</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#isFocussedOn" >isFocussedOn</a>
+                            </li>
+                            <li>
+                                    <span class="modifier"></span>
+                                <a href="#removeFocus" >removeFocus</a>
+                            </li>
+                            <li>
+                                    <span class="modifier"></span>
+                                <a href="#setFocus" >setFocus</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Inputs</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#ngxTreeGridRow" >ngxTreeGridRow</a>
+                            </li>
+                            <li>
+                                <a href="#ngxTreeGridRowExpanded" >ngxTreeGridRowExpanded</a>
+                            </li>
+                            <li>
+                                <a href="#ngxTreeGridRowSelectable" >ngxTreeGridRowSelectable</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>HostListeners</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#keydown.ArrowDown" >keydown.ArrowDown</a>
+                            </li>
+                            <li>
+                                <a href="#keydown.ArrowLeft" >keydown.ArrowLeft</a>
+                            </li>
+                            <li>
+                                <a href="#keydown.ArrowRight" >keydown.ArrowRight</a>
+                            </li>
+                            <li>
+                                <a href="#keydown.ArrowUp" >keydown.ArrowUp</a>
+                            </li>
+                            <li>
+                                <a href="#keydown.control.End" >keydown.control.End</a>
+                            </li>
+                            <li>
+                                <a href="#keydown.control.Home" >keydown.control.Home</a>
+                            </li>
+                            <li>
+                                <a href="#keydown.control.space" >keydown.control.space</a>
+                            </li>
+                            <li>
+                                <a href="#keydown.End" >keydown.End</a>
+                            </li>
+                            <li>
+                                <a href="#keydown.Home" >keydown.Home</a>
+                            </li>
+                            <li>
+                                <a href="#keydown.PageDown" >keydown.PageDown</a>
+                            </li>
+                            <li>
+                                <a href="#keydown.PageUp" >keydown.PageUp</a>
+                            </li>
+                            <li>
+                                <a href="#keydown.shift.ArrowDown" >keydown.shift.ArrowDown</a>
+                            </li>
+                            <li>
+                                <a href="#keydown.shift.ArrowUp" >keydown.shift.ArrowUp</a>
+                            </li>
+                            <li>
+                                <a href="#keydown.shift.space" >keydown.shift.space</a>
+                            </li>
+                            <li>
+                                <a href="#blur" >blur</a>
+                            </li>
+                            <li>
+                                <a href="#focus" >focus</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+        </tbody>
+    </table>
+</section>
+
+            <section data-compodoc="block-constructor">
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor()</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="181" class="link-to-prism">libs/angular/layout/src/lib/directives/tree-grid/tree-grid-row.directive.ts:181</a></div>
+                            </td>
+                        </tr>
+
+            </tbody>
+        </table>
+</section>
+
+            <section data-compodoc="block-inputs">
+    <h3 id="inputs">Inputs</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="ngxTreeGridRow"></a>
+                        <b>ngxTreeGridRow</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Required : </i>&nbsp;<b>true</b>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="166" class="link-to-prism">libs/angular/layout/src/lib/directives/tree-grid/tree-grid-row.directive.ts:166</a></div>
+                            </td>
+                        </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>The index of the row</p>
+</div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="ngxTreeGridRowExpanded"></a>
+                        <b>ngxTreeGridRowExpanded</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>false</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="161" class="link-to-prism">libs/angular/layout/src/lib/directives/tree-grid/tree-grid-row.directive.ts:161</a></div>
+                            </td>
+                        </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>Marks the row as expanded</p>
+</div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="ngxTreeGridRowSelectable"></a>
+                        <b>ngxTreeGridRowSelectable</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>false</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="171" class="link-to-prism">libs/angular/layout/src/lib/directives/tree-grid/tree-grid-row.directive.ts:171</a></div>
+                            </td>
+                        </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>Whether the row is selectable</p>
+</div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+
+            <section data-compodoc="block-host-listener">
+    <h3>HostListeners</h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="keydown.ArrowDown"></a>
+                    <span class="name">
+                        <b>
+                            keydown.ArrowDown
+                        </b>
+                        <a href="#keydown.ArrowDown"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="42"
+                            class="link-to-prism">libs/angular/layout/src/lib/directives/tree-grid/tree-grid-row.directive.ts:42</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Sets focus to the next row</p>
+</div>
+
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="keydown.ArrowLeft"></a>
+                    <span class="name">
+                        <b>
+                            keydown.ArrowLeft
+                        </b>
+                        <a href="#keydown.ArrowLeft"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="67"
+                            class="link-to-prism">libs/angular/layout/src/lib/directives/tree-grid/tree-grid-row.directive.ts:67</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Expand the row when closed</p>
+</div>
+
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="keydown.ArrowRight"></a>
+                    <span class="name">
+                        <b>
+                            keydown.ArrowRight
+                        </b>
+                        <a href="#keydown.ArrowRight"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="51"
+                            class="link-to-prism">libs/angular/layout/src/lib/directives/tree-grid/tree-grid-row.directive.ts:51</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Sets the focus on the first cell in the row or closes the row when expanded</p>
+</div>
+
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="keydown.ArrowUp"></a>
+                    <span class="name">
+                        <b>
+                            keydown.ArrowUp
+                        </b>
+                        <a href="#keydown.ArrowUp"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="33"
+                            class="link-to-prism">libs/angular/layout/src/lib/directives/tree-grid/tree-grid-row.directive.ts:33</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Sets focus on to the previous row</p>
+</div>
+
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="keydown.control.End"></a>
+                    <span class="name">
+                        <b>
+                            keydown.control.End
+                        </b>
+                        <a href="#keydown.control.End"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="111"
+                            class="link-to-prism">libs/angular/layout/src/lib/directives/tree-grid/tree-grid-row.directive.ts:111</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Sets focus on the last row of the grid</p>
+</div>
+
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="keydown.control.Home"></a>
+                    <span class="name">
+                        <b>
+                            keydown.control.Home
+                        </b>
+                        <a href="#keydown.control.Home"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="90"
+                            class="link-to-prism">libs/angular/layout/src/lib/directives/tree-grid/tree-grid-row.directive.ts:90</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Sets focus on the first row of the grid</p>
+</div>
+
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="keydown.control.space"></a>
+                    <span class="name">
+                        <b>
+                            keydown.control.space
+                        </b>
+                        <a href="#keydown.control.space"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="127"
+                            class="link-to-prism">libs/angular/layout/src/lib/directives/tree-grid/tree-grid-row.directive.ts:127</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Emits a select event to select a row</p>
+</div>
+
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="keydown.End"></a>
+                    <span class="name">
+                        <b>
+                            keydown.End
+                        </b>
+                        <a href="#keydown.End"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="104"
+                            class="link-to-prism">libs/angular/layout/src/lib/directives/tree-grid/tree-grid-row.directive.ts:104</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Sets focus on the last row of the grid</p>
+</div>
+
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="keydown.Home"></a>
+                    <span class="name">
+                        <b>
+                            keydown.Home
+                        </b>
+                        <a href="#keydown.Home"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="83"
+                            class="link-to-prism">libs/angular/layout/src/lib/directives/tree-grid/tree-grid-row.directive.ts:83</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Sets focus on the first row of the grid</p>
+</div>
+
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="keydown.PageDown"></a>
+                    <span class="name">
+                        <b>
+                            keydown.PageDown
+                        </b>
+                        <a href="#keydown.PageDown"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="97"
+                            class="link-to-prism">libs/angular/layout/src/lib/directives/tree-grid/tree-grid-row.directive.ts:97</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Sets focus on the last row of the grid</p>
+</div>
+
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="keydown.PageUp"></a>
+                    <span class="name">
+                        <b>
+                            keydown.PageUp
+                        </b>
+                        <a href="#keydown.PageUp"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="76"
+                            class="link-to-prism">libs/angular/layout/src/lib/directives/tree-grid/tree-grid-row.directive.ts:76</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Sets focus on the first row of the grid</p>
+</div>
+
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="keydown.shift.ArrowDown"></a>
+                    <span class="name">
+                        <b>
+                            keydown.shift.ArrowDown
+                        </b>
+                        <a href="#keydown.shift.ArrowDown"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="136"
+                            class="link-to-prism">libs/angular/layout/src/lib/directives/tree-grid/tree-grid-row.directive.ts:136</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Emits a select event to select a row below the current row and move focus to that row</p>
+</div>
+
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="keydown.shift.ArrowUp"></a>
+                    <span class="name">
+                        <b>
+                            keydown.shift.ArrowUp
+                        </b>
+                        <a href="#keydown.shift.ArrowUp"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="147"
+                            class="link-to-prism">libs/angular/layout/src/lib/directives/tree-grid/tree-grid-row.directive.ts:147</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Emits a select event to select a row above the current row and move focus to that row</p>
+</div>
+
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="keydown.shift.space"></a>
+                    <span class="name">
+                        <b>
+                            keydown.shift.space
+                        </b>
+                        <a href="#keydown.shift.space"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="118"
+                            class="link-to-prism">libs/angular/layout/src/lib/directives/tree-grid/tree-grid-row.directive.ts:118</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Emits a select event to select a row</p>
+</div>
+
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="blur"></a>
+                    <span class="name">
+                        <b>
+                            blur
+                        </b>
+                        <a href="#blur"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Inherited from         <code><a href="../directives/NgxHasFocusDirective.html" target="_self" >NgxHasFocusDirective</a></code>
+</div>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in         <code><a href="../directives/NgxHasFocusDirective.html#source" target="_self" >NgxHasFocusDirective:25</a></code>
+</div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Remove the hasFocus flag</p>
+</div>
+
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="focus"></a>
+                    <span class="name">
+                        <b>
+                            focus
+                        </b>
+                        <a href="#focus"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Inherited from         <code><a href="../directives/NgxHasFocusDirective.html" target="_self" >NgxHasFocusDirective</a></code>
+</div>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in         <code><a href="../directives/NgxHasFocusDirective.html#source" target="_self" >NgxHasFocusDirective:18</a></code>
+</div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Set the hasFocus flag</p>
+</div>
+
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+            <section data-compodoc="block-methods">
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="arrowLeft"></a>
+                    <span class="name">
+                            <span class="modifier"></span>
+                            <span class="modifier">Public</span>
+                        <span ><b>arrowLeft</b></span>
+                        <a href="#arrowLeft"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>arrowLeft()</code>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <b>Decorators : </b>
+                    <br />
+                    <code>@HostListener(&#x27;keydown.ArrowLeft&#x27;)<br /></code>
+                </td>
+            </tr>
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="67"
+                                    class="link-to-prism">libs/angular/layout/src/lib/directives/tree-grid/tree-grid-row.directive.ts:67</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Expand the row when closed</p>
+</div>
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="arrowRight"></a>
+                    <span class="name">
+                            <span class="modifier"></span>
+                            <span class="modifier">Public</span>
+                        <span ><b>arrowRight</b></span>
+                        <a href="#arrowRight"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>arrowRight()</code>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <b>Decorators : </b>
+                    <br />
+                    <code>@HostListener(&#x27;keydown.ArrowRight&#x27;)<br /></code>
+                </td>
+            </tr>
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="51"
+                                    class="link-to-prism">libs/angular/layout/src/lib/directives/tree-grid/tree-grid-row.directive.ts:51</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Sets the focus on the first cell in the row or closes the row when expanded</p>
+</div>
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="focus"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                        <span ><b>focus</b></span>
+                        <a href="#focus"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>focus()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="201"
+                                    class="link-to-prism">libs/angular/layout/src/lib/directives/tree-grid/tree-grid-row.directive.ts:201</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Focus on the row</p>
+</div>
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getCell"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                        <span ><b>getCell</b></span>
+                        <a href="#getCell"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>getCell(cell: <a href="../undefineds/NgxTreeGridCellTarget.html" target="_self">NgxTreeGridCellTarget</a>, row: <a href="../undefineds/NgxTreeGridRowTarget.html" target="_self">NgxTreeGridRowTarget</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="211"
+                                    class="link-to-prism">libs/angular/layout/src/lib/directives/tree-grid/tree-grid-row.directive.ts:211</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Get a cell from either the current row, or one of the other rows in the grid</p>
+</div>
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                                <td>Description</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>cell</td>
+                                            <td>
+                                                            <code><a href="../miscellaneous/typealiases.html#NgxTreeGridCellTarget" target="_self" >NgxTreeGridCellTarget</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                            <td>
+                                                    <ul>
+<li>The cell we wish to target</li>
+</ul>
+
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                                <td>row</td>
+                                            <td>
+                                                            <code><a href="../miscellaneous/typealiases.html#NgxTreeGridRowTarget" target="_self" >NgxTreeGridRowTarget</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                            <td>
+                                                    <ul>
+<li>The row we wish to target</li>
+</ul>
+
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="../directives/NgxTreeGridCellDirective.html" target="_self" >NgxTreeGridCellDirective</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="moveDown"></a>
+                    <span class="name">
+                            <span class="modifier"></span>
+                            <span class="modifier">Public</span>
+                        <span ><b>moveDown</b></span>
+                        <a href="#moveDown"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>moveDown()</code>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <b>Decorators : </b>
+                    <br />
+                    <code>@HostListener(&#x27;keydown.ArrowDown&#x27;)<br /></code>
+                </td>
+            </tr>
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="42"
+                                    class="link-to-prism">libs/angular/layout/src/lib/directives/tree-grid/tree-grid-row.directive.ts:42</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Sets focus to the next row</p>
+</div>
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="moveToBottom"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                        <span ><b>moveToBottom</b></span>
+                        <a href="#moveToBottom"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>moveToBottom()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="260"
+                                    class="link-to-prism">libs/angular/layout/src/lib/directives/tree-grid/tree-grid-row.directive.ts:260</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Move to the bottom of the grid</p>
+</div>
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="moveToBottomControlEnd"></a>
+                    <span class="name">
+                            <span class="modifier"></span>
+                            <span class="modifier">Public</span>
+                        <span ><b>moveToBottomControlEnd</b></span>
+                        <a href="#moveToBottomControlEnd"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>moveToBottomControlEnd()</code>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <b>Decorators : </b>
+                    <br />
+                    <code>@HostListener(&#x27;keydown.control.End&#x27;)<br /></code>
+                </td>
+            </tr>
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="111"
+                                    class="link-to-prism">libs/angular/layout/src/lib/directives/tree-grid/tree-grid-row.directive.ts:111</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Sets focus on the last row of the grid</p>
+</div>
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="moveToBottomEnd"></a>
+                    <span class="name">
+                            <span class="modifier"></span>
+                            <span class="modifier">Public</span>
+                        <span ><b>moveToBottomEnd</b></span>
+                        <a href="#moveToBottomEnd"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>moveToBottomEnd()</code>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <b>Decorators : </b>
+                    <br />
+                    <code>@HostListener(&#x27;keydown.End&#x27;)<br /></code>
+                </td>
+            </tr>
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="104"
+                                    class="link-to-prism">libs/angular/layout/src/lib/directives/tree-grid/tree-grid-row.directive.ts:104</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Sets focus on the last row of the grid</p>
+</div>
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="moveToBottomPageDown"></a>
+                    <span class="name">
+                            <span class="modifier"></span>
+                            <span class="modifier">Public</span>
+                        <span ><b>moveToBottomPageDown</b></span>
+                        <a href="#moveToBottomPageDown"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>moveToBottomPageDown()</code>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <b>Decorators : </b>
+                    <br />
+                    <code>@HostListener(&#x27;keydown.PageDown&#x27;)<br /></code>
+                </td>
+            </tr>
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="97"
+                                    class="link-to-prism">libs/angular/layout/src/lib/directives/tree-grid/tree-grid-row.directive.ts:97</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Sets focus on the last row of the grid</p>
+</div>
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="moveToTop"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                        <span ><b>moveToTop</b></span>
+                        <a href="#moveToTop"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>moveToTop()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="249"
+                                    class="link-to-prism">libs/angular/layout/src/lib/directives/tree-grid/tree-grid-row.directive.ts:249</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Move to the top of the grid</p>
+</div>
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="moveToTopControlHome"></a>
+                    <span class="name">
+                            <span class="modifier"></span>
+                            <span class="modifier">Public</span>
+                        <span ><b>moveToTopControlHome</b></span>
+                        <a href="#moveToTopControlHome"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>moveToTopControlHome()</code>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <b>Decorators : </b>
+                    <br />
+                    <code>@HostListener(&#x27;keydown.control.Home&#x27;)<br /></code>
+                </td>
+            </tr>
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="90"
+                                    class="link-to-prism">libs/angular/layout/src/lib/directives/tree-grid/tree-grid-row.directive.ts:90</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Sets focus on the first row of the grid</p>
+</div>
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="moveToTopHome"></a>
+                    <span class="name">
+                            <span class="modifier"></span>
+                            <span class="modifier">Public</span>
+                        <span ><b>moveToTopHome</b></span>
+                        <a href="#moveToTopHome"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>moveToTopHome()</code>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <b>Decorators : </b>
+                    <br />
+                    <code>@HostListener(&#x27;keydown.Home&#x27;)<br /></code>
+                </td>
+            </tr>
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="83"
+                                    class="link-to-prism">libs/angular/layout/src/lib/directives/tree-grid/tree-grid-row.directive.ts:83</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Sets focus on the first row of the grid</p>
+</div>
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="moveToTopPageUp"></a>
+                    <span class="name">
+                            <span class="modifier"></span>
+                            <span class="modifier">Public</span>
+                        <span ><b>moveToTopPageUp</b></span>
+                        <a href="#moveToTopPageUp"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>moveToTopPageUp()</code>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <b>Decorators : </b>
+                    <br />
+                    <code>@HostListener(&#x27;keydown.PageUp&#x27;)<br /></code>
+                </td>
+            </tr>
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="76"
+                                    class="link-to-prism">libs/angular/layout/src/lib/directives/tree-grid/tree-grid-row.directive.ts:76</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Sets focus on the first row of the grid</p>
+</div>
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="moveUp"></a>
+                    <span class="name">
+                            <span class="modifier"></span>
+                            <span class="modifier">Public</span>
+                        <span ><b>moveUp</b></span>
+                        <a href="#moveUp"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>moveUp()</code>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <b>Decorators : </b>
+                    <br />
+                    <code>@HostListener(&#x27;keydown.ArrowUp&#x27;)<br /></code>
+                </td>
+            </tr>
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="33"
+                                    class="link-to-prism">libs/angular/layout/src/lib/directives/tree-grid/tree-grid-row.directive.ts:33</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Sets focus on to the previous row</p>
+</div>
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngOnDestroy"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                        <span ><b>ngOnDestroy</b></span>
+                        <a href="#ngOnDestroy"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>ngOnDestroy()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="266"
+                                    class="link-to-prism">libs/angular/layout/src/lib/directives/tree-grid/tree-grid-row.directive.ts:266</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="registerCell"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                        <span ><b>registerCell</b></span>
+                        <a href="#registerCell"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>registerCell(cell: <a href="../directives/NgxTreeGridCellDirective.html" target="_self">NgxTreeGridCellDirective</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="194"
+                                    class="link-to-prism">libs/angular/layout/src/lib/directives/tree-grid/tree-grid-row.directive.ts:194</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Registers a cell to the row</p>
+</div>
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                                <td>Description</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>cell</td>
+                                            <td>
+                                                            <code><a href="../directives/NgxTreeGridCellDirective.html" target="_self" >NgxTreeGridCellDirective</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                            <td>
+                                                    <ul>
+<li>The provided cell</li>
+</ul>
+
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="selectNextRow"></a>
+                    <span class="name">
+                            <span class="modifier"></span>
+                            <span class="modifier">Public</span>
+                        <span ><b>selectNextRow</b></span>
+                        <a href="#selectNextRow"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>selectNextRow()</code>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <b>Decorators : </b>
+                    <br />
+                    <code>@HostListener(&#x27;keydown.shift.ArrowDown&#x27;)<br /></code>
+                </td>
+            </tr>
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="136"
+                                    class="link-to-prism">libs/angular/layout/src/lib/directives/tree-grid/tree-grid-row.directive.ts:136</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Emits a select event to select a row below the current row and move focus to that row</p>
+</div>
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="selectPreviousRow"></a>
+                    <span class="name">
+                            <span class="modifier"></span>
+                            <span class="modifier">Public</span>
+                        <span ><b>selectPreviousRow</b></span>
+                        <a href="#selectPreviousRow"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>selectPreviousRow()</code>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <b>Decorators : </b>
+                    <br />
+                    <code>@HostListener(&#x27;keydown.shift.ArrowUp&#x27;)<br /></code>
+                </td>
+            </tr>
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="147"
+                                    class="link-to-prism">libs/angular/layout/src/lib/directives/tree-grid/tree-grid-row.directive.ts:147</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Emits a select event to select a row above the current row and move focus to that row</p>
+</div>
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="selectRow"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                        <span ><b>selectRow</b></span>
+                        <a href="#selectRow"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>selectRow()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="240"
+                                    class="link-to-prism">libs/angular/layout/src/lib/directives/tree-grid/tree-grid-row.directive.ts:240</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Emit the row event only if the row is selectable</p>
+</div>
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="selectRowControl"></a>
+                    <span class="name">
+                            <span class="modifier"></span>
+                            <span class="modifier">Public</span>
+                        <span ><b>selectRowControl</b></span>
+                        <a href="#selectRowControl"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>selectRowControl()</code>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <b>Decorators : </b>
+                    <br />
+                    <code>@HostListener(&#x27;keydown.control.space&#x27;)<br /></code>
+                </td>
+            </tr>
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="127"
+                                    class="link-to-prism">libs/angular/layout/src/lib/directives/tree-grid/tree-grid-row.directive.ts:127</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Emits a select event to select a row</p>
+</div>
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="selectRowShift"></a>
+                    <span class="name">
+                            <span class="modifier"></span>
+                            <span class="modifier">Public</span>
+                        <span ><b>selectRowShift</b></span>
+                        <a href="#selectRowShift"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>selectRowShift()</code>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <b>Decorators : </b>
+                    <br />
+                    <code>@HostListener(&#x27;keydown.shift.space&#x27;)<br /></code>
+                </td>
+            </tr>
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="118"
+                                    class="link-to-prism">libs/angular/layout/src/lib/directives/tree-grid/tree-grid-row.directive.ts:118</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Emits a select event to select a row</p>
+</div>
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="handleWhenFocussed"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                        <span ><b>handleWhenFocussed</b></span>
+                        <a href="#handleWhenFocussed"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>handleWhenFocussed(action: () => void)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Inherited from         <code><a href="../directives/NgxHasFocusDirective.html" target="_self" >NgxHasFocusDirective</a></code>
+</div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in         <code><a href="../directives/NgxHasFocusDirective.html#source" target="_self" >NgxHasFocusDirective:34</a></code>
+</div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Execute an action when the element has focussed</p>
+</div>
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                                <td>Description</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>action</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/function" target="_blank" >function</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                            <td>
+                                                    <ul>
+<li>The provided action</li>
+</ul>
+
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="isFocussedOn"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                        <span ><b>isFocussedOn</b></span>
+                        <a href="#isFocussedOn"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>isFocussedOn()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Inherited from         <code><a href="../directives/NgxHasFocusDirective.html" target="_self" >NgxHasFocusDirective</a></code>
+</div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in         <code><a href="../directives/NgxHasFocusDirective.html#source" target="_self" >NgxHasFocusDirective:43</a></code>
+</div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Returns when the item has been focussed on</p>
+</div>
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="removeFocus"></a>
+                    <span class="name">
+                            <span class="modifier"></span>
+                        <span ><b>removeFocus</b></span>
+                        <a href="#removeFocus"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>removeFocus()</code>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <b>Decorators : </b>
+                    <br />
+                    <code>@HostListener(&#x27;blur&#x27;)<br /></code>
+                </td>
+            </tr>
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Inherited from         <code><a href="../directives/NgxHasFocusDirective.html" target="_self" >NgxHasFocusDirective</a></code>
+</div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in         <code><a href="../directives/NgxHasFocusDirective.html#source" target="_self" >NgxHasFocusDirective:25</a></code>
+</div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Remove the hasFocus flag</p>
+</div>
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="setFocus"></a>
+                    <span class="name">
+                            <span class="modifier"></span>
+                        <span ><b>setFocus</b></span>
+                        <a href="#setFocus"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>setFocus()</code>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <b>Decorators : </b>
+                    <br />
+                    <code>@HostListener(&#x27;focus&#x27;)<br /></code>
+                </td>
+            </tr>
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Inherited from         <code><a href="../directives/NgxHasFocusDirective.html" target="_self" >NgxHasFocusDirective</a></code>
+</div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in         <code><a href="../directives/NgxHasFocusDirective.html#source" target="_self" >NgxHasFocusDirective:18</a></code>
+</div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Set the hasFocus flag</p>
+</div>
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+            <section data-compodoc="block-properties">
+    
+    <h3 id="inputs">
+        Properties
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="cells"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                            <span class="modifier">Readonly</span>
+                        <span ><b>cells</b></span>
+                        <a href="#cells"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../directives/NgxTreeGridCellDirective.html" target="_self" >NgxTreeGridCellDirective[]</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[]</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="28" class="link-to-prism">libs/angular/layout/src/lib/directives/tree-grid/tree-grid-row.directive.ts:28</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>An array of all cells in the row</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="elementRef"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                            <span class="modifier">Readonly</span>
+                        <span ><b>elementRef</b></span>
+                        <a href="#elementRef"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>inject(ElementRef)</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="23" class="link-to-prism">libs/angular/layout/src/lib/directives/tree-grid/tree-grid-row.directive.ts:23</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngxTreeGridRow"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                            <span class="modifier">Readonly</span>
+                        <span ><b>ngxTreeGridRow</b></span>
+                        <a href="#ngxTreeGridRow"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="166" class="link-to-prism">libs/angular/layout/src/lib/directives/tree-grid/tree-grid-row.directive.ts:166</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>The index of the row</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngxTreeGridRowExpanded"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                            <span class="modifier">Readonly</span>
+                        <span ><b>ngxTreeGridRowExpanded</b></span>
+                        <a href="#ngxTreeGridRowExpanded"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>false</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="161" class="link-to-prism">libs/angular/layout/src/lib/directives/tree-grid/tree-grid-row.directive.ts:161</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Marks the row as expanded</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngxTreeGridRowExpandRow"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                        <span ><b>ngxTreeGridRowExpandRow</b></span>
+                        <a href="#ngxTreeGridRowExpandRow"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>OutputEmitterRef&lt;boolean&gt;</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>output&lt;boolean&gt;()</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="181" class="link-to-prism">libs/angular/layout/src/lib/directives/tree-grid/tree-grid-row.directive.ts:181</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Emits an expand row event</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngxTreeGridRowSelectable"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                            <span class="modifier">Readonly</span>
+                        <span ><b>ngxTreeGridRowSelectable</b></span>
+                        <a href="#ngxTreeGridRowSelectable"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>false</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="171" class="link-to-prism">libs/angular/layout/src/lib/directives/tree-grid/tree-grid-row.directive.ts:171</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Whether the row is selectable</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngxTreeGridRowSelectRow"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                        <span ><b>ngxTreeGridRowSelectRow</b></span>
+                        <a href="#ngxTreeGridRowSelectRow"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>OutputEmitterRef&lt;void&gt;</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>output&lt;void&gt;()</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="176" class="link-to-prism">libs/angular/layout/src/lib/directives/tree-grid/tree-grid-row.directive.ts:176</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Emits a select row event</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="parent"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                            <span class="modifier">Readonly</span>
+                        <span ><b>parent</b></span>
+                        <a href="#parent"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>inject(NgxTreeGridDirective)</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="22" class="link-to-prism">libs/angular/layout/src/lib/directives/tree-grid/tree-grid-row.directive.ts:22</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="hasFocus"></a>
+                    <span class="name">
+                            <span class="modifier">Protected</span>
+                        <span ><b>hasFocus</b></span>
+                        <a href="#hasFocus"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>false</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Inherited from         <code><a href="../directives/NgxHasFocusDirective.html" target="_self" >NgxHasFocusDirective</a></code>
+</div>
+                            </td>
+                        </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in         <code><a href="../directives/NgxHasFocusDirective.html#source" target="_self" >NgxHasFocusDirective:13</a></code>
+</div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Whether the current element is focussed</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+</section>
+
+
+    </div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Directive, ElementRef, HostListener, OnDestroy, OutputEmitterRef, inject, input, output } from &#x27;@angular/core&#x27;;
+
+import { NgxTreeGridCellTarget, NgxTreeGridRowTarget } from &#x27;../../types&#x27;;
+import { NgxHasFocusDirective } from &#x27;../has-focus-action&#x27;;
+
+import { NgxTreeGridCellDirective } from &#x27;./tree-grid.cell.directive&#x27;;
+import { NgxTreeGridDirective } from &#x27;./tree-grid.directive&#x27;;
+
+/**
+ * A row directive to handle navigation according to the WCAG treegrid pattern
+ *
+ * See https://www.w3.org/WAI/ARIA/apg/patterns/treegrid/
+ */
+@Directive({
+	selector: &#x27;[ngxTreeGridRow]&#x27;,
+	standalone: true,
+	host: {
+		&#x27;[attr.aria-expanded]&#x27;: &#x27;ngxTreeGridRowExpanded()&#x27;,
+	},
+})
+export class NgxTreeGridRowDirective extends NgxHasFocusDirective implements OnDestroy {
+	private readonly parent &#x3D; inject(NgxTreeGridDirective);
+	private readonly elementRef &#x3D; inject(ElementRef);
+
+	/**
+	 * An array of all cells in the row
+	 */
+	private readonly cells: NgxTreeGridCellDirective[] &#x3D; [];
+
+	/**
+	 * Sets focus on to the previous row
+	 */
+	@HostListener(&#x27;keydown.ArrowUp&#x27;) public moveUp(): void {
+		this.handleWhenFocussed(() &#x3D;&gt; {
+			this.parent.getRow(this.ngxTreeGridRow() - 1)?.focus();
+		});
+	}
+
+	/**
+	 * Sets focus to the next row
+	 */
+	@HostListener(&#x27;keydown.ArrowDown&#x27;) public moveDown(): void {
+		this.handleWhenFocussed(() &#x3D;&gt; {
+			this.parent.getRow(this.ngxTreeGridRow() + 1)?.focus();
+		});
+	}
+
+	/**
+	 * Sets the focus on the first cell in the row or closes the row when expanded
+	 */
+	@HostListener(&#x27;keydown.ArrowRight&#x27;) public arrowRight(): void {
+		this.handleWhenFocussed(() &#x3D;&gt; {
+			// Iben: Only when the row is not expanded we can move to the next cell, as by WCAG design
+			if (this.parent.ngxTreeGridExpandable() &amp;&amp; this.ngxTreeGridRowExpanded()) {
+				this.ngxTreeGridRowExpandRow.emit(false);
+				return;
+			}
+
+			// Iben: Focus on the first cell
+			this.cells[0]?.focus();
+		});
+	}
+
+	/**
+	 * Expand the row when closed
+	 */
+	@HostListener(&#x27;keydown.ArrowLeft&#x27;) public arrowLeft(): void {
+		this.handleWhenFocussed(() &#x3D;&gt; {
+			this.ngxTreeGridRowExpandRow.emit(true);
+		});
+	}
+
+	/**
+	 * Sets focus on the first row of the grid
+	 */
+	@HostListener(&#x27;keydown.PageUp&#x27;) public moveToTopPageUp(): void {
+		this.moveToTop();
+	}
+
+	/**
+	 * Sets focus on the first row of the grid
+	 */
+	@HostListener(&#x27;keydown.Home&#x27;) public moveToTopHome(): void {
+		this.moveToTop();
+	}
+
+	/**
+	 * Sets focus on the first row of the grid
+	 */
+	@HostListener(&#x27;keydown.control.Home&#x27;) public moveToTopControlHome(): void {
+		this.moveToTop();
+	}
+
+	/**
+	 * Sets focus on the last row of the grid
+	 */
+	@HostListener(&#x27;keydown.PageDown&#x27;) public moveToBottomPageDown(): void {
+		this.moveToBottom();
+	}
+
+	/**
+	 * Sets focus on the last row of the grid
+	 */
+	@HostListener(&#x27;keydown.End&#x27;) public moveToBottomEnd(): void {
+		this.moveToBottom();
+	}
+
+	/**
+	 * Sets focus on the last row of the grid
+	 */
+	@HostListener(&#x27;keydown.control.End&#x27;) public moveToBottomControlEnd(): void {
+		this.moveToBottom();
+	}
+
+	/**
+	 * Emits a select event to select a row
+	 */
+	@HostListener(&#x27;keydown.shift.space&#x27;) public selectRowShift(): void {
+		this.handleWhenFocussed(() &#x3D;&gt; {
+			this.selectRow();
+		});
+	}
+
+	/**
+	 * Emits a select event to select a row
+	 */
+	@HostListener(&#x27;keydown.control.space&#x27;) public selectRowControl(): void {
+		this.handleWhenFocussed(() &#x3D;&gt; {
+			this.selectRow();
+		});
+	}
+
+	/**
+	 * Emits a select event to select a row below the current row and move focus to that row
+	 */
+	@HostListener(&#x27;keydown.shift.ArrowDown&#x27;) public selectNextRow(): void {
+		this.handleWhenFocussed(() &#x3D;&gt; {
+			const ngxTreeGridRow &#x3D; this.ngxTreeGridRow();
+			this.parent.getRow(ngxTreeGridRow + 1)?.selectRow();
+			this.parent.getRow(ngxTreeGridRow + 1)?.focus();
+		});
+	}
+
+	/**
+	 * Emits a select event to select a row above the current row and move focus to that row
+	 */
+	@HostListener(&#x27;keydown.shift.ArrowUp&#x27;) public selectPreviousRow(): void {
+		this.handleWhenFocussed(() &#x3D;&gt; {
+			const ngxTreeGridRow &#x3D; this.ngxTreeGridRow();
+			this.parent.getRow(ngxTreeGridRow - 1)?.selectRow();
+			this.parent.getRow(ngxTreeGridRow - 1)?.focus();
+		});
+	}
+
+	/**
+	 * Marks the row as expanded
+	 */
+	/**
+	 * Marks the row as expanded
+	 */
+	public readonly ngxTreeGridRowExpanded &#x3D; input&lt;boolean&gt;(false);
+
+	/**
+	 * The index of the row
+	 */
+	public readonly ngxTreeGridRow &#x3D; input.required&lt;number&gt;();
+
+	/**
+	 * Whether the row is selectable
+	 */
+	public readonly ngxTreeGridRowSelectable &#x3D; input&lt;boolean&gt;(false);
+
+	/**
+	 * Emits a select row event
+	 */
+	public ngxTreeGridRowSelectRow: OutputEmitterRef&lt;void&gt; &#x3D; output&lt;void&gt;();
+
+	/**
+	 * Emits an expand row event
+	 */
+	public ngxTreeGridRowExpandRow: OutputEmitterRef&lt;boolean&gt; &#x3D; output&lt;boolean&gt;();
+
+	constructor() {
+		super();
+
+		this.parent.registerRow(this);
+	}
+
+	/**
+	 * Registers a cell to the row
+	 *
+	 * @param  cell - The provided cell
+	 */
+	public registerCell(cell: NgxTreeGridCellDirective): void {
+		this.cells.push(cell);
+	}
+
+	/**
+	 * Focus on the row
+	 */
+	public focus(): void {
+		this.elementRef.nativeElement.focus();
+	}
+
+	/**
+	 * Get a cell from either the current row, or one of the other rows in the grid
+	 *
+	 * @param cell - The cell we wish to target
+	 * @param row - The row we wish to target
+	 */
+	public getCell(
+		cell: NgxTreeGridCellTarget,
+		row: NgxTreeGridRowTarget
+	): NgxTreeGridCellDirective {
+		// Iben: Get the index of the cell
+		const index &#x3D;
+			typeof cell &#x3D;&#x3D;&#x3D; &#x27;string&#x27; ? (cell &#x3D;&#x3D;&#x3D; &#x27;first&#x27; ? 0 : this.cells.length - 1) : cell;
+
+		// Iben: If the cell is in the current row, we return the cell
+		if (row &#x3D;&#x3D;&#x3D; &#x27;current&#x27;) {
+			return this.cells[index];
+		}
+
+		// Iben: If the row is either the above or below one, we get the cell from those rows
+		if (row &#x3D;&#x3D;&#x3D; &#x27;above&#x27; || row &#x3D;&#x3D;&#x3D; &#x27;below&#x27;) {
+			return this.parent
+				.getRow(row &#x3D;&#x3D;&#x3D; &#x27;below&#x27; ? this.ngxTreeGridRow() + 1 : this.ngxTreeGridRow() - 1)
+				?.getCell(index, &#x27;current&#x27;);
+		}
+
+		// Iben: If the row is the first or last, we get those rows
+		return row &#x3D;&#x3D;&#x3D; &#x27;first&#x27;
+			? this.parent.getFirstRow()?.getCell(index, &#x27;current&#x27;)
+			: this.parent.getLastRow()?.getCell(index, &#x27;current&#x27;);
+	}
+
+	/**
+	 * Emit the row event only if the row is selectable
+	 */
+	public selectRow(): void {
+		if (this.ngxTreeGridRowSelectable()) {
+			this.ngxTreeGridRowSelectRow.emit();
+		}
+	}
+
+	/**
+	 * Move to the top of the grid
+	 */
+	public moveToTop(): void {
+		this.handleWhenFocussed(() &#x3D;&gt; {
+			this.parent.moveTo(&#x27;top&#x27;);
+		});
+	}
+
+	/**
+	 * Move to the bottom of the grid
+	 *
+	 * @memberof NgxTreeGridRowDirective
+	 */
+	public moveToBottom(): void {
+		this.handleWhenFocussed(() &#x3D;&gt; {
+			this.parent.moveTo(&#x27;bottom&#x27;);
+		});
+	}
+
+	public ngOnDestroy(): void {
+		// Iben: Remove the row from the grid
+		this.parent.removeRow(this.ngxTreeGridRow());
+	}
+}
+</code></pre>
+    </div>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'directive';
+            var COMPODOC_CURRENT_PAGE_URL = 'NgxTreeGridRowDirective.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script>
+               $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               checkToggle(darkModeState);
+               if ($darkModeToggleSwitchers.length > 0) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].addEventListener('change', function (event) {
+                              darkModeState = !darkModeState;
+                              toggleDarkMode(darkModeState);
+                         });
+                    }
+               }
+          </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

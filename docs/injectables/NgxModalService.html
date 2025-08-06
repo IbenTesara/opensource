@@ -1,0 +1,1281 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>@opensource/source documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+    </head>
+    <body>
+          <script>
+               // Blocking script to avoid flickering dark mode
+               // Dark mode toggle button
+               var useDark = window.matchMedia('(prefers-color-scheme: dark)');
+               var darkModeState = useDark.matches;
+               var $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               var $darkModeToggles = document.querySelectorAll('.dark-mode-switch');
+               var darkModeStateLocal = localStorage.getItem('compodoc_darkmode-state');
+
+               function checkToggle(check) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].checked = check;
+                    }
+               }
+
+               function toggleDarkMode(state) {
+                    if (window.localStorage) {
+                         localStorage.setItem('compodoc_darkmode-state', state);
+                    }
+
+                    checkToggle(state);
+
+                    const hasClass = document.body.classList.contains('dark');
+
+                    if (state) {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.add('dark');
+                         }
+                         if (!hasClass) {
+                              document.body.classList.add('dark');
+                         }
+                    } else {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.remove('dark');
+                         }
+                         if (hasClass) {
+                              document.body.classList.remove('dark');
+                         }
+                    }
+               }
+
+               useDark.addEventListener('change', function (evt) {
+                    toggleDarkMode(evt.matches);
+               });
+               if (darkModeStateLocal) {
+                    darkModeState = darkModeStateLocal === 'true';
+               }
+               toggleDarkMode(darkModeState);
+          </script>
+
+        <div class="navbar navbar-default navbar-fixed-top d-md-none p-0">
+               <div class="d-flex">
+                    <a href="../" class="navbar-brand">@opensource/source documentation</a>
+                    <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+               </div>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="d-none d-md-block menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content injectable">
+                   <div class="content-data">
+
+
+
+
+
+
+
+
+<ol class="breadcrumb">
+  <li class="breadcrumb-item">Injectables</li>
+  <li class="breadcrumb-item" >NgxModalService</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item">
+            <a href="#info" 
+                class="nav-link"
+                class="nav-link active"
+                role="tab" id="info-tab" data-bs-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li class="nav-item">
+            <a href="#source" 
+                class="nav-link"
+                
+                role="tab" id="source-tab" data-bs-toggle="tab" data-link="source">Source</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="info">
+        <p class="comment">
+            <h3>File</h3>
+        </p>
+        <p class="comment">
+            <code>libs/angular/inform/src/lib/services/modal/modal.service.ts</code>
+        </p>
+
+
+            <p class="comment">
+                <h3>Description</h3>
+            </p>
+            <p class="comment">
+                <p>A wrapper service to Angular CDK Dialog that provides a WCAG/ARIA compliant implementation of modals</p>
+
+            </p>
+
+
+
+            <section data-compodoc="block-index">
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                    <span class="modifier">Private</span>
+                                    <span class="modifier">Readonly</span>
+                                <a href="#configuration" >configuration</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                    <span class="modifier">Readonly</span>
+                                <a href="#dialogService" >dialogService</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                    <span class="modifier">Readonly</span>
+                                <a href="#hasActiveModal$" >hasActiveModal$</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#hasModalSubject" >hasModalSubject</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#close" >close</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#createModalComponent" >createModalComponent</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#getValue" >getValue</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#hasRequiredDescription" >hasRequiredDescription</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#open" >open</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#runARIAChecks" >runARIAChecks</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+
+            <section data-compodoc="block-methods">
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="close"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                        <span ><b>close</b></span>
+                        <a href="#close"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>close(onClose?: () => void)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="124"
+                                    class="link-to-prism">libs/angular/inform/src/lib/services/modal/modal.service.ts:124</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Closes the currently active modal</p>
+<ul>
+<li>@param onClose - An optional onClose function</li>
+</ul>
+</div>
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                                <td>Description</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>onClose</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/function" target="_blank" >function</a></code>
+                                            </td>
+
+                                            <td>
+                                                    Yes
+                                            </td>
+
+
+                                            <td>
+                                                    <ul>
+<li>An optional onClose function</li>
+</ul>
+
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="createModalComponent"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>createModalComponent</b></span>
+                        <a href="#createModalComponent"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>createModalComponent(options: <a href="../undefineds/NgxModalOptions.html" target="_self">NgxModalOptions&lt;ActionType&gt;</a>, component: <a href="../directives/NgxModalAbstractComponent.html" target="_self">Type&lt;NgxModalAbstractComponent&lt;ActionType, DataType&gt;&gt;</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="177"
+                                    class="link-to-prism">libs/angular/inform/src/lib/services/modal/modal.service.ts:177</a></div>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td class="col-md-4">
+                            <b>Type parameters :</b>
+                            <ul class="type-parameters">
+                                    <li>ActionType</li>
+                                    <li>DataType</li>
+                            </ul>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Creates the modal component</p>
+</div>
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                                <td>Description</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>options</td>
+                                            <td>
+                                                            <code><a href="../miscellaneous/typealiases.html#NgxModalOptions" target="_self" >NgxModalOptions&lt;ActionType&gt;</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                            <td>
+                                                    <ul>
+<li>The options of the modal</li>
+</ul>
+
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                                <td>component</td>
+                                            <td>
+                                                            <code><a href="../directives/NgxModalAbstractComponent.html" target="_self" >Type&lt;NgxModalAbstractComponent&lt;ActionType, DataType&gt;&gt;</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                            <td>
+                                                    <ul>
+<li>The component we wish to render</li>
+</ul>
+
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="../directives/NgxModalAbstractComponent.html" target="_self" >NgxModalAbstractComponent&lt;ActionType&gt;</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getValue"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>getValue</b></span>
+                        <a href="#getValue"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>getValue(configurationValue: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>, optionsValue: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>, defaultValue: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="244"
+                                    class="link-to-prism">libs/angular/inform/src/lib/services/modal/modal.service.ts:244</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Returns a value based on whether one of the overwrites is defined</p>
+</div>
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                                <td>Description</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>configurationValue</td>
+                                            <td>
+                                                            <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                            <td>
+                                                    <ul>
+<li>The overwrite on configuration level</li>
+</ul>
+
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                                <td>optionsValue</td>
+                                            <td>
+                                                            <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                            <td>
+                                                    <ul>
+<li>The overwrite on options level</li>
+</ul>
+
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                                <td>defaultValue</td>
+                                            <td>
+                                                            <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                            <td>
+                                                    <ul>
+<li>The default value if no overwrite was defined</li>
+</ul>
+
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="hasRequiredDescription"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>hasRequiredDescription</b></span>
+                        <a href="#hasRequiredDescription"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>hasRequiredDescription(options: <a href="../undefineds/NgxModalOptions.html" target="_self">NgxModalOptions&lt;ActionType&gt;</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="222"
+                                    class="link-to-prism">libs/angular/inform/src/lib/services/modal/modal.service.ts:222</a></div>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td class="col-md-4">
+                            <b>Type parameters :</b>
+                            <ul class="type-parameters">
+                                    <li>ActionType</li>
+                            </ul>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Checks if the description is provided when the role requires it</p>
+</div>
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                                <td>Description</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>options</td>
+                                            <td>
+                                                            <code><a href="../miscellaneous/typealiases.html#NgxModalOptions" target="_self" >NgxModalOptions&lt;ActionType&gt;</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                            <td>
+                                                    <ul>
+<li>The options of the modal</li>
+</ul>
+
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="open"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                        <span ><b>open</b></span>
+                        <a href="#open"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>open(options: NgxModalOptions<ActionType | DataType>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="49"
+                                    class="link-to-prism">libs/angular/inform/src/lib/services/modal/modal.service.ts:49</a></div>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td class="col-md-4">
+                            <b>Type parameters :</b>
+                            <ul class="type-parameters">
+                                    <li>ActionType</li>
+                                    <li>DataType</li>
+                            </ul>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Opens a modal based on the provided options</p>
+</div>
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                                <td>Description</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>options</td>
+                                            <td>
+                                                        <code>NgxModalOptions&lt;ActionType | DataType&gt;</code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                            <td>
+                                                    <ul>
+<li>The modal options</li>
+</ul>
+
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>    <code>Observable&lt;ActionType&gt;</code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="runARIAChecks"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>runARIAChecks</b></span>
+                        <a href="#runARIAChecks"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>runARIAChecks(options: <a href="../undefineds/NgxModalOptions.html" target="_self">NgxModalOptions&lt;ActionType&gt;</a>, component: <a href="../directives/NgxModalAbstractComponent.html" target="_self">Type&lt;NgxModalAbstractComponent&lt;ActionType&gt;&gt;</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="146"
+                                    class="link-to-prism">libs/angular/inform/src/lib/services/modal/modal.service.ts:146</a></div>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td class="col-md-4">
+                            <b>Type parameters :</b>
+                            <ul class="type-parameters">
+                                    <li>ActionType</li>
+                            </ul>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Checks if all the necessary preconditions are met</p>
+</div>
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                                <td>Description</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>options</td>
+                                            <td>
+                                                            <code><a href="../miscellaneous/typealiases.html#NgxModalOptions" target="_self" >NgxModalOptions&lt;ActionType&gt;</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                            <td>
+                                                    <ul>
+<li>The options of the modal</li>
+</ul>
+
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                                <td>component</td>
+                                            <td>
+                                                            <code><a href="../directives/NgxModalAbstractComponent.html" target="_self" >Type&lt;NgxModalAbstractComponent&lt;ActionType&gt;&gt;</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                            <td>
+                                                    <ul>
+<li>The component we wish to render</li>
+</ul>
+
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+            <section data-compodoc="block-properties">
+    
+    <h3 id="inputs">
+        Properties
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="configuration"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                            <span class="modifier">Readonly</span>
+                        <span ><b>configuration</b></span>
+                        <a href="#configuration"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>inject&lt;NgxModalConfiguration&gt;(NgxModalConfigurationToken, {
+		optional: true,
+	})!</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="29" class="link-to-prism">libs/angular/inform/src/lib/services/modal/modal.service.ts:29</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="dialogService"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                            <span class="modifier">Readonly</span>
+                        <span ><b>dialogService</b></span>
+                        <a href="#dialogService"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>inject(Dialog)</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="32" class="link-to-prism">libs/angular/inform/src/lib/services/modal/modal.service.ts:32</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="hasActiveModal$"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                            <span class="modifier">Readonly</span>
+                        <span ><b>hasActiveModal$</b></span>
+                        <a href="#hasActiveModal$"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>Observable&lt;boolean&gt;</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>this.hasModalSubject.asObservable()</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="42" class="link-to-prism">libs/angular/inform/src/lib/services/modal/modal.service.ts:42</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>An observable that keeps track of whether a modal is currently active.</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="hasModalSubject"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>hasModalSubject</b></span>
+                        <a href="#hasModalSubject"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>BehaviorSubject&lt;boolean&gt;</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>new BehaviorSubject(false)</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="37" class="link-to-prism">libs/angular/inform/src/lib/services/modal/modal.service.ts:37</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>A subject that keeps track of whether a modal is currently active</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+</section>
+
+    </div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Dialog } from &#x27;@angular/cdk/dialog&#x27;;
+import { Injectable, Type, inject } from &#x27;@angular/core&#x27;;
+import { outputToObservable } from &#x27;@angular/core/rxjs-interop&#x27;;
+import {
+	BehaviorSubject,
+	combineLatest,
+	filter,
+	finalize,
+	map,
+	NEVER,
+	Observable,
+	startWith,
+	takeUntil,
+	tap,
+} from &#x27;rxjs&#x27;;
+
+import { NgxModalAbstractComponent } from &#x27;../../abstracts&#x27;;
+import { NgxModalConfigurationToken } from &#x27;../../tokens&#x27;;
+import { NgxModalActionType, NgxModalConfiguration, NgxModalOptions } from &#x27;../../types&#x27;;
+
+/**
+ * A wrapper service to Angular CDK Dialog that provides a WCAG/ARIA compliant implementation of modals
+ *
+ * @export
+ * @class NgxModalService
+ */
+@Injectable({ providedIn: &#x27;root&#x27; })
+export class NgxModalService {
+	private readonly configuration &#x3D; inject&lt;NgxModalConfiguration&gt;(NgxModalConfigurationToken, {
+		optional: true,
+	})!;
+	private readonly dialogService &#x3D; inject(Dialog);
+
+	/**
+	 * A subject that keeps track of whether a modal is currently active
+	 */
+	private hasModalSubject: BehaviorSubject&lt;boolean&gt; &#x3D; new BehaviorSubject(false);
+
+	/**
+	 * An observable that keeps track of whether a modal is currently active.
+	 */
+	public readonly hasActiveModal$: Observable&lt;boolean&gt; &#x3D; this.hasModalSubject.asObservable();
+
+	/**
+	 * Opens a modal based on the provided options
+	 *
+	 * @param {NgxModalOptions&lt;ActionType&gt;} options - The modal options
+	 */
+	public open&lt;ActionType extends NgxModalActionType &#x3D; string, DataType &#x3D; any&gt;(
+		options: NgxModalOptions&lt;ActionType, DataType&gt;
+	): Observable&lt;ActionType&gt; {
+		// Iben: If a previous modal is still active, we early exit.
+		if (this.hasModalSubject.value) {
+			console.warn(
+				&#x27;NgxInform: An active modal is currently displayed, close the active modal before opening a new one&#x27;
+			);
+
+			return NEVER;
+		}
+
+		// Iben: Declare the modal as active
+		this.hasModalSubject.next(true);
+
+		// Iben: Fetch the type of component we wish to show
+		const configuration &#x3D; this.configuration?.modals?.[options.type];
+		const component: Type&lt;NgxModalAbstractComponent&lt;ActionType, DataType&gt;&gt; &#x3D;
+			options.component ||
+			(configuration.component as Type&lt;NgxModalAbstractComponent&lt;ActionType, DataType&gt;&gt;);
+
+		// Iben: Check if all the correct parameters are set and return NEVER when they&#x27;re not correctly set
+		if (!this.runARIAChecks&lt;ActionType&gt;(options, component)) {
+			return NEVER;
+		}
+
+		// Iben: Render the modal
+		const modal &#x3D; this.createModalComponent&lt;ActionType, DataType&gt;(options, component);
+
+		// Iben: Return the modal action
+		return combineLatest([
+			// Iben: Set the start value to undefined so both actions at least emit once
+			outputToObservable(modal.action).pipe(startWith(undefined)),
+			outputToObservable(modal.close).pipe(
+				// Iben: Map so we can keep the emit value void, but can work with the filter later down the line
+				map(() &#x3D;&gt; &#x27;NgxModalClose&#x27;),
+				// Iben: Set the start value to undefined so both actions at least emit once
+				startWith(undefined)
+			),
+		]).pipe(
+			// Iben: Only emit if one of the two actions actually has an emit
+			filter(([action, closed]: [ActionType, &#x27;NgxModalClose&#x27;]) &#x3D;&gt; {
+				return Boolean(action) || Boolean(closed);
+			}),
+			map(([action, closed]: [ActionType, &#x27;NgxModalClose&#x27;]) &#x3D;&gt; {
+				return closed || action;
+			}),
+			tap((action: ActionType | &#x27;NgxModalClose&#x27;) &#x3D;&gt; {
+				// Iben: If the autoClose is specifically set to false, we early exit unless we&#x27;re running in a close event
+				if (
+					action !&#x3D;&#x3D; &#x27;NgxModalClose&#x27; &amp;&amp;
+					((options.autoClose !&#x3D;&#x3D; undefined &amp;&amp; options.autoClose &#x3D;&#x3D;&#x3D; false) ||
+						(configuration?.autoClose !&#x3D;&#x3D; undefined &amp;&amp;
+							configuration.autoClose &#x3D;&#x3D;&#x3D; false))
+				) {
+					return;
+				}
+
+				// Iben: Close the modal
+				this.close(options.onClose);
+			}),
+			// Iben: Map the action back to the ActionType
+			map((action: ActionType | &#x27;NgxModalClose&#x27;) &#x3D;&gt; {
+				return action &#x3D;&#x3D;&#x3D; &#x27;NgxModalClose&#x27; ? undefined : (action as ActionType);
+			}),
+			// Wouter: Unsubscribe wen no modal is open
+			takeUntil(this.hasModalSubject.pipe(filter((hasModal) &#x3D;&gt; !hasModal)))
+		);
+	}
+
+	/**
+	 * Closes the currently active modal
+	 *
+	 * * @param onClose - An optional onClose function
+	 */
+	public close(onClose?: () &#x3D;&gt; void): void {
+		// Wouter: The setTimeout delay is needed, so that the &#x60;open&#x60; method can emit before its subscription end gets triggered
+		setTimeout(() &#x3D;&gt; {
+			// Iben: Close the modal
+			this.dialogService.closeAll();
+
+			// Iben: Mark the modal as closed
+			this.hasModalSubject.next(false);
+
+			// Iben: Run an optional onClose function
+			if (onClose) {
+				onClose();
+			}
+		});
+	}
+
+	/**
+	 * Checks if all the necessary preconditions are met
+	 *
+	 * @param options - The options of the modal
+	 * @param  component - The component we wish to render
+	 */
+	private runARIAChecks&lt;ActionType extends NgxModalActionType&gt;(
+		options: NgxModalOptions&lt;ActionType&gt;,
+		component: Type&lt;NgxModalAbstractComponent&lt;ActionType&gt;&gt;
+	): boolean {
+		// Iben: If no component was found, we return NEVER and throw an error
+		if (!component) {
+			console.error(
+				&#x27;NgxInform: No component was provided or found in the configuration to render.&#x27;
+			);
+
+			return false;
+		}
+
+		// Iben: If no description was provided when required, we return NEVER and throw an error
+		if (!this.hasRequiredDescription(options)) {
+			console.error(
+				&#x27;NgxInform: The role of the modal was set to &quot;alertdialog&quot; but no &quot;describedById&quot; was provided.&#x27;
+			);
+
+			return false;
+		}
+
+		return true;
+	}
+
+	/**
+	 * Creates the modal component
+	 *
+	 * @param options - The options of the modal
+	 * @param  component - The component we wish to render
+	 */
+	private createModalComponent&lt;ActionType extends NgxModalActionType, DataType &#x3D; any&gt;(
+		options: NgxModalOptions&lt;ActionType&gt;,
+		component: Type&lt;NgxModalAbstractComponent&lt;ActionType, DataType&gt;&gt;
+	): NgxModalAbstractComponent&lt;ActionType&gt; {
+		const configuration &#x3D; this.configuration?.modals?.[options.type];
+
+		// Iben: Create the modal and render it
+		const dialogRef &#x3D; this.dialogService.open(component, {
+			role: configuration?.role || options.role,
+			ariaLabel: options.label,
+			ariaLabelledBy: options.labelledById,
+			ariaDescribedBy: options.describedById,
+			disableClose: true,
+			restoreFocus: this.getValue(undefined, options.restoreFocus, true),
+			autoFocus: this.getValue(undefined, options.autoFocus, true),
+			viewContainerRef: options.viewContainerRef,
+			direction: configuration?.direction || options.direction,
+			hasBackdrop: this.getValue(configuration?.hasBackdrop, options.hasBackdrop, true),
+			panelClass: this.getValue(configuration?.panelClass, options.panelClass, []),
+			closeOnNavigation: this.getValue(
+				configuration?.closeOnNavigation,
+				options.closeOnNavigation,
+				true
+			),
+			closeOnDestroy: true,
+			closeOnOverlayDetachments: true,
+		});
+		const modal &#x3D; dialogRef.componentInstance;
+
+		// Iben: Set the data of the modal
+		dialogRef.componentRef.setInput(
+			&#x27;data&#x27;,
+			this.getValue(configuration?.data, options.data, undefined)
+		);
+		dialogRef.componentRef.setInput(&#x27;ariaDescribedBy&#x27;, options.describedById);
+		dialogRef.componentRef.setInput(&#x27;ariaLabelledBy&#x27;, options.labelledById);
+
+		return modal;
+	}
+
+	/**
+	 * Checks if the description is provided when the role requires it
+	 *
+	 * @param options - The options of the modal
+	 */
+	private hasRequiredDescription&lt;ActionType extends NgxModalActionType&gt;(
+		options: NgxModalOptions&lt;ActionType&gt;
+	): boolean {
+		// Iben: If the options has provided a default type, we check based on the configuration role
+		if (options.type) {
+			const configuration &#x3D; this.configuration?.modals[options.type];
+
+			return !(configuration.role &#x3D;&#x3D;&#x3D; &#x27;alertdialog&#x27; &amp;&amp; !options.describedById);
+		}
+
+		//  Iben: Check based on the options role
+		return !(options.role &#x3D;&#x3D;&#x3D; &#x27;alertdialog&#x27; &amp;&amp; !options.describedById);
+	}
+
+	/**
+	 * Returns a value based on whether one of the overwrites is defined
+	 *
+	 * @private
+	 * @param configurationValue - The overwrite on configuration level
+	 * @param optionsValue - The overwrite on options level
+	 * @param defaultValue - The default value if no overwrite was defined
+	 */
+	private getValue(configurationValue: any, optionsValue: any, defaultValue: any): any {
+		if (configurationValue &#x3D;&#x3D;&#x3D; undefined &amp;&amp; optionsValue &#x3D;&#x3D;&#x3D; undefined) {
+			return defaultValue;
+		}
+
+		if (optionsValue !&#x3D;&#x3D; undefined) {
+			return optionsValue;
+		}
+
+		return configurationValue;
+	}
+}
+</code></pre>
+    </div>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'injectable';
+            var COMPODOC_CURRENT_PAGE_URL = 'NgxModalService.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script>
+               $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               checkToggle(darkModeState);
+               if ($darkModeToggleSwitchers.length > 0) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].addEventListener('change', function (event) {
+                              darkModeState = !darkModeState;
+                              toggleDarkMode(darkModeState);
+                         });
+                    }
+               }
+          </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

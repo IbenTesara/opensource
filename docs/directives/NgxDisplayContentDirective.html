@@ -1,0 +1,1637 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>@opensource/source documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+    </head>
+    <body>
+          <script>
+               // Blocking script to avoid flickering dark mode
+               // Dark mode toggle button
+               var useDark = window.matchMedia('(prefers-color-scheme: dark)');
+               var darkModeState = useDark.matches;
+               var $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               var $darkModeToggles = document.querySelectorAll('.dark-mode-switch');
+               var darkModeStateLocal = localStorage.getItem('compodoc_darkmode-state');
+
+               function checkToggle(check) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].checked = check;
+                    }
+               }
+
+               function toggleDarkMode(state) {
+                    if (window.localStorage) {
+                         localStorage.setItem('compodoc_darkmode-state', state);
+                    }
+
+                    checkToggle(state);
+
+                    const hasClass = document.body.classList.contains('dark');
+
+                    if (state) {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.add('dark');
+                         }
+                         if (!hasClass) {
+                              document.body.classList.add('dark');
+                         }
+                    } else {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.remove('dark');
+                         }
+                         if (hasClass) {
+                              document.body.classList.remove('dark');
+                         }
+                    }
+               }
+
+               useDark.addEventListener('change', function (evt) {
+                    toggleDarkMode(evt.matches);
+               });
+               if (darkModeStateLocal) {
+                    darkModeState = darkModeStateLocal === 'true';
+               }
+               toggleDarkMode(darkModeState);
+          </script>
+
+        <div class="navbar navbar-default navbar-fixed-top d-md-none p-0">
+               <div class="d-flex">
+                    <a href="../" class="navbar-brand">@opensource/source documentation</a>
+                    <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+               </div>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="d-none d-md-block menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content directive">
+                   <div class="content-data">
+
+
+
+
+
+
+
+<ol class="breadcrumb">
+  <li class="breadcrumb-item">Directives</li>
+  <li class="breadcrumb-item" >NgxDisplayContentDirective</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item">
+            <a href="#info" 
+                class="nav-link"
+                class="nav-link active"
+                role="tab" id="info-tab" data-bs-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li class="nav-item">
+            <a href="#source" 
+                class="nav-link"
+                
+                role="tab" id="source-tab" data-bs-toggle="tab" data-link="source">Source</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="info">
+        <p class="comment">
+            <h3>File</h3>
+        </p>
+        <p class="comment">
+            <code>libs/angular/layout/src/lib/directives/display-content/display-content.directive.ts</code>
+        </p>
+
+
+            <p class="comment">
+                <h3>Description</h3>
+            </p>
+            <p class="comment">
+                <p>NgxDisplayContentDirective handles whether content should be shown based on a loading, error or offline condition by using provided default components or a provided override template</p>
+
+            </p>
+
+
+            <p class="comment">
+                <h3>Implements</h3>
+            </p>
+            <p class="comment">
+                        <code>AfterViewInit</code>
+                        <code>OnDestroy</code>
+            </p>
+
+
+        <section data-compodoc="block-metadata">
+            <h3>Metadata</h3>
+            <table class="table table-sm table-hover metadata">
+                <tbody>
+
+                    <tr>
+                        <td class="col-md-3">Selector</td>
+                        <td class="col-md-9"><code>[displayContent]</code></td>
+                    </tr>
+
+                    <tr>
+                        <td class="col-md-3">Standalone</td>
+                        <td class="col-md-9"><code>true</code></td>
+                    </tr>
+
+
+
+                </tbody>
+            </table>
+        </section>
+
+            <section data-compodoc="block-index">
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                    <span class="modifier">Private</span>
+                                    <span class="modifier">Readonly</span>
+                                <a href="#cdRef" >cdRef</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#conditions" >conditions</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                    <span class="modifier">Readonly</span>
+                                <a href="#configuration" >configuration</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#displayContent" >displayContent</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Readonly</span>
+                                <a href="#displayContentAriaLive" >displayContentAriaLive</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#displayContentConfiguration" >displayContentConfiguration</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                    <span class="modifier">Readonly</span>
+                                <a href="#elementRef" >elementRef</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                    <span class="modifier">Readonly</span>
+                                <a href="#onDestroySubject" >onDestroySubject</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                    <span class="modifier">Readonly</span>
+                                <a href="#onlineService" >onlineService</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#overrideConfiguration" >overrideConfiguration</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                    <span class="modifier">Readonly</span>
+                                <a href="#templateRef" >templateRef</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                    <span class="modifier">Readonly</span>
+                                <a href="#updateViewSubject" >updateViewSubject</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                    <span class="modifier">Readonly</span>
+                                <a href="#viewContainer" >viewContainer</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#ngAfterViewInit" >ngAfterViewInit</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#ngOnDestroy" >ngOnDestroy</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#renderInitialTemplate" >renderInitialTemplate</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#renderTemplate" >renderTemplate</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#setAriaBusyTag" >setAriaBusyTag</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#setAriaLiveTag" >setAriaLiveTag</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#updateConditions" >updateConditions</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Inputs</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#displayContent" >displayContent</a>
+                            </li>
+                            <li>
+                                <a href="#displayContentConfiguration" >displayContentConfiguration</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+            <section data-compodoc="block-constructor">
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor()</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="81" class="link-to-prism">libs/angular/layout/src/lib/directives/display-content/display-content.directive.ts:81</a></div>
+                            </td>
+                        </tr>
+
+            </tbody>
+        </table>
+</section>
+
+            <section data-compodoc="block-inputs">
+    <h3 id="inputs">Inputs</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="displayContent"></a>
+                        <b>displayContent</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../miscellaneous/typealiases.html#NgxDisplayContentConditions" target="_self" >InputSignal&lt;NgxDisplayContentConditions&gt;</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Required : </i>&nbsp;<b>true</b>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="68" class="link-to-prism">libs/angular/layout/src/lib/directives/display-content/display-content.directive.ts:68</a></div>
+                            </td>
+                        </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>Renders the item or a default fallback based on the provided conditions</p>
+</div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="displayContentConfiguration"></a>
+                        <b>displayContentConfiguration</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../miscellaneous/typealiases.html#NgxDisplayContentOverrideConfiguration" target="_self" >InputSignal&lt;NgxDisplayContentOverrideConfiguration&gt;</a></code>
+
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="73" class="link-to-prism">libs/angular/layout/src/lib/directives/display-content/display-content.directive.ts:73</a></div>
+                            </td>
+                        </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>Override the existing configuration with custom configuration</p>
+</div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+
+
+            <section data-compodoc="block-methods">
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngAfterViewInit"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                        <span ><b>ngAfterViewInit</b></span>
+                        <a href="#ngAfterViewInit"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>ngAfterViewInit()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="118"
+                                    class="link-to-prism">libs/angular/layout/src/lib/directives/display-content/display-content.directive.ts:118</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngOnDestroy"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                        <span ><b>ngOnDestroy</b></span>
+                        <a href="#ngOnDestroy"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>ngOnDestroy()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="168"
+                                    class="link-to-prism">libs/angular/layout/src/lib/directives/display-content/display-content.directive.ts:168</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="renderInitialTemplate"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>renderInitialTemplate</b></span>
+                        <a href="#renderInitialTemplate"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>renderInitialTemplate()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="214"
+                                    class="link-to-prism">libs/angular/layout/src/lib/directives/display-content/display-content.directive.ts:214</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Renders the initial template</p>
+</div>
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="renderTemplate"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>renderTemplate</b></span>
+                        <a href="#renderTemplate"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>renderTemplate(status: <a href="../undefineds/NgxDisplayContentStatus.html" target="_self">NgxDisplayContentStatus</a>, component: <a href="../directives/NgxDisplayContentComponent.html" target="_self">Type&lt;NgxDisplayContentComponent&gt;</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="179"
+                                    class="link-to-prism">libs/angular/layout/src/lib/directives/display-content/display-content.directive.ts:179</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Renders the provided component or template</p>
+</div>
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                                <td>Description</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>status</td>
+                                            <td>
+                                                            <code><a href="../miscellaneous/typealiases.html#NgxDisplayContentStatus" target="_self" >NgxDisplayContentStatus</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                            <td>
+                                                    <ul>
+<li>The status we&#39;re handling</li>
+</ul>
+
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                                <td>component</td>
+                                            <td>
+                                                            <code><a href="../directives/NgxDisplayContentComponent.html" target="_self" >Type&lt;NgxDisplayContentComponent&gt;</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                            <td>
+                                                    <ul>
+<li>The component we&#39;re wishing to render</li>
+</ul>
+
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="setAriaBusyTag"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>setAriaBusyTag</b></span>
+                        <a href="#setAriaBusyTag"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>setAriaBusyTag(isLoading: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank">boolean</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="277"
+                                    class="link-to-prism">libs/angular/layout/src/lib/directives/display-content/display-content.directive.ts:277</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Sets the aria-busy tag of the item</p>
+</div>
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                                <td>Description</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>isLoading</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                            <td>
+                                                    <ul>
+<li>The loading state of the item</li>
+</ul>
+
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="setAriaLiveTag"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>setAriaLiveTag</b></span>
+                        <a href="#setAriaLiveTag"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>setAriaLiveTag(value: "polite" | "assertive" | "off")</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="237"
+                                    class="link-to-prism">libs/angular/layout/src/lib/directives/display-content/display-content.directive.ts:237</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Sets the aria-live tag of the item</p>
+</div>
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                                <td>Description</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>value</td>
+                                            <td>
+                                                        <code>&quot;polite&quot; | &quot;assertive&quot; | &quot;off&quot;</code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                            <td>
+                                                    <ul>
+<li>The value we wish to set</li>
+</ul>
+
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="updateConditions"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>updateConditions</b></span>
+                        <a href="#updateConditions"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>updateConditions(conditions: <a href="../undefineds/NgxDisplayContentConditions.html" target="_self">NgxDisplayContentConditions</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="223"
+                                    class="link-to-prism">libs/angular/layout/src/lib/directives/display-content/display-content.directive.ts:223</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Updates the conditions</p>
+</div>
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                                <td>Description</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>conditions</td>
+                                            <td>
+                                                            <code><a href="../miscellaneous/typealiases.html#NgxDisplayContentConditions" target="_self" >NgxDisplayContentConditions</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                            <td>
+                                                    <ul>
+<li>The conditions we want to merge with the current set</li>
+</ul>
+
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+            <section data-compodoc="block-properties">
+    
+    <h3 id="inputs">
+        Properties
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="cdRef"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                            <span class="modifier">Readonly</span>
+                        <span ><b>cdRef</b></span>
+                        <a href="#cdRef"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>inject(ChangeDetectorRef)</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="38" class="link-to-prism">libs/angular/layout/src/lib/directives/display-content/display-content.directive.ts:38</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="conditions"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>conditions</b></span>
+                        <a href="#conditions"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../miscellaneous/typealiases.html#NgxDisplayContentConditions" target="_self" >NgxDisplayContentConditions</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>{}</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="63" class="link-to-prism">libs/angular/layout/src/lib/directives/display-content/display-content.directive.ts:63</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Holds the conditions we use to render the component</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="configuration"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                            <span class="modifier">Readonly</span>
+                        <span ><b>configuration</b></span>
+                        <a href="#configuration"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>inject&lt;NgxDisplayContentConfiguration&gt;(
+		NgxDisplayContentConfigurationToken
+	)</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="41" class="link-to-prism">libs/angular/layout/src/lib/directives/display-content/display-content.directive.ts:41</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="displayContent"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                        <span ><b>displayContent</b></span>
+                        <a href="#displayContent"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../miscellaneous/typealiases.html#NgxDisplayContentConditions" target="_self" >InputSignal&lt;NgxDisplayContentConditions&gt;</a></code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="68" class="link-to-prism">libs/angular/layout/src/lib/directives/display-content/display-content.directive.ts:68</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Renders the item or a default fallback based on the provided conditions</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="displayContentAriaLive"></a>
+                    <span class="name">
+                            <span class="modifier">Readonly</span>
+                        <span ><b>displayContentAriaLive</b></span>
+                        <a href="#displayContentAriaLive"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>input&lt;NgxDisplayContentAriaLive&gt;(&#x27;polite&#x27;)</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="81" class="link-to-prism">libs/angular/layout/src/lib/directives/display-content/display-content.directive.ts:81</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>The aria-live label we wish to provide to the parent element. By default, this is &#39;polite&#39;.</p>
+<p><a href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Live_Regions">https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Live_Regions</a></p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="displayContentConfiguration"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                        <span ><b>displayContentConfiguration</b></span>
+                        <a href="#displayContentConfiguration"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../miscellaneous/typealiases.html#NgxDisplayContentOverrideConfiguration" target="_self" >InputSignal&lt;NgxDisplayContentOverrideConfiguration&gt;</a></code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="73" class="link-to-prism">libs/angular/layout/src/lib/directives/display-content/display-content.directive.ts:73</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Override the existing configuration with custom configuration</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="elementRef"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                            <span class="modifier">Readonly</span>
+                        <span ><b>elementRef</b></span>
+                        <a href="#elementRef"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>inject(ElementRef)</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="36" class="link-to-prism">libs/angular/layout/src/lib/directives/display-content/display-content.directive.ts:36</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="onDestroySubject"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                            <span class="modifier">Readonly</span>
+                        <span ><b>onDestroySubject</b></span>
+                        <a href="#onDestroySubject"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>Subject&lt;void&gt;</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>new Subject&lt;void&gt;()</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="48" class="link-to-prism">libs/angular/layout/src/lib/directives/display-content/display-content.directive.ts:48</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>A subject to handle the destroyed flow</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="onlineService"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                            <span class="modifier">Readonly</span>
+                        <span ><b>onlineService</b></span>
+                        <a href="#onlineService"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>inject(NgxOnlineService)</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="40" class="link-to-prism">libs/angular/layout/src/lib/directives/display-content/display-content.directive.ts:40</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="overrideConfiguration"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>overrideConfiguration</b></span>
+                        <a href="#overrideConfiguration"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../miscellaneous/typealiases.html#NgxDisplayContentOverrideConfiguration" target="_self" >NgxDisplayContentOverrideConfiguration</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>{}</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="58" class="link-to-prism">libs/angular/layout/src/lib/directives/display-content/display-content.directive.ts:58</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Holds an optional override configuration</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="templateRef"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                            <span class="modifier">Readonly</span>
+                        <span ><b>templateRef</b></span>
+                        <a href="#templateRef"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>inject&lt;TemplateRef&lt;any&gt;&gt;(TemplateRef)</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="37" class="link-to-prism">libs/angular/layout/src/lib/directives/display-content/display-content.directive.ts:37</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="updateViewSubject"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                            <span class="modifier">Readonly</span>
+                        <span ><b>updateViewSubject</b></span>
+                        <a href="#updateViewSubject"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>Subject&lt;void&gt;</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>new Subject&lt;void&gt;()</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="53" class="link-to-prism">libs/angular/layout/src/lib/directives/display-content/display-content.directive.ts:53</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>A subject to know when we need to update the view</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="viewContainer"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                            <span class="modifier">Readonly</span>
+                        <span ><b>viewContainer</b></span>
+                        <a href="#viewContainer"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>inject(ViewContainerRef)</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="39" class="link-to-prism">libs/angular/layout/src/lib/directives/display-content/display-content.directive.ts:39</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+</section>
+
+
+    </div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import {
+	AfterViewInit,
+	ChangeDetectorRef,
+	Directive,
+	ElementRef,
+	InputSignal,
+	OnDestroy,
+	TemplateRef,
+	Type,
+	ViewContainerRef,
+	effect,
+	inject,
+	input,
+} from &#x27;@angular/core&#x27;;
+import { Subject, distinctUntilChanged, takeUntil, tap } from &#x27;rxjs&#x27;;
+
+import { NgxDisplayContentComponent } from &#x27;../../abstracts&#x27;;
+import { NgxOnlineService } from &#x27;../../services&#x27;;
+import { NgxDisplayContentConfigurationToken } from &#x27;../../tokens&#x27;;
+import {
+	NgxDisplayContentAriaLive,
+	NgxDisplayContentConditions,
+	NgxDisplayContentConfiguration,
+	NgxDisplayContentOverrideConfiguration,
+	NgxDisplayContentStatus,
+} from &#x27;../../types&#x27;;
+
+/**
+ * NgxDisplayContentDirective handles whether content should be shown based on a loading, error or offline condition by using provided default components or a provided override template
+ */
+@Directive({
+	selector: &#x27;[displayContent]&#x27;,
+	standalone: true,
+})
+export class NgxDisplayContentDirective implements AfterViewInit, OnDestroy {
+	private readonly elementRef &#x3D; inject(ElementRef);
+	private readonly templateRef &#x3D; inject&lt;TemplateRef&lt;any&gt;&gt;(TemplateRef);
+	private readonly cdRef &#x3D; inject(ChangeDetectorRef);
+	private readonly viewContainer &#x3D; inject(ViewContainerRef);
+	private readonly onlineService &#x3D; inject(NgxOnlineService);
+	private readonly configuration &#x3D; inject&lt;NgxDisplayContentConfiguration&gt;(
+		NgxDisplayContentConfigurationToken
+	);
+
+	/**
+	 * A subject to handle the destroyed flow
+	 */
+	private readonly onDestroySubject: Subject&lt;void&gt; &#x3D; new Subject&lt;void&gt;();
+
+	/**
+	 * A subject to know when we need to update the view
+	 */
+	private readonly updateViewSubject: Subject&lt;void&gt; &#x3D; new Subject&lt;void&gt;();
+
+	/**
+	 * Holds an optional override configuration
+	 */
+	private overrideConfiguration: NgxDisplayContentOverrideConfiguration &#x3D; {};
+
+	/**
+	 * Holds the conditions we use to render the component
+	 */
+	private conditions: NgxDisplayContentConditions &#x3D; {};
+
+	/**
+	 * Renders the item or a default fallback based on the provided conditions
+	 */
+	public displayContent: InputSignal&lt;NgxDisplayContentConditions&gt; &#x3D; input.required();
+
+	/**
+	 * Override the existing configuration with custom configuration
+	 */
+	public displayContentConfiguration: InputSignal&lt;NgxDisplayContentOverrideConfiguration&gt; &#x3D;
+		input();
+
+	/**
+	 * The aria-live label we wish to provide to the parent element. By default, this is &#x27;polite&#x27;.
+	 *
+	 * https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Live_Regions
+	 */
+	readonly displayContentAriaLive &#x3D; input&lt;NgxDisplayContentAriaLive&gt;(&#x27;polite&#x27;);
+
+	constructor() {
+		// Iben: If we want to listen to the online status, we set up a listener to the status of the application
+		if (this.configuration.listenToOnlineStatus) {
+			this.onlineService.online$
+				.pipe(
+					distinctUntilChanged(),
+					tap((online) &#x3D;&gt; {
+						// Iben: Update the conditions with the new status
+						this.updateConditions({ offline: !online });
+
+						// Iben: Notify that the view needs to be updated
+						this.updateViewSubject.next();
+					}),
+					takeUntil(this.onDestroySubject)
+				)
+				.subscribe();
+		}
+
+		effect(() &#x3D;&gt; {
+			// Iben: Update the conditions
+			this.updateConditions(this.displayContent() || {});
+
+			// Iben: Notify that the view needs to be updated
+			this.updateViewSubject.next();
+		});
+
+		effect(() &#x3D;&gt; {
+			// Iben: Update the override configuration
+			this.overrideConfiguration &#x3D; this.displayContentConfiguration() || {};
+
+			// Iben: Notify that the view needs to be updated
+			this.updateViewSubject.next();
+		});
+	}
+
+	public ngAfterViewInit(): void {
+		// Iben: Set the aria-live and aria-busy tag of the parent
+		this.setAriaLiveTag(this.displayContentAriaLive());
+
+		// Iben: Listen to whenever we need to update the view and act accordingly
+		this.updateViewSubject
+			.asObservable()
+			.pipe(
+				tap(() &#x3D;&gt; {
+					// Iben: Clear the current view container
+					this.viewContainer.clear();
+
+					// Iben: Update the busy tag
+					this.setAriaBusyTag(this.conditions.loading);
+
+					// Iben: If we&#x27;re offline, we render the offline component or template
+					if (this.conditions.offline) {
+						this.renderTemplate(&#x27;offline&#x27;, this.configuration.components.offline);
+
+						return;
+					}
+					// Iben: If we&#x27;re loading, we render the loading component or template
+					if (this.conditions.loading) {
+						this.renderTemplate(&#x27;loading&#x27;, this.configuration.components.loading);
+
+						return;
+					}
+					// Iben: If we&#x27;ve encountered an error, we render the error component or template
+					if (this.conditions.error) {
+						this.renderTemplate(&#x27;error&#x27;, this.configuration.components.error);
+
+						return;
+					}
+
+					//Iben: Render the initial template
+					this.renderInitialTemplate();
+				}),
+				// Iben: We add a second tap here, so the detectChanges gets run after each outcome we did earlier
+				tap(() &#x3D;&gt; {
+					// Iben: Detect the changes so this works with (nested) OnPush component
+					this.cdRef.detectChanges();
+				}),
+				takeUntil(this.onDestroySubject.asObservable())
+			)
+			.subscribe();
+
+		// Iben: Run the initial content check
+		this.updateViewSubject.next();
+	}
+
+	public ngOnDestroy(): void {
+		this.onDestroySubject.next();
+		this.onDestroySubject.complete();
+	}
+
+	/**
+	 * Renders the provided component or template
+	 *
+	 * @param  status - The status we&#x27;re handling
+	 * @param  component - The component we&#x27;re wishing to render
+	 */
+	private renderTemplate(
+		status: NgxDisplayContentStatus,
+		component: Type&lt;NgxDisplayContentComponent&gt;
+	): void {
+		// Iben: If an override for this template exists, we render the override template and early exit
+		if (this.overrideConfiguration[status]?.template) {
+			this.viewContainer.createEmbeddedView(this.overrideConfiguration[status]?.template);
+
+			return;
+		}
+
+		// Iben: If a component was provided, we render this component and pass along the provided data and early exit
+		if (component) {
+			// Iben: Render the component
+			const componentRef &#x3D;
+				this.viewContainer.createComponent&lt;NgxDisplayContentComponent&gt;(component);
+
+			// Iben: Pass the data
+			componentRef.setInput(&#x27;data&#x27;, this.overrideConfiguration[status]?.data);
+
+			return;
+		}
+
+		// Iben: If we need to hide the template when no template was provided, we early exit
+		if (this.configuration.hideWhenNoTemplateProvided) {
+			return;
+		}
+
+		// Iben: In case we don&#x27;t need to hide the initial template, we render it
+		this.renderInitialTemplate();
+	}
+
+	/**
+	 * Renders the initial template
+	 */
+	private renderInitialTemplate(): void {
+		this.viewContainer.createEmbeddedView(this.templateRef);
+	}
+
+	/**
+	 * Updates the conditions
+	 *
+	 * @param conditions - The conditions we want to merge with the current set
+	 */
+	private updateConditions(conditions: NgxDisplayContentConditions): void {
+		// Iben: Update the conditions, but use a merge so that the online status can be preserved
+		if (conditions) {
+			this.conditions &#x3D; {
+				...this.conditions,
+				...conditions,
+			};
+		}
+	}
+
+	/**
+	 * Sets the aria-live tag of the item
+	 * @param  value - The value we wish to set
+	 */
+	private setAriaLiveTag(value: &#x27;polite&#x27; | &#x27;assertive&#x27; | &#x27;off&#x27;): void {
+		// Iben: Get the parent element and early exit if it isn&#x27;t found
+		const parentElement: HTMLElement &#x3D; this.elementRef.nativeElement.parentElement;
+
+		if (!parentElement) {
+			// Iben:
+			console.error(
+				&#x27;NgxLayout: No parent element was found for NgxDisplayContentDirective. Because of that, the correct aria-live label could not be set.&#x27;
+			);
+
+			return;
+		}
+
+		// Iben: If the value is assertive then we always set it, as it has the highest priority
+		if (value &#x3D;&#x3D;&#x3D; &#x27;assertive&#x27;) {
+			parentElement.setAttribute(&#x27;aria-live&#x27;, value);
+
+			return;
+		}
+
+		// Iben: Fetch the current aria-live label. If none were found, set it automatically
+		const currentValue &#x3D; parentElement.getAttribute(&#x27;aria-live&#x27;);
+
+		if (!currentValue) {
+			parentElement.setAttribute(&#x27;aria-live&#x27;, value);
+		}
+
+		// Iben: If the current value is assertive or if the values are the same, we early exit
+		if (currentValue &#x3D;&#x3D;&#x3D; &#x27;assertive&#x27; || currentValue &#x3D;&#x3D;&#x3D; value) {
+			return;
+		}
+
+		// Iben: Set the value
+		parentElement.setAttribute(&#x27;aria-live&#x27;, value);
+	}
+
+	/**
+	 * Sets the aria-busy tag of the item
+	 * @param  isLoading - The loading state of the item
+	 */
+	private setAriaBusyTag(isLoading: boolean): void {
+		this.elementRef.nativeElement.parentElement?.setAttribute(&#x27;aria-busy&#x27;, &#x60;${isLoading}&#x60;);
+	}
+}
+</code></pre>
+    </div>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'directive';
+            var COMPODOC_CURRENT_PAGE_URL = 'NgxDisplayContentDirective.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script>
+               $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               checkToggle(darkModeState);
+               if ($darkModeToggleSwitchers.length > 0) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].addEventListener('change', function (event) {
+                              darkModeState = !darkModeState;
+                              toggleDarkMode(darkModeState);
+                         });
+                    }
+               }
+          </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

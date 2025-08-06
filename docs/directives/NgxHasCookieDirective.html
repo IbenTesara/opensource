@@ -1,0 +1,1246 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>@opensource/source documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+    </head>
+    <body>
+          <script>
+               // Blocking script to avoid flickering dark mode
+               // Dark mode toggle button
+               var useDark = window.matchMedia('(prefers-color-scheme: dark)');
+               var darkModeState = useDark.matches;
+               var $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               var $darkModeToggles = document.querySelectorAll('.dark-mode-switch');
+               var darkModeStateLocal = localStorage.getItem('compodoc_darkmode-state');
+
+               function checkToggle(check) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].checked = check;
+                    }
+               }
+
+               function toggleDarkMode(state) {
+                    if (window.localStorage) {
+                         localStorage.setItem('compodoc_darkmode-state', state);
+                    }
+
+                    checkToggle(state);
+
+                    const hasClass = document.body.classList.contains('dark');
+
+                    if (state) {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.add('dark');
+                         }
+                         if (!hasClass) {
+                              document.body.classList.add('dark');
+                         }
+                    } else {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.remove('dark');
+                         }
+                         if (hasClass) {
+                              document.body.classList.remove('dark');
+                         }
+                    }
+               }
+
+               useDark.addEventListener('change', function (evt) {
+                    toggleDarkMode(evt.matches);
+               });
+               if (darkModeStateLocal) {
+                    darkModeState = darkModeStateLocal === 'true';
+               }
+               toggleDarkMode(darkModeState);
+          </script>
+
+        <div class="navbar navbar-default navbar-fixed-top d-md-none p-0">
+               <div class="d-flex">
+                    <a href="../" class="navbar-brand">@opensource/source documentation</a>
+                    <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+               </div>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="d-none d-md-block menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content directive">
+                   <div class="content-data">
+
+
+
+
+
+
+
+<ol class="breadcrumb">
+  <li class="breadcrumb-item">Directives</li>
+  <li class="breadcrumb-item" >NgxHasCookieDirective</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item">
+            <a href="#info" 
+                class="nav-link"
+                class="nav-link active"
+                role="tab" id="info-tab" data-bs-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li class="nav-item">
+            <a href="#source" 
+                class="nav-link"
+                
+                role="tab" id="source-tab" data-bs-toggle="tab" data-link="source">Source</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="info">
+        <p class="comment">
+            <h3>File</h3>
+        </p>
+        <p class="comment">
+            <code>libs/angular/cookies/src/lib/directives/has-cookie/has-cookie.directive.ts</code>
+        </p>
+
+
+            <p class="comment">
+                <h3>Description</h3>
+            </p>
+            <p class="comment">
+                <p>A structural directive that provides a way to render UI elements based on whether a (set of) cookie(s) have been accepted by the user.</p>
+
+            </p>
+
+
+            <p class="comment">
+                <h3>Implements</h3>
+            </p>
+            <p class="comment">
+                        <code>OnDestroy</code>
+            </p>
+
+
+        <section data-compodoc="block-metadata">
+            <h3>Metadata</h3>
+            <table class="table table-sm table-hover metadata">
+                <tbody>
+
+                    <tr>
+                        <td class="col-md-3">Selector</td>
+                        <td class="col-md-9"><code>[hasCookie]</code></td>
+                    </tr>
+
+                    <tr>
+                        <td class="col-md-3">Standalone</td>
+                        <td class="col-md-9"><code>true</code></td>
+                    </tr>
+
+
+
+                </tbody>
+            </table>
+        </section>
+
+            <section data-compodoc="block-index">
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                    <span class="modifier">Private</span>
+                                    <span class="modifier">Readonly</span>
+                                <a href="#cdRef" >cdRef</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                    <span class="modifier">Readonly</span>
+                                <a href="#component" >component</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#componentRef" >componentRef</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#cookies" >cookies</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#destroyed$" >destroyed$</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#elseTemplateRef" >elseTemplateRef</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#hasCookie" >hasCookie</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#hasCookieElse" >hasCookieElse</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                    <span class="modifier">Readonly</span>
+                                <a href="#ngxCookieService" >ngxCookieService</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                    <span class="modifier">Readonly</span>
+                                <a href="#templateRef" >templateRef</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#thenTemplateRef" >thenTemplateRef</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#viewContainer" >viewContainer</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#dispose" >dispose</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#ngOnDestroy" >ngOnDestroy</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#renderElseTemplate" >renderElseTemplate</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#renderThenTemplate" >renderThenTemplate</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#updateView" >updateView</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Inputs</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#hasCookie" >hasCookie</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+            <section data-compodoc="block-constructor">
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor()</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="70" class="link-to-prism">libs/angular/cookies/src/lib/directives/has-cookie/has-cookie.directive.ts:70</a></div>
+                            </td>
+                        </tr>
+
+            </tbody>
+        </table>
+</section>
+
+            <section data-compodoc="block-inputs">
+    <h3 id="inputs">Inputs</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="hasCookie"></a>
+                        <b>hasCookie</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../interfaces/NgxHasCookieConfiguration.html" target="_self" >InputSignal&lt;NgxHasCookieConfiguration | []&gt;</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Required : </i>&nbsp;<b>true</b>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="64" class="link-to-prism">libs/angular/cookies/src/lib/directives/has-cookie/has-cookie.directive.ts:64</a></div>
+                            </td>
+                        </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>A cookie or list of cookies the item should have</p>
+</div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+
+
+            <section data-compodoc="block-methods">
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="dispose"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>dispose</b></span>
+                        <a href="#dispose"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>dispose()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="148"
+                                    class="link-to-prism">libs/angular/cookies/src/lib/directives/has-cookie/has-cookie.directive.ts:148</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Dispose the current subscription</p>
+</div>
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngOnDestroy"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                        <span ><b>ngOnDestroy</b></span>
+                        <a href="#ngOnDestroy"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>ngOnDestroy()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="89"
+                                    class="link-to-prism">libs/angular/cookies/src/lib/directives/has-cookie/has-cookie.directive.ts:89</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="renderElseTemplate"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>renderElseTemplate</b></span>
+                        <a href="#renderElseTemplate"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>renderElseTemplate()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="168"
+                                    class="link-to-prism">libs/angular/cookies/src/lib/directives/has-cookie/has-cookie.directive.ts:168</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Render the fallbackTemplate or fallBackComponent</p>
+</div>
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="renderThenTemplate"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>renderThenTemplate</b></span>
+                        <a href="#renderThenTemplate"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>renderThenTemplate()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="158"
+                                    class="link-to-prism">libs/angular/cookies/src/lib/directives/has-cookie/has-cookie.directive.ts:158</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Render the template on which the directive is set</p>
+</div>
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="updateView"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>updateView</b></span>
+                        <a href="#updateView"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>updateView()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="96"
+                                    class="link-to-prism">libs/angular/cookies/src/lib/directives/has-cookie/has-cookie.directive.ts:96</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Updates the view and hides/renders the template as needed</p>
+</div>
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+            <section data-compodoc="block-properties">
+    
+    <h3 id="inputs">
+        Properties
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="cdRef"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                            <span class="modifier">Readonly</span>
+                        <span ><b>cdRef</b></span>
+                        <a href="#cdRef"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>ChangeDetectorRef</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>inject(ChangeDetectorRef)</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="39" class="link-to-prism">libs/angular/cookies/src/lib/directives/has-cookie/has-cookie.directive.ts:39</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="component"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                            <span class="modifier">Readonly</span>
+                        <span ><b>component</b></span>
+                        <a href="#component"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../interfaces/NgxCookie.html" target="_self" >Type&lt;NgxCookiesFallBackComponent&gt;</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>inject(
+		NgxCookiesFallbackComponentToken,
+		{ optional: true }
+	)</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="40" class="link-to-prism">libs/angular/cookies/src/lib/directives/has-cookie/has-cookie.directive.ts:40</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="componentRef"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>componentRef</b></span>
+                        <a href="#componentRef"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../interfaces/NgxCookie.html" target="_self" >ComponentRef&lt;NgxCookiesFallBackComponent&gt;</a></code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="54" class="link-to-prism">libs/angular/cookies/src/lib/directives/has-cookie/has-cookie.directive.ts:54</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>The ref of the component we wish to render as a fallback</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="cookies"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>cookies</b></span>
+                        <a href="#cookies"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../interfaces/NgxHasCookieConfiguration.html" target="_self" >NgxHasCookieConfiguration[]</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[]</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="59" class="link-to-prism">libs/angular/cookies/src/lib/directives/has-cookie/has-cookie.directive.ts:59</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>The list of cookies we need to check</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="destroyed$"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>destroyed$</b></span>
+                        <a href="#destroyed$"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>Subject&lt;void&gt;</code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="34" class="link-to-prism">libs/angular/cookies/src/lib/directives/has-cookie/has-cookie.directive.ts:34</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>The destroyed state of the directive</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="elseTemplateRef"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>elseTemplateRef</b></span>
+                        <a href="#elseTemplateRef"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>TemplateRef&lt;any&gt; | null</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>null</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="49" class="link-to-prism">libs/angular/cookies/src/lib/directives/has-cookie/has-cookie.directive.ts:49</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="hasCookie"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                        <span ><b>hasCookie</b></span>
+                        <a href="#hasCookie"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../interfaces/NgxHasCookieConfiguration.html" target="_self" >InputSignal&lt;NgxHasCookieConfiguration | []&gt;</a></code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="64" class="link-to-prism">libs/angular/cookies/src/lib/directives/has-cookie/has-cookie.directive.ts:64</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>A cookie or list of cookies the item should have</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="hasCookieElse"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                        <span ><b>hasCookieElse</b></span>
+                        <a href="#hasCookieElse"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>InputSignal&lt;TemplateRef&lt;any&gt;&gt;</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>input&lt;TemplateRef&lt;any&gt;&gt;()</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="70" class="link-to-prism">libs/angular/cookies/src/lib/directives/has-cookie/has-cookie.directive.ts:70</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>The else template in case the cookie is not accepted</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngxCookieService"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                            <span class="modifier">Readonly</span>
+                        <span ><b>ngxCookieService</b></span>
+                        <a href="#ngxCookieService"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../injectables/NgxCookieService.html" target="_self" >NgxCookieService</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>inject(NgxCookieService)</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="38" class="link-to-prism">libs/angular/cookies/src/lib/directives/has-cookie/has-cookie.directive.ts:38</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="templateRef"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                            <span class="modifier">Readonly</span>
+                        <span ><b>templateRef</b></span>
+                        <a href="#templateRef"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>TemplateRef&lt;any&gt;</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>inject(TemplateRef)</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="36" class="link-to-prism">libs/angular/cookies/src/lib/directives/has-cookie/has-cookie.directive.ts:36</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="thenTemplateRef"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>thenTemplateRef</b></span>
+                        <a href="#thenTemplateRef"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>TemplateRef&lt;any&gt; | null</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>null</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="48" class="link-to-prism">libs/angular/cookies/src/lib/directives/has-cookie/has-cookie.directive.ts:48</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>The needed templateRefs</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="viewContainer"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>viewContainer</b></span>
+                        <a href="#viewContainer"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>ViewContainerRef</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>inject(ViewContainerRef)</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="37" class="link-to-prism">libs/angular/cookies/src/lib/directives/has-cookie/has-cookie.directive.ts:37</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+</section>
+
+
+    </div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import {
+	ChangeDetectorRef,
+	ComponentRef,
+	Directive,
+	TemplateRef,
+	Type,
+	ViewContainerRef,
+	OnDestroy,
+	inject,
+	effect,
+	input,
+	InputSignal,
+} from &#x27;@angular/core&#x27;;
+import { flatten } from &#x27;lodash&#x27;;
+import { Subject, tap, takeUntil, combineLatest, map } from &#x27;rxjs&#x27;;
+
+import { NgxCookiesFallBackComponent } from &#x27;../../abstracts&#x27;;
+import { NgxCookieService } from &#x27;../../services&#x27;;
+import { NgxCookiesFallbackComponentToken } from &#x27;../../tokens&#x27;;
+import { NgxHasCookieConfiguration } from &#x27;../../types&#x27;;
+
+/**
+ * A structural directive that provides a way to render UI elements based on whether a (set of) cookie(s) have been accepted by the user.
+ */
+@Directive({
+	selector: &#x27;[hasCookie]&#x27;,
+	standalone: true,
+})
+export class NgxHasCookieDirective implements OnDestroy {
+	//TODO: Iben: Replace this with the OnDestroyComponent flow once we have a shared lib
+	/**
+	 * The destroyed state of the directive
+	 */
+	private destroyed$: Subject&lt;void&gt;;
+
+	private readonly templateRef: TemplateRef&lt;any&gt; &#x3D; inject(TemplateRef);
+	private viewContainer: ViewContainerRef &#x3D; inject(ViewContainerRef);
+	private readonly ngxCookieService: NgxCookieService &#x3D; inject(NgxCookieService);
+	private readonly cdRef: ChangeDetectorRef &#x3D; inject(ChangeDetectorRef);
+	private readonly component: Type&lt;NgxCookiesFallBackComponent&gt; &#x3D; inject(
+		NgxCookiesFallbackComponentToken,
+		{ optional: true }
+	);
+
+	/**
+	 * The needed templateRefs
+	 */
+	private thenTemplateRef: TemplateRef&lt;any&gt; | null &#x3D; null;
+	private elseTemplateRef: TemplateRef&lt;any&gt; | null &#x3D; null;
+
+	/**
+	 * The ref of the component we wish to render as a fallback
+	 */
+	private componentRef: ComponentRef&lt;NgxCookiesFallBackComponent&gt;;
+
+	/**
+	 * The list of cookies we need to check
+	 */
+	private cookies: NgxHasCookieConfiguration[] &#x3D; [];
+
+	/**
+	 * A cookie or list of cookies the item should have
+	 */
+	public hasCookie: InputSignal&lt;NgxHasCookieConfiguration | NgxHasCookieConfiguration[]&gt; &#x3D;
+		input.required();
+
+	/**
+	 * The else template in case the cookie is not accepted
+	 */
+	public hasCookieElse: InputSignal&lt;TemplateRef&lt;any&gt;&gt; &#x3D; input&lt;TemplateRef&lt;any&gt;&gt;();
+
+	constructor() {
+		this.thenTemplateRef &#x3D; this.templateRef;
+
+		effect(() &#x3D;&gt; {
+			const value &#x3D; this.hasCookie();
+			this.cookies &#x3D; Array.isArray(value) ? value : [value];
+
+			this.updateView();
+		});
+
+		effect(() &#x3D;&gt; {
+			if (this.hasCookieElse()) {
+				this.updateView();
+			}
+		});
+	}
+
+	public ngOnDestroy(): void {
+		this.dispose();
+	}
+
+	/**
+	 * Updates the view and hides/renders the template as needed
+	 */
+	private updateView(): void {
+		// Iben: Dispose the current subscription
+		this.dispose();
+
+		// Iben: Create a new onDestroyed handler
+		this.destroyed$ &#x3D; new Subject();
+
+		// Iben: Render the views based on the correct state
+		combineLatest(
+			// Iben Check for each cookie if it is accepted
+			this.cookies.map((cookie) &#x3D;&gt; {
+				// Iben: If no specific services were provided, we can just check the category
+				if (!cookie.services) {
+					return this.ngxCookieService.hasAcceptedCategory(cookie.category);
+				}
+
+				// Iben: If specific services were provided, we can just check each individual category
+				return combineLatest(
+					cookie.services.map((service) &#x3D;&gt; {
+						return this.ngxCookieService.hasAcceptedService(cookie.category, service);
+					})
+				);
+			})
+		)
+			.pipe(
+				map((hasCookies) &#x3D;&gt; {
+					return flatten(hasCookies).every((hasCookie) &#x3D;&gt; hasCookie);
+				}),
+				tap((hasCookie) &#x3D;&gt; {
+					// Iben: Clear the current view
+					this.viewContainer.clear();
+
+					// Iben: If there already is a component, destroy it so it can update correctly
+					if (this.componentRef) {
+						this.componentRef.destroy();
+						this.componentRef &#x3D; undefined;
+					}
+
+					// Iben: Render the correct templates
+					hasCookie ? this.renderThenTemplate() : this.renderElseTemplate();
+
+					// Iben: Detect the changes so that the view gets updated
+					this.cdRef.detectChanges();
+				}),
+				takeUntil(this.destroyed$)
+			)
+			.subscribe();
+	}
+
+	/**
+	 * Dispose the current subscription
+	 */
+	private dispose(): void {
+		if (this.destroyed$) {
+			this.destroyed$.next();
+			this.destroyed$.complete();
+		}
+	}
+
+	/**
+	 * Render the template on which the directive is set
+	 */
+	private renderThenTemplate(): void {
+		// Iben: If a thenTemplateRef is provided, render the template
+		if (this.thenTemplateRef) {
+			this.viewContainer.createEmbeddedView(this.thenTemplateRef);
+		}
+	}
+
+	/**
+	 * Render the fallbackTemplate or fallBackComponent
+	 */
+	private renderElseTemplate(): void {
+		// Iben: If a custom template ref was provided, render the template and early exit
+		if (this.hasCookieElse()) {
+			this.viewContainer.createEmbeddedView(this.hasCookieElse());
+
+			return;
+		}
+
+		// Iben: If a component was provided as a fallback, we render that
+		if (this.component) {
+			// Iben: Render the provided component
+			this.componentRef &#x3D; this.viewContainer.createComponent&lt;NgxCookiesFallBackComponent&gt;(
+				this.component
+			);
+
+			// Iben: Set the cookies of the component
+			this.componentRef.setInput(&#x27;cookies&#x27;, this.cookies);
+		}
+	}
+}
+</code></pre>
+    </div>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'directive';
+            var COMPODOC_CURRENT_PAGE_URL = 'NgxHasCookieDirective.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script>
+               $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               checkToggle(darkModeState);
+               if ($darkModeToggleSwitchers.length > 0) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].addEventListener('change', function (event) {
+                              darkModeState = !darkModeState;
+                              toggleDarkMode(darkModeState);
+                         });
+                    }
+               }
+          </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

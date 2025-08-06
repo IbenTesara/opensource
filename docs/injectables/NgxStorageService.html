@@ -1,0 +1,1705 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>@opensource/source documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+    </head>
+    <body>
+          <script>
+               // Blocking script to avoid flickering dark mode
+               // Dark mode toggle button
+               var useDark = window.matchMedia('(prefers-color-scheme: dark)');
+               var darkModeState = useDark.matches;
+               var $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               var $darkModeToggles = document.querySelectorAll('.dark-mode-switch');
+               var darkModeStateLocal = localStorage.getItem('compodoc_darkmode-state');
+
+               function checkToggle(check) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].checked = check;
+                    }
+               }
+
+               function toggleDarkMode(state) {
+                    if (window.localStorage) {
+                         localStorage.setItem('compodoc_darkmode-state', state);
+                    }
+
+                    checkToggle(state);
+
+                    const hasClass = document.body.classList.contains('dark');
+
+                    if (state) {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.add('dark');
+                         }
+                         if (!hasClass) {
+                              document.body.classList.add('dark');
+                         }
+                    } else {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.remove('dark');
+                         }
+                         if (hasClass) {
+                              document.body.classList.remove('dark');
+                         }
+                    }
+               }
+
+               useDark.addEventListener('change', function (evt) {
+                    toggleDarkMode(evt.matches);
+               });
+               if (darkModeStateLocal) {
+                    darkModeState = darkModeStateLocal === 'true';
+               }
+               toggleDarkMode(darkModeState);
+          </script>
+
+        <div class="navbar navbar-default navbar-fixed-top d-md-none p-0">
+               <div class="d-flex">
+                    <a href="../" class="navbar-brand">@opensource/source documentation</a>
+                    <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+               </div>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="d-none d-md-block menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content injectable">
+                   <div class="content-data">
+
+
+
+
+
+
+
+
+<ol class="breadcrumb">
+  <li class="breadcrumb-item">Injectables</li>
+  <li class="breadcrumb-item" >NgxStorageService</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item">
+            <a href="#info" 
+                class="nav-link"
+                class="nav-link active"
+                role="tab" id="info-tab" data-bs-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li class="nav-item">
+            <a href="#readme" 
+                class="nav-link"
+                
+                role="tab" id="readme-tab" data-bs-toggle="tab" data-link="readme">README</a>
+        </li>
+        <li class="nav-item">
+            <a href="#source" 
+                class="nav-link"
+                
+                role="tab" id="source-tab" data-bs-toggle="tab" data-link="source">Source</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="info">
+        <p class="comment">
+            <h3>File</h3>
+        </p>
+        <p class="comment">
+            <code>libs/angular/utils/src/lib/services/storage-service/storage.service.ts</code>
+        </p>
+
+
+            <p class="comment">
+                <h3>Description</h3>
+            </p>
+            <p class="comment">
+                <p>A service that provides a SSR-proof Observable based approach to the session- and localStorage.</p>
+
+            </p>
+
+
+
+            <section data-compodoc="block-index">
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                    <span class="modifier">Private</span>
+                                    <span class="modifier">Readonly</span>
+                                <a href="#localStorageRecord" >localStorageRecord</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                    <span class="modifier">Readonly</span>
+                                <a href="#sessionStorageRecord" >sessionStorageRecord</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                    <span class="modifier">Readonly</span>
+                                <a href="#storageEvents$" >storageEvents$</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                    <span class="modifier">Readonly</span>
+                                <a href="#storageEventSubject" >storageEventSubject</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                    <span class="modifier">Readonly</span>
+                                <a href="#windowService" >windowService</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#clearStorage" >clearStorage</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#getItem" >getItem</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#getItemObservable" >getItemObservable</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#parseValue" >parseValue</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#removeItem" >removeItem</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#setItem" >setItem</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#setupStorage" >setupStorage</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <h6><b>Accessors</b></h6>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <ul class="index-list">
+                                <li>
+                                    <a href="#localStorage" >localStorage</a>
+                                </li>
+                                <li>
+                                    <a href="#sessionStorage" >sessionStorage</a>
+                                </li>
+                            </ul>
+                        </td>
+                    </tr>
+        </tbody>
+    </table>
+</section>
+
+            <section data-compodoc="block-constructor">
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor()</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="39" class="link-to-prism">libs/angular/utils/src/lib/services/storage-service/storage.service.ts:39</a></div>
+                            </td>
+                        </tr>
+
+            </tbody>
+        </table>
+</section>
+
+            <section data-compodoc="block-methods">
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="clearStorage"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>clearStorage</b></span>
+                        <a href="#clearStorage"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>clearStorage(storage: Storage, record: <a href="../undefineds/NgxStorageRecord.html" target="_self">NgxStorageRecord</a>, type: <a href="../undefineds/NgxStorageType.html" target="_self">NgxStorageType</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="214"
+                                    class="link-to-prism">libs/angular/utils/src/lib/services/storage-service/storage.service.ts:214</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Clears the storage, completes all subjects and emits a clear event</p>
+</div>
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                                <td>Description</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>storage</td>
+                                            <td>
+                                                        <code>Storage</code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                            <td>
+                                                    <ul>
+<li>The storage we wish to clear</li>
+</ul>
+
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                                <td>record</td>
+                                            <td>
+                                                            <code><a href="../miscellaneous/typealiases.html#NgxStorageRecord" target="_self" >NgxStorageRecord</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                            <td>
+                                                    <ul>
+<li>The record with the subjects</li>
+</ul>
+
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                                <td>type</td>
+                                            <td>
+                                                            <code><a href="../miscellaneous/typealiases.html#NgxStorageType" target="_self" >NgxStorageType</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                            <td>
+                                                    <ul>
+<li>The type of storage</li>
+</ul>
+
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>    <code>NgxStorageClearEvent | undefined</code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getItem"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>getItem</b></span>
+                        <a href="#getItem"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>getItem(key: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, storage: Storage)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="83"
+                                    class="link-to-prism">libs/angular/utils/src/lib/services/storage-service/storage.service.ts:83</a></div>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td class="col-md-4">
+                            <b>Type parameters :</b>
+                            <ul class="type-parameters">
+                                    <li>DataType</li>
+                            </ul>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>key</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                        <tr>
+                                                <td>storage</td>
+                                            <td>
+                                                        <code>Storage</code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="../miscellaneous/typealiases.html#DataType" target="_self" >DataType</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getItemObservable"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>getItemObservable</b></span>
+                        <a href="#getItemObservable"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>getItemObservable(key: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, record: <a href="../undefineds/NgxStorageRecord.html" target="_self">NgxStorageRecord</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="93"
+                                    class="link-to-prism">libs/angular/utils/src/lib/services/storage-service/storage.service.ts:93</a></div>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td class="col-md-4">
+                            <b>Type parameters :</b>
+                            <ul class="type-parameters">
+                                    <li>DataType</li>
+                            </ul>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Returns an observable version of the storage value</p>
+</div>
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                                <td>Description</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>key</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                            <td>
+                                                    <ul>
+<li>The key of the storage value</li>
+</ul>
+
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                                <td>record</td>
+                                            <td>
+                                                            <code><a href="../miscellaneous/typealiases.html#NgxStorageRecord" target="_self" >NgxStorageRecord</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                            <td>
+                                                    <ul>
+<li>The storage record</li>
+</ul>
+
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="../miscellaneous/typealiases.html#DataType" target="_self" >Observable&lt;DataType&gt;</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="parseValue"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>parseValue</b></span>
+                        <a href="#parseValue"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>parseValue(value: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="265"
+                                    class="link-to-prism">libs/angular/utils/src/lib/services/storage-service/storage.service.ts:265</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Parses a string value from the storage to an actual value</p>
+</div>
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                                <td>Description</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>value</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                            <td>
+                                                    <ul>
+<li>The provided string value</li>
+</ul>
+
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="removeItem"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>removeItem</b></span>
+                        <a href="#removeItem"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>removeItem(key: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, storage: Storage, record: <a href="../undefineds/NgxStorageRecord.html" target="_self">NgxStorageRecord</a>, type: <a href="../undefineds/NgxStorageType.html" target="_self">NgxStorageType</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="175"
+                                    class="link-to-prism">libs/angular/utils/src/lib/services/storage-service/storage.service.ts:175</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Remove an item from the storage and emit a remove event</p>
+</div>
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                                <td>Description</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>key</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                            <td>
+                                                    <ul>
+<li>The key of the item</li>
+</ul>
+
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                                <td>storage</td>
+                                            <td>
+                                                        <code>Storage</code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                            <td>
+                                                    <ul>
+<li>The storage we wish to remove the item from</li>
+</ul>
+
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                                <td>record</td>
+                                            <td>
+                                                            <code><a href="../miscellaneous/typealiases.html#NgxStorageRecord" target="_self" >NgxStorageRecord</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                            <td>
+                                                    <ul>
+<li>The record with the subject</li>
+</ul>
+
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                                <td>type</td>
+                                            <td>
+                                                            <code><a href="../miscellaneous/typealiases.html#NgxStorageType" target="_self" >NgxStorageType</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                            <td>
+                                                    <ul>
+<li>The type of storage</li>
+</ul>
+
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>    <code>NgxStorageRemoveEvent | undefined</code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="setItem"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>setItem</b></span>
+                        <a href="#setItem"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>setItem(key: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, item: <a href="../undefineds/DataType.html" target="_self">DataType</a>, storage: Storage, record: <a href="../undefineds/NgxStorageRecord.html" target="_self">NgxStorageRecord</a>, type: <a href="../undefineds/NgxStorageType.html" target="_self">NgxStorageType</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="122"
+                                    class="link-to-prism">libs/angular/utils/src/lib/services/storage-service/storage.service.ts:122</a></div>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td class="col-md-4">
+                            <b>Type parameters :</b>
+                            <ul class="type-parameters">
+                                    <li>DataType</li>
+                            </ul>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Sets an item in the storage</p>
+</div>
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                                <td>Description</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>key</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                            <td>
+                                                    <ul>
+<li>The key of the item</li>
+</ul>
+
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                                <td>item</td>
+                                            <td>
+                                                            <code><a href="../miscellaneous/typealiases.html#DataType" target="_self" >DataType</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                            <td>
+                                                    <ul>
+<li>The item in the storage</li>
+</ul>
+
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                                <td>storage</td>
+                                            <td>
+                                                        <code>Storage</code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                            <td>
+                                                    <ul>
+<li>The storage in which we want to save the item</li>
+</ul>
+
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                                <td>record</td>
+                                            <td>
+                                                            <code><a href="../miscellaneous/typealiases.html#NgxStorageRecord" target="_self" >NgxStorageRecord</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                            <td>
+                                                    <ul>
+<li>The corresponding storage record</li>
+</ul>
+
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                                <td>type</td>
+                                            <td>
+                                                            <code><a href="../miscellaneous/typealiases.html#NgxStorageType" target="_self" >NgxStorageType</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                            <td>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>    <code>NgxStorageSetEvent | undefined</code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="setupStorage"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>setupStorage</b></span>
+                        <a href="#setupStorage"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>setupStorage(storage: Storage, record: <a href="../undefineds/NgxStorageRecord.html" target="_self">NgxStorageRecord</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="254"
+                                    class="link-to-prism">libs/angular/utils/src/lib/services/storage-service/storage.service.ts:254</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Grabs the existing storage and updates the record</p>
+</div>
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                                <td>Description</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>storage</td>
+                                            <td>
+                                                        <code>Storage</code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                            <td>
+                                                    <ul>
+<li>The current state of the storage</li>
+</ul>
+
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                                <td>record</td>
+                                            <td>
+                                                            <code><a href="../miscellaneous/typealiases.html#NgxStorageRecord" target="_self" >NgxStorageRecord</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                            <td>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+            <section data-compodoc="block-properties">
+    
+    <h3 id="inputs">
+        Properties
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="localStorageRecord"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                            <span class="modifier">Readonly</span>
+                        <span ><b>localStorageRecord</b></span>
+                        <a href="#localStorageRecord"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../miscellaneous/typealiases.html#NgxStorageRecord" target="_self" >NgxStorageRecord</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>{}</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="29" class="link-to-prism">libs/angular/utils/src/lib/services/storage-service/storage.service.ts:29</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>A record to hold the properties in the localStorage</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="sessionStorageRecord"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                            <span class="modifier">Readonly</span>
+                        <span ><b>sessionStorageRecord</b></span>
+                        <a href="#sessionStorageRecord"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../miscellaneous/typealiases.html#NgxStorageRecord" target="_self" >NgxStorageRecord</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>{}</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="25" class="link-to-prism">libs/angular/utils/src/lib/services/storage-service/storage.service.ts:25</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>A record to hold the properties in the sessionStorage</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="storageEvents$"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                            <span class="modifier">Readonly</span>
+                        <span ><b>storageEvents$</b></span>
+                        <a href="#storageEvents$"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../interfaces/NgxStorage.html" target="_self" >Observable&lt;NgxStorageEvent&gt;</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>this.storageEventSubject.asObservable()</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="38" class="link-to-prism">libs/angular/utils/src/lib/services/storage-service/storage.service.ts:38</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>An observable that emits whenever the session- or the localStorage was updated</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="storageEventSubject"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                            <span class="modifier">Readonly</span>
+                        <span ><b>storageEventSubject</b></span>
+                        <a href="#storageEventSubject"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../interfaces/NgxStorage.html" target="_self" >Subject&lt;NgxStorageEvent&gt;</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>new Subject()</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="33" class="link-to-prism">libs/angular/utils/src/lib/services/storage-service/storage.service.ts:33</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>A subject to hold the events of the storage</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="windowService"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                            <span class="modifier">Readonly</span>
+                        <span ><b>windowService</b></span>
+                        <a href="#windowService"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>inject(NgxWindowService)</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="20" class="link-to-prism">libs/angular/utils/src/lib/services/storage-service/storage.service.ts:20</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+</section>
+
+            <section data-compodoc="block-accessors">
+    <h3 id="accessors">
+        Accessors
+    </h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="localStorage"></a>
+                        <span class="name"><b>localStorage</b><a href="#localStorage"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>localStorage()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="54" class="link-to-prism">libs/angular/utils/src/lib/services/storage-service/storage.service.ts:54</a></div>
+                                </td>
+                            </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-description"><p>A localStorage implementation using observables</p>
+</div>
+
+                                <div class="io-description">
+                                    <b>Returns : </b>        <code><a href="../interfaces/NgxStorage.html" target="_self" >NgxStorage</a></code>
+
+                                </div>
+                        </td>
+                    </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="sessionStorage"></a>
+                        <span class="name"><b>sessionStorage</b><a href="#sessionStorage"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>sessionStorage()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="70" class="link-to-prism">libs/angular/utils/src/lib/services/storage-service/storage.service.ts:70</a></div>
+                                </td>
+                            </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-description"><p>A sessionStorage implementation using observables</p>
+</div>
+
+                                <div class="io-description">
+                                    <b>Returns : </b>        <code><a href="../interfaces/NgxStorage.html" target="_self" >NgxStorage</a></code>
+
+                                </div>
+                        </td>
+                    </tr>
+
+            </tbody>
+        </table>
+</section>
+    </div>
+
+    <div class="tab-pane fade " id="readme">
+        <p><h1>NgxStorageService</h1>
+<p>The <code>NgxStorageService</code> provides a SSR proof Observable approach to both session- and localStorage. It allows for listing to change events on specific properties or on the entire storage.</p>
+<h2>Approach</h2>
+<p>In order to provide an Observable based approach to both the session- and localStorage, the session provides a <code>localStorage</code> and a <code>sessionStorage</code> object that offer custom methods that will also emit to the corresponding Observables. Data that was set to the session- or localStorage on the window directly will not be represented in the Observable.</p>
+<p>On top of an Observable based approach, the new <code>localStorage</code> and <code>sessionStorage</code> implementations will automatically parse the data to a string when saving it to the window session- or localStorage, and will return the parsed value back when calling either <code>getItem</code> or <code>getItemObservable</code>.</p>
+<p>The service is also SSR proof, and will prevent any actions from occurring when not in the browser.</p>
+<h2>Properties</h2>
+<h3>localStorage/sessionStorage</h3>
+<p>The <code>localStorage</code> and <code>sessionStorage</code> objects of the <code>NgxStorageService</code> provide an Observable based approach to storage.</p>
+<p>If we want to get an item from the storage, we can either use <code>getItem</code> or <code>getItemObservable</code> if we want the real time value vs an Observable respectively.</p>
+<p>Using <code>setItem</code> and <code>removeItem</code> will set and remove an item in/from the storage respectively, and will emit an event on the <code>storageEvents$</code> Observable.</p>
+<p>When using <code>clear</code>, the entire storage will be cleared, the Observables that were fetched using <code>getItemObservable</code> will be completed and an event will be emitted on the <code>storageEvents$</code> observable.</p>
+<b>Example :</b><div><pre class="line-numbers"><code class="language-typescript">import { NgxStorageService } from &#39;&#64;ibenvandeveire/ngx-utils&#39;;
+
+export class YourComponent {
+    constructor(private storageService: NgxStorageService) {
+        storageService.localStorage.setItem(&#39;Hello&#39;, { world: true });
+        storageService.sessionStorage.setItem(&#39;Hello&#39;, { world: true });
+    }
+}</code></pre></div><h3>storageEvents$</h3>
+<p>The <code>storageEvents$</code> property is an Observable that will emit a <code>NgxStorageEvent</code> whenever the session- or localStorage was updated (set or remove) or cleared.</p>
+<b>Example :</b><div><pre class="line-numbers"><code class="language-typescript">import { NgxStorageService } from &#39;&#64;ibenvandeveire/ngx-utils&#39;;
+
+export class YourComponent {
+    constructor(private storageService: NgxStorageService) {
+        storageService.storageEvent$.subscribe(console.log);
+        // logs: {type: &#39;update&#39;, oldValue: undefined, newValue: {world: true}, key: &#39;Hello&#39;, storage: &#39;local&#39;}
+        storageService.localStorage.setItem(&#39;Hello&#39;, { world: true });
+    }
+}</code></pre></div></p>
+    </div>
+
+    <div class="tab-pane fade  tab-source-code" id="source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Injectable, inject } from &#x27;@angular/core&#x27;;
+import { NgxWindowService } from &#x27;@ibenvandeveire/ngx-core&#x27;;
+import { BehaviorSubject, NEVER, Observable, Subject } from &#x27;rxjs&#x27;;
+
+import {
+	NgxStorage,
+	NgxStorageClearEvent,
+	NgxStorageEvent,
+	NgxStorageRecord,
+	NgxStorageRemoveEvent,
+	NgxStorageSetEvent,
+	NgxStorageType,
+} from &#x27;../../types&#x27;;
+
+/**
+ * A service that provides a SSR-proof Observable based approach to the session- and localStorage.
+ */
+@Injectable({ providedIn: &#x27;root&#x27; })
+export class NgxStorageService {
+	private readonly windowService &#x3D; inject(NgxWindowService);
+
+	/**
+	 * A record to hold the properties in the sessionStorage
+	 */
+	private readonly sessionStorageRecord: NgxStorageRecord &#x3D; {};
+	/**
+	 * A record to hold the properties in the localStorage
+	 */
+	private readonly localStorageRecord: NgxStorageRecord &#x3D; {};
+	/**
+	 * A subject to hold the events of the storage
+	 */
+	private readonly storageEventSubject: Subject&lt;NgxStorageEvent&gt; &#x3D; new Subject();
+
+	/**
+	 * An observable that emits whenever the session- or the localStorage was updated
+	 */
+	public readonly storageEvents$: Observable&lt;NgxStorageEvent&gt; &#x3D;
+		this.storageEventSubject.asObservable();
+
+	constructor() {
+		const windowService &#x3D; this.windowService;
+
+		// Iben: Get the initial values of the session and the local storage
+		windowService.runInBrowser(() &#x3D;&gt; {
+			this.setupStorage(sessionStorage, this.sessionStorageRecord);
+			this.setupStorage(localStorage, this.localStorageRecord);
+		});
+	}
+
+	/**
+	 * A localStorage implementation using observables
+	 */
+	public get localStorage(): NgxStorage {
+		return {
+			getItem: &lt;DataType &#x3D; any&gt;(key: string) &#x3D;&gt; this.getItem&lt;DataType&gt;(key, localStorage),
+			getItemObservable: &lt;DataType &#x3D; any&gt;(key: string) &#x3D;&gt;
+				this.getItemObservable&lt;DataType&gt;(key, this.localStorageRecord),
+			removeItem: (key: string) &#x3D;&gt;
+				this.removeItem(key, localStorage, this.localStorageRecord, &#x27;local&#x27;),
+			setItem: &lt;DataType &#x3D; any&gt;(key: string, item: DataType) &#x3D;&gt;
+				this.setItem(key, item, localStorage, this.localStorageRecord, &#x27;local&#x27;),
+			clear: () &#x3D;&gt; this.clearStorage(localStorage, this.localStorageRecord, &#x27;local&#x27;),
+		};
+	}
+
+	/**
+	 * A sessionStorage implementation using observables
+	 */
+	public get sessionStorage(): NgxStorage {
+		return {
+			getItem: &lt;DataType &#x3D; any&gt;(key: string) &#x3D;&gt; this.getItem&lt;DataType&gt;(key, sessionStorage),
+			getItemObservable: &lt;DataType &#x3D; any&gt;(key: string) &#x3D;&gt;
+				this.getItemObservable&lt;DataType&gt;(key, this.sessionStorageRecord),
+			removeItem: (key: string) &#x3D;&gt;
+				this.removeItem(key, sessionStorage, this.sessionStorageRecord, &#x27;session&#x27;),
+			setItem: &lt;DataType &#x3D; any&gt;(key: string, item: DataType) &#x3D;&gt;
+				this.setItem(key, item, sessionStorage, this.sessionStorageRecord, &#x27;session&#x27;),
+			clear: () &#x3D;&gt; this.clearStorage(sessionStorage, this.sessionStorageRecord, &#x27;session&#x27;),
+		};
+	}
+
+	private getItem&lt;DataType &#x3D; any&gt;(key: string, storage: Storage): DataType {
+		return this.parseValue(storage.getItem(key));
+	}
+
+	/**
+	 * Returns an observable version of the storage value
+	 *
+	 * @param key - The key of the storage value
+	 * @param record  - The storage record
+	 */
+	private getItemObservable&lt;DataType&gt;(
+		key: string,
+		record: NgxStorageRecord
+	): Observable&lt;DataType&gt; {
+		// Iben: Return NEVER when not in browser
+		if (!this.windowService.isBrowser()) {
+			return NEVER;
+		}
+
+		// Iben: If the subject already exists, we return the observable
+		if (record[key]) {
+			return record[key].asObservable();
+		}
+
+		// Iben: If no subject exits, we create a new one
+		record[key] &#x3D; new BehaviorSubject&lt;DataType&gt;(undefined);
+
+		// Iben: Return the observable
+		return this.getItemObservable&lt;DataType&gt;(key, record);
+	}
+
+	/**
+	 * Sets an item in the storage
+	 *
+	 * @param key - The key of the item
+	 * @param item - The item in the storage
+	 * @param storage - The storage in which we want to save the item
+	 * @param record - The corresponding storage record
+	 */
+	private setItem&lt;DataType &#x3D; any&gt;(
+		key: string,
+		item: DataType,
+		storage: Storage,
+		record: NgxStorageRecord,
+		type: NgxStorageType
+	): NgxStorageSetEvent | undefined {
+		// Iben: Early exit when we&#x27;re in the browser
+		if (!this.windowService.isBrowser()) {
+			return undefined;
+		}
+
+		// Iben: Check if there&#x27;s already a subject for this item. If not, we create one
+		let subject &#x3D; record[key];
+
+		if (!subject) {
+			subject &#x3D; new BehaviorSubject&lt;DataType&gt;(undefined);
+			storage[key] &#x3D; subject;
+		}
+
+		// Iben: Store the current value of the subject
+		const oldValue &#x3D; subject.getValue();
+
+		// Iben: Set the item in the storage
+		storage.setItem(key, typeof item &#x3D;&#x3D;&#x3D; &#x27;string&#x27; ? item : JSON.stringify(item));
+
+		// Iben: Update the subject in the record
+		subject.next(item);
+
+		// Iben: Create the storage event
+		const event: NgxStorageSetEvent &#x3D; {
+			key,
+			newValue: item,
+			oldValue,
+			storage: type,
+			type: &#x27;set&#x27;,
+		};
+
+		// Iben: Emit the storage event
+		this.storageEventSubject.next(event);
+
+		// Iben: Return the storage event
+		return event;
+	}
+
+	/**
+	 * Remove an item from the storage and emit a remove event
+	 *
+	 * @param  key - The key of the item
+	 * @param storage - The storage we wish to remove the item from
+	 * @param record - The record with the subject
+	 * @param type - The type of storage
+	 */
+	private removeItem(
+		key: string,
+		storage: Storage,
+		record: NgxStorageRecord,
+		type: NgxStorageType
+	): NgxStorageRemoveEvent | undefined {
+		// Iben: Early exit when we&#x27;re not in the browser
+		if (!this.windowService.isBrowser()) {
+			return undefined;
+		}
+
+		// Iben: Get the old item
+		const oldValue &#x3D; this.parseValue(storage.getItem(key));
+
+		// Iben: Remove the item from the storage
+		storage.removeItem(key);
+
+		// Iben Update the subject if it exists
+		record[key]?.next(undefined);
+
+		// Iben: Create the event and return and emit it
+		const event: NgxStorageRemoveEvent &#x3D; {
+			oldValue,
+			storage: type,
+			key,
+			type: &#x27;remove&#x27;,
+		};
+
+		this.storageEventSubject.next(event);
+		return event;
+	}
+
+	/**
+	 * Clears the storage, completes all subjects and emits a clear event
+	 *
+	 * @param storage - The storage we wish to clear
+	 * @param record - The record with the subjects
+	 * @param type - The type of storage
+	 */
+	private clearStorage(
+		storage: Storage,
+		record: NgxStorageRecord,
+		type: NgxStorageType
+	): NgxStorageClearEvent | undefined {
+		// Iben: Early exit when we&#x27;re not in the browser
+		if (!this.windowService.isBrowser()) {
+			return undefined;
+		}
+
+		// Iben: Clear the storage
+		storage.clear();
+
+		// Iben: Clear the record and complete all subjects
+		Object.entries(record).forEach(([key, subject]) &#x3D;&gt; {
+			subject.next(undefined);
+			subject.complete();
+
+			record[key] &#x3D; undefined;
+		});
+
+		// Iben: Create and emit event
+		const event: NgxStorageClearEvent &#x3D; {
+			type: &#x27;clear&#x27;,
+			storage: type,
+		};
+
+		this.storageEventSubject.next(event);
+
+		return event;
+	}
+
+	/**
+	 * Grabs the existing storage and updates the record
+	 *
+	 * @private
+	 * @param {Storage} storage - The current state of the storage
+	 * @param {NgxStorageRecord} record
+	 * @memberof NgxStorageService
+	 */
+	private setupStorage(storage: Storage, record: NgxStorageRecord) {
+		Object.entries(storage).forEach(([key, value]) &#x3D;&gt; {
+			record[key] &#x3D; new BehaviorSubject(this.parseValue(value));
+		});
+	}
+
+	/**
+	 * Parses a string value from the storage to an actual value
+	 *
+	 * @param value - The provided string value
+	 */
+	private parseValue(value: string): any {
+		// Iben: If the value does not exist, return the value
+		if (!value) {
+			return value;
+		}
+
+		// Iben: If the value is either true or false, return a boolean version of the value
+		if (value &#x3D;&#x3D;&#x3D; &#x27;true&#x27; || value &#x3D;&#x3D;&#x3D; &#x27;false&#x27;) {
+			return value &#x3D;&#x3D;&#x3D; &#x27;true&#x27;;
+		}
+
+		// Iben: If the value is a number, return the parsed number
+		if (value.match(/^[0-9]*[,.]{0,1}[0-9]*$/)) {
+			return Number(value);
+		}
+
+		// Iben: If the value is an object, return the parsed object
+		if (value.match(/{(.*:.*[,]{0,1})*}/)) {
+			return JSON.parse(value);
+		}
+
+		// Iben: Return the string value as is
+		return value;
+	}
+}
+</code></pre>
+    </div>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'injectable';
+            var COMPODOC_CURRENT_PAGE_URL = 'NgxStorageService.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script>
+               $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               checkToggle(darkModeState);
+               if ($darkModeToggleSwitchers.length > 0) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].addEventListener('change', function (event) {
+                              darkModeState = !darkModeState;
+                              toggleDarkMode(darkModeState);
+                         });
+                    }
+               }
+          </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

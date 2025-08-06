@@ -11,7 +11,8 @@
 		"lint": "nx lint",
 		"lint:affected": "npx nx affected --target=lint --fix --base=origin/main --parallel",
 		"lint:all": "nx run-many --target=lint --fix --parallel",
-		"format": "npx nx format"
+		"format": "npx nx format",
+		"documentation": "npx compodoc -p tsconfig.doc.json --output docs"
 	},
 	"private": true,
 	"dependencies": {
@@ -49,6 +50,7 @@
 		"@angular/cli": "~20.1.0",
 		"@angular/compiler-cli": "20.1.2",
 		"@angular/language-service": "20.1.2",
+		"@compodoc/compodoc": "^1.1.26",
 		"@eslint/js": "^9.8.0",
 		"@hirez_io/observer-spy": "^2.2.0",
 		"@nx/angular": "21.3.0",

@@ -1,0 +1,1317 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>@opensource/source documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+    </head>
+    <body>
+          <script>
+               // Blocking script to avoid flickering dark mode
+               // Dark mode toggle button
+               var useDark = window.matchMedia('(prefers-color-scheme: dark)');
+               var darkModeState = useDark.matches;
+               var $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               var $darkModeToggles = document.querySelectorAll('.dark-mode-switch');
+               var darkModeStateLocal = localStorage.getItem('compodoc_darkmode-state');
+
+               function checkToggle(check) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].checked = check;
+                    }
+               }
+
+               function toggleDarkMode(state) {
+                    if (window.localStorage) {
+                         localStorage.setItem('compodoc_darkmode-state', state);
+                    }
+
+                    checkToggle(state);
+
+                    const hasClass = document.body.classList.contains('dark');
+
+                    if (state) {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.add('dark');
+                         }
+                         if (!hasClass) {
+                              document.body.classList.add('dark');
+                         }
+                    } else {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.remove('dark');
+                         }
+                         if (hasClass) {
+                              document.body.classList.remove('dark');
+                         }
+                    }
+               }
+
+               useDark.addEventListener('change', function (evt) {
+                    toggleDarkMode(evt.matches);
+               });
+               if (darkModeStateLocal) {
+                    darkModeState = darkModeStateLocal === 'true';
+               }
+               toggleDarkMode(darkModeState);
+          </script>
+
+        <div class="navbar navbar-default navbar-fixed-top d-md-none p-0">
+               <div class="d-flex">
+                    <a href="../" class="navbar-brand">@opensource/source documentation</a>
+                    <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+               </div>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="d-none d-md-block menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content directive">
+                   <div class="content-data">
+
+
+
+
+
+
+
+<ol class="breadcrumb">
+  <li class="breadcrumb-item">Directives</li>
+  <li class="breadcrumb-item" >NgxHasPermissionDirective</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item">
+            <a href="#info" 
+                class="nav-link"
+                class="nav-link active"
+                role="tab" id="info-tab" data-bs-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li class="nav-item">
+            <a href="#source" 
+                class="nav-link"
+                
+                role="tab" id="source-tab" data-bs-toggle="tab" data-link="source">Source</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="info">
+        <p class="comment">
+            <h3>File</h3>
+        </p>
+        <p class="comment">
+            <code>libs/angular/authentication/src/lib/directives/has-permission/has-permission.directive.ts</code>
+        </p>
+
+
+            <p class="comment">
+                <h3>Description</h3>
+            </p>
+            <p class="comment">
+                <p>A directive that will render a part of the template based on whether the required permissions(s) are provided.</p>
+<p>Based upon <code>*ngIf</code>. See <a href="https://github.com/angular/angular/blob/master/packages/common/src/directives/ng_if.ts">https://github.com/angular/angular/blob/master/packages/common/src/directives/ng_if.ts</a></p>
+
+            </p>
+
+
+            <p class="comment">
+                <h3>Implements</h3>
+            </p>
+            <p class="comment">
+                        <code>OnDestroy</code>
+            </p>
+
+
+        <section data-compodoc="block-metadata">
+            <h3>Metadata</h3>
+            <table class="table table-sm table-hover metadata">
+                <tbody>
+
+                    <tr>
+                        <td class="col-md-3">Selector</td>
+                        <td class="col-md-9"><code>[ngxHasPermission]</code></td>
+                    </tr>
+
+
+
+
+                </tbody>
+            </table>
+        </section>
+
+            <section data-compodoc="block-index">
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                    <span class="modifier">Private</span>
+                                    <span class="modifier">Readonly</span>
+                                <a href="#authenticationService" >authenticationService</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                    <span class="modifier">Readonly</span>
+                                <a href="#cdRef" >cdRef</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#destroyed$" >destroyed$</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#elseTemplateRef" >elseTemplateRef</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#elseViewRef" >elseViewRef</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#ngxHasPermission" >ngxHasPermission</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#ngxHasPermissionElse" >ngxHasPermissionElse</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#ngxHasPermissionShouldHaveAllPermissions" >ngxHasPermissionShouldHaveAllPermissions</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#ngxHasPermissionShouldHavePermission" >ngxHasPermissionShouldHavePermission</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#permission" >permission</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#shouldHaveAllPermissions" >shouldHaveAllPermissions</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#shouldHavePermission" >shouldHavePermission</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#thenTemplateRef" >thenTemplateRef</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#thenViewRef" >thenViewRef</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#viewContainer" >viewContainer</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#dispose" >dispose</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#ngOnDestroy" >ngOnDestroy</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#updateView" >updateView</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Inputs</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#ngxHasPermission" >ngxHasPermission</a>
+                            </li>
+                            <li>
+                                <a href="#ngxHasPermissionElse" >ngxHasPermissionElse</a>
+                            </li>
+                            <li>
+                                <a href="#ngxHasPermissionShouldHaveAllPermissions" >ngxHasPermissionShouldHaveAllPermissions</a>
+                            </li>
+                            <li>
+                                <a href="#ngxHasPermissionShouldHavePermission" >ngxHasPermissionShouldHavePermission</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+            <section data-compodoc="block-constructor">
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor()</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="82" class="link-to-prism">libs/angular/authentication/src/lib/directives/has-permission/has-permission.directive.ts:82</a></div>
+                            </td>
+                        </tr>
+
+            </tbody>
+        </table>
+</section>
+
+            <section data-compodoc="block-inputs">
+    <h3 id="inputs">Inputs</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="ngxHasPermission"></a>
+                        <b>ngxHasPermission</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>InputSignal&lt;PermissionType | []&gt;</code>
+
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="67" class="link-to-prism">libs/angular/authentication/src/lib/directives/has-permission/has-permission.directive.ts:67</a></div>
+                            </td>
+                        </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>A permission or list of permissions the item should have</p>
+</div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="ngxHasPermissionElse"></a>
+                        <b>ngxHasPermissionElse</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>InputSignal&lt;TemplateRef&lt;any&gt;&gt;</code>
+
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="72" class="link-to-prism">libs/angular/authentication/src/lib/directives/has-permission/has-permission.directive.ts:72</a></div>
+                            </td>
+                        </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>The else template in case the permission is not enabled</p>
+</div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="ngxHasPermissionShouldHaveAllPermissions"></a>
+                        <b>ngxHasPermissionShouldHaveAllPermissions</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>InputSignal&lt;boolean&gt;</code>
+
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="82" class="link-to-prism">libs/angular/authentication/src/lib/directives/has-permission/has-permission.directive.ts:82</a></div>
+                            </td>
+                        </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>Whether all permissions should be enabled, by default this is true</p>
+</div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="ngxHasPermissionShouldHavePermission"></a>
+                        <b>ngxHasPermissionShouldHavePermission</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>InputSignal&lt;boolean&gt;</code>
+
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="77" class="link-to-prism">libs/angular/authentication/src/lib/directives/has-permission/has-permission.directive.ts:77</a></div>
+                            </td>
+                        </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>Whether the permission should be enabled, by default this is true</p>
+</div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+
+
+            <section data-compodoc="block-methods">
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="dispose"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>dispose</b></span>
+                        <a href="#dispose"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>dispose()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="167"
+                                    class="link-to-prism">libs/angular/authentication/src/lib/directives/has-permission/has-permission.directive.ts:167</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Dispose the current subscription</p>
+</div>
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngOnDestroy"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                        <span ><b>ngOnDestroy</b></span>
+                        <a href="#ngOnDestroy"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>ngOnDestroy()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="103"
+                                    class="link-to-prism">libs/angular/authentication/src/lib/directives/has-permission/has-permission.directive.ts:103</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="updateView"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>updateView</b></span>
+                        <a href="#updateView"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>updateView()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="110"
+                                    class="link-to-prism">libs/angular/authentication/src/lib/directives/has-permission/has-permission.directive.ts:110</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Updates the view and hides/renders the template as needed</p>
+</div>
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+            <section data-compodoc="block-properties">
+    
+    <h3 id="inputs">
+        Properties
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="authenticationService"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                            <span class="modifier">Readonly</span>
+                        <span ><b>authenticationService</b></span>
+                        <a href="#authenticationService"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>inject&lt;NgxAuthenticationAbstractService&gt;(
+		NgxAuthenticationServiceToken
+	)</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="31" class="link-to-prism">libs/angular/authentication/src/lib/directives/has-permission/has-permission.directive.ts:31</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="cdRef"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                            <span class="modifier">Readonly</span>
+                        <span ><b>cdRef</b></span>
+                        <a href="#cdRef"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>inject(ChangeDetectorRef)</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="34" class="link-to-prism">libs/angular/authentication/src/lib/directives/has-permission/has-permission.directive.ts:34</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="destroyed$"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>destroyed$</b></span>
+                        <a href="#destroyed$"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>Subject&lt;void&gt;</code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="39" class="link-to-prism">libs/angular/authentication/src/lib/directives/has-permission/has-permission.directive.ts:39</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>The destroyed state of the directive</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="elseTemplateRef"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>elseTemplateRef</b></span>
+                        <a href="#elseTemplateRef"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>TemplateRef&lt;any&gt; | null</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>null</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="46" class="link-to-prism">libs/angular/authentication/src/lib/directives/has-permission/has-permission.directive.ts:46</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="elseViewRef"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>elseViewRef</b></span>
+                        <a href="#elseViewRef"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>EmbeddedViewRef&lt;any&gt; | null</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>null</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="47" class="link-to-prism">libs/angular/authentication/src/lib/directives/has-permission/has-permission.directive.ts:47</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngxHasPermission"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                        <span ><b>ngxHasPermission</b></span>
+                        <a href="#ngxHasPermission"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>InputSignal&lt;PermissionType | []&gt;</code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="67" class="link-to-prism">libs/angular/authentication/src/lib/directives/has-permission/has-permission.directive.ts:67</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>A permission or list of permissions the item should have</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngxHasPermissionElse"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                        <span ><b>ngxHasPermissionElse</b></span>
+                        <a href="#ngxHasPermissionElse"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>InputSignal&lt;TemplateRef&lt;any&gt;&gt;</code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="72" class="link-to-prism">libs/angular/authentication/src/lib/directives/has-permission/has-permission.directive.ts:72</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>The else template in case the permission is not enabled</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngxHasPermissionShouldHaveAllPermissions"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                        <span ><b>ngxHasPermissionShouldHaveAllPermissions</b></span>
+                        <a href="#ngxHasPermissionShouldHaveAllPermissions"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>InputSignal&lt;boolean&gt;</code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="82" class="link-to-prism">libs/angular/authentication/src/lib/directives/has-permission/has-permission.directive.ts:82</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Whether all permissions should be enabled, by default this is true</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngxHasPermissionShouldHavePermission"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                        <span ><b>ngxHasPermissionShouldHavePermission</b></span>
+                        <a href="#ngxHasPermissionShouldHavePermission"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>InputSignal&lt;boolean&gt;</code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="77" class="link-to-prism">libs/angular/authentication/src/lib/directives/has-permission/has-permission.directive.ts:77</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Whether the permission should be enabled, by default this is true</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="permission"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>permission</b></span>
+                        <a href="#permission"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>PermissionType | PermissionType[]</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[]</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="52" class="link-to-prism">libs/angular/authentication/src/lib/directives/has-permission/has-permission.directive.ts:52</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>The (list of) permission(s) we need to check</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="shouldHaveAllPermissions"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>shouldHaveAllPermissions</b></span>
+                        <a href="#shouldHaveAllPermissions"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>true</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="62" class="link-to-prism">libs/angular/authentication/src/lib/directives/has-permission/has-permission.directive.ts:62</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Whether all permissions should be enabled</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="shouldHavePermission"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>shouldHavePermission</b></span>
+                        <a href="#shouldHavePermission"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>true</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="57" class="link-to-prism">libs/angular/authentication/src/lib/directives/has-permission/has-permission.directive.ts:57</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Whether the permission should be enabled</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="thenTemplateRef"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>thenTemplateRef</b></span>
+                        <a href="#thenTemplateRef"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>TemplateRef&lt;any&gt; | null</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>null</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="44" class="link-to-prism">libs/angular/authentication/src/lib/directives/has-permission/has-permission.directive.ts:44</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>The needed templateRefs</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="thenViewRef"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>thenViewRef</b></span>
+                        <a href="#thenViewRef"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>EmbeddedViewRef&lt;any&gt; | null</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>null</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="45" class="link-to-prism">libs/angular/authentication/src/lib/directives/has-permission/has-permission.directive.ts:45</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="viewContainer"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>viewContainer</b></span>
+                        <a href="#viewContainer"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>inject(ViewContainerRef)</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="30" class="link-to-prism">libs/angular/authentication/src/lib/directives/has-permission/has-permission.directive.ts:30</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+</section>
+
+
+    </div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import {
+	ChangeDetectorRef,
+	Directive,
+	EmbeddedViewRef,
+	InputSignal,
+	OnDestroy,
+	TemplateRef,
+	ViewContainerRef,
+	effect,
+	inject,
+	input,
+} from &#x27;@angular/core&#x27;;
+import { Subject, takeUntil, tap } from &#x27;rxjs&#x27;;
+
+import { NgxAuthenticationAbstractService } from &#x27;../../abstracts&#x27;;
+import { NgxAuthenticationServiceToken } from &#x27;../../tokens&#x27;;
+import { convertToArray } from &#x27;../../utils&#x27;;
+
+/**
+ * A directive that will render a part of the template based on whether the required permissions(s) are provided.
+ *
+ * Based upon &#x60;*ngIf&#x60;. See https://github.com/angular/angular/blob/master/packages/common/src/directives/ng_if.ts
+ */
+
+//TODO: Iben: Implement Cypress/PlayWright tests
+@Directive({
+	selector: &#x27;[ngxHasPermission]&#x27;,
+})
+export class NgxHasPermissionDirective&lt;PermissionType extends string&gt; implements OnDestroy {
+	private viewContainer &#x3D; inject(ViewContainerRef);
+	private readonly authenticationService &#x3D; inject&lt;NgxAuthenticationAbstractService&gt;(
+		NgxAuthenticationServiceToken
+	);
+	private readonly cdRef &#x3D; inject(ChangeDetectorRef);
+
+	/**
+	 * The destroyed state of the directive
+	 */
+	private destroyed$: Subject&lt;void&gt;;
+
+	/**
+	 * The needed templateRefs
+	 */
+	private thenTemplateRef: TemplateRef&lt;any&gt; | null &#x3D; null;
+	private thenViewRef: EmbeddedViewRef&lt;any&gt; | null &#x3D; null;
+	private elseTemplateRef: TemplateRef&lt;any&gt; | null &#x3D; null;
+	private elseViewRef: EmbeddedViewRef&lt;any&gt; | null &#x3D; null;
+
+	/**
+	 * The (list of) permission(s) we need to check
+	 */
+	private permission: PermissionType | PermissionType[] &#x3D; [];
+
+	/**
+	 * Whether the permission should be enabled
+	 */
+	private shouldHavePermission: boolean &#x3D; true;
+
+	/**
+	 * Whether all permissions should be enabled
+	 */
+	private shouldHaveAllPermissions: boolean &#x3D; true;
+
+	/**
+	 * A permission or list of permissions the item should have
+	 */
+	public ngxHasPermission: InputSignal&lt;PermissionType | PermissionType[]&gt; &#x3D; input();
+
+	/**
+	 * The else template in case the permission is not enabled
+	 */
+	public ngxHasPermissionElse: InputSignal&lt;TemplateRef&lt;any&gt;&gt; &#x3D; input();
+
+	/**
+	 * Whether the permission should be enabled, by default this is true
+	 */
+	public ngxHasPermissionShouldHavePermission: InputSignal&lt;boolean&gt; &#x3D; input();
+
+	/**
+	 * Whether all permissions should be enabled, by default this is true
+	 */
+	public ngxHasPermissionShouldHaveAllPermissions: InputSignal&lt;boolean&gt; &#x3D; input();
+
+	constructor() {
+		const templateRef &#x3D; inject&lt;TemplateRef&lt;any&gt;&gt;(TemplateRef);
+
+		this.thenTemplateRef &#x3D; templateRef;
+
+		effect(() &#x3D;&gt; {
+			this.shouldHaveAllPermissions &#x3D; this.ngxHasPermissionShouldHaveAllPermissions();
+			this.shouldHavePermission &#x3D; this.ngxHasPermissionShouldHavePermission();
+			this.permission &#x3D; this.ngxHasPermission();
+
+			this.updateView();
+		});
+
+		effect(() &#x3D;&gt; {
+			this.elseTemplateRef &#x3D; this.ngxHasPermissionElse();
+			this.elseViewRef &#x3D; null;
+		});
+	}
+
+	public ngOnDestroy(): void {
+		this.dispose();
+	}
+
+	/**
+	 * Updates the view and hides/renders the template as needed
+	 */
+	private updateView(): void {
+		// Iben: Dispose the current subscription
+		this.dispose();
+
+		// Iben: Create a new onDestroyed handler
+		this.destroyed$ &#x3D; new Subject();
+
+		// Iben: Render the views based on the correct state
+		this.authenticationService
+			.hasPermission(
+				convertToArray&lt;PermissionType&gt;(this.permission),
+				this.shouldHaveAllPermissions
+			)
+			.pipe(
+				tap((hasPermission) &#x3D;&gt; {
+					// Iben: Clear the current view
+					this.viewContainer.clear();
+
+					// Iben: Check if we should render the view
+					const shouldRender: boolean &#x3D; this.shouldHavePermission
+						? hasPermission
+						: !hasPermission;
+
+					// Iben: Render the correct templates
+					if (shouldRender) {
+						this.viewContainer.clear();
+						this.elseViewRef &#x3D; null;
+
+						if (this.thenTemplateRef) {
+							this.thenViewRef &#x3D; this.viewContainer.createEmbeddedView(
+								this.thenTemplateRef
+							);
+						}
+					} else {
+						if (!this.elseViewRef) {
+							this.viewContainer.clear();
+							this.thenViewRef &#x3D; null;
+
+							if (this.elseTemplateRef) {
+								this.elseViewRef &#x3D; this.viewContainer.createEmbeddedView(
+									this.elseTemplateRef
+								);
+							}
+						}
+					}
+
+					// Iben: Detect the changes so that the view gets updated
+					this.cdRef.detectChanges();
+				}),
+				takeUntil(this.destroyed$)
+			)
+			.subscribe();
+	}
+
+	/**
+	 * Dispose the current subscription
+	 */
+	private dispose(): void {
+		if (this.destroyed$) {
+			this.destroyed$.next();
+			this.destroyed$.complete();
+		}
+	}
+}
+</code></pre>
+    </div>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'directive';
+            var COMPODOC_CURRENT_PAGE_URL = 'NgxHasPermissionDirective.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script>
+               $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               checkToggle(darkModeState);
+               if ($darkModeToggleSwitchers.length > 0) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].addEventListener('change', function (event) {
+                              darkModeState = !darkModeState;
+                              toggleDarkMode(darkModeState);
+                         });
+                    }
+               }
+          </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

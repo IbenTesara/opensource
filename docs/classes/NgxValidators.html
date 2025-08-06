@@ -1,0 +1,996 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>@opensource/source documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+    </head>
+    <body>
+          <script>
+               // Blocking script to avoid flickering dark mode
+               // Dark mode toggle button
+               var useDark = window.matchMedia('(prefers-color-scheme: dark)');
+               var darkModeState = useDark.matches;
+               var $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               var $darkModeToggles = document.querySelectorAll('.dark-mode-switch');
+               var darkModeStateLocal = localStorage.getItem('compodoc_darkmode-state');
+
+               function checkToggle(check) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].checked = check;
+                    }
+               }
+
+               function toggleDarkMode(state) {
+                    if (window.localStorage) {
+                         localStorage.setItem('compodoc_darkmode-state', state);
+                    }
+
+                    checkToggle(state);
+
+                    const hasClass = document.body.classList.contains('dark');
+
+                    if (state) {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.add('dark');
+                         }
+                         if (!hasClass) {
+                              document.body.classList.add('dark');
+                         }
+                    } else {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.remove('dark');
+                         }
+                         if (hasClass) {
+                              document.body.classList.remove('dark');
+                         }
+                    }
+               }
+
+               useDark.addEventListener('change', function (evt) {
+                    toggleDarkMode(evt.matches);
+               });
+               if (darkModeStateLocal) {
+                    darkModeState = darkModeStateLocal === 'true';
+               }
+               toggleDarkMode(darkModeState);
+          </script>
+
+        <div class="navbar navbar-default navbar-fixed-top d-md-none p-0">
+               <div class="d-flex">
+                    <a href="../" class="navbar-brand">@opensource/source documentation</a>
+                    <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+               </div>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="d-none d-md-block menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content class">
+                   <div class="content-data">
+
+
+
+
+
+
+
+
+
+
+
+
+<ol class="breadcrumb">
+  <li class="breadcrumb-item">Classes</li>
+  <li class="breadcrumb-item" >NgxValidators</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item">
+            <a href="#info" 
+                class="nav-link"
+                class="nav-link active"
+                role="tab" id="info-tab" data-bs-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li class="nav-item">
+            <a href="#source" 
+                class="nav-link"
+                
+                role="tab" id="source-tab" data-bs-toggle="tab" data-link="source">Source</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="info">
+        <p class="comment">
+            <h3>File</h3>
+        </p>
+        <p class="comment">
+            <code>libs/angular/forms/src/lib/validators/validators.ts</code>
+        </p>
+
+
+            <p class="comment">
+                <h3>Description</h3>
+            </p>
+            <p class="comment">
+                <p>Exported Class</p>
+
+            </p>
+
+
+
+
+            <section data-compodoc="block-index">
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                    <span class="modifier">Static</span>
+                                <a href="#allOrNothingRequired" >allOrNothingRequired</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Static</span>
+                                <a href="#atLeastOneRequired" >atLeastOneRequired</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Static</span>
+                                <a href="#chronologicalDates" >chronologicalDates</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Static</span>
+                                <a href="#dateRangeValidator" >dateRangeValidator</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Static</span>
+                                <a href="#decimalsAfterComma" >decimalsAfterComma</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Static</span>
+                                <a href="#dependedRequired" >dependedRequired</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+
+
+            <section data-compodoc="block-methods">
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="allOrNothingRequired"></a>
+                    <span class="name">
+                            <span class="modifier">Static</span>
+                        <span ><b>allOrNothingRequired</b></span>
+                        <a href="#allOrNothingRequired"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>allOrNothingRequired(control: FormGroup)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="27"
+                                    class="link-to-prism">libs/angular/forms/src/lib/validators/validators.ts:27</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>A validator to check if all or none of the values of a form group are filled in.
+Particularly useful in situations where a form group field within itself is optional,
+but all fields are required in case it does get filled in</p>
+<p>Returns an <code>allOrNothingRequiredError</code> error on the provided FormGroup and a <code>required</code> error on the individual controls</p>
+</div>
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                                <td>Description</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>control</td>
+                                            <td>
+                                                        <code>FormGroup</code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                            <td>
+                                                    <ul>
+<li>A form group control</li>
+</ul>
+
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>    <code>ValidationErrors | null</code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="atLeastOneRequired"></a>
+                    <span class="name">
+                            <span class="modifier">Static</span>
+                        <span ><b>atLeastOneRequired</b></span>
+                        <a href="#atLeastOneRequired"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>atLeastOneRequired(options?: <a href="../interfaces/AtLeastOneRequiredValidatorOptions.html" target="_self">AtLeastOneRequiredValidatorOptions&lt;KeyType&gt;</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="40"
+                                    class="link-to-prism">libs/angular/forms/src/lib/validators/validators.ts:40</a></div>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td class="col-md-4">
+                            <b>Type parameters :</b>
+                            <ul class="type-parameters">
+                                    <li>KeyType</li>
+                            </ul>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>A validator to check if at least one of the provided controls of the form group are filled in</p>
+<p>Returns an <code>atLeastOneRequiredError</code> error on the provided FormGroup and a <code>required</code> error on the individual controls</p>
+</div>
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                                <td>Description</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>options</td>
+                                            <td>
+                                                            <code><a href="../interfaces/AtLeastOneRequiredValidatorOptions.html" target="_self" >AtLeastOneRequiredValidatorOptions&lt;KeyType&gt;</a></code>
+                                            </td>
+
+                                            <td>
+                                                    Yes
+                                            </td>
+
+
+                                            <td>
+                                                    <ul>
+<li>An optional object with configuration options, see below params for more info</li>
+</ul>
+
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>    <code>ValidatorFn</code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="chronologicalDates"></a>
+                    <span class="name">
+                            <span class="modifier">Static</span>
+                        <span ><b>chronologicalDates</b></span>
+                        <a href="#chronologicalDates"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>chronologicalDates(startControlKey: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, endControlKey: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, format: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="83"
+                                    class="link-to-prism">libs/angular/forms/src/lib/validators/validators.ts:83</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>A FormGroup validator to check whether a start and end date are chronologically correct</p>
+<p>Returns an <code>incorrectChronologicalDates</code> error on the provided FormGroup and a <code>incorrectChronologicalDate</code> on the endControl</p>
+</div>
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                                <td>Default value</td>
+                                                <td>Description</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>startControlKey</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+                                            <td>
+                                            </td>
+
+                                            <td>
+                                                    <ul>
+<li>The key of the control containing the start date value</li>
+</ul>
+
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                                <td>endControlKey</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+                                            <td>
+                                            </td>
+
+                                            <td>
+                                                    <ul>
+<li>The key of the control containing the end date value</li>
+</ul>
+
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                                <td>format</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+                                            <td>
+                                                    <code>&#x27;yyyy-MM-dd&#x27;</code>
+                                            </td>
+
+                                            <td>
+                                                    <ul>
+<li>Optional format of the dates provided by the controls, by default yyyy-MM-dd</li>
+</ul>
+
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>    <code>ValidatorFn</code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="dateRangeValidator"></a>
+                    <span class="name">
+                            <span class="modifier">Static</span>
+                        <span ><b>dateRangeValidator</b></span>
+                        <a href="#dateRangeValidator"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>dateRangeValidator(min: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, max: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, format: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="100"
+                                    class="link-to-prism">libs/angular/forms/src/lib/validators/validators.ts:100</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Form control validator which validates if a date is between a provided range</p>
+<p>Returns an <code>invalidRange</code> error</p>
+</div>
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                                <td>Default value</td>
+                                                <td>Description</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>min</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+                                            <td>
+                                            </td>
+
+                                            <td>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                                <td>max</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+                                            <td>
+                                            </td>
+
+                                            <td>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                                <td>format</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+                                            <td>
+                                                    <code>&#x27;yyyy-MM-dd&#x27;</code>
+                                            </td>
+
+                                            <td>
+                                                    <ul>
+<li>Optional format used for all 3 dates, by default yyyy-MM-dd</li>
+</ul>
+
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>    <code>ValidatorFn</code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="decimalsAfterComma"></a>
+                    <span class="name">
+                            <span class="modifier">Static</span>
+                        <span ><b>decimalsAfterComma</b></span>
+                        <a href="#decimalsAfterComma"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>decimalsAfterComma(max: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="70"
+                                    class="link-to-prism">libs/angular/forms/src/lib/validators/validators.ts:70</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Validates whether the inputted value has exceeded the maximum amount of decimals after the comma</p>
+<p>Returns an <code>invalidDecimalsAfterComma</code> error on the provided control</p>
+</div>
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                                <td>Description</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>max</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                            <td>
+                                                    <ul>
+<li>The maximum number of decimals after the comma</li>
+</ul>
+
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>    <code>ValidatorFn</code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="dependedRequired"></a>
+                    <span class="name">
+                            <span class="modifier">Static</span>
+                        <span ><b>dependedRequired</b></span>
+                        <a href="#dependedRequired"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>dependedRequired(controls: KeyType[], dependedControlKey: KeyType, matchFunction?: (data?: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>) => void)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="55"
+                                    class="link-to-prism">libs/angular/forms/src/lib/validators/validators.ts:55</a></div>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td class="col-md-4">
+                            <b>Type parameters :</b>
+                            <ul class="type-parameters">
+                                    <li>KeyType</li>
+                            </ul>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>FormGroup validator which checks if an array of controls in the control are filled in if the depended control is filled in</p>
+<p>Returns a <code>hasDependedRequiredError</code> error on the provided FormGroup and a <code>required</code> error on the individual controls</p>
+</div>
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                                <td>Description</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>controls</td>
+                                            <td>
+                                                        <code>KeyType[]</code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                            <td>
+                                                    <ul>
+<li>An array of controls.</li>
+</ul>
+
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                                <td>dependedControlKey</td>
+                                            <td>
+                                                        <code>KeyType</code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                            <td>
+                                                    <ul>
+<li>A control within the group which the other controls depend on.</li>
+</ul>
+
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                                <td>matchFunction</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/function" target="_blank" >function</a></code>
+                                            </td>
+
+                                            <td>
+                                                    Yes
+                                            </td>
+
+
+                                            <td>
+                                                    <ul>
+<li>Optional function the dependedControl should check</li>
+</ul>
+
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>    <code>ValidatorFn</code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+
+
+
+
+
+    </div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { FormGroup, ValidationErrors, ValidatorFn } from &#x27;@angular/forms&#x27;;
+
+import { allOrNothingRequiredValidator } from &#x27;./all-or-nothing-required/all-or-nothing-required.validator&#x27;;
+import {
+	AtLeastOneRequiredValidatorOptions,
+	atLeastOneRequiredValidator,
+} from &#x27;./at-least-one-required/at-least-one-required.validator&#x27;;
+import { chronologicalDatesValidator } from &#x27;./chronological-dates/chronological-dates.validator&#x27;;
+import { dateRangeValidator } from &#x27;./date-range/date-range.validator&#x27;;
+import { decimalsAfterCommaValidator } from &#x27;./decimals-after-comma/decimals-after-comma.validator&#x27;;
+import { dependedRequiredValidator } from &#x27;./depended-required/depended-required.validator&#x27;;
+
+/**
+ * Exported Class
+ */
+
+export class NgxValidators {
+	/**
+	 * A validator to check if all or none of the values of a form group are filled in.
+	 * Particularly useful in situations where a form group field within itself is optional,
+	 * but all fields are required in case it does get filled in
+	 *
+	 * Returns an &#x60;allOrNothingRequiredError&#x60; error on the provided FormGroup and a &#x60;required&#x60; error on the individual controls
+	 *
+	 * @param control - A form group control
+	 */
+	static allOrNothingRequired(control: FormGroup): ValidationErrors | null {
+		return allOrNothingRequiredValidator(control);
+	}
+
+	/**
+	 * A validator to check if at least one of the provided controls of the form group are filled in
+	 *
+	 * Returns an &#x60;atLeastOneRequiredError&#x60; error on the provided FormGroup and a &#x60;required&#x60; error on the individual controls
+	 *
+	 * @param options - An optional object with configuration options, see below params for more info
+	 * @param controlNames - Optional list of controls, if not provided the validator is applied to all controls of the group
+	 * @param conditionalFunction - Optional function the form value needs to return true to for the required to be se
+	 */
+	static atLeastOneRequired&lt;KeyType extends string &#x3D; string&gt;(
+		options?: AtLeastOneRequiredValidatorOptions&lt;KeyType&gt;
+	): ValidatorFn {
+		return atLeastOneRequiredValidator&lt;KeyType&gt;(options);
+	}
+
+	/**
+	 * FormGroup validator which checks if an array of controls in the control are filled in if the depended control is filled in
+	 *
+	 * Returns a &#x60;hasDependedRequiredError&#x60; error on the provided FormGroup and a &#x60;required&#x60; error on the individual controls
+	 *
+	 * @param controls - An array of controls.
+	 * @param dependedControlKey - A control within the group which the other controls depend on.
+	 * @param matchFunction - Optional function the dependedControl should check
+	 */
+	static dependedRequired&lt;KeyType extends string &#x3D; string&gt;(
+		controls: KeyType[],
+		dependedControlKey: KeyType,
+		matchFunction?: (data: any) &#x3D;&gt; boolean
+	): ValidatorFn {
+		return dependedRequiredValidator&lt;KeyType&gt;(controls, dependedControlKey, matchFunction);
+	}
+
+	/**
+	 * Validates whether the inputted value has exceeded the maximum amount of decimals after the comma
+	 *
+	 * Returns an &#x60;invalidDecimalsAfterComma&#x60; error on the provided control
+	 *
+	 * @param max - The maximum number of decimals after the comma
+	 */
+	static decimalsAfterComma(max: number): ValidatorFn {
+		return decimalsAfterCommaValidator(max);
+	}
+
+	/**
+	 * A FormGroup validator to check whether a start and end date are chronologically correct
+	 *
+	 * Returns an &#x60;incorrectChronologicalDates&#x60; error on the provided FormGroup and a &#x60;incorrectChronologicalDate&#x60; on the endControl
+	 *
+	 * @param startControlKey - The key of the control containing the start date value
+	 * @param endControlKey - The key of the control containing the end date value
+	 * @param format - Optional format of the dates provided by the controls, by default yyyy-MM-dd
+	 */
+	static chronologicalDates(
+		startControlKey: string,
+		endControlKey: string,
+		format &#x3D; &#x27;yyyy-MM-dd&#x27;
+	): ValidatorFn {
+		return chronologicalDatesValidator(startControlKey, endControlKey, format);
+	}
+
+	/**
+	 * Form control validator which validates if a date is between a provided range
+	 *
+	 * Returns an &#x60;invalidRange&#x60; error
+	 *
+	 * @param minDate - Minimum valid date
+	 * @param maxDate - Maximum valid date
+	 * @param format - Optional format used for all 3 dates, by default yyyy-MM-dd
+	 */
+	static dateRangeValidator(min: string, max: string, format &#x3D; &#x27;yyyy-MM-dd&#x27;): ValidatorFn {
+		return dateRangeValidator(min, max, format);
+	}
+}
+</code></pre>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'class';
+            var COMPODOC_CURRENT_PAGE_URL = 'NgxValidators.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script>
+               $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               checkToggle(darkModeState);
+               if ($darkModeToggleSwitchers.length > 0) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].addEventListener('change', function (event) {
+                              darkModeState = !darkModeState;
+                              toggleDarkMode(darkModeState);
+                         });
+                    }
+               }
+          </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

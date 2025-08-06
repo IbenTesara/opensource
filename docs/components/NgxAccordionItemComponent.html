@@ -1,0 +1,1956 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>@opensource/source documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+    </head>
+    <body>
+          <script>
+               // Blocking script to avoid flickering dark mode
+               // Dark mode toggle button
+               var useDark = window.matchMedia('(prefers-color-scheme: dark)');
+               var darkModeState = useDark.matches;
+               var $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               var $darkModeToggles = document.querySelectorAll('.dark-mode-switch');
+               var darkModeStateLocal = localStorage.getItem('compodoc_darkmode-state');
+
+               function checkToggle(check) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].checked = check;
+                    }
+               }
+
+               function toggleDarkMode(state) {
+                    if (window.localStorage) {
+                         localStorage.setItem('compodoc_darkmode-state', state);
+                    }
+
+                    checkToggle(state);
+
+                    const hasClass = document.body.classList.contains('dark');
+
+                    if (state) {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.add('dark');
+                         }
+                         if (!hasClass) {
+                              document.body.classList.add('dark');
+                         }
+                    } else {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.remove('dark');
+                         }
+                         if (hasClass) {
+                              document.body.classList.remove('dark');
+                         }
+                    }
+               }
+
+               useDark.addEventListener('change', function (evt) {
+                    toggleDarkMode(evt.matches);
+               });
+               if (darkModeStateLocal) {
+                    darkModeState = darkModeStateLocal === 'true';
+               }
+               toggleDarkMode(darkModeState);
+          </script>
+
+        <div class="navbar navbar-default navbar-fixed-top d-md-none p-0">
+               <div class="d-flex">
+                    <a href="../" class="navbar-brand">@opensource/source documentation</a>
+                    <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+               </div>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="d-none d-md-block menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content component">
+                   <div class="content-data">
+
+
+
+
+<ol class="breadcrumb">
+  <li class="breadcrumb-item">Components</li>
+  <li class="breadcrumb-item"
+  >
+  NgxAccordionItemComponent</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item">
+            <a href="#info" class="nav-link active"
+                role="tab" id="info-tab" data-bs-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li class="nav-item">
+            <a href="#source" class="nav-link"
+                role="tab" id="source-tab" data-bs-toggle="tab" data-link="source">Source</a>
+        </li>
+        <li class="nav-item">
+            <a href="#templateData" class="nav-link"
+                role="tab" id="templateData-tab" data-bs-toggle="tab" data-link="template">Template</a>
+        </li>
+        <li class="nav-item">
+            <a href="#tree" class="nav-link"
+                role="tab" id="tree-tab" data-bs-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="info"><p class="comment">
+    <h3>File</h3>
+</p>
+<p class="comment">
+    <code>libs/angular/layout/src/lib/components/accordion/item/accordion-item.component.ts</code>
+</p>
+
+
+    <p class="comment">
+        <h3>Description</h3>
+    </p>
+    <p class="comment">
+        <p>A WCAG/ARIA compliant implementation of an item in the accordion pattern.</p>
+<p><a href="https://www.w3.org/WAI/ARIA/apg/patterns/accordion/">https://www.w3.org/WAI/ARIA/apg/patterns/accordion/</a></p>
+
+    </p>
+
+
+    <p class="comment">
+        <h3>Implements</h3>
+    </p>
+    <p class="comment">
+                <code>OnInit</code>
+                <code>AfterViewInit</code>
+                <code>OnDestroy</code>
+    </p>
+
+
+<section data-compodoc="block-metadata">
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover metadata">
+        <tbody>
+
+            <tr>
+                <td class="col-md-3">changeDetection</td>
+                <td class="col-md-9"><code>ChangeDetectionStrategy.OnPush</code></td>
+            </tr>
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">host</td>
+                <td class="col-md-9"><code>{<br>}</code></td>
+            </tr>
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>ngx-accordion-item</code></td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-3">imports</td>
+                <td class="col-md-9">
+                            <code>NgTemplateOutlet</code>
+                </td>
+            </tr>
+
+
+
+
+            <tr>
+                <td class="col-md-3">templateUrl</td>
+                <td class="col-md-9"><code>./accordion-item.component.html</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">styleUrl</td>
+                <td class="col-md-9"><code>./accordion-item.component.scss</code></td>
+            </tr>
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-index">
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                    <span class="modifier">Private</span>
+                                    <span class="modifier">Readonly</span>
+                                <a href="#cdRef" >cdRef</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                    <span class="modifier">Readonly</span>
+                                <a href="#contentTemplate" >contentTemplate</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                    <span class="modifier">Readonly</span>
+                                <a href="#detailsElement" >detailsElement</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                    <span class="modifier">Readonly</span>
+                                <a href="#disabled" >disabled</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#hasFocus" >hasFocus</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                    <span class="modifier">Readonly</span>
+                                <a href="#headerTemplate" >headerTemplate</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                    <span class="modifier">Readonly</span>
+                                <a href="#id" >id</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#isOpen" >isOpen</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                    <span class="modifier">Readonly</span>
+                                <a href="#parent" >parent</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                    <span class="modifier">Readonly</span>
+                                <a href="#renderer" >renderer</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                    <span class="modifier">Readonly</span>
+                                <a href="#summaryElement" >summaryElement</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                    <span class="modifier"></span>
+                                <a href="#arrowDown" >arrowDown</a>
+                            </li>
+                            <li>
+                                    <span class="modifier"></span>
+                                <a href="#arrowUp" >arrowUp</a>
+                            </li>
+                            <li>
+                                    <span class="modifier"></span>
+                                <a href="#end" >end</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#focus" >focus</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#handleWhenFocussed" >handleWhenFocussed</a>
+                            </li>
+                            <li>
+                                    <span class="modifier"></span>
+                                <a href="#home" >home</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#ngAfterViewInit" >ngAfterViewInit</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#ngOnDestroy" >ngOnDestroy</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#ngOnInit" >ngOnInit</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#setFocus" >setFocus</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#updateAccordionItemState" >updateAccordionItemState</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Inputs</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#disabled" >disabled</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>HostListeners</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#keydown.ArrowDown" >keydown.ArrowDown</a>
+                            </li>
+                            <li>
+                                <a href="#keydown.ArrowUp" >keydown.ArrowUp</a>
+                            </li>
+                            <li>
+                                <a href="#keydown.End" >keydown.End</a>
+                            </li>
+                            <li>
+                                <a href="#keydown.Home" >keydown.Home</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+        </tbody>
+    </table>
+</section>
+
+
+    <section data-compodoc="block-inputs">
+    <h3 id="inputs">Inputs</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="disabled"></a>
+                        <b>disabled</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>false</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="107" class="link-to-prism">libs/angular/layout/src/lib/components/accordion/item/accordion-item.component.ts:107</a></div>
+                            </td>
+                        </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>Whether the accordion item is disabled</p>
+</div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+
+    <section data-compodoc="block-methods">
+    <h3>HostListeners</h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="keydown.ArrowDown"></a>
+                    <span class="name">
+                        <span ><b>keydown.ArrowDown</b></span>
+                        <a href="#keydown.ArrowDown"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <i>Arguments : </i><code>'$event' </code>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>keydown.ArrowDown(event: Event)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="78"
+                                    class="link-to-prism">libs/angular/layout/src/lib/components/accordion/item/accordion-item.component.ts:78</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Moves the focus to the accordion item below the current one</p>
+</div>
+
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="keydown.ArrowUp"></a>
+                    <span class="name">
+                        <span ><b>keydown.ArrowUp</b></span>
+                        <a href="#keydown.ArrowUp"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <i>Arguments : </i><code>'$event' </code>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>keydown.ArrowUp(event: Event)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="67"
+                                    class="link-to-prism">libs/angular/layout/src/lib/components/accordion/item/accordion-item.component.ts:67</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Moves the focus to the accordion item above the current one</p>
+</div>
+
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="keydown.End"></a>
+                    <span class="name">
+                        <span ><b>keydown.End</b></span>
+                        <a href="#keydown.End"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>keydown.End()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="98"
+                                    class="link-to-prism">libs/angular/layout/src/lib/components/accordion/item/accordion-item.component.ts:98</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Moves the focus to the last accordion item</p>
+</div>
+
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="keydown.Home"></a>
+                    <span class="name">
+                        <span ><b>keydown.Home</b></span>
+                        <a href="#keydown.Home"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>keydown.Home()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="89"
+                                    class="link-to-prism">libs/angular/layout/src/lib/components/accordion/item/accordion-item.component.ts:89</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Moves the focus to the first accordion item</p>
+</div>
+
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+    <section data-compodoc="block-methods">
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="arrowDown"></a>
+                    <span class="name">
+                            <span class="modifier"></span>
+                        <span ><b>arrowDown</b></span>
+                        <a href="#arrowDown"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>arrowDown(event: Event)</code>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <b>Decorators : </b>
+                    <br />
+                    <code>@HostListener(&#x27;keydown.ArrowDown&#x27;, [&#x27;$event&#x27;])<br /></code>
+                </td>
+            </tr>
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="78"
+                                    class="link-to-prism">libs/angular/layout/src/lib/components/accordion/item/accordion-item.component.ts:78</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Moves the focus to the accordion item below the current one</p>
+</div>
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>event</td>
+                                            <td>
+                                                        <code>Event</code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="arrowUp"></a>
+                    <span class="name">
+                            <span class="modifier"></span>
+                        <span ><b>arrowUp</b></span>
+                        <a href="#arrowUp"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>arrowUp(event: Event)</code>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <b>Decorators : </b>
+                    <br />
+                    <code>@HostListener(&#x27;keydown.ArrowUp&#x27;, [&#x27;$event&#x27;])<br /></code>
+                </td>
+            </tr>
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="67"
+                                    class="link-to-prism">libs/angular/layout/src/lib/components/accordion/item/accordion-item.component.ts:67</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Moves the focus to the accordion item above the current one</p>
+</div>
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>event</td>
+                                            <td>
+                                                        <code>Event</code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="end"></a>
+                    <span class="name">
+                            <span class="modifier"></span>
+                        <span ><b>end</b></span>
+                        <a href="#end"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>end()</code>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <b>Decorators : </b>
+                    <br />
+                    <code>@HostListener(&#x27;keydown.End&#x27;)<br /></code>
+                </td>
+            </tr>
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="98"
+                                    class="link-to-prism">libs/angular/layout/src/lib/components/accordion/item/accordion-item.component.ts:98</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Moves the focus to the last accordion item</p>
+</div>
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="focus"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                        <span ><b>focus</b></span>
+                        <a href="#focus"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>focus()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="137"
+                                    class="link-to-prism">libs/angular/layout/src/lib/components/accordion/item/accordion-item.component.ts:137</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Set the focus on the summary item</p>
+</div>
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="handleWhenFocussed"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>handleWhenFocussed</b></span>
+                        <a href="#handleWhenFocussed"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>handleWhenFocussed(action: () => void)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="193"
+                                    class="link-to-prism">libs/angular/layout/src/lib/components/accordion/item/accordion-item.component.ts:193</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Only perform an action when the item has focus</p>
+</div>
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                                <td>Description</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>action</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/function" target="_blank" >function</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                            <td>
+                                                    <ul>
+<li>The provided action</li>
+</ul>
+
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="home"></a>
+                    <span class="name">
+                            <span class="modifier"></span>
+                        <span ><b>home</b></span>
+                        <a href="#home"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>home()</code>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <b>Decorators : </b>
+                    <br />
+                    <code>@HostListener(&#x27;keydown.Home&#x27;)<br /></code>
+                </td>
+            </tr>
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="89"
+                                    class="link-to-prism">libs/angular/layout/src/lib/components/accordion/item/accordion-item.component.ts:89</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Moves the focus to the first accordion item</p>
+</div>
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngAfterViewInit"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                        <span ><b>ngAfterViewInit</b></span>
+                        <a href="#ngAfterViewInit"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>ngAfterViewInit()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="160"
+                                    class="link-to-prism">libs/angular/layout/src/lib/components/accordion/item/accordion-item.component.ts:160</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Listen to the default HTML events of the details object</p>
+</div>
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngOnDestroy"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                        <span ><b>ngOnDestroy</b></span>
+                        <a href="#ngOnDestroy"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>ngOnDestroy()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="184"
+                                    class="link-to-prism">libs/angular/layout/src/lib/components/accordion/item/accordion-item.component.ts:184</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Remove the item from its parent when destroyed</p>
+</div>
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngOnInit"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                        <span ><b>ngOnInit</b></span>
+                        <a href="#ngOnInit"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>ngOnInit()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="153"
+                                    class="link-to-prism">libs/angular/layout/src/lib/components/accordion/item/accordion-item.component.ts:153</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Register the item to its parent</p>
+</div>
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="setFocus"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                        <span ><b>setFocus</b></span>
+                        <a href="#setFocus"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>setFocus(hasFocus: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank">boolean</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="146"
+                                    class="link-to-prism">libs/angular/layout/src/lib/components/accordion/item/accordion-item.component.ts:146</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Set the focus state of the accordion item</p>
+</div>
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                                <td>Description</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>hasFocus</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                            <td>
+                                                    <ul>
+<li>Whether the item has focus</li>
+</ul>
+
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="updateAccordionItemState"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                        <span ><b>updateAccordionItemState</b></span>
+                        <a href="#updateAccordionItemState"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>updateAccordionItemState(isOpen: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank">boolean</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="127"
+                                    class="link-to-prism">libs/angular/layout/src/lib/components/accordion/item/accordion-item.component.ts:127</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Updates the current open/closed state of the accordion item, regardless of the disabled state</p>
+</div>
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>isOpen</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+    <section data-compodoc="block-properties">
+    
+    <h3 id="inputs">
+        Properties
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="cdRef"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                            <span class="modifier">Readonly</span>
+                        <span ><b>cdRef</b></span>
+                        <a href="#cdRef"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>ChangeDetectorRef</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>inject(ChangeDetectorRef)</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="41" class="link-to-prism">libs/angular/layout/src/lib/components/accordion/item/accordion-item.component.ts:41</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="contentTemplate"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                            <span class="modifier">Readonly</span>
+                        <span ><b>contentTemplate</b></span>
+                        <a href="#contentTemplate"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>contentChild&lt;TemplateRef&lt;any&gt;&gt;(&#x27;contentTmpl&#x27;)</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="57" class="link-to-prism">libs/angular/layout/src/lib/components/accordion/item/accordion-item.component.ts:57</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>The template for the content</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="detailsElement"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                            <span class="modifier">Readonly</span>
+                        <span ><b>detailsElement</b></span>
+                        <a href="#detailsElement"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>viewChild&lt;ElementRef&gt;(&#x27;details&#x27;)</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="47" class="link-to-prism">libs/angular/layout/src/lib/components/accordion/item/accordion-item.component.ts:47</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>The details element</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="disabled"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                            <span class="modifier">Readonly</span>
+                        <span ><b>disabled</b></span>
+                        <a href="#disabled"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>false</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="107" class="link-to-prism">libs/angular/layout/src/lib/components/accordion/item/accordion-item.component.ts:107</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Whether the accordion item is disabled</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="hasFocus"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>hasFocus</b></span>
+                        <a href="#hasFocus"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>WritableSignal&lt;boolean&gt;</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>signal(false)</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="122" class="link-to-prism">libs/angular/layout/src/lib/components/accordion/item/accordion-item.component.ts:122</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Whether the accordion item is focussed</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="headerTemplate"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                            <span class="modifier">Readonly</span>
+                        <span ><b>headerTemplate</b></span>
+                        <a href="#headerTemplate"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>contentChild&lt;TemplateRef&lt;any&gt;&gt;(&#x27;headerTmpl&#x27;)</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="62" class="link-to-prism">libs/angular/layout/src/lib/components/accordion/item/accordion-item.component.ts:62</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>The template for the header</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="id"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                            <span class="modifier">Readonly</span>
+                        <span ><b>id</b></span>
+                        <a href="#id"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>uuid()</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="112" class="link-to-prism">libs/angular/layout/src/lib/components/accordion/item/accordion-item.component.ts:112</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>The id of the accordion item</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="isOpen"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                        <span ><b>isOpen</b></span>
+                        <a href="#isOpen"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>WritableSignal&lt;boolean&gt;</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>signal(false)</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="117" class="link-to-prism">libs/angular/layout/src/lib/components/accordion/item/accordion-item.component.ts:117</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Whether the accordion item is open</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="parent"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                            <span class="modifier">Readonly</span>
+                        <span ><b>parent</b></span>
+                        <a href="#parent"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../components/NgxAccordionComponent.html" target="_self" >NgxAccordionComponent</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>inject(NgxAccordionComponent)</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="40" class="link-to-prism">libs/angular/layout/src/lib/components/accordion/item/accordion-item.component.ts:40</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="renderer"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                            <span class="modifier">Readonly</span>
+                        <span ><b>renderer</b></span>
+                        <a href="#renderer"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>Renderer2</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>inject(Renderer2)</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="42" class="link-to-prism">libs/angular/layout/src/lib/components/accordion/item/accordion-item.component.ts:42</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="summaryElement"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                            <span class="modifier">Readonly</span>
+                        <span ><b>summaryElement</b></span>
+                        <a href="#summaryElement"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>viewChild&lt;ElementRef&gt;(&#x27;summary&#x27;)</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="52" class="link-to-prism">libs/angular/layout/src/lib/components/accordion/item/accordion-item.component.ts:52</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>The summary element</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+</section>
+
+</div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { NgTemplateOutlet } from &#x27;@angular/common&#x27;;
+import {
+  AfterViewInit,
+  ChangeDetectionStrategy,
+  ChangeDetectorRef,
+  Component,
+  ElementRef,
+  HostListener,
+  inject,
+  OnDestroy,
+  OnInit,
+  Renderer2,
+  TemplateRef,
+  input,
+  viewChild,
+  contentChild,
+  WritableSignal,
+  signal
+} from &#x27;@angular/core&#x27;;
+import { v4 as uuid } from &#x27;uuid&#x27;;
+
+import { NgxAccordionComponent } from &#x27;../accordion.component&#x27;;
+
+/**
+ * A WCAG/ARIA compliant implementation of an item in the accordion pattern.
+ *
+ * https://www.w3.org/WAI/ARIA/apg/patterns/accordion/
+ */
+@Component({
+	selector: &#x27;ngx-accordion-item&#x27;,
+	templateUrl: &#x27;./accordion-item.component.html&#x27;,
+	styleUrl: &#x27;./accordion-item.component.scss&#x27;,
+	changeDetection: ChangeDetectionStrategy.OnPush,
+	imports: [NgTemplateOutlet],
+	host: {
+		class: &#x27;ngx-accordion-item&#x27;,
+	},
+})
+export class NgxAccordionItemComponent implements OnInit, AfterViewInit, OnDestroy {
+	private readonly parent: NgxAccordionComponent &#x3D; inject(NgxAccordionComponent);
+	private readonly cdRef: ChangeDetectorRef &#x3D; inject(ChangeDetectorRef);
+	private readonly renderer: Renderer2 &#x3D; inject(Renderer2);
+
+	/**
+	 * The details element
+	 */
+	public readonly detailsElement &#x3D; viewChild&lt;ElementRef&gt;(&#x27;details&#x27;);
+
+	/**
+	 * The summary element
+	 */
+	public readonly summaryElement &#x3D; viewChild&lt;ElementRef&gt;(&#x27;summary&#x27;);
+
+	/**
+	 * The template for the content
+	 */
+	public readonly contentTemplate &#x3D; contentChild&lt;TemplateRef&lt;any&gt;&gt;(&#x27;contentTmpl&#x27;);
+
+	/**
+	 * The template for the header
+	 */
+	public readonly headerTemplate &#x3D; contentChild&lt;TemplateRef&lt;any&gt;&gt;(&#x27;headerTmpl&#x27;);
+
+	/**
+	 * Moves the focus to the accordion item above the current one
+	 */
+	@HostListener(&#x27;keydown.ArrowUp&#x27;, [&#x27;$event&#x27;]) arrowUp(event: Event) {
+		this.handleWhenFocussed(() &#x3D;&gt; {
+			event.preventDefault();
+			event.stopImmediatePropagation();
+			this.parent.moveFocus(this.id, &#x27;up&#x27;);
+		});
+	}
+
+	/**
+	 * Moves the focus to the accordion item below the current one
+	 */
+	@HostListener(&#x27;keydown.ArrowDown&#x27;, [&#x27;$event&#x27;]) arrowDown(event: Event) {
+		this.handleWhenFocussed(() &#x3D;&gt; {
+			event.preventDefault();
+			event.stopImmediatePropagation();
+			this.parent.moveFocus(this.id, &#x27;down&#x27;);
+		});
+	}
+
+	/**
+	 * Moves the focus to the first accordion item
+	 */
+	@HostListener(&#x27;keydown.Home&#x27;) home() {
+		this.handleWhenFocussed(() &#x3D;&gt; {
+			this.parent.moveFocus(this.id, &#x27;first&#x27;);
+		});
+	}
+
+	/**
+	 * Moves the focus to the last accordion item
+	 */
+	@HostListener(&#x27;keydown.End&#x27;) end() {
+		this.handleWhenFocussed(() &#x3D;&gt; {
+			this.parent.moveFocus(this.id, &#x27;last&#x27;);
+		});
+	}
+
+	/**
+	 * Whether the accordion item is disabled
+	 */
+	public readonly disabled &#x3D; input&lt;boolean&gt;(false);
+
+	/**
+	 * The id of the accordion item
+	 */
+	public readonly id: string &#x3D; uuid();
+
+	/**
+	 * Whether the accordion item is open
+	 */
+	public isOpen: WritableSignal&lt;boolean&gt; &#x3D; signal(false);
+
+	/**
+	 * Whether the accordion item is focussed
+	 */
+	private hasFocus: WritableSignal&lt;boolean&gt; &#x3D; signal(false);
+
+	/**
+	 * Updates the current open/closed state of the accordion item, regardless of the disabled state
+	 */
+	public updateAccordionItemState(isOpen: boolean): void {
+		// Iben: Sets the item to open and updates the parent state
+		this.isOpen.set(isOpen)
+
+		// Iben: Trigger the visual changes
+		this.cdRef.detectChanges();
+	}
+	/**
+	 * Set the focus on the summary item
+	 */
+	public focus() {
+		this.summaryElement()?.nativeElement.focus();
+	}
+
+	/**
+	 * Set the focus state of the accordion item
+	 *
+	 * @param hasFocus - Whether the item has focus
+	 */
+	public setFocus(hasFocus: boolean) {
+		this.hasFocus.set(hasFocus);
+	}
+
+	/**
+	 * Register the item to its parent
+	 */
+	public ngOnInit(): void {
+		this.parent.registerItem(this);
+	}
+
+	/**
+	 * Listen to the default HTML events of the details object
+	 */
+	public ngAfterViewInit(): void {
+		// Iben: If for some reason no accordion item is found, we return
+		const detailsElement &#x3D; this.detailsElement();
+		if (!detailsElement?.nativeElement) {
+			return;
+		}
+
+		// Iben: Prevent the accordion from being opened if it is disabled
+		this.renderer.listen(detailsElement.nativeElement, &#x27;click&#x27;, (event: Event) &#x3D;&gt; {
+			if (this.disabled()) {
+				event.preventDefault();
+				event.stopImmediatePropagation();
+			}
+		});
+
+		// Iben: Listen to the open state of details and update the internal one
+		this.renderer.listen(detailsElement.nativeElement, &#x27;toggle&#x27;, (event: ToggleEvent) &#x3D;&gt; {
+			this.updateAccordionItemState(event.newState &#x3D;&#x3D;&#x3D; &#x27;open&#x27;);
+		});
+	}
+
+	/**
+	 * Remove the item from its parent when destroyed
+	 */
+	public ngOnDestroy(): void {
+		this.parent.removeItem(this);
+	}
+
+	/**
+	 * Only perform an action when the item has focus
+	 *
+	 * @param  action - The provided action
+	 */
+	private handleWhenFocussed(action: () &#x3D;&gt; void) {
+		// Iben: Early exit if there&#x27;s no focus
+		if (!this.hasFocus()) {
+			return;
+		}
+
+		// Iben: Perform the action
+		action();
+	}
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="templateData">
+        <pre class="line-numbers"><code class="language-html">&lt;details #details [open]&#x3D;&quot;isOpen()&quot;&gt;
+	&lt;summary
+		class&#x3D;&quot;ngx-accordion-header&quot;
+		#summary
+		[class.is-disabled]&#x3D;&quot;disabled()&quot;
+    [class.is-open]&#x3D;&quot;isOpen()&quot;
+		[attr.disabled]&#x3D;&quot;disabled()&quot;
+		[id]&#x3D;&quot;id&quot;
+		[attr.aria-controls]&#x3D;&quot;&#x27;accordion-content-&#x27; + id&quot;
+		[attr.aria-expanded]&#x3D;&quot;isOpen()&quot;
+		(focus)&#x3D;&quot;setFocus(true)&quot;
+		(blur)&#x3D;&quot;setFocus(false)&quot;
+	&gt;
+		&lt;ng-template
+			[ngTemplateOutlet]&#x3D;&quot;headerTemplate()&quot;
+			[ngTemplateOutletContext]&#x3D;&quot;{ $implicit: isOpen }&quot;
+		/&gt;
+	&lt;/summary&gt;
+
+	&lt;div
+		class&#x3D;&quot;ngx-accordion-content&quot;
+    [class.is-open]&#x3D;&quot;isOpen()&quot;
+		role&#x3D;&quot;region&quot;
+		[id]&#x3D;&quot;&#x27;accordion-content-&#x27; + id&quot;
+		[attr.aria-labelledby]&#x3D;&quot;id&quot;
+	&gt;
+		&lt;ng-template
+			[ngTemplateOutlet]&#x3D;&quot;contentTemplate()&quot;
+			[ngTemplateOutletContext]&#x3D;&quot;{ $implicit: isOpen }&quot;
+		/&gt;
+	&lt;/div&gt;
+&lt;/details&gt;
+</code></pre>
+    </div>
+
+
+    <div class="tab-pane fade " id="tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html element</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Component</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html element with directive</span>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+<script src="../js/libs/vis.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div><details #details [open]="isOpen()">	<summary		class="ngx-accordion-header"		#summary		[class.is-disabled]="disabled()"    [class.is-open]="isOpen()"		[attr.disabled]="disabled()"		[id]="id"		[attr.aria-controls]="\'accordion-content-\' + id"		[attr.aria-expanded]="isOpen()"		(focus)="setFocus(true)"		(blur)="setFocus(false)"	>		<ng-template			[ngTemplateOutlet]="headerTemplate()"			[ngTemplateOutletContext]="{ $implicit: isOpen }"		/>	</summary>	<div		class="ngx-accordion-content"    [class.is-open]="isOpen()"		role="region"		[id]="\'accordion-content-\' + id"		[attr.aria-labelledby]="id"	>		<ng-template			[ngTemplateOutlet]="contentTemplate()"			[ngTemplateOutletContext]="{ $implicit: isOpen }"		/>	</div></details></div>'
+    var COMPONENTS = [{'name': 'MockTourHolderComponent', 'selector': 'mock-tour-holder'},{'name': 'MockTourStepComponent', 'selector': 'mock-tour-step-component'},{'name': 'NgxAccordionComponent', 'selector': 'ngx-accordion'},{'name': 'NgxAccordionItemComponent', 'selector': 'ngx-accordion-item'},{'name': 'NgxConfigurableLayoutComponent', 'selector': 'ngx-configurable-layout'},{'name': 'NgxConfigurableLayoutItemComponent', 'selector': 'ngx-configurable-layout-item'},{'name': 'NgxCurrencyTableCellComponent', 'selector': 'ngx-table-currency-cell'},{'name': 'NgxDateTableCellComponent', 'selector': 'ngx-table-date-cell'},{'name': 'NgxI18nEmptyComponent', 'selector': 'ngx-i18n-empty'},{'name': 'NgxImageMarkerComponent', 'selector': 'ngx-image-marker'},{'name': 'NgxTableComponent', 'selector': 'ngx-table'},{'name': 'TestDisplayContentComponent', 'selector': 'test-data'},{'name': 'TestErrorComponent', 'selector': 'test-error'},{'name': 'TestErrorDataComponent', 'selector': 'test-data-error'},{'name': 'TestLoadingComponent', 'selector': 'test-loading'},{'name': 'TestOfflineComponent', 'selector': 'test-offline'},{'name': 'TestOverrideDisplayContentComponent', 'selector': 'test-override-data'}];
+    var DIRECTIVES = [{'name': 'DataFormAccessor', 'selector': ''},{'name': 'FocusClickDirective', 'selector': '[focusClick]'},{'name': 'FormAccessor', 'selector': ''},{'name': 'FormAccessorContainer', 'selector': ''},{'name': 'NgxAbstractTableCellDirective', 'selector': 'ngx-abstract-table-cell'},{'name': 'NgxAccessibleAbstractDragAndDropItemDirective', 'selector': ''},{'name': 'NgxAccessibleDragAndDropContainerDirective', 'selector': '[ngxAccessibleDragAndDropContainer]'},{'name': 'NgxAccessibleDragAndDropHostDirective', 'selector': '[ngxAccessibleDragAndDropHost]'},{'name': 'NgxAccessibleDragAndDropItemDirective', 'selector': '[ngxAccessibleDragAndDropItem]'},{'name': 'NgxCookiesFallBackComponent', 'selector': ''},{'name': 'NgxCypressTagDirective', 'selector': '[cypressTag]'},{'name': 'NgxDisplayContentComponent', 'selector': ''},{'name': 'NgxDisplayContentDirective', 'selector': '[displayContent]'},{'name': 'NgxFormsControlValueAccessor', 'selector': ''},{'name': 'NgxFormsErrorAbstractComponent', 'selector': ''},{'name': 'NgxFormsErrorsDirective', 'selector': '[ngxFormsErrors]'},{'name': 'NgxHasCookieDirective', 'selector': '[hasCookie]'},{'name': 'NgxHasFeatureDirective', 'selector': '[ngxHasFeature]'},{'name': 'NgxHasFocusDirective', 'selector': ''},{'name': 'NgxHasFocusDragAndDropAbstractDirective', 'selector': ''},{'name': 'NgxHasPermissionDirective', 'selector': '[ngxHasPermission]'},{'name': 'NgxIsAuthenticatedDirective', 'selector': '[ngxIsAuthenticated]'},{'name': 'NgxModalAbstractComponent', 'selector': ''},{'name': 'NgxQueryParamFormSyncComponent', 'selector': ''},{'name': 'NgxSaveOnExitComponent', 'selector': ''},{'name': 'NgxTableCellDirective', 'selector': 'ngx-table-cell'},{'name': 'NgxTableOpenRowStateTemplateAbstractComponent', 'selector': ''},{'name': 'NgxTableSelectTemplateAbstractComponent', 'selector': ''},{'name': 'NgxTableSortTemplateAbstractComponent', 'selector': ''},{'name': 'NgxTooltipAbstractComponent', 'selector': ''},{'name': 'NgxTooltipDirective', 'selector': '[ngxTooltip]'},{'name': 'NgxTourItemDirective', 'selector': '[tourItem]'},{'name': 'NgxTourShowWhenDirective', 'selector': '[ngxTourShowWhen]'},{'name': 'NgxTourStepComponent', 'selector': ''},{'name': 'NgxTreeGridCellDirective', 'selector': '[ngxTreeGridCell]'},{'name': 'NgxTreeGridDirective', 'selector': '[ngxTreeGrid]'},{'name': 'NgxTreeGridRowDirective', 'selector': '[ngxTreeGridRow]'}];
+    var ACTUAL_COMPONENT = {'name': 'NgxAccordionItemComponent'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
+            var COMPODOC_CURRENT_PAGE_URL = 'NgxAccordionItemComponent.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script>
+               $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               checkToggle(darkModeState);
+               if ($darkModeToggleSwitchers.length > 0) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].addEventListener('change', function (event) {
+                              darkModeState = !darkModeState;
+                              toggleDarkMode(darkModeState);
+                         });
+                    }
+               }
+          </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

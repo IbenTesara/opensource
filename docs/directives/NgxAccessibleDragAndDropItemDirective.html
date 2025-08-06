@@ -1,0 +1,2695 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>@opensource/source documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+    </head>
+    <body>
+          <script>
+               // Blocking script to avoid flickering dark mode
+               // Dark mode toggle button
+               var useDark = window.matchMedia('(prefers-color-scheme: dark)');
+               var darkModeState = useDark.matches;
+               var $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               var $darkModeToggles = document.querySelectorAll('.dark-mode-switch');
+               var darkModeStateLocal = localStorage.getItem('compodoc_darkmode-state');
+
+               function checkToggle(check) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].checked = check;
+                    }
+               }
+
+               function toggleDarkMode(state) {
+                    if (window.localStorage) {
+                         localStorage.setItem('compodoc_darkmode-state', state);
+                    }
+
+                    checkToggle(state);
+
+                    const hasClass = document.body.classList.contains('dark');
+
+                    if (state) {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.add('dark');
+                         }
+                         if (!hasClass) {
+                              document.body.classList.add('dark');
+                         }
+                    } else {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.remove('dark');
+                         }
+                         if (hasClass) {
+                              document.body.classList.remove('dark');
+                         }
+                    }
+               }
+
+               useDark.addEventListener('change', function (evt) {
+                    toggleDarkMode(evt.matches);
+               });
+               if (darkModeStateLocal) {
+                    darkModeState = darkModeStateLocal === 'true';
+               }
+               toggleDarkMode(darkModeState);
+          </script>
+
+        <div class="navbar navbar-default navbar-fixed-top d-md-none p-0">
+               <div class="d-flex">
+                    <a href="../" class="navbar-brand">@opensource/source documentation</a>
+                    <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+               </div>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="d-none d-md-block menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content directive">
+                   <div class="content-data">
+
+
+
+
+
+
+
+<ol class="breadcrumb">
+  <li class="breadcrumb-item">Directives</li>
+  <li class="breadcrumb-item" >NgxAccessibleDragAndDropItemDirective</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item">
+            <a href="#info" 
+                class="nav-link"
+                class="nav-link active"
+                role="tab" id="info-tab" data-bs-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li class="nav-item">
+            <a href="#source" 
+                class="nav-link"
+                
+                role="tab" id="source-tab" data-bs-toggle="tab" data-link="source">Source</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="info">
+        <p class="comment">
+            <h3>File</h3>
+        </p>
+        <p class="comment">
+            <code>libs/angular/layout/src/lib/directives/drag-and-drop/drag-and-drop-item.directive.ts</code>
+        </p>
+
+
+            <p class="comment">
+                <h3>Description</h3>
+            </p>
+            <p class="comment">
+                <p>A directive to handle accessible drag and drop flows. This directive is meant to be placed on the item(s) of the drag and drop container(s).</p>
+
+            </p>
+
+            <p class="comment">
+                <h3>Extends</h3>
+            </p>
+            <p class="comment">
+                            <code><a href="../directives/NgxAccessibleAbstractDragAndDropItemDirective.html" target="_self" >NgxAccessibleAbstractDragAndDropItemDirective</a></code>
+            </p>
+
+            <p class="comment">
+                <h3>Implements</h3>
+            </p>
+            <p class="comment">
+                        <code>OnInit</code>
+            </p>
+
+
+        <section data-compodoc="block-metadata">
+            <h3>Metadata</h3>
+            <table class="table table-sm table-hover metadata">
+                <tbody>
+
+                    <tr>
+                        <td class="col-md-3">Selector</td>
+                        <td class="col-md-9"><code>[ngxAccessibleDragAndDropItem]</code></td>
+                    </tr>
+
+                    <tr>
+                        <td class="col-md-3">Standalone</td>
+                        <td class="col-md-9"><code>true</code></td>
+                    </tr>
+
+
+                    <tr>
+                        <td class="col-md-3">exportAs</td>
+                        <td class="col-md-9"><code>ngxAccessibleDragAndDropItem</code></td>
+                    </tr>
+
+                </tbody>
+            </table>
+        </section>
+
+            <section data-compodoc="block-index">
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#disabled" >disabled</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                    <span class="modifier">Readonly</span>
+                                <a href="#dragAndDropService" >dragAndDropService</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                    <span class="modifier">Readonly</span>
+                                <a href="#dropContainer" >dropContainer</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                    <span class="modifier">Readonly</span>
+                                <a href="#dropHost" >dropHost</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                    <span class="modifier">Readonly</span>
+                                <a href="#dropList" >dropList</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                    <span class="modifier"></span>
+                                    <span class="modifier">Readonly</span>
+                                <a href="#elementRef" >elementRef</a>
+                            </li>
+                            <li>
+                                    <span class="modifier"></span>
+                                    <span class="modifier">Public</span>
+                                <a href="#isSelected" >isSelected</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                    <span class="modifier">Readonly</span>
+                                <a href="#itemId" >itemId</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                    <span class="modifier">Readonly</span>
+                                <a href="#itemIndex" >itemIndex</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                    <span class="modifier">Readonly</span>
+                                <a href="#label" >label</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#ngxAccessibleDragAndDropItemMove" >ngxAccessibleDragAndDropItemMove</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#tabIndex" >tabIndex</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Protected</span>
+                                <a href="#hasFocus" >hasFocus</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#handleItemMove" >handleItemMove</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#handlePress" >handlePress</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#markAsActive" >markAsActive</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#moveItem" >moveItem</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#ngOnInit" >ngOnInit</a>
+                            </li>
+                            <li>
+                                    <span class="modifier"></span>
+                                    <span class="modifier">Public</span>
+                                <a href="#onArrowDown" >onArrowDown</a>
+                            </li>
+                            <li>
+                                    <span class="modifier"></span>
+                                    <span class="modifier">Public</span>
+                                <a href="#onArrowLeft" >onArrowLeft</a>
+                            </li>
+                            <li>
+                                    <span class="modifier"></span>
+                                    <span class="modifier">Public</span>
+                                <a href="#onArrowRight" >onArrowRight</a>
+                            </li>
+                            <li>
+                                    <span class="modifier"></span>
+                                    <span class="modifier">Public</span>
+                                <a href="#onArrowUp" >onArrowUp</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                    <span class="modifier"></span>
+                                <a href="#onBlur" >onBlur</a>
+                            </li>
+                            <li>
+                                    <span class="modifier"></span>
+                                    <span class="modifier">Public</span>
+                                <a href="#onEnter" >onEnter</a>
+                            </li>
+                            <li>
+                                    <span class="modifier"></span>
+                                    <span class="modifier">Public</span>
+                                <a href="#onSpace" >onSpace</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#focus" >focus</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#handleWhenFocussed" >handleWhenFocussed</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                    <span class="modifier">Optional</span>
+                                <a href="#onFocus" >onFocus</a>
+                            </li>
+                            <li>
+                                    <span class="modifier"></span>
+                                    <span class="modifier">Public</span>
+                                <a href="#removeFocus" >removeFocus</a>
+                            </li>
+                            <li>
+                                    <span class="modifier"></span>
+                                    <span class="modifier">Public</span>
+                                <a href="#setFocus" >setFocus</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>HostBindings</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#attr.aria-selected" >attr.aria-selected</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>HostListeners</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#keydown.ArrowDown" >keydown.ArrowDown</a>
+                            </li>
+                            <li>
+                                <a href="#keydown.ArrowLeft" >keydown.ArrowLeft</a>
+                            </li>
+                            <li>
+                                <a href="#keydown.ArrowRight" >keydown.ArrowRight</a>
+                            </li>
+                            <li>
+                                <a href="#keydown.ArrowUp" >keydown.ArrowUp</a>
+                            </li>
+                            <li>
+                                <a href="#keydown.Enter" >keydown.Enter</a>
+                            </li>
+                            <li>
+                                <a href="#keydown.Space" >keydown.Space</a>
+                            </li>
+                            <li>
+                                <a href="#blur" >blur</a>
+                            </li>
+                            <li>
+                                <a href="#focus" >focus</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+        </tbody>
+    </table>
+</section>
+
+            <section data-compodoc="block-constructor">
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor()</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="133" class="link-to-prism">libs/angular/layout/src/lib/directives/drag-and-drop/drag-and-drop-item.directive.ts:133</a></div>
+                            </td>
+                        </tr>
+
+            </tbody>
+        </table>
+</section>
+
+
+
+            <section data-compodoc="block-properties">
+    <h3>HostBindings</h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="attr.aria-selected"></a>
+                    <span class="name">
+                        <span ><b>attr.aria-selected</b></span>
+                        <a href="#attr.aria-selected"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>false</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="56" class="link-to-prism">libs/angular/layout/src/lib/directives/drag-and-drop/drag-and-drop-item.directive.ts:56</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>The selected state of the item</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+</section>
+
+            <section data-compodoc="block-host-listener">
+    <h3>HostListeners</h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="keydown.ArrowDown"></a>
+                    <span class="name">
+                        <b>
+                            keydown.ArrowDown
+                        </b>
+                        <a href="#keydown.ArrowDown"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <i>Arguments : </i><code>'$event' </code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="82"
+                            class="link-to-prism">libs/angular/layout/src/lib/directives/drag-and-drop/drag-and-drop-item.directive.ts:82</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Handle the ArrowDown Press</p>
+</div>
+
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="keydown.ArrowLeft"></a>
+                    <span class="name">
+                        <b>
+                            keydown.ArrowLeft
+                        </b>
+                        <a href="#keydown.ArrowLeft"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <i>Arguments : </i><code>'$event' </code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="89"
+                            class="link-to-prism">libs/angular/layout/src/lib/directives/drag-and-drop/drag-and-drop-item.directive.ts:89</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Handle the ArrowLeft Press</p>
+</div>
+
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="keydown.ArrowRight"></a>
+                    <span class="name">
+                        <b>
+                            keydown.ArrowRight
+                        </b>
+                        <a href="#keydown.ArrowRight"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <i>Arguments : </i><code>'$event' </code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="96"
+                            class="link-to-prism">libs/angular/layout/src/lib/directives/drag-and-drop/drag-and-drop-item.directive.ts:96</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Handle the ArrowRight Press</p>
+</div>
+
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="keydown.ArrowUp"></a>
+                    <span class="name">
+                        <b>
+                            keydown.ArrowUp
+                        </b>
+                        <a href="#keydown.ArrowUp"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <i>Arguments : </i><code>'$event' </code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="75"
+                            class="link-to-prism">libs/angular/layout/src/lib/directives/drag-and-drop/drag-and-drop-item.directive.ts:75</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Handle the ArrowUp Press</p>
+</div>
+
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="keydown.Enter"></a>
+                    <span class="name">
+                        <b>
+                            keydown.Enter
+                        </b>
+                        <a href="#keydown.Enter"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="61"
+                            class="link-to-prism">libs/angular/layout/src/lib/directives/drag-and-drop/drag-and-drop-item.directive.ts:61</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Handle the selected state when pressing enter</p>
+</div>
+
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="keydown.Space"></a>
+                    <span class="name">
+                        <b>
+                            keydown.Space
+                        </b>
+                        <a href="#keydown.Space"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="68"
+                            class="link-to-prism">libs/angular/layout/src/lib/directives/drag-and-drop/drag-and-drop-item.directive.ts:68</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Handle the selected state when pressing space</p>
+</div>
+
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="blur"></a>
+                    <span class="name">
+                        <b>
+                            blur
+                        </b>
+                        <a href="#blur"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Inherited from         <code><a href="../directives/NgxHasFocusDragAndDropAbstractDirective.html" target="_self" >NgxHasFocusDragAndDropAbstractDirective</a></code>
+</div>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in         <code><a href="../directives/NgxHasFocusDragAndDropAbstractDirective.html#source" target="_self" >NgxHasFocusDragAndDropAbstractDirective:31</a></code>
+</div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Remove the hasFocus flag</p>
+</div>
+
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="focus"></a>
+                    <span class="name">
+                        <b>
+                            focus
+                        </b>
+                        <a href="#focus"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Inherited from         <code><a href="../directives/NgxHasFocusDragAndDropAbstractDirective.html" target="_self" >NgxHasFocusDragAndDropAbstractDirective</a></code>
+</div>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in         <code><a href="../directives/NgxHasFocusDragAndDropAbstractDirective.html#source" target="_self" >NgxHasFocusDragAndDropAbstractDirective:20</a></code>
+</div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Set the hasFocus flag</p>
+</div>
+
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+            <section data-compodoc="block-methods">
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="handleItemMove"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>handleItemMove</b></span>
+                        <a href="#handleItemMove"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>handleItemMove(newIndex: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>, newContainer: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>, type: <a href="../undefineds/NgxAccessibleDragAndDropMoveType.html" target="_self">NgxAccessibleDragAndDropMoveType</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="242"
+                                    class="link-to-prism">libs/angular/layout/src/lib/directives/drag-and-drop/drag-and-drop-item.directive.ts:242</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Moves an item based on the provided container and index, and sends a message to the live region</p>
+</div>
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                                <td>Description</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>newIndex</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                            <td>
+                                                    <ul>
+<li>The new index of the item</li>
+</ul>
+
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                                <td>newContainer</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                            <td>
+                                                    <ul>
+<li>The container we wish to move the item to</li>
+</ul>
+
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                                <td>type</td>
+                                            <td>
+                                                            <code><a href="../miscellaneous/typealiases.html#NgxAccessibleDragAndDropMoveType" target="_self" >NgxAccessibleDragAndDropMoveType</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                            <td>
+                                                    <ul>
+<li>The type of movement we perform</li>
+</ul>
+
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="handlePress"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>handlePress</b></span>
+                        <a href="#handlePress"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>handlePress()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="183"
+                                    class="link-to-prism">libs/angular/layout/src/lib/directives/drag-and-drop/drag-and-drop-item.directive.ts:183</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Handles the pressing of a button in the drag and drop host</p>
+</div>
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="markAsActive"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                        <span ><b>markAsActive</b></span>
+                        <a href="#markAsActive"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>markAsActive()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Inherited from         <code><a href="../directives/NgxAccessibleAbstractDragAndDropItemDirective.html" target="_self" >NgxAccessibleAbstractDragAndDropItemDirective</a></code>
+</div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in         <code><a href="../directives/NgxAccessibleAbstractDragAndDropItemDirective.html#source" target="_self" >NgxAccessibleAbstractDragAndDropItemDirective:146</a></code>
+</div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p> Marks the item as focussed and selected</p>
+</div>
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="moveItem"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>moveItem</b></span>
+                        <a href="#moveItem"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>moveItem(key: "up" | "down" | "left" | "right", event: KeyboardEvent)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="201"
+                                    class="link-to-prism">libs/angular/layout/src/lib/directives/drag-and-drop/drag-and-drop-item.directive.ts:201</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Moves the item in the correct direction</p>
+</div>
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                                <td>Description</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>key</td>
+                                            <td>
+                                                        <code>&quot;up&quot; | &quot;down&quot; | &quot;left&quot; | &quot;right&quot;</code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                            <td>
+                                                    <ul>
+<li>The pressed key</li>
+</ul>
+
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                                <td>event</td>
+                                            <td>
+                                                        <code>KeyboardEvent</code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                            <td>
+                                                    <ul>
+<li>The keyboard event</li>
+</ul>
+
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngOnInit"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                        <span ><b>ngOnInit</b></span>
+                        <a href="#ngOnInit"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>ngOnInit()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="176"
+                                    class="link-to-prism">libs/angular/layout/src/lib/directives/drag-and-drop/drag-and-drop-item.directive.ts:176</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Registers the item with the drop host</p>
+</div>
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="onArrowDown"></a>
+                    <span class="name">
+                            <span class="modifier"></span>
+                            <span class="modifier">Public</span>
+                        <span ><b>onArrowDown</b></span>
+                        <a href="#onArrowDown"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>onArrowDown(event: Event)</code>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <b>Decorators : </b>
+                    <br />
+                    <code>@HostListener(&#x27;keydown.ArrowDown&#x27;, [&#x27;$event&#x27;])<br /></code>
+                </td>
+            </tr>
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="82"
+                                    class="link-to-prism">libs/angular/layout/src/lib/directives/drag-and-drop/drag-and-drop-item.directive.ts:82</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Handle the ArrowDown Press</p>
+</div>
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>event</td>
+                                            <td>
+                                                        <code>Event</code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="onArrowLeft"></a>
+                    <span class="name">
+                            <span class="modifier"></span>
+                            <span class="modifier">Public</span>
+                        <span ><b>onArrowLeft</b></span>
+                        <a href="#onArrowLeft"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>onArrowLeft(event: Event)</code>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <b>Decorators : </b>
+                    <br />
+                    <code>@HostListener(&#x27;keydown.ArrowLeft&#x27;, [&#x27;$event&#x27;])<br /></code>
+                </td>
+            </tr>
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="89"
+                                    class="link-to-prism">libs/angular/layout/src/lib/directives/drag-and-drop/drag-and-drop-item.directive.ts:89</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Handle the ArrowLeft Press</p>
+</div>
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>event</td>
+                                            <td>
+                                                        <code>Event</code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="onArrowRight"></a>
+                    <span class="name">
+                            <span class="modifier"></span>
+                            <span class="modifier">Public</span>
+                        <span ><b>onArrowRight</b></span>
+                        <a href="#onArrowRight"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>onArrowRight(event: Event)</code>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <b>Decorators : </b>
+                    <br />
+                    <code>@HostListener(&#x27;keydown.ArrowRight&#x27;, [&#x27;$event&#x27;])<br /></code>
+                </td>
+            </tr>
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="96"
+                                    class="link-to-prism">libs/angular/layout/src/lib/directives/drag-and-drop/drag-and-drop-item.directive.ts:96</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Handle the ArrowRight Press</p>
+</div>
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>event</td>
+                                            <td>
+                                                        <code>Event</code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="onArrowUp"></a>
+                    <span class="name">
+                            <span class="modifier"></span>
+                            <span class="modifier">Public</span>
+                        <span ><b>onArrowUp</b></span>
+                        <a href="#onArrowUp"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>onArrowUp(event: Event)</code>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <b>Decorators : </b>
+                    <br />
+                    <code>@HostListener(&#x27;keydown.ArrowUp&#x27;, [&#x27;$event&#x27;])<br /></code>
+                </td>
+            </tr>
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="75"
+                                    class="link-to-prism">libs/angular/layout/src/lib/directives/drag-and-drop/drag-and-drop-item.directive.ts:75</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Handle the ArrowUp Press</p>
+</div>
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>event</td>
+                                            <td>
+                                                        <code>Event</code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="onBlur"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                            <span class="modifier"></span>
+                        <span ><b>onBlur</b></span>
+                        <a href="#onBlur"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>onBlur()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Inherited from         <code><a href="../directives/NgxHasFocusDragAndDropAbstractDirective.html" target="_self" >NgxHasFocusDragAndDropAbstractDirective</a></code>
+</div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in         <code><a href="../directives/NgxHasFocusDragAndDropAbstractDirective.html#source" target="_self" >NgxHasFocusDragAndDropAbstractDirective:155</a></code>
+</div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Deselects the current item if it&#39;s selected</p>
+</div>
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="onEnter"></a>
+                    <span class="name">
+                            <span class="modifier"></span>
+                            <span class="modifier">Public</span>
+                        <span ><b>onEnter</b></span>
+                        <a href="#onEnter"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>onEnter()</code>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <b>Decorators : </b>
+                    <br />
+                    <code>@HostListener(&#x27;keydown.Enter&#x27;)<br /></code>
+                </td>
+            </tr>
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="61"
+                                    class="link-to-prism">libs/angular/layout/src/lib/directives/drag-and-drop/drag-and-drop-item.directive.ts:61</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Handle the selected state when pressing enter</p>
+</div>
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="onSpace"></a>
+                    <span class="name">
+                            <span class="modifier"></span>
+                            <span class="modifier">Public</span>
+                        <span ><b>onSpace</b></span>
+                        <a href="#onSpace"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>onSpace()</code>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <b>Decorators : </b>
+                    <br />
+                    <code>@HostListener(&#x27;keydown.Space&#x27;)<br /></code>
+                </td>
+            </tr>
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="68"
+                                    class="link-to-prism">libs/angular/layout/src/lib/directives/drag-and-drop/drag-and-drop-item.directive.ts:68</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Handle the selected state when pressing space</p>
+</div>
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="focus"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                        <span ><b>focus</b></span>
+                        <a href="#focus"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>focus()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Inherited from         <code><a href="../directives/NgxHasFocusDragAndDropAbstractDirective.html" target="_self" >NgxHasFocusDragAndDropAbstractDirective</a></code>
+</div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in         <code><a href="../directives/NgxHasFocusDragAndDropAbstractDirective.html#source" target="_self" >NgxHasFocusDragAndDropAbstractDirective:41</a></code>
+</div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="handleWhenFocussed"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                        <span ><b>handleWhenFocussed</b></span>
+                        <a href="#handleWhenFocussed"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>handleWhenFocussed(action: () => void)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Inherited from         <code><a href="../directives/NgxHasFocusDragAndDropAbstractDirective.html" target="_self" >NgxHasFocusDragAndDropAbstractDirective</a></code>
+</div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in         <code><a href="../directives/NgxHasFocusDragAndDropAbstractDirective.html#source" target="_self" >NgxHasFocusDragAndDropAbstractDirective:54</a></code>
+</div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Execute an action when the element has focussed</p>
+</div>
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                                <td>Description</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>action</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/function" target="_blank" >function</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                            <td>
+                                                    <ul>
+<li>The provided action</li>
+</ul>
+
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="onFocus"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                            <span class="modifier">Optional</span>
+                        <span ><b>onFocus</b></span>
+                        <a href="#onFocus"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>onFocus()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Inherited from         <code><a href="../directives/NgxHasFocusDragAndDropAbstractDirective.html" target="_self" >NgxHasFocusDragAndDropAbstractDirective</a></code>
+</div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in         <code><a href="../directives/NgxHasFocusDragAndDropAbstractDirective.html#source" target="_self" >NgxHasFocusDragAndDropAbstractDirective:47</a></code>
+</div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="removeFocus"></a>
+                    <span class="name">
+                            <span class="modifier"></span>
+                            <span class="modifier">Public</span>
+                        <span ><b>removeFocus</b></span>
+                        <a href="#removeFocus"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>removeFocus()</code>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <b>Decorators : </b>
+                    <br />
+                    <code>@HostListener(&#x27;blur&#x27;)<br /></code>
+                </td>
+            </tr>
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Inherited from         <code><a href="../directives/NgxHasFocusDragAndDropAbstractDirective.html" target="_self" >NgxHasFocusDragAndDropAbstractDirective</a></code>
+</div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in         <code><a href="../directives/NgxHasFocusDragAndDropAbstractDirective.html#source" target="_self" >NgxHasFocusDragAndDropAbstractDirective:31</a></code>
+</div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Remove the hasFocus flag</p>
+</div>
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="setFocus"></a>
+                    <span class="name">
+                            <span class="modifier"></span>
+                            <span class="modifier">Public</span>
+                        <span ><b>setFocus</b></span>
+                        <a href="#setFocus"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>setFocus()</code>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <b>Decorators : </b>
+                    <br />
+                    <code>@HostListener(&#x27;focus&#x27;)<br /></code>
+                </td>
+            </tr>
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Inherited from         <code><a href="../directives/NgxHasFocusDragAndDropAbstractDirective.html" target="_self" >NgxHasFocusDragAndDropAbstractDirective</a></code>
+</div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in         <code><a href="../directives/NgxHasFocusDragAndDropAbstractDirective.html#source" target="_self" >NgxHasFocusDragAndDropAbstractDirective:20</a></code>
+</div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Set the hasFocus flag</p>
+</div>
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+            <section data-compodoc="block-properties">
+    
+    <h3 id="inputs">
+        Properties
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="disabled"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                        <span ><b>disabled</b></span>
+                        <a href="#disabled"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>InputSignal&lt;boolean&gt;</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>input(false, {
+		alias: &#x27;ngxAccessibleDragAndDropDisabled&#x27;,
+	})</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="125" class="link-to-prism">libs/angular/layout/src/lib/directives/drag-and-drop/drag-and-drop-item.directive.ts:125</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Whether the draggable item  is disabled</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="dragAndDropService"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                            <span class="modifier">Readonly</span>
+                        <span ><b>dragAndDropService</b></span>
+                        <a href="#dragAndDropService"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>inject(NgxAccessibleDragAndDropAbstractService)</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="42" class="link-to-prism">libs/angular/layout/src/lib/directives/drag-and-drop/drag-and-drop-item.directive.ts:42</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="dropContainer"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                            <span class="modifier">Readonly</span>
+                        <span ><b>dropContainer</b></span>
+                        <a href="#dropContainer"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>inject(NgxAccessibleDragAndDropContainerDirective)</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="44" class="link-to-prism">libs/angular/layout/src/lib/directives/drag-and-drop/drag-and-drop-item.directive.ts:44</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="dropHost"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                            <span class="modifier">Readonly</span>
+                        <span ><b>dropHost</b></span>
+                        <a href="#dropHost"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>inject(NgxAccessibleDragAndDropHostDirective)</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="45" class="link-to-prism">libs/angular/layout/src/lib/directives/drag-and-drop/drag-and-drop-item.directive.ts:45</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="dropList"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                            <span class="modifier">Readonly</span>
+                        <span ><b>dropList</b></span>
+                        <a href="#dropList"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>inject(CdkDropList)</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="43" class="link-to-prism">libs/angular/layout/src/lib/directives/drag-and-drop/drag-and-drop-item.directive.ts:43</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="elementRef"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                            <span class="modifier"></span>
+                            <span class="modifier">Readonly</span>
+                        <span ><b>elementRef</b></span>
+                        <a href="#elementRef"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>ElementRef&lt;HTMLElement&gt;</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>inject(ElementRef)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Inherited from         <code><a href="../directives/NgxHasFocusDragAndDropAbstractDirective.html" target="_self" >NgxHasFocusDragAndDropAbstractDirective</a></code>
+</div>
+                            </td>
+                        </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in         <code><a href="../directives/NgxHasFocusDragAndDropAbstractDirective.html#source" target="_self" >NgxHasFocusDragAndDropAbstractDirective:46</a></code>
+</div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="isSelected"></a>
+                    <span class="name">
+                            <span class="modifier"></span>
+                            <span class="modifier">Public</span>
+                        <span ><b>isSelected</b></span>
+                        <a href="#isSelected"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>false</code>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <b>Decorators : </b>
+                        <br />
+                        <code>
+                            @HostBinding(&#x27;attr.aria-selected&#x27;)<br />
+                        </code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="56" class="link-to-prism">libs/angular/layout/src/lib/directives/drag-and-drop/drag-and-drop-item.directive.ts:56</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>The selected state of the item</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="itemId"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                            <span class="modifier">Readonly</span>
+                        <span ><b>itemId</b></span>
+                        <a href="#itemId"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>InputSignal&lt;string&gt;</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>input.required&lt;string&gt;({
+		alias: &#x27;ngxAccessibleDragAndDropItemId&#x27;,
+	})</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Inherited from         <code><a href="../directives/NgxAccessibleAbstractDragAndDropItemDirective.html" target="_self" >NgxAccessibleAbstractDragAndDropItemDirective</a></code>
+</div>
+                            </td>
+                        </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in         <code><a href="../directives/NgxAccessibleAbstractDragAndDropItemDirective.html#source" target="_self" >NgxAccessibleAbstractDragAndDropItemDirective:112</a></code>
+</div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>An unique id of the draggable item</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="itemIndex"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                            <span class="modifier">Readonly</span>
+                        <span ><b>itemIndex</b></span>
+                        <a href="#itemIndex"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>input.required&lt;number&gt;({
+		alias: &#x27;ngxAccessibleDragAndDropItemIndex&#x27;,
+	})</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="104" class="link-to-prism">libs/angular/layout/src/lib/directives/drag-and-drop/drag-and-drop-item.directive.ts:104</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>The index of the draggable item</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="label"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                            <span class="modifier">Readonly</span>
+                        <span ><b>label</b></span>
+                        <a href="#label"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>input&lt;string&gt;(undefined, { alias: &#x27;ngxAccessibleDragAndDropLabel&#x27; })</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="120" class="link-to-prism">libs/angular/layout/src/lib/directives/drag-and-drop/drag-and-drop-item.directive.ts:120</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>An optional label for the draggable item</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngxAccessibleDragAndDropItemMove"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                        <span ><b>ngxAccessibleDragAndDropItemMove</b></span>
+                        <a href="#ngxAccessibleDragAndDropItemMove"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../interfaces/NgxAccessibleDragAndDropMoveEvent.html" target="_self" >OutputEmitterRef&lt;NgxAccessibleDragAndDropMoveEvent&gt;</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>output&lt;NgxAccessibleDragAndDropMoveEvent&gt;()</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="132" class="link-to-prism">libs/angular/layout/src/lib/directives/drag-and-drop/drag-and-drop-item.directive.ts:132</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Emits when the item has been moved through keyboard input</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="tabIndex"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                        <span ><b>tabIndex</b></span>
+                        <a href="#tabIndex"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>WritableSignal&lt;number&gt;</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>signal&lt;number&gt;(0)</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="51" class="link-to-prism">libs/angular/layout/src/lib/directives/drag-and-drop/drag-and-drop-item.directive.ts:51</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>The tab index of the item</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="hasFocus"></a>
+                    <span class="name">
+                            <span class="modifier">Protected</span>
+                        <span ><b>hasFocus</b></span>
+                        <a href="#hasFocus"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>false</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Inherited from         <code><a href="../directives/NgxHasFocusDragAndDropAbstractDirective.html" target="_self" >NgxHasFocusDragAndDropAbstractDirective</a></code>
+</div>
+                            </td>
+                        </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in         <code><a href="../directives/NgxHasFocusDragAndDropAbstractDirective.html#source" target="_self" >NgxHasFocusDragAndDropAbstractDirective:15</a></code>
+</div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Whether the current element is focussed</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+</section>
+
+
+    </div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { CdkDropList } from &#x27;@angular/cdk/drag-drop&#x27;;
+import {
+	Directive,
+	ElementRef,
+	HostBinding,
+	HostListener,
+	signal,
+	WritableSignal,
+	OnInit,
+	inject,
+	input,
+	OutputEmitterRef,
+	output,
+	InputSignal,
+	effect,
+} from &#x27;@angular/core&#x27;;
+
+import {
+	NgxAccessibleAbstractDragAndDropItemDirective,
+	NgxAccessibleDragAndDropAbstractService,
+} from &#x27;../../abstracts&#x27;;
+import { NgxAccessibleDragAndDropMoveEvent, NgxAccessibleDragAndDropMoveType } from &#x27;../../types&#x27;;
+
+import { NgxAccessibleDragAndDropContainerDirective } from &#x27;./drag-and-drop-container.directive&#x27;;
+import { NgxAccessibleDragAndDropHostDirective } from &#x27;./drag-and-drop-host.directive&#x27;;
+
+/**
+ * A directive to handle accessible drag and drop flows. This directive is meant to be placed on the item(s) of the drag and drop container(s).
+ */
+@Directive({
+	selector: &#x27;[ngxAccessibleDragAndDropItem]&#x27;,
+	exportAs: &#x27;ngxAccessibleDragAndDropItem&#x27;,
+	standalone: true,
+	host: {
+		&#x27;[attr.tabIndex]&#x27;: &#x27;tabIndex()&#x27;,
+	},
+})
+export class NgxAccessibleDragAndDropItemDirective
+	extends NgxAccessibleAbstractDragAndDropItemDirective
+	implements OnInit
+{
+	private readonly dragAndDropService &#x3D; inject(NgxAccessibleDragAndDropAbstractService);
+	private readonly dropList &#x3D; inject(CdkDropList);
+	private readonly dropContainer &#x3D; inject(NgxAccessibleDragAndDropContainerDirective);
+	private readonly dropHost &#x3D; inject(NgxAccessibleDragAndDropHostDirective);
+	public override readonly elementRef: ElementRef&lt;HTMLElement&gt; &#x3D; inject(ElementRef);
+
+	/**
+	 * The tab index of the item
+	 */
+	public tabIndex: WritableSignal&lt;number&gt; &#x3D; signal&lt;number&gt;(0);
+
+	/**
+	 * The selected state of the item
+	 */
+	@HostBinding(&#x27;attr.aria-selected&#x27;) public isSelected: boolean &#x3D; false;
+
+	/**
+	 * Handle the selected state when pressing enter
+	 */
+	@HostListener(&#x27;keydown.Enter&#x27;) public onEnter(): void {
+		this.handlePress();
+	}
+
+	/**
+	 * Handle the selected state when pressing space
+	 */
+	@HostListener(&#x27;keydown.Space&#x27;) public onSpace(): void {
+		this.handlePress();
+	}
+
+	/**
+	 * Handle the ArrowUp Press
+	 */
+	@HostListener(&#x27;keydown.ArrowUp&#x27;, [&#x27;$event&#x27;]) public onArrowUp(event: Event): void {
+		this.moveItem(&#x27;up&#x27;, event as KeyboardEvent);
+	}
+
+	/**
+	 * Handle the ArrowDown Press
+	 */
+  @HostListener( &#x27;keydown.ArrowDown&#x27;,[ &#x27;$event&#x27; ] ) public onArrowDown ( event: Event ): void {
+		this.moveItem(&#x27;down&#x27;, event as KeyboardEvent);
+	}
+
+	/**
+	 * Handle the ArrowLeft Press
+	 */
+	@HostListener(&#x27;keydown.ArrowLeft&#x27;, [&#x27;$event&#x27;]) public onArrowLeft(event: Event): void {
+		this.moveItem(&#x27;left&#x27;, event as KeyboardEvent);
+	}
+
+	/**
+	 * Handle the ArrowRight Press
+	 */
+	@HostListener(&#x27;keydown.ArrowRight&#x27;, [&#x27;$event&#x27;]) public onArrowRight(event: Event): void {
+		this.moveItem(&#x27;right&#x27;, event as KeyboardEvent);
+	}
+
+	/**
+	 * The index of the draggable item
+	 */
+
+	public readonly itemIndex &#x3D; input.required&lt;number&gt;({
+		alias: &#x27;ngxAccessibleDragAndDropItemIndex&#x27;,
+	});
+
+	/**
+	 * An unique id of the draggable item
+	 */
+
+	public readonly itemId: InputSignal&lt;string&gt; &#x3D; input.required&lt;string&gt;({
+		alias: &#x27;ngxAccessibleDragAndDropItemId&#x27;,
+	});
+
+	/**
+	 * An optional label for the draggable item
+	 */
+
+	public readonly label &#x3D; input&lt;string&gt;(undefined, { alias: &#x27;ngxAccessibleDragAndDropLabel&#x27; });
+
+	/**
+	 * Whether the draggable item  is disabled
+	 */
+	public disabled: InputSignal&lt;boolean&gt; &#x3D; input(false, {
+		alias: &#x27;ngxAccessibleDragAndDropDisabled&#x27;,
+	});
+
+	/**
+	 * Emits when the item has been moved through keyboard input
+	 */
+	public ngxAccessibleDragAndDropItemMove: OutputEmitterRef&lt;NgxAccessibleDragAndDropMoveEvent&gt; &#x3D;
+		output&lt;NgxAccessibleDragAndDropMoveEvent&gt;();
+
+	constructor() {
+		super();
+
+		effect(() &#x3D;&gt; {
+			this.tabIndex.set(this.disabled() ? -1 : 0);
+		});
+	}
+
+	/**
+	 *  Marks the item as focussed and selected
+	 */
+	public markAsActive(): void {
+		this.focus();
+		this.isSelected &#x3D; true;
+	}
+
+	/**
+	 * Deselects the current item if it&#x27;s selected
+	 *
+	 */
+	public override onBlur(): void {
+		// Iben: Early exit if the item is not selected
+		if (!this.isSelected) {
+			return;
+		}
+
+		// Iben: Set the item as deselected
+		this.isSelected &#x3D; false;
+
+		// Iben: Announce the item as deselected
+		this.dragAndDropService
+			.setMessage({
+				type: &#x27;deselected&#x27;,
+				data: { item: &#x60;${this.itemIndex()}&#x60;, itemLabel: this.label() || undefined },
+			})
+			.subscribe();
+	}
+
+	/**
+	 * Registers the item with the drop host
+	 */
+	public ngOnInit(): void {
+		this.dropHost.registerDragAndDropItem(this);
+	}
+
+	/**
+	 * Handles the pressing of a button in the drag and drop host
+	 */
+	private handlePress(): void {
+		this.handleWhenFocussed(() &#x3D;&gt; {
+			this.isSelected &#x3D; !this.isSelected;
+			this.dragAndDropService
+				.setMessage({
+					type: this.isSelected ? &#x27;selected&#x27; : &#x27;deselected&#x27;,
+					data: { item: &#x60;${this.itemIndex()}&#x60;, itemLabel: this.label() || undefined },
+				})
+				.subscribe();
+		});
+	}
+
+	/**
+	 * Moves the item in the correct direction
+	 *
+	 * @param key - The pressed key
+	 * @param event - The keyboard event
+	 */
+  private moveItem ( key: &#x27;up&#x27; | &#x27;down&#x27; | &#x27;left&#x27; | &#x27;right&#x27;,event: KeyboardEvent ): void {
+		if (!this.disabled() &amp;&amp; this.hasFocus &amp;&amp; this.isSelected) {
+			// Iben: Prevent the default action
+			event.preventDefault();
+      event.stopPropagation();
+
+			// Iben: Set up the needed items
+			let newIndex: number;
+			let newContainer: number;
+
+			const currentContainer &#x3D; this.dropContainer.index();
+			const isHorizontal &#x3D; this.dropList.orientation &#x3D;&#x3D;&#x3D; &#x27;horizontal&#x27;;
+			const isUpOrDown: boolean &#x3D; key &#x3D;&#x3D;&#x3D; &#x27;up&#x27; || key &#x3D;&#x3D;&#x3D; &#x27;down&#x27;;
+
+			// Iben: In this case we&#x27;re changing the current container
+			if ((isUpOrDown &amp;&amp; isHorizontal) || (!isUpOrDown &amp;&amp; !isHorizontal)) {
+				newIndex &#x3D; this.itemIndex();
+				newContainer &#x3D;
+					key &#x3D;&#x3D;&#x3D; &#x27;up&#x27; || key &#x3D;&#x3D;&#x3D; &#x27;left&#x27; ? currentContainer - 1 : currentContainer + 1;
+
+				this.handleItemMove(newIndex, newContainer, &#x27;moved&#x27;);
+			}
+
+			// Iben: In this case, we&#x27;re changing the order of the items
+			if ((!isUpOrDown &amp;&amp; isHorizontal) || (isUpOrDown &amp;&amp; !isHorizontal)) {
+				newIndex &#x3D;
+					key &#x3D;&#x3D;&#x3D; &#x27;up&#x27; || key &#x3D;&#x3D;&#x3D; &#x27;left&#x27; ? this.itemIndex() - 1 : this.itemIndex() + 1;
+				newContainer &#x3D; currentContainer;
+				this.handleItemMove(newIndex, newContainer, &#x27;reordered&#x27;);
+			}
+		}
+	}
+
+	/**
+	 * Moves an item based on the provided container and index, and sends a message to the live region
+	 *
+	 * @private
+	 * @param newIndex - The new index of the item
+	 * @param newContainer - The container we wish to move the item to
+	 * @param  type - The type of movement we perform
+	 */
+	private handleItemMove(
+		newIndex: number,
+		newContainer: number,
+		type: NgxAccessibleDragAndDropMoveType
+	): void {
+		// Iben: Check if the newContainer exits, if not early exit
+		const targetContainer &#x3D; this.dropHost.getContainer(newContainer);
+
+		if (!targetContainer) {
+			return;
+		}
+
+		// Iben: Emit the move event
+		const index &#x3D; this.dropContainer.index();
+		const itemIndex &#x3D; this.itemIndex();
+		this.ngxAccessibleDragAndDropItemMove.emit({
+			previousIndex: itemIndex,
+			newIndex,
+			previousContainer: index,
+			newContainer,
+		});
+
+		// Iben: Set the message in the live region
+		this.dragAndDropService
+			.setMessage({
+				type: type,
+				data: {
+					item: this.itemId(),
+					itemLabel: this.label() || undefined,
+					from: type &#x3D;&#x3D;&#x3D; &#x27;reordered&#x27; ? &#x60;${itemIndex + 1}&#x60; : &#x60;${index + 1}&#x60;,
+					to: type &#x3D;&#x3D;&#x3D; &#x27;reordered&#x27; ? &#x60;${newIndex + 1}&#x60; : &#x60;${newContainer + 1}&#x60;,
+					fromLabel: this.dropContainer.label() || undefined,
+					toLabel: targetContainer.label() || undefined,
+				},
+			})
+			.subscribe();
+
+		// Iben: Set the focus and select the new item with the same id, using a setTimeOut so the correct item is rendered first
+		setTimeout(() &#x3D;&gt; {
+			this.dropHost.markAsActive(this.itemId());
+		});
+	}
+}
+</code></pre>
+    </div>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'directive';
+            var COMPODOC_CURRENT_PAGE_URL = 'NgxAccessibleDragAndDropItemDirective.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script>
+               $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               checkToggle(darkModeState);
+               if ($darkModeToggleSwitchers.length > 0) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].addEventListener('change', function (event) {
+                              darkModeState = !darkModeState;
+                              toggleDarkMode(darkModeState);
+                         });
+                    }
+               }
+          </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

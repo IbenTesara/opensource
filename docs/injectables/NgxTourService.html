@@ -1,0 +1,3280 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>@opensource/source documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+    </head>
+    <body>
+          <script>
+               // Blocking script to avoid flickering dark mode
+               // Dark mode toggle button
+               var useDark = window.matchMedia('(prefers-color-scheme: dark)');
+               var darkModeState = useDark.matches;
+               var $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               var $darkModeToggles = document.querySelectorAll('.dark-mode-switch');
+               var darkModeStateLocal = localStorage.getItem('compodoc_darkmode-state');
+
+               function checkToggle(check) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].checked = check;
+                    }
+               }
+
+               function toggleDarkMode(state) {
+                    if (window.localStorage) {
+                         localStorage.setItem('compodoc_darkmode-state', state);
+                    }
+
+                    checkToggle(state);
+
+                    const hasClass = document.body.classList.contains('dark');
+
+                    if (state) {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.add('dark');
+                         }
+                         if (!hasClass) {
+                              document.body.classList.add('dark');
+                         }
+                    } else {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.remove('dark');
+                         }
+                         if (hasClass) {
+                              document.body.classList.remove('dark');
+                         }
+                    }
+               }
+
+               useDark.addEventListener('change', function (evt) {
+                    toggleDarkMode(evt.matches);
+               });
+               if (darkModeStateLocal) {
+                    darkModeState = darkModeStateLocal === 'true';
+               }
+               toggleDarkMode(darkModeState);
+          </script>
+
+        <div class="navbar navbar-default navbar-fixed-top d-md-none p-0">
+               <div class="d-flex">
+                    <a href="../" class="navbar-brand">@opensource/source documentation</a>
+                    <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+               </div>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="d-none d-md-block menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content injectable">
+                   <div class="content-data">
+
+
+
+
+
+
+
+
+<ol class="breadcrumb">
+  <li class="breadcrumb-item">Injectables</li>
+  <li class="breadcrumb-item" >NgxTourService</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item">
+            <a href="#info" 
+                class="nav-link"
+                class="nav-link active"
+                role="tab" id="info-tab" data-bs-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li class="nav-item">
+            <a href="#source" 
+                class="nav-link"
+                
+                role="tab" id="source-tab" data-bs-toggle="tab" data-link="source">Source</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="info">
+        <p class="comment">
+            <h3>File</h3>
+        </p>
+        <p class="comment">
+            <code>libs/angular/inform/src/lib/services/tour/tour.service.ts</code>
+        </p>
+
+
+            <p class="comment">
+                <h3>Description</h3>
+            </p>
+            <p class="comment">
+                <p>A singleton service used to run help tours through an application.</p>
+
+            </p>
+
+
+
+            <section data-compodoc="block-index">
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#amountOfSteps" >amountOfSteps</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                    <span class="modifier">Readonly</span>
+                                <a href="#backdropClipEventSubject" >backdropClipEventSubject</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#bodyOverflow" >bodyOverflow</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                    <span class="modifier">Readonly</span>
+                                <a href="#cdkOverlayService" >cdkOverlayService</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                    <span class="modifier">Readonly</span>
+                                <a href="#configuration" >configuration</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#currentDirection" >currentDirection</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                    <span class="modifier">Readonly</span>
+                                <a href="#currentIndex$" >currentIndex$</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                    <span class="modifier">Readonly</span>
+                                <a href="#currentIndexSubject" >currentIndexSubject</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                    <span class="modifier">Readonly</span>
+                                <a href="#currentStep$" >currentStep$</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                    <span class="modifier">Readonly</span>
+                                <a href="#currentStepSubject" >currentStepSubject</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                    <span class="modifier">Readonly</span>
+                                <a href="#currentTour$" >currentTour$</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                    <span class="modifier">Readonly</span>
+                                <a href="#currentTourSubject" >currentTourSubject</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                    <span class="modifier">Readonly</span>
+                                <a href="#destroyedSubject" >destroyedSubject</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#elements" >elements</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#overlayRef" >overlayRef</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                    <span class="modifier">Readonly</span>
+                                <a href="#positionMap" >positionMap</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                    <span class="modifier">Readonly</span>
+                                <a href="#previousStep$" >previousStep$</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                    <span class="modifier">Readonly</span>
+                                <a href="#previousStepSubject" >previousStepSubject</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                    <span class="modifier">Readonly</span>
+                                <a href="#registerElementSubject" >registerElementSubject</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#startingScrollPosition" >startingScrollPosition</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                    <span class="modifier">Readonly</span>
+                                <a href="#tourActive$" >tourActive$</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                    <span class="modifier">Readonly</span>
+                                <a href="#tourEnded$" >tourEnded$</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                    <span class="modifier">Readonly</span>
+                                <a href="#tourEndedSubject" >tourEndedSubject</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                    <span class="modifier">Readonly</span>
+                                <a href="#tourStarted$" >tourStarted$</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                    <span class="modifier">Readonly</span>
+                                <a href="#tourStartedSubject" >tourStartedSubject</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                    <span class="modifier">Readonly</span>
+                                <a href="#windowResizeSubject" >windowResizeSubject</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                    <span class="modifier">Readonly</span>
+                                <a href="#windowService" >windowService</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#closeTour" >closeTour</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#getCutoutMargin" >getCutoutMargin</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#handleBodyClass" >handleBodyClass</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#handleNext" >handleNext</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#handleRegistrationEvent" >handleRegistrationEvent</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#handleStepInteractions" >handleStepInteractions</a>
+                            </li>
+                            <li>
+                                <a href="#ngOnDestroy" >ngOnDestroy</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#registerElement" >registerElement</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#runStepFunction" >runStepFunction</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#setClipPath" >setClipPath</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#setStep" >setStep</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#startTour" >startTour</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#unregisterElement" >unregisterElement</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#visualizeStep" >visualizeStep</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+            <section data-compodoc="block-constructor">
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor()</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="191" class="link-to-prism">libs/angular/inform/src/lib/services/tour/tour.service.ts:191</a></div>
+                            </td>
+                        </tr>
+
+            </tbody>
+        </table>
+</section>
+
+            <section data-compodoc="block-methods">
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="closeTour"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                        <span ><b>closeTour</b></span>
+                        <a href="#closeTour"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>closeTour()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="324"
+                                    class="link-to-prism">libs/angular/inform/src/lib/services/tour/tour.service.ts:324</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Closes the currently running tour</p>
+</div>
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="../miscellaneous/typealiases.html#NgxTourInteraction" target="_self" >Observable&lt;NgxTourInteraction&gt;</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getCutoutMargin"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>getCutoutMargin</b></span>
+                        <a href="#getCutoutMargin"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>getCutoutMargin(step: <a href="../interfaces/NgxTourStep.html" target="_self">NgxTourStep</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="701"
+                                    class="link-to-prism">libs/angular/inform/src/lib/services/tour/tour.service.ts:701</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Returns the provided cutoutMargin of a step, or 5px if none is provided</p>
+</div>
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                                <td>Description</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>step</td>
+                                            <td>
+                                                            <code><a href="../interfaces/NgxTourStep.html" target="_self" >NgxTourStep</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                            <td>
+                                                    <ul>
+<li>The current step</li>
+</ul>
+
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="handleBodyClass"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>handleBodyClass</b></span>
+                        <a href="#handleBodyClass"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>handleBodyClass(action: "set" | "remove")</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="708"
+                                    class="link-to-prism">libs/angular/inform/src/lib/services/tour/tour.service.ts:708</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Sets or removes the body class to indicate the tour is active</p>
+</div>
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>action</td>
+                                            <td>
+                                                        <code>&quot;set&quot; | &quot;remove&quot;</code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="handleNext"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>handleNext</b></span>
+                        <a href="#handleNext"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>handleNext(direction: <a href="../undefineds/NgxTourDirection.html" target="_self">NgxTourDirection</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="438"
+                                    class="link-to-prism">libs/angular/inform/src/lib/services/tour/tour.service.ts:438</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Handles the next action in the tour</p>
+</div>
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                                <td>Description</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>direction</td>
+                                            <td>
+                                                            <code><a href="../miscellaneous/typealiases.html#NgxTourDirection" target="_self" >NgxTourDirection</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                            <td>
+                                                    <ul>
+<li>The direction we wish to move in</li>
+</ul>
+
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="../miscellaneous/typealiases.html#NgxTourInteraction" target="_self" >Observable&lt;NgxTourInteraction&gt;</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="handleRegistrationEvent"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>handleRegistrationEvent</b></span>
+                        <a href="#handleRegistrationEvent"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>handleRegistrationEvent(event: <a href="../undefineds/NgxTourRegistrationEvent.html" target="_self">NgxTourRegistrationEvent</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="660"
+                                    class="link-to-prism">libs/angular/inform/src/lib/services/tour/tour.service.ts:660</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Handles the registration event</p>
+</div>
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                                <td>Description</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>event</td>
+                                            <td>
+                                                            <code><a href="../miscellaneous/typealiases.html#NgxTourRegistrationEvent" target="_self" >NgxTourRegistrationEvent</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                            <td>
+                                                    <ul>
+<li>The registration event we wish to handle</li>
+</ul>
+
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>    <code>Observable&lt;undefined&gt;</code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="handleStepInteractions"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>handleStepInteractions</b></span>
+                        <a href="#handleStepInteractions"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>handleStepInteractions(currentStep: <a href="../interfaces/NgxTourStep.html" target="_self">NgxTourStep</a>, item?: <a href="../directives/NgxTourItemDirective.html" target="_self">NgxTourItemDirective</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="582"
+                                    class="link-to-prism">libs/angular/inform/src/lib/services/tour/tour.service.ts:582</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Handles the interactions with a step</p>
+</div>
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                                <td>Description</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>currentStep</td>
+                                            <td>
+                                                            <code><a href="../interfaces/NgxTourStep.html" target="_self" >NgxTourStep</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                            <td>
+                                                    <ul>
+<li>The provided step</li>
+</ul>
+
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                                <td>item</td>
+                                            <td>
+                                                            <code><a href="../directives/NgxTourItemDirective.html" target="_self" >NgxTourItemDirective</a></code>
+                                            </td>
+
+                                            <td>
+                                                    Yes
+                                            </td>
+
+
+                                            <td>
+                                                    <ul>
+<li>An optional item</li>
+</ul>
+
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="../miscellaneous/typealiases.html#NgxTourInteraction" target="_self" >Observable&lt;NgxTourInteraction&gt;</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngOnDestroy"></a>
+                    <span class="name">
+                        <span ><b>ngOnDestroy</b></span>
+                        <a href="#ngOnDestroy"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngOnDestroy()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="354"
+                                    class="link-to-prism">libs/angular/inform/src/lib/services/tour/tour.service.ts:354</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="registerElement"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                        <span ><b>registerElement</b></span>
+                        <a href="#registerElement"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>registerElement(element: <a href="../directives/NgxTourItemDirective.html" target="_self">NgxTourItemDirective</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="301"
+                                    class="link-to-prism">libs/angular/inform/src/lib/services/tour/tour.service.ts:301</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Registers a template element so it can be highlighted</p>
+</div>
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                                <td>Description</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>element</td>
+                                            <td>
+                                                            <code><a href="../directives/NgxTourItemDirective.html" target="_self" >NgxTourItemDirective</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                            <td>
+                                                    <ul>
+<li>The highlighted element</li>
+</ul>
+
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="runStepFunction"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>runStepFunction</b></span>
+                        <a href="#runStepFunction"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>runStepFunction(stepFunction?: <a href="../undefineds/NgxTourAction.html" target="_self">NgxTourAction</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="609"
+                                    class="link-to-prism">libs/angular/inform/src/lib/services/tour/tour.service.ts:609</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Returns an observable based on whether a step function was provided</p>
+</div>
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                                <td>Description</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>stepFunction</td>
+                                            <td>
+                                                            <code><a href="../miscellaneous/typealiases.html#NgxTourAction" target="_self" >NgxTourAction</a></code>
+                                            </td>
+
+                                            <td>
+                                                    Yes
+                                            </td>
+
+
+                                            <td>
+                                                    <ul>
+<li>The provided step function</li>
+</ul>
+
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>    <code>Observable&lt;&gt;</code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="setClipPath"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>setClipPath</b></span>
+                        <a href="#setClipPath"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>setClipPath(event: <a href="../interfaces/NgxTourBackdropClipEvent.html" target="_self">NgxTourBackdropClipEvent</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="633"
+                                    class="link-to-prism">libs/angular/inform/src/lib/services/tour/tour.service.ts:633</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Surrounds the provided item with a cutout in the backdrop</p>
+</div>
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>event</td>
+                                            <td>
+                                                            <code><a href="../interfaces/NgxTourBackdropClipEvent.html" target="_self" >NgxTourBackdropClipEvent</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="setStep"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>setStep</b></span>
+                        <a href="#setStep"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>setStep(currentStep: <a href="../interfaces/NgxTourStep.html" target="_self">NgxTourStep</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="377"
+                                    class="link-to-prism">libs/angular/inform/src/lib/services/tour/tour.service.ts:377</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Sets a provided step in the tour</p>
+</div>
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                                <td>Description</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>currentStep</td>
+                                            <td>
+                                                            <code><a href="../interfaces/NgxTourStep.html" target="_self" >NgxTourStep</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                            <td>
+                                                    <ul>
+<li>The provided step we want to set</li>
+</ul>
+
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="../miscellaneous/typealiases.html#NgxTourInteraction" target="_self" >Observable&lt;NgxTourInteraction&gt;</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="startTour"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                        <span ><b>startTour</b></span>
+                        <a href="#startTour"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>startTour(tour: <a href="../interfaces/NgxTourStep.html" target="_self">NgxTourStep[]</a>, onClose?: <a href="../undefineds/NgxTourAction.html" target="_self">NgxTourAction</a>, startIndex: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="220"
+                                    class="link-to-prism">libs/angular/inform/src/lib/services/tour/tour.service.ts:220</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Start a provided tour</p>
+</div>
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                                <td>Default value</td>
+                                                <td>Description</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>tour</td>
+                                            <td>
+                                                            <code><a href="../interfaces/NgxTourStep.html" target="_self" >NgxTourStep[]</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+                                            <td>
+                                            </td>
+
+                                            <td>
+                                                    <ul>
+<li>The tour we wish to start</li>
+</ul>
+
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                                <td>onClose</td>
+                                            <td>
+                                                            <code><a href="../miscellaneous/typealiases.html#NgxTourAction" target="_self" >NgxTourAction</a></code>
+                                            </td>
+
+                                            <td>
+                                                    Yes
+                                            </td>
+
+                                            <td>
+                                            </td>
+
+                                            <td>
+                                                    <ul>
+<li>An optional on close function we wish to run</li>
+</ul>
+
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                                <td>startIndex</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+                                            <td>
+                                                    <code>0</code>
+                                            </td>
+
+                                            <td>
+                                                    <ul>
+<li>An optional index we wish to start the tour from , default this is 0</li>
+</ul>
+
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>    <code>Observable&lt;void&gt;</code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="unregisterElement"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                        <span ><b>unregisterElement</b></span>
+                        <a href="#unregisterElement"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>unregisterElement(tourItem: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="314"
+                                    class="link-to-prism">libs/angular/inform/src/lib/services/tour/tour.service.ts:314</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Removes an element from the record</p>
+</div>
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                                <td>Description</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>tourItem</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                            <td>
+                                                    <ul>
+<li>The id of the element</li>
+</ul>
+
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="visualizeStep"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>visualizeStep</b></span>
+                        <a href="#visualizeStep"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>visualizeStep(currentStep: <a href="../interfaces/NgxTourStep.html" target="_self">NgxTourStep</a>, item?: <a href="../directives/NgxTourItemDirective.html" target="_self">NgxTourItemDirective</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="462"
+                                    class="link-to-prism">libs/angular/inform/src/lib/services/tour/tour.service.ts:462</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Visualizes the current step</p>
+</div>
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                                <td>Description</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>currentStep</td>
+                                            <td>
+                                                            <code><a href="../interfaces/NgxTourStep.html" target="_self" >NgxTourStep</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                            <td>
+                                                    <ul>
+<li>The step we wish to visualize</li>
+</ul>
+
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                                <td>item</td>
+                                            <td>
+                                                            <code><a href="../directives/NgxTourItemDirective.html" target="_self" >NgxTourItemDirective</a></code>
+                                            </td>
+
+                                            <td>
+                                                    Yes
+                                            </td>
+
+
+                                            <td>
+                                                    <ul>
+<li>The item we wish to highlight</li>
+</ul>
+
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="../interfaces/NgxTourStep.html" target="_self" >ComponentRef&lt;NgxTourStepComponent&gt;</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+            <section data-compodoc="block-properties">
+    
+    <h3 id="inputs">
+        Properties
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="amountOfSteps"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>amountOfSteps</b></span>
+                        <a href="#amountOfSteps"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>0</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="95" class="link-to-prism">libs/angular/inform/src/lib/services/tour/tour.service.ts:95</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>The amount of steps of the current tour</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="backdropClipEventSubject"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                            <span class="modifier">Readonly</span>
+                        <span ><b>backdropClipEventSubject</b></span>
+                        <a href="#backdropClipEventSubject"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../interfaces/NgxTourBackdropClipEvent.html" target="_self" >Subject&lt;NgxTourBackdropClipEvent&gt;</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>new Subject&lt;NgxTourBackdropClipEvent&gt;()</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="64" class="link-to-prism">libs/angular/inform/src/lib/services/tour/tour.service.ts:64</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>A subject to hold the backdrop clip event</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="bodyOverflow"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>bodyOverflow</b></span>
+                        <a href="#bodyOverflow"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="75" class="link-to-prism">libs/angular/inform/src/lib/services/tour/tour.service.ts:75</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Property to hold the current body overflow behavior</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="cdkOverlayService"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                            <span class="modifier">Readonly</span>
+                        <span ><b>cdkOverlayService</b></span>
+                        <a href="#cdkOverlayService"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>inject(Overlay)</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="47" class="link-to-prism">libs/angular/inform/src/lib/services/tour/tour.service.ts:47</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="configuration"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                            <span class="modifier">Readonly</span>
+                        <span ><b>configuration</b></span>
+                        <a href="#configuration"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>inject&lt;NgxTourTokenConfiguration&gt;(NgxTourStepToken)</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="49" class="link-to-prism">libs/angular/inform/src/lib/services/tour/tour.service.ts:49</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="currentDirection"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>currentDirection</b></span>
+                        <a href="#currentDirection"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../miscellaneous/typealiases.html#NgxTourDirection" target="_self" >NgxTourDirection</a></code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="100" class="link-to-prism">libs/angular/inform/src/lib/services/tour/tour.service.ts:100</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>The current direction we&#39;re moving the tour in</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="currentIndex$"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                            <span class="modifier">Readonly</span>
+                        <span ><b>currentIndex$</b></span>
+                        <a href="#currentIndex$"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>Observable&lt;number&gt;</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>this.currentIndexSubject
+		.asObservable()
+		.pipe(distinctUntilChanged())</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="165" class="link-to-prism">libs/angular/inform/src/lib/services/tour/tour.service.ts:165</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>The currently active index</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="currentIndexSubject"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                            <span class="modifier">Readonly</span>
+                        <span ><b>currentIndexSubject</b></span>
+                        <a href="#currentIndexSubject"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>BehaviorSubject&lt;number&gt;</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>new BehaviorSubject&lt;number&gt;(
+		undefined
+	)</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="117" class="link-to-prism">libs/angular/inform/src/lib/services/tour/tour.service.ts:117</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>The index of the current step of the tour as a subject</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="currentStep$"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                            <span class="modifier">Readonly</span>
+                        <span ><b>currentStep$</b></span>
+                        <a href="#currentStep$"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../interfaces/NgxTourStep.html" target="_self" >Observable&lt;NgxTourStep&gt;</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>this.currentStepSubject
+		.asObservable()
+		.pipe(distinctUntilChanged(), filter(Boolean))</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="158" class="link-to-prism">libs/angular/inform/src/lib/services/tour/tour.service.ts:158</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>The currently active step</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="currentStepSubject"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                            <span class="modifier">Readonly</span>
+                        <span ><b>currentStepSubject</b></span>
+                        <a href="#currentStepSubject"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../interfaces/NgxTourStep.html" target="_self" >BehaviorSubject&lt;NgxTourStep&gt;</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>new BehaviorSubject&lt;NgxTourStep&gt;(undefined)</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="105" class="link-to-prism">libs/angular/inform/src/lib/services/tour/tour.service.ts:105</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>The currently active step in the tour as a subject</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="currentTour$"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                            <span class="modifier">Readonly</span>
+                        <span ><b>currentTour$</b></span>
+                        <a href="#currentTour$"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../interfaces/NgxTourStep.html" target="_self" >Observable&lt;NgxTourStep[]&gt;</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>this.currentTourSubject.asObservable()</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="152" class="link-to-prism">libs/angular/inform/src/lib/services/tour/tour.service.ts:152</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>The currently active tour</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="currentTourSubject"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                            <span class="modifier">Readonly</span>
+                        <span ><b>currentTourSubject</b></span>
+                        <a href="#currentTourSubject"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../interfaces/NgxTourStep.html" target="_self" >BehaviorSubject&lt;NgxTourStep[]&gt;</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>new BehaviorSubject&lt;
+		NgxTourStep[]
+	&gt;(undefined)</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="134" class="link-to-prism">libs/angular/inform/src/lib/services/tour/tour.service.ts:134</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>The currently active tour as a subject</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="destroyedSubject"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                            <span class="modifier">Readonly</span>
+                        <span ><b>destroyedSubject</b></span>
+                        <a href="#destroyedSubject"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>Subject&lt;void&gt;</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>new Subject&lt;void&gt;()</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="54" class="link-to-prism">libs/angular/inform/src/lib/services/tour/tour.service.ts:54</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>A subject to hold the destroyed event</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="elements"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>elements</b></span>
+                        <a href="#elements"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../directives/NgxTourItemDirective.html" target="_self" >Record&lt;string | BehaviorSubject&lt;NgxTourItemDirective&gt;&gt;</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>{}</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="70" class="link-to-prism">libs/angular/inform/src/lib/services/tour/tour.service.ts:70</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>A record of registered step elements we wish to highlight</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="overlayRef"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>overlayRef</b></span>
+                        <a href="#overlayRef"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>OverlayRef</code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="90" class="link-to-prism">libs/angular/inform/src/lib/services/tour/tour.service.ts:90</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>The currently active overlay</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="positionMap"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                            <span class="modifier">Readonly</span>
+                        <span ><b>positionMap</b></span>
+                        <a href="#positionMap"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../interfaces/NgxTourStep.html" target="_self" >Record&lt;NgxTourStepPosition | ConnectedPosition&gt;</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>{
+		below: { originX: &#x27;start&#x27;, originY: &#x27;bottom&#x27;, overlayX: &#x27;start&#x27;, overlayY: &#x27;top&#x27; },
+		above: { originX: &#x27;start&#x27;, originY: &#x27;top&#x27;, overlayX: &#x27;start&#x27;, overlayY: &#x27;bottom&#x27; },
+		left: { originX: &#x27;start&#x27;, originY: &#x27;bottom&#x27;, overlayX: &#x27;end&#x27;, overlayY: &#x27;bottom&#x27; },
+		right: { originX: &#x27;end&#x27;, originY: &#x27;center&#x27;, overlayX: &#x27;start&#x27;, overlayY: &#x27;bottom&#x27; },
+	}</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="80" class="link-to-prism">libs/angular/inform/src/lib/services/tour/tour.service.ts:80</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>A record of positions to place the</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="previousStep$"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                            <span class="modifier">Readonly</span>
+                        <span ><b>previousStep$</b></span>
+                        <a href="#previousStep$"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../interfaces/NgxTourStep.html" target="_self" >Observable&lt;NgxTourStep&gt;</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>this.previousStepSubject
+		.asObservable()
+		.pipe(distinctUntilChanged(), filter(Boolean))</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="172" class="link-to-prism">libs/angular/inform/src/lib/services/tour/tour.service.ts:172</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>The previously active step</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="previousStepSubject"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                            <span class="modifier">Readonly</span>
+                        <span ><b>previousStepSubject</b></span>
+                        <a href="#previousStepSubject"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../interfaces/NgxTourStep.html" target="_self" >BehaviorSubject&lt;NgxTourStep&gt;</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>new BehaviorSubject&lt;NgxTourStep&gt;(undefined)</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="111" class="link-to-prism">libs/angular/inform/src/lib/services/tour/tour.service.ts:111</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>The previously active step in the tour as a subject</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="registerElementSubject"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                            <span class="modifier">Readonly</span>
+                        <span ><b>registerElementSubject</b></span>
+                        <a href="#registerElementSubject"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../miscellaneous/typealiases.html#NgxTourRegistrationEvent" target="_self" >Subject&lt;NgxTourRegistrationEvent&gt;</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>new Subject&lt;NgxTourRegistrationEvent&gt;()</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="141" class="link-to-prism">libs/angular/inform/src/lib/services/tour/tour.service.ts:141</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>A subject to hold the registration events</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="startingScrollPosition"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>startingScrollPosition</b></span>
+                        <a href="#startingScrollPosition"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="147" class="link-to-prism">libs/angular/inform/src/lib/services/tour/tour.service.ts:147</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>The start scroll position of the page</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="tourActive$"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                            <span class="modifier">Readonly</span>
+                        <span ><b>tourActive$</b></span>
+                        <a href="#tourActive$"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>Observable&lt;boolean&gt;</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>this.currentStepSubject
+		.asObservable()
+		.pipe(map(Boolean))</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="189" class="link-to-prism">libs/angular/inform/src/lib/services/tour/tour.service.ts:189</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Whether the tour is active</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="tourEnded$"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                            <span class="modifier">Readonly</span>
+                        <span ><b>tourEnded$</b></span>
+                        <a href="#tourEnded$"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>Observable&lt;void&gt;</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>this.tourEndedSubject.asObservable()</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="179" class="link-to-prism">libs/angular/inform/src/lib/services/tour/tour.service.ts:179</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Whether the tour has ended</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="tourEndedSubject"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                            <span class="modifier">Readonly</span>
+                        <span ><b>tourEndedSubject</b></span>
+                        <a href="#tourEndedSubject"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>Subject&lt;void&gt;</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>new Subject()</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="129" class="link-to-prism">libs/angular/inform/src/lib/services/tour/tour.service.ts:129</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Whether the tour has ended as a subject</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="tourStarted$"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                            <span class="modifier">Readonly</span>
+                        <span ><b>tourStarted$</b></span>
+                        <a href="#tourStarted$"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>Observable&lt;void&gt;</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>this.tourStartedSubject.asObservable()</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="184" class="link-to-prism">libs/angular/inform/src/lib/services/tour/tour.service.ts:184</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Whether the tour has started</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="tourStartedSubject"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                            <span class="modifier">Readonly</span>
+                        <span ><b>tourStartedSubject</b></span>
+                        <a href="#tourStartedSubject"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>Subject&lt;void&gt;</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>new Subject()</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="124" class="link-to-prism">libs/angular/inform/src/lib/services/tour/tour.service.ts:124</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Whether the tour has started as a subject</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="windowResizeSubject"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                            <span class="modifier">Readonly</span>
+                        <span ><b>windowResizeSubject</b></span>
+                        <a href="#windowResizeSubject"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>Subject&lt;void&gt;</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>new Subject&lt;void&gt;()</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="59" class="link-to-prism">libs/angular/inform/src/lib/services/tour/tour.service.ts:59</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>A subject to hold the window resize event</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="windowService"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                            <span class="modifier">Readonly</span>
+                        <span ><b>windowService</b></span>
+                        <a href="#windowService"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>inject(NgxWindowService)</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="48" class="link-to-prism">libs/angular/inform/src/lib/services/tour/tour.service.ts:48</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+</section>
+
+    </div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { ConnectedPosition, Overlay, OverlayConfig, OverlayRef } from &#x27;@angular/cdk/overlay&#x27;;
+import { ComponentPortal } from &#x27;@angular/cdk/portal&#x27;;
+import { ComponentRef, Injectable, OnDestroy, inject } from &#x27;@angular/core&#x27;;
+import { outputToObservable } from &#x27;@angular/core/rxjs-interop&#x27;;
+import { NgxWindowService } from &#x27;@ibenvandeveire/ngx-core&#x27;;
+import {
+	BehaviorSubject,
+	Observable,
+	Subject,
+	auditTime,
+	combineLatest,
+	concatMap,
+	delay,
+	distinctUntilChanged,
+	filter,
+	map,
+	of,
+	startWith,
+	switchMap,
+	take,
+	takeUntil,
+	tap,
+} from &#x27;rxjs&#x27;;
+
+import { NgxTourStepComponent } from &#x27;../../abstracts&#x27;;
+import { NgxTourItemDirective } from &#x27;../../directives&#x27;;
+import { NgxTourStepToken } from &#x27;../../tokens&#x27;;
+import {
+	NgxTourDirection,
+	NgxTourAction,
+	NgxTourStep,
+	NgxTourInteraction,
+	NgxTourStepPosition,
+	NgxTourRegistrationEvent,
+	NgxTourBackdropClipEvent,
+	NgxTourTokenConfiguration,
+} from &#x27;../../types&#x27;;
+import { elementIsVisibleInViewport } from &#x27;../../utils&#x27;;
+
+/**
+ * A singleton service used to run help tours through an application.
+ */
+@Injectable({
+	providedIn: &#x27;root&#x27;,
+})
+export class NgxTourService implements OnDestroy {
+	private readonly cdkOverlayService &#x3D; inject(Overlay);
+	private readonly windowService &#x3D; inject(NgxWindowService);
+	private readonly configuration &#x3D; inject&lt;NgxTourTokenConfiguration&gt;(NgxTourStepToken);
+
+	/**
+	 * A subject to hold the destroyed event
+	 */
+	private readonly destroyedSubject: Subject&lt;void&gt; &#x3D; new Subject&lt;void&gt;();
+
+	/**
+	 * A subject to hold the window resize event
+	 */
+	private readonly windowResizeSubject: Subject&lt;void&gt; &#x3D; new Subject&lt;void&gt;();
+
+	/**
+	 * A subject to hold the backdrop clip event
+	 */
+	private readonly backdropClipEventSubject: Subject&lt;NgxTourBackdropClipEvent&gt; &#x3D;
+		new Subject&lt;NgxTourBackdropClipEvent&gt;();
+
+	/**
+	 * A record of registered step elements we wish to highlight
+	 */
+	private elements: Record&lt;string, BehaviorSubject&lt;NgxTourItemDirective&gt;&gt; &#x3D; {};
+
+	/**
+	 * Property to hold the current body overflow behavior
+	 */
+	private bodyOverflow: string;
+
+	/**
+	 * A record of positions to place the
+	 */
+	private readonly positionMap: Record&lt;NgxTourStepPosition, ConnectedPosition&gt; &#x3D; {
+		below: { originX: &#x27;start&#x27;, originY: &#x27;bottom&#x27;, overlayX: &#x27;start&#x27;, overlayY: &#x27;top&#x27; },
+		above: { originX: &#x27;start&#x27;, originY: &#x27;top&#x27;, overlayX: &#x27;start&#x27;, overlayY: &#x27;bottom&#x27; },
+		left: { originX: &#x27;start&#x27;, originY: &#x27;bottom&#x27;, overlayX: &#x27;end&#x27;, overlayY: &#x27;bottom&#x27; },
+		right: { originX: &#x27;end&#x27;, originY: &#x27;center&#x27;, overlayX: &#x27;start&#x27;, overlayY: &#x27;bottom&#x27; },
+	};
+
+	/**
+	 * The currently active overlay
+	 */
+	private overlayRef: OverlayRef;
+
+	/**
+	 * The amount of steps of the current tour
+	 */
+	private amountOfSteps: number &#x3D; 0;
+
+	/**
+	 * The current direction we&#x27;re moving the tour in
+	 */
+	private currentDirection: NgxTourDirection;
+
+	/**
+	 * The currently active step in the tour as a subject
+	 */
+	private readonly currentStepSubject: BehaviorSubject&lt;NgxTourStep&gt; &#x3D;
+		new BehaviorSubject&lt;NgxTourStep&gt;(undefined);
+
+	/**
+	 * The previously active step in the tour as a subject
+	 */
+	private readonly previousStepSubject: BehaviorSubject&lt;NgxTourStep&gt; &#x3D;
+		new BehaviorSubject&lt;NgxTourStep&gt;(undefined);
+
+	/**
+	 * The index of the current step of the tour as a subject
+	 */
+	private readonly currentIndexSubject: BehaviorSubject&lt;number&gt; &#x3D; new BehaviorSubject&lt;number&gt;(
+		undefined
+	);
+
+	/**
+	 * Whether the tour has started as a subject
+	 */
+	private readonly tourStartedSubject: Subject&lt;void&gt; &#x3D; new Subject();
+
+	/**
+	 * Whether the tour has ended as a subject
+	 */
+	private readonly tourEndedSubject: Subject&lt;void&gt; &#x3D; new Subject();
+
+	/**
+	 * The currently active tour as a subject
+	 */
+	private readonly currentTourSubject: BehaviorSubject&lt;NgxTourStep[]&gt; &#x3D; new BehaviorSubject&lt;
+		NgxTourStep[]
+	&gt;(undefined);
+
+	/**
+	 * A subject to hold the registration events
+	 */
+	private readonly registerElementSubject: Subject&lt;NgxTourRegistrationEvent&gt; &#x3D;
+		new Subject&lt;NgxTourRegistrationEvent&gt;();
+
+	/**
+	 * The start scroll position of the page
+	 */
+	private startingScrollPosition: number;
+
+	/**
+	 * The currently active tour
+	 */
+	public readonly currentTour$: Observable&lt;NgxTourStep[]&gt; &#x3D;
+		this.currentTourSubject.asObservable();
+
+	/**
+	 * The currently active step
+	 */
+	public readonly currentStep$: Observable&lt;NgxTourStep&gt; &#x3D; this.currentStepSubject
+		.asObservable()
+		.pipe(distinctUntilChanged(), filter(Boolean));
+
+	/**
+	 * The currently active index
+	 */
+	public readonly currentIndex$: Observable&lt;number&gt; &#x3D; this.currentIndexSubject
+		.asObservable()
+		.pipe(distinctUntilChanged());
+
+	/**
+	 * The previously active step
+	 */
+	public readonly previousStep$: Observable&lt;NgxTourStep&gt; &#x3D; this.previousStepSubject
+		.asObservable()
+		.pipe(distinctUntilChanged(), filter(Boolean));
+
+	/**
+	 * Whether the tour has ended
+	 */
+	public readonly tourEnded$: Observable&lt;void&gt; &#x3D; this.tourEndedSubject.asObservable();
+
+	/**
+	 * Whether the tour has started
+	 */
+	public readonly tourStarted$: Observable&lt;void&gt; &#x3D; this.tourStartedSubject.asObservable();
+
+	/**
+	 * Whether the tour is active
+	 */
+	public readonly tourActive$: Observable&lt;boolean&gt; &#x3D; this.currentStepSubject
+		.asObservable()
+		.pipe(map(Boolean));
+
+	constructor() {
+		// Iben: We use a subject with concatMap here because we want each event to be handled correctly and the elements record should finish updating before updating it again.
+		this.registerElementSubject
+			.pipe(
+				filter(Boolean),
+				concatMap((event) &#x3D;&gt; {
+					return this.handleRegistrationEvent(event);
+				}),
+				takeUntil(this.destroyedSubject)
+			)
+			.subscribe();
+
+		// Iben: Listen to the onresize event of the window
+		this.windowService.runInBrowser(({ browserWindow }) &#x3D;&gt; {
+			browserWindow.onresize &#x3D; () &#x3D;&gt; {
+				this.windowResizeSubject.next();
+			};
+		});
+	}
+
+	/**
+	 * Start a provided tour
+	 *
+	 * @param tour - The tour we wish to start
+	 * @param onClose - An optional on close function we wish to run
+	 * @param startIndex - An optional index we wish to start the tour from , default this is 0
+	 */
+	public startTour(
+		tour: NgxTourStep[],
+		onClose?: NgxTourAction,
+		startIndex &#x3D; 0
+	): Observable&lt;void&gt; {
+		// Wouter: Early exit if the tour is run on the server, for which this service is not intended
+		if (!this.windowService.isBrowser()) {
+			console.warn(
+				&#x27;NgxTourService: The tour service is not intended to be run on the server. The tour will not be started.&#x27;
+			);
+
+			return of(null);
+		}
+
+		this.windowService.runInBrowser(({ browserWindow, browserDocument }) &#x3D;&gt; {
+			// Iben: Save the current scroll position so we can return to it when we close the tour
+			this.startingScrollPosition &#x3D; browserWindow.scrollY;
+
+			// Iben: Save the current
+			this.bodyOverflow &#x3D; browserDocument.body.style.overflow;
+		});
+
+		// Iben: Loop over the tour and set subjects for all elements that haven&#x27;t been found yet
+		tour.forEach((step) &#x3D;&gt; {
+			if (!this.elements[step.tourItem]) {
+				this.elements[step.tourItem] &#x3D; new BehaviorSubject&lt;NgxTourItemDirective&gt;(undefined);
+			}
+		});
+
+		// Iben: Set the new tour
+		this.currentTourSubject.next(tour);
+
+		// Iben: Set the amount of steps based on the length of the tour
+		this.amountOfSteps &#x3D; tour.length;
+
+		// Iben: Set the first two starting subjects
+		this.currentIndexSubject.next(startIndex);
+		this.tourStartedSubject.next();
+
+		// Wouter: Set a class onto the body to indicate onto which styling can be added by the user
+		this.handleBodyClass(&#x27;set&#x27;);
+
+		// Iben: Listen to the window resize and the backdrop clip event, so that when the window resizes, the clip path still works correctly
+		combineLatest([
+			this.windowResizeSubject.pipe(startWith(undefined)),
+			this.backdropClipEventSubject,
+		])
+			.pipe(
+				tap(([, event]) &#x3D;&gt; {
+					// Iben: Set the clip path based on the event
+					this.setClipPath(event);
+				}),
+				takeUntil(this.tourEnded$)
+			)
+			.subscribe();
+
+		// Iben: Start the first tour, and run it until the tour is ended
+		this.setStep(tour[startIndex]).pipe(takeUntil(this.tourEnded$)).subscribe();
+
+		// Iben: Listen to the end of the tour and run the end function when needed
+		return this.tourEndedSubject.asObservable().pipe(
+			take(1),
+			switchMap(() &#x3D;&gt; this.runStepFunction(onClose)),
+			tap(() &#x3D;&gt; {
+				this.windowService.runInBrowser(({ browserWindow, browserDocument }) &#x3D;&gt; {
+					// Iben: Scroll back to the starting position
+					browserWindow.scrollTo({ top: this.startingScrollPosition });
+
+					// Iben: Restore the body overflow
+					browserDocument.body.style.overflow &#x3D; this.bodyOverflow;
+				});
+			}),
+			map(() &#x3D;&gt; undefined)
+		);
+	}
+
+	/**
+	 * Registers a template element so it can be highlighted
+	 *
+	 * @param element - The highlighted element
+	 */
+	public registerElement(element: NgxTourItemDirective): void {
+		this.registerElementSubject.next({
+			tourItem: element.tourItem(),
+			element,
+			type: &#x27;register&#x27;,
+		});
+	}
+
+	/**
+	 * Removes an element from the record
+	 *
+	 * @param tourItem - The id of the element
+	 */
+	public unregisterElement(tourItem: string): void {
+		this.registerElementSubject.next({
+			tourItem,
+			type: &#x27;unregister&#x27;,
+		});
+	}
+
+	/**
+	 * Closes the currently running tour
+	 */
+	public closeTour(): Observable&lt;NgxTourInteraction&gt; {
+		// Iben: Remove the current overlay
+		if (this.overlayRef) {
+			this.overlayRef.dispose();
+			this.overlayRef &#x3D; undefined;
+		}
+
+		// Iben: Set the current and previous item to inactive
+		this.elements[this.currentStepSubject.getValue()?.tourItem]?.getValue()?.setActive(false);
+		this.elements[this.previousStepSubject.getValue()?.tourItem]?.getValue()?.setActive(false);
+
+		// Iben: Reset the subjects
+		this.currentStepSubject.next(undefined);
+		this.previousStepSubject.next(undefined);
+		this.currentIndexSubject.next(undefined);
+
+		// Iben: Reset the tour and the tour length
+		this.currentTourSubject.next(undefined);
+		this.amountOfSteps &#x3D; 0;
+
+		// Wouter: Remove the body class
+		this.handleBodyClass(&#x27;remove&#x27;);
+
+		// Iben: Emit the end of the tour
+		this.tourEndedSubject.next();
+
+		// Iben: Return an empty Observable
+		return of(null);
+	}
+
+	ngOnDestroy(): void {
+		// Iben: Complete all subscriptions
+		this.destroyedSubject.next();
+		this.destroyedSubject.complete();
+		this.tourEndedSubject.next();
+		this.tourEndedSubject.complete();
+		this.windowResizeSubject.next();
+		this.windowResizeSubject.complete();
+
+		// Wouter: Remove the body class
+		this.handleBodyClass(&#x27;remove&#x27;);
+
+		// Iben: Get rid of the onresize event
+		this.windowService.runInBrowser(({ browserWindow }) &#x3D;&gt; {
+			browserWindow.onresize &#x3D; null;
+		});
+	}
+
+	/**
+	 * Sets a provided step in the tour
+	 *
+	 * @param currentStep - The provided step we want to set
+	 */
+	private setStep(currentStep: NgxTourStep): Observable&lt;NgxTourInteraction&gt; {
+		// Iben: Get the previous step, if it exists
+		const previousStep &#x3D; this.currentStepSubject.getValue();
+		const previousItem &#x3D; this.elements[previousStep?.tourItem]?.getValue();
+
+		// Iben: Set the previous item back to inactive
+		if (previousItem) {
+			previousItem.setActive(false);
+		}
+
+		// Iben: Early exit and close tour if there&#x27;s no current step
+		if (!currentStep) {
+			return this.closeTour();
+		}
+
+		// Iben: Run the afterVisible of the previous step
+		return this.runStepFunction(previousStep?.afterVisible).pipe(
+			// Iben: Run the beforeVisible of the current step
+			concatMap(() &#x3D;&gt; {
+				return this.runStepFunction(currentStep.beforeVisible);
+			}),
+			// Wouter: Add a delay to allow the change detection to be ran before the step is visualized.
+			// This makes sure the bounding box of the highlighted element is correct.
+			delay(1),
+			concatMap(() &#x3D;&gt; {
+				// Iben: If no tourItem was provided, we render the step in the center of the page
+				if (!currentStep.tourItem) {
+					return this.handleStepInteractions(currentStep);
+				}
+
+				// Iben: If a tourItem was provided, we know we have to search for the element
+				return this.elements[currentStep.tourItem].pipe(
+					// Iben: Check if the item already exists. If not, we wait and grab the latest emit using auditTime
+					// We do this to avoid a delay when going back and forth in the tour
+					concatMap((item) &#x3D;&gt; {
+						return item
+							? of(item)
+							: this.elements[currentStep.tourItem].pipe(
+									// Iben: If no delay was provided, we use the default of 100ms
+									auditTime(currentStep.delay || 100)
+							  );
+					}),
+					take(1),
+					switchMap((item) &#x3D;&gt; {
+						// Iben: If an item wasn&#x27;t found, we move in the current direction until we find an element
+						if (!item) {
+							return this.handleNext(this.currentDirection || &#x27;next&#x27;);
+						}
+						// Iben: If the item was found, we visualize the step
+						return this.handleStepInteractions(currentStep, item);
+					})
+				);
+			})
+		);
+	}
+
+	/**
+	 * Handles the next action in the tour
+	 *
+	 * @param direction - The direction we wish to move in
+	 */
+	private handleNext(direction: NgxTourDirection): Observable&lt;NgxTourInteraction&gt; {
+		// Iben set the current direction so we know in which way we&#x27;re moving the tour
+		this.currentDirection &#x3D; direction;
+
+		// Iben: Get the new index
+		const index &#x3D;
+			direction &#x3D;&#x3D;&#x3D; &#x27;next&#x27;
+				? this.currentIndexSubject.getValue() + 1
+				: this.currentIndexSubject.getValue() - 1;
+
+		// Iben: Update the new index
+		this.currentIndexSubject.next(index);
+
+		// Iben: Set the next step in the tour
+		return this.setStep(this.currentTourSubject.getValue()[index]);
+	}
+
+	/**
+	 * Visualizes the current step
+	 *
+	 * @private
+	 * @param currentStep - The step we wish to visualize
+	 * @param item - The item we wish to highlight
+	 */
+	private visualizeStep(
+		currentStep: NgxTourStep,
+		item?: NgxTourItemDirective
+	): ComponentRef&lt;NgxTourStepComponent&gt; {
+		return this.windowService.runInBrowser(({ browserDocument, browserWindow }) &#x3D;&gt; {
+			// Iben: Update the previous and current step subject
+      this.previousStepSubject.next( this.currentStepSubject.getValue() );
+			this.currentStepSubject.next(currentStep);
+
+			// Iben: Restore the body overflow so we can scroll to the right element
+			browserDocument.body.style.overflow &#x3D; this.bodyOverflow;
+
+			// Iben: Calculate the defaultOffsets
+			// Wouter: This needs to happen before we calculate the scroll position
+			const margin &#x3D; this.getCutoutMargin(currentStep);
+
+			// Iben: Scroll to the top before each step to get consistent behavior when going back and forth
+			browserWindow.scrollTo({ top: 0 });
+
+			const { isVisible, scrollY, relativeTo } &#x3D; elementIsVisibleInViewport(
+				item?.elementRef?.nativeElement,
+				margin,
+				{ ...this.configuration.offset, ...currentStep?.offset }
+			);
+
+			// Iben: Scroll to the element if it&#x27;s not in view
+			if (!isVisible) {
+				browserWindow.scrollTo({ top: scrollY });
+			}
+
+			// Iben: Disable scrolling
+			browserDocument.body.style.overflow &#x3D; &#x27;hidden&#x27;;
+
+			// Wouter: Calculate the step&#x27;s position so that it is rendered relatively to the cutout
+			const relativeDisplay: NgxTourStepPosition &#x3D; relativeTo &#x3D;&#x3D; &#x27;bottom&#x27; ? &#x27;above&#x27; : &#x27;below&#x27;;
+			const positionY &#x3D; currentStep.position ? currentStep.position : relativeDisplay;
+			const offsetY &#x3D; positionY &#x3D;&#x3D;&#x3D; &#x27;above&#x27; ? -margin : margin;
+			const offsetX &#x3D; currentStep.position &#x3D;&#x3D;&#x3D; &#x27;right&#x27; ? margin : -margin;
+
+			// Iben: Determine the position of the item based on whether a tourItem was provided
+			const positionStrategy &#x3D; item
+				? this.cdkOverlayService
+						.position()
+						.flexibleConnectedTo(item.elementRef)
+						.withDefaultOffsetY(offsetY)
+						.withDefaultOffsetX(offsetX)
+						.withPositions([this.positionMap[currentStep.position || relativeDisplay]])
+				: this.cdkOverlayService
+						.position()
+						.global()
+						.centerHorizontally()
+						.centerVertically();
+
+			// Iben: Create an overlay if it does not exist
+			if (!this.overlayRef) {
+				// Iben: Create an overlay config
+				const config &#x3D; new OverlayConfig({
+					hasBackdrop: !currentStep.disableBackDrop,
+					// Iben: Due to issues with how the scrollingStrategy.block() works with scrolling to items that are not in view, we set this to noop
+					scrollStrategy: this.cdkOverlayService.scrollStrategies.noop(),
+					positionStrategy,
+				});
+
+				// Create the overlay
+				this.overlayRef &#x3D; this.cdkOverlayService.create(config);
+			} else {
+				// Iben: Detach the previous portal
+				this.overlayRef.detach();
+
+				// Iben: If the overlay exists, we update the position strategy
+				this.overlayRef.updatePositionStrategy(positionStrategy);
+
+				// Iben: If the current step has no backdrop, we detach the backdrop
+				if (currentStep.disableBackDrop) {
+					this.overlayRef.detachBackdrop();
+				}
+			}
+
+			// Iben: Create a portal and attach the component
+			const portal &#x3D; new ComponentPortal&lt;NgxTourStepComponent&gt;(
+				// Iben: If the currentStep has its own component, we overwrite it
+				currentStep.component || this.configuration.component
+			);
+
+			const componentRef &#x3D; this.overlayRef.attach(portal);
+
+			// Iben: Update the data of the component
+			componentRef.setInput(&#x27;content&#x27;, currentStep.content);
+			componentRef.setInput(&#x27;title&#x27;, currentStep.title);
+			componentRef.setInput(&#x27;data&#x27;, currentStep.data);
+			componentRef.setInput(&#x27;currentStep&#x27;, this.currentIndexSubject.getValue());
+			componentRef.setInput(&#x27;amountOfSteps&#x27;, this.amountOfSteps);
+			componentRef.setInput(&#x27;position&#x27;, item ? currentStep.position || &#x27;below&#x27; : undefined);
+			componentRef.setInput(&#x27;stepClass&#x27;, currentStep.stepClass);
+			componentRef.setInput(&#x27;elementId&#x27;, item?.elementId);
+
+			// Iben: Highlight the current html item as active if one is provided
+			if (item) {
+				// Iben: Set the active class of the item
+				item.setActive(true);
+			}
+
+			// Iben: Set the clip path of the backdrop
+			this.backdropClipEventSubject.next({
+				backdrop: this.overlayRef.backdropElement,
+				item: item?.elementRef?.nativeElement,
+				cutoutMargin: this.getCutoutMargin(currentStep),
+			});
+
+			// Iben: Return the new component
+			return componentRef;
+		});
+	}
+
+	/**
+	 * Handles the interactions with a step
+	 *
+	 * @param  currentStep - The provided step
+	 * @param  item - An optional item
+	 */
+	private handleStepInteractions(
+		currentStep: NgxTourStep,
+		item?: NgxTourItemDirective
+	): Observable&lt;NgxTourInteraction&gt; {
+		// Iben: If the item was found, we visualize the step
+		const componentRef &#x3D; this.visualizeStep(currentStep, item);
+
+		return this.runStepFunction(currentStep.onVisible).pipe(
+			concatMap(() &#x3D;&gt; {
+				// Iben: Listen to the component interactions and respond accordingly
+				return outputToObservable(componentRef.instance.handleInteraction).pipe(
+					take(1),
+					concatMap((interaction: NgxTourInteraction) &#x3D;&gt; {
+						return interaction &#x3D;&#x3D;&#x3D; &#x27;close&#x27;
+							? this.closeTour()
+							: this.handleNext(interaction);
+					})
+				);
+			})
+		);
+	}
+
+	/**
+	 * Returns an observable based on whether a step function was provided
+	 *
+	 * @param stepFunction - The provided step function
+	 */
+	private runStepFunction(stepFunction?: NgxTourAction): Observable&lt;unknown&gt; {
+		// Iben: If no step function was provided, we simply return a single void of
+		if (!stepFunction) {
+			return of(null);
+		}
+
+		// Iben: Run the step function and depending on the result, we return the result or an of.
+		return (
+			stepFunction(this.currentStepSubject.getValue(), this.currentIndexSubject.getValue()) ||
+			of(null)
+		).pipe(
+			// Iben: We add a take(1) as an extra safety measure in case users end up not taking care of this
+			take(1)
+		);
+	}
+
+	/**
+	 * Surrounds the provided item with a cutout in the backdrop
+	 *
+	 * @private
+	 * @param event.backdrop - The provided backdrop
+	 * @param event.item - The item we wish to surround
+	 * @param event.cutoutMargin - The amount of margin we want around the item
+	 */
+	private setClipPath(event: NgxTourBackdropClipEvent): void {
+		const { backdrop, item, cutoutMargin } &#x3D; event;
+
+		// Iben: Early exit in case no backdrop or item is present
+		if (!backdrop || !item) {
+			return;
+		}
+
+		// Iben: Get the positions of the path around the item
+		const { top, left, bottom, right } &#x3D; item.getBoundingClientRect();
+		const positionTop &#x3D; top - cutoutMargin;
+		const positionLeft &#x3D; left - cutoutMargin;
+		const positionBottom &#x3D; bottom + cutoutMargin;
+		const positionRight &#x3D; right + cutoutMargin;
+
+		// Iben: Create the box around the item
+		const box &#x3D; &#x60;${positionLeft}px ${positionTop}px, ${positionRight}px ${positionTop}px, ${positionRight}px ${positionBottom}px, ${positionLeft}px ${positionBottom}px, ${positionLeft}px ${positionTop}px&#x60;;
+
+		// Iben: Clip the box out of the backdrop
+		backdrop.style.clipPath &#x3D; &#x60;polygon(evenodd, 0% 0%, 0% 100%, 100% 100%, 100% 0%, 0% 0%,${box})&#x60;;
+	}
+
+	/**
+	 * Handles the registration event
+	 *
+	 * @param event - The registration event we wish to handle
+	 */
+	private handleRegistrationEvent(event: NgxTourRegistrationEvent): Observable&lt;null&gt; {
+		// Iben: Early exit if no event was found
+		if (!event) {
+			return of(null);
+		}
+
+		// Iben: Unregister the element if it&#x27;s an unregister event
+		if (event.type &#x3D;&#x3D;&#x3D; &#x27;unregister&#x27;) {
+			this.elements[event.tourItem]?.next(undefined);
+			return of(null);
+		}
+
+		// Iben: Early exit if no element was found
+		if (!event.element) {
+			return of(null);
+		}
+
+		// Iben: Check if there is already an item with the current id. If it is, update it, if not, make a new BehaviorSubject
+		const elementSubject &#x3D; this.elements[event.tourItem];
+
+		// Iben: If we have an element subject already, we check if it already has an element
+		if (elementSubject) {
+			// Iben: If the current value is undefined, we register the element
+			if (elementSubject.getValue() &#x3D;&#x3D;&#x3D; undefined) {
+				elementSubject.next(event.element);
+			}
+
+			return of(null);
+		}
+
+		// Iben: If no BehaviorSubject exists, we create one
+		this.elements[event.tourItem] &#x3D; new BehaviorSubject&lt;NgxTourItemDirective&gt;(event.element);
+
+		return of(null);
+	}
+
+	/**
+	 * Returns the provided cutoutMargin of a step, or 5px if none is provided
+	 *
+	 * @param step - The current step
+	 */
+	private getCutoutMargin(step: NgxTourStep): number {
+		return step?.cutoutMargin &#x3D;&#x3D;&#x3D; undefined ? 5 : step.cutoutMargin;
+	}
+
+	/**
+	 * Sets or removes the body class to indicate the tour is active
+	 */
+	private handleBodyClass(action: &#x27;set&#x27; | &#x27;remove&#x27;): void {
+		this.windowService.runInBrowser(({ browserDocument }) &#x3D;&gt; {
+			if (action &#x3D;&#x3D;&#x3D; &#x27;set&#x27;) {
+				browserDocument.body.classList.add(&#x27;ngx-tour-active&#x27;);
+			} else {
+				browserDocument.body.classList.remove(&#x27;ngx-tour-active&#x27;);
+			}
+		});
+	}
+}
+</code></pre>
+    </div>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'injectable';
+            var COMPODOC_CURRENT_PAGE_URL = 'NgxTourService.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script>
+               $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               checkToggle(darkModeState);
+               if ($darkModeToggleSwitchers.length > 0) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].addEventListener('change', function (event) {
+                              darkModeState = !darkModeState;
+                              toggleDarkMode(darkModeState);
+                         });
+                    }
+               }
+          </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

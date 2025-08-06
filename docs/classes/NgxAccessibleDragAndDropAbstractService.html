@@ -1,0 +1,794 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>@opensource/source documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+    </head>
+    <body>
+          <script>
+               // Blocking script to avoid flickering dark mode
+               // Dark mode toggle button
+               var useDark = window.matchMedia('(prefers-color-scheme: dark)');
+               var darkModeState = useDark.matches;
+               var $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               var $darkModeToggles = document.querySelectorAll('.dark-mode-switch');
+               var darkModeStateLocal = localStorage.getItem('compodoc_darkmode-state');
+
+               function checkToggle(check) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].checked = check;
+                    }
+               }
+
+               function toggleDarkMode(state) {
+                    if (window.localStorage) {
+                         localStorage.setItem('compodoc_darkmode-state', state);
+                    }
+
+                    checkToggle(state);
+
+                    const hasClass = document.body.classList.contains('dark');
+
+                    if (state) {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.add('dark');
+                         }
+                         if (!hasClass) {
+                              document.body.classList.add('dark');
+                         }
+                    } else {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.remove('dark');
+                         }
+                         if (hasClass) {
+                              document.body.classList.remove('dark');
+                         }
+                    }
+               }
+
+               useDark.addEventListener('change', function (evt) {
+                    toggleDarkMode(evt.matches);
+               });
+               if (darkModeStateLocal) {
+                    darkModeState = darkModeStateLocal === 'true';
+               }
+               toggleDarkMode(darkModeState);
+          </script>
+
+        <div class="navbar navbar-default navbar-fixed-top d-md-none p-0">
+               <div class="d-flex">
+                    <a href="../" class="navbar-brand">@opensource/source documentation</a>
+                    <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+               </div>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="d-none d-md-block menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content class">
+                   <div class="content-data">
+
+
+
+
+
+
+
+
+
+
+
+
+<ol class="breadcrumb">
+  <li class="breadcrumb-item">Classes</li>
+  <li class="breadcrumb-item" >NgxAccessibleDragAndDropAbstractService</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item">
+            <a href="#info" 
+                class="nav-link"
+                class="nav-link active"
+                role="tab" id="info-tab" data-bs-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li class="nav-item">
+            <a href="#source" 
+                class="nav-link"
+                
+                role="tab" id="source-tab" data-bs-toggle="tab" data-link="source">Source</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="info">
+        <p class="comment">
+            <h3>File</h3>
+        </p>
+        <p class="comment">
+            <code>libs/angular/layout/src/lib/abstracts/drag-and-drop/drag-and-drop.service.ts</code>
+        </p>
+
+
+            <p class="comment">
+                <h3>Description</h3>
+            </p>
+            <p class="comment">
+                <p>An abstract service that is used to make drag and drop components accessible for assistive technologies</p>
+
+            </p>
+
+
+
+
+            <section data-compodoc="block-index">
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#customMessages" >customMessages</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                    <span class="modifier">Readonly</span>
+                                <a href="#liveRegionService" >liveRegionService</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#setDragAndDropDescription" >setDragAndDropDescription</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#setMessage" >setMessage</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <h6><b>Accessors</b></h6>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <ul class="index-list">
+                                <li>
+                                    <a href="#currentLanguage" >currentLanguage</a>
+                                </li>
+                                <li>
+                                    <a href="#messageRecord" >messageRecord</a>
+                                </li>
+                            </ul>
+                        </td>
+                    </tr>
+        </tbody>
+    </table>
+</section>
+
+
+            <section data-compodoc="block-properties">
+    
+    <h3 id="inputs">
+        Properties
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="customMessages"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                        <span ><b>customMessages</b></span>
+                        <a href="#customMessages"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../interfaces/NgxAccessibleDragAndDropMessageRecord.html" target="_self" >Record&lt;string | NgxAccessibleDragAndDropMessageRecord&gt;</a></code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="32" class="link-to-prism">libs/angular/layout/src/lib/abstracts/drag-and-drop/drag-and-drop.service.ts:32</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>A custom set of messages used for the drag and drop events.</p>
+<p> Please check the readme for more information on what is necessary to make these messages accessible.</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="liveRegionService"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                            <span class="modifier">Readonly</span>
+                        <span ><b>liveRegionService</b></span>
+                        <a href="#liveRegionService"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>LiveAnnouncer</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>inject(LiveAnnouncer)</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="20" class="link-to-prism">libs/angular/layout/src/lib/abstracts/drag-and-drop/drag-and-drop.service.ts:20</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>The live region service</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+</section>
+
+            <section data-compodoc="block-methods">
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="setDragAndDropDescription"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                        <span ><b>setDragAndDropDescription</b></span>
+                        <a href="#setDragAndDropDescription"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>setDragAndDropDescription(parent: HTMLElement, description?: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="119"
+                                    class="link-to-prism">libs/angular/layout/src/lib/abstracts/drag-and-drop/drag-and-drop.service.ts:119</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Adds a description to the drag and drop host explaining how the drag and drop functions</p>
+</div>
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                                <td>Description</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>parent</td>
+                                            <td>
+                                                        <code>HTMLElement</code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                            <td>
+                                                    <ul>
+<li>The drag and drop host</li>
+</ul>
+
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                                <td>description</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    Yes
+                                            </td>
+
+
+                                            <td>
+                                                    <ul>
+<li>An optional description used to overwrite the default description</li>
+</ul>
+
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>    <code>Observable&lt;void&gt;</code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="setMessage"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                        <span ><b>setMessage</b></span>
+                        <a href="#setMessage"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>setMessage(message: <a href="../undefineds/NgxAccessibleDragAndDropMessage.html" target="_self">NgxAccessibleDragAndDropMessage</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="39"
+                                    class="link-to-prism">libs/angular/layout/src/lib/abstracts/drag-and-drop/drag-and-drop.service.ts:39</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Sets a message to the live region</p>
+</div>
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                                <td>Description</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>message</td>
+                                            <td>
+                                                            <code><a href="../miscellaneous/typealiases.html#NgxAccessibleDragAndDropMessage" target="_self" >NgxAccessibleDragAndDropMessage</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                            <td>
+                                                    <ul>
+<li>The provided message</li>
+</ul>
+
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>    <code>Observable&lt;void&gt;</code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+
+
+
+
+
+            <section data-compodoc="block-accessors">
+    <h3 id="accessors">
+        Accessors
+    </h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="currentLanguage"></a>
+                        <span class="name"><b>currentLanguage</b><a href="#currentLanguage"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>currentLanguage()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="25" class="link-to-prism">libs/angular/layout/src/lib/abstracts/drag-and-drop/drag-and-drop.service.ts:25</a></div>
+                                </td>
+                            </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-description"><p>A method that passes the current language, can either be a string or an Observable</p>
+</div>
+
+                                <div class="io-description">
+                                    <b>Returns : </b>    <code>string | Observable</code>
+
+                                </div>
+                        </td>
+                    </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="messageRecord"></a>
+                        <span class="name"><b>messageRecord</b><a href="#messageRecord"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>messageRecord()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="161" class="link-to-prism">libs/angular/layout/src/lib/abstracts/drag-and-drop/drag-and-drop.service.ts:161</a></div>
+                                </td>
+                            </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-description"><p>Returns the custom message record or the default when no custom record was provided</p>
+</div>
+
+                                <div class="io-description">
+                                    <b>Returns : </b>        <code><a href="../interfaces/NgxAccessibleDragAndDropMessageRecord.html" target="_self" >Record&lt;string, NgxAccessibleDragAndDropMessageRecord&gt;</a></code>
+
+                                </div>
+                        </td>
+                    </tr>
+
+            </tbody>
+        </table>
+</section>
+    </div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { LiveAnnouncer } from &#x27;@angular/cdk/a11y&#x27;;
+import { inject } from &#x27;@angular/core&#x27;;
+import { filter, map, Observable, of, take, tap } from &#x27;rxjs&#x27;;
+import { v4 as uuid } from &#x27;uuid&#x27;;
+
+import { NgxAccessibleDragAndDropMessageRecords } from &#x27;../../const&#x27;;
+import {
+	NgxAccessibleDragAndDropMessage,
+	NgxAccessibleDragAndDropMessageRecord,
+} from &#x27;../../types&#x27;;
+import { hideElement } from &#x27;../../utils&#x27;;
+
+/**
+ * An abstract service that is used to make drag and drop components accessible for assistive technologies
+ */
+export abstract class NgxAccessibleDragAndDropAbstractService {
+	/**
+	 * The live region service
+	 */
+	private readonly liveRegionService: LiveAnnouncer &#x3D; inject(LiveAnnouncer);
+
+	/**
+	 * A method that passes the current language, can either be a string or an Observable
+	 */
+	abstract get currentLanguage(): string | Observable&lt;string&gt;;
+
+	/**
+	 * A custom set of messages used for the drag and drop events.
+	 *
+	 *  Please check the readme for more information on what is necessary to make these messages accessible.
+	 */
+	public customMessages: Record&lt;string, NgxAccessibleDragAndDropMessageRecord&gt;;
+
+	/**
+	 * Sets a message to the live region
+	 *
+	 * @param message - The provided message
+	 */
+	public setMessage(message: NgxAccessibleDragAndDropMessage): Observable&lt;void&gt; {
+		// Iben: If no language was set, we early exit
+		if (!this.currentLanguage) {
+			console.error(
+				&#x27;NgxAccessibleDragAndDropAbstractService: No language was provided, so no message could be set.&#x27;
+			);
+
+			return of();
+		}
+
+		// Iben: Take the current language to fetch the message
+		return (
+			typeof this.currentLanguage &#x3D;&#x3D;&#x3D; &#x27;string&#x27;
+				? of(this.currentLanguage)
+				: this.currentLanguage
+		).pipe(
+			filter(Boolean),
+			take(1),
+			tap((currentLanguage) &#x3D;&gt; {
+				// Iben: Fetch the necessary data
+				const { type, data } &#x3D; message;
+
+				let result: string &#x3D; this.messageRecord[currentLanguage][type];
+
+				// Iben: If no message was found, we early exit and throw an error
+				if (!result) {
+					console.error(
+						&#x27;NgxAccessibleDragAndDropAbstractService: No message for the corresponding drag and drop event was found.&#x27;
+					);
+
+					return;
+				}
+
+				// Iben: Replace the necessary substrings
+				if (type &#x3D;&#x3D;&#x3D; &#x27;selected&#x27; || type &#x3D;&#x3D;&#x3D; &#x27;deselected&#x27; || type &#x3D;&#x3D;&#x3D; &#x27;cancelled&#x27;) {
+					result &#x3D; result.replace(
+						&#x27;{{#item}}&#x27;,
+						data.itemLabel || &#x60;${this.messageRecord[currentLanguage].item} ${data.item}&#x60;
+					);
+				} else if (type &#x3D;&#x3D;&#x3D; &#x27;moved&#x27;) {
+					result &#x3D; result
+						.replace(
+							&#x27;{{#item}}&#x27;,
+							data.itemLabel ||
+								&#x60;${this.messageRecord[currentLanguage].item} ${data.item}&#x60;
+						)
+						.replace(
+							&#x60;{{#from}}&#x60;,
+							data.fromLabel ||
+								&#x60;${this.messageRecord[currentLanguage].container} ${data.from}&#x60;
+						)
+						.replace(
+							&#x60;{{#to}}&#x60;,
+							data.toLabel ||
+								&#x60;${this.messageRecord[currentLanguage].container} ${data.to}&#x60;
+						);
+				} else if (type &#x3D;&#x3D;&#x3D; &#x27;reordered&#x27;) {
+					result &#x3D; result
+						.replace(
+							&#x27;{{#item}}&#x27;,
+							data.itemLabel ||
+								&#x60;${this.messageRecord[currentLanguage].item} ${data.item}&#x60;
+						)
+						.replace(&#x60;{{#from}}&#x60;, data.from)
+						.replace(&#x60;{{#to}}&#x60;, data.to);
+				}
+
+				// Iben: Update the message in the live region
+				this.liveRegionService.announce(result);
+			}),
+			map(() &#x3D;&gt; null)
+		);
+	}
+
+	/**
+	 * Adds a description to the drag and drop host explaining how the drag and drop functions
+	 *
+	 * @param  parent - The drag and drop host
+	 * @param description - An optional description used to overwrite the default description
+	 */
+	public setDragAndDropDescription(parent: HTMLElement, description?: string): Observable&lt;void&gt; {
+		// Iben: Create the description element and its id
+		const element: HTMLParagraphElement &#x3D; document.createElement(&#x27;p&#x27;);
+		const id: string &#x3D; uuid();
+
+		// Iben: Take the current language to fetch the message
+		return (
+			typeof this.currentLanguage &#x3D;&#x3D;&#x3D; &#x27;string&#x27;
+				? of(this.currentLanguage)
+				: this.currentLanguage
+		).pipe(
+			tap((language: string) &#x3D;&gt; {
+				// Iben: Get the description text
+				const text &#x3D; description || this.messageRecord[language].description;
+
+				// Iben: If no description was found, we early exit and throw an error
+				if (!text) {
+					console.error(
+						&#x27;NgxAccessibleDragAndDropAbstractService: No description for the drag and drop container was found.&#x27;
+					);
+
+					return;
+				}
+
+				// Iben: Set the description and id of the element
+				element.innerText &#x3D; text;
+				element.setAttribute(&#x27;id&#x27;, id);
+
+				// Iben: Attach the element to the parent and update the aria id
+				parent.appendChild(element);
+				parent.setAttribute(&#x27;aria-describedby&#x27;, id);
+
+				// Iben: Hide element
+				hideElement(element);
+			}),
+			map(() &#x3D;&gt; null)
+		);
+	}
+
+	/**
+	 * Returns the custom message record or the default when no custom record was provided
+	 */
+	private get messageRecord(): Record&lt;string, NgxAccessibleDragAndDropMessageRecord&gt; {
+		return this.customMessages || NgxAccessibleDragAndDropMessageRecords;
+	}
+}
+</code></pre>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'class';
+            var COMPODOC_CURRENT_PAGE_URL = 'NgxAccessibleDragAndDropAbstractService.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script>
+               $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               checkToggle(darkModeState);
+               if ($darkModeToggleSwitchers.length > 0) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].addEventListener('change', function (event) {
+                              darkModeState = !darkModeState;
+                              toggleDarkMode(darkModeState);
+                         });
+                    }
+               }
+          </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

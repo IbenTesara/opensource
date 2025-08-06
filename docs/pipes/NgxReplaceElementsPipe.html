@@ -1,0 +1,550 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>@opensource/source documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+    </head>
+    <body>
+          <script>
+               // Blocking script to avoid flickering dark mode
+               // Dark mode toggle button
+               var useDark = window.matchMedia('(prefers-color-scheme: dark)');
+               var darkModeState = useDark.matches;
+               var $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               var $darkModeToggles = document.querySelectorAll('.dark-mode-switch');
+               var darkModeStateLocal = localStorage.getItem('compodoc_darkmode-state');
+
+               function checkToggle(check) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].checked = check;
+                    }
+               }
+
+               function toggleDarkMode(state) {
+                    if (window.localStorage) {
+                         localStorage.setItem('compodoc_darkmode-state', state);
+                    }
+
+                    checkToggle(state);
+
+                    const hasClass = document.body.classList.contains('dark');
+
+                    if (state) {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.add('dark');
+                         }
+                         if (!hasClass) {
+                              document.body.classList.add('dark');
+                         }
+                    } else {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.remove('dark');
+                         }
+                         if (hasClass) {
+                              document.body.classList.remove('dark');
+                         }
+                    }
+               }
+
+               useDark.addEventListener('change', function (evt) {
+                    toggleDarkMode(evt.matches);
+               });
+               if (darkModeStateLocal) {
+                    darkModeState = darkModeStateLocal === 'true';
+               }
+               toggleDarkMode(darkModeState);
+          </script>
+
+        <div class="navbar navbar-default navbar-fixed-top d-md-none p-0">
+               <div class="d-flex">
+                    <a href="../" class="navbar-brand">@opensource/source documentation</a>
+                    <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+               </div>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="d-none d-md-block menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content pipe">
+                   <div class="content-data">
+
+
+
+
+
+
+
+
+
+
+
+<ol class="breadcrumb">
+  <li class="breadcrumb-item">Pipes</li>
+  <li class="breadcrumb-item" >NgxReplaceElementsPipe</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item">
+            <a href="#info" 
+                class="nav-link"
+                class="nav-link active"
+                role="tab" id="info-tab" data-bs-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li class="nav-item">
+            <a href="#readme" 
+                class="nav-link"
+                
+                role="tab" id="readme-tab" data-bs-toggle="tab" data-link="readme">README</a>
+        </li>
+        <li class="nav-item">
+            <a href="#source" 
+                class="nav-link"
+                
+                role="tab" id="source-tab" data-bs-toggle="tab" data-link="source">Source</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="info">
+
+        <p class="comment">
+            <h3>File</h3>
+        </p>
+        <p class="comment">
+            <code>libs/angular/utils/src/lib/pipes/replace-elements/replace-elements.pipe.ts</code>
+        </p>
+
+
+            <p class="comment">
+                <h3>Description</h3>
+            </p>
+            <p class="comment">
+                <p>A pipe that allows to replace text elements with a WebComponent</p>
+
+            </p>
+
+
+        <section data-compodoc="block-metadata">
+            <h3>Metadata</h3>
+            <table class="table table-sm table-hover metadata">
+                <tbody>
+                    <tr>
+                        <td class="col-md-3">Name</td>
+                        <td class="col-md-9">ngxReplaceElements</td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-3">Standalone</td>
+                        <td class="col-md-9"><code>true</code></td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+            <section data-compodoc="block-methods">
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="transform"></a>
+                    <span class="name">
+                        <span ><b>transform</b></span>
+                        <a href="#transform"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>transform(value: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, items: <a href="../interfaces/NgxReplaceElementsItem.html" target="_self">NgxReplaceElementsItem[]</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="24"
+                                    class="link-to-prism">libs/angular/utils/src/lib/pipes/replace-elements/replace-elements.pipe.ts:24</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Replaces all matches of a specific selector with provided WebComponents</p>
+</div>
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                                <td>Description</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>value</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                            <td>
+                                                    <ul>
+<li>The original string value</li>
+</ul>
+
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                                <td>items</td>
+                                            <td>
+                                                            <code><a href="../interfaces/NgxReplaceElementsItem.html" target="_self" >NgxReplaceElementsItem[]</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                            <td>
+                                                    <ul>
+<li>The items we wish to replace</li>
+</ul>
+
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>    <code>SafeHtml</code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+            <section data-compodoc="block-properties">
+    
+    <h3 id="inputs">
+        Properties
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="configuration"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                            <span class="modifier">Readonly</span>
+                        <span ><b>configuration</b></span>
+                        <a href="#configuration"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>inject&lt;NgxReplaceElementsConfiguration&gt;(NgxReplaceElementsConfigurationToken)</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="15" class="link-to-prism">libs/angular/utils/src/lib/pipes/replace-elements/replace-elements.pipe.ts:15</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="sanitizer"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                            <span class="modifier">Readonly</span>
+                        <span ><b>sanitizer</b></span>
+                        <a href="#sanitizer"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>inject(DomSanitizer)</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="16" class="link-to-prism">libs/angular/utils/src/lib/pipes/replace-elements/replace-elements.pipe.ts:16</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+</section>
+
+    </div>
+
+    <div class="tab-pane fade " id="readme">
+        <p><h1><code>ngxReplaceElements</code></h1>
+<p>The <code>ngxReplaceElements</code> pipe will provide a way to transform a string that contains one or more parts that need an Angular component by taking advantage of Angular web components.</p>
+<p>This can be useful in combination with translation strings that require in-app links or WYSIWYG content from an external source.</p>
+<h2>How to use</h2>
+<h3>Set up</h3>
+<p>The pipe requires a couple of things to be provided before it can be used.</p>
+<p>First, create a component that will be used to replace your target:</p>
+<b>Example :</b><div><pre class="line-numbers"><code class="language-typescript">&#64;Component({
+    selector: &#39;link&#39;,
+    template: &#39;&lt;a [routerLink]=&quot;link&quot;&gt;&lt;/a&gt;&#39;,
+})
+export class LinkComponent {
+    // Keep in mind that Angular&#39;s innerHTML &amp; outerHTML will convert attributes to lower casing.
+    // This input property will need to be lowercased to make this work.
+    public link: InputSignal: input();
+}</code></pre></div><p>Then register it as a web component in your <code>app.component.ts</code>:</p>
+<b>Example :</b><div><pre class="line-numbers"><code class="language-typescript">&#64;Component({
+    //...
+})
+export class AppComponent {
+    constructor(
+        // ...
+        private readonly windowService: NgxWindowService,
+        private readonly injector: Injector
+    ) {
+        // Note that we are using our NgxWindowService (ngx-core) to avoid SSR issues.
+        if (this.windowService.isBrowser) {
+            const linkComponent = createCustomElement(LinkComponent, { injector: this.injector });
+
+            customElements.define(&#39;ngx-link&#39;, linkComponent);
+        }
+    }
+}</code></pre></div><p>Lastly set up the global config in your root provider array:</p>
+<b>Example :</b><div><pre class="line-numbers"><code class="language-typescript">providers: [
+    //...
+    provideNgxReplaceElementsConfiguration({
+        link: {
+            element: &#39;ngx-link&#39;,
+            selector: &#39;a[data-link-id={{id}}]&#39;,
+            includeInnerHtml: true,
+        },
+        image: {
+            element: &#39;ngx-image&#39;,
+            selector: &#39;img[data-link-id={{id}}]&#39;,
+        },
+    }),
+];</code></pre></div><p>For each element we want to register, we define the WebComponent name using the <code>element</code> property. In order to be able to select an item to replace later on in the text, we create a <code>selector</code>. This selector should <strong>always</strong> include a part to identify the id, being <code>{{id}}</code>.</p>
+<p>If we wish to use the original innerText of the element whilst replacing, we can do so by setting <code>includeInnerHtml</code> to true.</p>
+<h3>Using the pipe</h3>
+<p>When the web component is set up, you can start using the pipe.</p>
+<p>First set up anchors in your input string:</p>
+<b>Example :</b><div><pre class="line-numbers"><code class="language-text">&quot;This is a text with a &lt;a data-link-id=&#39;someUniqueId&#39;&gt;link&lt;/a&gt;.&quot;</code></pre></div><p>The <code>someUniqueId</code> will be used by the pipe to find and replace your link element so make sure that each anchor within your translation has a unique identifier.</p>
+<p>Within the template you can now provide the string and transform it like this:</p>
+<b>Example :</b><div><pre class="line-numbers"><code class="language-angular2html">&lt;p [innerHTML]=&quot;string | withRouterLinks : [{
+    id: &#39;someUniqueId&#39;,
+    elementId: link,
+    data: {
+        link: &#39;somewhere/in/the/app&#39;
+    }
+}]&quot;&gt;&lt;/p&gt;</code></pre></div><p>Whilst <code>id</code> refers to the id in the string, <code>elementId</code> refers to the element we have configured in the configuration.</p>
+<p>The <code>data</code> property can be used to set the inputs of our provided WebComponent. We once again want to stress that due to the nature of WebComponents, these properties can only have lowercase keys.</p>
+</p>
+    </div>
+
+    <div class="tab-pane fade  tab-source-code" id="source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Pipe, PipeTransform, inject } from &#x27;@angular/core&#x27;;
+import { DomSanitizer, SafeHtml } from &#x27;@angular/platform-browser&#x27;;
+
+import { NgxReplaceElementsConfigurationToken } from &#x27;../../tokens&#x27;;
+import { NgxReplaceElementsConfiguration, NgxReplaceElementsItem } from &#x27;../../types&#x27;;
+
+/**
+ * A pipe that allows to replace text elements with a WebComponent
+ */
+@Pipe({
+	name: &#x27;ngxReplaceElements&#x27;,
+	standalone: true,
+})
+export class NgxReplaceElementsPipe implements PipeTransform {
+	private readonly configuration &#x3D; inject&lt;NgxReplaceElementsConfiguration&gt;(NgxReplaceElementsConfigurationToken);
+	private readonly sanitizer &#x3D; inject(DomSanitizer);
+
+	/**
+	 * Replaces all matches of a specific selector with provided WebComponents
+	 *
+	 * @param value - The original string value
+	 * @param items - The items we wish to replace
+	 */
+	transform(value: string, items: NgxReplaceElementsItem[]): SafeHtml {
+		// Iben: If the value isn&#x27;t a string we early exit and warn the user
+		if (typeof value !&#x3D;&#x3D; &#x27;string&#x27;) {
+			console.warn(
+				&#x27;NgxReplaceElements: A non string-value was provided to the NgxReplaceElementsPipe&#x27;
+			);
+			return &#x27;&#x27;;
+		}
+
+		// Iben: If no items were provided to replace, we just return the value
+		if (!items || items.length &#x3D;&#x3D;&#x3D; 0) {
+			return value;
+		}
+
+		// Iben: set up a new instance of the DOMParser and parse the value as text/html.
+		// This will return a Document which we can work with to find/replace elements.
+		const parser: DOMParser &#x3D; new DOMParser();
+		const body: Document &#x3D; parser.parseFromString(value, &#x27;text/html&#x27;);
+
+		// Iben: Loop over all items we wish to replace
+		items.forEach((item) &#x3D;&gt; {
+			// Iben: Get the selector and the element we want to replace the target with
+			const { selector, element, includeInnerHtml } &#x3D; this.configuration[item.elementId];
+
+			// Iben: Select the target
+			const target: HTMLElement &#x3D; body.querySelector(selector.replace(&#x27;{{id}}&#x27;, item.id));
+
+			// Iben: If no target was found, early exit
+			if (!target) {
+				return;
+			}
+
+			// Iben: Create a new element within the Document based on the provided selector.
+			// The selector can be any native or custom web component (not an Angular component).
+			// Keep in mind that the element will need to have a lowercase input prop for the reference.
+			const replacement: HTMLElement &#x3D; body.createElement(element);
+
+			// Iben: If the item included data, we set these attributes
+			if (item.data) {
+				Object.entries(item.data).forEach(([key, value]) &#x3D;&gt; {
+					replacement.setAttribute(key, value);
+				});
+			}
+
+			// Iben: Copy the innerHtml of the target element to the new element if needed.
+      if (includeInnerHtml) {
+			replacement.innerHTML &#x3D; target.innerHTML;
+		}
+
+			// Iben: Replace the target with the new element within the Document.
+			target.replaceWith(replacement);
+		});
+
+		// Iben: sanitize the document and mark it as trusted HTML before returning it to the template.
+		return this.sanitizer.bypassSecurityTrustHtml(body.documentElement.innerHTML);
+	}
+}
+</code></pre>
+    </div>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'pipe';
+            var COMPODOC_CURRENT_PAGE_URL = 'NgxReplaceElementsPipe.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script>
+               $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               checkToggle(darkModeState);
+               if ($darkModeToggleSwitchers.length > 0) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].addEventListener('change', function (event) {
+                              darkModeState = !darkModeState;
+                              toggleDarkMode(darkModeState);
+                         });
+                    }
+               }
+          </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

@@ -1,0 +1,1223 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>@opensource/source documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+    </head>
+    <body>
+          <script>
+               // Blocking script to avoid flickering dark mode
+               // Dark mode toggle button
+               var useDark = window.matchMedia('(prefers-color-scheme: dark)');
+               var darkModeState = useDark.matches;
+               var $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               var $darkModeToggles = document.querySelectorAll('.dark-mode-switch');
+               var darkModeStateLocal = localStorage.getItem('compodoc_darkmode-state');
+
+               function checkToggle(check) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].checked = check;
+                    }
+               }
+
+               function toggleDarkMode(state) {
+                    if (window.localStorage) {
+                         localStorage.setItem('compodoc_darkmode-state', state);
+                    }
+
+                    checkToggle(state);
+
+                    const hasClass = document.body.classList.contains('dark');
+
+                    if (state) {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.add('dark');
+                         }
+                         if (!hasClass) {
+                              document.body.classList.add('dark');
+                         }
+                    } else {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.remove('dark');
+                         }
+                         if (hasClass) {
+                              document.body.classList.remove('dark');
+                         }
+                    }
+               }
+
+               useDark.addEventListener('change', function (evt) {
+                    toggleDarkMode(evt.matches);
+               });
+               if (darkModeStateLocal) {
+                    darkModeState = darkModeStateLocal === 'true';
+               }
+               toggleDarkMode(darkModeState);
+          </script>
+
+        <div class="navbar navbar-default navbar-fixed-top d-md-none p-0">
+               <div class="d-flex">
+                    <a href="../" class="navbar-brand">@opensource/source documentation</a>
+                    <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+               </div>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="d-none d-md-block menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content directive">
+                   <div class="content-data">
+
+
+
+
+
+
+
+<ol class="breadcrumb">
+  <li class="breadcrumb-item">Directives</li>
+  <li class="breadcrumb-item" >NgxQueryParamFormSyncComponent</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item">
+            <a href="#info" 
+                class="nav-link"
+                class="nav-link active"
+                role="tab" id="info-tab" data-bs-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li class="nav-item">
+            <a href="#readme" 
+                class="nav-link"
+                
+                role="tab" id="readme-tab" data-bs-toggle="tab" data-link="readme">README</a>
+        </li>
+        <li class="nav-item">
+            <a href="#source" 
+                class="nav-link"
+                
+                role="tab" id="source-tab" data-bs-toggle="tab" data-link="source">Source</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="info">
+        <p class="comment">
+            <h3>File</h3>
+        </p>
+        <p class="comment">
+            <code>libs/angular/utils/src/lib/abstracts/query-param-form-sync/query-param-form-sync.component.abstract.ts</code>
+        </p>
+
+
+
+
+            <p class="comment">
+                <h3>Implements</h3>
+            </p>
+            <p class="comment">
+                        <code>OnInit</code>
+                        <code>OnDestroy</code>
+            </p>
+
+
+
+            <section data-compodoc="block-index">
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                    <span class="modifier">Protected</span>
+                                    <span class="modifier">Readonly</span>
+                                <a href="#destroyed$" >destroyed$</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#form" >form</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Protected</span>
+                                <a href="#queryParams$" >queryParams$</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Protected</span>
+                                    <span class="modifier">Readonly</span>
+                                <a href="#route" >route</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Protected</span>
+                                    <span class="modifier">Readonly</span>
+                                <a href="#router" >router</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#clearData" >clearData</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Protected</span>
+                                    <span class="modifier">Abstract</span>
+                                    <span class="modifier">Optional</span>
+                                <a href="#handleDataChanges" >handleDataChanges</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Protected</span>
+                                    <span class="modifier">Abstract</span>
+                                <a href="#initForm" >initForm</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#ngOnDestroy" >ngOnDestroy</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#ngOnInit" >ngOnInit</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Protected</span>
+                                    <span class="modifier">Optional</span>
+                                <a href="#scrambleParams" >scrambleParams</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#setDataInRoute" >setDataInRoute</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Protected</span>
+                                    <span class="modifier">Optional</span>
+                                <a href="#unscrambleParams" >unscrambleParams</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+
+
+
+
+
+            <section data-compodoc="block-methods">
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="clearData"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                        <span ><b>clearData</b></span>
+                        <a href="#clearData"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>clearData()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="110"
+                                    class="link-to-prism">libs/angular/utils/src/lib/abstracts/query-param-form-sync/query-param-form-sync.component.abstract.ts:110</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Clears the data in the form</p>
+</div>
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="handleDataChanges"></a>
+                    <span class="name">
+                            <span class="modifier">Protected</span>
+                            <span class="modifier">Abstract</span>
+                            <span class="modifier">Optional</span>
+                        <span ><b>handleDataChanges</b></span>
+                        <a href="#handleDataChanges"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>handleDataChanges(data: QueryParamsType)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="161"
+                                    class="link-to-prism">libs/angular/utils/src/lib/abstracts/query-param-form-sync/query-param-form-sync.component.abstract.ts:161</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>An optional method that will handle what happens when the data have been updated. Do NOT subscribe to an Observable in this method.</p>
+<p>This method is useful in case you wish to save your currently selected data to a global state.</p>
+</div>
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                                <td>Description</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>data</td>
+                                            <td>
+                                                        <code>QueryParamsType</code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                            <td>
+                                                    <ul>
+<li>The data provided by the form</li>
+</ul>
+
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="initForm"></a>
+                    <span class="name">
+                            <span class="modifier">Protected</span>
+                            <span class="modifier">Abstract</span>
+                        <span ><b>initForm</b></span>
+                        <a href="#initForm"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>initForm()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="152"
+                                    class="link-to-prism">libs/angular/utils/src/lib/abstracts/query-param-form-sync/query-param-form-sync.component.abstract.ts:152</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>A method that that will provide a form that will be used to store the current data</p>
+</div>
+
+                        <div class="io-description">
+                            <b>Returns : </b>    <code>FormType</code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngOnDestroy"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                        <span ><b>ngOnDestroy</b></span>
+                        <a href="#ngOnDestroy"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>ngOnDestroy()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="100"
+                                    class="link-to-prism">libs/angular/utils/src/lib/abstracts/query-param-form-sync/query-param-form-sync.component.abstract.ts:100</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngOnInit"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                        <span ><b>ngOnInit</b></span>
+                        <a href="#ngOnInit"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>ngOnInit()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="33"
+                                    class="link-to-prism">libs/angular/utils/src/lib/abstracts/query-param-form-sync/query-param-form-sync.component.abstract.ts:33</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="scrambleParams"></a>
+                    <span class="name">
+                            <span class="modifier">Protected</span>
+                            <span class="modifier">Optional</span>
+                        <span ><b>scrambleParams</b></span>
+                        <a href="#scrambleParams"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>scrambleParams(params: QueryParamsType)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="168"
+                                    class="link-to-prism">libs/angular/utils/src/lib/abstracts/query-param-form-sync/query-param-form-sync.component.abstract.ts:168</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>An optional method to scramble the parameters if needed, so no data gets added into the route that shouldn&#39;t be shared</p>
+</div>
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                                <td>Description</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>params</td>
+                                            <td>
+                                                        <code>QueryParamsType</code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                            <td>
+                                                    <ul>
+<li>The provided params we wish to set in the route</li>
+</ul>
+
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>    <code>QueryParamsType</code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="setDataInRoute"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>setDataInRoute</b></span>
+                        <a href="#setDataInRoute"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>setDataInRoute(data: QueryParamsType)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="119"
+                                    class="link-to-prism">libs/angular/utils/src/lib/abstracts/query-param-form-sync/query-param-form-sync.component.abstract.ts:119</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Sets the provided data in the route, so the filtered view can be shared by url</p>
+</div>
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                                <td>Description</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>data</td>
+                                            <td>
+                                                        <code>QueryParamsType</code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                            <td>
+                                                    <ul>
+<li>The provided data</li>
+</ul>
+
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="unscrambleParams"></a>
+                    <span class="name">
+                            <span class="modifier">Protected</span>
+                            <span class="modifier">Optional</span>
+                        <span ><b>unscrambleParams</b></span>
+                        <a href="#unscrambleParams"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>unscrambleParams(params: QueryParamsType)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="174"
+                                    class="link-to-prism">libs/angular/utils/src/lib/abstracts/query-param-form-sync/query-param-form-sync.component.abstract.ts:174</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>An optional method to unscramble the parameters if needed, so no data gets added into the route that shouldn&#39;t be shared</p>
+</div>
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                                <td>Description</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>params</td>
+                                            <td>
+                                                        <code>QueryParamsType</code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                            <td>
+                                                    <ul>
+<li>The provided params we wish to patch in the form</li>
+</ul>
+
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>    <code>QueryParamsType</code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+            <section data-compodoc="block-properties">
+    
+    <h3 id="inputs">
+        Properties
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="destroyed$"></a>
+                    <span class="name">
+                            <span class="modifier">Protected</span>
+                            <span class="modifier">Readonly</span>
+                        <span ><b>destroyed$</b></span>
+                        <a href="#destroyed$"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>Subject&lt;void&gt;</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>new Subject()</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="20" class="link-to-prism">libs/angular/utils/src/lib/abstracts/query-param-form-sync/query-param-form-sync.component.abstract.ts:20</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="form"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                        <span ><b>form</b></span>
+                        <a href="#form"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>FormType</code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="25" class="link-to-prism">libs/angular/utils/src/lib/abstracts/query-param-form-sync/query-param-form-sync.component.abstract.ts:25</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>The form in which we will save the queryParam data</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="queryParams$"></a>
+                    <span class="name">
+                            <span class="modifier">Protected</span>
+                        <span ><b>queryParams$</b></span>
+                        <a href="#queryParams$"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../miscellaneous/typealiases.html#StringifiedQueryParamsType" target="_self" >Observable&lt;StringifiedQueryParamsType&lt;QueryParamsType&gt;&gt;</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>this.route
+		.queryParams as Observable&lt;StringifiedQueryParamsType&lt;QueryParamsType&gt;&gt;</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="30" class="link-to-prism">libs/angular/utils/src/lib/abstracts/query-param-form-sync/query-param-form-sync.component.abstract.ts:30</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>The query params we wish to form</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="route"></a>
+                    <span class="name">
+                            <span class="modifier">Protected</span>
+                            <span class="modifier">Readonly</span>
+                        <span ><b>route</b></span>
+                        <a href="#route"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>inject(ActivatedRoute)</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="17" class="link-to-prism">libs/angular/utils/src/lib/abstracts/query-param-form-sync/query-param-form-sync.component.abstract.ts:17</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="router"></a>
+                    <span class="name">
+                            <span class="modifier">Protected</span>
+                            <span class="modifier">Readonly</span>
+                        <span ><b>router</b></span>
+                        <a href="#router"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>inject(Router)</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="18" class="link-to-prism">libs/angular/utils/src/lib/abstracts/query-param-form-sync/query-param-form-sync.component.abstract.ts:18</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+</section>
+
+
+    </div>
+
+    <div class="tab-pane fade " id="readme">
+        <p><h1>NgxQueryParamFormSyncComponent</h1>
+<p>The <code>NgxQueryParamFormSyncComponent</code> allows you to sync queryParams with a form provided in the component.</p>
+<p>An ideal use-case for this component is filtered views that keep the selected filters in queryParams. This abstraction ensures that both the visual filters and the url stay in sync. This way the url can be shared, and the view will be filtered as shared.</p>
+<h2>Methods</h2>
+<p>When implementing the <code>NgxQueryParamFormSyncComponent</code>, there is only one method that requires implementation, being the <code>initForm</code> method. This method should return a form that will be used to store the queryParams in the component.</p>
+<p>The component also provides a <code>clearData</code> method that will automatically clear the form.</p>
+<h2>Optional methods</h2>
+<p>Optionally, you want to interact with the changes in the form, like dispatching the data to a store. By implementing the optional <code>handleDataChanges</code> method, you can listen to these changes and handle them accordingly. It is very important to <strong>not</strong> subscribe to an Observable in this method, as it within itself is already used within a subscription.</p>
+<p>Sometimes, certain data cannot be put in the queryParams without being scrambled first. This can be useful in situations in which some of the items in the queryParams are protected by GDPR, but you still wish to be able to share the url to a filtered view. In order to handle these situations, we provide the optional methods <code>scrambleParams</code> and the <code>unscrambleParams</code>, in which you can provide an implementation to scramble these items before sending them to the url.</p>
+<h2>Example</h2>
+<b>Example :</b><div><pre class="line-numbers"><code class="language-ts">import { scrambler, unscrambler } from &#39;ngx-random-package&#39;;
+
+interface Filters {
+    searchQuery: string;
+    sorting: string;
+}
+
+interface FiltersForm {
+    searchQuery: FormControl&lt;string&gt;;
+    sorting: FormControl&lt;string&gt;;
+}
+
+&#64;Component({
+    selector: &#39;table-view&#39;,
+    templateUrl: &#39;./survey.component.html&#39;,
+})
+export class TableViewComponent extends NgxQueryParamFormSyncComponent&lt;
+    Filters,
+    FormGroup&lt;FiltersForm&gt;
+&gt; {
+    constructor(
+        readonly route: ActivatedRoute,
+        readonly router: Router,
+        readonly storeService: NgxStoreService
+    ) {
+        super(route, router);
+    }
+
+    initForm(): FormGroup&lt;FiltersForm&gt; {
+        return new FormGroup({
+            searchQuery: new FormControl&lt;string&gt;(),
+            sorting: new FormControl&lt;string&gt;(),
+        });
+    }
+
+    handleDataChanges(value: Filters) {
+        this.storeService.setFilters(value);
+    }
+
+    scrambleParams(value: Filters) {
+        return {
+            ...value,
+            sorting: scrambler(value.sorting),
+        };
+    }
+
+    unscrambleParams(value: Filters) {
+        return {
+            ...value,
+            sorting: unscrambler(value.sorting),
+        };
+    }
+}</code></pre></div></p>
+    </div>
+
+    <div class="tab-pane fade  tab-source-code" id="source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Directive, OnDestroy, OnInit, inject } from &#x27;@angular/core&#x27;;
+import { AbstractControl } from &#x27;@angular/forms&#x27;;
+import { ActivatedRoute, Router } from &#x27;@angular/router&#x27;;
+import { Observable, Subject, filter, take, takeUntil, tap } from &#x27;rxjs&#x27;;
+
+export type StringifiedQueryParamsType&lt;QueryParamsType&gt; &#x3D; {
+	[key in keyof QueryParamsType]: string;
+};
+
+@Directive()
+export abstract class NgxQueryParamFormSyncComponent&lt;
+		QueryParamsType,
+		FormType extends AbstractControl,
+	&gt;
+	implements OnInit, OnDestroy
+{
+	protected readonly route &#x3D; inject(ActivatedRoute);
+	protected readonly router &#x3D; inject(Router);
+
+	protected readonly destroyed$: Subject&lt;void&gt; &#x3D; new Subject();
+
+	/**
+	 * The form in which we will save the queryParam data
+	 */
+	public form: FormType;
+
+	/**
+	 * The query params we wish to form
+	 */
+	protected queryParams$: Observable&lt;StringifiedQueryParamsType&lt;QueryParamsType&gt;&gt; &#x3D; this.route
+		.queryParams as Observable&lt;StringifiedQueryParamsType&lt;QueryParamsType&gt;&gt;;
+
+	public ngOnInit(): void {
+		//Iben: Warn the user if one of the two methods isn&#x27;t provided
+		if (
+			(!this.scrambleParams &amp;&amp; this.unscrambleParams) ||
+			(this.scrambleParams &amp;&amp; !this.unscrambleParams)
+		) {
+			console.error(
+				&#x60;NgxUtils: NgxQueryParamFormSyncComponent detected the use of the parameter scrambling but is missing an implementation for the ${
+					this.scrambleParams ? &#x27;unscrambleParams&#x27; : &#x27;scrambleParams&#x27;
+				} method. Please provide this method in order for this flow to work correctly.&#x60;
+			);
+		}
+
+		// Iben: Setup the form for the data
+		this.form &#x3D; this.initForm();
+
+		// Iben: Listen to the form changes
+		this.form.valueChanges
+			.pipe(
+				tap((data) &#x3D;&gt; {
+					// Iben: Update the route params
+					this.setDataInRoute(data);
+
+					// Iben: Handle the route data changes
+					if (this.handleDataChanges) {
+						this.handleDataChanges(data);
+					}
+				}),
+				takeUntil(this.destroyed$)
+			)
+			.subscribe();
+
+		// Iben: Listen to the initial query param update so we can set the data in the form if we navigate to a link with the params
+		this.queryParams$
+			.pipe(
+				take(1),
+				filter(Boolean),
+				tap((data) &#x3D;&gt; {
+					// Iben: Convert the route data properties to the actual data
+					let value: QueryParamsType &#x3D; Object.keys(data || {}).reduce(
+						(previous, current) &#x3D;&gt; {
+							return {
+								...previous,
+								[current]: data[current] ? JSON.parse(data[current]) : undefined,
+							};
+						},
+						{}
+					) as QueryParamsType;
+
+					// Iben: In case the unscrambleParams method is provided, we unscramble the data
+					if (this.unscrambleParams) {
+						value &#x3D; this.unscrambleParams(value);
+					}
+
+					//Iben: If the entire object is empty, we early exit and do not set the form
+					if (Object.keys(value).length &#x3D;&#x3D;&#x3D; 0) {
+						return;
+					}
+
+					// Iben: Set the current form value
+					this.form.setValue(value);
+				}),
+				takeUntil(this.destroyed$)
+			)
+			.subscribe();
+	}
+
+	public ngOnDestroy(): void {
+		this.destroyed$.next();
+		this.destroyed$.complete();
+
+		this.clearData();
+	}
+
+	/**
+	 * Clears the data in the form
+	 */
+	public clearData(): void {
+		this.form.reset();
+	}
+
+	/**
+	 * Sets the provided data in the route, so the filtered view can be shared by url
+	 *
+	 * @param  data - The provided data
+	 */
+	private setDataInRoute(data: QueryParamsType): void {
+		// Iben: If no data was provided, we simply unset the current params
+		if (Object.keys(data || {}).length &#x3D;&#x3D;&#x3D; 0) {
+			this.router.navigate([], {
+				relativeTo: this.route,
+				queryParams: {},
+			});
+
+			return;
+		}
+
+		// Iben: In case a scrambleParams function was provided, we scramble the params first
+		const parsedData &#x3D; this.scrambleParams ? this.scrambleParams(data) : data;
+
+		// Iben: Stringify all properties of the data
+		const queryParams &#x3D; Object.keys(parsedData || {}).reduce((previous, current) &#x3D;&gt; {
+			return {
+				...previous,
+				[current]: JSON.stringify(parsedData[current]),
+			};
+		}, {});
+
+		// Iben: Add the queryParams to the route
+		this.router.navigate([], {
+			relativeTo: this.route,
+			queryParamsHandling: &#x27;merge&#x27;,
+			queryParams,
+		});
+	}
+
+	/**
+	 * A method that that will provide a form that will be used to store the current data
+	 */
+	protected abstract initForm(): FormType;
+
+	/**
+	 * An optional method that will handle what happens when the data have been updated. Do NOT subscribe to an Observable in this method.
+	 *
+	 * This method is useful in case you wish to save your currently selected data to a global state.
+	 *
+	 * @param data - The data provided by the form
+	 */
+	protected abstract handleDataChanges?(data: QueryParamsType): void;
+
+	/**
+	 * An optional method to scramble the parameters if needed, so no data gets added into the route that shouldn&#x27;t be shared
+	 *
+	 * @param params - The provided params we wish to set in the route
+	 */
+	protected scrambleParams?(params: QueryParamsType): QueryParamsType;
+	/**
+	 * An optional method to unscramble the parameters if needed, so no data gets added into the route that shouldn&#x27;t be shared
+	 *
+	 * @param params - The provided params we wish to patch in the form
+	 */
+	protected unscrambleParams?(params: QueryParamsType): QueryParamsType;
+}
+</code></pre>
+    </div>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'directive';
+            var COMPODOC_CURRENT_PAGE_URL = 'NgxQueryParamFormSyncComponent.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script>
+               $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               checkToggle(darkModeState);
+               if ($darkModeToggleSwitchers.length > 0) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].addEventListener('change', function (event) {
+                              darkModeState = !darkModeState;
+                              toggleDarkMode(darkModeState);
+                         });
+                    }
+               }
+          </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

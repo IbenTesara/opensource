@@ -1,0 +1,2135 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>@opensource/source documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+    </head>
+    <body>
+          <script>
+               // Blocking script to avoid flickering dark mode
+               // Dark mode toggle button
+               var useDark = window.matchMedia('(prefers-color-scheme: dark)');
+               var darkModeState = useDark.matches;
+               var $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               var $darkModeToggles = document.querySelectorAll('.dark-mode-switch');
+               var darkModeStateLocal = localStorage.getItem('compodoc_darkmode-state');
+
+               function checkToggle(check) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].checked = check;
+                    }
+               }
+
+               function toggleDarkMode(state) {
+                    if (window.localStorage) {
+                         localStorage.setItem('compodoc_darkmode-state', state);
+                    }
+
+                    checkToggle(state);
+
+                    const hasClass = document.body.classList.contains('dark');
+
+                    if (state) {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.add('dark');
+                         }
+                         if (!hasClass) {
+                              document.body.classList.add('dark');
+                         }
+                    } else {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.remove('dark');
+                         }
+                         if (hasClass) {
+                              document.body.classList.remove('dark');
+                         }
+                    }
+               }
+
+               useDark.addEventListener('change', function (evt) {
+                    toggleDarkMode(evt.matches);
+               });
+               if (darkModeStateLocal) {
+                    darkModeState = darkModeStateLocal === 'true';
+               }
+               toggleDarkMode(darkModeState);
+          </script>
+
+        <div class="navbar navbar-default navbar-fixed-top d-md-none p-0">
+               <div class="d-flex">
+                    <a href="../" class="navbar-brand">@opensource/source documentation</a>
+                    <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+               </div>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="d-none d-md-block menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content miscellaneous-typealiases">
+                   <div class="content-data">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<ol class="breadcrumb">
+  <li class="breadcrumb-item">Miscellaneous</li>
+  <li class="breadcrumb-item">Type aliases</li>
+</ol>
+
+<section data-compodoc="block-index">
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <ul class="index-list">
+                        <li>
+                            <a href="#ArraySignal" title="libs/angular/utils/src/lib/types/signals.ts" ><b>ArraySignal</b>&nbsp;&nbsp;&nbsp;(libs/.../signals.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#BaseStoreEffectsInterface" title="libs/angular/store/src/lib/rxjs/interfaces/effects.ts" ><b>BaseStoreEffectsInterface</b>&nbsp;&nbsp;&nbsp;(libs/.../effects.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#BasicEntityAdapterActions" title="libs/angular/store/src/lib/rxjs/interfaces/entity-adapter-reducers.ts" ><b>BasicEntityAdapterActions</b>&nbsp;&nbsp;&nbsp;(libs/.../entity-adapter-reducers.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#BooleanRecord" title="libs/javascript/rxjs/src/lib/types/observable/observable.types.ts" ><b>BooleanRecord</b>&nbsp;&nbsp;&nbsp;(libs/.../observable.types.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#BooleanSignal" title="libs/angular/utils/src/lib/types/signals.ts" ><b>BooleanSignal</b>&nbsp;&nbsp;&nbsp;(libs/.../signals.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#ControlPaths" title="libs/angular/forms/src/lib/interfaces/form-accessor-control-keys.ts" ><b>ControlPaths</b>&nbsp;&nbsp;&nbsp;(libs/.../form-accessor-control-keys.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#CypressLeafObject" title="libs/angular/utils/src/lib/tokens/cypress-tags.token.ts" ><b>CypressLeafObject</b>&nbsp;&nbsp;&nbsp;(libs/.../cypress-tags.token.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#CypressObject" title="libs/angular/utils/src/lib/tokens/cypress-tags.token.ts" ><b>CypressObject</b>&nbsp;&nbsp;&nbsp;(libs/.../cypress-tags.token.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#DataType" title="libs/angular/store/src/lib/rxjs/spec/store-assets.ts" ><b>DataType</b>&nbsp;&nbsp;&nbsp;(libs/.../store-assets.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#DateRangeErrorCodes" title="libs/angular/forms/src/lib/validators/date-range/date-range.validator.ts" ><b>DateRangeErrorCodes</b>&nbsp;&nbsp;&nbsp;(libs/.../date-range.validator.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#EffectActions" title="libs/angular/store/src/lib/rxjs/interfaces/effects.ts" ><b>EffectActions</b>&nbsp;&nbsp;&nbsp;(libs/.../effects.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#EntityStoreEffectsInterface" title="libs/angular/store/src/lib/rxjs/interfaces/effects.ts" ><b>EntityStoreEffectsInterface</b>&nbsp;&nbsp;&nbsp;(libs/.../effects.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#extractStoreAssetType" title="libs/angular/store/src/lib/rxjs/interfaces/store-state.ts" ><b>extractStoreAssetType</b>&nbsp;&nbsp;&nbsp;(libs/.../store-state.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#FormAccessorControlsEntity" title="libs/angular/forms/src/lib/interfaces/form-accessor-control-keys.ts" ><b>FormAccessorControlsEntity</b>&nbsp;&nbsp;&nbsp;(libs/.../form-accessor-control-keys.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#HideHeaderRowOption" title="libs/angular/layout/src/lib/tokens/ngx-table-config.token.ts" ><b>HideHeaderRowOption</b>&nbsp;&nbsp;&nbsp;(libs/.../ngx-table-config.token.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#HideHeaderRowOptions" title="libs/angular/layout/src/lib/tokens/ngx-table-config.token.ts" ><b>HideHeaderRowOptions</b>&nbsp;&nbsp;&nbsp;(libs/.../ngx-table-config.token.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#Join" title="libs/angular/forms/src/lib/interfaces/form-accessor-control-keys.ts" ><b>Join</b>&nbsp;&nbsp;&nbsp;(libs/.../form-accessor-control-keys.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#Join" title="libs/angular/utils/src/lib/types/cypress.types.ts" ><b>Join</b>&nbsp;&nbsp;&nbsp;(libs/.../cypress.types.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#KeyValuePair" title="libs/javascript/utils/src/lib/object/merge/merge.util.ts" ><b>KeyValuePair</b>&nbsp;&nbsp;&nbsp;(libs/.../merge.util.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#NgxAccessibleDragAndDropFromToMessage" title="libs/angular/layout/src/lib/types/drag-and-drop.types.ts" ><b>NgxAccessibleDragAndDropFromToMessage</b>&nbsp;&nbsp;&nbsp;(libs/.../drag-and-drop.types.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#NgxAccessibleDragAndDropMessage" title="libs/angular/layout/src/lib/types/drag-and-drop.types.ts" ><b>NgxAccessibleDragAndDropMessage</b>&nbsp;&nbsp;&nbsp;(libs/.../drag-and-drop.types.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#NgxAccessibleDragAndDropMoveType" title="libs/angular/layout/src/lib/types/drag-and-drop.types.ts" ><b>NgxAccessibleDragAndDropMoveType</b>&nbsp;&nbsp;&nbsp;(libs/.../drag-and-drop.types.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#NgxAccordionOpenBehavior" title="libs/angular/layout/src/lib/types/accordion.types.ts" ><b>NgxAccordionOpenBehavior</b>&nbsp;&nbsp;&nbsp;(libs/.../accordion.types.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#NgxAuthenticatedRoutes" title="libs/angular/authentication/src/lib/types/authenticated-route.types.ts" ><b>NgxAuthenticatedRoutes</b>&nbsp;&nbsp;&nbsp;(libs/.../authenticated-route.types.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#NgxAuthenticationResponseFeature" title="libs/angular/authentication/src/lib/types/authentication.types.ts" ><b>NgxAuthenticationResponseFeature</b>&nbsp;&nbsp;&nbsp;(libs/.../authentication.types.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#NgxAuthenticationStatus" title="libs/angular/authentication/src/lib/types/authentication-status.types.ts" ><b>NgxAuthenticationStatus</b>&nbsp;&nbsp;&nbsp;(libs/.../authentication-status.types.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#NgxConfigurableLayoutGrid" title="libs/angular/layout/src/lib/types/configurable-layout.ts" ><b>NgxConfigurableLayoutGrid</b>&nbsp;&nbsp;&nbsp;(libs/.../configurable-layout.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#NgxConfigurableLayoutItemSizeOption" title="libs/angular/layout/src/lib/types/configurable-layout.ts" ><b>NgxConfigurableLayoutItemSizeOption</b>&nbsp;&nbsp;&nbsp;(libs/.../configurable-layout.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#NgxConfigurableLayoutType" title="libs/angular/layout/src/lib/types/configurable-layout.ts" ><b>NgxConfigurableLayoutType</b>&nbsp;&nbsp;&nbsp;(libs/.../configurable-layout.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#NgxCookieCategories" title="libs/angular/cookies/src/lib/types/cookie-configuration.ts" ><b>NgxCookieCategories</b>&nbsp;&nbsp;&nbsp;(libs/.../cookie-configuration.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#NgxDisplayContentAriaLive" title="libs/angular/layout/src/lib/types/display-content.types.ts" ><b>NgxDisplayContentAriaLive</b>&nbsp;&nbsp;&nbsp;(libs/.../display-content.types.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#NgxDisplayContentComponentConfiguration" title="libs/angular/layout/src/lib/types/display-content.types.ts" ><b>NgxDisplayContentComponentConfiguration</b>&nbsp;&nbsp;&nbsp;(libs/.../display-content.types.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#NgxDisplayContentConditions" title="libs/angular/layout/src/lib/types/display-content.types.ts" ><b>NgxDisplayContentConditions</b>&nbsp;&nbsp;&nbsp;(libs/.../display-content.types.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#NgxDisplayContentOverrideConfiguration" title="libs/angular/layout/src/lib/types/display-content.types.ts" ><b>NgxDisplayContentOverrideConfiguration</b>&nbsp;&nbsp;&nbsp;(libs/.../display-content.types.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#NgxDisplayContentRecord" title="libs/angular/layout/src/lib/types/display-content.types.ts" ><b>NgxDisplayContentRecord</b>&nbsp;&nbsp;&nbsp;(libs/.../display-content.types.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#NgxDisplayContentStatus" title="libs/angular/layout/src/lib/types/display-content.types.ts" ><b>NgxDisplayContentStatus</b>&nbsp;&nbsp;&nbsp;(libs/.../display-content.types.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#NgxFormsErrorShowSettings" title="libs/angular/forms/src/lib/interfaces/errors.interface.ts" ><b>NgxFormsErrorShowSettings</b>&nbsp;&nbsp;&nbsp;(libs/.../errors.interface.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#NgxFormsErrorShowWhenSettings" title="libs/angular/forms/src/lib/interfaces/errors.interface.ts" ><b>NgxFormsErrorShowWhenSettings</b>&nbsp;&nbsp;&nbsp;(libs/.../errors.interface.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#NgxImageMarker" title="libs/angular/layout/src/lib/types/image-marker.types.ts" ><b>NgxImageMarker</b>&nbsp;&nbsp;&nbsp;(libs/.../image-marker.types.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#NgxImageMarkerItem" title="libs/angular/layout/src/lib/types/image-marker.types.ts" ><b>NgxImageMarkerItem</b>&nbsp;&nbsp;&nbsp;(libs/.../image-marker.types.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#NgxImageMarkerState" title="libs/angular/layout/src/lib/types/image-marker.types.ts" ><b>NgxImageMarkerState</b>&nbsp;&nbsp;&nbsp;(libs/.../image-marker.types.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#NgxModalActionType" title="libs/angular/inform/src/lib/types/modal.types.ts" ><b>NgxModalActionType</b>&nbsp;&nbsp;&nbsp;(libs/.../modal.types.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#NgxModalConfiguration" title="libs/angular/inform/src/lib/types/modal.types.ts" ><b>NgxModalConfiguration</b>&nbsp;&nbsp;&nbsp;(libs/.../modal.types.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#NgxModalLabelAriaOptions" title="libs/angular/inform/src/lib/types/modal.types.ts" ><b>NgxModalLabelAriaOptions</b>&nbsp;&nbsp;&nbsp;(libs/.../modal.types.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#NgxModalOptions" title="libs/angular/inform/src/lib/types/modal.types.ts" ><b>NgxModalOptions</b>&nbsp;&nbsp;&nbsp;(libs/.../modal.types.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#NgxModalRole" title="libs/angular/inform/src/lib/types/modal.types.ts" ><b>NgxModalRole</b>&nbsp;&nbsp;&nbsp;(libs/.../modal.types.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#NgxReplaceElementsConfiguration" title="libs/angular/utils/src/lib/types/replace-elements.types.ts" ><b>NgxReplaceElementsConfiguration</b>&nbsp;&nbsp;&nbsp;(libs/.../replace-elements.types.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#NgxReplaceElementsSelector" title="libs/angular/utils/src/lib/types/replace-elements.types.ts" ><b>NgxReplaceElementsSelector</b>&nbsp;&nbsp;&nbsp;(libs/.../replace-elements.types.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#NgxStorageEvent" title="libs/angular/utils/src/lib/types/storage.types.ts" ><b>NgxStorageEvent</b>&nbsp;&nbsp;&nbsp;(libs/.../storage.types.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#NgxStorageRecord" title="libs/angular/utils/src/lib/types/storage.types.ts" ><b>NgxStorageRecord</b>&nbsp;&nbsp;&nbsp;(libs/.../storage.types.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#NgxStorageType" title="libs/angular/utils/src/lib/types/storage.types.ts" ><b>NgxStorageType</b>&nbsp;&nbsp;&nbsp;(libs/.../storage.types.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#NgxStoreActions" title="libs/angular/store/src/lib/rxjs/interfaces/store-generator.ts" ><b>NgxStoreActions</b>&nbsp;&nbsp;&nbsp;(libs/.../store-generator.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#NgxStoreSelectors" title="libs/angular/store/src/lib/rxjs/interfaces/store-generator.ts" ><b>NgxStoreSelectors</b>&nbsp;&nbsp;&nbsp;(libs/.../store-generator.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#NgxTableCypressDataTags" title="libs/angular/layout/src/lib/types/show-header-requirements.ts" ><b>NgxTableCypressDataTags</b>&nbsp;&nbsp;&nbsp;(libs/.../show-header-requirements.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#NgxTooltipEvent" title="libs/angular/inform/src/lib/types/tooltip.types.ts" ><b>NgxTooltipEvent</b>&nbsp;&nbsp;&nbsp;(libs/.../tooltip.types.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#NgxTooltipPosition" title="libs/angular/inform/src/lib/types/tooltip.types.ts" ><b>NgxTooltipPosition</b>&nbsp;&nbsp;&nbsp;(libs/.../tooltip.types.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#NgxTooltipPositionClass" title="libs/angular/inform/src/lib/types/tooltip.types.ts" ><b>NgxTooltipPositionClass</b>&nbsp;&nbsp;&nbsp;(libs/.../tooltip.types.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#NgxTourAction" title="libs/angular/inform/src/lib/types/tour.types.ts" ><b>NgxTourAction</b>&nbsp;&nbsp;&nbsp;(libs/.../tour.types.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#NgxTourDirection" title="libs/angular/inform/src/lib/types/tour.types.ts" ><b>NgxTourDirection</b>&nbsp;&nbsp;&nbsp;(libs/.../tour.types.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#NgxTourInteraction" title="libs/angular/inform/src/lib/types/tour.types.ts" ><b>NgxTourInteraction</b>&nbsp;&nbsp;&nbsp;(libs/.../tour.types.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#NgxTourRegistrationEvent" title="libs/angular/inform/src/lib/types/tour.types.ts" ><b>NgxTourRegistrationEvent</b>&nbsp;&nbsp;&nbsp;(libs/.../tour.types.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#NgxTourStepOffset" title="libs/angular/inform/src/lib/types/tour.types.ts" ><b>NgxTourStepOffset</b>&nbsp;&nbsp;&nbsp;(libs/.../tour.types.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#NgxTourStepPosition" title="libs/angular/inform/src/lib/types/tour.types.ts" ><b>NgxTourStepPosition</b>&nbsp;&nbsp;&nbsp;(libs/.../tour.types.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#NgxTourTokenType" title="libs/angular/inform/src/lib/types/tour.token.type.ts" ><b>NgxTourTokenType</b>&nbsp;&nbsp;&nbsp;(libs/.../tour.token.type.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#NgxTreeGridCellTarget" title="libs/angular/layout/src/lib/types/tree-grid.types.ts" ><b>NgxTreeGridCellTarget</b>&nbsp;&nbsp;&nbsp;(libs/.../tree-grid.types.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#NgxTreeGridRowTarget" title="libs/angular/layout/src/lib/types/tree-grid.types.ts" ><b>NgxTreeGridRowTarget</b>&nbsp;&nbsp;&nbsp;(libs/.../tree-grid.types.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#NumberSignal" title="libs/angular/utils/src/lib/types/signals.ts" ><b>NumberSignal</b>&nbsp;&nbsp;&nbsp;(libs/.../signals.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#ObservableArray" title="libs/javascript/rxjs/src/lib/types/observable/observable.types.ts" ><b>ObservableArray</b>&nbsp;&nbsp;&nbsp;(libs/.../observable.types.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#ObservableBlob" title="libs/javascript/rxjs/src/lib/types/observable/observable.types.ts" ><b>ObservableBlob</b>&nbsp;&nbsp;&nbsp;(libs/.../observable.types.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#ObservableBoolean" title="libs/javascript/rxjs/src/lib/types/observable/observable.types.ts" ><b>ObservableBoolean</b>&nbsp;&nbsp;&nbsp;(libs/.../observable.types.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#ObservableBooleanRecord" title="libs/javascript/rxjs/src/lib/types/observable/observable.types.ts" ><b>ObservableBooleanRecord</b>&nbsp;&nbsp;&nbsp;(libs/.../observable.types.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#ObservableNumber" title="libs/javascript/rxjs/src/lib/types/observable/observable.types.ts" ><b>ObservableNumber</b>&nbsp;&nbsp;&nbsp;(libs/.../observable.types.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#ObservableRecord" title="libs/javascript/rxjs/src/lib/types/observable/observable.types.ts" ><b>ObservableRecord</b>&nbsp;&nbsp;&nbsp;(libs/.../observable.types.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#ObservableString" title="libs/javascript/rxjs/src/lib/types/observable/observable.types.ts" ><b>ObservableString</b>&nbsp;&nbsp;&nbsp;(libs/.../observable.types.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#ObservableStringRecord" title="libs/javascript/rxjs/src/lib/types/observable/observable.types.ts" ><b>ObservableStringRecord</b>&nbsp;&nbsp;&nbsp;(libs/.../observable.types.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#Paths" title="libs/angular/utils/src/lib/types/cypress.types.ts" ><b>Paths</b>&nbsp;&nbsp;&nbsp;(libs/.../cypress.types.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#Prev" title="libs/angular/utils/src/lib/types/cypress.types.ts" ><b>Prev</b>&nbsp;&nbsp;&nbsp;(libs/.../cypress.types.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#Previous" title="libs/angular/forms/src/lib/interfaces/form-accessor-control-keys.ts" ><b>Previous</b>&nbsp;&nbsp;&nbsp;(libs/.../form-accessor-control-keys.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#RequireAtLeastOne" title="libs/angular/layout/src/lib/types/internal-helpers.ts" ><b>RequireAtLeastOne</b>&nbsp;&nbsp;&nbsp;(libs/.../internal-helpers.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#RequireAtLeastOne" title="libs/angular/store/src/lib/rxjs/interfaces/require-at-least-one.ts" ><b>RequireAtLeastOne</b>&nbsp;&nbsp;&nbsp;(libs/.../require-at-least-one.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#ShowDetailRowOption" title="libs/angular/layout/src/lib/tokens/ngx-table-config.token.ts" ><b>ShowDetailRowOption</b>&nbsp;&nbsp;&nbsp;(libs/.../ngx-table-config.token.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#StoreActions" title="libs/angular/store/src/lib/rxjs/interfaces/store.ts" ><b>StoreActions</b>&nbsp;&nbsp;&nbsp;(libs/.../store.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#StoreFlowAssets" title="libs/angular/store/src/lib/rxjs/interfaces/store-generator.ts" ><b>StoreFlowAssets</b>&nbsp;&nbsp;&nbsp;(libs/.../store-generator.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#StoreSelectors" title="libs/angular/store/src/lib/rxjs/interfaces/store.ts" ><b>StoreSelectors</b>&nbsp;&nbsp;&nbsp;(libs/.../store.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#StoreState" title="libs/angular/store/src/lib/rxjs/interfaces/store-state.ts" ><b>StoreState</b>&nbsp;&nbsp;&nbsp;(libs/.../store-state.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#StoreStateData" title="libs/angular/store/src/lib/rxjs/interfaces/store-state.ts" ><b>StoreStateData</b>&nbsp;&nbsp;&nbsp;(libs/.../store-state.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#StoreStateError" title="libs/angular/store/src/lib/rxjs/interfaces/store-state.ts" ><b>StoreStateError</b>&nbsp;&nbsp;&nbsp;(libs/.../store-state.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#StoreStateErrorMessage" title="libs/angular/store/src/lib/rxjs/interfaces/store-state.ts" ><b>StoreStateErrorMessage</b>&nbsp;&nbsp;&nbsp;(libs/.../store-state.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#StoreStateLoading" title="libs/angular/store/src/lib/rxjs/interfaces/store-state.ts" ><b>StoreStateLoading</b>&nbsp;&nbsp;&nbsp;(libs/.../store-state.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#StringifiedQueryParamsType" title="libs/angular/utils/src/lib/abstracts/query-param-form-sync/query-param-form-sync.component.abstract.ts" ><b>StringifiedQueryParamsType</b>&nbsp;&nbsp;&nbsp;(libs/.../query-param-form-sync.component.abstract.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#StringSignal" title="libs/angular/utils/src/lib/types/signals.ts" ><b>StringSignal</b>&nbsp;&nbsp;&nbsp;(libs/.../signals.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#WritableArraySignal" title="libs/angular/utils/src/lib/types/signals.ts" ><b>WritableArraySignal</b>&nbsp;&nbsp;&nbsp;(libs/.../signals.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#WritableBooleanSignal" title="libs/angular/utils/src/lib/types/signals.ts" ><b>WritableBooleanSignal</b>&nbsp;&nbsp;&nbsp;(libs/.../signals.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#WritableNumberSignal" title="libs/angular/utils/src/lib/types/signals.ts" ><b>WritableNumberSignal</b>&nbsp;&nbsp;&nbsp;(libs/.../signals.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#WritableStringSignal" title="libs/angular/utils/src/lib/types/signals.ts" ><b>WritableStringSignal</b>&nbsp;&nbsp;&nbsp;(libs/.../signals.ts)</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+
+    <h3>libs/angular/utils/src/lib/types/signals.ts</h3>
+    <section data-compodoc="block-typealias">
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ArraySignal"></a>
+                    <span class="name "><b>ArraySignal</b><a href="#ArraySignal"><span class="icon ion-ios-link"></span></a></span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <code>        <code><a href="../miscellaneous/typealiases.html#DataType" target="_self" >Signal&lt;DataType[]&gt;</a></code>
+</code>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="BooleanSignal"></a>
+                    <span class="name "><b>BooleanSignal</b><a href="#BooleanSignal"><span class="icon ion-ios-link"></span></a></span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <code>    <code>Signal&lt;boolean&gt;</code>
+</code>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="NumberSignal"></a>
+                    <span class="name "><b>NumberSignal</b><a href="#NumberSignal"><span class="icon ion-ios-link"></span></a></span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <code>    <code>Signal&lt;number&gt;</code>
+</code>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="StringSignal"></a>
+                    <span class="name "><b>StringSignal</b><a href="#StringSignal"><span class="icon ion-ios-link"></span></a></span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <code>    <code>Signal&lt;string&gt;</code>
+</code>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="WritableArraySignal"></a>
+                    <span class="name "><b>WritableArraySignal</b><a href="#WritableArraySignal"><span class="icon ion-ios-link"></span></a></span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <code>        <code><a href="../miscellaneous/typealiases.html#DataType" target="_self" >WritableSignal&lt;DataType[]&gt;</a></code>
+</code>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="WritableBooleanSignal"></a>
+                    <span class="name "><b>WritableBooleanSignal</b><a href="#WritableBooleanSignal"><span class="icon ion-ios-link"></span></a></span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <code>    <code>WritableSignal&lt;boolean&gt;</code>
+</code>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="WritableNumberSignal"></a>
+                    <span class="name "><b>WritableNumberSignal</b><a href="#WritableNumberSignal"><span class="icon ion-ios-link"></span></a></span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <code>    <code>WritableSignal&lt;number&gt;</code>
+</code>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="WritableStringSignal"></a>
+                    <span class="name "><b>WritableStringSignal</b><a href="#WritableStringSignal"><span class="icon ion-ios-link"></span></a></span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <code>    <code>WritableSignal&lt;string&gt;</code>
+</code>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>    <h3>libs/angular/store/src/lib/rxjs/interfaces/effects.ts</h3>
+    <section data-compodoc="block-typealias">
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="BaseStoreEffectsInterface"></a>
+                    <span class="name "><b>BaseStoreEffectsInterface</b><a href="#BaseStoreEffectsInterface"><span class="icon ion-ios-link"></span></a></span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <code>    <code>literal type</code>
+</code>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="EffectActions"></a>
+                    <span class="name "><b>EffectActions</b><a href="#EffectActions"><span class="icon ion-ios-link"></span></a></span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <code>    <code></code>
+</code>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="EntityStoreEffectsInterface"></a>
+                    <span class="name "><b>EntityStoreEffectsInterface</b><a href="#EntityStoreEffectsInterface"><span class="icon ion-ios-link"></span></a></span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <code>    <code>RequireAtLeastOne&lt;literal type&gt;</code>
+</code>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>    <h3>libs/angular/store/src/lib/rxjs/interfaces/entity-adapter-reducers.ts</h3>
+    <section data-compodoc="block-typealias">
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="BasicEntityAdapterActions"></a>
+                    <span class="name "><b>BasicEntityAdapterActions</b><a href="#BasicEntityAdapterActions"><span class="icon ion-ios-link"></span></a></span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <code>        <code><a href="../interfaces/BasicEntityAdapterReducerActions.html" target="_self" >Partial&lt;BasicEntityAdapterReducerActions&gt;</a></code>
+</code>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>    <h3>libs/javascript/rxjs/src/lib/types/observable/observable.types.ts</h3>
+    <section data-compodoc="block-typealias">
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="BooleanRecord"></a>
+                    <span class="name "><b>BooleanRecord</b><a href="#BooleanRecord"><span class="icon ion-ios-link"></span></a></span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <code>    <code>Record&lt;string | boolean&gt;</code>
+</code>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ObservableArray"></a>
+                    <span class="name "><b>ObservableArray</b><a href="#ObservableArray"><span class="icon ion-ios-link"></span></a></span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <code>    <code>Observable&lt;T[]&gt;</code>
+</code>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ObservableBlob"></a>
+                    <span class="name "><b>ObservableBlob</b><a href="#ObservableBlob"><span class="icon ion-ios-link"></span></a></span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <code>    <code>Observable&lt;literal type&gt;</code>
+</code>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ObservableBoolean"></a>
+                    <span class="name "><b>ObservableBoolean</b><a href="#ObservableBoolean"><span class="icon ion-ios-link"></span></a></span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <code>    <code>Observable&lt;boolean&gt;</code>
+</code>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ObservableBooleanRecord"></a>
+                    <span class="name "><b>ObservableBooleanRecord</b><a href="#ObservableBooleanRecord"><span class="icon ion-ios-link"></span></a></span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <code>        <code><a href="../miscellaneous/typealiases.html#BooleanRecord" target="_self" >Observable&lt;BooleanRecord&gt;</a></code>
+</code>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ObservableNumber"></a>
+                    <span class="name "><b>ObservableNumber</b><a href="#ObservableNumber"><span class="icon ion-ios-link"></span></a></span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <code>    <code>Observable&lt;number&gt;</code>
+</code>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ObservableRecord"></a>
+                    <span class="name "><b>ObservableRecord</b><a href="#ObservableRecord"><span class="icon ion-ios-link"></span></a></span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <code>        <code><a href="../miscellaneous/typealiases.html#DataType" target="_self" >Observable&lt;Record&lt;DataId, DataType&gt;&gt;</a></code>
+</code>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ObservableString"></a>
+                    <span class="name "><b>ObservableString</b><a href="#ObservableString"><span class="icon ion-ios-link"></span></a></span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <code>    <code>Observable&lt;string&gt;</code>
+</code>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ObservableStringRecord"></a>
+                    <span class="name "><b>ObservableStringRecord</b><a href="#ObservableStringRecord"><span class="icon ion-ios-link"></span></a></span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <code>    <code>Observable&lt;Record&lt;string, ValueType&gt;&gt;</code>
+</code>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>    <h3>libs/angular/forms/src/lib/interfaces/form-accessor-control-keys.ts</h3>
+    <section data-compodoc="block-typealias">
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ControlPaths"></a>
+                    <span class="name "><b>ControlPaths</b><a href="#ControlPaths"><span class="icon ion-ios-link"></span></a></span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <code>    <code></code>
+</code>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="FormAccessorControlsEntity"></a>
+                    <span class="name "><b>FormAccessorControlsEntity</b><a href="#FormAccessorControlsEntity"><span class="icon ion-ios-link"></span></a></span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <code>    <code></code>
+</code>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="Join"></a>
+                    <span class="name "><b>Join</b><a href="#Join"><span class="icon ion-ios-link"></span></a></span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <code>    <code></code>
+</code>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="Previous"></a>
+                    <span class="name "><b>Previous</b><a href="#Previous"><span class="icon ion-ios-link"></span></a></span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <code>    <code>[never, &quot;0&quot;, &quot;1&quot;, &quot;2&quot;, &quot;3&quot;, &quot;4&quot;, &quot;5&quot;, &quot;6&quot;, &quot;7&quot;, &quot;8&quot;, &quot;9&quot;, &quot;10&quot;, &quot;11&quot;, &quot;12&quot;, &quot;13&quot;, &quot;14&quot;, &quot;15&quot;, &quot;16&quot;, &quot;17&quot;, &quot;18&quot;, &quot;19&quot;, &quot;20&quot;, ...[]]</code>
+</code>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>    <h3>libs/angular/utils/src/lib/tokens/cypress-tags.token.ts</h3>
+    <section data-compodoc="block-typealias">
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="CypressLeafObject"></a>
+                    <span class="name "><b>CypressLeafObject</b><a href="#CypressLeafObject"><span class="icon ion-ios-link"></span></a></span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <code>    <code>Record&lt;string | string&gt; | string</code>
+</code>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="CypressObject"></a>
+                    <span class="name "><b>CypressObject</b><a href="#CypressObject"><span class="icon ion-ios-link"></span></a></span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <code>        <code><a href="../miscellaneous/typealiases.html#CypressLeafObject" target="_self" >Record&lt;string | CypressLeafObject | string&gt;</a></code>
+</code>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>    <h3>libs/angular/store/src/lib/rxjs/spec/store-assets.ts</h3>
+    <section data-compodoc="block-typealias">
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="DataType"></a>
+                    <span class="name "><b>DataType</b><a href="#DataType"><span class="icon ion-ios-link"></span></a></span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <code>    <code>literal type</code>
+</code>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>    <h3>libs/angular/forms/src/lib/validators/date-range/date-range.validator.ts</h3>
+    <section data-compodoc="block-typealias">
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="DateRangeErrorCodes"></a>
+                    <span class="name "><b>DateRangeErrorCodes</b><a href="#DateRangeErrorCodes"><span class="icon ion-ios-link"></span></a></span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <code>    <code>&quot;invalidMaxDate&quot; | &quot;invalidMinDate&quot; | &quot;dateAfterMaxDate&quot; | &quot;dateBeforeMinDate&quot;</code>
+</code>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>    <h3>libs/angular/store/src/lib/rxjs/interfaces/store-state.ts</h3>
+    <section data-compodoc="block-typealias">
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="extractStoreAssetType"></a>
+                    <span class="name "><b>extractStoreAssetType</b><a href="#extractStoreAssetType"><span class="icon ion-ios-link"></span></a></span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>A type to extract the original generic DataType from a BaseStoreAssets or EntityStoreAssets</p>
+</div>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <code>    <code></code>
+</code>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="StoreState"></a>
+                    <span class="name "><b>StoreState</b><a href="#StoreState"><span class="icon ion-ios-link"></span></a></span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>A type to map a StoreFlowAssets to a StoreState object</p>
+</div>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <code>    <code></code>
+</code>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="StoreStateData"></a>
+                    <span class="name "><b>StoreStateData</b><a href="#StoreStateData"><span class="icon ion-ios-link"></span></a></span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>A type to map a StoreFlowAsset key to it&#39;s corresponding Observable</p>
+</div>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <code>    <code></code>
+</code>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="StoreStateError"></a>
+                    <span class="name "><b>StoreStateError</b><a href="#StoreStateError"><span class="icon ion-ios-link"></span></a></span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>A type to map a StoreFlowAsset key to it&#39;s corresponding error Observable</p>
+</div>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <code>    <code></code>
+</code>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="StoreStateErrorMessage"></a>
+                    <span class="name "><b>StoreStateErrorMessage</b><a href="#StoreStateErrorMessage"><span class="icon ion-ios-link"></span></a></span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>A type to map a StoreFlowAsset key to it&#39;s corresponding error message Observable</p>
+</div>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <code>    <code></code>
+</code>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="StoreStateLoading"></a>
+                    <span class="name "><b>StoreStateLoading</b><a href="#StoreStateLoading"><span class="icon ion-ios-link"></span></a></span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>A type to map a StoreFlowAsset key to it&#39;s corresponding loading Observable</p>
+</div>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <code>    <code></code>
+</code>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>    <h3>libs/angular/layout/src/lib/tokens/ngx-table-config.token.ts</h3>
+    <section data-compodoc="block-typealias">
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="HideHeaderRowOption"></a>
+                    <span class="name "><b>HideHeaderRowOption</b><a href="#HideHeaderRowOption"><span class="icon ion-ios-link"></span></a></span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <code>    <code>&quot;never&quot; |  | </code>
+</code>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="HideHeaderRowOptions"></a>
+                    <span class="name "><b>HideHeaderRowOptions</b><a href="#HideHeaderRowOptions"><span class="icon ion-ios-link"></span></a></span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <code>    <code>&quot;when-loading&quot; | &quot;when-empty&quot;</code>
+</code>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ShowDetailRowOption"></a>
+                    <span class="name "><b>ShowDetailRowOption</b><a href="#ShowDetailRowOption"><span class="icon ion-ios-link"></span></a></span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <code>    <code>&quot;always&quot; | &quot;on-click&quot; | &quot;on-single-item&quot;</code>
+</code>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>    <h3>libs/angular/utils/src/lib/types/cypress.types.ts</h3>
+    <section data-compodoc="block-typealias">
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="Join"></a>
+                    <span class="name "><b>Join</b><a href="#Join"><span class="icon ion-ios-link"></span></a></span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <code>    <code></code>
+</code>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="Paths"></a>
+                    <span class="name "><b>Paths</b><a href="#Paths"><span class="icon ion-ios-link"></span></a></span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <code>    <code></code>
+</code>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="Prev"></a>
+                    <span class="name "><b>Prev</b><a href="#Prev"><span class="icon ion-ios-link"></span></a></span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <code>    <code>[never, &quot;0&quot;, &quot;1&quot;, &quot;2&quot;, &quot;3&quot;, &quot;4&quot;, &quot;5&quot;, &quot;6&quot;, &quot;7&quot;, &quot;8&quot;, &quot;9&quot;, &quot;10&quot;, &quot;11&quot;, &quot;12&quot;, &quot;13&quot;, &quot;14&quot;, &quot;15&quot;, &quot;16&quot;, &quot;17&quot;, &quot;18&quot;, &quot;19&quot;, &quot;20&quot;, ...[]]</code>
+</code>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>    <h3>libs/javascript/utils/src/lib/object/merge/merge.util.ts</h3>
+    <section data-compodoc="block-typealias">
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="KeyValuePair"></a>
+                    <span class="name "><b>KeyValuePair</b><a href="#KeyValuePair"><span class="icon ion-ios-link"></span></a></span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <code>    <code></code>
+</code>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>    <h3>libs/angular/layout/src/lib/types/drag-and-drop.types.ts</h3>
+    <section data-compodoc="block-typealias">
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="NgxAccessibleDragAndDropFromToMessage"></a>
+                    <span class="name "><b>NgxAccessibleDragAndDropFromToMessage</b><a href="#NgxAccessibleDragAndDropFromToMessage"><span class="icon ion-ios-link"></span></a></span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <code>    <code>template literal type | template literal type | template literal type | template literal type | template literal type | template literal type</code>
+</code>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="NgxAccessibleDragAndDropMessage"></a>
+                    <span class="name "><b>NgxAccessibleDragAndDropMessage</b><a href="#NgxAccessibleDragAndDropMessage"><span class="icon ion-ios-link"></span></a></span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <code>        <code><a href="../interfaces/NgxAccessibleDragAndDropBaseMessage.html" target="_self" >NgxAccessibleDragAndDropBaseMessage&lt;&quot;selected&quot; | &quot;deselected&quot; | &quot;cancelled&quot; | literal type&gt; | NgxAccessibleDragAndDropBaseMessage&lt;&quot;reordered&quot; | &quot;moved&quot; | literal type&gt;</a></code>
+</code>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="NgxAccessibleDragAndDropMoveType"></a>
+                    <span class="name "><b>NgxAccessibleDragAndDropMoveType</b><a href="#NgxAccessibleDragAndDropMoveType"><span class="icon ion-ios-link"></span></a></span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <code>    <code>&quot;reordered&quot; | &quot;moved&quot;</code>
+</code>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>    <h3>libs/angular/layout/src/lib/types/accordion.types.ts</h3>
+    <section data-compodoc="block-typealias">
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="NgxAccordionOpenBehavior"></a>
+                    <span class="name "><b>NgxAccordionOpenBehavior</b><a href="#NgxAccordionOpenBehavior"><span class="icon ion-ios-link"></span></a></span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <code>    <code>&quot;first&quot; | &quot;all&quot; | number | number[]</code>
+</code>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>    <h3>libs/angular/authentication/src/lib/types/authenticated-route.types.ts</h3>
+    <section data-compodoc="block-typealias">
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="NgxAuthenticatedRoutes"></a>
+                    <span class="name "><b>NgxAuthenticatedRoutes</b><a href="#NgxAuthenticatedRoutes"><span class="icon ion-ios-link"></span></a></span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <code>        <code><a href="../interfaces/NgxAuthenticatedRoute.html" target="_self" >NgxAuthenticatedRoute[]</a></code>
+</code>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>    <h3>libs/angular/authentication/src/lib/types/authentication.types.ts</h3>
+    <section data-compodoc="block-typealias">
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="NgxAuthenticationResponseFeature"></a>
+                    <span class="name "><b>NgxAuthenticationResponseFeature</b><a href="#NgxAuthenticationResponseFeature"><span class="icon ion-ios-link"></span></a></span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <code>    <code></code>
+</code>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>    <h3>libs/angular/authentication/src/lib/types/authentication-status.types.ts</h3>
+    <section data-compodoc="block-typealias">
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="NgxAuthenticationStatus"></a>
+                    <span class="name "><b>NgxAuthenticationStatus</b><a href="#NgxAuthenticationStatus"><span class="icon ion-ios-link"></span></a></span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <code>    <code>&quot;unset&quot; | &quot;signed-in&quot; | &quot;signed-out&quot;</code>
+</code>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>    <h3>libs/angular/layout/src/lib/types/configurable-layout.ts</h3>
+    <section data-compodoc="block-typealias">
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="NgxConfigurableLayoutGrid"></a>
+                    <span class="name "><b>NgxConfigurableLayoutGrid</b><a href="#NgxConfigurableLayoutGrid"><span class="icon ion-ios-link"></span></a></span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <code>        <code><a href="../interfaces/NgxConfigurableLayoutItemEntity.html" target="_self" >NgxConfigurableLayoutItemEntity[][]</a></code>
+</code>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="NgxConfigurableLayoutItemSizeOption"></a>
+                    <span class="name "><b>NgxConfigurableLayoutItemSizeOption</b><a href="#NgxConfigurableLayoutItemSizeOption"><span class="icon ion-ios-link"></span></a></span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <code>    <code>&quot;fit-content&quot; | &quot;fill&quot; | &quot;equal&quot;</code>
+</code>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="NgxConfigurableLayoutType"></a>
+                    <span class="name "><b>NgxConfigurableLayoutType</b><a href="#NgxConfigurableLayoutType"><span class="icon ion-ios-link"></span></a></span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <code>    <code>&quot;static&quot; | &quot;editable&quot;</code>
+</code>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>    <h3>libs/angular/cookies/src/lib/types/cookie-configuration.ts</h3>
+    <section data-compodoc="block-typealias">
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="NgxCookieCategories"></a>
+                    <span class="name "><b>NgxCookieCategories</b><a href="#NgxCookieCategories"><span class="icon ion-ios-link"></span></a></span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <code>    <code>Record&lt;string | Category&gt;</code>
+</code>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>    <h3>libs/angular/layout/src/lib/types/display-content.types.ts</h3>
+    <section data-compodoc="block-typealias">
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="NgxDisplayContentAriaLive"></a>
+                    <span class="name "><b>NgxDisplayContentAriaLive</b><a href="#NgxDisplayContentAriaLive"><span class="icon ion-ios-link"></span></a></span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <code>    <code>&quot;polite&quot; | &quot;assertive&quot; | &quot;off&quot;</code>
+</code>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="NgxDisplayContentComponentConfiguration"></a>
+                    <span class="name "><b>NgxDisplayContentComponentConfiguration</b><a href="#NgxDisplayContentComponentConfiguration"><span class="icon ion-ios-link"></span></a></span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <code>        <code><a href="../directives/NgxDisplayContentComponent.html" target="_self" >NgxDisplayContentRecord&lt;Type&lt;NgxDisplayContentComponent&gt;&gt;</a></code>
+</code>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="NgxDisplayContentConditions"></a>
+                    <span class="name "><b>NgxDisplayContentConditions</b><a href="#NgxDisplayContentConditions"><span class="icon ion-ios-link"></span></a></span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <code>        <code><a href="../miscellaneous/typealiases.html#NgxDisplayContentRecord" target="_self" >NgxDisplayContentRecord&lt;boolean&gt;</a></code>
+</code>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="NgxDisplayContentOverrideConfiguration"></a>
+                    <span class="name "><b>NgxDisplayContentOverrideConfiguration</b><a href="#NgxDisplayContentOverrideConfiguration"><span class="icon ion-ios-link"></span></a></span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <code>        <code><a href="../miscellaneous/typealiases.html#NgxDisplayContentRecord" target="_self" >NgxDisplayContentRecord&lt;literal type&gt;</a></code>
+</code>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="NgxDisplayContentRecord"></a>
+                    <span class="name "><b>NgxDisplayContentRecord</b><a href="#NgxDisplayContentRecord"><span class="icon ion-ios-link"></span></a></span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <code>    <code>Partial&lt;Record&lt;NgxDisplayContentStatus, DataType&gt;&gt;</code>
+</code>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="NgxDisplayContentStatus"></a>
+                    <span class="name "><b>NgxDisplayContentStatus</b><a href="#NgxDisplayContentStatus"><span class="icon ion-ios-link"></span></a></span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <code>    <code>&quot;loading&quot; | &quot;error&quot; | &quot;offline&quot;</code>
+</code>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>    <h3>libs/angular/forms/src/lib/interfaces/errors.interface.ts</h3>
+    <section data-compodoc="block-typealias">
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="NgxFormsErrorShowSettings"></a>
+                    <span class="name "><b>NgxFormsErrorShowSettings</b><a href="#NgxFormsErrorShowSettings"><span class="icon ion-ios-link"></span></a></span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <code>    <code>&quot;all&quot; | number</code>
+</code>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="NgxFormsErrorShowWhenSettings"></a>
+                    <span class="name "><b>NgxFormsErrorShowWhenSettings</b><a href="#NgxFormsErrorShowWhenSettings"><span class="icon ion-ios-link"></span></a></span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <code>    <code>&quot;touched&quot; | &quot;dirty&quot;</code>
+</code>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>    <h3>libs/angular/layout/src/lib/types/image-marker.types.ts</h3>
+    <section data-compodoc="block-typealias">
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="NgxImageMarker"></a>
+                    <span class="name "><b>NgxImageMarker</b><a href="#NgxImageMarker"><span class="icon ion-ios-link"></span></a></span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>An Angular wrapper for markerjs views</p>
+</div>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <code>        <code><a href="../miscellaneous/typealiases.html#NgxImageMarker" target="_self" >NgxImageMarkerEdit | NgxImageMarkerView</a></code>
+</code>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="NgxImageMarkerItem"></a>
+                    <span class="name "><b>NgxImageMarkerItem</b><a href="#NgxImageMarkerItem"><span class="icon ion-ios-link"></span></a></span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>A marker on the marker view</p>
+</div>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <code>    <code>MarkerBase</code>
+</code>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="NgxImageMarkerState"></a>
+                    <span class="name "><b>NgxImageMarkerState</b><a href="#NgxImageMarkerState"><span class="icon ion-ios-link"></span></a></span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>The state of the marker view</p>
+</div>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <code>    <code>MarkerAreaState</code>
+</code>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>    <h3>libs/angular/inform/src/lib/types/modal.types.ts</h3>
+    <section data-compodoc="block-typealias">
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="NgxModalActionType"></a>
+                    <span class="name "><b>NgxModalActionType</b><a href="#NgxModalActionType"><span class="icon ion-ios-link"></span></a></span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>The type of action that should be emitted by the modal.</p>
+</div>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <code>    <code>StringType | literal type</code>
+</code>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="NgxModalConfiguration"></a>
+                    <span class="name "><b>NgxModalConfiguration</b><a href="#NgxModalConfiguration"><span class="icon ion-ios-link"></span></a></span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <code>    <code></code>
+</code>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="NgxModalLabelAriaOptions"></a>
+                    <span class="name "><b>NgxModalLabelAriaOptions</b><a href="#NgxModalLabelAriaOptions"><span class="icon ion-ios-link"></span></a></span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <code>    <code>NgxModalAriaLabelOptions | NgxModalAriaLabelledOptions</code>
+</code>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="NgxModalOptions"></a>
+                    <span class="name "><b>NgxModalOptions</b><a href="#NgxModalOptions"><span class="icon ion-ios-link"></span></a></span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <code>    <code> | </code>
+</code>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="NgxModalRole"></a>
+                    <span class="name "><b>NgxModalRole</b><a href="#NgxModalRole"><span class="icon ion-ios-link"></span></a></span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <code>    <code>&quot;dialog&quot; | &quot;alertdialog&quot;</code>
+</code>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>    <h3>libs/angular/utils/src/lib/types/replace-elements.types.ts</h3>
+    <section data-compodoc="block-typealias">
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="NgxReplaceElementsConfiguration"></a>
+                    <span class="name "><b>NgxReplaceElementsConfiguration</b><a href="#NgxReplaceElementsConfiguration"><span class="icon ion-ios-link"></span></a></span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <code>        <code><a href="../interfaces/NgxReplaceElementsConfigurationElement.html" target="_self" >Record&lt;string | NgxReplaceElementsConfigurationElement&gt;</a></code>
+</code>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="NgxReplaceElementsSelector"></a>
+                    <span class="name "><b>NgxReplaceElementsSelector</b><a href="#NgxReplaceElementsSelector"><span class="icon ion-ios-link"></span></a></span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <code>    <code> &#x60;${string}{{id}}${string}&#x60;</code>
+</code>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>    <h3>libs/angular/utils/src/lib/types/storage.types.ts</h3>
+    <section data-compodoc="block-typealias">
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="NgxStorageEvent"></a>
+                    <span class="name "><b>NgxStorageEvent</b><a href="#NgxStorageEvent"><span class="icon ion-ios-link"></span></a></span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <code>    <code>NgxStorageClearEvent | NgxStorageSetEvent | NgxStorageRemoveEvent</code>
+</code>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="NgxStorageRecord"></a>
+                    <span class="name "><b>NgxStorageRecord</b><a href="#NgxStorageRecord"><span class="icon ion-ios-link"></span></a></span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <code>    <code>Record&lt;string | BehaviorSubject&lt;any&gt;&gt;</code>
+</code>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="NgxStorageType"></a>
+                    <span class="name "><b>NgxStorageType</b><a href="#NgxStorageType"><span class="icon ion-ios-link"></span></a></span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <code>    <code>&quot;local&quot; | &quot;session&quot;</code>
+</code>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>    <h3>libs/angular/store/src/lib/rxjs/interfaces/store-generator.ts</h3>
+    <section data-compodoc="block-typealias">
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="NgxStoreActions"></a>
+                    <span class="name "><b>NgxStoreActions</b><a href="#NgxStoreActions"><span class="icon ion-ios-link"></span></a></span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <code>    <code></code>
+</code>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="NgxStoreSelectors"></a>
+                    <span class="name "><b>NgxStoreSelectors</b><a href="#NgxStoreSelectors"><span class="icon ion-ios-link"></span></a></span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <code>    <code></code>
+</code>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="StoreFlowAssets"></a>
+                    <span class="name "><b>StoreFlowAssets</b><a href="#StoreFlowAssets"><span class="icon ion-ios-link"></span></a></span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <code>    <code>Record&lt;string | EntityStoreAssets | BaseStoreAssets&gt;</code>
+</code>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>    <h3>libs/angular/layout/src/lib/types/show-header-requirements.ts</h3>
+    <section data-compodoc="block-typealias">
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="NgxTableCypressDataTags"></a>
+                    <span class="name "><b>NgxTableCypressDataTags</b><a href="#NgxTableCypressDataTags"><span class="icon ion-ios-link"></span></a></span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <code>        <code><a href="../interfaces/NgxTableCypressDataTagsBase.html" target="_self" >RequireAtLeastOne&lt;NgxTableCypressDataTagsBase&gt;</a></code>
+</code>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>    <h3>libs/angular/inform/src/lib/types/tooltip.types.ts</h3>
+    <section data-compodoc="block-typealias">
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="NgxTooltipEvent"></a>
+                    <span class="name "><b>NgxTooltipEvent</b><a href="#NgxTooltipEvent"><span class="icon ion-ios-link"></span></a></span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <code>    <code>NgxTooltipInactiveEvent | NgxTooltipActiveElementEvent | NgxTooltipActiveTooltipEvent</code>
+</code>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="NgxTooltipPosition"></a>
+                    <span class="name "><b>NgxTooltipPosition</b><a href="#NgxTooltipPosition"><span class="icon ion-ios-link"></span></a></span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <code>    <code>&quot;above&quot; | &quot;below&quot; | &quot;left&quot; | &quot;right&quot;</code>
+</code>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="NgxTooltipPositionClass"></a>
+                    <span class="name "><b>NgxTooltipPositionClass</b><a href="#NgxTooltipPositionClass"><span class="icon ion-ios-link"></span></a></span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <code>        <code><a href="../miscellaneous/typealiases.html#NgxTooltipPosition" target="_self" > &#x60;ngx-tooltip-position-${NgxTooltipPosition}&#x60;</a></code>
+</code>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>    <h3>libs/angular/inform/src/lib/types/tour.types.ts</h3>
+    <section data-compodoc="block-typealias">
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="NgxTourAction"></a>
+                    <span class="name "><b>NgxTourAction</b><a href="#NgxTourAction"><span class="icon ion-ios-link"></span></a></span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <code>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/function" target="_blank" >function</a></code>
+</code>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="NgxTourDirection"></a>
+                    <span class="name "><b>NgxTourDirection</b><a href="#NgxTourDirection"><span class="icon ion-ios-link"></span></a></span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <code>    <code>&quot;next&quot; | &quot;back&quot;</code>
+</code>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="NgxTourInteraction"></a>
+                    <span class="name "><b>NgxTourInteraction</b><a href="#NgxTourInteraction"><span class="icon ion-ios-link"></span></a></span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <code>        <code><a href="../miscellaneous/typealiases.html#NgxTourDirection" target="_self" >NgxTourDirection | &quot;close&quot;</a></code>
+</code>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="NgxTourRegistrationEvent"></a>
+                    <span class="name "><b>NgxTourRegistrationEvent</b><a href="#NgxTourRegistrationEvent"><span class="icon ion-ios-link"></span></a></span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <code>    <code>literal type</code>
+</code>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="NgxTourStepOffset"></a>
+                    <span class="name "><b>NgxTourStepOffset</b><a href="#NgxTourStepOffset"><span class="icon ion-ios-link"></span></a></span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <code>    <code>literal type</code>
+</code>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="NgxTourStepPosition"></a>
+                    <span class="name "><b>NgxTourStepPosition</b><a href="#NgxTourStepPosition"><span class="icon ion-ios-link"></span></a></span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <code>    <code>&quot;above&quot; | &quot;below&quot; | &quot;right&quot; | &quot;left&quot;</code>
+</code>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>    <h3>libs/angular/inform/src/lib/types/tour.token.type.ts</h3>
+    <section data-compodoc="block-typealias">
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="NgxTourTokenType"></a>
+                    <span class="name "><b>NgxTourTokenType</b><a href="#NgxTourTokenType"><span class="icon ion-ios-link"></span></a></span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>The token type for the tour provider</p>
+</div>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <code>        <code><a href="../directives/NgxTourStepComponent.html" target="_self" >Type&lt;NgxTourStepComponent&gt; | NgxTourTokenConfiguration</a></code>
+</code>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>    <h3>libs/angular/layout/src/lib/types/tree-grid.types.ts</h3>
+    <section data-compodoc="block-typealias">
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="NgxTreeGridCellTarget"></a>
+                    <span class="name "><b>NgxTreeGridCellTarget</b><a href="#NgxTreeGridCellTarget"><span class="icon ion-ios-link"></span></a></span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <code>    <code>number | &quot;first&quot; | &quot;last&quot;</code>
+</code>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="NgxTreeGridRowTarget"></a>
+                    <span class="name "><b>NgxTreeGridRowTarget</b><a href="#NgxTreeGridRowTarget"><span class="icon ion-ios-link"></span></a></span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <code>    <code>&quot;current&quot; | &quot;above&quot; | &quot;below&quot; | &quot;first&quot; | &quot;last&quot;</code>
+</code>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>    <h3>libs/angular/layout/src/lib/types/internal-helpers.ts</h3>
+    <section data-compodoc="block-typealias">
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="RequireAtLeastOne"></a>
+                    <span class="name "><b>RequireAtLeastOne</b><a href="#RequireAtLeastOne"><span class="icon ion-ios-link"></span></a></span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <code>    <code></code>
+</code>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>    <h3>libs/angular/store/src/lib/rxjs/interfaces/require-at-least-one.ts</h3>
+    <section data-compodoc="block-typealias">
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="RequireAtLeastOne"></a>
+                    <span class="name "><b>RequireAtLeastOne</b><a href="#RequireAtLeastOne"><span class="icon ion-ios-link"></span></a></span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <code>    <code></code>
+</code>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>    <h3>libs/angular/store/src/lib/rxjs/interfaces/store.ts</h3>
+    <section data-compodoc="block-typealias">
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="StoreActions"></a>
+                    <span class="name "><b>StoreActions</b><a href="#StoreActions"><span class="icon ion-ios-link"></span></a></span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <code>        <code><a href="../miscellaneous/typealiases.html#StoreActions" target="_self" >BaseStoreActions | EntityStoreActions</a></code>
+</code>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="StoreSelectors"></a>
+                    <span class="name "><b>StoreSelectors</b><a href="#StoreSelectors"><span class="icon ion-ios-link"></span></a></span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <code>        <code><a href="../miscellaneous/typealiases.html#StoreSelectors" target="_self" >BaseStoreSelectors | EntityStoreSelectors</a></code>
+</code>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>    <h3>libs/angular/utils/src/lib/abstracts/query-param-form-sync/query-param-form-sync.component.abstract.ts</h3>
+    <section data-compodoc="block-typealias">
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="StringifiedQueryParamsType"></a>
+                    <span class="name "><b>StringifiedQueryParamsType</b><a href="#StringifiedQueryParamsType"><span class="icon ion-ios-link"></span></a></span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <code>    <code></code>
+</code>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'miscellaneous-typealiases';
+            var COMPODOC_CURRENT_PAGE_URL = 'typealiases.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script>
+               $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               checkToggle(darkModeState);
+               if ($darkModeToggleSwitchers.length > 0) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].addEventListener('change', function (event) {
+                              darkModeState = !darkModeState;
+                              toggleDarkMode(darkModeState);
+                         });
+                    }
+               }
+          </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>
