@@ -54,7 +54,8 @@
     "dot-prop": "^9.0.0",
     "markerjs2": "^2.32.4",
     "markerjs-live": "^1.2.1",
-    "@ibenvandeveire/ngx-core": "^20.0.0"
+    "@ibenvandeveire/ngx-core": "^20.0.0",
+    "@angular/router": "20.1.2"
   },
   "sideEffects": false
 }
