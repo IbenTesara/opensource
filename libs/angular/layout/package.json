@@ -1,6 +1,6 @@
 {
   "name": "@ibenvandeveire/ngx-layout",
-  "version": "20.0.0",
+  "version": "20.1.0",
   "keywords": [
     "angular",
     "angular2",
@@ -31,7 +31,9 @@
     "drag-and-drop",
     "accessible drag-and-drop",
     "markerjs2",
-    "markerjs-live"
+    "markerjs-live",
+    "mobile",
+    "mobile-layout"
   ],
   "license": "MIT",
   "author": {
