@@ -1,0 +1,35 @@
+@if(layout()) {
+<main class="ngx-mobile-layout-main">
+	@if(layout().header) {
+	<header class="ngx-mobile-layout-header">
+		@if(layout().header.left) {
+		<ng-template [ngComponentOutlet]="layout().header.left" />
+		}
+		<ng-template [ngComponentOutlet]="layout().header.main" />
+
+		@if(layout().header.right) {
+		<ng-template [ngComponentOutlet]="layout().header.right" />
+		}
+	</header>
+	} @if(layout().navigation) {
+	<nav>
+		<ng-template [ngComponentOutlet]="layout().navigation" />
+	</nav>
+	}
+
+	<div class="ngx-mobile-layout-content">
+		<router-outlet />
+	</div>
+
+	@if(layout().flyout) {
+	<div [class]="['ngx-mobile-layout-flyout', flyoutClass()]">
+		<ng-template [ngComponentOutlet]="layout().flyout" />
+	</div>
+	} @if(layout().footer) {
+	<footer class="ngx-mobile-layout-footer">
+		<ng-template [ngComponentOutlet]="layout().footer" />
+	</footer>
+	}
+</main>
+
+}

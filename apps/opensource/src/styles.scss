@@ -1,2 +1,75 @@
 /* You can add global styles to this file, and also import other style files */
 @import '@angular/cdk/overlay-prebuilt.css';
+
+@keyframes append-animate {
+  from {
+    transform: scaleY(0);
+    opacity: 0;
+  }
+
+  to {
+    transform: scaleY(1);
+    opacity: 1;
+  }
+}
+
+@keyframes remove-animate {
+  from {
+    transform: scaleY(1);
+    opacity: 1;
+  }
+
+  to {
+    transform: scaleY(0);
+    opacity: 0;
+  }
+}
+
+ngx-mobile-layout {
+  display: block;
+  height: 50vh;
+  width: 30vw;
+  margin-top: 15px;
+  border: 1px solid black;
+}
+
+.ngx-mobile-layout-main {
+  height: 50vh;
+  width: 30vw;
+
+  position: relative;
+
+  display: grid;
+  grid-template-rows: repeat(2, max-content) 1fr max-content;
+  grid-template-columns: minmax(0, 1fr);
+
+  .ngx-mobile-layout-header {
+    grid-row: 1/2;
+  }
+
+  .ngx-mobile-layout-content {
+    grid-row: 3/4;
+  }
+
+  .ngx-mobile-layout-footer {
+    grid-row: 4/5;
+  }
+
+  .ngx-mobile-layout-flyout {
+    position: absolute;
+    bottom: 0;
+    z-index: 1;
+
+    height: 80%;
+    width: 100%;
+    border-top: 1px solid black;
+  }
+
+  .ngx-mobile-layout-flyout-in {
+    animation: append-animate .3s linear;
+  }
+
+  .ngx-mobile-layout-flyout-out {
+    animation: remove-animate .31s linear;
+  }
+}
