@@ -9,14 +9,20 @@ import { NgxI18nConfiguration } from '../../i18n.types';
 import { NgxI18nLoadingService } from '../../services';
 import { NgxI18nConfigurationToken } from '../../tokens';
 
+/**
+ * A loader that allows to load in multiple translation JSON files at the same time
+ */
 export class NgxI18nMultiTranslationHttpLoader implements TranslateLoader {
-	private readonly translationLoadingService: NgxI18nLoadingService =
+	/**
+   * The instance of the translation loading service
+   */
+  private readonly translationLoadingService: NgxI18nLoadingService =
 		inject(NgxI18nLoadingService);
 
 	/**
 	 * The configuration for the NgxI18nModule.
 	 */
-	private readonly config: NgxI18nConfiguration = inject(NgxI18nConfigurationToken);
+  private readonly config: NgxI18nConfiguration = inject( NgxI18nConfigurationToken );
 
 	constructor(
 		private readonly httpBackend: HttpBackend,

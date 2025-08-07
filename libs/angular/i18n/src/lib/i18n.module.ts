@@ -8,6 +8,11 @@ import { NgxI18nTranslationLoaderResolver } from './resolvers';
 import { NgxI18nService } from './services';
 import { NgxI18nConfigurationToken } from './tokens/i18n.token';
 
+/**
+ * A fallback loader in case no translation loader has been provided
+ *
+ * @param http - The HttpBackend
+ */
 function FallBackTranslationLoader(http: HttpBackend) {
 	// Iben: Inject the config
 	const config = inject(NgxI18nConfigurationToken);
