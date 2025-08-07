@@ -123,6 +123,13 @@
         </p>
 
 
+            <p class="comment">
+                <h3>Description</h3>
+            </p>
+            <p class="comment">
+                <p>A loader that allows to load in multiple translation JSON files at the same time</p>
+
+            </p>
 
 
             <p class="comment">
@@ -194,7 +201,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="19" class="link-to-prism">libs/angular/i18n/src/lib/loader/multi-translation/multi-translation.loader.ts:19</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="25" class="link-to-prism">libs/angular/i18n/src/lib/loader/multi-translation/multi-translation.loader.ts:25</a></div>
                             </td>
                         </tr>
 
@@ -270,12 +277,12 @@
                 </tr>
                 <tr>
                     <td class="col-md-4">
-                        <i>Default value : </i><code>inject(NgxI18nConfigurationToken)</code>
+                        <i>Default value : </i><code>inject( NgxI18nConfigurationToken )</code>
                     </td>
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="19" class="link-to-prism">libs/angular/i18n/src/lib/loader/multi-translation/multi-translation.loader.ts:19</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="25" class="link-to-prism">libs/angular/i18n/src/lib/loader/multi-translation/multi-translation.loader.ts:25</a></div>
                         </td>
                     </tr>
 
@@ -314,10 +321,16 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="13" class="link-to-prism">libs/angular/i18n/src/lib/loader/multi-translation/multi-translation.loader.ts:13</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="19" class="link-to-prism">libs/angular/i18n/src/lib/loader/multi-translation/multi-translation.loader.ts:19</a></div>
                         </td>
                     </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>The instance of the translation loading service</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -350,8 +363,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="31"
-                                    class="link-to-prism">libs/angular/i18n/src/lib/loader/multi-translation/multi-translation.loader.ts:31</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="37"
+                                    class="link-to-prism">libs/angular/i18n/src/lib/loader/multi-translation/multi-translation.loader.ts:37</a></div>
                         </td>
                     </tr>
 
@@ -427,14 +440,20 @@ import { NgxI18nConfiguration } from &#x27;../../i18n.types&#x27;;
 import { NgxI18nLoadingService } from &#x27;../../services&#x27;;
 import { NgxI18nConfigurationToken } from &#x27;../../tokens&#x27;;
 
+/**
+ * A loader that allows to load in multiple translation JSON files at the same time
+ */
 export class NgxI18nMultiTranslationHttpLoader implements TranslateLoader {
-	private readonly translationLoadingService: NgxI18nLoadingService &#x3D;
+	/**
+   * The instance of the translation loading service
+   */
+  private readonly translationLoadingService: NgxI18nLoadingService &#x3D;
 		inject(NgxI18nLoadingService);
 
 	/**
 	 * The configuration for the NgxI18nModule.
 	 */
-	private readonly config: NgxI18nConfiguration &#x3D; inject(NgxI18nConfigurationToken);
+  private readonly config: NgxI18nConfiguration &#x3D; inject( NgxI18nConfigurationToken );
 
 	constructor(
 		private readonly httpBackend: HttpBackend,

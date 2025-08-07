@@ -126,6 +126,13 @@
         </p>
 
 
+            <p class="comment">
+                <h3>Description</h3>
+            </p>
+            <p class="comment">
+                <p>A translation loading action, in which we indicate whether a file has been loaded or not</p>
+
+            </p>
 
 
         <section data-compodoc="block-index">
@@ -233,6 +240,9 @@
 	state: keyof typeof TranslationLoaderActionStateEnum;
 }
 
+/**
+ * The state of a translation loading action
+ */
 enum TranslationLoaderActionStateEnum {
 	LOADING &#x3D; &#x27;LOADING&#x27;,
 	LOADED &#x3D; &#x27;LOADED&#x27;,

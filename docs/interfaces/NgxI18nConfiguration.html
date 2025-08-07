@@ -126,6 +126,13 @@
         </p>
 
 
+            <p class="comment">
+                <h3>Description</h3>
+            </p>
+            <p class="comment">
+                <p>The configuration we can pass to the translation system</p>
+
+            </p>
 
 
         <section data-compodoc="block-index">
@@ -220,6 +227,12 @@
 
 
 
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-description"><p>A list of languages the application has translations for</p>
+</div>
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
                     <table class="table table-sm table-bordered">
@@ -303,6 +316,12 @@ parameter.</p>
 
 
 
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-description"><p>A list of default translation files we want to load in if we don&#39;t provide a custom loader</p>
+</div>
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
                     <table class="table table-sm table-bordered">
@@ -336,6 +355,12 @@ parameter.</p>
 
 
 
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-description"><p>The default language the application should be in</p>
+</div>
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
                     <table class="table table-sm table-bordered">
@@ -374,6 +399,12 @@ parameter.</p>
 
 
 
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-description"><p>The param name we use for the language, by default this is <code>language</code></p>
+</div>
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
             </section>
@@ -382,9 +413,21 @@ parameter.</p>
 
     <div class="tab-pane fade  tab-source-code" id="source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">export interface NgxI18nConfiguration {
+	/**
+	 * The default language the application should be in
+	 */
 	defaultLanguage: string;
+	/**
+	 * A list of languages the application has translations for
+	 */
 	availableLanguages?: string[];
+	/**
+	 * A list of default translation files we want to load in if we don&#x27;t provide a custom loader
+	 */
 	defaultAssetPaths: string[];
+	/**
+	 * The param name we use for the language, by default this is &#x60;language&#x60;
+	 */
 	languageRouteParam?: string;
 	/**
 	 * The cache busting parameter to append to the translation file requests.

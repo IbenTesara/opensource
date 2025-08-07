@@ -123,6 +123,13 @@
         </p>
 
 
+            <p class="comment">
+                <h3>Description</h3>
+            </p>
+            <p class="comment">
+                <p>An abstract service used to fetch the current language</p>
+
+            </p>
 
 
 
@@ -183,9 +190,20 @@
                 </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="2" class="link-to-prism">libs/angular/i18n/src/lib/abstracts/i18n-service.abstract.ts:2</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="9" class="link-to-prism">libs/angular/i18n/src/lib/abstracts/i18n-service.abstract.ts:9</a></div>
                                 </td>
                             </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-description"><p>A method to return the current language</p>
+</div>
+
+                                <div class="io-description">
+                                    <b>Returns : </b>    <code>Language</code>
+
+                                </div>
+                        </td>
+                    </tr>
 
             </tbody>
         </table>
@@ -195,7 +213,11 @@
 
     <div class="tab-pane fade  tab-source-code" id="source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">export abstract class NgxI18nAbstractService&lt;Language &#x3D; string&gt; {
-	public abstract get currentLanguage(): Language;
+
+	/**
+   * A method to return the current language
+   */
+  public abstract get currentLanguage(): Language;
 }
 </code></pre>
     </div>
