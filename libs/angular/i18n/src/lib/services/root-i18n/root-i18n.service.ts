@@ -6,6 +6,9 @@ import { NgxI18nConfiguration } from '../../i18n.types';
 import { NgxI18nConfigurationToken } from '../../tokens';
 
 //TODO: Iben: Once we have a shared lib we should replace the storage and the browser approaches with their corresponding implementations
+/**
+ * The single root instance of the translation service, in charge of holding the current language, the available languages and allows for the language to be changed.
+ */
 @Injectable({ providedIn: 'root' })
 export class NgxI18nRootService {
 	/**

@@ -1,3 +1,10 @@
+/**
+ * An abstract service used to fetch the current language
+ */
 export abstract class NgxI18nAbstractService<Language = string> {
-	public abstract get currentLanguage(): Language;
+
+	/**
+   * A method to return the current language
+   */
+  public abstract get currentLanguage(): Language;
 }

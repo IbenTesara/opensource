@@ -5,6 +5,9 @@ import { Observable } from 'rxjs';
 import { NgxI18nAbstractService } from '../../abstracts';
 import { NgxI18nRootService } from '../root-i18n/root-i18n.service';
 
+/**
+ * A service that holds the translations for an individual feature. Multiple instances of this service will exist throughout your application.
+ */
 @Injectable()
 export class NgxI18nService implements NgxI18nAbstractService {
 	/**

@@ -1,7 +1,22 @@
+/**
+ * The configuration we can pass to the translation system
+ */
 export interface NgxI18nConfiguration {
+	/**
+	 * The default language the application should be in
+	 */
 	defaultLanguage: string;
+	/**
+	 * A list of languages the application has translations for
+	 */
 	availableLanguages?: string[];
+	/**
+	 * A list of default translation files we want to load in if we don't provide a custom loader
+	 */
 	defaultAssetPaths: string[];
+	/**
+	 * The param name we use for the language, by default this is `language`
+	 */
 	languageRouteParam?: string;
 	/**
 	 * The cache busting parameter to append to the translation file requests.

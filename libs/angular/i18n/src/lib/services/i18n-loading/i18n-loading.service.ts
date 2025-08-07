@@ -4,6 +4,9 @@ import { scan, map, shareReplay } from 'rxjs/operators';
 
 import { TranslationLoaderActionEntity } from './i18n-loading.types';
 
+/**
+ * A service that holds whether there currently are translation files being loaded into the application
+ */
 @Injectable({
 	providedIn: 'root',
 })
