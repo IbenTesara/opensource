@@ -10,7 +10,7 @@ echo "Running documentation"
 npx compodoc -p tsconfig.doc.json --output docs --silent
 # Commit the new documentation
 git add --all
-git commit -s -m "Update ngx-$package documentation"
+git commit -m "feat(ngx-$package): Update ngx-$package documentation"
 # Navigate to the package folder (currently only works for Angular packages)
 cd libs/angular/$package
 # Bump the version
@@ -23,7 +23,7 @@ NEW_VERSION=$(cat package.json \
   | sed 's/[", ]//g')
 # Make a new commit for the new version
 git add --all
-git commit -s -m "build(ngx-$package):v$NEW_VERSION"
+git commit -m "build(ngx-$package):v$NEW_VERSION"
 # Tag the new version
 git tag -a "@ibenvandeveire/ngx-$package/$NEW_VERSION" -m "New release"
 # Push the new version
