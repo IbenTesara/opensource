@@ -12,7 +12,8 @@
 		"lint:affected": "npx nx affected --target=lint --fix --base=origin/main --parallel",
 		"lint:all": "nx run-many --target=lint --fix --parallel",
 		"format": "npx nx format",
-		"documentation": "npx compodoc -p tsconfig.doc.json --output docs"
+		"documentation": "npx compodoc -p tsconfig.doc.json --output docs",
+    "publish": "bash publish.sh"
 	},
 	"private": true,
 	"dependencies": {
