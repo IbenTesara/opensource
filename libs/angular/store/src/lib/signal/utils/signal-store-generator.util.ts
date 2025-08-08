@@ -33,7 +33,7 @@ export const createNgxSignalStore = <StateType extends NgxSignalStoreState>(
  * @template StateType - The type of the store
  * @param store - The created NgxSignalStore
  */
-export const injectNxSignalStore = <StateType extends NgxSignalStoreState>(
+export const injectNgxSignalStore = <StateType extends NgxSignalStoreState>(
 	store: NgxSignalStoreRecord<StateType>
 ): NgxSignalStore<StateType> => {
 	return Object.keys(store).reduce((result, slice) => {
