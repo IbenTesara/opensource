@@ -145,6 +145,15 @@
                             <a href="#createEntityAdapterStoreAssets" title="libs/angular/store/src/lib/rxjs/utils/entity-store/entity-adapter.util.ts" ><b>createEntityAdapterStoreAssets</b>&nbsp;&nbsp;&nbsp;(libs/.../entity-adapter.util.ts)</a>
                         </li>
                         <li>
+                            <a href="#createNgxSignalStore" title="libs/angular/store/src/lib/signal/utils/signal-store-generator.util.ts" ><b>createNgxSignalStore</b>&nbsp;&nbsp;&nbsp;(libs/.../signal-store-generator.util.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#createNgxSignalStoreArraySlice" title="libs/angular/store/src/lib/signal/utils/generators/create-signal-store-slice.util.ts" ><b>createNgxSignalStoreArraySlice</b>&nbsp;&nbsp;&nbsp;(libs/.../create-signal-store-slice.util.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#createNgxSignalStoreSlice" title="libs/angular/store/src/lib/signal/utils/generators/create-signal-store-slice.util.ts" ><b>createNgxSignalStoreSlice</b>&nbsp;&nbsp;&nbsp;(libs/.../create-signal-store-slice.util.ts)</a>
+                        </li>
+                        <li>
                             <a href="#createStoreAssets" title="libs/angular/store/src/lib/rxjs/utils/store-generator.util/store-generator.util.ts" ><b>createStoreAssets</b>&nbsp;&nbsp;&nbsp;(libs/.../store-generator.util.ts)</a>
                         </li>
                         <li>
@@ -161,6 +170,9 @@
                         </li>
                         <li>
                             <a href="#Directives" title="libs/angular/utils/src/lib/directives/index.ts" ><b>Directives</b>&nbsp;&nbsp;&nbsp;(libs/.../index.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#dispatchDataToSignalStore" title="libs/angular/store/src/lib/signal/utils/dispatch-data-to-signal-store.util.ts" ><b>dispatchDataToSignalStore</b>&nbsp;&nbsp;&nbsp;(libs/.../dispatch-data-to-signal-store.util.ts)</a>
                         </li>
                         <li>
                             <a href="#dispatchDataToStore" title="libs/angular/store/src/lib/rxjs/utils/dispatch-data-to-store/dispatch-data-to-store.util.ts" ><b>dispatchDataToStore</b>&nbsp;&nbsp;&nbsp;(libs/.../dispatch-data-to-store.util.ts)</a>
@@ -224,6 +236,9 @@
                         </li>
                         <li>
                             <a href="#importNgxI18nProviders" title="libs/angular/i18n/src/lib/providers/i18n.providers.ts" ><b>importNgxI18nProviders</b>&nbsp;&nbsp;&nbsp;(libs/.../i18n.providers.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#injectNxSignalStore" title="libs/angular/store/src/lib/signal/utils/signal-store-generator.util.ts" ><b>injectNxSignalStore</b>&nbsp;&nbsp;&nbsp;(libs/.../signal-store-generator.util.ts)</a>
                         </li>
                         <li>
                             <a href="#isEmptyInputValue" title="libs/angular/forms/src/lib/validators/utils/is-empty-input-value.util.ts" ><b>isEmptyInputValue</b>&nbsp;&nbsp;&nbsp;(libs/.../is-empty-input-value.util.ts)</a>
@@ -374,6 +389,9 @@
                         </li>
                         <li>
                             <a href="#provideNgxReplaceElementsConfiguration" title="libs/angular/utils/src/lib/providers/replace-elements/replace-elements.provider.ts" ><b>provideNgxReplaceElementsConfiguration</b>&nbsp;&nbsp;&nbsp;(libs/.../replace-elements.provider.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#provideNgxSignalStore" title="libs/angular/store/src/lib/signal/providers/signal-store.provider.ts" ><b>provideNgxSignalStore</b>&nbsp;&nbsp;&nbsp;(libs/.../signal-store.provider.ts)</a>
                         </li>
                         <li>
                             <a href="#provideNgxTableConfiguration" title="libs/angular/layout/src/lib/providers/table/table-configuration.provider.ts" ><b>provideNgxTableConfiguration</b>&nbsp;&nbsp;&nbsp;(libs/.../table-configuration.provider.ts)</a>
@@ -1319,6 +1337,266 @@
         </tbody>
     </table>
 </section>
+    <h3>libs/angular/store/src/lib/signal/utils/signal-store-generator.util.ts</h3>
+    <section data-compodoc="block-properties">
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="createNgxSignalStore"></a>
+                    <span class="name">
+                        <span ><b>createNgxSignalStore</b></span>
+                        <a href="#createNgxSignalStore"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>&lt;StateType extends NgxSignalStoreState&gt;(
+	slices: NgxSignalStoreConfiguration&lt;StateType&gt;
+): NgxSignalStoreRecord&lt;StateType&gt; &#x3D;&gt; {
+	return Object.keys(slices).reduce&lt;NgxSignalStoreRecord&lt;StateType&gt;&gt;((result, slice) &#x3D;&gt; {
+		return {
+			...result,
+			// Iben: To keep the typing relatively simply, we cast this generator to any
+			[slice]: (slices[slice].generator as any)(
+				slices[slice].initialData,
+				slices[slice].selectId
+			),
+		};
+	}, {} as NgxSignalStoreRecord&lt;StateType&gt;);
+}</code>
+                    </td>
+                </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Returns a NgxSignalStore based on the provided configuration</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="injectNxSignalStore"></a>
+                    <span class="name">
+                        <span ><b>injectNxSignalStore</b></span>
+                        <a href="#injectNxSignalStore"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>&lt;StateType extends NgxSignalStoreState&gt;(
+	store: NgxSignalStoreRecord&lt;StateType&gt;
+): NgxSignalStore&lt;StateType&gt; &#x3D;&gt; {
+	return Object.keys(store).reduce((result, slice) &#x3D;&gt; {
+		return {
+			...result,
+			[slice]: inject(store[slice]),
+		};
+	}, {} as NgxSignalStore&lt;StateType&gt;);
+}</code>
+                    </td>
+                </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Injects a created NgxSignalStore into the component or service</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+</section>
+    <h3>libs/angular/store/src/lib/signal/utils/generators/create-signal-store-slice.util.ts</h3>
+    <section data-compodoc="block-properties">
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="createNgxSignalStoreArraySlice"></a>
+                    <span class="name">
+                        <span ><b>createNgxSignalStoreArraySlice</b></span>
+                        <a href="#createNgxSignalStoreArraySlice"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>&lt;DataType extends any[]&gt;(
+	initialData?: DataType,
+	selectId?: (data: ArrayElementType&lt;DataType&gt;) &#x3D;&gt; string | number
+) &#x3D;&gt; {
+	// Iben: Return the signalStore
+	return signalStore(
+		// Iben: Setup the initial state
+		withState&lt;NgxSignalStoreSlice&lt;DataType&gt;&gt;({
+			data: initialData,
+			loading: false,
+			error: false,
+		}),
+		// Iben: Methods
+		withMethods((store) &#x3D;&gt; ({
+			set(data: DataType) {
+				patchState(store, () &#x3D;&gt; ({ data, loading: false, error: false }));
+			},
+			add(data: DataType | ArrayElementType&lt;DataType&gt;) {
+				patchState(store, (state) &#x3D;&gt; {
+					return {
+						// Iben: Add a single or multiple items
+						data: [
+							...(state.data || []),
+							...(Array.isArray(data) ? data : [data]),
+						] as DataType,
+					};
+				});
+			},
+			prepend(data: DataType | ArrayElementType&lt;DataType&gt;) {
+				patchState(store, (state) &#x3D;&gt; {
+					return {
+						// Iben: Add a single or multiple items
+						data: [
+							...(Array.isArray(data) ? data : [data]),
+							...(state.data || []),
+						] as DataType,
+					};
+				});
+			},
+			update(data: ArrayElementType&lt;DataType&gt;) {
+				patchState(store, (state) &#x3D;&gt; {
+					// Iben: Find the index of the item
+					const itemIndex &#x3D; state.data.findIndex((item) &#x3D;&gt; {
+						return selectId
+							? selectId(item) &#x3D;&#x3D;&#x3D; selectId(data)
+							: item[&#x27;id&#x27;] &#x3D;&#x3D;&#x3D; data[&#x27;id&#x27;];
+					});
+
+					// Iben: If the item wasn&#x27;t found, return the state as is
+					if (itemIndex &#x3D;&#x3D;&#x3D; -1) {
+						return state;
+					}
+
+					// Iben: If the item was found, update the state
+					return {
+						data: [
+							...(state.data || []).slice(0, itemIndex),
+							data,
+							...(state.data || []).slice(itemIndex + 1),
+						] as DataType,
+					};
+				});
+			},
+			remove(data: ArrayElementType&lt;DataType&gt;) {
+				patchState(store, (state) &#x3D;&gt; {
+					// Iben: Find the index of the item
+					const itemIndex &#x3D; state.data.findIndex((item) &#x3D;&gt; {
+						return selectId
+							? selectId(item) &#x3D;&#x3D;&#x3D; selectId(data)
+							: item[&#x27;id&#x27;] &#x3D;&#x3D;&#x3D; data[&#x27;id&#x27;];
+					});
+
+					// Iben: If the item wasn&#x27;t found, return the state as is
+					if (itemIndex &#x3D;&#x3D;&#x3D; -1) {
+						return state;
+					}
+
+					// Iben: If the item was found, update the state
+					return {
+						data: [
+							...(state.data || []).slice(0, itemIndex),
+							...(state.data || []).slice(itemIndex + 1),
+						] as DataType,
+					};
+				});
+			},
+			setLoading(loading: boolean) {
+				patchState(store, () &#x3D;&gt; ({ loading }));
+			},
+			setError(error: boolean) {
+				patchState(store, () &#x3D;&gt; ({ error }));
+			},
+			reset() {
+				patchState(store, () &#x3D;&gt; ({ data: initialData }));
+			},
+			clear() {
+				patchState(store, () &#x3D;&gt; ({ data: [] as DataType }));
+			},
+		}))
+	);
+}</code>
+                    </td>
+                </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Returns a SignalStoreSlice based on the provided configuration, specifically for a slice that is an array</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="createNgxSignalStoreSlice"></a>
+                    <span class="name">
+                        <span ><b>createNgxSignalStoreSlice</b></span>
+                        <a href="#createNgxSignalStoreSlice"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>&lt;DataType&gt;(initialData?: DataType) &#x3D;&gt; {
+	// Iben: Return the signalStore
+	return signalStore(
+		// Iben: Setup the initial state
+		withState&lt;NgxSignalStoreSlice&lt;DataType&gt;&gt;({
+			data: initialData,
+			loading: false,
+			error: false,
+		}),
+		// Iben: Methods
+		withMethods((store) &#x3D;&gt; ({
+			set(data: DataType) {
+				patchState(store, () &#x3D;&gt; ({ data, loading: false, error: false }));
+			},
+			setLoading(loading: boolean) {
+				patchState(store, () &#x3D;&gt; ({ loading }));
+			},
+			setError(error: boolean) {
+				patchState(store, () &#x3D;&gt; ({ error }));
+			},
+			reset() {
+				patchState(store, () &#x3D;&gt; ({ data: initialData }));
+			},
+			clear() {
+				patchState(store, () &#x3D;&gt; ({ data: undefined }));
+			},
+		}))
+	);
+}</code>
+                    </td>
+                </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Returns a SignalStoreSlice based on the provided configuration</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+</section>
     <h3>libs/angular/store/src/lib/rxjs/utils/store-generator.util/store-generator.util.ts</h3>
     <section data-compodoc="block-properties">
     <h3></h3>    <table class="table table-sm table-bordered">
@@ -1713,6 +1991,64 @@
                     </td>
                 </tr>
 
+
+        </tbody>
+    </table>
+</section>
+    <h3>libs/angular/store/src/lib/signal/utils/dispatch-data-to-signal-store.util.ts</h3>
+    <section data-compodoc="block-properties">
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="dispatchDataToSignalStore"></a>
+                    <span class="name">
+                        <span ><b>dispatchDataToSignalStore</b></span>
+                        <a href="#dispatchDataToSignalStore"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>&lt;DataType&gt;(
+	slice: string,
+	data: Observable&lt;DataType&gt;,
+	store: NgxSignalStore,
+	action: NgxSignalStoreDispatchActions &#x3D; &#x27;set&#x27;
+): Observable&lt;void&gt; &#x3D;&gt; {
+	// Iben: Set the loading to true and the error to false
+	store[slice].setLoading(true);
+	store[slice].setError(false);
+
+	// Iben: Respond to the data
+	return data.pipe(
+		// Iben: Push the result to the store
+		tap((result) &#x3D;&gt; {
+			store[slice][action as string](result);
+		}),
+		// Iben: In case there&#x27;s an error, set the error and throw it
+		catchError((error) &#x3D;&gt; {
+			store[slice].setError(true);
+
+			return throwError(() &#x3D;&gt; error);
+		}),
+		// Iben: Map to undefined so no data from the observable leaks to the
+		map(() &#x3D;&gt; undefined),
+		// Iben: Set the loading back to false regardless of success
+		finalize(() &#x3D;&gt; {
+			store[slice].setLoading(false);
+		})
+	);
+}</code>
+                    </td>
+                </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Dispatches data to a signal store</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -4769,6 +5105,37 @@ This implementation is provided given that pluck has a higher readability than a
             <tr>
                 <td class="col-md-4">
                     <div class="io-description"><p>Provides the configuration for the NgxReplaceElements directive</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+</section>
+    <h3>libs/angular/store/src/lib/signal/providers/signal-store.provider.ts</h3>
+    <section data-compodoc="block-properties">
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="provideNgxSignalStore"></a>
+                    <span class="name">
+                        <span ><b>provideNgxSignalStore</b></span>
+                        <a href="#provideNgxSignalStore"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>(store: NgxSignalStoreRecord&lt;any&gt;): SignalStoreFeature[] &#x3D;&gt; {
+	return Object.values(store);
+}</code>
+                    </td>
+                </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Provides all the created signal stores to the provided spot</p>
 </div>
                 </td>
             </tr>

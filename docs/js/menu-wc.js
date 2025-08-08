@@ -329,6 +329,9 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                                     <a href="injectables/NgxOnlineService.html" data-type="entity-link" >NgxOnlineService</a>
                                 </li>
                                 <li class="link">
+                                    <a href="injectables/NgxSignalStoreService.html" data-type="entity-link" >NgxSignalStoreService</a>
+                                </li>
+                                <li class="link">
                                     <a href="injectables/NgxStorageService.html" data-type="entity-link" >NgxStorageService</a>
                                 </li>
                                 <li class="link">
@@ -514,6 +517,15 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                             </li>
                             <li class="link">
                                 <a href="interfaces/NgxReplaceElementsItem.html" data-type="entity-link" >NgxReplaceElementsItem</a>
+                            </li>
+                            <li class="link">
+                                <a href="interfaces/NgxSignalStoreSlice.html" data-type="entity-link" >NgxSignalStoreSlice</a>
+                            </li>
+                            <li class="link">
+                                <a href="interfaces/NgxSignalStoreSliceArrayMethods.html" data-type="entity-link" >NgxSignalStoreSliceArrayMethods</a>
+                            </li>
+                            <li class="link">
+                                <a href="interfaces/NgxSignalStoreSliceBaseMethods.html" data-type="entity-link" >NgxSignalStoreSliceBaseMethods</a>
                             </li>
                             <li class="link">
                                 <a href="interfaces/NgxStorage.html" data-type="entity-link" >NgxStorage</a>
