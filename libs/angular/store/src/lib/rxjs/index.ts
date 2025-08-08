@@ -2,7 +2,7 @@
  * Public API Surface of store
  */
 export { NgxStoreService } from './abstracts';
-export {
+export type {
 	BaseStoreAssets,
 	EntityStoreAssets,
 	NgxStore,
