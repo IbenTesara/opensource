@@ -1,6 +1,6 @@
 import { inject, Injectable } from '@angular/core';
 import clean from 'obj-clean';
-import { BehaviorSubject, filter, Observable, shareReplay, Subject, take, tap } from 'rxjs';
+import { BehaviorSubject, filter, Observable, take, tap } from 'rxjs';
 
 import { NgxMobileLayoutConfigurationToken } from '../../tokens';
 import { ComponentType, NgxMobileLayout, NgxMobileLayoutConfiguration } from '../../types';
@@ -15,14 +15,14 @@ export class NgxMobileLayoutService {
 	/**
 	 * A subject holding whether the initial layout has been set
 	 */
-	private readonly initialLayoutSetSubject$: Subject<boolean> = new Subject();
+	private readonly initialLayoutSetSubject$: BehaviorSubject<boolean> = new BehaviorSubject(
+		false
+	);
 
 	/**
 	 * Whether the initial layout has been set
 	 */
-	private readonly initialLayoutSet$: Observable<boolean> = this.initialLayoutSetSubject$.pipe(
-		shareReplay()
-	);
+	private readonly initialLayoutSet$: Observable<boolean> = this.initialLayoutSetSubject$;
 
 	/**
 	 * An optional default layout that was provided
@@ -78,9 +78,7 @@ export class NgxMobileLayoutService {
 
 				// Iben: If layout is provided, we set the default layout
 				if (!layout && this.defaultLayout) {
-					this.layoutSubject$.next(
-						clean(defaultLayout) as NgxMobileLayout
-					);
+					this.layoutSubject$.next(clean(defaultLayout) as NgxMobileLayout);
 
 					return;
 				}
@@ -147,14 +145,14 @@ export class NgxMobileLayoutService {
 	/**
 	 * Provides an initial layout if one was provided
 	 */
-	public setUpInitialLayout(): void {
+	public setUpInitialLayout(markAsInitial: boolean = true): void {
 		// Iben: Set initial layout
-		this.layoutSubject$.next(
-			clean(this.defaultLayout?.layout) as NgxMobileLayout
-		);
+		this.layoutSubject$.next(clean(this.defaultLayout?.layout) as NgxMobileLayout);
 
 		// Iben: Mark the initial layout set as true
-		this.initialLayoutSetSubject$.next(true);
+		if (markAsInitial) {
+			this.initialLayoutSetSubject$.next(true);
+		}
 	}
 
 	/**

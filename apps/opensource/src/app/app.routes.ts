@@ -1,6 +1,10 @@
 import { Route } from '@angular/router';
 
-import { NgxMobileLayoutComponent, NgxMobileLayoutGuard } from '@lib/ngx-layout';
+import {
+	NgxMobileLayoutComponent,
+	NgxMobileLayoutDefaultGuard,
+	NgxMobileLayoutGuard,
+} from '@lib/ngx-layout';
 
 import { FormsPageComponent } from '../packages/forms/forms.component';
 import { NgxLayoutPageComponent } from '../packages/layout/layout.component';
@@ -28,17 +32,17 @@ export const appRoutes: Route[] = [
 			{
 				path: '',
 				pathMatch: 'full',
-				redirectTo: 'page2',
+				redirectTo: 'page1',
 			},
 			{
 				path: 'page1',
 				component: Page1Component,
-				canActivate: [NgxMobileLayoutGuard],
 			},
 			{
 				path: 'page2',
 				component: Page2Component,
 				canActivate: [NgxMobileLayoutGuard],
+				canDeactivate: [NgxMobileLayoutDefaultGuard],
 				data: {
 					mobileLayout: {
 						header: {
