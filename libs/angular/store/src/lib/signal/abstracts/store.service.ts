@@ -6,7 +6,7 @@ import {
 	NgxSignalStoreState,
 	NgxSignalStoreViewState,
 } from '../types';
-import { injectNxSignalStore } from '../utils';
+import { injectNgxSignalStore } from '../utils';
 
 /**
  * An abstract service that can be used to store handle a NgxSignalStore
@@ -21,7 +21,7 @@ export abstract class NgxSignalStoreService<StoreState extends NgxSignalStoreSta
 	// eslint-disable-next-line @angular-eslint/prefer-inject
 	constructor(@Inject('store') createdStore: NgxSignalStoreRecord<StoreState>) {
 		// Iben: Inject the created store
-		this.store = injectNxSignalStore(createdStore);
+		this.store = injectNgxSignalStore(createdStore);
 	}
 
 	/**
