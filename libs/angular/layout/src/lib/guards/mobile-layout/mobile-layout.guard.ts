@@ -10,8 +10,8 @@ export const NgxMobileLayoutGuard: CanActivateFn = (route: ActivatedRouteSnapsho
 	// Iben: Get the layout service
 	const layoutService: NgxMobileLayoutService = inject(NgxMobileLayoutService);
 
-  // Iben: Set the desired layout
-  // As the setLayout has a take one and we always want to continue routing, we can safely subscribe here
+	// Iben: Set the desired layout
+	// As the setLayout has a take one and we always want to continue routing, we can safely subscribe here
 	layoutService.setLayout(route.data['mobileLayout']).subscribe();
 
 	//Iben: Always return true as we merely set the layout
