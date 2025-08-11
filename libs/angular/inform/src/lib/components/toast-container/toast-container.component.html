@@ -1,0 +1,17 @@
+@if(toasts().length > 0) {
+<ul
+	class="ngx-toast-list"
+	[class]="`ngx-toast-position-${this.configuration.position}`"
+	(mouseenter)="setFocus(true)"
+	(mouseleave)="setFocus(false)"
+>
+	@for (toast of toasts(); track toast.id) {
+	<li class="ngx-toast-item" [class.ngx-toast-item-out]="toast.toBeRemoved">
+		<ng-template
+			[ngComponentOutlet]="toast.configuration?.component || configuration.component"
+			[ngComponentOutletInputs]="{toast}"
+		/>
+	</li>
+	}
+</ul>
+}

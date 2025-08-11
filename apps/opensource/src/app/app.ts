@@ -4,19 +4,27 @@ import { from, of, switchMap } from 'rxjs';
 
 import {
 	NgxModalService,
+	NgxToastContainerComponent,
+	NgxToastService,
 	NgxTooltipDirective,
 	NgxTourService,
 	NgxTourShowWhenDirective,
 } from '@lib/ngx-inform';
 
 @Component({
-	imports: [RouterModule, NgxTourShowWhenDirective, NgxTooltipDirective],
+	imports: [
+		RouterModule,
+		NgxTourShowWhenDirective,
+		NgxTooltipDirective,
+		NgxToastContainerComponent,
+	],
 	selector: 'app-root',
 	templateUrl: './app.html',
 	styleUrl: './app.scss',
 })
 export class App {
 	private readonly tourService = inject(NgxTourService);
+	private readonly toastService = inject(NgxToastService);
 	private readonly modalService = inject(NgxModalService);
 	private readonly router: Router = inject(Router);
 
@@ -46,5 +54,11 @@ export class App {
 				})
 			)
 			.subscribe();
+	}
+
+	public showToast() {
+		this.toastService.showToast({
+			text: 'Hello, this is a toast!',
+		});
 	}
 }
