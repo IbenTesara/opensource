@@ -53,7 +53,12 @@ export const appConfig: ApplicationConfig = {
 		}),
 		provideNgxToastConfiguration({
 			component: ToastComponent,
+			autoClose: false,
 			position: 'top-right',
+			maxAmount: {
+				strategy: 'wait',
+				amount: 5,
+			},
 		}),
 	],
 };

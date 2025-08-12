@@ -27,6 +27,7 @@ export class App {
 	private readonly toastService = inject(NgxToastService);
 	private readonly modalService = inject(NgxModalService);
 	private readonly router: Router = inject(Router);
+	private toastAmount: number = 1;
 
 	public startTour() {
 		this.modalService
@@ -58,7 +59,9 @@ export class App {
 
 	public showToast() {
 		this.toastService.showToast({
-			text: 'Hello, this is a toast!',
+			text: `Hello, this is toast ${this.toastAmount}`,
 		});
+
+		this.toastAmount++;
 	}
 }
