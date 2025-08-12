@@ -1,6 +1,6 @@
 import { Type } from '@angular/core';
 
-import { NgxToastComponent } from '../abstracts';
+import { NgxToastBundlerComponent, NgxToastComponent } from '../abstracts';
 
 /**
  * The configuration for an individual toast
@@ -16,20 +16,32 @@ export interface NgxToastConfiguration {
  */
 export type NgxToastPosition = 'top-left' | 'top-right' | 'bottom-left' | 'bottom-right';
 
+/**
+ * The base configuration for a toast setup with a max amount
+ */
 interface NgxToastMaxAmountBaseConfiguration {
 	amount: number;
 	strategy: 'wait' | 'ignore' | 'bundle';
 }
 
+/**
+ * The configuration for a toast setup with a max amount that need to be bundled
+ */
 interface NgxToastMaxAmountBundleConfiguration extends NgxToastMaxAmountBaseConfiguration {
 	strategy: 'bundle';
-	component: Type<any>;
+	component: Type<NgxToastBundlerComponent>;
 }
 
+/**
+ * The base configuration for a toast setup with a max amount that is not bundled
+ */
 interface NgxToastMaxAmountOtherConfiguration extends NgxToastMaxAmountBaseConfiguration {
 	strategy: 'wait' | 'ignore';
 }
 
+/**
+ * The configuration for a toast setup with a max amount
+ */
 export type NgxToastMaxAmountConfiguration =
 	| NgxToastMaxAmountBundleConfiguration
 	| NgxToastMaxAmountOtherConfiguration;
@@ -44,6 +56,10 @@ export interface NgxToastDefaultConfiguration extends Omit<NgxToastConfiguration
 	animationTime?: number;
 	maxTime?: number;
 }
+
+/**
+ * The interface for a toast in the NgxToastService
+ */
 export interface NgxToast<DataType = unknown> {
 	id: string;
 	text: string;
@@ -52,6 +68,9 @@ export interface NgxToast<DataType = unknown> {
 	configuration?: NgxToastConfiguration;
 }
 
+/**
+ * An event for when toasts are shown, updated or removed
+ */
 export interface NgxToastEvent {
 	toast: NgxToast;
 	type: 'add' | 'update' | 'remove';

@@ -1,6 +1,7 @@
 import { NgComponentOutlet } from '@angular/common';
-import { ChangeDetectionStrategy, Component, inject, Signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject, Signal, Type } from '@angular/core';
 
+import { NgxToastBundlerComponent } from '../../abstracts';
 import { NgxToastService } from '../../services';
 import { NgxToastConfigurationToken } from '../../tokens';
 import { NgxToast, NgxToastDefaultConfiguration } from '../../types';
@@ -33,6 +34,21 @@ export class NgxToastContainerComponent {
 	 */
 	public toasts: Signal<NgxToast[]> = this.toastService.toasts;
 
+	/**
+	 * Whether there are bundled toasts that aren't currently visible
+	 */
+	public hasBundledToasts: Signal<number> = this.toastService.hasBundledToasts;
+
+	/**
+	 * A component that will display the amount of bundled toasts
+	 */
+	public bundledComponent: Type<NgxToastBundlerComponent> = this.toastService.bundledComponent;
+
+	/**
+	 * Set whether the element has focus
+	 *
+	 * @param hasFocus
+	 */
 	public setFocus(hasFocus: boolean): void {
 		this.toastService.setFocus(hasFocus);
 	}

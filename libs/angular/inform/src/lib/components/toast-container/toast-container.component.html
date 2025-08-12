@@ -12,6 +12,13 @@
 			[ngComponentOutletInputs]="{toast}"
 		/>
 	</li>
+	} @if(hasBundledToasts()) {
+	<li class="ngx-toast-item">
+		<ng-template
+			[ngComponentOutlet]="bundledComponent"
+			[ngComponentOutletInputs]="{ amount: hasBundledToasts() }"
+		/>
+	</li>
 	}
 </ul>
 }
