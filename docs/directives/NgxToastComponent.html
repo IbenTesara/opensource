@@ -79,90 +79,57 @@
                    <compodoc-menu mode="normal"></compodoc-menu>
                </div>
                <!-- START CONTENT -->
-               <div class="content component">
+               <div class="content directive">
                    <div class="content-data">
 
 
 
 
+
+
+
 <ol class="breadcrumb">
-  <li class="breadcrumb-item">Components</li>
-  <li class="breadcrumb-item"
-  >
-  MockTourHolderComponent</li>
+  <li class="breadcrumb-item">Directives</li>
+  <li class="breadcrumb-item" >NgxToastComponent</li>
 </ol>
 
 <ul class="nav nav-tabs" role="tablist">
         <li class="nav-item">
-            <a href="#info" class="nav-link active"
+            <a href="#info" 
+                class="nav-link"
+                class="nav-link active"
                 role="tab" id="info-tab" data-bs-toggle="tab" data-link="info">Info</a>
         </li>
         <li class="nav-item">
-            <a href="#source" class="nav-link"
+            <a href="#source" 
+                class="nav-link"
+                
                 role="tab" id="source-tab" data-bs-toggle="tab" data-link="source">Source</a>
-        </li>
-        <li class="nav-item">
-            <a href="#tree" class="nav-link"
-                role="tab" id="tree-tab" data-bs-toggle="tab" data-link="dom-tree">DOM Tree</a>
         </li>
 </ul>
 
 <div class="tab-content">
-    <div class="tab-pane fade active in" id="info"><p class="comment">
-    <h3>File</h3>
-</p>
-<p class="comment">
-    <code>libs/angular/inform/src/lib/mocks/tour-holder.component.mock.ts</code>
-</p>
+    <div class="tab-pane fade active in" id="info">
+        <p class="comment">
+            <h3>File</h3>
+        </p>
+        <p class="comment">
+            <code>libs/angular/inform/src/lib/abstracts/toast/toast.component.ts</code>
+        </p>
 
 
 
 
-
-
-<section data-compodoc="block-metadata">
-    <h3>Metadata</h3>
-    <table class="table table-sm table-hover metadata">
-        <tbody>
-
-
-
+            <p class="comment">
+                <h3>Implements</h3>
+            </p>
+            <p class="comment">
+                        <code>AfterViewInit</code>
+            </p>
 
 
 
-
-
-
-
-
-
-            <tr>
-                <td class="col-md-3">selector</td>
-                <td class="col-md-9"><code>mock-tour-holder</code></td>
-            </tr>
-
-            <tr>
-                <td class="col-md-3">standalone</td>
-                <td class="col-md-9"><code>true</code></td>
-            </tr>
-
-
-
-
-
-
-
-
-
-
-
-
-
-        </tbody>
-    </table>
-</section>
-
-    <section data-compodoc="block-index">
+            <section data-compodoc="block-index">
     <h3 id="index">Index</h3>
     <table class="table table-sm table-bordered index-table">
         <tbody>
@@ -176,18 +143,12 @@
                         <ul class="index-list">
                             <li>
                                     <span class="modifier">Public</span>
-                                    <span class="modifier">Readonly</span>
-                                <a href="#data$" >data$</a>
+                                <a href="#toast" >toast</a>
                             </li>
                             <li>
                                     <span class="modifier">Private</span>
                                     <span class="modifier">Readonly</span>
-                                <a href="#dataSourceSubject" >dataSourceSubject</a>
-                            </li>
-                            <li>
-                                    <span class="modifier">Private</span>
-                                    <span class="modifier">Readonly</span>
-                                <a href="#tourService" >tourService</a>
+                                <a href="#toastService" >toastService</a>
                             </li>
                         </ul>
                     </td>
@@ -203,12 +164,30 @@
                         <ul class="index-list">
                             <li>
                                     <span class="modifier">Public</span>
-                                <a href="#startTour" >startTour</a>
+                                <a href="#close" >close</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#ngAfterViewInit" >ngAfterViewInit</a>
                             </li>
                         </ul>
                     </td>
                 </tr>
 
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Inputs</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#toast" >toast</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
 
 
 
@@ -218,11 +197,45 @@
 </section>
 
 
+            <section data-compodoc="block-inputs">
+    <h3 id="inputs">Inputs</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="toast"></a>
+                        <b>toast</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../interfaces/NgxToast.html" target="_self" >InputSignal&lt;NgxToast&gt;</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Required : </i>&nbsp;<b>true</b>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="20" class="link-to-prism">libs/angular/inform/src/lib/abstracts/toast/toast.component.ts:20</a></div>
+                            </td>
+                        </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>The toast we wish to show</p>
+</div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
 
 
 
-
-    <section data-compodoc="block-methods">
+            <section data-compodoc="block-methods">
     
     <h3 id="methods">
         Methods
@@ -231,18 +244,59 @@
         <tbody>
             <tr>
                 <td class="col-md-4">
-                    <a name="startTour"></a>
+                    <a name="close"></a>
                     <span class="name">
                             <span class="modifier">Public</span>
-                        <span ><b>startTour</b></span>
-                        <a href="#startTour"><span class="icon ion-ios-link"></span></a>
+                        <span ><b>close</b></span>
+                        <a href="#close"><span class="icon ion-ios-link"></span></a>
                     </span>
                 </td>
             </tr>
             <tr>
                 <td class="col-md-4">
                         <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>startTour()</code>
+                    <code>close()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="30"
+                                    class="link-to-prism">libs/angular/inform/src/lib/abstracts/toast/toast.component.ts:30</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Removes the toast from the DOM after the animation is played</p>
+</div>
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngAfterViewInit"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                        <span ><b>ngAfterViewInit</b></span>
+                        <a href="#ngAfterViewInit"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>ngAfterViewInit()</code>
                 </td>
             </tr>
 
@@ -250,7 +304,7 @@
                     <tr>
                         <td class="col-md-4">
                             <div class="io-line">Defined in <a href="" data-line="22"
-                                    class="link-to-prism">libs/angular/inform/src/lib/mocks/tour-holder.component.mock.ts:22</a></div>
+                                    class="link-to-prism">libs/angular/inform/src/lib/abstracts/toast/toast.component.ts:22</a></div>
                         </td>
                     </tr>
 
@@ -267,7 +321,7 @@
         </tbody>
     </table>
 </section>
-    <section data-compodoc="block-properties">
+            <section data-compodoc="block-properties">
     
     <h3 id="inputs">
         Properties
@@ -276,28 +330,32 @@
         <tbody>
             <tr>
                 <td class="col-md-4">
-                    <a name="data$"></a>
+                    <a name="toast"></a>
                     <span class="name">
                             <span class="modifier">Public</span>
-                            <span class="modifier">Readonly</span>
-                        <span ><b>data$</b></span>
-                        <a href="#data$"><span class="icon ion-ios-link"></span></a>
+                        <span ><b>toast</b></span>
+                        <a href="#toast"><span class="icon ion-ios-link"></span></a>
                     </span>
                 </td>
             </tr>
                 <tr>
                     <td class="col-md-4">
-                        <i>Default value : </i><code>this.dataSourceSubject
-		.asObservable()
-		.pipe(useMockDataDuringTour(&#x27;World hello!&#x27;))</code>
+                        <i>Type : </i>        <code><a href="../interfaces/NgxToast.html" target="_self" >InputSignal&lt;NgxToast&gt;</a></code>
+
                     </td>
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="18" class="link-to-prism">libs/angular/inform/src/lib/mocks/tour-holder.component.mock.ts:18</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="20" class="link-to-prism">libs/angular/inform/src/lib/abstracts/toast/toast.component.ts:20</a></div>
                         </td>
                     </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>The toast we wish to show</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -305,126 +363,85 @@
         <tbody>
             <tr>
                 <td class="col-md-4">
-                    <a name="dataSourceSubject"></a>
+                    <a name="toastService"></a>
                     <span class="name">
                             <span class="modifier">Private</span>
                             <span class="modifier">Readonly</span>
-                        <span ><b>dataSourceSubject</b></span>
-                        <a href="#dataSourceSubject"><span class="icon ion-ios-link"></span></a>
+                        <span ><b>toastService</b></span>
+                        <a href="#toastService"><span class="icon ion-ios-link"></span></a>
                     </span>
                 </td>
             </tr>
                 <tr>
                     <td class="col-md-4">
-                        <i>Default value : </i><code>new BehaviorSubject(&#x27;Hello world!&#x27;)</code>
+                        <i>Type : </i>        <code><a href="../injectables/NgxToastService.html" target="_self" >NgxToastService</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>inject(NgxToastService)</code>
                     </td>
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="16" class="link-to-prism">libs/angular/inform/src/lib/mocks/tour-holder.component.mock.ts:16</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="15" class="link-to-prism">libs/angular/inform/src/lib/abstracts/toast/toast.component.ts:15</a></div>
                         </td>
                     </tr>
 
-
-        </tbody>
-    </table>
-    <table class="table table-sm table-bordered">
-        <tbody>
             <tr>
                 <td class="col-md-4">
-                    <a name="tourService"></a>
-                    <span class="name">
-                            <span class="modifier">Private</span>
-                            <span class="modifier">Readonly</span>
-                        <span ><b>tourService</b></span>
-                        <a href="#tourService"><span class="icon ion-ios-link"></span></a>
-                    </span>
+                    <div class="io-description"><p>Instance of the toast service</p>
+</div>
                 </td>
             </tr>
-                <tr>
-                    <td class="col-md-4">
-                        <i>Default value : </i><code>inject(NgxTourService)</code>
-                    </td>
-                </tr>
-                    <tr>
-                        <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="14" class="link-to-prism">libs/angular/inform/src/lib/mocks/tour-holder.component.mock.ts:14</a></div>
-                        </td>
-                    </tr>
-
 
         </tbody>
     </table>
 </section>
 
-</div>
+
+    </div>
 
 
     <div class="tab-pane fade  tab-source-code" id="source">
-        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, inject } from &#x27;@angular/core&#x27;;
-import { BehaviorSubject } from &#x27;rxjs&#x27;;
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { AfterViewInit, Directive, inject, input, InputSignal } from &#x27;@angular/core&#x27;;
 
-import { useMockDataDuringTour } from &#x27;../operators&#x27;;
-import { NgxTourService } from &#x27;../services&#x27;;
+import { NgxToastService } from &#x27;../../services&#x27;;
+import { NgxToast } from &#x27;../../types&#x27;;
 
-// Iben: This mock tour holder is used in the test to test the useMockDataDuringTour operator
-@Component({
-	selector: &#x27;mock-tour-holder&#x27;,
-	template: &#x27;&#x27;,
-	standalone: true,
+@Directive({
+	host: {
+		&#x27;attr.role&#x27;: &#x27;alert&#x27;,
+	},
 })
-export class MockTourHolderComponent {
-	private readonly tourService &#x3D; inject(NgxTourService);
+export abstract class NgxToastComponent implements AfterViewInit {
+	/**
+	 * Instance of the toast service
+	 */
+	private readonly toastService: NgxToastService &#x3D; inject(NgxToastService);
 
-	private readonly dataSourceSubject &#x3D; new BehaviorSubject(&#x27;Hello world!&#x27;);
+	/**
+	 * The toast we wish to show
+	 */
+	public toast: InputSignal&lt;NgxToast&gt; &#x3D; input.required();
 
-	public readonly data$ &#x3D; this.dataSourceSubject
-		.asObservable()
-		.pipe(useMockDataDuringTour(&#x27;World hello!&#x27;));
+	public ngAfterViewInit(): void {
+		// Iben: Mark the toast as rendered so it can auto remove itself if need be
+		this.toastService.markAsRendered(this.toast());
+	}
 
-	public startTour() {
-		this.tourService.startTour([{ title: &#x27;Mock&#x27;, content: &#x27;Mock&#x27; }]).subscribe();
+	/**
+	 * Removes the toast from the DOM after the animation is played
+	 */
+	public close(): void {
+		this.toastService.removeToast(this.toast());
 	}
 }
 </code></pre>
     </div>
 
-
-
-    <div class="tab-pane fade " id="tree">
-        <div id="tree-container"></div>
-        <div class="tree-legend">
-            <div class="title">
-                <b>Legend</b>
-            </div>
-            <div>
-                <div class="color htmlelement"></div><span>Html element</span>
-            </div>
-            <div>
-                <div class="color component"></div><span>Component</span>
-            </div>
-            <div>
-                <div class="color directive"></div><span>Html element with directive</span>
-            </div>
-        </div>
-    </div>
-
-    
 </div>
-
-<script src="../js/libs/vis.min.js"></script>
-<script src="../js/libs/htmlparser.js"></script>
-<script src="../js/libs/deep-iterator.js"></script>
-<script>
-        var COMPONENT_TEMPLATE = '<div></div>'
-    var COMPONENTS = [{'name': 'MockTourHolderComponent', 'selector': 'mock-tour-holder'},{'name': 'MockTourStepComponent', 'selector': 'mock-tour-step-component'},{'name': 'NgxAccordionComponent', 'selector': 'ngx-accordion'},{'name': 'NgxAccordionItemComponent', 'selector': 'ngx-accordion-item'},{'name': 'NgxConfigurableLayoutComponent', 'selector': 'ngx-configurable-layout'},{'name': 'NgxConfigurableLayoutItemComponent', 'selector': 'ngx-configurable-layout-item'},{'name': 'NgxCurrencyTableCellComponent', 'selector': 'ngx-table-currency-cell'},{'name': 'NgxDateTableCellComponent', 'selector': 'ngx-table-date-cell'},{'name': 'NgxI18nEmptyComponent', 'selector': 'ngx-i18n-empty'},{'name': 'NgxImageMarkerComponent', 'selector': 'ngx-image-marker'},{'name': 'NgxMobileLayoutComponent', 'selector': 'ngx-mobile-layout'},{'name': 'NgxTableComponent', 'selector': 'ngx-table'},{'name': 'NgxToastContainerComponent', 'selector': 'ngx-toast-container'},{'name': 'TestDisplayContentComponent', 'selector': 'test-data'},{'name': 'TestErrorComponent', 'selector': 'test-error'},{'name': 'TestErrorDataComponent', 'selector': 'test-data-error'},{'name': 'TestLoadingComponent', 'selector': 'test-loading'},{'name': 'TestOfflineComponent', 'selector': 'test-offline'},{'name': 'TestOverrideDisplayContentComponent', 'selector': 'test-override-data'}];
-    var DIRECTIVES = [{'name': 'DataFormAccessor', 'selector': ''},{'name': 'FocusClickDirective', 'selector': '[focusClick]'},{'name': 'FormAccessor', 'selector': ''},{'name': 'FormAccessorContainer', 'selector': ''},{'name': 'NgxAbstractTableCellDirective', 'selector': 'ngx-abstract-table-cell'},{'name': 'NgxAccessibleAbstractDragAndDropItemDirective', 'selector': ''},{'name': 'NgxAccessibleDragAndDropContainerDirective', 'selector': '[ngxAccessibleDragAndDropContainer]'},{'name': 'NgxAccessibleDragAndDropHostDirective', 'selector': '[ngxAccessibleDragAndDropHost]'},{'name': 'NgxAccessibleDragAndDropItemDirective', 'selector': '[ngxAccessibleDragAndDropItem]'},{'name': 'NgxCookiesFallBackComponent', 'selector': ''},{'name': 'NgxCypressTagDirective', 'selector': '[cypressTag]'},{'name': 'NgxDisplayContentComponent', 'selector': ''},{'name': 'NgxDisplayContentDirective', 'selector': '[displayContent]'},{'name': 'NgxFormsControlValueAccessor', 'selector': ''},{'name': 'NgxFormsErrorAbstractComponent', 'selector': ''},{'name': 'NgxFormsErrorsDirective', 'selector': '[ngxFormsErrors]'},{'name': 'NgxHasCookieDirective', 'selector': '[hasCookie]'},{'name': 'NgxHasFeatureDirective', 'selector': '[ngxHasFeature]'},{'name': 'NgxHasFocusDirective', 'selector': ''},{'name': 'NgxHasFocusDragAndDropAbstractDirective', 'selector': ''},{'name': 'NgxHasPermissionDirective', 'selector': '[ngxHasPermission]'},{'name': 'NgxIsAuthenticatedDirective', 'selector': '[ngxIsAuthenticated]'},{'name': 'NgxModalAbstractComponent', 'selector': ''},{'name': 'NgxQueryParamFormSyncComponent', 'selector': ''},{'name': 'NgxSaveOnExitComponent', 'selector': ''},{'name': 'NgxTableCellDirective', 'selector': 'ngx-table-cell'},{'name': 'NgxTableOpenRowStateTemplateAbstractComponent', 'selector': ''},{'name': 'NgxTableSelectTemplateAbstractComponent', 'selector': ''},{'name': 'NgxTableSortTemplateAbstractComponent', 'selector': ''},{'name': 'NgxToastBundlerComponent', 'selector': ''},{'name': 'NgxToastComponent', 'selector': ''},{'name': 'NgxTooltipAbstractComponent', 'selector': ''},{'name': 'NgxTooltipDirective', 'selector': '[ngxTooltip]'},{'name': 'NgxTourItemDirective', 'selector': '[tourItem]'},{'name': 'NgxTourShowWhenDirective', 'selector': '[ngxTourShowWhen]'},{'name': 'NgxTourStepComponent', 'selector': ''},{'name': 'NgxTreeGridCellDirective', 'selector': '[ngxTreeGridCell]'},{'name': 'NgxTreeGridDirective', 'selector': '[ngxTreeGrid]'},{'name': 'NgxTreeGridRowDirective', 'selector': '[ngxTreeGridRow]'}];
-    var ACTUAL_COMPONENT = {'name': 'MockTourHolderComponent'};
-</script>
-<script src="../js/tree.js"></script>
-
-
-
 
 
 
@@ -464,8 +481,8 @@ export class MockTourHolderComponent {
 
        <script>
             var COMPODOC_CURRENT_PAGE_DEPTH = 1;
-            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
-            var COMPODOC_CURRENT_PAGE_URL = 'MockTourHolderComponent.html';
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'directive';
+            var COMPODOC_CURRENT_PAGE_URL = 'NgxToastComponent.html';
             var MAX_SEARCH_RESULTS = 15;
        </script>
 

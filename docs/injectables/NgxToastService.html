@@ -1,0 +1,1318 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>@opensource/source documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+    </head>
+    <body>
+          <script>
+               // Blocking script to avoid flickering dark mode
+               // Dark mode toggle button
+               var useDark = window.matchMedia('(prefers-color-scheme: dark)');
+               var darkModeState = useDark.matches;
+               var $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               var $darkModeToggles = document.querySelectorAll('.dark-mode-switch');
+               var darkModeStateLocal = localStorage.getItem('compodoc_darkmode-state');
+
+               function checkToggle(check) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].checked = check;
+                    }
+               }
+
+               function toggleDarkMode(state) {
+                    if (window.localStorage) {
+                         localStorage.setItem('compodoc_darkmode-state', state);
+                    }
+
+                    checkToggle(state);
+
+                    const hasClass = document.body.classList.contains('dark');
+
+                    if (state) {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.add('dark');
+                         }
+                         if (!hasClass) {
+                              document.body.classList.add('dark');
+                         }
+                    } else {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.remove('dark');
+                         }
+                         if (hasClass) {
+                              document.body.classList.remove('dark');
+                         }
+                    }
+               }
+
+               useDark.addEventListener('change', function (evt) {
+                    toggleDarkMode(evt.matches);
+               });
+               if (darkModeStateLocal) {
+                    darkModeState = darkModeStateLocal === 'true';
+               }
+               toggleDarkMode(darkModeState);
+          </script>
+
+        <div class="navbar navbar-default navbar-fixed-top d-md-none p-0">
+               <div class="d-flex">
+                    <a href="../" class="navbar-brand">@opensource/source documentation</a>
+                    <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+               </div>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="d-none d-md-block menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content injectable">
+                   <div class="content-data">
+
+
+
+
+
+
+
+
+<ol class="breadcrumb">
+  <li class="breadcrumb-item">Injectables</li>
+  <li class="breadcrumb-item" >NgxToastService</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item">
+            <a href="#info" 
+                class="nav-link"
+                class="nav-link active"
+                role="tab" id="info-tab" data-bs-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li class="nav-item">
+            <a href="#source" 
+                class="nav-link"
+                
+                role="tab" id="source-tab" data-bs-toggle="tab" data-link="source">Source</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="info">
+        <p class="comment">
+            <h3>File</h3>
+        </p>
+        <p class="comment">
+            <code>libs/angular/inform/src/lib/services/toast/toast.service.ts</code>
+        </p>
+
+
+            <p class="comment">
+                <h3>Description</h3>
+            </p>
+            <p class="comment">
+                <p>A service that acts as the single source of truth in the application</p>
+
+            </p>
+
+
+
+            <section data-compodoc="block-index">
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#bundledComponent" >bundledComponent</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                    <span class="modifier">Readonly</span>
+                                <a href="#configuration" >configuration</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#hasBundledToasts" >hasBundledToasts</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#isFocussed" >isFocussed</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#queue$" >queue$</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#showBundledToasts$" >showBundledToasts$</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#toastEvents$" >toastEvents$</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#toasts" >toasts</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#markAsRendered" >markAsRendered</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#removeToast" >removeToast</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#setFocus" >setFocus</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#showBundled" >showBundled</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#showToast" >showToast</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+            <section data-compodoc="block-constructor">
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor()</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="92" class="link-to-prism">libs/angular/inform/src/lib/services/toast/toast.service.ts:92</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div class="io-description"><p>Creates an instance of NgxToastService.</p>
+</div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+            <section data-compodoc="block-methods">
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="markAsRendered"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                        <span ><b>markAsRendered</b></span>
+                        <a href="#markAsRendered"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>markAsRendered(toast: <a href="../interfaces/NgxToast.html" target="_self">NgxToast</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="250"
+                                    class="link-to-prism">libs/angular/inform/src/lib/services/toast/toast.service.ts:250</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Mark the toast as rendered, so that we can automatically remove it if needed</p>
+</div>
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                                <td>Description</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>toast</td>
+                                            <td>
+                                                            <code><a href="../interfaces/NgxToast.html" target="_self" >NgxToast</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                            <td>
+                                                    <ul>
+<li>The toast we wish to remove if needed</li>
+</ul>
+
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="removeToast"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                        <span ><b>removeToast</b></span>
+                        <a href="#removeToast"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>removeToast(toast: <a href="../interfaces/NgxToast.html" target="_self">NgxToast</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="197"
+                                    class="link-to-prism">libs/angular/inform/src/lib/services/toast/toast.service.ts:197</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Removes a toast based on the provided id</p>
+</div>
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                                <td>Description</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>toast</td>
+                                            <td>
+                                                            <code><a href="../interfaces/NgxToast.html" target="_self" >NgxToast</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                            <td>
+                                                    <ul>
+<li>The toast we wish to remove</li>
+</ul>
+
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="setFocus"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                        <span ><b>setFocus</b></span>
+                        <a href="#setFocus"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>setFocus(hasFocus: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank">boolean</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="241"
+                                    class="link-to-prism">libs/angular/inform/src/lib/services/toast/toast.service.ts:241</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Sets whether the list of toasts is currently being focussed on by the user</p>
+</div>
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                                <td>Description</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>hasFocus</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                            <td>
+                                                    <ul>
+<li>Whether or not it is being focussed</li>
+</ul>
+
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="showBundled"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                        <span ><b>showBundled</b></span>
+                        <a href="#showBundled"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>showBundled()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="271"
+                                    class="link-to-prism">libs/angular/inform/src/lib/services/toast/toast.service.ts:271</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Shows the bundled toasts in case there are</p>
+</div>
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="showToast"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                        <span ><b>showToast</b></span>
+                        <a href="#showToast"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>showToast(data: <a href="../interfaces/NgxToast.html" target="_self">Omit&lt;NgxToast&lt;DataType&gt; | &quot;id&quot; | &quot;toBeRemoved&quot;&gt;</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="166"
+                                    class="link-to-prism">libs/angular/inform/src/lib/services/toast/toast.service.ts:166</a></div>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td class="col-md-4">
+                            <b>Type parameters :</b>
+                            <ul class="type-parameters">
+                                    <li>DataType</li>
+                            </ul>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Displays a provided toast and returns the generated id</p>
+</div>
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                                <td>Description</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>data</td>
+                                            <td>
+                                                            <code><a href="../interfaces/NgxToast.html" target="_self" >Omit&lt;NgxToast&lt;DataType&gt; | &quot;id&quot; | &quot;toBeRemoved&quot;&gt;</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                            <td>
+                                                    <ul>
+<li>The data needed for the toast</li>
+</ul>
+
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="../interfaces/NgxToast.html" target="_self" >NgxToast&lt;DataType&gt;</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+            <section data-compodoc="block-properties">
+    
+    <h3 id="inputs">
+        Properties
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="bundledComponent"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                        <span ><b>bundledComponent</b></span>
+                        <a href="#bundledComponent"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../interfaces/NgxToast.html" target="_self" >Type&lt;NgxToastBundlerComponent&gt;</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>this.configuration?.maxAmount[&#x27;component&#x27;]</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="91" class="link-to-prism">libs/angular/inform/src/lib/services/toast/toast.service.ts:91</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>The component used to represent the bundled toasts</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="configuration"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                            <span class="modifier">Readonly</span>
+                        <span ><b>configuration</b></span>
+                        <a href="#configuration"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../interfaces/NgxToastDefaultConfiguration.html" target="_self" >NgxToastDefaultConfiguration</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>inject(
+		NgxToastConfigurationToken
+	)</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="33" class="link-to-prism">libs/angular/inform/src/lib/services/toast/toast.service.ts:33</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>The default configuration required for the toast</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="hasBundledToasts"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                        <span ><b>hasBundledToasts</b></span>
+                        <a href="#hasBundledToasts"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>Signal&lt;number&gt;</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>computed(() &#x3D;&gt; {
+		if (!this.configuration.maxAmount || this.configuration.maxAmount.strategy !&#x3D;&#x3D; &#x27;bundle&#x27;) {
+			return 0;
+		}
+
+		return this.queue$.getValue().length - this.toasts().length;
+	})</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="80" class="link-to-prism">libs/angular/inform/src/lib/services/toast/toast.service.ts:80</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>The amount of bundled toasts there are</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="isFocussed"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>isFocussed</b></span>
+                        <a href="#isFocussed"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>false</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="55" class="link-to-prism">libs/angular/inform/src/lib/services/toast/toast.service.ts:55</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Whether the list of all toasts is focussed upon, either by focus or by hover</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="queue$"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>queue$</b></span>
+                        <a href="#queue$"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../interfaces/NgxToast.html" target="_self" >BehaviorSubject&lt;NgxToast[]&gt;</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>new BehaviorSubject([])</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="40" class="link-to-prism">libs/angular/inform/src/lib/services/toast/toast.service.ts:40</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>The queue with all the toasts in it</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="showBundledToasts$"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>showBundledToasts$</b></span>
+                        <a href="#showBundledToasts$"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>BehaviorSubject&lt;boolean&gt;</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>new BehaviorSubject(false)</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="50" class="link-to-prism">libs/angular/inform/src/lib/services/toast/toast.service.ts:50</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Whether we want to show the bundled toasts</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="toastEvents$"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>toastEvents$</b></span>
+                        <a href="#toastEvents$"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>Subject&lt;NgxToastEvent&gt;</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>new Subject&lt;NgxToastEvent&gt;()</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="45" class="link-to-prism">libs/angular/inform/src/lib/services/toast/toast.service.ts:45</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>The toast event handler that will handle updates to the queue</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="toasts"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                        <span ><b>toasts</b></span>
+                        <a href="#toasts"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../interfaces/NgxToast.html" target="_self" >Signal&lt;NgxToast[]&gt;</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>toSignal(
+		combineLatest([this.queue$, this.showBundledToasts$]).pipe(
+			map(([toasts, showBundled]) &#x3D;&gt; {
+				// Iben: Prevent duplicates
+				const result &#x3D; uniqBy(toasts, (item) &#x3D;&gt; item.id) || [];
+
+				// Iben: If there is no max amount, we return the toasts as is
+				if (!this.configuration.maxAmount || showBundled) {
+					return result;
+				}
+
+				// Iben: If the there is a max amount, we return the limited list
+				return result.slice(0, this.configuration.maxAmount.amount);
+			})
+		)
+	)</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="60" class="link-to-prism">libs/angular/inform/src/lib/services/toast/toast.service.ts:60</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>A list of all the currently visible toasts</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+</section>
+
+    </div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { computed, inject, Injectable, Signal, Type } from &#x27;@angular/core&#x27;;
+import { takeUntilDestroyed, toSignal } from &#x27;@angular/core/rxjs-interop&#x27;;
+import { uniqBy } from &#x27;lodash&#x27;;
+import {
+	BehaviorSubject,
+	combineLatest,
+	concatMap,
+	delay,
+	distinctUntilChanged,
+	filter,
+	map,
+	of,
+	Subject,
+	tap,
+	withLatestFrom,
+} from &#x27;rxjs&#x27;;
+import { v7 as uuid } from &#x27;uuid&#x27;;
+
+import { NgxToastBundlerComponent } from &#x27;../../abstracts&#x27;;
+import { NgxToastConfigurationToken } from &#x27;../../tokens&#x27;;
+import { NgxToast, NgxToastDefaultConfiguration, NgxToastEvent } from &#x27;../../types/toast.types&#x27;;
+
+/**
+ * A service that acts as the single source of truth in the application
+ */
+@Injectable({
+	providedIn: &#x27;root&#x27;,
+})
+export class NgxToastService {
+	/**
+	 * The default configuration required for the toast
+	 */
+	private readonly configuration: NgxToastDefaultConfiguration &#x3D; inject(
+		NgxToastConfigurationToken
+	);
+
+	/**
+	 * The queue with all the toasts in it
+	 */
+	private queue$: BehaviorSubject&lt;NgxToast[]&gt; &#x3D; new BehaviorSubject([]);
+
+	/**
+	 * The toast event handler that will handle updates to the queue
+	 */
+	private toastEvents$: Subject&lt;NgxToastEvent&gt; &#x3D; new Subject&lt;NgxToastEvent&gt;();
+
+	/**
+	 * Whether we want to show the bundled toasts
+	 */
+	private showBundledToasts$: BehaviorSubject&lt;boolean&gt; &#x3D; new BehaviorSubject(false);
+
+	/**
+	 * Whether the list of all toasts is focussed upon, either by focus or by hover
+	 */
+	private isFocussed: boolean &#x3D; false;
+
+	/**
+	 * A list of all the currently visible toasts
+	 */
+	public toasts: Signal&lt;NgxToast[]&gt; &#x3D; toSignal(
+		combineLatest([this.queue$, this.showBundledToasts$]).pipe(
+			map(([toasts, showBundled]) &#x3D;&gt; {
+				// Iben: Prevent duplicates
+				const result &#x3D; uniqBy(toasts, (item) &#x3D;&gt; item.id) || [];
+
+				// Iben: If there is no max amount, we return the toasts as is
+				if (!this.configuration.maxAmount || showBundled) {
+					return result;
+				}
+
+				// Iben: If the there is a max amount, we return the limited list
+				return result.slice(0, this.configuration.maxAmount.amount);
+			})
+		)
+	);
+
+	/**
+	 * The amount of bundled toasts there are
+	 */
+	public hasBundledToasts: Signal&lt;number&gt; &#x3D; computed(() &#x3D;&gt; {
+		if (!this.configuration.maxAmount || this.configuration.maxAmount.strategy !&#x3D;&#x3D; &#x27;bundle&#x27;) {
+			return 0;
+		}
+
+		return this.queue$.getValue().length - this.toasts().length;
+	});
+
+	/**
+	 * The component used to represent the bundled toasts
+	 */
+	public bundledComponent: Type&lt;NgxToastBundlerComponent&gt; &#x3D;
+		this.configuration?.maxAmount[&#x27;component&#x27;];
+
+	/**
+	 * Creates an instance of NgxToastService.
+	 */
+	constructor() {
+		// Iben: Subscribe to the toast events
+		this.toastEvents$
+			.pipe(
+				// Iben: Concatmap all the events so we will handle them one by one
+				concatMap((event) &#x3D;&gt; {
+					// Iben: Get the latest version of the queue
+					return of(event).pipe(
+						withLatestFrom(this.queue$),
+						tap(([{ toast, type }, queue]) &#x3D;&gt; {
+							// Iben: If we need to add the item to the queue, we add it based on its priority
+							if (type &#x3D;&#x3D;&#x3D; &#x27;add&#x27;) {
+								this.queue$.next(
+									toast.configuration?.hasPriority
+										? [toast, ...queue]
+										: [...queue, toast]
+								);
+
+								return;
+							}
+
+							// Iben: Get the index of the toast we need to update or remove
+							const index &#x3D; queue.findIndex(({ id }) &#x3D;&gt; id &#x3D;&#x3D;&#x3D; toast.id);
+
+							// Iben: If we need to update it, we mark it as being removed
+							if (type &#x3D;&#x3D;&#x3D; &#x27;update&#x27; &amp;&amp; !toast.toBeRemoved) {
+								this.queue$.next([
+									...queue.slice(0, index),
+									{
+										...toast,
+										toBeRemoved: true,
+									},
+									...queue.slice(index + 1),
+								]);
+							} else {
+								// Iben: Remove the toast when needed
+								this.queue$.next([
+									...queue.slice(0, index),
+									...queue.slice(index + 1),
+								]);
+							}
+						})
+					);
+				}),
+				takeUntilDestroyed()
+			)
+			.subscribe();
+
+		/**
+		 * Listens to the amount of items in the queue and resets the showBundledToasts accordingly
+		 */
+		this.queue$
+			.pipe(
+				map((toasts) &#x3D;&gt; toasts.length),
+				distinctUntilChanged(),
+				filter((length) &#x3D;&gt; !length),
+				tap(() &#x3D;&gt; {
+					this.showBundledToasts$.next(false);
+				}),
+				takeUntilDestroyed()
+			)
+			.subscribe();
+	}
+
+	/**
+	 * Displays a provided toast and returns the generated id
+	 *
+	 * @param data - The data needed for the toast
+	 */
+	public showToast&lt;DataType &#x3D; unknown&gt;(
+		data: Omit&lt;NgxToast&lt;DataType&gt;, &#x27;id&#x27; | &#x27;toBeRemoved&#x27;&gt;
+	): NgxToast&lt;DataType&gt; {
+		// Iben: Early exit if we reached
+		if (
+			!this.configuration.maxAmount ||
+			(this.queue$.getValue().length &#x3D;&#x3D;&#x3D; this.configuration.maxAmount.amount &amp;&amp;
+				this.configuration.maxAmount.strategy &#x3D;&#x3D;&#x3D; &#x27;ignore&#x27;)
+		) {
+			return undefined;
+		}
+
+		// Iben: Generate an id for the toast
+		const id &#x3D; uuid();
+		const toast &#x3D; { ...data, id };
+
+		// Iben: Add the toast to the toast list
+		this.toastEvents$.next({
+			type: &#x27;add&#x27;,
+			toast: toast,
+		});
+
+		// Iben: Return the toast
+		return toast;
+	}
+
+	/**
+	 * Removes a toast based on the provided id
+	 *
+	 * @param toast - The toast we wish to remove
+	 */
+	public removeToast(toast: NgxToast): void {
+		// Iben: If the toast is no longer in the queue, because it was removed by the end user, we early exit
+		if (!this.queue$.getValue().find(({ id }) &#x3D;&gt; toast.id &#x3D;&#x3D;&#x3D; id)) {
+			return;
+		}
+
+		// Iben: If the toast list is currently being focussed on, we try again within 5 seconds
+		if (this.isFocussed &amp;&amp; (this.configuration.autoClose || toast.configuration?.autoClose)) {
+			setTimeout(() &#x3D;&gt; {
+				this.removeToast(toast);
+			}, 5000);
+
+			return;
+		}
+
+		// Iben: Update the toast
+		this.toastEvents$.next({
+			toast,
+			type: &#x27;update&#x27;,
+		});
+
+		// Iben: Determine the animation time, by default this is 300ms if no other animationTime was provided
+		const animationTime &#x3D;
+			this.configuration.animationTime &#x3D;&#x3D;&#x3D; undefined ? this.configuration.animationTime : 300;
+
+		// Iben: Remove the toast
+		setTimeout(
+			() &#x3D;&gt; {
+				// Iben: If the toast list isn&#x27;t focussed on, we remove it from the dom
+				this.toastEvents$.next({
+					toast,
+					type: &#x27;remove&#x27;,
+				});
+				// Iben: Subtract an extra millisecond from the animationTime for the Angular changeDetection tick
+			},
+			animationTime &#x3D;&#x3D;&#x3D; 0 ? animationTime : animationTime - 1
+		);
+	}
+
+	/**
+	 * Sets whether the list of toasts is currently being focussed on by the user
+	 *
+	 * @param hasFocus - Whether or not it is being focussed
+	 */
+	public setFocus(hasFocus: boolean) {
+		this.isFocussed &#x3D; hasFocus;
+	}
+
+	/**
+	 * Mark the toast as rendered, so that we can automatically remove it if needed
+	 *
+	 * @param toast - The toast we wish to remove if needed
+	 */
+	public markAsRendered(toast: NgxToast): void {
+		// Iben: If the toast isn&#x27;t currently visible, we early exit
+		if (!this.toasts().find(({ id }) &#x3D;&gt; toast.id &#x3D;&#x3D;&#x3D; id)) {
+			return;
+		}
+
+		// Iben: Check if we need to autoclose the toast and close it if it is set to true
+		const autoClose &#x3D; toast.configuration?.autoClose || this.configuration.autoClose;
+
+		if (autoClose &#x3D;&#x3D;&#x3D; true || autoClose &#x3D;&#x3D;&#x3D; undefined) {
+			const maxTime &#x3D; this.configuration.maxTime || 5000;
+
+			setTimeout(() &#x3D;&gt; {
+				this.removeToast(toast);
+			}, maxTime);
+		}
+	}
+
+	/**
+	 * Shows the bundled toasts in case there are
+	 */
+	public showBundled(): void {
+		// Iben: If the maxAmount strategy isn&#x27;t bundle, we early exit as this method is then irrelevant
+		if (this.configuration.maxAmount?.strategy !&#x3D;&#x3D; &#x27;bundle&#x27;) {
+			return;
+		}
+
+		this.showBundledToasts$.next(true);
+	}
+}
+</code></pre>
+    </div>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'injectable';
+            var COMPODOC_CURRENT_PAGE_URL = 'NgxToastService.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script>
+               $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               checkToggle(darkModeState);
+               if ($darkModeToggleSwitchers.length > 0) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].addEventListener('change', function (event) {
+                              darkModeState = !darkModeState;
+                              toggleDarkMode(darkModeState);
+                         });
+                    }
+               }
+          </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

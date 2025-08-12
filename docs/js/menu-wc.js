@@ -110,6 +110,9 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                                 <a href="components/NgxTableComponent.html" data-type="entity-link" >NgxTableComponent</a>
                             </li>
                             <li class="link">
+                                <a href="components/NgxToastContainerComponent.html" data-type="entity-link" >NgxToastContainerComponent</a>
+                            </li>
+                            <li class="link">
                                 <a href="components/TestDisplayContentComponent.html" data-type="entity-link" >TestDisplayContentComponent</a>
                             </li>
                             <li class="link">
@@ -225,6 +228,12 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                                     <a href="directives/NgxTableSortTemplateAbstractComponent.html" data-type="entity-link" >NgxTableSortTemplateAbstractComponent</a>
                                 </li>
                                 <li class="link">
+                                    <a href="directives/NgxToastBundlerComponent.html" data-type="entity-link" >NgxToastBundlerComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="directives/NgxToastComponent.html" data-type="entity-link" >NgxToastComponent</a>
+                                </li>
+                                <li class="link">
                                     <a href="directives/NgxTooltipAbstractComponent.html" data-type="entity-link" >NgxTooltipAbstractComponent</a>
                                 </li>
                                 <li class="link">
@@ -336,6 +345,9 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                                 </li>
                                 <li class="link">
                                     <a href="injectables/NgxStoreService.html" data-type="entity-link" >NgxStoreService</a>
+                                </li>
+                                <li class="link">
+                                    <a href="injectables/NgxToastService.html" data-type="entity-link" >NgxToastService</a>
                                 </li>
                                 <li class="link">
                                     <a href="injectables/NgxTooltipService.html" data-type="entity-link" >NgxTooltipService</a>
@@ -556,6 +568,27 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                             </li>
                             <li class="link">
                                 <a href="interfaces/NgxTableSortEvent.html" data-type="entity-link" >NgxTableSortEvent</a>
+                            </li>
+                            <li class="link">
+                                <a href="interfaces/NgxToast.html" data-type="entity-link" >NgxToast</a>
+                            </li>
+                            <li class="link">
+                                <a href="interfaces/NgxToastConfiguration.html" data-type="entity-link" >NgxToastConfiguration</a>
+                            </li>
+                            <li class="link">
+                                <a href="interfaces/NgxToastDefaultConfiguration.html" data-type="entity-link" >NgxToastDefaultConfiguration</a>
+                            </li>
+                            <li class="link">
+                                <a href="interfaces/NgxToastEvent.html" data-type="entity-link" >NgxToastEvent</a>
+                            </li>
+                            <li class="link">
+                                <a href="interfaces/NgxToastMaxAmountBaseConfiguration.html" data-type="entity-link" >NgxToastMaxAmountBaseConfiguration</a>
+                            </li>
+                            <li class="link">
+                                <a href="interfaces/NgxToastMaxAmountBundleConfiguration.html" data-type="entity-link" >NgxToastMaxAmountBundleConfiguration</a>
+                            </li>
+                            <li class="link">
+                                <a href="interfaces/NgxToastMaxAmountOtherConfiguration.html" data-type="entity-link" >NgxToastMaxAmountOtherConfiguration</a>
                             </li>
                             <li class="link">
                                 <a href="interfaces/NgxTooltipActiveElementEvent.html" data-type="entity-link" >NgxTooltipActiveElementEvent</a>
