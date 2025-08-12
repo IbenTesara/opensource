@@ -7,12 +7,15 @@ import { provideRouter } from '@angular/router';
 
 import {
 	provideNgxModalConfiguration,
+	provideNgxToastConfiguration,
 	provideNgxTooltipConfiguration,
 	provideNgxTourConfiguration,
 } from '@lib/ngx-inform';
 import { provideNgxMobileLayoutConfiguration } from '@lib/ngx-layout';
 
 import { ConfirmModalComponent } from '../packages/inform/components/confirm/confirm.component';
+import { ToastBundlerComponent } from '../packages/inform/components/toast/toast-bundler.component';
+import { ToastComponent } from '../packages/inform/components/toast/toast.component';
 import { TooltipComponent } from '../packages/inform/components/tooltip/tooltip.component';
 import { TourStepComponent } from '../packages/inform/components/tour-step/tour-step.component';
 import { MainHeaderComponent } from '../packages/mobile-layout/components/headers/main/main-header.component';
@@ -47,7 +50,15 @@ export const appConfig: ApplicationConfig = {
 					right: RightHeaderComponent,
 				},
 				navigation: NavigationComponent,
-      },
+			},
+		}),
+		provideNgxToastConfiguration({
+			component: ToastComponent,
+			position: 'top-right',
+			maxAmount: {
+				strategy: 'wait',
+				amount: 5,
+			},
 		}),
 	],
 };

@@ -1,3 +1,5 @@
+<ngx-toast-container />
+
 <button
 	*ngxTourShowWhen="'whenInactive'"
 	ngxTooltip="Hello, this is a tooltip!"
@@ -5,5 +7,5 @@
 >
 	Start tour
 </button>
-
+<button (click)="showToast()">TOAST</button>
 <router-outlet></router-outlet>

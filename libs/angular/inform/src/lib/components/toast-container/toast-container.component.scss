@@ -1,0 +1,39 @@
+:host {
+	position: absolute;
+	pointer-events: none;
+
+	display: block;
+	width: 100vw;
+	height: 100vh;
+
+	ul {
+		position: absolute;
+		pointer-events: all;
+		width: fit-content;
+
+		&.ngx-toast-position-top-right {
+			top: 0;
+			right: 0;
+		}
+
+		&.ngx-toast-position-top-left {
+			top: 0;
+			left: 0;
+		}
+
+		&.ngx-toast-position-bottom-right {
+			bottom: 0;
+			right: 0;
+		}
+
+		&.ngx-toast-position-bottom-left {
+			bottom: 0;
+			left: 0;
+		}
+
+		.ngx-toast-item {
+			height: fit-content;
+			width: fit-content;
+		}
+	}
+}
