@@ -409,6 +409,9 @@
                             <a href="#provideNgxDragAndDropService" title="libs/angular/layout/src/lib/providers/drag-and-drop/drag-and-drop.provider.ts" ><b>provideNgxDragAndDropService</b>&nbsp;&nbsp;&nbsp;(libs/.../drag-and-drop.provider.ts)</a>
                         </li>
                         <li>
+                            <a href="#provideNgxFormErrorsConfiguration" title="libs/angular/forms/src/lib/providers/errors/errors-configuration.provider.ts" ><b>provideNgxFormErrorsConfiguration</b>&nbsp;&nbsp;&nbsp;(libs/.../errors-configuration.provider.ts)</a>
+                        </li>
+                        <li>
                             <a href="#provideNgxMobileLayoutConfiguration" title="libs/angular/layout/src/lib/providers/mobile-layout/mobile-layout-configuration.provider.ts" ><b>provideNgxMobileLayoutConfiguration</b>&nbsp;&nbsp;&nbsp;(libs/.../mobile-layout-configuration.provider.ts)</a>
                         </li>
                         <li>
@@ -5446,6 +5449,42 @@ This implementation is provided given that pluck has a higher readability than a
             <tr>
                 <td class="col-md-4">
                     <div class="io-description"><p>Provides a custom implementation of the NgxDragAndDropService</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+</section>
+    <h3>libs/angular/forms/src/lib/providers/errors/errors-configuration.provider.ts</h3>
+    <section data-compodoc="block-properties">
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="provideNgxFormErrorsConfiguration"></a>
+                    <span class="name">
+                        <span ><b>provideNgxFormErrorsConfiguration</b></span>
+                        <a href="#provideNgxFormErrorsConfiguration"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>(
+	configuration: NgxFormsErrorConfigurationOptions
+): Provider &#x3D;&gt; {
+	return {
+		provide: NgxFormsErrorsConfigurationToken,
+		useValue: configuration,
+	};
+}</code>
+                    </td>
+                </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Provides the necessary configuration for the NgxFormErrorsDirective</p>
 </div>
                 </td>
             </tr>
