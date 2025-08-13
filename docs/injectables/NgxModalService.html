@@ -943,7 +943,6 @@ import {
 	BehaviorSubject,
 	combineLatest,
 	filter,
-	finalize,
 	map,
 	NEVER,
 	Observable,
@@ -964,6 +963,7 @@ import { NgxModalActionType, NgxModalConfiguration, NgxModalOptions } from &#x27
  */
 @Injectable({ providedIn: &#x27;root&#x27; })
 export class NgxModalService {
+	// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
 	private readonly configuration &#x3D; inject&lt;NgxModalConfiguration&gt;(NgxModalConfigurationToken, {
 		optional: true,
 	})!;
@@ -1088,7 +1088,7 @@ export class NgxModalService {
 		// Iben: If no component was found, we return NEVER and throw an error
 		if (!component) {
 			console.error(
-				&#x27;NgxInform: No component was provided or found in the configuration to render.&#x27;
+				&#x27;@ibenvandeveire/ngx-inform - NgxModalService: No component was provided or found in the configuration to render.&#x27;
 			);
 
 			return false;
@@ -1097,7 +1097,7 @@ export class NgxModalService {
 		// Iben: If no description was provided when required, we return NEVER and throw an error
 		if (!this.hasRequiredDescription(options)) {
 			console.error(
-				&#x27;NgxInform: The role of the modal was set to &quot;alertdialog&quot; but no &quot;describedById&quot; was provided.&#x27;
+				&#x27;@ibenvandeveire/ngx-inform - NgxModalService: The role of the modal was set to &quot;alertdialog&quot; but no &quot;describedById&quot; was provided.&#x27;
 			);
 
 			return false;

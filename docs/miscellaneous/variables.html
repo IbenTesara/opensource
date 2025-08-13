@@ -331,6 +331,9 @@
                             <a href="#NgxModalConfigurationToken" title="libs/angular/inform/src/lib/tokens/modal/modal-configuration.token.ts" ><b>NgxModalConfigurationToken</b>&nbsp;&nbsp;&nbsp;(libs/.../modal-configuration.token.ts)</a>
                         </li>
                         <li>
+                            <a href="#NgxModalServiceMock" title="libs/angular/inform/src/lib/mocks/public/modal-service.mock.ts" ><b>NgxModalServiceMock</b>&nbsp;&nbsp;&nbsp;(libs/.../modal-service.mock.ts)</a>
+                        </li>
+                        <li>
                             <a href="#NgxReplaceElementsConfigurationToken" title="libs/angular/utils/src/lib/tokens/replace-elements.token.ts" ><b>NgxReplaceElementsConfigurationToken</b>&nbsp;&nbsp;&nbsp;(libs/.../replace-elements.token.ts)</a>
                         </li>
                         <li>
@@ -346,7 +349,22 @@
                             <a href="#NgxToastConfigurationToken" title="libs/angular/inform/src/lib/tokens/toast/toast-configuration.token.ts" ><b>NgxToastConfigurationToken</b>&nbsp;&nbsp;&nbsp;(libs/.../toast-configuration.token.ts)</a>
                         </li>
                         <li>
+                            <a href="#ngxToastOnError" title="libs/angular/inform/src/lib/operators/toasts/on-error/toast-on-error.operator.ts" ><b>ngxToastOnError</b>&nbsp;&nbsp;&nbsp;(libs/.../toast-on-error.operator.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#ngxToastOnSuccess" title="libs/angular/inform/src/lib/operators/toasts/on-success/toast-on-success.operator.ts" ><b>ngxToastOnSuccess</b>&nbsp;&nbsp;&nbsp;(libs/.../toast-on-success.operator.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#NgxToastServiceMock" title="libs/angular/inform/src/lib/mocks/public/toast-service.mock.ts" ><b>NgxToastServiceMock</b>&nbsp;&nbsp;&nbsp;(libs/.../toast-service.mock.ts)</a>
+                        </li>
+                        <li>
                             <a href="#NgxTooltipConfigurationToken" title="libs/angular/inform/src/lib/tokens/tooltip/tooltip-configuration.token.ts" ><b>NgxTooltipConfigurationToken</b>&nbsp;&nbsp;&nbsp;(libs/.../tooltip-configuration.token.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#NgxTooltipServiceMock" title="libs/angular/inform/src/lib/mocks/public/tooltip-service.mock.ts" ><b>NgxTooltipServiceMock</b>&nbsp;&nbsp;&nbsp;(libs/.../tooltip-service.mock.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#NgxTourServiceMock" title="libs/angular/inform/src/lib/mocks/public/tour-service.mock.ts" ><b>NgxTourServiceMock</b>&nbsp;&nbsp;&nbsp;(libs/.../tour-service.mock.ts)</a>
                         </li>
                         <li>
                             <a href="#NgxTourStepToken" title="libs/angular/inform/src/lib/tokens/tour/tour-step.token.ts" ><b>NgxTourStepToken</b>&nbsp;&nbsp;&nbsp;(libs/.../tour-step.token.ts)</a>
@@ -4435,6 +4453,44 @@ By default, a take(1) is applied to the source, so the source observable can be 
         </tbody>
     </table>
 </section>
+    <h3>libs/angular/inform/src/lib/mocks/public/modal-service.mock.ts</h3>
+    <section data-compodoc="block-properties">
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="NgxModalServiceMock"></a>
+                    <span class="name">
+                        <span ><b>NgxModalServiceMock</b></span>
+                        <a href="#NgxModalServiceMock"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>(testFunction: Function) &#x3D;&gt; {
+	return {
+		provide: NgxModalService,
+		useValue: {
+			hasActiveModal$: new BehaviorSubject&lt;boolean&gt;(false),
+			open: testFunction,
+			close: testFunction,
+		},
+	};
+}</code>
+                    </td>
+                </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Provides a mock version of the NgxModalService for TestBed setups</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+</section>
     <h3>libs/angular/utils/src/lib/tokens/replace-elements.token.ts</h3>
     <section data-compodoc="block-properties">
     <h3></h3>    <table class="table table-sm table-bordered">
@@ -4579,6 +4635,165 @@ By default, a take(1) is applied to the source, so the source observable can be 
         </tbody>
     </table>
 </section>
+    <h3>libs/angular/inform/src/lib/operators/toasts/on-error/toast-on-error.operator.ts</h3>
+    <section data-compodoc="block-properties">
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngxToastOnError"></a>
+                    <span class="name">
+                        <span ><b>ngxToastOnError</b></span>
+                        <a href="#ngxToastOnError"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>&lt;DataType &#x3D; unknown, ToastDataType &#x3D; unknown&gt;(
+	toast: NgxToastCreator&lt;ToastDataType&gt; | string,
+	service?: NgxToastService
+): OperatorFunction&lt;DataType, DataType&gt; &#x3D;&gt; {
+	// Iben: Inject the toast service
+	if (!service) {
+		ngDevMode &amp;&amp; assertInInjectionContext(ngxToastOnError);
+		service &#x3D; inject(NgxToastService);
+	}
+
+	// Iben: If no toast service was provided, we throw an error
+	if (!service) {
+		switchMap(() &#x3D;&gt; {
+			return throwError(() &#x3D;&gt;
+				Error(
+					&#x27;@ibenvandeveire/ngx-inform - NgxToast: No instance of NgxToastService was provided to the toastOnSuccess Operator.&#x27;
+				)
+			);
+		});
+	}
+
+	// Iben: Show a toast
+	return catchError((error: Error) &#x3D;&gt; {
+		service.showToast(toast);
+
+		return throwError(() &#x3D;&gt; error);
+	});
+}</code>
+                    </td>
+                </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>An operator that will display a toast on error</p>
+<p><em>Important</em>: If the operator is not used in the injection context, an instance of the NgxToastService has to be provided</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+</section>
+    <h3>libs/angular/inform/src/lib/operators/toasts/on-success/toast-on-success.operator.ts</h3>
+    <section data-compodoc="block-properties">
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngxToastOnSuccess"></a>
+                    <span class="name">
+                        <span ><b>ngxToastOnSuccess</b></span>
+                        <a href="#ngxToastOnSuccess"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>&lt;DataType &#x3D; unknown, ToastDataType &#x3D; unknown&gt;(
+	toast: NgxToastCreator&lt;ToastDataType&gt; | string,
+	service?: NgxToastService
+): OperatorFunction&lt;DataType, DataType&gt; &#x3D;&gt; {
+	// Iben: Inject the toast service
+	// Iben: Inject the toast service
+	if (!service) {
+		ngDevMode &amp;&amp; assertInInjectionContext(ngxToastOnSuccess);
+		service &#x3D; inject(NgxToastService);
+	}
+
+	// Iben: If no toast service was provided, we throw an error
+	if (!service) {
+		switchMap(() &#x3D;&gt; {
+			return throwError(() &#x3D;&gt;
+				Error(
+					&#x27;@ibenvandeveire/ngx-inform - NgxToast: No instance of NgxToastService was provided to the toastOnSuccess Operator.&#x27;
+				)
+			);
+		});
+	}
+
+	// Iben: Show a toast
+	return tap&lt;DataType&gt;(() &#x3D;&gt; {
+		service.showToast(toast);
+	});
+}</code>
+                    </td>
+                </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>An operator that will display a toast on success</p>
+<p><em>Important</em>: If the operator is not used in the injection context, an instance of the NgxToastService has to be provided</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+</section>
+    <h3>libs/angular/inform/src/lib/mocks/public/toast-service.mock.ts</h3>
+    <section data-compodoc="block-properties">
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="NgxToastServiceMock"></a>
+                    <span class="name">
+                        <span ><b>NgxToastServiceMock</b></span>
+                        <a href="#NgxToastServiceMock"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>(
+	testFunction: Function,
+	bundledComponent?: Type&lt;NgxToastBundlerComponent&gt;
+) &#x3D;&gt; {
+	return {
+		provide: NgxToastService,
+		useValue: {
+			toasts: signal&lt;NgxToast[]&gt;([]),
+			hasBundledToasts: signal&lt;number&gt;(undefined),
+			bundledComponent: bundledComponent,
+			showToast: testFunction,
+			removeToast: testFunction,
+			setFocus: testFunction,
+			markAsRendered: testFunction,
+			showBundled: testFunction,
+		},
+	};
+}</code>
+                    </td>
+                </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Provides a mock version of the NgxToastService for TestBed setups</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+</section>
     <h3>libs/angular/inform/src/lib/tokens/tooltip/tooltip-configuration.token.ts</h3>
     <section data-compodoc="block-properties">
     <h3></h3>    <table class="table table-sm table-bordered">
@@ -4605,6 +4820,89 @@ By default, a take(1) is applied to the source, so the source observable can be 
                     <div class="io-description"><p>A token to provide the necessary configuration to the NgxTooltipDirective. This is exported
 due to testing frameworks (like Storybook) not being able to resolve the InjectionToken in the
 <code>provideNgxTooltipConfiguration</code>.</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+</section>
+    <h3>libs/angular/inform/src/lib/mocks/public/tooltip-service.mock.ts</h3>
+    <section data-compodoc="block-properties">
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="NgxTooltipServiceMock"></a>
+                    <span class="name">
+                        <span ><b>NgxTooltipServiceMock</b></span>
+                        <a href="#NgxTooltipServiceMock"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>(testFunction: Function) &#x3D;&gt; {
+	return {
+		provide: NgxTooltipService,
+		useValue: {
+			showToolTip: testFunction,
+			removeTooltip: testFunction,
+			setToolTipEvent: testFunction,
+		},
+	};
+}</code>
+                    </td>
+                </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Provides a mock version of the NgxTooltipService for TestBed setups</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+</section>
+    <h3>libs/angular/inform/src/lib/mocks/public/tour-service.mock.ts</h3>
+    <section data-compodoc="block-properties">
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="NgxTourServiceMock"></a>
+                    <span class="name">
+                        <span ><b>NgxTourServiceMock</b></span>
+                        <a href="#NgxTourServiceMock"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>(testFunction: Function) &#x3D;&gt; {
+	return {
+		provide: NgxTourService,
+		useValue: {
+			currentTour$: new BehaviorSubject&lt;NgxTourStep[]&gt;([]),
+			currentStep$: new BehaviorSubject&lt;NgxTourStep&gt;(undefined),
+			currentIndex$: new BehaviorSubject&lt;number&gt;(undefined),
+			tourEnded$: new BehaviorSubject&lt;boolean&gt;(undefined),
+			tourStarted$: new BehaviorSubject&lt;boolean&gt;(undefined),
+			tourActive$: new BehaviorSubject&lt;boolean&gt;(undefined),
+			startTour: testFunction,
+			registerElement: testFunction,
+			unregisterElement: testFunction,
+			closeTour: testFunction,
+		},
+	};
+}</code>
+                    </td>
+                </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Provides a mock service of the NgxTourService in TestBed setups</p>
 </div>
                 </td>
             </tr>
@@ -4689,22 +4987,22 @@ due to testing frameworks (like Storybook) not being able to resolve the Injecti
             </tr>
                 <tr>
                     <td class="col-md-4">
-                        <i>Default value : </i><code>(component: NgxTourStepComponent&lt;any&gt;): any &#x3D;&gt; ({
-	position: jest.fn().mockReturnValue({
-		global: jest.fn().mockReturnValue({
-			centerHorizontally: jest.fn().mockReturnThis(),
-			centerVertically: jest.fn().mockReturnThis(),
+                        <i>Default value : </i><code>(component: NgxTourStepComponent&lt;any&gt;, testFunction: Function): any &#x3D;&gt; ({
+	position: () &#x3D;&gt; ({
+		global: () &#x3D;&gt; ({
+			centerHorizontally: testFunction,
+			centerVertically: testFunction,
 		}),
 	}),
 	scrollStrategies: {
-		block: jest.fn(),
-		noop: jest.fn(),
+		block: testFunction,
+		noop: testFunction,
 	},
-	create: jest.fn().mockReturnValue({
-		attach: jest.fn().mockReturnValue({
+	create: () &#x3D;&gt; ({
+		attach: () &#x3D;&gt; ({
 			instance: component,
 		}),
-		dispose: jest.fn(),
+		dispose: testFunction,
 	}),
 })</code>
                     </td>

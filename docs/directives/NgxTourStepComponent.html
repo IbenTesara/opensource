@@ -1109,19 +1109,19 @@
 
     <div class="tab-pane fade  tab-source-code" id="source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import {
-  AfterViewInit,
-  Directive,
-  ElementRef,
-  HostBinding,
-  HostListener,
-  OnInit,
-  signal,
-  WritableSignal,
-  inject,
-  input,
-  OutputEmitterRef,
-  output,
-  viewChild
+	AfterViewInit,
+	Directive,
+	ElementRef,
+	HostBinding,
+	HostListener,
+	OnInit,
+	signal,
+	WritableSignal,
+	inject,
+	input,
+	OutputEmitterRef,
+	output,
+	viewChild,
 } from &#x27;@angular/core&#x27;;
 import { v4 as uuid } from &#x27;uuid&#x27;;
 
@@ -1135,8 +1135,8 @@ import { NgxTourInteraction, NgxTourStepPosition } from &#x27;../../types&#x27;;
 	host: {
 		role: &#x27;dialog&#x27;,
 		&#x27;[attr.aria-modal]&#x27;: &#x27;true&#x27;,
-    &#x27;[attr.aria-labelledby]&#x27;: &#x27;titleId()&#x27;,
-    &#x27;[attr.aria-details]&#x27;: &#x27;elementId()&#x27;
+		&#x27;[attr.aria-labelledby]&#x27;: &#x27;titleId()&#x27;,
+		&#x27;[attr.aria-details]&#x27;: &#x27;elementId()&#x27;,
 	},
 })
 export abstract class NgxTourStepComponent&lt;DataType &#x3D; any&gt; implements OnInit, AfterViewInit {
@@ -1222,9 +1222,9 @@ export abstract class NgxTourStepComponent&lt;DataType &#x3D; any&gt; implements
 	public ngAfterViewInit(): void {
 		// Iben: If no title element was found, we throw an error
 		const titleElement &#x3D; this.titleElement();
-  if (!titleElement) {
+		if (!titleElement) {
 			console.error(
-				&#x27;NgxTourService: The tour step component does not have an element marked with &#x60;stepTitle&#x60;. Because of that, the necessary accessibility attributes could not be set. Please add the &#x60;stepTitle&#x60; tag to the element that represents the title of the step.&#x27;
+				&#x27;@ibenvandeveire/ngx-inform - NgxTourService: The tour step component does not have an element marked with &#x60;stepTitle&#x60;. Because of that, the necessary accessibility attributes could not be set. Please add the &#x60;stepTitle&#x60; tag to the element that represents the title of the step.&#x27;
 			);
 
 			return;

@@ -279,6 +279,11 @@ export interface NgxToast&lt;DataType &#x3D; unknown&gt; {
 }
 
 /**
+ * The interface needed to create a NgxToast
+ */
+export type NgxToastCreator&lt;DataType &#x3D; unknown&gt; &#x3D; Omit&lt;NgxToast&lt;DataType&gt;, &#x27;id&#x27; | &#x27;toBeRemoved&#x27;&gt;;
+
+/**
  * An event for when toasts are shown, updated or removed
  */
 export interface NgxToastEvent {
