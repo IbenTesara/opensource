@@ -1,4 +1,13 @@
-import { AfterViewInit, Directive, ElementRef, HostListener, OutputEmitterRef, inject, input, output } from '@angular/core';
+import {
+	AfterViewInit,
+	Directive,
+	ElementRef,
+	HostListener,
+	OutputEmitterRef,
+	inject,
+	input,
+	output,
+} from '@angular/core';
 import { NgxWindowService } from '@ibenvandeveire/ngx-core';
 
 import { NgxModalActionType } from '../../types';
@@ -58,7 +67,7 @@ export class NgxModalAbstractComponent<ActionType extends NgxModalActionType, Da
 			// Iben: If no corresponding element was found or if it isn't part of the modal, throw an error
 			if (!element || !parent.contains(element)) {
 				console.error(
-					`NgxModalAbstractComponent: The ${
+					`@ibenvandeveire/ngx-inform - NgxModalAbstractComponent: The ${
 						ariaLabelledBy ? '"aria-labelledBy"' : 'aria-describedBy'
 					} property was passed to the modal but no element with said id was found. Because of that, the necessary accessibility attributes could not be set. Please add an id with the value "${
 						ariaLabelledBy || ariaDescribedBy

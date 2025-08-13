@@ -1,21 +1,21 @@
 import type { NgxTourStepComponent } from '../abstracts';
 
 /** This mock provides an implementation to the CDK Overlay */
-export const OverlayMock = (component: NgxTourStepComponent<any>): any => ({
-	position: jest.fn().mockReturnValue({
-		global: jest.fn().mockReturnValue({
-			centerHorizontally: jest.fn().mockReturnThis(),
-			centerVertically: jest.fn().mockReturnThis(),
+export const OverlayMock = (component: NgxTourStepComponent<any>, testFunction: Function): any => ({
+	position: () => ({
+		global: () => ({
+			centerHorizontally: testFunction,
+			centerVertically: testFunction,
 		}),
 	}),
 	scrollStrategies: {
-		block: jest.fn(),
-		noop: jest.fn(),
+		block: testFunction,
+		noop: testFunction,
 	},
-	create: jest.fn().mockReturnValue({
-		attach: jest.fn().mockReturnValue({
+	create: () => ({
+		attach: () => ({
 			instance: component,
 		}),
-		dispose: jest.fn(),
+		dispose: testFunction,
 	}),
 });

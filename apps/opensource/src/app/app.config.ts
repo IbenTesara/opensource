@@ -56,8 +56,8 @@ export const appConfig: ApplicationConfig = {
 			component: ToastComponent,
 			position: 'top-right',
 			maxAmount: {
-				strategy: 'wait',
-				amount: 5,
+				strategy: 'ignore',
+				amount: 1,
 			},
 		}),
 	],

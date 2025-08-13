@@ -5,7 +5,6 @@ import {
 	BehaviorSubject,
 	combineLatest,
 	concatMap,
-	delay,
 	distinctUntilChanged,
 	filter,
 	map,
@@ -18,7 +17,12 @@ import { v7 as uuid } from 'uuid';
 
 import { NgxToastBundlerComponent } from '../../abstracts';
 import { NgxToastConfigurationToken } from '../../tokens';
-import { NgxToast, NgxToastDefaultConfiguration, NgxToastEvent } from '../../types/toast.types';
+import {
+	NgxToast,
+	NgxToastCreator,
+	NgxToastDefaultConfiguration,
+	NgxToastEvent,
+} from '../../types/toast.types';
 
 /**
  * A service that acts as the single source of truth in the application
@@ -89,7 +93,7 @@ export class NgxToastService {
 	 * The component used to represent the bundled toasts
 	 */
 	public bundledComponent: Type<NgxToastBundlerComponent> =
-		this.configuration?.maxAmount['component'];
+		this.configuration?.maxAmount?.['component'];
 
 	/**
 	 * Creates an instance of NgxToastService.
@@ -164,20 +168,20 @@ export class NgxToastService {
 	 * @param data - The data needed for the toast
 	 */
 	public showToast<DataType = unknown>(
-		data: Omit<NgxToast<DataType>, 'id' | 'toBeRemoved'>
+		data: NgxToastCreator<DataType> | string
 	): NgxToast<DataType> {
 		// Iben: Early exit if we reached
 		if (
-			!this.configuration.maxAmount ||
-			(this.queue$.getValue().length === this.configuration.maxAmount.amount &&
-				this.configuration.maxAmount.strategy === 'ignore')
+			this.configuration.maxAmount &&
+			this.queue$.getValue().length === this.configuration.maxAmount.amount &&
+			this.configuration.maxAmount.strategy === 'ignore'
 		) {
 			return undefined;
 		}
 
 		// Iben: Generate an id for the toast
 		const id = uuid();
-		const toast = { ...data, id };
+		const toast = { ...(typeof data === 'string' ? { text: data } : data), id };
 
 		// Iben: Add the toast to the toast list
 		this.toastEvents$.next({

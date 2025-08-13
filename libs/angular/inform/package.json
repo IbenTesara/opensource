@@ -38,7 +38,8 @@
 		"@angular/cdk": "^20.1.2",
 		"@angular/router": "20.1.2",
 		"@ibenvandeveire/ngx-core": "^20.0.0",
-		"@angular/common": "20.1.2"
+		"@angular/common": "20.1.2",
+		"lodash": "^4.17.21"
 	},
 	"sideEffects": false
 }

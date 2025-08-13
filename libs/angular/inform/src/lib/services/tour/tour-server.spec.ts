@@ -11,7 +11,7 @@ import { NgxTourService } from './tour.service';
 xdescribe('NgxTourService Server', () => {
 	let service: NgxTourService;
 
-  beforeEach( () => {
+	beforeEach(() => {
 		const windowServiceMock = NgxWindowServiceMock(jest.fn);
 		jest.spyOn(windowServiceMock, 'isBrowser').mockReturnValue(false);
 
@@ -21,7 +21,7 @@ xdescribe('NgxTourService Server', () => {
 				NgxTourService,
 				{
 					provide: Overlay,
-					useValue: OverlayMock(undefined),
+					useValue: OverlayMock(undefined, jest.fn()),
 				},
 				{
 					provide: NgxWindowService,
@@ -39,7 +39,7 @@ xdescribe('NgxTourService Server', () => {
 	});
 
 	it('should not start the tour', (done) => {
-    TestBed.runInInjectionContext( () => {
+		TestBed.runInInjectionContext(() => {
 			const tourStartedSpy = subscribeSpyTo(service.tourStarted$);
 			const tourEndedSpy = subscribeSpyTo(service.tourEnded$);
 			const tourActiveSpy = subscribeSpyTo(service.tourActive$);

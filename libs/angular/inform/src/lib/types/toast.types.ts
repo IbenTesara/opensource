@@ -69,6 +69,11 @@ export interface NgxToast<DataType = unknown> {
 }
 
 /**
+ * The interface needed to create a NgxToast
+ */
+export type NgxToastCreator<DataType = unknown> = Omit<NgxToast<DataType>, 'id' | 'toBeRemoved'>;
+
+/**
  * An event for when toasts are shown, updated or removed
  */
 export interface NgxToastEvent {
