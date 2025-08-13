@@ -1,6 +1,6 @@
 {
 	"name": "@ibenvandeveire/ngx-i18n",
-	"version": "20.0.1",
+	"version": "20.0.2",
 	"description": "A modular lazy loaded Angular approach to translations using ngx-translate, created by Iben Van de Veire.",
 	"keywords": [
 		"angular",
