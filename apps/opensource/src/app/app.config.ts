@@ -12,15 +12,16 @@ import {
 	provideNgxTourConfiguration,
 } from '@lib/ngx-inform';
 import { provideNgxMobileLayoutConfiguration } from '@lib/ngx-layout';
+import { provideNgxCypressTags } from '@lib/ngx-utils';
 
 import { ConfirmModalComponent } from '../packages/inform/components/confirm/confirm.component';
-import { ToastBundlerComponent } from '../packages/inform/components/toast/toast-bundler.component';
 import { ToastComponent } from '../packages/inform/components/toast/toast.component';
 import { TooltipComponent } from '../packages/inform/components/tooltip/tooltip.component';
 import { TourStepComponent } from '../packages/inform/components/tour-step/tour-step.component';
 import { MainHeaderComponent } from '../packages/mobile-layout/components/headers/main/main-header.component';
 import { RightHeaderComponent } from '../packages/mobile-layout/components/headers/right/right-header.component';
 import { NavigationComponent } from '../packages/mobile-layout/components/nav/nav.component';
+import { CypressTags } from '../packages/utils/cypress-tags';
 
 import { appRoutes } from './app.routes';
 
@@ -59,6 +60,7 @@ export const appConfig: ApplicationConfig = {
 				strategy: 'ignore',
 				amount: 1,
 			},
-		}),
+    } ),
+    provideNgxCypressTags(CypressTags)
 	],
 };

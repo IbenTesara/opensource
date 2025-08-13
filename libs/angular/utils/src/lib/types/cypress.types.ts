@@ -1,5 +1,4 @@
 // Iben: Types to type all paths of an object
-
 // See: https://stackoverflow.com/questions/58434389/typescript-deep-keyof-of-a-nested-object/58436959#58436959
 type Prev = [
 	never,
@@ -33,12 +32,18 @@ type Join<K, P> = K extends string | number
 		: never
 	: never;
 
-type Paths<T, D extends number = 10> = [D] extends [never]
+export type NgxCypressTagsPaths<T, D extends number = 10> = [D] extends [never]
 	? never
 	: T extends object
 	? {
 			[K in keyof T]-?: K extends string | number
-				? `${K}` | Join<K, Paths<T[K], Prev[D]>>
+				? never | Join<K, NgxCypressTagsPaths<T[K], Prev[D]>>
 				: never;
 	  }[keyof T]
 	: '';
+
+export type NgxCypressTags = {
+	[k: string]: string | NgxCypressTags;
+};
+
+export type NgxCypressTagPath = string;

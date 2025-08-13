@@ -1,9 +1,8 @@
 import { InjectionToken } from '@angular/core';
 
-type CypressLeafObject = Record<string,string> | string;
-type CypressObject = Record<string,CypressLeafObject | string>;
+import { NgxCypressTags } from '../types';
 
 /** The configuration token for the NgxCypressTagDirective */
-export const NgxCypressTagConfigurationToken = new InjectionToken<CypressObject>(
-	'NgxCypressTagConfigurationToken'
+export const NgxCypressTagsToken = new InjectionToken<NgxCypressTags>(
+	'NgxCypressTagsToken'
 );

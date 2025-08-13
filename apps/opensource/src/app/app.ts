@@ -1,6 +1,6 @@
 import { Component, inject } from '@angular/core';
 import { Router, RouterModule } from '@angular/router';
-import { from, of, switchMap } from 'rxjs';
+import { from,of,switchMap } from 'rxjs';
 
 import {
 	NgxModalService,
