@@ -10,3 +10,4 @@ export * from './lib/interfaces';
 export * from './lib/directives';
 export * from './lib/tokens';
 export * from './lib/guards';
+export * from './lib/providers';
