@@ -1,8 +1,8 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { subscribeSpyTo } from '@hirez_io/observer-spy';
 
-import { MockTourHolderComponent, MockTourStepComponent } from '../../mocks';
-import { provideNgxTourConfiguration } from '../../providers';
+import { MockTourHolderComponent, MockTourStepComponent } from '../../../mocks';
+import { provideNgxTourConfiguration } from '../../../providers';
 
 // Wouter: This is a window mock, but I'm not sure if this is the right approach. Before resolving this, I passed the issue on to Iben.
 window.scrollTo = jest.fn();

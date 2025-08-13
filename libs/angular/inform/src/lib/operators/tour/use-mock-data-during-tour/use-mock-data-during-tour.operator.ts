@@ -1,7 +1,7 @@
 import { inject } from '@angular/core';
 import { OperatorFunction, combineLatest, map, of, switchMap } from 'rxjs';
 
-import { NgxTourService } from '../../services';
+import { NgxTourService } from '../../../services';
 
 /**
  * An operator to map the data of an Observable to mock data when the NgxTourService has an active tour.

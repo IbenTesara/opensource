@@ -1,2 +1,3 @@
-export * from './use-mock-data-during-tour/use-mock-data-during-tour.operator';
-export * from './toasts';
+export * from './tour';
+export * from './toast';
+export * from './modal';
