@@ -6,3 +6,9 @@ export * from './tokens';
 export * from './operators';
 export { NgxModalService, NgxTourService, NgxToastService } from './services';
 export * from './components';
+export {
+	NgxTourServiceMock,
+	NgxModalServiceMock,
+	NgxToastServiceMock,
+	NgxTooltipServiceMock,
+} from './mocks';

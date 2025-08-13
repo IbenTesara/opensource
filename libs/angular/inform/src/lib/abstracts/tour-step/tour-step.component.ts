@@ -1,17 +1,17 @@
 import {
-  AfterViewInit,
-  Directive,
-  ElementRef,
-  HostBinding,
-  HostListener,
-  OnInit,
-  signal,
-  WritableSignal,
-  inject,
-  input,
-  OutputEmitterRef,
-  output,
-  viewChild
+	AfterViewInit,
+	Directive,
+	ElementRef,
+	HostBinding,
+	HostListener,
+	OnInit,
+	signal,
+	WritableSignal,
+	inject,
+	input,
+	OutputEmitterRef,
+	output,
+	viewChild,
 } from '@angular/core';
 import { v4 as uuid } from 'uuid';
 
@@ -25,8 +25,8 @@ import { NgxTourInteraction, NgxTourStepPosition } from '../../types';
 	host: {
 		role: 'dialog',
 		'[attr.aria-modal]': 'true',
-    '[attr.aria-labelledby]': 'titleId()',
-    '[attr.aria-details]': 'elementId()'
+		'[attr.aria-labelledby]': 'titleId()',
+		'[attr.aria-details]': 'elementId()',
 	},
 })
 export abstract class NgxTourStepComponent<DataType = any> implements OnInit, AfterViewInit {
@@ -112,9 +112,9 @@ export abstract class NgxTourStepComponent<DataType = any> implements OnInit, Af
 	public ngAfterViewInit(): void {
 		// Iben: If no title element was found, we throw an error
 		const titleElement = this.titleElement();
-  if (!titleElement) {
+		if (!titleElement) {
 			console.error(
-				'NgxTourService: The tour step component does not have an element marked with `stepTitle`. Because of that, the necessary accessibility attributes could not be set. Please add the `stepTitle` tag to the element that represents the title of the step.'
+				'@ibenvandeveire/ngx-inform - NgxTourService: The tour step component does not have an element marked with `stepTitle`. Because of that, the necessary accessibility attributes could not be set. Please add the `stepTitle` tag to the element that represents the title of the step.'
 			);
 
 			return;
