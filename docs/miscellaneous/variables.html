@@ -349,10 +349,10 @@
                             <a href="#NgxToastConfigurationToken" title="libs/angular/inform/src/lib/tokens/toast/toast-configuration.token.ts" ><b>NgxToastConfigurationToken</b>&nbsp;&nbsp;&nbsp;(libs/.../toast-configuration.token.ts)</a>
                         </li>
                         <li>
-                            <a href="#ngxToastOnError" title="libs/angular/inform/src/lib/operators/toasts/on-error/toast-on-error.operator.ts" ><b>ngxToastOnError</b>&nbsp;&nbsp;&nbsp;(libs/.../toast-on-error.operator.ts)</a>
+                            <a href="#ngxToastOnError" title="libs/angular/inform/src/lib/operators/toast/on-error/toast-on-error.operator.ts" ><b>ngxToastOnError</b>&nbsp;&nbsp;&nbsp;(libs/.../toast-on-error.operator.ts)</a>
                         </li>
                         <li>
-                            <a href="#ngxToastOnSuccess" title="libs/angular/inform/src/lib/operators/toasts/on-success/toast-on-success.operator.ts" ><b>ngxToastOnSuccess</b>&nbsp;&nbsp;&nbsp;(libs/.../toast-on-success.operator.ts)</a>
+                            <a href="#ngxToastOnSuccess" title="libs/angular/inform/src/lib/operators/toast/on-success/toast-on-success.operator.ts" ><b>ngxToastOnSuccess</b>&nbsp;&nbsp;&nbsp;(libs/.../toast-on-success.operator.ts)</a>
                         </li>
                         <li>
                             <a href="#NgxToastServiceMock" title="libs/angular/inform/src/lib/mocks/public/toast-service.mock.ts" ><b>NgxToastServiceMock</b>&nbsp;&nbsp;&nbsp;(libs/.../toast-service.mock.ts)</a>
@@ -377,6 +377,9 @@
                         </li>
                         <li>
                             <a href="#NgxWindowServiceMock" title="libs/angular/core/src/lib/services/window/window.service.mock.ts" ><b>NgxWindowServiceMock</b>&nbsp;&nbsp;&nbsp;(libs/.../window.service.mock.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#openNgxModal" title="libs/angular/inform/src/lib/operators/modal/open-modal/open-modal.operator.ts" ><b>openNgxModal</b>&nbsp;&nbsp;&nbsp;(libs/.../open-modal.operator.ts)</a>
                         </li>
                         <li>
                             <a href="#OverlayMock" title="libs/angular/inform/src/lib/mocks/overlay.mock.ts" ><b>OverlayMock</b>&nbsp;&nbsp;&nbsp;(libs/.../overlay.mock.ts)</a>
@@ -451,6 +454,9 @@
                             <a href="#sortArray" title="libs/javascript/rxjs/src/lib/operators/array/sort.operator.ts" ><b>sortArray</b>&nbsp;&nbsp;&nbsp;(libs/.../sort.operator.ts)</a>
                         </li>
                         <li>
+                            <a href="#startNgxTour" title="libs/angular/inform/src/lib/operators/tour/start-tour/start-tour.operator.ts" ><b>startNgxTour</b>&nbsp;&nbsp;&nbsp;(libs/.../start-tour.operator.ts)</a>
+                        </li>
+                        <li>
                             <a href="#StoreSlice" title="libs/angular/store/src/lib/rxjs/spec/store-assets.ts" ><b>StoreSlice</b>&nbsp;&nbsp;&nbsp;(libs/.../store-assets.ts)</a>
                         </li>
                         <li>
@@ -460,7 +466,7 @@
                             <a href="#updateAllValueAndValidity" title="libs/angular/forms/src/lib/utils/custom-update-value-and-validity/custom-update-value-and-validity.util.ts" ><b>updateAllValueAndValidity</b>&nbsp;&nbsp;&nbsp;(libs/.../custom-update-value-and-validity.util.ts)</a>
                         </li>
                         <li>
-                            <a href="#useMockDataDuringTour" title="libs/angular/inform/src/lib/operators/use-mock-data-during-tour/use-mock-data-during-tour.operator.ts" ><b>useMockDataDuringTour</b>&nbsp;&nbsp;&nbsp;(libs/.../use-mock-data-during-tour.operator.ts)</a>
+                            <a href="#useMockDataDuringTour" title="libs/angular/inform/src/lib/operators/tour/use-mock-data-during-tour/use-mock-data-during-tour.operator.ts" ><b>useMockDataDuringTour</b>&nbsp;&nbsp;&nbsp;(libs/.../use-mock-data-during-tour.operator.ts)</a>
                         </li>
                         <li>
                             <a href="#writeNgxTableValue" title="libs/angular/layout/src/lib/utils/table-form/handle-form-changes.util.ts" ><b>writeNgxTableValue</b>&nbsp;&nbsp;&nbsp;(libs/.../handle-form-changes.util.ts)</a>
@@ -4635,7 +4641,7 @@ By default, a take(1) is applied to the source, so the source observable can be 
         </tbody>
     </table>
 </section>
-    <h3>libs/angular/inform/src/lib/operators/toasts/on-error/toast-on-error.operator.ts</h3>
+    <h3>libs/angular/inform/src/lib/operators/toast/on-error/toast-on-error.operator.ts</h3>
     <section data-compodoc="block-properties">
     <h3></h3>    <table class="table table-sm table-bordered">
         <tbody>
@@ -4665,7 +4671,7 @@ By default, a take(1) is applied to the source, so the source observable can be 
 		switchMap(() &#x3D;&gt; {
 			return throwError(() &#x3D;&gt;
 				Error(
-					&#x27;@ibenvandeveire/ngx-inform - NgxToast: No instance of NgxToastService was provided to the toastOnSuccess Operator.&#x27;
+					&#x27;@ibenvandeveire/ngx-inform - NgxToast: No instance of NgxToastService was provided to the ngxToastOnError Operator.&#x27;
 				)
 			);
 		});
@@ -4692,7 +4698,7 @@ By default, a take(1) is applied to the source, so the source observable can be 
         </tbody>
     </table>
 </section>
-    <h3>libs/angular/inform/src/lib/operators/toasts/on-success/toast-on-success.operator.ts</h3>
+    <h3>libs/angular/inform/src/lib/operators/toast/on-success/toast-on-success.operator.ts</h3>
     <section data-compodoc="block-properties">
     <h3></h3>    <table class="table table-sm table-bordered">
         <tbody>
@@ -4707,7 +4713,7 @@ By default, a take(1) is applied to the source, so the source observable can be 
             </tr>
                 <tr>
                     <td class="col-md-4">
-                        <i>Default value : </i><code>&lt;DataType &#x3D; unknown, ToastDataType &#x3D; unknown&gt;(
+                        <i>Default value : </i><code>&lt;ToastDataType &#x3D; unknown, DataType &#x3D; unknown&gt;(
 	toast: NgxToastCreator&lt;ToastDataType&gt; | string,
 	service?: NgxToastService
 ): OperatorFunction&lt;DataType, DataType&gt; &#x3D;&gt; {
@@ -4723,7 +4729,7 @@ By default, a take(1) is applied to the source, so the source observable can be 
 		switchMap(() &#x3D;&gt; {
 			return throwError(() &#x3D;&gt;
 				Error(
-					&#x27;@ibenvandeveire/ngx-inform - NgxToast: No instance of NgxToastService was provided to the toastOnSuccess Operator.&#x27;
+					&#x27;@ibenvandeveire/ngx-inform - NgxToast: No instance of NgxToastService was provided to the ngxToastOnSuccess Operator.&#x27;
 				)
 			);
 		});
@@ -4968,6 +4974,65 @@ due to testing frameworks (like Storybook) not being able to resolve the Injecti
                     </td>
                 </tr>
 
+
+        </tbody>
+    </table>
+</section>
+    <h3>libs/angular/inform/src/lib/operators/modal/open-modal/open-modal.operator.ts</h3>
+    <section data-compodoc="block-properties">
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="openNgxModal"></a>
+                    <span class="name">
+                        <span ><b>openNgxModal</b></span>
+                        <a href="#openNgxModal"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>&lt;
+	ActionType extends NgxModalActionType &#x3D; string,
+	ModalDataType &#x3D; unknown,
+	DataType &#x3D; unknown
+&gt;(
+	options: NgxModalOptions&lt;ActionType, ModalDataType&gt;,
+	service?: NgxModalService
+): OperatorFunction&lt;DataType, ActionType&gt; &#x3D;&gt; {
+	// Iben: Inject the modal service
+	if (!service) {
+		ngDevMode &amp;&amp; assertInInjectionContext(openNgxModal);
+		service &#x3D; inject(NgxModalService);
+	}
+
+	// Iben: If no modal service was provided, we throw an error
+	if (!service) {
+		switchMap(() &#x3D;&gt; {
+			return throwError(() &#x3D;&gt;
+				Error(
+					&#x27;@ibenvandeveire/ngx-inform - NgxModal: No instance of NgxModalService was provided to the openNgxModal Operator.&#x27;
+				)
+			);
+		});
+	}
+
+	// Iben: Open a modal
+	return switchMap(() &#x3D;&gt; {
+		return service.open&lt;ActionType, ModalDataType&gt;(options);
+	});
+}</code>
+                    </td>
+                </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>An operator that will display a modal</p>
+<p><em>Important</em>: If the operator is not used in the injection context, an instance of the NgxModalService has to be provided</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -5921,6 +5986,63 @@ documentation of the <code>NgxTourStep</code>.</p>
         </tbody>
     </table>
 </section>
+    <h3>libs/angular/inform/src/lib/operators/tour/start-tour/start-tour.operator.ts</h3>
+    <section data-compodoc="block-properties">
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="startNgxTour"></a>
+                    <span class="name">
+                        <span ><b>startNgxTour</b></span>
+                        <a href="#startNgxTour"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>&lt;DataType &#x3D; unknown&gt;(
+	tour: NgxTourStep[],
+	onClose?: NgxTourAction,
+	startIndex &#x3D; 0,
+	service?: NgxTourService
+): OperatorFunction&lt;DataType, DataType&gt; &#x3D;&gt; {
+	// Iben: Inject the modal service
+	if (!service) {
+		ngDevMode &amp;&amp; assertInInjectionContext(startNgxTour);
+		service &#x3D; inject(NgxTourService);
+	}
+
+	// Iben: If no modal service was provided, we throw an error
+	if (!service) {
+		switchMap(() &#x3D;&gt; {
+			return throwError(() &#x3D;&gt;
+				Error(
+					&#x27;@ibenvandeveire/ngx-inform - NgxTour: No instance of NgxTourService was provided to the startNgxTour Operator.&#x27;
+				)
+			);
+		});
+	}
+
+	// Iben: Start the tour
+	return switchMap((data) &#x3D;&gt; {
+		return service.startTour(tour, onClose, startIndex).pipe(map(() &#x3D;&gt; data));
+	});
+}</code>
+                    </td>
+                </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>An operator that will start a tour</p>
+<p><em>Important</em>: If the operator is not used in the injection context, an instance of the NgxTourService has to be provided</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+</section>
     <h3>libs/angular/store/src/lib/rxjs/spec/store-assets.ts</h3>
     <section data-compodoc="block-properties">
     <h3></h3>    <table class="table table-sm table-bordered">
@@ -6039,7 +6161,7 @@ documentation of the <code>NgxTourStep</code>.</p>
         </tbody>
     </table>
 </section>
-    <h3>libs/angular/inform/src/lib/operators/use-mock-data-during-tour/use-mock-data-during-tour.operator.ts</h3>
+    <h3>libs/angular/inform/src/lib/operators/tour/use-mock-data-during-tour/use-mock-data-during-tour.operator.ts</h3>
     <section data-compodoc="block-properties">
     <h3></h3>    <table class="table table-sm table-bordered">
         <tbody>
