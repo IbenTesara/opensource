@@ -23,6 +23,7 @@
 		"url": "https://github.com/IbenTesara/opensource",
 		"directory": "libs/angular/store/src"
 	},
+	"license": "MIT",
 	"peerDependencies": {
 		"@angular/common": "^20.0.0",
 		"@angular/core": "^20.0.0",
