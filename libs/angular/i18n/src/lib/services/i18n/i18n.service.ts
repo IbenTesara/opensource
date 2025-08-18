@@ -13,7 +13,7 @@ export class NgxI18nService implements NgxI18nAbstractService {
 	/**
 	 * Instance of the ngx-translate TranslateService
 	 */
-	private readonly translateService: TranslateService = inject(TranslateService);
+	public readonly translateService: TranslateService = inject(TranslateService);
 
 	/**
 	 * Instance of the NgxI8nRootService
@@ -31,14 +31,14 @@ export class NgxI18nService implements NgxI18nAbstractService {
 	 * Returns the available languages of the application
 	 */
 	public get availableLanguages(): string[] {
-		return this.translateService.langs;
+		return this.translateService.getLangs() as string[];
 	}
 
 	/**
 	 * Returns the default language of the application
 	 */
 	public get defaultLanguage(): string {
-		return this.translateService.getDefaultLang();
+		return this.translateService.getFallbackLang();
 	}
 
 	/**
@@ -89,12 +89,5 @@ export class NgxI18nService implements NgxI18nAbstractService {
 		params?: any
 	): Observable<TranslationType> {
 		return this.translateService.get(key, params);
-	}
-
-	/**
-	 * Returns the currently loaded translations
-	 */
-	public get translations() {
-		return this.translateService.translations;
 	}
 }

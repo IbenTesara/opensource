@@ -1,10 +1,17 @@
-import { HttpBackend } from '@angular/common/http';
-import { EnvironmentProviders, Provider, importProvidersFrom } from '@angular/core';
+import { EnvironmentProviders, Provider } from '@angular/core';
 import { Route } from '@angular/router';
+import {
+	provideChildTranslateService,
+	provideTranslateLoader,
+	provideTranslateService,
+} from '@ngx-translate/core';
 
-import { NgxI18nModule } from '../i18n.module';
+import { NgxI18nTranslationLoaderGuard } from '../guards';
 import { NgxI18nConfiguration } from '../i18n.types';
 import { NgxI18nMultiTranslationHttpLoader } from '../loader';
+import { NgxI18nTranslationLoaderResolver } from '../resolvers';
+import { NgxI18nService } from '../services';
+import { NgxI18nConfigurationToken, NgxI18nTranslationPathsToken } from '../tokens';
 
 /**
  * Returns the root providers for the NgxI18nModule
@@ -12,12 +19,27 @@ import { NgxI18nMultiTranslationHttpLoader } from '../loader';
  * @param config - The configuration for the NgxI18nModule
  * @param translationLoader - An optional translation loader
  */
-export const importNgxI18nProviders = (
+export const provideNgxI18nConfiguration = (
 	config: NgxI18nConfiguration,
-	translationLoader?: (http: HttpBackend) => NgxI18nMultiTranslationHttpLoader
+	paths?: string[]
 ): (Provider | EnvironmentProviders)[] => {
 	// Iben: Return the providers from the module
-	return [importProvidersFrom(NgxI18nModule.forRoot(config, translationLoader))];
+	return [
+		{
+			provide: NgxI18nTranslationPathsToken,
+			useValue: paths || config.defaultAssetPaths,
+		},
+		provideTranslateService({
+			loader: provideTranslateLoader(NgxI18nMultiTranslationHttpLoader),
+			lang: config.defaultLanguage,
+			fallbackLang: config.defaultLanguage,
+		}),
+		{
+			provide: NgxI18nConfigurationToken,
+			useValue: config,
+		},
+		NgxI18nService,
+	];
 };
 
 /**
@@ -26,16 +48,22 @@ export const importNgxI18nProviders = (
  * @param route - The route we wish to provide with translations
  * @param translationLoader - An optional translation loader
  */
-export const provideWithTranslations = (
-	route: Route,
-	translationLoader?: (http: HttpBackend) => NgxI18nMultiTranslationHttpLoader
-): Route => {
+export const provideWithTranslations = (route: Route, paths: string[]): Route => {
 	// Iben: Grab the existing route and extend the providers with the providers from the module
 	return {
 		...route,
+		canActivate: [...(route.canActivate || []), NgxI18nTranslationLoaderGuard],
 		providers: [
 			...(route.providers || []),
-			importProvidersFrom(NgxI18nModule.forChild(translationLoader)),
+			{
+				provide: NgxI18nTranslationPathsToken,
+				useValue: paths,
+			},
+			provideChildTranslateService({
+				loader: provideTranslateLoader(NgxI18nMultiTranslationHttpLoader),
+			}),
+			NgxI18nService,
+			NgxI18nTranslationLoaderResolver,
 		],
 	};
 };

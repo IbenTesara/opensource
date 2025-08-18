@@ -1,7 +1,9 @@
 import { Component } from '@angular/core';
+import { TranslatePipe } from '@ngx-translate/core';
 
-@Component( {
-  selector: 'page-1',
-  template: 'This is the first page!'
-} )
-export class Page1Component { };
+@Component({
+	selector: 'page-1',
+	template: `{{ 'content' | translate }}`,
+	imports: [TranslatePipe],
+})
+export class Page1Component {}

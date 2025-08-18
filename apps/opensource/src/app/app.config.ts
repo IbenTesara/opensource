@@ -1,3 +1,4 @@
+import { provideHttpClient } from '@angular/common/http';
 import {
 	ApplicationConfig,
 	provideBrowserGlobalErrorListeners,
@@ -5,6 +6,7 @@ import {
 } from '@angular/core';
 import { provideRouter } from '@angular/router';
 
+import { provideNgxI18nConfiguration } from '@lib/ngx-i18n';
 import {
 	provideNgxModalConfiguration,
 	provideNgxToastConfiguration,
@@ -14,7 +16,6 @@ import {
 import { provideNgxMobileLayoutConfiguration } from '@lib/ngx-layout';
 
 import { ConfirmModalComponent } from '../packages/inform/components/confirm/confirm.component';
-import { ToastBundlerComponent } from '../packages/inform/components/toast/toast-bundler.component';
 import { ToastComponent } from '../packages/inform/components/toast/toast.component';
 import { TooltipComponent } from '../packages/inform/components/tooltip/tooltip.component';
 import { TourStepComponent } from '../packages/inform/components/tour-step/tour-step.component';
@@ -26,7 +27,13 @@ import { appRoutes } from './app.routes';
 
 export const appConfig: ApplicationConfig = {
 	providers: [
+		provideHttpClient(),
 		provideBrowserGlobalErrorListeners(),
+		provideNgxI18nConfiguration({
+			defaultAssetPaths: ['./i18n/core/'],
+			availableLanguages: ['en'],
+			defaultLanguage: 'en',
+		}),
 		provideZoneChangeDetection({ eventCoalescing: true }),
 		provideRouter(appRoutes),
 		provideNgxTourConfiguration(TourStepComponent),

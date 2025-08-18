@@ -7,27 +7,32 @@ import { catchError, map, tap } from 'rxjs/operators';
 
 import { NgxI18nConfiguration } from '../../i18n.types';
 import { NgxI18nLoadingService } from '../../services';
-import { NgxI18nConfigurationToken } from '../../tokens';
+import { NgxI18nConfigurationToken, NgxI18nTranslationPathsToken } from '../../tokens';
 
 /**
  * A loader that allows to load in multiple translation JSON files at the same time
  */
 export class NgxI18nMultiTranslationHttpLoader implements TranslateLoader {
 	/**
-   * The instance of the translation loading service
-   */
-  private readonly translationLoadingService: NgxI18nLoadingService =
+	 * The instance of the translation loading service
+	 */
+	private readonly translationLoadingService: NgxI18nLoadingService =
 		inject(NgxI18nLoadingService);
 
 	/**
 	 * The configuration for the NgxI18nModule.
 	 */
-  private readonly config: NgxI18nConfiguration = inject( NgxI18nConfigurationToken );
+	private readonly config: NgxI18nConfiguration = inject(NgxI18nConfigurationToken);
 
-	constructor(
-		private readonly httpBackend: HttpBackend,
-		private readonly translationsPaths: string[]
-	) {}
+	/**
+	 * Instance of the httpBackend
+	 */
+	private readonly httpBackend: HttpBackend = inject(HttpBackend);
+
+	/**
+	 * The translation paths
+	 */
+	private readonly translationsPaths: string[] = inject(NgxI18nTranslationPathsToken);
 
 	/**
 	 * Fetches the provided translation files and saves them to the translation store
@@ -51,7 +56,9 @@ export class NgxI18nMultiTranslationHttpLoader implements TranslateLoader {
 			} else {
 				// Iben: If the translations aren't available in the store, we fetch them from the server
 				// Wouter: When provided, add a cache busting param so that each request is fetched from the server instead of the browser cache
-				const fetchPath = `${path}${lang}.json${this.config.cacheBust ? '?v=' + this.config.cacheBust : ''}`;
+				const fetchPath = `${path}${lang}.json${
+					this.config.cacheBust ? '?v=' + this.config.cacheBust : ''
+				}`;
 
 				return new HttpClient(this.httpBackend).get(fetchPath).pipe(
 					// Iben: Map this to an object so we can track which results corresponds with which path
@@ -65,7 +72,7 @@ export class NgxI18nMultiTranslationHttpLoader implements TranslateLoader {
 					// Iben: In case the translation is not loaded, we log an error
 					catchError((res) => {
 						console.error(
-							'Something went wrong for the following translation file:',
+							'@ibenvandeveire/ngx-i18n - MultiTranslationLoader: Something went wrong for the following translation file:',
 							fetchPath
 						);
 						console.error(res.message);
