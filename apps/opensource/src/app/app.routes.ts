@@ -1,6 +1,12 @@
 import { Route } from '@angular/router';
 
 import {
+	NgxI18nEmptyComponent,
+	NgxI18nGuard,
+	NgxI18nSetLanguageGuard,
+	provideWithTranslations,
+} from '@lib/ngx-i18n';
+import {
 	NgxMobileLayoutComponent,
 	NgxMobileLayoutDefaultGuard,
 	NgxMobileLayoutGuard,
@@ -14,48 +20,63 @@ import { NgxSignalStoreComponent } from '../packages/store/store.component';
 
 export const appRoutes: Route[] = [
 	{
-		path: 'forms',
-		component: FormsPageComponent,
+		path: '',
+		pathMatch: 'full',
+		canActivate: [NgxI18nSetLanguageGuard],
+		component: NgxI18nEmptyComponent,
 	},
 	{
-		path: 'layout',
-		component: NgxLayoutPageComponent,
-	},
-	{
-		path: 'store',
-		component: NgxSignalStoreComponent,
-	},
-	{
-		path: 'mobile-layout',
-		component: NgxMobileLayoutComponent,
-		children: [
+		path: ':language',
+		canActivate: [NgxI18nGuard],
+		loadChildren: () => [
 			{
 				path: '',
 				pathMatch: 'full',
-				redirectTo: 'page1',
+				redirectTo: 'forms',
 			},
 			{
-				path: 'page1',
-				component: Page1Component,
+				path: 'forms',
+				component: FormsPageComponent,
 			},
 			{
-				path: 'page2',
-				component: Page2Component,
-				canActivate: [NgxMobileLayoutGuard],
-				canDeactivate: [NgxMobileLayoutDefaultGuard],
-				data: {
-					mobileLayout: {
-						header: {
-							right: null,
+				path: 'layout',
+				component: NgxLayoutPageComponent,
+			},
+			{
+				path: 'store',
+				component: NgxSignalStoreComponent,
+			},
+			provideWithTranslations(
+				{
+					path: 'mobile-layout',
+					component: NgxMobileLayoutComponent,
+					loadChildren: () => [
+						{
+							path: '',
+							pathMatch: 'full',
+							redirectTo: 'page1',
 						},
-					},
+						{
+							path: 'page1',
+							component: Page1Component,
+						},
+						{
+							path: 'page2',
+							component: Page2Component,
+							canActivate: [NgxMobileLayoutGuard],
+							canDeactivate: [NgxMobileLayoutDefaultGuard],
+							data: {
+								mobileLayout: {
+									header: {
+										right: null,
+									},
+								},
+							},
+						},
+					],
 				},
-			},
+				['i18n/layout/']
+			),
 		],
-	},
-	{
-		path: '',
-		pathMatch: 'full',
-		redirectTo: 'forms',
 	},
 ];

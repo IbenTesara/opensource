@@ -1,5 +1,6 @@
 import { Component, inject } from '@angular/core';
 import { Router, RouterModule } from '@angular/router';
+import { TranslatePipe } from '@ngx-translate/core';
 import { from, of, switchMap } from 'rxjs';
 
 import {
@@ -17,6 +18,7 @@ import {
 		NgxTourShowWhenDirective,
 		NgxTooltipDirective,
 		NgxToastContainerComponent,
+		TranslatePipe,
 	],
 	selector: 'app-root',
 	templateUrl: './app.html',

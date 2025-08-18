@@ -89,7 +89,9 @@ export class NgxI18nLoadingService {
 	 * Mark the loading of the translations as failed
 	 */
 	public markTranslationsLoadedAsFailed() {
-		console.error('Something went wrong whilst fetching the translations.');
+		console.error(
+			'@ibenvandeveire/ngx-i18n - NgxI18nLoadingService: Something went wrong whilst fetching the translations.'
+		);
 
 		this.translationsFailedSubject$.next(false);
 	}

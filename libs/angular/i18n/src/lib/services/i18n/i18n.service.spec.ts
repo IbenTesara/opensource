@@ -6,18 +6,14 @@ import { NgxI18nRootService } from '../root-i18n/root-i18n.service';
 
 import { NgxI18nService } from './i18n.service';
 
-
 const translateService: any = {
 	currentLang: 'nl',
-	langs: ['nl', 'en'],
-	getDefaultLang: jest.fn().mockReturnValue('nl'),
+	getLangs: jest.fn().mockReturnValue(['nl', 'en']),
+	getFallbackLang: jest.fn().mockReturnValue('nl'),
 	use: jest.fn(),
 	reloadLang: jest.fn().mockReturnValue(of('nl')),
 	get: jest.fn().mockReturnValue(of('something')),
 	instant: jest.fn().mockReturnValue('something'),
-	translations: {
-		nl: 'something',
-	},
 };
 
 const rootI18nService: any = {
@@ -60,13 +56,13 @@ describe('NgxI18nService', () => {
 
 	describe('availableLanguages', () => {
 		it('should return the available languages from the translateService', () => {
-			expect(service.availableLanguages).toBe(translateService.langs);
+			expect(service.availableLanguages).toBe(translateService.getLangs());
 		});
 	});
 
 	describe('defaultLanguage', () => {
 		it('should return the default language from the translateService', () => {
-			expect(service.defaultLanguage).toBe(translateService.getDefaultLang());
+			expect(service.defaultLanguage).toBe(translateService.getFallbackLang());
 		});
 	});
 
@@ -121,12 +117,6 @@ describe('NgxI18nService', () => {
 						done();
 					})
 			);
-		});
-	});
-
-	describe('translations', () => {
-		it('should return the translations from the translateService', () => {
-			expect(service.translations).toEqual(translateService.translations);
 		});
 	});
 });

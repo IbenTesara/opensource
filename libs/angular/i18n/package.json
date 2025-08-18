@@ -28,7 +28,7 @@
 		"@angular/core": "^20.0.0",
 		"@angular/router": "^20.1.2",
 		"rxjs": "~7.8.0",
-		"@ngx-translate/core": "^16.0.4",
+		"@ngx-translate/core": "^17.0.0",
 		"deepmerge-ts": "^7.1.5",
 		"uuid": "^11.1.0",
 		"@ibenvandeveire/ngx-core": "^20.0.0"
