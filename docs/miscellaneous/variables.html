@@ -235,9 +235,6 @@
                             <a href="#hideElement" title="libs/angular/layout/src/lib/utils/hide-element/hide-element.util.ts" ><b>hideElement</b>&nbsp;&nbsp;&nbsp;(libs/.../hide-element.util.ts)</a>
                         </li>
                         <li>
-                            <a href="#importNgxI18nProviders" title="libs/angular/i18n/src/lib/providers/i18n.providers.ts" ><b>importNgxI18nProviders</b>&nbsp;&nbsp;&nbsp;(libs/.../i18n.providers.ts)</a>
-                        </li>
-                        <li>
                             <a href="#injectNgxSignalStore" title="libs/angular/store/src/lib/signal/utils/signal-store-generator.util.ts" ><b>injectNgxSignalStore</b>&nbsp;&nbsp;&nbsp;(libs/.../signal-store-generator.util.ts)</a>
                         </li>
                         <li>
@@ -311,6 +308,9 @@
                         </li>
                         <li>
                             <a href="#NgxI18nTranslationLoaderGuard" title="libs/angular/i18n/src/lib/guards/translation-loader/translation-loader.guard.ts" ><b>NgxI18nTranslationLoaderGuard</b>&nbsp;&nbsp;&nbsp;(libs/.../translation-loader.guard.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#NgxI18nTranslationPathsToken" title="libs/angular/i18n/src/lib/tokens/translation-paths.token.ts" ><b>NgxI18nTranslationPathsToken</b>&nbsp;&nbsp;&nbsp;(libs/.../translation-paths.token.ts)</a>
                         </li>
                         <li>
                             <a href="#NgxIsAuthenticatedGuard" title="libs/angular/authentication/src/lib/guards/is-authenticated/is-authenticated.guard.ts" ><b>NgxIsAuthenticatedGuard</b>&nbsp;&nbsp;&nbsp;(libs/.../is-authenticated.guard.ts)</a>
@@ -410,6 +410,9 @@
                         </li>
                         <li>
                             <a href="#provideNgxFormErrorsConfiguration" title="libs/angular/forms/src/lib/providers/errors/errors-configuration.provider.ts" ><b>provideNgxFormErrorsConfiguration</b>&nbsp;&nbsp;&nbsp;(libs/.../errors-configuration.provider.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#provideNgxI18nConfiguration" title="libs/angular/i18n/src/lib/providers/i18n.providers.ts" ><b>provideNgxI18nConfiguration</b>&nbsp;&nbsp;&nbsp;(libs/.../i18n.providers.ts)</a>
                         </li>
                         <li>
                             <a href="#provideNgxMobileLayoutConfiguration" title="libs/angular/layout/src/lib/providers/mobile-layout/mobile-layout-configuration.provider.ts" ><b>provideNgxMobileLayoutConfiguration</b>&nbsp;&nbsp;&nbsp;(libs/.../mobile-layout-configuration.provider.ts)</a>
@@ -2972,79 +2975,6 @@ By default, a take(1) is applied to the source, so the source observable can be 
         </tbody>
     </table>
 </section>
-    <h3>libs/angular/i18n/src/lib/providers/i18n.providers.ts</h3>
-    <section data-compodoc="block-properties">
-    <h3></h3>    <table class="table table-sm table-bordered">
-        <tbody>
-            <tr>
-                <td class="col-md-4">
-                    <a name="importNgxI18nProviders"></a>
-                    <span class="name">
-                        <span ><b>importNgxI18nProviders</b></span>
-                        <a href="#importNgxI18nProviders"><span class="icon ion-ios-link"></span></a>
-                    </span>
-                </td>
-            </tr>
-                <tr>
-                    <td class="col-md-4">
-                        <i>Default value : </i><code>(
-	config: NgxI18nConfiguration,
-	translationLoader?: (http: HttpBackend) &#x3D;&gt; NgxI18nMultiTranslationHttpLoader
-): (Provider | EnvironmentProviders)[] &#x3D;&gt; {
-	// Iben: Return the providers from the module
-	return [importProvidersFrom(NgxI18nModule.forRoot(config, translationLoader))];
-}</code>
-                    </td>
-                </tr>
-
-            <tr>
-                <td class="col-md-4">
-                    <div class="io-description"><p>Returns the root providers for the NgxI18nModule</p>
-</div>
-                </td>
-            </tr>
-
-        </tbody>
-    </table>
-    <table class="table table-sm table-bordered">
-        <tbody>
-            <tr>
-                <td class="col-md-4">
-                    <a name="provideWithTranslations"></a>
-                    <span class="name">
-                        <span ><b>provideWithTranslations</b></span>
-                        <a href="#provideWithTranslations"><span class="icon ion-ios-link"></span></a>
-                    </span>
-                </td>
-            </tr>
-                <tr>
-                    <td class="col-md-4">
-                        <i>Default value : </i><code>(
-	route: Route,
-	translationLoader?: (http: HttpBackend) &#x3D;&gt; NgxI18nMultiTranslationHttpLoader
-): Route &#x3D;&gt; {
-	// Iben: Grab the existing route and extend the providers with the providers from the module
-	return {
-		...route,
-		providers: [
-			...(route.providers || []),
-			importProvidersFrom(NgxI18nModule.forChild(translationLoader)),
-		],
-	};
-}</code>
-                    </td>
-                </tr>
-
-            <tr>
-                <td class="col-md-4">
-                    <div class="io-description"><p>Returns a route with the provided translations</p>
-</div>
-                </td>
-            </tr>
-
-        </tbody>
-    </table>
-</section>
     <h3>libs/angular/forms/src/lib/validators/utils/is-empty-input-value.util.ts</h3>
     <section data-compodoc="block-properties">
     <h3></h3>    <table class="table table-sm table-bordered">
@@ -4189,6 +4119,37 @@ By default, a take(1) is applied to the source, so the source observable can be 
             <tr>
                 <td class="col-md-4">
                     <div class="io-description"><p>Loads in all translations for a specific module</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+</section>
+    <h3>libs/angular/i18n/src/lib/tokens/translation-paths.token.ts</h3>
+    <section data-compodoc="block-properties">
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="NgxI18nTranslationPathsToken"></a>
+                    <span class="name">
+                        <span ><b>NgxI18nTranslationPathsToken</b></span>
+                        <a href="#NgxI18nTranslationPathsToken"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>new InjectionToken&lt;string[]&gt;(
+	&#x27;NgxI18nTranslationPathsToken&#x27;
+)</code>
+                    </td>
+                </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>A token to pass the i18n paths to the service</p>
 </div>
                 </td>
             </tr>
@@ -5485,6 +5446,100 @@ This implementation is provided given that pluck has a higher readability than a
             <tr>
                 <td class="col-md-4">
                     <div class="io-description"><p>Provides the necessary configuration for the NgxFormErrorsDirective</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+</section>
+    <h3>libs/angular/i18n/src/lib/providers/i18n.providers.ts</h3>
+    <section data-compodoc="block-properties">
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="provideNgxI18nConfiguration"></a>
+                    <span class="name">
+                        <span ><b>provideNgxI18nConfiguration</b></span>
+                        <a href="#provideNgxI18nConfiguration"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>(
+	config: NgxI18nConfiguration,
+	paths?: string[]
+): (Provider | EnvironmentProviders)[] &#x3D;&gt; {
+	// Iben: Return the providers from the module
+	return [
+		{
+			provide: NgxI18nTranslationPathsToken,
+			useValue: paths || config.defaultAssetPaths,
+		},
+		provideTranslateService({
+			loader: provideTranslateLoader(NgxI18nMultiTranslationHttpLoader),
+			lang: config.defaultLanguage,
+			fallbackLang: config.defaultLanguage,
+		}),
+		{
+			provide: NgxI18nConfigurationToken,
+			useValue: config,
+		},
+		NgxI18nService,
+	];
+}</code>
+                    </td>
+                </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Returns the root providers for the NgxI18nModule</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="provideWithTranslations"></a>
+                    <span class="name">
+                        <span ><b>provideWithTranslations</b></span>
+                        <a href="#provideWithTranslations"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>(route: Route, paths: string[]): Route &#x3D;&gt; {
+	// Iben: Grab the existing route and extend the providers with the providers from the module
+	return {
+		...route,
+		canActivate: [...(route.canActivate || []), NgxI18nTranslationLoaderGuard],
+		providers: [
+			...(route.providers || []),
+			{
+				provide: NgxI18nTranslationPathsToken,
+				useValue: paths,
+			},
+			provideChildTranslateService({
+				loader: provideTranslateLoader(NgxI18nMultiTranslationHttpLoader),
+			}),
+			NgxI18nService,
+			NgxI18nTranslationLoaderResolver,
+		],
+	};
+}</code>
+                    </td>
+                </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Returns a route with the provided translations</p>
 </div>
                 </td>
             </tr>

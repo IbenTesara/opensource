@@ -151,7 +151,7 @@
                                 <a href="#setLanguage" >setLanguage</a>
                             </li>
                             <li>
-                                    <span class="modifier">Private</span>
+                                    <span class="modifier">Public</span>
                                     <span class="modifier">Readonly</span>
                                 <a href="#translateService" >translateService</a>
                             </li>
@@ -203,9 +203,6 @@
                                 </li>
                                 <li>
                                     <a href="#defaultLanguage" >defaultLanguage</a>
-                                </li>
-                                <li>
-                                    <a href="#translations" >translations</a>
                                 </li>
                             </ul>
                         </td>
@@ -607,7 +604,7 @@
                 <td class="col-md-4">
                     <a name="translateService"></a>
                     <span class="name">
-                            <span class="modifier">Private</span>
+                            <span class="modifier">Public</span>
                             <span class="modifier">Readonly</span>
                         <span ><b>translateService</b></span>
                         <a href="#translateService"><span class="icon ion-ios-link"></span></a>
@@ -745,35 +742,6 @@
 
             </tbody>
         </table>
-        <table class="table table-sm table-bordered">
-            <tbody>
-                <tr>
-                    <td class="col-md-4">
-                        <a name="translations"></a>
-                        <span class="name"><b>translations</b><a href="#translations"><span class="icon ion-ios-link"></span></a></span>
-                    </td>
-                </tr>
-
-                <tr>
-                    <td class="col-md-4">
-                        <span class="accessor"><b>get</b><code>translations()</code></span>
-                    </td>
-                </tr>
-                            <tr>
-                                <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="97" class="link-to-prism">libs/angular/i18n/src/lib/services/i18n/i18n.service.ts:97</a></div>
-                                </td>
-                            </tr>
-                    <tr>
-                        <td class="col-md-4">
-                                <div class="io-description"><p>Returns the currently loaded translations</p>
-</div>
-
-                        </td>
-                    </tr>
-
-            </tbody>
-        </table>
 </section>
     </div>
 
@@ -794,7 +762,7 @@ export class NgxI18nService implements NgxI18nAbstractService {
 	/**
 	 * Instance of the ngx-translate TranslateService
 	 */
-	private readonly translateService: TranslateService &#x3D; inject(TranslateService);
+	public readonly translateService: TranslateService &#x3D; inject(TranslateService);
 
 	/**
 	 * Instance of the NgxI8nRootService
@@ -812,14 +780,14 @@ export class NgxI18nService implements NgxI18nAbstractService {
 	 * Returns the available languages of the application
 	 */
 	public get availableLanguages(): string[] {
-		return this.translateService.langs;
+		return this.translateService.getLangs() as string[];
 	}
 
 	/**
 	 * Returns the default language of the application
 	 */
 	public get defaultLanguage(): string {
-		return this.translateService.getDefaultLang();
+		return this.translateService.getFallbackLang();
 	}
 
 	/**
@@ -870,13 +838,6 @@ export class NgxI18nService implements NgxI18nAbstractService {
 		params?: any
 	): Observable&lt;TranslationType&gt; {
 		return this.translateService.get(key, params);
-	}
-
-	/**
-	 * Returns the currently loaded translations
-	 */
-	public get translations() {
-		return this.translateService.translations;
 	}
 }
 </code></pre>

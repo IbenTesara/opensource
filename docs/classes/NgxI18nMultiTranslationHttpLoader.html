@@ -160,7 +160,17 @@
                             <li>
                                     <span class="modifier">Private</span>
                                     <span class="modifier">Readonly</span>
+                                <a href="#httpBackend" >httpBackend</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                    <span class="modifier">Readonly</span>
                                 <a href="#translationLoadingService" >translationLoadingService</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                    <span class="modifier">Readonly</span>
+                                <a href="#translationsPaths" >translationsPaths</a>
                             </li>
                         </ul>
                     </td>
@@ -190,66 +200,6 @@
     </table>
 </section>
 
-            <section data-compodoc="block-constructor">
-    <h3 id="constructor">Constructor</h3>
-        <table class="table table-sm table-bordered">
-            <tbody>
-                <tr>
-                    <td class="col-md-4">
-<code>constructor(httpBackend: HttpBackend, translationsPaths: string[])</code>
-                    </td>
-                </tr>
-                        <tr>
-                            <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="25" class="link-to-prism">libs/angular/i18n/src/lib/loader/multi-translation/multi-translation.loader.ts:25</a></div>
-                            </td>
-                        </tr>
-
-                <tr>
-                    <td class="col-md-4">
-                            <div>
-                                    <b>Parameters :</b>
-                                    <table class="params">
-                                        <thead>
-                                            <tr>
-                                                <td>Name</td>
-                                                    <td>Type</td>
-                                                <td>Optional</td>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                                <tr>
-                                                        <td>httpBackend</td>
-                                                  
-                                                        <td>
-                                                                    <code>HttpBackend</code>
-                                                        </td>
-                                                  
-                                                    <td>
-                                                            No
-                                                    </td>
-                                                    
-                                                </tr>
-                                                <tr>
-                                                        <td>translationsPaths</td>
-                                                  
-                                                        <td>
-                                                                    <code>string[]</code>
-                                                        </td>
-                                                  
-                                                    <td>
-                                                            No
-                                                    </td>
-                                                    
-                                                </tr>
-                                        </tbody>
-                                    </table>
-                            </div>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-</section>
 
             <section data-compodoc="block-properties">
     
@@ -277,7 +227,7 @@
                 </tr>
                 <tr>
                     <td class="col-md-4">
-                        <i>Default value : </i><code>inject( NgxI18nConfigurationToken )</code>
+                        <i>Default value : </i><code>inject(NgxI18nConfigurationToken)</code>
                     </td>
                 </tr>
                     <tr>
@@ -289,6 +239,45 @@
             <tr>
                 <td class="col-md-4">
                     <div class="io-description"><p>The configuration for the NgxI18nModule.</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="httpBackend"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                            <span class="modifier">Readonly</span>
+                        <span ><b>httpBackend</b></span>
+                        <a href="#httpBackend"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>HttpBackend</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>inject(HttpBackend)</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="30" class="link-to-prism">libs/angular/i18n/src/lib/loader/multi-translation/multi-translation.loader.ts:30</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Instance of the httpBackend</p>
 </div>
                 </td>
             </tr>
@@ -334,6 +323,45 @@
 
         </tbody>
     </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="translationsPaths"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                            <span class="modifier">Readonly</span>
+                        <span ><b>translationsPaths</b></span>
+                        <a href="#translationsPaths"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>string[]</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>inject(NgxI18nTranslationPathsToken)</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="35" class="link-to-prism">libs/angular/i18n/src/lib/loader/multi-translation/multi-translation.loader.ts:35</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>The translation paths</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
 </section>
 
             <section data-compodoc="block-methods">
@@ -363,8 +391,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="37"
-                                    class="link-to-prism">libs/angular/i18n/src/lib/loader/multi-translation/multi-translation.loader.ts:37</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="42"
+                                    class="link-to-prism">libs/angular/i18n/src/lib/loader/multi-translation/multi-translation.loader.ts:42</a></div>
                         </td>
                     </tr>
 
@@ -438,27 +466,32 @@ import { catchError, map, tap } from &#x27;rxjs/operators&#x27;;
 
 import { NgxI18nConfiguration } from &#x27;../../i18n.types&#x27;;
 import { NgxI18nLoadingService } from &#x27;../../services&#x27;;
-import { NgxI18nConfigurationToken } from &#x27;../../tokens&#x27;;
+import { NgxI18nConfigurationToken, NgxI18nTranslationPathsToken } from &#x27;../../tokens&#x27;;
 
 /**
  * A loader that allows to load in multiple translation JSON files at the same time
  */
 export class NgxI18nMultiTranslationHttpLoader implements TranslateLoader {
 	/**
-   * The instance of the translation loading service
-   */
-  private readonly translationLoadingService: NgxI18nLoadingService &#x3D;
+	 * The instance of the translation loading service
+	 */
+	private readonly translationLoadingService: NgxI18nLoadingService &#x3D;
 		inject(NgxI18nLoadingService);
 
 	/**
 	 * The configuration for the NgxI18nModule.
 	 */
-  private readonly config: NgxI18nConfiguration &#x3D; inject( NgxI18nConfigurationToken );
+	private readonly config: NgxI18nConfiguration &#x3D; inject(NgxI18nConfigurationToken);
 
-	constructor(
-		private readonly httpBackend: HttpBackend,
-		private readonly translationsPaths: string[]
-	) {}
+	/**
+	 * Instance of the httpBackend
+	 */
+	private readonly httpBackend: HttpBackend &#x3D; inject(HttpBackend);
+
+	/**
+	 * The translation paths
+	 */
+	private readonly translationsPaths: string[] &#x3D; inject(NgxI18nTranslationPathsToken);
 
 	/**
 	 * Fetches the provided translation files and saves them to the translation store
@@ -482,7 +515,9 @@ export class NgxI18nMultiTranslationHttpLoader implements TranslateLoader {
 			} else {
 				// Iben: If the translations aren&#x27;t available in the store, we fetch them from the server
 				// Wouter: When provided, add a cache busting param so that each request is fetched from the server instead of the browser cache
-				const fetchPath &#x3D; &#x60;${path}${lang}.json${this.config.cacheBust ? &#x27;?v&#x3D;&#x27; + this.config.cacheBust : &#x27;&#x27;}&#x60;;
+				const fetchPath &#x3D; &#x60;${path}${lang}.json${
+					this.config.cacheBust ? &#x27;?v&#x3D;&#x27; + this.config.cacheBust : &#x27;&#x27;
+				}&#x60;;
 
 				return new HttpClient(this.httpBackend).get(fetchPath).pipe(
 					// Iben: Map this to an object so we can track which results corresponds with which path
@@ -496,7 +531,7 @@ export class NgxI18nMultiTranslationHttpLoader implements TranslateLoader {
 					// Iben: In case the translation is not loaded, we log an error
 					catchError((res) &#x3D;&gt; {
 						console.error(
-							&#x27;Something went wrong for the following translation file:&#x27;,
+							&#x27;@ibenvandeveire/ngx-i18n - MultiTranslationLoader: Something went wrong for the following translation file:&#x27;,
 							fetchPath
 						);
 						console.error(res.message);

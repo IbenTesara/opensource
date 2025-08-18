@@ -846,7 +846,9 @@ export class NgxI18nLoadingService {
 	 * Mark the loading of the translations as failed
 	 */
 	public markTranslationsLoadedAsFailed() {
-		console.error(&#x27;Something went wrong whilst fetching the translations.&#x27;);
+		console.error(
+			&#x27;@ibenvandeveire/ngx-i18n - NgxI18nLoadingService: Something went wrong whilst fetching the translations.&#x27;
+		);
 
 		this.translationsFailedSubject$.next(false);
 	}
