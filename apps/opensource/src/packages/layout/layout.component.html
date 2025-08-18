@@ -17,3 +17,10 @@
 
 <h2 tourItem="dashboard">Ngx-configurable layout</h2>
 <dashboard-test />
+
+<h2>Feed</h2>
+<ngx-feed [data]="feedData()" [itemSize]="20" (endReached)="endReached()">
+	<ng-template #contentTmpl let-data>
+		<p>Item {{ data }}</p>
+	</ng-template>
+</ngx-feed>

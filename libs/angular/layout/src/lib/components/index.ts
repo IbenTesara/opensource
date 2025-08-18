@@ -4,6 +4,7 @@ export * from './configurable-layout-item/configurable-layout-item.component';
 export * from './accordion';
 export * from './image-marker/image-marker.component';
 export * from './mobile-layout/mobile-layout.component';
+export * from './feed/feed.component';
 import { Cells } from './cell';
 import { NgxConfigurableLayoutComponent } from './configurable-layout/configurable-layout.component';
 import { NgxConfigurableLayoutItemComponent } from './configurable-layout-item/configurable-layout-item.component';

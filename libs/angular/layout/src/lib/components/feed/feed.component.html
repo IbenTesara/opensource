@@ -1,0 +1,24 @@
+<cdk-virtual-scroll-viewport
+	[itemSize]="itemSize()"
+	[appendOnly]="itemRenderingStrategy() === 'append'"
+>
+	<article
+		*cdkVirtualFor="
+			let item of data();
+			templateCacheSize: itemRenderingCaching();
+			let index = index
+		"
+		class="ngx-feed-item"
+    [ngxFeedItem]="index"
+		[attr.aria-labelledby]="`ngx-feed-item-${index}-label`"
+		[attr.aria-describedby]="`ngx-feed-item-${index}-description`"
+		[attr.aria-posinset]="index + 1"
+		[attr.aria-setsize]="data().length"
+		[style.minHeight]="`${itemSize()}px`"
+	>
+		<ng-template
+			[ngTemplateOutlet]="contentTemplate()"
+			[ngTemplateOutletContext]="{$implicit: item, labelId: `ngx-feed-item-${index}-label`, describedById: `ngx-feed-item-${index}-description`}"
+		/>
+	</article>
+</cdk-virtual-scroll-viewport>

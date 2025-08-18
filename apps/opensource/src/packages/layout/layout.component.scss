@@ -1,0 +1,14 @@
+:host {
+  display: block;
+  padding: 0px 20px;
+
+  h2 {
+    font-weight: bold;
+    margin: 15px 0px;
+    font-size: large;
+  }
+
+  ngx-feed {
+    height: 100px;
+  }
+}
