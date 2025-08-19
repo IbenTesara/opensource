@@ -10,7 +10,8 @@ export interface TestState extends NgxSignalStoreState {
 	hello: NgxSignalStoreSlice<string>;
 	zoos: NgxSignalStoreSlice<string[]>;
 	people: NgxSignalStoreSlice<{ id: string; name: string }[]>;
-	team: NgxSignalStoreSlice<{ name: string }[]>;
+  team: NgxSignalStoreSlice<{ name: string }[]>;
+  test: NgxSignalStoreSlice<boolean>;
 }
 
 export const TestStore = createNgxSignalStore<TestState>({
@@ -27,5 +28,8 @@ export const TestStore = createNgxSignalStore<TestState>({
 	team: {
 		generator: createNgxSignalStoreArraySlice<{ name: string }[]>,
 		selectId: (person) => person.name,
-	},
+  },
+  test: {
+    generator: createNgxSignalStoreSlice<boolean>
+  }
 });
