@@ -28,10 +28,10 @@
 		"@angular/router": "20.1.2",
 		"@ibenvandeveire/ngx-core": "20.1.0",
 		"@ibenvandeveire/types-authentication": "^1.0.0",
-		"@ngrx/effects": "^19.2.1",
-		"@ngrx/entity": "^19.2.1",
-		"@ngrx/signals": "^19.2.1",
-		"@ngrx/store": "^19.2.1",
+		"@ngrx/effects": "20.0.0",
+		"@ngrx/entity": "20.0.0",
+		"@ngrx/signals": "20.0.0",
+		"@ngrx/store": "20.0.0",
 		"@ngx-translate/core": "17.0.0",
 		"date-fns": "^4.1.0",
 		"deepmerge-ts": "^7.1.5",
@@ -98,10 +98,6 @@
 	},
 	"overrides": {
 		"@ngrx/signals": {
-			"@angular/common": "$@angular/common",
-			"@angular/core": "$@angular/core"
-		},
-		"@ngrx/store": {
 			"@angular/common": "$@angular/common",
 			"@angular/core": "$@angular/core"
 		},
