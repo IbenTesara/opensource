@@ -391,7 +391,7 @@ type NgxSignalStoreSliceDataType&lt;Type&gt; &#x3D; Type extends NgxSignalStoreS
 /**
  * The methods that are available in the store
  */
-type NgxSignalStoreSliceMethods&lt;DataType&gt; &#x3D; DataType extends unknown[]
+type NgxSignalStoreSliceMethods&lt;DataType&gt; &#x3D; [DataType] extends [unknown[]]
 	? NgxSignalStoreSliceArrayMethods&lt;DataType&gt;
 	: NgxSignalStoreSliceBaseMethods&lt;DataType&gt;;
 
@@ -399,7 +399,7 @@ type NgxSignalStoreSliceMethods&lt;DataType&gt; &#x3D; DataType extends unknown[
  * The methods that are available in the store for all slices
  */
 export interface NgxSignalStoreSliceBaseMethods&lt;DataType&gt; extends MethodsDictionary {
-	set: (data: DataType) &#x3D;&gt; void;
+	set: (data: DataType extends [never] ? boolean : DataType) &#x3D;&gt; void;
 	reset: () &#x3D;&gt; void;
 	clear: () &#x3D;&gt; void;
 	setError: (error: boolean) &#x3D;&gt; void;

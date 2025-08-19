@@ -1193,7 +1193,7 @@
                     <td class="col-md-4">
                         <i>Default value : </i><code>&lt;
 	StateInterface,
-	EffectsInterface extends EntityStoreEffectsInterface &#x3D; any,
+	EffectsInterface extends EntityStoreEffectsInterface &#x3D; any
 &gt;({
 	slice,
 	selectId,
@@ -1237,7 +1237,14 @@
 	});
 
 	// Iben: Create the initial state
-	const initialState: BasicEntityState&lt;StateInterface&gt; &#x3D; adapter.getInitialState({
+	const initialState: BasicEntityState&lt;StateInterface&gt; &#x3D; {
+		...adapter.getInitialState&lt;BasicEntityState&lt;StateInterface&gt;&gt;({
+			entityStatus: {
+				loading: false,
+				error: false,
+				errorMessage: undefined,
+			},
+		}),
 		ids: (initialStateValue || []).map((item) &#x3D;&gt; {
 			return selectId ? selectId(item) : item[&#x27;id&#x27;];
 		}),
@@ -1247,12 +1254,7 @@
 				[selectId ? selectId(current) : current[&#x27;id&#x27;]]: current,
 			};
 		}, {}),
-		entityStatus: {
-			loading: false,
-			error: false,
-			errorMessage: undefined,
-		},
-	});
+	};
 
 	// Iben: Create state selectors
 	const featureSelector &#x3D; (state): any &#x3D;&gt; get(state, slice);
