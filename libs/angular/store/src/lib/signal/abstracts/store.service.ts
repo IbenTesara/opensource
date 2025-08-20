@@ -1,12 +1,6 @@
-import { Inject, Injectable } from '@angular/core';
+import { Injectable } from '@angular/core';
 
-import {
-	NgxSignalStore,
-	NgxSignalStoreRecord,
-	NgxSignalStoreState,
-	NgxSignalStoreViewState,
-} from '../types';
-import { injectNgxSignalStore } from '../utils';
+import { NgxSignalStore, NgxSignalStoreState, NgxSignalStoreViewState } from '../types';
 
 /**
  * An abstract service that can be used to store handle a NgxSignalStore
@@ -16,13 +10,7 @@ export abstract class NgxSignalStoreService<StoreState extends NgxSignalStoreSta
 	/**
 	 * The store we preserve the state in
 	 */
-	protected store: NgxSignalStore<StoreState>;
-
-	// eslint-disable-next-line @angular-eslint/prefer-inject
-	constructor(@Inject('store') createdStore: NgxSignalStoreRecord<StoreState>) {
-		// Iben: Inject the created store
-		this.store = injectNgxSignalStore(createdStore);
-	}
+	protected abstract store: NgxSignalStore<StoreState>;
 
 	/**
 	 * Returns a read only version of the state
