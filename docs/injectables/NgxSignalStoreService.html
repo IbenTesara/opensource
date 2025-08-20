@@ -143,6 +143,7 @@
                         <ul class="index-list">
                             <li>
                                     <span class="modifier">Protected</span>
+                                    <span class="modifier">Abstract</span>
                                 <a href="#store" >store</a>
                             </li>
                         </ul>
@@ -172,54 +173,6 @@
     </table>
 </section>
 
-            <section data-compodoc="block-constructor">
-    <h3 id="constructor">Constructor</h3>
-        <table class="table table-sm table-bordered">
-            <tbody>
-                <tr>
-                    <td class="col-md-4">
-<code>constructor(createdStore: <a href="../interfaces/StoreState.html" target="_self">NgxSignalStoreRecord&lt;StoreState&gt;</a>)</code>
-                    </td>
-                </tr>
-                        <tr>
-                            <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="19" class="link-to-prism">libs/angular/store/src/lib/signal/abstracts/store.service.ts:19</a></div>
-                            </td>
-                        </tr>
-
-                <tr>
-                    <td class="col-md-4">
-                            <div>
-                                    <b>Parameters :</b>
-                                    <table class="params">
-                                        <thead>
-                                            <tr>
-                                                <td>Name</td>
-                                                    <td>Type</td>
-                                                <td>Optional</td>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                                <tr>
-                                                        <td>createdStore</td>
-                                                  
-                                                        <td>
-                                                                        <code><a href="../interfaces/StoreState.html" target="_self" >NgxSignalStoreRecord&lt;StoreState&gt;</a></code>
-                                                        </td>
-                                                  
-                                                    <td>
-                                                            No
-                                                    </td>
-                                                    
-                                                </tr>
-                                        </tbody>
-                                    </table>
-                            </div>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-</section>
 
 
             <section data-compodoc="block-properties">
@@ -234,6 +187,7 @@
                     <a name="store"></a>
                     <span class="name">
                             <span class="modifier">Protected</span>
+                            <span class="modifier">Abstract</span>
                         <span ><b>store</b></span>
                         <a href="#store"><span class="icon ion-ios-link"></span></a>
                     </span>
@@ -247,7 +201,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="19" class="link-to-prism">libs/angular/store/src/lib/signal/abstracts/store.service.ts:19</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="13" class="link-to-prism">libs/angular/store/src/lib/signal/abstracts/store.service.ts:13</a></div>
                         </td>
                     </tr>
 
@@ -282,7 +236,7 @@
                 </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="30" class="link-to-prism">libs/angular/store/src/lib/signal/abstracts/store.service.ts:30</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="18" class="link-to-prism">libs/angular/store/src/lib/signal/abstracts/store.service.ts:18</a></div>
                                 </td>
                             </tr>
                     <tr>
@@ -304,15 +258,9 @@
 
 
     <div class="tab-pane fade  tab-source-code" id="source">
-        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Inject, Injectable } from &#x27;@angular/core&#x27;;
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Injectable } from &#x27;@angular/core&#x27;;
 
-import {
-	NgxSignalStore,
-	NgxSignalStoreRecord,
-	NgxSignalStoreState,
-	NgxSignalStoreViewState,
-} from &#x27;../types&#x27;;
-import { injectNgxSignalStore } from &#x27;../utils&#x27;;
+import { NgxSignalStore, NgxSignalStoreState, NgxSignalStoreViewState } from &#x27;../types&#x27;;
 
 /**
  * An abstract service that can be used to store handle a NgxSignalStore
@@ -322,13 +270,7 @@ export abstract class NgxSignalStoreService&lt;StoreState extends NgxSignalStore
 	/**
 	 * The store we preserve the state in
 	 */
-	protected store: NgxSignalStore&lt;StoreState&gt;;
-
-	// eslint-disable-next-line @angular-eslint/prefer-inject
-	constructor(@Inject(&#x27;store&#x27;) createdStore: NgxSignalStoreRecord&lt;StoreState&gt;) {
-		// Iben: Inject the created store
-		this.store &#x3D; injectNgxSignalStore(createdStore);
-	}
+	protected abstract store: NgxSignalStore&lt;StoreState&gt;;
 
 	/**
 	 * Returns a read only version of the state
