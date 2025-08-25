@@ -33,13 +33,13 @@
 		"directory": "libs/angular/inform/src"
 	},
 	"peerDependencies": {
-		"@angular/core": "^20.0.0",
+		"@angular/core": "^20.2.0",
 		"uuid": "^11.1.0",
 		"rxjs": "~7.8.0",
-		"@angular/cdk": "^20.1.2",
-		"@angular/router": "20.1.2",
+		"@angular/cdk": "^20.2.0",
+		"@angular/router": "^20.2.0",
 		"@ibenvandeveire/ngx-core": "^20.0.0",
-		"@angular/common": "20.1.2",
+		"@angular/common": "^20.2.0",
 		"lodash": "^4.17.21"
 	},
 	"sideEffects": false

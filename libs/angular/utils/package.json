@@ -34,11 +34,11 @@
 		"directory": "libs/angular/i18n/src"
 	},
 	"peerDependencies": {
-		"@angular/core": "^20.0.0",
-		"@angular/forms": "20.1.2",
-		"@angular/router": "20.1.2",
+		"@angular/core": "^20.2.0",
+		"@angular/forms": "^20.2.0",
+		"@angular/router": "^20.2.0",
 		"rxjs": "~7.8.0",
-		"@angular/platform-browser": "20.1.2",
+		"@angular/platform-browser": "^20.2.0",
 		"@ibenvandeveire/ngx-core": "^20.0.0",
 		"lodash": "^4.17.21"
 	},

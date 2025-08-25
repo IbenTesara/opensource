@@ -1,0 +1,13 @@
+{
+	"i18n-ally.localesPaths": [
+		"libs/angular/i18n",
+		"apps/opensource/public/i18n",
+		"coverage/libs/angular/i18n",
+		"coverage/libs/angular/i18n/guards/i18n",
+		"coverage/libs/angular/i18n/resolvers/i18n",
+		"coverage/libs/angular/i18n/services/i18n",
+		"libs/angular/i18n/src/lib/guards/i18n",
+		"libs/angular/i18n/src/lib/services/i18n",
+		"libs/angular/i18n/src/lib/resolvers/i18n"
+	]
+}

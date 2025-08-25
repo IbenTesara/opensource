@@ -26,7 +26,7 @@
 	"license": "MIT",
 	"peerDependencies": {
 		"@angular/common": "^20.0.0",
-		"@angular/core": "^20.0.0",
+		"@angular/core": "^20.2.0",
 		"rxjs": "~7.8.0",
 		"lodash": "^4.17.21",
 		"@ngrx/effects": "^20.0.0",
