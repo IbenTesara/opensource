@@ -63,8 +63,12 @@ export const appConfig: ApplicationConfig = {
 			component: ToastComponent,
 			position: 'top-right',
 			maxAmount: {
-				strategy: 'ignore',
-				amount: 1,
+				strategy: 'wait',
+				amount: 4,
+			},
+			animations: {
+				enter: 'ngx-toast-item-in',
+				leave: 'ngx-toast-item-out',
 			},
 		}),
 	],

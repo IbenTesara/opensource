@@ -1,4 +1,4 @@
-import { Type } from '@angular/core';
+import { AnimationFunction, Type } from '@angular/core';
 
 import { NgxToastBundlerComponent, NgxToastComponent } from '../abstracts';
 
@@ -53,7 +53,10 @@ export interface NgxToastDefaultConfiguration extends Omit<NgxToastConfiguration
 	component: Type<NgxToastComponent>;
 	position: NgxToastPosition;
 	maxAmount?: NgxToastMaxAmountConfiguration;
-	animationTime?: number;
+	animations?: {
+		enter: string | AnimationFunction;
+		leave: string | AnimationFunction;
+	};
 	maxTime?: number;
 }
 
@@ -64,7 +67,6 @@ export interface NgxToast<DataType = unknown> {
 	id: string;
 	text: string;
 	data?: DataType;
-	toBeRemoved?: boolean;
 	configuration?: NgxToastConfiguration;
 }
 
@@ -78,5 +80,5 @@ export type NgxToastCreator<DataType = unknown> = Omit<NgxToast<DataType>, 'id' 
  */
 export interface NgxToastEvent {
 	toast: NgxToast;
-	type: 'add' | 'update' | 'remove';
+	type: 'add' | 'remove';
 }

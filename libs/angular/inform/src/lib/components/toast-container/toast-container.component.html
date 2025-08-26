@@ -1,4 +1,3 @@
-@if(toasts().length > 0) {
 <ul
 	class="ngx-toast-list"
 	[class]="`ngx-toast-position-${this.configuration.position}`"
@@ -6,7 +5,11 @@
 	(mouseleave)="setFocus(false)"
 >
 	@for (toast of toasts(); track toast.id) {
-	<li class="ngx-toast-item" [class.ngx-toast-item-out]="toast.toBeRemoved">
+	<li
+		class="ngx-toast-item"
+		[animate.enter]="configuration?.animations?.enter"
+		[animate.leave]="configuration?.animations?.leave"
+	>
 		<ng-template
 			[ngComponentOutlet]="toast.configuration?.component || configuration.component"
 			[ngComponentOutletInputs]="{toast}"
@@ -21,4 +24,3 @@
 	</li>
 	}
 </ul>
-}

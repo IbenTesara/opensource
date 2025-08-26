@@ -180,12 +180,14 @@ table {
 	}
 }
 
-.ngx-toast-item {
-	animation: toast-in 0.3s linear;
+.ngx-toast-item-in {
+	animation: toast-in 1s linear;
 }
 
 .ngx-toast-item-out {
-	animation: toast-out 0.3s linear;
+	opacity: 0;
+	transform: translateX(20px);
+	transition: opacity 500ms ease-out, transform 500ms ease-out;
 }
 
 ngx-mobile-layout {
