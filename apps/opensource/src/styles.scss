@@ -258,25 +258,55 @@ ngx-mobile-layout {
 	cursor: pointer;
 }
 
-.ngx-button-primary {
-	background: darkblue;
+button {
+	&.ngx-button-primary {
+		background: darkblue;
 
-	&:hover {
-		background: lighten(darkblue, 20);
+		&:hover {
+			background: lighten(darkblue, 20);
+		}
 	}
-}
 
-.ngx-button-secondary {
-	background: lighten(darkblue, 40);
+	&.ngx-button-secondary {
+		background: lighten(darkblue, 40);
 
-	&:hover {
-		background: lighten(darkblue, 30);
+		&:hover {
+			background: lighten(darkblue, 30);
+		}
 	}
-}
 
-.ngx-button-loading {
-	.ngx-button-icon,
-	.ngx-button-label {
-		display: none;
+	&.ngx-button-tertiary {
+		color: darkblue;
+
+		background: lighten(darkblue, 60);
+
+		&:hover {
+			background: lighten(darkblue, 50);
+		}
+	}
+
+	&.ngx-button-fab {
+		height: 45px;
+		width: 45px;
+		border-radius: 50%;
+	}
+
+	&.ngx-button-link,
+	&.ngx-button-icon {
+		background: transparent !important;
+
+		color: darkblue;
+
+		&:hover {
+			color: lighten(darkblue, 20);
+			text-decoration: underline;
+		}
+	}
+
+	&.ngx-button-loading {
+		.ngx-button-icon,
+		.ngx-button-label {
+			display: none;
+		}
 	}
 }

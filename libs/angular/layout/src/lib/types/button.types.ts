@@ -5,12 +5,12 @@ import { NgxDisplayContentComponent } from '../abstracts';
 /**
  * The priority of the button
  */
-export type NgxButtonPriority = 'primary' | 'secondary' | 'tertiary';
+export type NgxButtonPriority = 'primary' | 'secondary' | 'tertiary' | 'danger';
 
 /**
  * The type of the button
  */
-export type NgxButtonType = 'regular' | 'icon' | 'fab' | 'link';
+export type NgxButtonType = 'regular' | 'icon' | 'fab' | 'text' | 'outline';
 
 /**
  * The position of the icon in the button

@@ -7,6 +7,7 @@
 <button
 	*ngxTourShowWhen="'whenInactive'"
 	ngxTooltip="Hello, this is a tooltip!"
+	ngxTooltipPosition="above"
 	ngxButton
 	icon="fa fa-home"
 	[loading]="loading()"
@@ -16,5 +17,11 @@
 </button>
 
 <button ngxButton priority="secondary" (click)="showToast()">TOAST</button>
+
+<button ngxButton buttonType="fab" priority="tertiary" icon="fa fa-home"> </button>
+
+<button ngxButton buttonType="link">Home</button>
+
+<button ngxButton buttonType="icon" icon="fa fa-home"> </button>
 
 <router-outlet></router-outlet>
