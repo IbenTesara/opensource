@@ -153,6 +153,9 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                                     <a href="directives/NgxAccessibleDragAndDropItemDirective.html" data-type="entity-link" >NgxAccessibleDragAndDropItemDirective</a>
                                 </li>
                                 <li class="link">
+                                    <a href="directives/NgxButtonDirective.html" data-type="entity-link" >NgxButtonDirective</a>
+                                </li>
+                                <li class="link">
                                     <a href="directives/NgxCookiesFallBackComponent.html" data-type="entity-link" >NgxCookiesFallBackComponent</a>
                                 </li>
                                 <li class="link">
@@ -421,6 +424,9 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                             </li>
                             <li class="link">
                                 <a href="interfaces/NgxAuthenticationConfiguration.html" data-type="entity-link" >NgxAuthenticationConfiguration</a>
+                            </li>
+                            <li class="link">
+                                <a href="interfaces/NgxButtonConfiguration.html" data-type="entity-link" >NgxButtonConfiguration</a>
                             </li>
                             <li class="link">
                                 <a href="interfaces/NgxConfigurableLayoutItemDropEvent.html" data-type="entity-link" >NgxConfigurableLayoutItemDropEvent</a>

@@ -274,6 +274,9 @@
                             <a href="#NgxAuthenticationUrlHandlerToken" title="libs/angular/authentication/src/lib/tokens/authentication-configuration.token.ts" ><b>NgxAuthenticationUrlHandlerToken</b>&nbsp;&nbsp;&nbsp;(libs/.../authentication-configuration.token.ts)</a>
                         </li>
                         <li>
+                            <a href="#NgxButtonConfigurationToken" title="libs/angular/layout/src/lib/tokens/button-configuration.token.ts" ><b>NgxButtonConfigurationToken</b>&nbsp;&nbsp;&nbsp;(libs/.../button-configuration.token.ts)</a>
+                        </li>
+                        <li>
                             <a href="#NgxConfigurableLayout" title="libs/angular/layout/src/lib/components/index.ts" ><b>NgxConfigurableLayout</b>&nbsp;&nbsp;&nbsp;(libs/.../index.ts)</a>
                         </li>
                         <li>
@@ -401,6 +404,9 @@
                         </li>
                         <li>
                             <a href="#provideNgxAuthenticationConfiguration" title="libs/angular/authentication/src/lib/providers/authentication-configuration.provider.ts" ><b>provideNgxAuthenticationConfiguration</b>&nbsp;&nbsp;&nbsp;(libs/.../authentication-configuration.provider.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#provideNgxButtonConfiguration" title="libs/angular/layout/src/lib/providers/button/button-configuration.provider.ts" ><b>provideNgxButtonConfiguration</b>&nbsp;&nbsp;&nbsp;(libs/.../button-configuration.provider.ts)</a>
                         </li>
                         <li>
                             <a href="#provideNgxDisplayContentConfiguration" title="libs/angular/layout/src/lib/providers/display-content/display-content.provider.ts" ><b>provideNgxDisplayContentConfiguration</b>&nbsp;&nbsp;&nbsp;(libs/.../display-content.provider.ts)</a>
@@ -3526,6 +3532,37 @@ By default, a take(1) is applied to the source, so the source observable can be 
         </tbody>
     </table>
 </section>
+    <h3>libs/angular/layout/src/lib/tokens/button-configuration.token.ts</h3>
+    <section data-compodoc="block-properties">
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="NgxButtonConfigurationToken"></a>
+                    <span class="name">
+                        <span ><b>NgxButtonConfigurationToken</b></span>
+                        <a href="#NgxButtonConfigurationToken"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>new InjectionToken&lt;NgxButtonConfiguration&gt;(
+	&#x27;NgxButtonConfiguration&#x27;
+)</code>
+                    </td>
+                </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>A token to provide the necessary configuration to the NgxButton directive</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+</section>
     <h3>libs/angular/layout/src/lib/components/index.ts</h3>
     <section data-compodoc="block-properties">
     <h3></h3>    <table class="table table-sm table-bordered">
@@ -5340,6 +5377,40 @@ This implementation is provided given that pluck has a higher readability than a
             <tr>
                 <td class="col-md-4">
                     <div class="io-description"><p>Configures the provided implementation of the NgxAuthenticationAbstract service to the application</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+</section>
+    <h3>libs/angular/layout/src/lib/providers/button/button-configuration.provider.ts</h3>
+    <section data-compodoc="block-properties">
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="provideNgxButtonConfiguration"></a>
+                    <span class="name">
+                        <span ><b>provideNgxButtonConfiguration</b></span>
+                        <a href="#provideNgxButtonConfiguration"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>(configuration: NgxButtonConfiguration): Provider &#x3D;&gt; {
+	return {
+		provide: NgxButtonConfigurationToken,
+		useValue: configuration,
+	};
+}</code>
+                    </td>
+                </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Provides the configuration for the NgxButton directive</p>
 </div>
                 </td>
             </tr>

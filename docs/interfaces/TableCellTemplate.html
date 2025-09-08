@@ -358,6 +358,9 @@ import {
 	contentChild,
 	effect,
 	InputSignal,
+	linkedSignal,
+	computed,
+	Signal,
 } from &#x27;@angular/core&#x27;;
 import {
 	ControlValueAccessor,
@@ -437,6 +440,7 @@ export class NgxTableComponent
 		NgxTableConfigurationToken,
 		{ optional: true }
 	);
+
 	/**
 	 * Default class that will be put on the ngx-table component
 	 */
@@ -460,140 +464,196 @@ export class NgxTableComponent
 	/**
 	 * Whether or not the form was generated
 	 */
-	private formGenerated: WritableSignal&lt;boolean&gt; &#x3D; signal(false);
-
-	/**
-	 * The loading state of our table
-	 */
-	public loading &#x3D; input&lt;boolean&gt;(false);
-
-	/**
-	 * An optional set of data we pass if the loading state is shown
-	 */
-	public loadingData &#x3D; input&lt;any&gt;();
-
-	/**
-	 * An optional set of data we pass if the empty state is shown
-	 */
-	public emptyData &#x3D; input&lt;any&gt;();
-
+	private formGenerated: boolean &#x3D; false;
 	/**
 	 * The current sorting event
 	 */
-	public currentSortingEvent: WritableSignal&lt;NgxTableSortEvent | undefined&gt; &#x3D; signal(undefined);
+	protected currentSortingEvent: WritableSignal&lt;NgxTableSortEvent | undefined&gt; &#x3D; linkedSignal(
+		() &#x3D;&gt; {
+			this.handleCurrentSort(this.currentSorting());
+
+			return this.currentSorting();
+		}
+	);
 
 	/**
 	 * Keeps a record with the column and it&#x27;s templates
 	 */
-	public tableCellTemplateRecord: WritableSignal&lt;Record&lt;string, TableCellTemplate&gt;&gt; &#x3D; signal({});
+	protected tableCellTemplateRecord: WritableSignal&lt;Record&lt;string, TableCellTemplate&gt;&gt; &#x3D; signal(
+		{}
+	);
 	/**
 	 * Keeps a record of which columns are sortable
 	 */
-	public sortableTableCellRecord: WritableSignal&lt;Record&lt;string, NgxAbstractTableCellDirective&gt;&gt; &#x3D;
-		signal({});
+	protected sortableTableCellRecord: WritableSignal&lt;
+		Record&lt;string, NgxAbstractTableCellDirective&gt;
+	&gt; &#x3D; signal({});
 	/**
 	 * Keeps a record of which cells have a cypress tag
 	 */
-	public tableCypressRecord: WritableSignal&lt;Record&lt;string, NgxTableCypressDataTags&gt;&gt; &#x3D; signal({});
+	protected tableCypressRecord: WritableSignal&lt;Record&lt;string, NgxTableCypressDataTags&gt;&gt; &#x3D; signal(
+		{}
+	);
 	/**
 	 * Keeps a record of which cells are editable
 	 */
-	public editableTableCellRecord: WritableSignal&lt;Record&lt;string, NgxAbstractTableCellDirective&gt;&gt; &#x3D;
-		signal({});
+	protected editableTableCellRecord: WritableSignal&lt;
+		Record&lt;string, NgxAbstractTableCellDirective&gt;
+	&gt; &#x3D; signal({});
 
 	/**
-	 * A set with all the open rows
+	 * An object with all the open rows
 	 */
-	// Iben: Sets are not supported in signals as signals are no longer mutable, hence why we keep them as is
-	public openRows: Set&lt;number&gt; &#x3D; new Set();
+	protected openedRows: WritableSignal&lt;Record&lt;number, boolean&gt;&gt; &#x3D; linkedSignal(() &#x3D;&gt; {
+		// Wouter: If all detail rows should be shown by default, we add all indices to the open rows
+		if (this.showDetailRow() &#x3D;&#x3D;&#x3D; &#x27;always&#x27;) {
+			return this.data().reduce((previousValue, _, index) &#x3D;&gt; {
+				return {
+					...previousValue,
+					[index]: true,
+				};
+			}, {});
+		} else if (
+			// Wouter: If the detail row should be shown on single item and there is only one item, we add the first index to the open rows
+			this.showDetailRow() &#x3D;&#x3D;&#x3D; &#x27;on-single-item&#x27; &amp;&amp;
+			this.data().length &#x3D;&#x3D;&#x3D; 1
+		) {
+			return { 0: true };
+		} else {
+			// Iben: If no detail row should be shown due to global config, we reset the open rows
+			return {};
+		}
+	});
 
 	/**
 	 * A FormGroup that adds a control for each row
 	 */
-	public readonly rowsFormGroup &#x3D; new FormRecord&lt;FormControl&lt;boolean&gt;&gt;({});
+	protected readonly rowsFormGroup &#x3D; new FormRecord&lt;FormControl&lt;boolean&gt;&gt;({});
+
+	/**
+	 * A computed signal to see if we have a form
+	 */
+	protected readonly hasForm: Signal&lt;boolean&gt; &#x3D; computed(() &#x3D;&gt; {
+		// Iben: Setup the form when the data or selectable state changes
+		if (this.data() &amp;&amp; this.selectable()) {
+			// Iben: If no form was generated, first generate the form we need
+			if (!this.formGenerated) {
+				generateNgxTableForm(this.rowsFormGroup, this.data(), this.selectableKey());
+
+				this.formGenerated &#x3D; true;
+			} else {
+				// Iben: If a form was generated, reset it as required
+				resetNgxTableForm(
+					this.rowsFormGroup,
+					this.data(),
+					this.selectableKey(),
+					this.resetFormOnNewData()
+				);
+			}
+		}
+
+		return this.formGenerated;
+	});
 
 	/**
 	 * A control for the select all option in the header of the table
 	 */
-	public readonly headerControl &#x3D; new FormControl();
+	protected readonly headerControl &#x3D; new FormControl();
 
 	/**
 	 * A control for when we use a radio button
 	 */
-	public readonly radioControl &#x3D; new FormControl();
+	protected readonly radioControl &#x3D; new FormControl();
 
 	/**
 	 * A list of all defined columns
 	 */
-	public definedColumns: WritableSignal&lt;string[]&gt; &#x3D; signal([]);
+	protected definedColumns: WritableSignal&lt;string[]&gt; &#x3D; linkedSignal(() &#x3D;&gt; {
+		return [
+			...(this.selectable() ? [&#x27;ngxTableSelectColumn&#x27;] : []),
+			...(this.columns() || []),
+			...(this.actions() || []),
+			...(this.showOpenRowState() &amp;&amp; this.detailRowTemplate()
+				? [&#x27;ngxOpenRowStateColumn&#x27;]
+				: []),
+		];
+	});
 
 	/**
 	 * Whether or not there was a footer template set somewhere in one of the cells
 	 */
-	public hasFooterTemplates: WritableSignal&lt;boolean&gt; &#x3D; signal(false);
+	protected hasFooterTemplates: WritableSignal&lt;boolean&gt; &#x3D; signal(false);
 
 	/**
 	 * Whether or not there was a row selected
 	 */
-	public selectedRow: WritableSignal&lt;number | undefined&gt; &#x3D; signal(undefined);
+	public selectedRow: WritableSignal&lt;number | undefined&gt; &#x3D; linkedSignal(() &#x3D;&gt; {
+		// Iben: Subscribe to the data changes
+		this.data();
+
+		// Wouter: Deselect any row that was selected to prevent faulty class toggle.
+		return undefined;
+	});
 
 	/**
 	 * An array of table columns
 	 */
-	public tableColumns: WritableSignal&lt;string[]&gt; &#x3D; signal([]);
+	protected tableColumns: WritableSignal&lt;string[]&gt; &#x3D; linkedSignal(() &#x3D;&gt; {
+		return [...(this.columns() || []), ...(this.actions() || [])];
+	});
 
 	/**
 	 * The currently focussed row
 	 */
-	public focussedRow: string;
+	protected focussedRow: string;
 
 	/**
 	 * The currently focussed cell
 	 */
-	public focussedCell: string;
+	protected focussedCell: string;
 
 	/**
 	 * A QueryList of all the table cell templates
 	 */
-	public readonly tableCellTemplates &#x3D; contentChildren(NgxAbstractTableCellDirective);
+	protected readonly tableCellTemplates &#x3D; contentChildren(NgxAbstractTableCellDirective);
 
 	/**
 	 * A template to provide a detail row
 	 */
-	public readonly detailRowTemplate &#x3D; contentChild&lt;TemplateRef&lt;any&gt;&gt;(&#x27;detailRowTmpl&#x27;);
+	protected readonly detailRowTemplate &#x3D; contentChild&lt;TemplateRef&lt;any&gt;&gt;(&#x27;detailRowTmpl&#x27;);
 
 	/**
 	 * A template to provide an empty view
 	 */
-	public readonly emptyTemplate &#x3D; contentChild&lt;TemplateRef&lt;any&gt;&gt;(&#x27;emptyTmpl&#x27;);
+	protected readonly emptyTemplate &#x3D; contentChild&lt;TemplateRef&lt;any&gt;&gt;(&#x27;emptyTmpl&#x27;);
 
 	/**
 	 * A template to provide a loading view
 	 */
-	public readonly loadingTemplate &#x3D; contentChild&lt;TemplateRef&lt;any&gt;&gt;(&#x27;loadingTmpl&#x27;);
+	protected readonly loadingTemplate &#x3D; contentChild&lt;TemplateRef&lt;any&gt;&gt;(&#x27;loadingTmpl&#x27;);
 
 	/**
 	 * A template to provide a checkbox template
 	 */
 
-	public checkboxTemplate &#x3D; contentChild&lt;TemplateRef&lt;any&gt;&gt;(&#x27;checkboxTmpl&#x27;);
+	protected checkboxTemplate &#x3D; contentChild&lt;TemplateRef&lt;any&gt;&gt;(&#x27;checkboxTmpl&#x27;);
 
 	/**
 	 * A template to provide a radio button template
 	 */
 
-	public radioTemplate &#x3D; contentChild&lt;TemplateRef&lt;any&gt;&gt;(&#x27;radioTmpl&#x27;);
+	protected radioTemplate &#x3D; contentChild&lt;TemplateRef&lt;any&gt;&gt;(&#x27;radioTmpl&#x27;);
 
 	/**
 	 * A template to provide a sort template
 	 */
 
-	public sortTemplate &#x3D; contentChild&lt;TemplateRef&lt;any&gt;&gt;(&#x27;sortTmpl&#x27;);
+	protected sortTemplate &#x3D; contentChild&lt;TemplateRef&lt;any&gt;&gt;(&#x27;sortTmpl&#x27;);
 
 	/**
 	 * A template to provide a open state template
 	 */
-	public readonly openRowStateTemplate &#x3D; contentChild&lt;TemplateRef&lt;any&gt;&gt;(&#x27;openRowStateTmpl&#x27;);
+	protected readonly openRowStateTemplate &#x3D; contentChild&lt;TemplateRef&lt;any&gt;&gt;(&#x27;openRowStateTmpl&#x27;);
 
 	/**
 	 * A list of all column names we want to represent in the table
@@ -642,7 +702,6 @@ export class NgxTableComponent
 	public readonly resetFormOnNewData &#x3D; input&lt;boolean&gt;(true);
 
 	/**
-	 * SETTER
 	 *
 	 * The current sorting event.
 	 */
@@ -708,16 +767,26 @@ export class NgxTableComponent
 	);
 
 	/**
+	 * The loading state of our table
+	 */
+	public loading &#x3D; input&lt;boolean&gt;(false);
+
+	/**
+	 * An optional set of data we pass if the loading state is shown
+	 */
+	public loadingData &#x3D; input&lt;any&gt;();
+
+	/**
+	 * An optional set of data we pass if the empty state is shown
+	 */
+	public emptyData &#x3D; input&lt;any&gt;();
+
+	/**
 	 * Returns the data of the row that was clicked
 	 */
 	public rowClicked: OutputEmitterRef&lt;any&gt; &#x3D; output&lt;any&gt;();
 
 	constructor() {
-		effect(() &#x3D;&gt; {
-			this.currentSortingEvent.set(this.currentSorting());
-			this.handleCurrentSort(this.currentSorting());
-		});
-
 		effect(() &#x3D;&gt; {
 			const openedIndex &#x3D; this.defaultRowOpen();
 			// Wouter: The function findIndex is most likely to be used. It returns
@@ -729,42 +798,8 @@ export class NgxTableComponent
 			// Wouter: This timeout is needed to wait for the TemplateRefs to be found.
 			setTimeout(() &#x3D;&gt; {
 				this.handleRowClicked(this.data()[openedIndex], openedIndex);
-				this.cdRef.detectChanges();
+				this.cdRef.markForCheck();
 			});
-		});
-
-		// Iben: Setup the form when the data or selectable state changes
-		effect(() &#x3D;&gt; {
-			if (this.data() &amp;&amp; this.selectable()) {
-				// Iben: If no form was generated, first generate the form we need
-				if (!this.formGenerated()) {
-					generateNgxTableForm(this.rowsFormGroup, this.data(), this.selectableKey());
-
-					this.formGenerated.set(true);
-				} else {
-					// Iben: If a form was generated, reset it as required
-					resetNgxTableForm(
-						this.rowsFormGroup,
-						this.data(),
-						this.selectableKey(),
-						this.resetFormOnNewData()
-					);
-				}
-			}
-		});
-
-		effect(() &#x3D;&gt; {
-			if (this.data()) {
-				// Wouter: Deselect any row that was selected to prevent faulty class toggle.
-				this.selectedRow.set(undefined);
-			}
-		});
-
-		effect(() &#x3D;&gt; {
-			// Iben: Add the selectableColumn if the rows are selectable and add an open row state when needed
-			if (this.selectable() || this.columns() || this.showOpenRowState()) {
-				this.handleRowColumns();
-			}
 		});
 
 		// Iben: If there&#x27;s only one item in the data and we open the detail row by default, we emit the row clicked value
@@ -775,23 +810,6 @@ export class NgxTableComponent
 				this.showDetailRow() &#x3D;&#x3D;&#x3D; &#x27;on-single-item&#x27;
 			) {
 				this.handleRowClicked(this.data()[0], 0);
-			}
-		});
-
-		// Iben: Reset the open rows if the amount of items are no longer the same
-		effect(() &#x3D;&gt; {
-			// Wouter: If all detail rows should be shown by default, we add all indices to the open rows
-			if (this.showDetailRow() &#x3D;&#x3D;&#x3D; &#x27;always&#x27;) {
-				this.openRows &#x3D; new Set(this.data().map((_, index) &#x3D;&gt; index));
-			} else if (
-				// Wouter: If the detail row should be shown on single item and there is only one item, we add the first index to the open rows
-				this.showDetailRow() &#x3D;&#x3D;&#x3D; &#x27;on-single-item&#x27; &amp;&amp;
-				this.data().length &#x3D;&#x3D;&#x3D; 1
-			) {
-				this.openRows &#x3D; new Set([0]);
-			} else {
-				// Iben: If no detail row should be shown due to global config, we reset the open rows
-				this.openRows &#x3D; new Set();
 			}
 		});
 	}
@@ -886,7 +904,7 @@ export class NgxTableComponent
 				this.selectedRow.set(index);
 			}
 		}
-		this.handleRowState(index, !this.openRows.has(index) ? &#x27;open&#x27; : &#x27;close&#x27;);
+		this.handleRowState(index, !this.openedRows()[index] ? &#x27;open&#x27; : &#x27;close&#x27;);
 	}
 
 	/**
@@ -906,14 +924,17 @@ export class NgxTableComponent
 			this.showDetailRow() &#x3D;&#x3D;&#x3D; &#x27;always&#x27; ||
 			(this.showDetailRow() &#x3D;&#x3D;&#x3D; &#x27;on-single-item&#x27; &amp;&amp; this.data.length &#x3D;&#x3D;&#x3D; 1)
 		) {
-			this.openRows.add(index);
+			this.openedRows.update((value) &#x3D;&gt; ({ ...value, 0: true }));
 			// Iben: Depending on whether we allow multiple rows to be open at the same time, we toggle the open rows accordingly
 		}
 		// Iben: Depending on whether we allow multiple rows to be open at the same time, we toggle the open rows accordingly
 		else if (this.allowMultipleOpenRows()) {
-			action &#x3D;&#x3D;&#x3D; &#x27;open&#x27; ? this.openRows.add(index) : this.openRows.delete(index);
+			this.openedRows.update((value) &#x3D;&gt; ({
+				...value,
+				index: action &#x3D;&#x3D;&#x3D; &#x27;open&#x27;,
+			}));
 		} else {
-			this.openRows &#x3D; action &#x3D;&#x3D;&#x3D; &#x27;open&#x27; ? new Set([index]) : new Set();
+			this.openedRows.set(action &#x3D;&#x3D;&#x3D; &#x27;open&#x27; ? { [index]: true } : {});
 		}
 	}
 
