@@ -2,12 +2,19 @@
 
 <h1>{{'title' | translate}}</h1>
 
+<button ngxButton (click)="toggleLoading()">Toggle loading</button>
+
 <button
 	*ngxTourShowWhen="'whenInactive'"
 	ngxTooltip="Hello, this is a tooltip!"
+	ngxButton
+	icon="fa fa-home"
+	[loading]="loading()"
 	(click)="startTour()"
 >
 	Start tour
 </button>
-<button (click)="showToast()">TOAST</button>
+
+<button ngxButton priority="secondary" (click)="showToast()">TOAST</button>
+
 <router-outlet></router-outlet>
