@@ -13,12 +13,16 @@ import {
 	provideNgxTooltipConfiguration,
 	provideNgxTourConfiguration,
 } from '@lib/ngx-inform';
-import { provideNgxMobileLayoutConfiguration } from '@lib/ngx-layout';
+import {
+	provideNgxButtonConfiguration,
+	provideNgxMobileLayoutConfiguration,
+} from '@lib/ngx-layout';
 
 import { ConfirmModalComponent } from '../packages/inform/components/confirm/confirm.component';
 import { ToastComponent } from '../packages/inform/components/toast/toast.component';
 import { TooltipComponent } from '../packages/inform/components/tooltip/tooltip.component';
 import { TourStepComponent } from '../packages/inform/components/tour-step/tour-step.component';
+import { TestLoadingComponent } from '../packages/layout/components/display-content/display.content.component';
 import { MainHeaderComponent } from '../packages/mobile-layout/components/headers/main/main-header.component';
 import { RightHeaderComponent } from '../packages/mobile-layout/components/headers/right/right-header.component';
 import { NavigationComponent } from '../packages/mobile-layout/components/nav/nav.component';
@@ -66,6 +70,9 @@ export const appConfig: ApplicationConfig = {
 				strategy: 'ignore',
 				amount: 1,
 			},
+		}),
+		provideNgxButtonConfiguration({
+			loading: TestLoadingComponent,
 		}),
 	],
 };

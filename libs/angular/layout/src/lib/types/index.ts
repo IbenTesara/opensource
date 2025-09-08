@@ -7,3 +7,4 @@ export * from './sort-event';
 export * from './show-header-requirements';
 export * from './tree-grid.types';
 export * from './mobile-layout.types';
+export * from './button.types';

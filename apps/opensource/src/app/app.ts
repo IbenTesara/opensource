@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, signal, WritableSignal } from '@angular/core';
 import { Router, RouterModule } from '@angular/router';
 import { TranslatePipe } from '@ngx-translate/core';
 import { from, of, switchMap } from 'rxjs';
@@ -11,6 +11,7 @@ import {
 	NgxTourService,
 	NgxTourShowWhenDirective,
 } from '@lib/ngx-inform';
+import { NgxButtonDirective } from '@lib/ngx-layout';
 
 @Component({
 	imports: [
@@ -19,6 +20,7 @@ import {
 		NgxTooltipDirective,
 		NgxToastContainerComponent,
 		TranslatePipe,
+		NgxButtonDirective,
 	],
 	selector: 'app-root',
 	templateUrl: './app.html',
@@ -30,6 +32,8 @@ export class App {
 	private readonly modalService = inject(NgxModalService);
 	private readonly router: Router = inject(Router);
 	private toastAmount: number = 1;
+
+	public loading: WritableSignal<boolean> = signal(false);
 
 	public startTour() {
 		this.modalService
@@ -65,5 +69,9 @@ export class App {
 		});
 
 		this.toastAmount++;
+	}
+
+	public toggleLoading() {
+		this.loading.update((loading) => !loading);
 	}
 }

@@ -10,6 +10,9 @@ import {
 	selector: 'test-loading',
 	standalone: true,
 	template: '<p class="loading">Loading</p>',
+	host: {
+		class: 'loading-component',
+	},
 })
 export class TestLoadingComponent extends NgxDisplayContentComponent {}
 @Component({

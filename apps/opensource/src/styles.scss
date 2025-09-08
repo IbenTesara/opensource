@@ -127,6 +127,12 @@ q:after {
 	content: none;
 }
 
+h1 {
+	margin: 35px 0px;
+	font-weight: bold;
+	font-size: larger;
+}
+
 h2 {
 	margin: 35px 0px;
 	font-weight: bold;
@@ -240,5 +246,37 @@ ngx-mobile-layout {
 
 	.ngx-mobile-layout-flyout-out {
 		animation: remove-animate 0.31s linear;
+	}
+}
+
+.ngx-button {
+	color: white;
+	padding: 5px;
+	border: none;
+	border-radius: 5px;
+	margin: 0px 5px;
+	cursor: pointer;
+}
+
+.ngx-button-primary {
+	background: darkblue;
+
+	&:hover {
+		background: lighten(darkblue, 20);
+	}
+}
+
+.ngx-button-secondary {
+	background: lighten(darkblue, 40);
+
+	&:hover {
+		background: lighten(darkblue, 30);
+	}
+}
+
+.ngx-button-loading {
+	.ngx-button-icon,
+	.ngx-button-label {
+		display: none;
 	}
 }
