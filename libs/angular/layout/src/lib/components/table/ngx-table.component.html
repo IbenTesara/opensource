@@ -36,7 +36,7 @@
 			[ngxTreeGridCell]="0"
 			[ngxTreeGridCellRow]="index"
 		>
-			@if ( selectableType() === 'radio' || (selectableType() === 'checkbox' &&
+			@if ( hasForm() && selectableType() === 'radio' || (selectableType() === 'checkbox' &&
 			rowsFormGroup.controls[ this.selectableKey() ? row[selectableKey()] : index ]); as
 			control ) {
 			<ng-template
@@ -72,13 +72,13 @@
 			<ng-template
 				[ngTemplateOutlet]="openRowStateTemplate()"
 				[ngTemplateOutletContext]="{
-						$implicit:
-							showDetailRow() === 'always' ||
-							(showDetailRow() === 'on-single-item' && data()?.length === 1) ||
-							openRows.has(index),
-             row,
-             index
-					}"
+					$implicit:
+						showDetailRow() === 'always' ||
+						(showDetailRow() === 'on-single-item' && data()?.length === 1) ||
+						openedRows()[index],
+					row,
+					index
+				}"
 			/>
 			} @else if(ngxTableConfiguration?.components?.openRowState) {
 			<ng-template
@@ -87,9 +87,9 @@
 					isOpen:
 						showDetailRow() === 'always' ||
 						(showDetailRow() === 'on-single-item' && data()?.length === 1) ||
-						openRows.has(index),
-            row,
-            index
+						openedRows()[index],
+					row,
+					index
 				}"
 			/>
 			} @else {
@@ -99,7 +99,7 @@
 						$implicit:
 							showDetailRow() === 'always' ||
 							(showDetailRow() === 'on-single-item' && data()?.length === 1) ||
-							openRows.has(index),
+							openedRows()[index],
 					}"
 			/>
 			}
@@ -201,7 +201,7 @@
 							isRowOpen:
 								showDetailRow() === 'always' ||
 								(showDetailRow() === 'on-single-item' && data()?.length === 1) ||
-								openRows.has(index),
+								openedRows()[index],
 						}"
 			>
 			</ng-template>
@@ -265,7 +265,7 @@
 			row[highlightKey()] ? 'ngx-table-row-highlight' : '',
 			first ? 'ngx-table-row-first' : '',
 			detailRowTemplate
-				? openRows.has(rowIndex)
+				? openedRows()[rowIndex]
 					? ''
 					: renderIndex === count - 2
 					? 'ngx-table-row-last'
@@ -283,7 +283,7 @@
 		"
 		[ngxTreeGridRow]="rowIndex"
 		[ngxTreeGridRowSelectable]="selectable()"
-		[ngxTreeGridRowExpanded]="openRows.has(rowIndex)"
+		[ngxTreeGridRowExpanded]="openedRows()[rowIndex]"
 		[attr.aria-selected]="
 			rowsFormGroup.get(
 				selectableKey() ? '' + data()[rowIndex][selectableKey()] : '' + rowIndex
@@ -310,12 +310,12 @@
 						last &&
 						(showDetailRow() === 'always' ||
 							(showDetailRow() === 'on-single-item' && data?.length === 1) ||
-							openRows.has(index)),
+							openedRows()[index]),
 				}"
 		[class.ngx-table-detail-row-open]="
 			showDetailRow() === 'always' ||
 			(showDetailRow() === 'on-single-item' && data()?.length === 1) ||
-			openRows.has(index)
+			openedRows()[index]
 		"
 	></tr>
 	} @if (hasFooterTemplates()) {
@@ -356,7 +356,7 @@
 
 <ng-template #detailRowTmpl let-row let-index="index">
 	@if ( showDetailRow() === 'always' || (showDetailRow() === 'on-single-item' && data()?.length
-	=== 1) || openRows.has(index) ) {
+	=== 1) || openedRows()[index] ) {
 	<ng-template
 		[ngTemplateOutlet]="detailRowTemplate()"
 		[ngTemplateOutletContext]="{ $implicit: row, index }"
