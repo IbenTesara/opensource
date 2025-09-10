@@ -240,7 +240,7 @@
 
     <div class="tab-pane fade  tab-source-code" id="source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Pipe, PipeTransform } from &#x27;@angular/core&#x27;;
-import { getProperty } from &#x27;dot-prop&#x27;;
+import { get } from &#x27;lodash&#x27;;
 
 /**
  * This pipe returns a value based on a provided path
@@ -273,8 +273,8 @@ export class NgxTableGetPipe implements PipeTransform {
 			return value;
 		}
 
-		// Iben: Return the property using dot-prop
-		return getProperty(value, path);
+		// Iben: Return the property
+		return get(value, path);
 	}
 }
 </code></pre>
