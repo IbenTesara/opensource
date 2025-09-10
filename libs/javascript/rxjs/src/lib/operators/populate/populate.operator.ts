@@ -1,5 +1,5 @@
-import { Observable, OperatorFunction, combineLatest, map, of, switchMap } from 'rxjs';
 import { cloneDeep, get, set } from 'lodash';
+import { Observable, OperatorFunction, combineLatest, map, of, switchMap } from 'rxjs';
 
 //TODO: Iben: Find out a way to type this better than with any, but without introducing a complex typing hell
 /**

@@ -1,5 +1,5 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import { getProperty } from 'dot-prop';
+import { get } from 'lodash';
 
 /**
  * This pipe returns a value based on a provided path
@@ -32,7 +32,7 @@ export class NgxTableGetPipe implements PipeTransform {
 			return value;
 		}
 
-		// Iben: Return the property using dot-prop
-		return getProperty(value, path);
+		// Iben: Return the property
+		return get(value, path);
 	}
 }

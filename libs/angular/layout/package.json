@@ -54,7 +54,6 @@
 		"@angular/cdk": "^20.2.0",
 		"@angular/forms": "^20.2.0",
 		"lodash": "^4.17.21",
-		"dot-prop": "^9.0.0",
 		"markerjs2": "^2.32.4",
 		"markerjs-live": "^1.2.1",
 		"@ibenvandeveire/ngx-core": "^20.0.0",
