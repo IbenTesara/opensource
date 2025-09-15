@@ -2443,7 +2443,7 @@ the relative position of the element to the center of the viewport.s</p>
 	}
 
 	// Iben: Loop over each form accessor and call the mark as dirty function, so all subsequent accessors are also marked as dirty
-	accessors.forEach((accessor) &#x3D;&gt; accessor.markAsDirty(options));
+	accessors?.forEach((accessor) &#x3D;&gt; accessor.markAsDirty(options));
 }</code>
                     </td>
                 </tr>
@@ -2479,7 +2479,7 @@ the relative position of the element to the center of the viewport.s</p>
 	form.markAsPristine();
 
 	// Iben: Loop over each form accessor and call the mark as touched function, so all subsequent accessors are also marked as touched
-	accessors.forEach((accessor) &#x3D;&gt; accessor.markAsPristine(options));
+	accessors?.forEach((accessor) &#x3D;&gt; accessor.markAsPristine(options));
 }</code>
                     </td>
                 </tr>
@@ -2515,7 +2515,7 @@ the relative position of the element to the center of the viewport.s</p>
 	form.markAllAsTouched();
 
 	// Iben: Loop over each form accessor and call the mark as touched function, so all subsequent accessors are also marked as touched
-	accessors.forEach((accessor) &#x3D;&gt; accessor.markAsTouched(options));
+	accessors?.forEach((accessor) &#x3D;&gt; accessor.markAsTouched(options));
 }</code>
                     </td>
                 </tr>
@@ -2551,7 +2551,7 @@ the relative position of the element to the center of the viewport.s</p>
 	updateAllValueAndValidity(form, options);
 
 	// Iben: Loop over each form accessor and call the updateValueAndValidity function, so all subsequent accessors are also updated
-	accessors.forEach((accessor) &#x3D;&gt; accessor.updateAllValueAndValidity(options));
+	accessors?.forEach((accessor) &#x3D;&gt; accessor.updateAllValueAndValidity(options));
 }</code>
                     </td>
                 </tr>

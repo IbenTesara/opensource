@@ -1800,17 +1800,17 @@ By default, this is true</p>
 
     <div class="tab-pane fade  tab-source-code" id="source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import {
-  ChangeDetectorRef,
-  Directive,
-  Injector,
-  InputSignal,
-  OnDestroy,
-  OutputRef,
-  Signal,
-  effect,
-  inject,
-  input,
-  viewChildren
+	ChangeDetectorRef,
+	Directive,
+	Injector,
+	InputSignal,
+	OnDestroy,
+	OutputRef,
+	Signal,
+	effect,
+	inject,
+	input,
+	viewChildren,
 } from &#x27;@angular/core&#x27;;
 import { outputFromObservable, outputToObservable } from &#x27;@angular/core/rxjs-interop&#x27;;
 import {
@@ -2105,7 +2105,7 @@ export abstract class NgxFormsControlValueAccessor&lt;
 	 * Mark all controls of the form as touched
 	 */
 	public markAsTouched(options: FormStateOptionsEntity &#x3D; {}): void {
-		handleFormAccessorMarkAsTouched(this.form, this.accessors as any || [], options);
+		handleFormAccessorMarkAsTouched(this.form, (this.accessors() as any) || [], options);
 
 		// Iben: Detect changes so the changes are visible in the dom
 		this.cdRef.detectChanges();
@@ -2115,7 +2115,7 @@ export abstract class NgxFormsControlValueAccessor&lt;
 	 * Mark all controls of the form as dirty
 	 */
 	public markAsDirty(options: FormStateOptionsEntity &#x3D; {}): void {
-		handleFormAccessorMarkAsDirty(this.form, this.accessors() as any || [], options);
+		handleFormAccessorMarkAsDirty(this.form, (this.accessors() as any) || [], options);
 
 		// Iben: Detect changes so the changes are visible in the dom
 		this.cdRef.detectChanges();
@@ -2125,7 +2125,7 @@ export abstract class NgxFormsControlValueAccessor&lt;
 	 * Mark all controls of the form as pristine
 	 */
 	public markAsPristine(options: FormStateOptionsEntity &#x3D; {}): void {
-		handleFormAccessorMarkAsPristine(this.form, this.accessors() as any || [], options);
+		handleFormAccessorMarkAsPristine(this.form, (this.accessors() as any) || [], options);
 
 		// Iben: Detect changes so the changes are visible in the dom
 		this.cdRef.detectChanges();
@@ -2137,7 +2137,7 @@ export abstract class NgxFormsControlValueAccessor&lt;
 	public updateAllValueAndValidity(options: FormStateOptionsEntity): void {
 		handleFormAccessorUpdateValueAndValidity(
 			this.form,
-			this.accessors() as any || [],
+			(this.accessors() as any) || [],
 			options
 		);
 
