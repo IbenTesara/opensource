@@ -1,15 +1,15 @@
 import {
-  ChangeDetectorRef,
-  Directive,
-  Injector,
-  InputSignal,
-  OnDestroy,
-  OutputRef,
-  Signal,
-  effect,
-  inject,
-  input,
-  viewChildren
+	ChangeDetectorRef,
+	Directive,
+	Injector,
+	InputSignal,
+	OnDestroy,
+	OutputRef,
+	Signal,
+	effect,
+	inject,
+	input,
+	viewChildren,
 } from '@angular/core';
 import { outputFromObservable, outputToObservable } from '@angular/core/rxjs-interop';
 import {
@@ -304,7 +304,7 @@ export abstract class NgxFormsControlValueAccessor<
 	 * Mark all controls of the form as touched
 	 */
 	public markAsTouched(options: FormStateOptionsEntity = {}): void {
-		handleFormAccessorMarkAsTouched(this.form, this.accessors as any || [], options);
+		handleFormAccessorMarkAsTouched(this.form, (this.accessors() as any) || [], options);
 
 		// Iben: Detect changes so the changes are visible in the dom
 		this.cdRef.detectChanges();
@@ -314,7 +314,7 @@ export abstract class NgxFormsControlValueAccessor<
 	 * Mark all controls of the form as dirty
 	 */
 	public markAsDirty(options: FormStateOptionsEntity = {}): void {
-		handleFormAccessorMarkAsDirty(this.form, this.accessors() as any || [], options);
+		handleFormAccessorMarkAsDirty(this.form, (this.accessors() as any) || [], options);
 
 		// Iben: Detect changes so the changes are visible in the dom
 		this.cdRef.detectChanges();
@@ -324,7 +324,7 @@ export abstract class NgxFormsControlValueAccessor<
 	 * Mark all controls of the form as pristine
 	 */
 	public markAsPristine(options: FormStateOptionsEntity = {}): void {
-		handleFormAccessorMarkAsPristine(this.form, this.accessors() as any || [], options);
+		handleFormAccessorMarkAsPristine(this.form, (this.accessors() as any) || [], options);
 
 		// Iben: Detect changes so the changes are visible in the dom
 		this.cdRef.detectChanges();
@@ -336,7 +336,7 @@ export abstract class NgxFormsControlValueAccessor<
 	public updateAllValueAndValidity(options: FormStateOptionsEntity): void {
 		handleFormAccessorUpdateValueAndValidity(
 			this.form,
-			this.accessors() as any || [],
+			(this.accessors() as any) || [],
 			options
 		);
 

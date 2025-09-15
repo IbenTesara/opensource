@@ -1,25 +1,24 @@
 import {
-  AfterViewInit,
-  ChangeDetectorRef,
-  ComponentRef,
-  Directive,
-  ElementRef,
-  inject,
-  Inject,
-  OnDestroy,
-  Optional,
-  Renderer2,
-  TemplateRef,
-  ViewContainerRef,
-  input
+	AfterViewInit,
+	ChangeDetectorRef,
+	ComponentRef,
+	Directive,
+	ElementRef,
+	inject,
+	Renderer2,
+	TemplateRef,
+	ViewContainerRef,
+	input,
+	DestroyRef,
 } from '@angular/core';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import {
 	AbstractControl,
 	FormGroupDirective,
 	FormGroupName,
 	ValidationErrors,
 } from '@angular/forms';
-import { Observable, Subject, combineLatest, startWith, takeUntil, tap } from 'rxjs';
+import { combineLatest, startWith, tap } from 'rxjs';
 
 import { NgxFormsErrorAbstractComponent } from '../../abstracts';
 import { NgxFormsErrorConfigurationOptions } from '../../interfaces';
@@ -30,24 +29,23 @@ import { touchedEventListener } from '../../utils';
 	selector: '[ngxFormsErrors]',
 	standalone: true,
 })
-export class NgxFormsErrorsDirective implements AfterViewInit, OnDestroy {
-	private readonly formGroupDirective: FormGroupDirective = inject(FormGroupDirective, {
+export class NgxFormsErrorsDirective implements AfterViewInit {
+	protected readonly formGroupDirective: FormGroupDirective = inject(FormGroupDirective, {
 		optional: true,
 	});
-	private readonly formNameDirective: FormGroupName = inject(FormGroupName, { optional: true });
+	protected readonly formNameDirective: FormGroupName = inject(FormGroupName, { optional: true });
 	private readonly config: NgxFormsErrorConfigurationOptions = inject(
 		NgxFormsErrorsConfigurationToken,
 		{ optional: true }
 	);
-	private readonly viewContainer: ViewContainerRef = inject(ViewContainerRef);
-	private readonly elementRef: ElementRef = inject(ElementRef);
-	private readonly renderer: Renderer2 = inject(Renderer2);
-	private readonly templateRef: TemplateRef<any> = inject(TemplateRef);
-	private readonly cdRef: ChangeDetectorRef = inject(ChangeDetectorRef);
+	protected readonly viewContainer: ViewContainerRef = inject(ViewContainerRef);
+	protected readonly elementRef: ElementRef = inject(ElementRef);
+	protected readonly renderer: Renderer2 = inject(Renderer2);
+	protected readonly templateRef: TemplateRef<any> = inject(TemplateRef);
+	protected readonly cdRef: ChangeDetectorRef = inject(ChangeDetectorRef);
 
 	// Iben: Handle the OnDestroy flow
-	private readonly onDestroySubject$ = new Subject<void>();
-	private readonly onDestroy$ = new Observable<boolean>();
+	protected readonly destroyRef: DestroyRef = inject(DestroyRef);
 
 	/**
 	 *  The actual template of the input element
@@ -77,17 +75,13 @@ export class NgxFormsErrorsDirective implements AfterViewInit, OnDestroy {
 	/**
 	 * A reference to a control or a string reference to the control
 	 */
-	public readonly control = input<AbstractControl | string>(undefined, { alias: "ngxFormsErrors" });
+	public readonly control = input<AbstractControl | string>(undefined, {
+		alias: 'ngxFormsErrors',
+	});
 
 	constructor() {
 		// Iben: Set the current template ref at constructor time so we actually have the provided template (as done in the *ngIf directive)
 		this.template = this.templateRef;
-	}
-
-	public ngOnDestroy(): void {
-		// Iben: Handle the on destroy flow
-		this.onDestroySubject$.next();
-		this.onDestroySubject$.complete();
 	}
 
 	public ngAfterViewInit(): void {
@@ -97,7 +91,7 @@ export class NgxFormsErrorsDirective implements AfterViewInit, OnDestroy {
 
 		// Iben: If no control was provided, we early exit and log an error
 		const control = this.control();
-  if (!control) {
+		if (!control) {
 			console.error('NgxForms: No control was provided to the NgxFormsErrorDirective');
 
 			return;
@@ -143,7 +137,7 @@ export class NgxFormsErrorsDirective implements AfterViewInit, OnDestroy {
 					// Iben: Detect the changes so this works with (nested) OnPush components
 					this.cdRef.detectChanges();
 				}),
-				takeUntil(this.onDestroy$)
+				takeUntilDestroyed(this.destroyRef)
 			)
 			.subscribe();
 	}
@@ -180,9 +174,9 @@ export class NgxFormsErrorsDirective implements AfterViewInit, OnDestroy {
 		// Iben: Set the data of the error component
 		const { errors, errorKeys, data } = this.getErrors(this.abstractControl.errors);
 
-    this.componentRef.setInput( 'errors',errors );
-    this.componentRef.setInput( 'errorKeys',errorKeys );
-    this.componentRef.setInput( 'data',data );
+		this.componentRef.setInput('errors', errors);
+		this.componentRef.setInput('errorKeys', errorKeys);
+		this.componentRef.setInput('data', data);
 	}
 
 	/**
