@@ -6,14 +6,11 @@ import {
 	NgxI18nSetLanguageGuard,
 	provideWithTranslations,
 } from '@lib/ngx-i18n';
-import {
-	NgxMobileLayoutComponent,
-	NgxMobileLayoutDefaultGuard,
-	NgxMobileLayoutGuard,
-} from '@lib/ngx-layout';
+import { NgxMobileLayoutDefaultGuard, NgxMobileLayoutGuard } from '@lib/ngx-layout';
 
 import { FormsPageComponent } from '../packages/forms/forms.component';
 import { NgxLayoutPageComponent } from '../packages/layout/layout.component';
+import { NgxMobileLayoutPageComponent } from '../packages/mobile-layout/mobile-layout.component';
 import { Page1Component } from '../packages/mobile-layout/pages/page-1.component';
 import { Page2Component } from '../packages/mobile-layout/pages/page-2.component';
 import { NgxSignalStoreComponent } from '../packages/store/store.component';
@@ -49,7 +46,7 @@ export const appRoutes: Route[] = [
 			provideWithTranslations(
 				{
 					path: 'mobile-layout',
-					component: NgxMobileLayoutComponent,
+					component: NgxMobileLayoutPageComponent,
 					loadChildren: () => [
 						{
 							path: '',

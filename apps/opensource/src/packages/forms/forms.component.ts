@@ -1,11 +1,7 @@
 import { Component } from '@angular/core';
 import { FormControl, ReactiveFormsModule, Validators } from '@angular/forms';
 
-import {
-	NgxFormsErrorsConfigurationToken,
-	NgxFormsErrorsDirective,
-	NgxInputDirective,
-} from '@lib/ngx-forms';
+import { NgxFormsErrorsConfigurationToken, NgxFormsErrorsDirective } from '@lib/ngx-forms';
 
 @Component({
 	selector: 'ngx-forms-page',
@@ -15,7 +11,7 @@ import {
 			useValue: { showWhen: 'touched', errors: { required: 'Dit veld is verplicht' } },
 		},
 	],
-	imports: [ReactiveFormsModule, NgxFormsErrorsDirective, NgxInputDirective],
+	imports: [ReactiveFormsModule, NgxFormsErrorsDirective],
 	templateUrl: './forms.component.html',
 })
 export class FormsPageComponent {

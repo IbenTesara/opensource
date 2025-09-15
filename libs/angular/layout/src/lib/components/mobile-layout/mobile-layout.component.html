@@ -18,7 +18,11 @@
 	}
 
 	<div class="ngx-mobile-layout-content">
+		@if(contentTemplate()) {
+		<ng-template [ngTemplateOutlet]="contentTemplate()" />
+		} @else {
 		<router-outlet />
+		}
 	</div>
 
 	@if(layout().flyout) {
@@ -31,5 +35,4 @@
 	</footer>
 	}
 </main>
-
 }
