@@ -128,7 +128,7 @@ export const handleFormAccessorMarkAsDirty = (
 	}
 
 	// Iben: Loop over each form accessor and call the mark as dirty function, so all subsequent accessors are also marked as dirty
-	accessors.forEach((accessor) => accessor.markAsDirty(options));
+	accessors?.forEach((accessor) => accessor.markAsDirty(options));
 };
 
 /**
@@ -147,7 +147,7 @@ export const handleFormAccessorMarkAsTouched = (
 	form.markAllAsTouched();
 
 	// Iben: Loop over each form accessor and call the mark as touched function, so all subsequent accessors are also marked as touched
-	accessors.forEach((accessor) => accessor.markAsTouched(options));
+	accessors?.forEach((accessor) => accessor.markAsTouched(options));
 };
 
 /**
@@ -166,7 +166,7 @@ export const handleFormAccessorMarkAsPristine = (
 	form.markAsPristine();
 
 	// Iben: Loop over each form accessor and call the mark as touched function, so all subsequent accessors are also marked as touched
-	accessors.forEach((accessor) => accessor.markAsPristine(options));
+	accessors?.forEach((accessor) => accessor.markAsPristine(options));
 };
 
 /**
@@ -185,5 +185,5 @@ export const handleFormAccessorUpdateValueAndValidity = (
 	updateAllValueAndValidity(form, options);
 
 	// Iben: Loop over each form accessor and call the updateValueAndValidity function, so all subsequent accessors are also updated
-	accessors.forEach((accessor) => accessor.updateAllValueAndValidity(options));
+	accessors?.forEach((accessor) => accessor.updateAllValueAndValidity(options));
 };
