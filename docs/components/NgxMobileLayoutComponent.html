@@ -163,6 +163,7 @@
                 <td class="col-md-3">imports</td>
                 <td class="col-md-9">
                             <code>NgComponentOutlet</code>
+                            <code>NgTemplateOutlet</code>
                             <code>RouterModule</code>
                 </td>
             </tr>
@@ -200,14 +201,19 @@
                         <ul class="index-list">
                             <li>
                                     <span class="modifier">Public</span>
+                                    <span class="modifier">Readonly</span>
+                                <a href="#contentTemplate" >contentTemplate</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Protected</span>
                                 <a href="#flyoutClass" >flyoutClass</a>
                             </li>
                             <li>
-                                    <span class="modifier">Public</span>
+                                    <span class="modifier">Protected</span>
                                 <a href="#layout" >layout</a>
                             </li>
                             <li>
-                                    <span class="modifier">Private</span>
+                                    <span class="modifier">Protected</span>
                                     <span class="modifier">Readonly</span>
                                 <a href="#layoutService" >layoutService</a>
                             </li>
@@ -268,8 +274,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="40"
-                                    class="link-to-prism">libs/angular/layout/src/lib/components/mobile-layout/mobile-layout.component.ts:40</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="45"
+                                    class="link-to-prism">libs/angular/layout/src/lib/components/mobile-layout/mobile-layout.component.ts:45</a></div>
                         </td>
                     </tr>
 
@@ -295,9 +301,42 @@
         <tbody>
             <tr>
                 <td class="col-md-4">
-                    <a name="flyoutClass"></a>
+                    <a name="contentTemplate"></a>
                     <span class="name">
                             <span class="modifier">Public</span>
+                            <span class="modifier">Readonly</span>
+                        <span ><b>contentTemplate</b></span>
+                        <a href="#contentTemplate"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>contentChild&lt;TemplateRef&lt;any&gt;&gt;(&#x27;contentTmpl&#x27;)</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="43" class="link-to-prism">libs/angular/layout/src/lib/components/mobile-layout/mobile-layout.component.ts:43</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>An optional template we can pass to replace the default routerOutlet</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="flyoutClass"></a>
+                    <span class="name">
+                            <span class="modifier">Protected</span>
                         <span ><b>flyoutClass</b></span>
                         <a href="#flyoutClass"><span class="icon ion-ios-link"></span></a>
                     </span>
@@ -341,7 +380,7 @@
                 <td class="col-md-4">
                     <a name="layout"></a>
                     <span class="name">
-                            <span class="modifier">Public</span>
+                            <span class="modifier">Protected</span>
                         <span ><b>layout</b></span>
                         <a href="#layout"><span class="icon ion-ios-link"></span></a>
                     </span>
@@ -379,7 +418,7 @@
                 <td class="col-md-4">
                     <a name="layoutService"></a>
                     <span class="name">
-                            <span class="modifier">Private</span>
+                            <span class="modifier">Protected</span>
                             <span class="modifier">Readonly</span>
                         <span ><b>layoutService</b></span>
                         <a href="#layoutService"><span class="icon ion-ios-link"></span></a>
@@ -418,8 +457,8 @@
 
 
     <div class="tab-pane fade  tab-source-code" id="source">
-        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { NgComponentOutlet } from &#x27;@angular/common&#x27;;
-import { Component, inject, OnInit, Signal } from &#x27;@angular/core&#x27;;
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { NgComponentOutlet, NgTemplateOutlet } from &#x27;@angular/common&#x27;;
+import { Component, contentChild, inject, OnInit, Signal, TemplateRef } from &#x27;@angular/core&#x27;;
 import { toSignal } from &#x27;@angular/core/rxjs-interop&#x27;;
 import { RouterModule } from &#x27;@angular/router&#x27;;
 import { map } from &#x27;rxjs&#x27;;
@@ -432,30 +471,35 @@ import { NgxMobileLayout } from &#x27;../../types&#x27;;
  */
 @Component({
 	selector: &#x27;ngx-mobile-layout&#x27;,
-	imports: [NgComponentOutlet, RouterModule],
+	imports: [NgComponentOutlet, NgTemplateOutlet, RouterModule],
 	templateUrl: &#x27;./mobile-layout.component.html&#x27;,
 })
 export class NgxMobileLayoutComponent implements OnInit {
 	/**
 	 * The instance of the NgxMobileLayoutService
 	 */
-	private readonly layoutService: NgxMobileLayoutService &#x3D; inject(NgxMobileLayoutService);
+	protected readonly layoutService: NgxMobileLayoutService &#x3D; inject(NgxMobileLayoutService);
 
 	/**
 	 * The currently displayed layout
 	 */
-	public layout: Signal&lt;NgxMobileLayout&gt; &#x3D; toSignal(this.layoutService.layout$);
+	protected layout: Signal&lt;NgxMobileLayout&gt; &#x3D; toSignal(this.layoutService.layout$);
 
 	/**
 	 * A class added to the flyout element when it gets added or removed
 	 */
-	public flyoutClass: Signal&lt;string&gt; &#x3D; toSignal(
+	protected flyoutClass: Signal&lt;string&gt; &#x3D; toSignal(
 		this.layoutService.flyoutState$.pipe(
 			map((state) &#x3D;&gt;
 				state &#x3D;&#x3D;&#x3D; &#x27;IN&#x27; ? &#x27;ngx-mobile-layout-flyout-in&#x27; : &#x27;ngx-mobile-layout-flyout-out&#x27;
 			)
 		)
 	);
+
+	/**
+	 * An optional template we can pass to replace the default routerOutlet
+	 */
+	public readonly contentTemplate &#x3D; contentChild&lt;TemplateRef&lt;any&gt;&gt;(&#x27;contentTmpl&#x27;);
 
 	ngOnInit(): void {
 		// Iben: Sets up the initial layout if one was provided
@@ -486,7 +530,11 @@ export class NgxMobileLayoutComponent implements OnInit {
 	}
 
 	&lt;div class&#x3D;&quot;ngx-mobile-layout-content&quot;&gt;
+		@if(contentTemplate()) {
+		&lt;ng-template [ngTemplateOutlet]&#x3D;&quot;contentTemplate()&quot; /&gt;
+		} @else {
 		&lt;router-outlet /&gt;
+		}
 	&lt;/div&gt;
 
 	@if(layout().flyout) {
@@ -499,7 +547,6 @@ export class NgxMobileLayoutComponent implements OnInit {
 	&lt;/footer&gt;
 	}
 &lt;/main&gt;
-
 }
 </code></pre>
     </div>
@@ -530,7 +577,7 @@ export class NgxMobileLayoutComponent implements OnInit {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div>@if(layout()) {<main class="ngx-mobile-layout-main">	@if(layout().header) {	<header class="ngx-mobile-layout-header">		@if(layout().header.left) {		<ng-template [ngComponentOutlet]="layout().header.left" />		}		<ng-template [ngComponentOutlet]="layout().header.main" />		@if(layout().header.right) {		<ng-template [ngComponentOutlet]="layout().header.right" />		}	</header>	} @if(layout().navigation) {	<nav class="ngx-mobile-layout-navigation">		<ng-template [ngComponentOutlet]="layout().navigation" />	</nav>	}	<div class="ngx-mobile-layout-content">		<router-outlet />	</div>	@if(layout().flyout) {	<div [class]="[\'ngx-mobile-layout-flyout\', flyoutClass()]">		<ng-template [ngComponentOutlet]="layout().flyout" />	</div>	} @if(layout().footer) {	<footer class="ngx-mobile-layout-footer">		<ng-template [ngComponentOutlet]="layout().footer" />	</footer>	}</main>}</div>'
+        var COMPONENT_TEMPLATE = '<div>@if(layout()) {<main class="ngx-mobile-layout-main">	@if(layout().header) {	<header class="ngx-mobile-layout-header">		@if(layout().header.left) {		<ng-template [ngComponentOutlet]="layout().header.left" />		}		<ng-template [ngComponentOutlet]="layout().header.main" />		@if(layout().header.right) {		<ng-template [ngComponentOutlet]="layout().header.right" />		}	</header>	} @if(layout().navigation) {	<nav class="ngx-mobile-layout-navigation">		<ng-template [ngComponentOutlet]="layout().navigation" />	</nav>	}	<div class="ngx-mobile-layout-content">		@if(contentTemplate()) {		<ng-template [ngTemplateOutlet]="contentTemplate()" />		} @else {		<router-outlet />		}	</div>	@if(layout().flyout) {	<div [class]="[\'ngx-mobile-layout-flyout\', flyoutClass()]">		<ng-template [ngComponentOutlet]="layout().flyout" />	</div>	} @if(layout().footer) {	<footer class="ngx-mobile-layout-footer">		<ng-template [ngComponentOutlet]="layout().footer" />	</footer>	}</main>}</div>'
     var COMPONENTS = [{'name': 'MockTourHolderComponent', 'selector': 'mock-tour-holder'},{'name': 'MockTourStepComponent', 'selector': 'mock-tour-step-component'},{'name': 'NgxAccordionComponent', 'selector': 'ngx-accordion'},{'name': 'NgxAccordionItemComponent', 'selector': 'ngx-accordion-item'},{'name': 'NgxConfigurableLayoutComponent', 'selector': 'ngx-configurable-layout'},{'name': 'NgxConfigurableLayoutItemComponent', 'selector': 'ngx-configurable-layout-item'},{'name': 'NgxCurrencyTableCellComponent', 'selector': 'ngx-table-currency-cell'},{'name': 'NgxDateTableCellComponent', 'selector': 'ngx-table-date-cell'},{'name': 'NgxI18nEmptyComponent', 'selector': 'ngx-i18n-empty'},{'name': 'NgxImageMarkerComponent', 'selector': 'ngx-image-marker'},{'name': 'NgxMobileLayoutComponent', 'selector': 'ngx-mobile-layout'},{'name': 'NgxTableComponent', 'selector': 'ngx-table'},{'name': 'NgxToastContainerComponent', 'selector': 'ngx-toast-container'},{'name': 'TestDisplayContentComponent', 'selector': 'test-data'},{'name': 'TestErrorComponent', 'selector': 'test-error'},{'name': 'TestErrorDataComponent', 'selector': 'test-data-error'},{'name': 'TestLoadingComponent', 'selector': 'test-loading'},{'name': 'TestOfflineComponent', 'selector': 'test-offline'},{'name': 'TestOverrideDisplayContentComponent', 'selector': 'test-override-data'}];
     var DIRECTIVES = [{'name': 'DataFormAccessor', 'selector': ''},{'name': 'FocusClickDirective', 'selector': '[focusClick]'},{'name': 'FormAccessor', 'selector': ''},{'name': 'FormAccessorContainer', 'selector': ''},{'name': 'NgxAbstractTableCellDirective', 'selector': 'ngx-abstract-table-cell'},{'name': 'NgxAccessibleAbstractDragAndDropItemDirective', 'selector': ''},{'name': 'NgxAccessibleDragAndDropContainerDirective', 'selector': '[ngxAccessibleDragAndDropContainer]'},{'name': 'NgxAccessibleDragAndDropHostDirective', 'selector': '[ngxAccessibleDragAndDropHost]'},{'name': 'NgxAccessibleDragAndDropItemDirective', 'selector': '[ngxAccessibleDragAndDropItem]'},{'name': 'NgxButtonDirective', 'selector': '[ngxButton]'},{'name': 'NgxCookiesFallBackComponent', 'selector': ''},{'name': 'NgxCypressTagDirective', 'selector': '[cypressTag]'},{'name': 'NgxDisplayContentComponent', 'selector': ''},{'name': 'NgxDisplayContentDirective', 'selector': '[displayContent]'},{'name': 'NgxFormsControlValueAccessor', 'selector': ''},{'name': 'NgxFormsErrorAbstractComponent', 'selector': ''},{'name': 'NgxFormsErrorsDirective', 'selector': '[ngxFormsErrors]'},{'name': 'NgxHasCookieDirective', 'selector': '[hasCookie]'},{'name': 'NgxHasFeatureDirective', 'selector': '[ngxHasFeature]'},{'name': 'NgxHasFocusDirective', 'selector': ''},{'name': 'NgxHasFocusDragAndDropAbstractDirective', 'selector': ''},{'name': 'NgxHasPermissionDirective', 'selector': '[ngxHasPermission]'},{'name': 'NgxIsAuthenticatedDirective', 'selector': '[ngxIsAuthenticated]'},{'name': 'NgxModalAbstractComponent', 'selector': ''},{'name': 'NgxQueryParamFormSyncComponent', 'selector': ''},{'name': 'NgxSaveOnExitComponent', 'selector': ''},{'name': 'NgxTableCellDirective', 'selector': 'ngx-table-cell'},{'name': 'NgxTableOpenRowStateTemplateAbstractComponent', 'selector': ''},{'name': 'NgxTableSelectTemplateAbstractComponent', 'selector': ''},{'name': 'NgxTableSortTemplateAbstractComponent', 'selector': ''},{'name': 'NgxToastBundlerComponent', 'selector': ''},{'name': 'NgxToastComponent', 'selector': ''},{'name': 'NgxTooltipAbstractComponent', 'selector': ''},{'name': 'NgxTooltipDirective', 'selector': '[ngxTooltip]'},{'name': 'NgxTourItemDirective', 'selector': '[tourItem]'},{'name': 'NgxTourShowWhenDirective', 'selector': '[ngxTourShowWhen]'},{'name': 'NgxTourStepComponent', 'selector': ''},{'name': 'NgxTreeGridCellDirective', 'selector': '[ngxTreeGridCell]'},{'name': 'NgxTreeGridDirective', 'selector': '[ngxTreeGrid]'},{'name': 'NgxTreeGridRowDirective', 'selector': '[ngxTreeGridRow]'}];
     var ACTUAL_COMPONENT = {'name': 'NgxMobileLayoutComponent'};
