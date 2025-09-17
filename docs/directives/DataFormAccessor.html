@@ -131,6 +131,7 @@
             </p>
             <p class="comment">
                         <code>OnDestroy</code>
+                        <code>OnInit</code>
             </p>
 
 
@@ -155,6 +156,11 @@
                                     <span class="modifier">Public</span>
                                     <span class="modifier">Readonly</span>
                                 <a href="#data" >data</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                    <span class="modifier">Readonly</span>
+                                <a href="#data$" >data$</a>
                             </li>
                             <li>
                                     <span class="modifier">Private</span>
@@ -249,6 +255,10 @@
                                 <a href="#ngOnDestroy" >ngOnDestroy</a>
                             </li>
                             <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#ngOnInit" >ngOnInit</a>
+                            </li>
+                            <li>
                                     <span class="modifier">Protected</span>
                                 <a href="#setInitializedWithData" >setInitializedWithData</a>
                             </li>
@@ -332,24 +342,6 @@
     </table>
 </section>
 
-            <section data-compodoc="block-constructor">
-    <h3 id="constructor">Constructor</h3>
-        <table class="table table-sm table-bordered">
-            <tbody>
-                <tr>
-                    <td class="col-md-4">
-<code>constructor()</code>
-                    </td>
-                </tr>
-                        <tr>
-                            <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="36" class="link-to-prism">libs/angular/forms/src/lib/abstracts/data-form/data-form.accessor.ts:36</a></div>
-                            </td>
-                        </tr>
-
-            </tbody>
-        </table>
-</section>
 
             <section data-compodoc="block-inputs">
     <h3 id="inputs">Inputs</h3>
@@ -519,8 +511,47 @@ By default, this is true</p>
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="90"
-                                    class="link-to-prism">libs/angular/forms/src/lib/abstracts/data-form/data-form.accessor.ts:90</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="89"
+                                    class="link-to-prism">libs/angular/forms/src/lib/abstracts/data-form/data-form.accessor.ts:89</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngOnInit"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                        <span ><b>ngOnInit</b></span>
+                        <a href="#ngOnInit"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>ngOnInit()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="40"
+                                    class="link-to-prism">libs/angular/forms/src/lib/abstracts/data-form/data-form.accessor.ts:40</a></div>
                         </td>
                     </tr>
 
@@ -558,8 +589,8 @@ By default, this is true</p>
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="107"
-                                    class="link-to-prism">libs/angular/forms/src/lib/abstracts/data-form/data-form.accessor.ts:107</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="106"
+                                    class="link-to-prism">libs/angular/forms/src/lib/abstracts/data-form/data-form.accessor.ts:106</a></div>
                         </td>
                     </tr>
 
@@ -1622,6 +1653,39 @@ overwriting this method to fit certain use-cases.</p>
         <tbody>
             <tr>
                 <td class="col-md-4">
+                    <a name="data$"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                            <span class="modifier">Readonly</span>
+                        <span ><b>data$</b></span>
+                        <a href="#data$"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../miscellaneous/typealiases.html#DataType" target="_self" >Observable&lt;ConstructionDataType&gt;</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>toObservable(this.data)</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="38" class="link-to-prism">libs/angular/forms/src/lib/abstracts/data-form/data-form.accessor.ts:38</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
                     <a name="destroyFormSubject$"></a>
                     <span class="name">
                             <span class="modifier">Private</span>
@@ -2336,11 +2400,11 @@ By default, this is true</p>
 
 
     <div class="tab-pane fade  tab-source-code" id="source">
-        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Directive, input, InputSignal, OnDestroy } from &#x27;@angular/core&#x27;;
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Directive, input, InputSignal, OnDestroy, OnInit } from &#x27;@angular/core&#x27;;
 import { takeUntilDestroyed, toObservable } from &#x27;@angular/core/rxjs-interop&#x27;;
 import { AbstractControl, FormControl } from &#x27;@angular/forms&#x27;;
 import { isEqual } from &#x27;lodash&#x27;;
-import { of, Subject } from &#x27;rxjs&#x27;;
+import { Observable, of, Subject } from &#x27;rxjs&#x27;;
 import { switchMap, takeUntil, tap } from &#x27;rxjs/operators&#x27;;
 
 import { NgxFormsControlValueAccessor } from &#x27;../custom-control-value-accessor&#x27;;
@@ -2353,7 +2417,7 @@ export abstract class DataFormAccessor&lt;
 		FormValueType &#x3D; DataType
 	&gt;
 	extends NgxFormsControlValueAccessor&lt;DataType, FormAccessorFormType, FormValueType&gt;
-	implements OnDestroy
+	implements OnDestroy, OnInit
 {
 	// Iben: Keep a reference to the current data so we don&#x27;t make a new form if the data itself hasn&#x27;t changed
 	private currentData: ConstructionDataType;
@@ -2373,11 +2437,10 @@ export abstract class DataFormAccessor&lt;
 	 */
 	public readonly data: InputSignal&lt;ConstructionDataType&gt; &#x3D; input.required();
 
-	constructor() {
-		super();
+	private readonly data$: Observable&lt;ConstructionDataType&gt; &#x3D; toObservable(this.data);
 
-		// Iben: Generate a form based on the data
-		toObservable(this.data)
+	public ngOnInit(): void {
+		this.data$
 			.pipe(
 				switchMap((data) &#x3D;&gt; {
 					// Iben: If we already have current data and the current data matches the new data, we don&#x27;t make a new form
