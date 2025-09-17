@@ -1,17 +1,18 @@
 import {
 	ChangeDetectorRef,
+	DestroyRef,
 	Directive,
 	Injector,
 	InputSignal,
-	OnDestroy,
 	OutputRef,
 	Signal,
-	effect,
+	WritableSignal,
 	inject,
 	input,
+	signal,
 	viewChildren,
 } from '@angular/core';
-import { outputFromObservable, outputToObservable } from '@angular/core/rxjs-interop';
+import { outputFromObservable, takeUntilDestroyed, toObservable } from '@angular/core/rxjs-interop';
 import {
 	AbstractControl,
 	ControlValueAccessor,
@@ -19,7 +20,18 @@ import {
 	NgControl,
 	ValidationErrors,
 } from '@angular/forms';
-import { BehaviorSubject, Observable, Subject, filter, takeUntil, tap } from 'rxjs';
+import {
+	BehaviorSubject,
+	Observable,
+	Subject,
+	combineLatest,
+	filter,
+	of,
+	switchMap,
+	take,
+	takeUntil,
+	tap,
+} from 'rxjs';
 
 import { FormAccessorControlsEntity, FormStateOptionsEntity } from '../../interfaces';
 import {
@@ -37,12 +49,17 @@ export abstract class NgxFormsControlValueAccessor<
 	DataType = unknown,
 	FormAccessorFormType extends AbstractControl = FormControl,
 	FormValueType = DataType
-> implements ControlValueAccessor, OnDestroy
+> implements ControlValueAccessor
 {
 	/**
 	 *  The Injector needed in the constructor
 	 */
 	private readonly injector: Injector = inject(Injector);
+
+	/**
+	 *  The OnDestroyRef reference
+	 */
+	protected readonly destroyRef: DestroyRef = inject(DestroyRef);
 
 	/**
 	 *  The ChangeDetector reference
@@ -52,29 +69,17 @@ export abstract class NgxFormsControlValueAccessor<
 	/**
 	 * A subject to hold the parent control
 	 */
-	private readonly parentControlSubject$: Subject<AbstractControl> =
-		new Subject<AbstractControl>();
+	private readonly parent: WritableSignal<AbstractControl> = signal<AbstractControl>(undefined);
 
 	/**
 	 * A reference to the control tied to this control value accessor
 	 */
-	protected readonly parentControl$: Observable<AbstractControl> =
-		this.parentControlSubject$.pipe(filter(Boolean));
-
-	/**
-	 * Inner form to write to
-	 */
-	public form: FormAccessorFormType;
+	protected parentControl: Signal<AbstractControl> = this.parent.asReadonly();
 
 	/**
 	 * Whether the first setDisable has run
 	 */
 	protected initialSetDisableHasRun: boolean = false;
-
-	/**
-	 * On destroy flow handler
-	 */
-	protected readonly destroy$ = new Subject();
 
 	/**
 	 * Subject to check whether the form is initialized
@@ -95,7 +100,18 @@ export abstract class NgxFormsControlValueAccessor<
 	/**
 	 * A list of all DataFormAccessors en FormAccessors of this component
 	 */
-	readonly accessors: Signal<BaseFormAccessor> = viewChildren<BaseFormAccessor>(BaseFormAccessor);
+	protected readonly accessors: Signal<BaseFormAccessor> =
+		viewChildren<BaseFormAccessor>(BaseFormAccessor);
+
+	/**
+	 * An observable that emits whenever the form is initialized
+	 */
+	public initialized$: Observable<boolean> = this.initializedSubject$.asObservable();
+
+	/**
+	 * Inner form to write to
+	 */
+	public form: FormAccessorFormType;
 
 	/**
 	 * Keys of the fields we wish to disable.
@@ -113,9 +129,9 @@ export abstract class NgxFormsControlValueAccessor<
 	public readonly skipInitialSetDisable = input<boolean>(true);
 
 	/**
-	 * Stream to know whether the form has been initialized
+	 * Emits to know whether the form has been initialized
 	 */
-	public readonly initialized$: OutputRef<boolean> = outputFromObservable(
+	public readonly initializedForm: OutputRef<boolean> = outputFromObservable(
 		this.initializedSubject$.asObservable()
 	);
 
@@ -134,7 +150,8 @@ export abstract class NgxFormsControlValueAccessor<
 					return;
 				}
 
-				this.parentControlSubject$.next(parentControl.control);
+				// Iben: Set the parent control
+				this.parent.set(parentControl.control);
 
 				// Iben: Grab the control from the parent container
 				const control = parentControl.control;
@@ -214,44 +231,49 @@ export abstract class NgxFormsControlValueAccessor<
 			}
 		});
 
-		effect(() => {
-			const keys = this.disableFields();
+		combineLatest([this.initialized$, toObservable(this.disableFields)])
+			.pipe(
+				switchMap(([, keys]) => {
+					// Iben: Early exit in case the keys are not provided
+					if (!keys) {
+						return of();
+					}
 
-			// Iben: Early exit in case the keys are not provided
-			if (!keys) {
-				return;
-			}
+					// Iben: Setup a subject to track whether we're still disabling the fields
+					const disabling = new Subject();
 
-			// Iben: Setup a subject to track whether we're still disabling the fields
-			const disabling = new Subject();
+					// Iben: Add the keys to a set for more performant lookup and convert those to a string to not have Typescript issues later down the line
+					const controlKeys = new Set(keys);
 
-			// Iben: Add the keys to a set for more performant lookup and convert those to a string to not have Typescript issues later down the line
-			const controlKeys = new Set(keys);
+					// Iben: Check if we need to dispatch the disable or enable event
+					const emitEvent = this.emitValueWhenDisableFieldsUsingInput
+						? this.emitValueWhenDisableFieldsUsingInput(keys)
+						: true;
 
-			// Iben: Check if we need to dispatch the disable or enable event
-			const emitEvent = this.emitValueWhenDisableFieldsUsingInput
-				? this.emitValueWhenDisableFieldsUsingInput(keys)
-				: true;
+					// Iben: Listen to the initialized state of the form
+					return this.initializedSubject$.pipe(
+						filter(Boolean),
+						tap(() => {
+							// TODO: Iben: Remove this setTimeout once we're in a Signal based component
+							setTimeout(() => {
+								// Iben: Handle the disabling of the fields
+								handleFormAccessorControlDisabling(
+									this.form,
+									controlKeys,
+									emitEvent
+								);
+							});
 
-			// Iben: Listen to the initialized state of the form
-			outputToObservable(this.initialized$)
-				.pipe(
-					filter(Boolean),
-					tap(() => {
-						// TODO: Iben: Remove this setTimeout once we're in a Signal based component
-						setTimeout(() => {
-							// Iben: Handle the disabling of the fields
-							handleFormAccessorControlDisabling(this.form, controlKeys, emitEvent);
-						});
-
-						// Iben: Set the disabling subject so that we can complete this subscription
-						disabling.next(undefined);
-						disabling.complete();
-					}),
-					takeUntil(disabling)
-				)
-				.subscribe();
-		});
+							// Iben: Set the disabling subject so that we can complete this subscription
+							disabling.next(undefined);
+							disabling.complete();
+						}),
+						takeUntil(disabling)
+					);
+				}),
+				takeUntilDestroyed(this.destroyRef)
+			)
+			.subscribe();
 	}
 
 	/**
@@ -274,30 +296,42 @@ export abstract class NgxFormsControlValueAccessor<
 	 * @param value - Value to patch in the inner form
 	 */
 	public writeValue(value: DataType | undefined | null): void {
-		// Iben: Early exit in case the form was not found
-		if (!this.form) {
-			console.error(
-				'NgxForms: No form was found when trying to write a value. This error can occur when overwriting the ngOnInit without invoking super.OnInit().'
-			);
+		// Iben: Wait until the form is ready
+		this.initialized$
+			.pipe(
+				filter(Boolean),
+				take(1),
+				tap(() => {
+					// Iben: Early exit in case the form was not found
+					if (!this.form) {
+						console.error(
+							'NgxForms: No form was found when trying to write a value. This error can occur when overwriting the ngOnInit without invoking super.OnInit().'
+						);
 
-			return;
-		}
+						return;
+					}
 
-		// Iben: Reset the current form without emitEvent to not trigger the valueChanges
-		this.form.reset(undefined, { emitEvent: false });
+					// Iben: Reset the current form without emitEvent to not trigger the valueChanges
+					this.form.reset(undefined, { emitEvent: false });
 
-		// Iben: Patch the current form with the new value without emitEvent to not trigger the valueChanges
-		if (value !== undefined && value !== null) {
-			this.form.patchValue(this.onWriteValueMapper ? this.onWriteValueMapper(value) : value, {
-				emitEvent: false,
-			});
-		}
+					// Iben: Patch the current form with the new value without emitEvent to not trigger the valueChanges
+					if (value !== undefined && value !== null) {
+						this.form.patchValue(
+							this.onWriteValueMapper ? this.onWriteValueMapper(value) : value,
+							{
+								emitEvent: false,
+							}
+						);
+					}
 
-		// Iben: Validate the current value
-		this.validate();
+					// Iben: Validate the current value
+					this.validate();
 
-		// Iben: Detect changes so the changes are visible in the dom
-		this.cdRef.detectChanges();
+					// Iben: Detect changes so the changes are visible in the dom
+					this.cdRef.detectChanges();
+				})
+			)
+			.subscribe();
 	}
 
 	/**
@@ -349,7 +383,7 @@ export abstract class NgxFormsControlValueAccessor<
 	 */
 	public validate(): ValidationErrors | null {
 		// Iben: If the form itself is invalid, we return the invalidForm: true right away
-		if (this.form.invalid) {
+		if (this.form?.invalid) {
 			return { invalidForm: true };
 		}
 
@@ -394,9 +428,4 @@ export abstract class NgxFormsControlValueAccessor<
 	 * @param value - Value from the form
 	 */
 	public onWriteValueMapper?(value: DataType): FormValueType;
-
-	public ngOnDestroy(): void {
-		this.destroy$.next(undefined);
-		this.destroy$.complete();
-	}
 }

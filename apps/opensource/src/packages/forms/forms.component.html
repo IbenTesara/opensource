@@ -3,3 +3,9 @@
 <div>
 	<input *ngxFormsErrors="control" ngxInput [formControl]="control" label="Hello" type="text" />
 </div>
+
+<data-form [formControl]="control" [data]="options()" />
+
+<button (click)="addOption()">Add option</button>
+
+<button (click)="setValue()">Set value to A</button>
