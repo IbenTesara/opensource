@@ -1,8 +1,8 @@
-import { Directive, input, InputSignal, OnDestroy } from '@angular/core';
+import { Directive, input, InputSignal, OnDestroy, OnInit } from '@angular/core';
 import { takeUntilDestroyed, toObservable } from '@angular/core/rxjs-interop';
 import { AbstractControl, FormControl } from '@angular/forms';
 import { isEqual } from 'lodash';
-import { of, Subject } from 'rxjs';
+import { Observable, of, Subject } from 'rxjs';
 import { switchMap, takeUntil, tap } from 'rxjs/operators';
 
 import { NgxFormsControlValueAccessor } from '../custom-control-value-accessor';
@@ -15,7 +15,7 @@ export abstract class DataFormAccessor<
 		FormValueType = DataType
 	>
 	extends NgxFormsControlValueAccessor<DataType, FormAccessorFormType, FormValueType>
-	implements OnDestroy
+	implements OnDestroy, OnInit
 {
 	// Iben: Keep a reference to the current data so we don't make a new form if the data itself hasn't changed
 	private currentData: ConstructionDataType;
@@ -35,11 +35,10 @@ export abstract class DataFormAccessor<
 	 */
 	public readonly data: InputSignal<ConstructionDataType> = input.required();
 
-	constructor() {
-		super();
+	private readonly data$: Observable<ConstructionDataType> = toObservable(this.data);
 
-		// Iben: Generate a form based on the data
-		toObservable(this.data)
+	public ngOnInit(): void {
+		this.data$
 			.pipe(
 				switchMap((data) => {
 					// Iben: If we already have current data and the current data matches the new data, we don't make a new form

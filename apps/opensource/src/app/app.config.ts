@@ -3,6 +3,7 @@ import {
 	ApplicationConfig,
 	provideBrowserGlobalErrorListeners,
 	provideZoneChangeDetection,
+	provideZonelessChangeDetection,
 } from '@angular/core';
 import { provideRouter } from '@angular/router';
 
@@ -38,7 +39,7 @@ export const appConfig: ApplicationConfig = {
 			availableLanguages: ['en'],
 			defaultLanguage: 'en',
 		}),
-		provideZoneChangeDetection({ eventCoalescing: true }),
+		provideZonelessChangeDetection(),
 		provideRouter(appRoutes),
 		provideNgxTourConfiguration(TourStepComponent),
 		provideNgxTooltipConfiguration({
