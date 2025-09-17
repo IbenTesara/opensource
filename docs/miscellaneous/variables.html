@@ -2923,6 +2923,11 @@ By default, a take(1) is applied to the source, so the source observable can be 
                 <tr>
                     <td class="col-md-4">
                         <i>Default value : </i><code>(control: AbstractControl): boolean &#x3D;&gt; {
+	// Iben: If no control is found, early exit
+	if (!control) {
+		return false;
+	}
+
 	// Iben: If the form has no children we just return the state of the current form
 	if (!control[&#x27;controls&#x27;]) {
 		return control.invalid;
