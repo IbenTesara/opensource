@@ -1,19 +1,29 @@
-import { Directive, effect, input, InputSignal } from '@angular/core';
+import { Directive, input, InputSignal, OnDestroy } from '@angular/core';
+import { takeUntilDestroyed, toObservable } from '@angular/core/rxjs-interop';
 import { AbstractControl, FormControl } from '@angular/forms';
 import { isEqual } from 'lodash';
-import { takeUntil, tap } from 'rxjs/operators';
+import { of, Subject } from 'rxjs';
+import { switchMap, takeUntil, tap } from 'rxjs/operators';
 
 import { NgxFormsControlValueAccessor } from '../custom-control-value-accessor';
 
 @Directive()
 export abstract class DataFormAccessor<
-	ConstructionDataType = unknown,
-	DataType = unknown,
-	FormAccessorFormType extends AbstractControl = FormControl,
-	FormValueType = DataType
-> extends NgxFormsControlValueAccessor<DataType, FormAccessorFormType, FormValueType> {
+		ConstructionDataType = unknown,
+		DataType = unknown,
+		FormAccessorFormType extends AbstractControl = FormControl,
+		FormValueType = DataType
+	>
+	extends NgxFormsControlValueAccessor<DataType, FormAccessorFormType, FormValueType>
+	implements OnDestroy
+{
 	// Iben: Keep a reference to the current data so we don't make a new form if the data itself hasn't changed
 	private currentData: ConstructionDataType;
+
+	/**
+	 * A subject that emits when the form has been destroyed in favor of a new one
+	 */
+	private readonly destroyFormSubject$: Subject<void> = new Subject();
 
 	/**
 	 * Method to set up the inner form
@@ -23,56 +33,64 @@ export abstract class DataFormAccessor<
 	/**
 	 * The data we wish to use to set up the form
 	 */
-	public data: InputSignal<ConstructionDataType> = input.required();
+	public readonly data: InputSignal<ConstructionDataType> = input.required();
 
 	constructor() {
 		super();
 
-		effect(() => {
-			const data = this.data();
+		// Iben: Generate a form based on the data
+		toObservable(this.data)
+			.pipe(
+				switchMap((data) => {
+					// Iben: If we already have current data and the current data matches the new data, we don't make a new form
+					if (this.currentData && isEqual(this.currentData, data)) {
+						this.currentData = data;
+						return of();
+					}
 
-			// Iben: If we already have current data and the current data matches the new data, we don't make a new form
-			if (this.currentData && isEqual(this.currentData, data)) {
-				this.currentData = data;
-				return;
-			}
+					this.initializedSubject$.next(false);
+					this.currentData = data;
 
-			this.initializedSubject$.next(false);
-			this.currentData = data;
+					// Iben: Emit to the destroy so the previous subscription is cancelled
+					this.destroyFormSubject$.next();
 
-			// Iben: Emit to the destroy so the previous subscription is cancelled
-			this.destroy$.next(undefined);
+					// Set the inner form
+					this.form = this.initForm(data);
 
-			// Set the inner form
-			this.form = this.initForm(data);
+					// Iben: Early exit in case the form was not found
+					if (!this.form) {
+						console.error(
+							'NgxForms: No form was found after initializing. Check if the initForm method returns a form.'
+						);
 
-			// Iben: Early exit in case the form was not found
-			if (!this.form) {
-				console.error(
-					'NgxForms: No form was found after initializing. Check if the initForm method returns a form.'
-				);
+						return of();
+					}
 
-				return;
-			}
+					// Denis: set the initialized property
+					this.setInitializedWithData(data);
 
-			// Denis: set the initialized property
-			this.setInitializedWithData(data);
+					// Iben: Check if the form is valid depending on the provided value
+					this.validate();
+					this.cdRef.detectChanges();
 
-			// Iben: Check if the form is valid depending on the provided value
-			this.validate();
-			this.cdRef.detectChanges();
+					// Iben: Subscribe to the value changes
+					return this.form.valueChanges.pipe(
+						tap<FormValueType>((value) => {
+							// In case there's a mapper we map the value, else we send the form value
+							this.onChange(this.onChangeMapper ? this.onChangeMapper(value) : value);
+						}),
+						takeUntil(this.destroyFormSubject$)
+					);
+				}),
+				takeUntilDestroyed(this.destroyRef)
+			)
+			.subscribe();
+	}
 
-			// Iben: Subscribe to the value changes
-			this.form.valueChanges
-				.pipe(
-					tap<FormValueType>((value) => {
-						// In case there's a mapper we map the value, else we send the form value
-						this.onChange(this.onChangeMapper ? this.onChangeMapper(value) : value);
-					}),
-					takeUntil(this.destroy$)
-				)
-				.subscribe();
-		});
+	ngOnDestroy(): void {
+		// Iben: Destroy the currently open form
+		this.destroyFormSubject$.next();
+		this.destroyFormSubject$.complete();
 	}
 
 	/**

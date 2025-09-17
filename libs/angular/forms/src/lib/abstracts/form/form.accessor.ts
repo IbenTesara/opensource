@@ -1,6 +1,7 @@
 import { Directive, OnInit } from '@angular/core';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { AbstractControl, FormControl } from '@angular/forms';
-import { takeUntil, tap } from 'rxjs/operators';
+import { tap } from 'rxjs/operators';
 
 import { NgxFormsControlValueAccessor } from '../custom-control-value-accessor';
 
@@ -8,7 +9,7 @@ import { NgxFormsControlValueAccessor } from '../custom-control-value-accessor';
 export abstract class FormAccessor<
 		DataType = unknown,
 		FormAccessorFormType extends AbstractControl = FormControl,
-		FormValueType = DataType,
+		FormValueType = DataType
 	>
 	extends NgxFormsControlValueAccessor<DataType, FormAccessorFormType, FormValueType>
 	implements OnInit
@@ -41,7 +42,7 @@ export abstract class FormAccessor<
 					// In case there's a mapper we map the value, else we send the form value
 					this.onChange(this.onChangeMapper ? this.onChangeMapper(value) : value);
 				}),
-				takeUntil(this.destroy$)
+				takeUntilDestroyed(this.destroyRef)
 			)
 			.subscribe();
 	}
