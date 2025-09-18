@@ -16,6 +16,7 @@ import {
 } from '@lib/ngx-inform';
 import {
 	provideNgxButtonConfiguration,
+	provideNgxMediaQueries,
 	provideNgxMobileLayoutConfiguration,
 } from '@lib/ngx-layout';
 
@@ -75,5 +76,19 @@ export const appConfig: ApplicationConfig = {
 		provideNgxButtonConfiguration({
 			loading: TestLoadingComponent,
 		}),
+		provideNgxMediaQueries([
+			{
+				id: 'Mobile',
+				query: '(width < 600px)',
+			},
+			{
+				id: 'Tablet',
+				query: '(width >= 600px) and (width < 800px)',
+			},
+			{
+				id: 'Desktop',
+				query: '(width > 800px)',
+			},
+		]),
 	],
 };

@@ -2,7 +2,9 @@
 
 <h1>{{'title' | translate}}</h1>
 
-<button ngxButton (click)="toggleLoading()">Toggle loading</button>
+<ng-container *ngxMediaQuery="'Desktop'">
+	<button ngxButton (click)="toggleLoading()">Toggle loading</button>
+</ng-container>
 
 <button
 	*ngxTourShowWhen="'whenInactive'"

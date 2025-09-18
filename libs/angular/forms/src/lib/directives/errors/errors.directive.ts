@@ -10,6 +10,10 @@ import {
 	ViewContainerRef,
 	input,
 	DestroyRef,
+	WritableSignal,
+	signal,
+	computed,
+	Signal,
 } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import {
@@ -30,22 +34,60 @@ import { touchedEventListener } from '../../utils';
 	standalone: true,
 })
 export class NgxFormsErrorsDirective implements AfterViewInit {
+	/**
+	 *  An optional instance of the FormGroup directive
+	 */
 	protected readonly formGroupDirective: FormGroupDirective = inject(FormGroupDirective, {
 		optional: true,
 	});
+
+	/**
+	 *  An optional instance of the FormGroupName directive
+	 */
 	protected readonly formNameDirective: FormGroupName = inject(FormGroupName, { optional: true });
+
+	/**
+	 *  The optional global configuration used form the NgxFormsError
+	 */
 	private readonly config: NgxFormsErrorConfigurationOptions = inject(
 		NgxFormsErrorsConfigurationToken,
 		{ optional: true }
 	);
+
+	/**
+	 *  An instance of the ViewContainerRef
+	 */
 	protected readonly viewContainer: ViewContainerRef = inject(ViewContainerRef);
+
+	/**
+	 *  An instance of the ElementRef
+	 */
 	protected readonly elementRef: ElementRef = inject(ElementRef);
+
+	/**
+	 *  An instance of Renderer2
+	 */
 	protected readonly renderer: Renderer2 = inject(Renderer2);
+
+	/**
+	 *  An instance of the TemplateRef
+	 */
 	protected readonly templateRef: TemplateRef<any> = inject(TemplateRef);
+
+	/**
+	 *  An instance of the ChangeDetectorRef
+	 */
 	protected readonly cdRef: ChangeDetectorRef = inject(ChangeDetectorRef);
 
-	// Iben: Handle the OnDestroy flow
+	/**
+	 *  An instance of the DestroyRef
+	 */
 	protected readonly destroyRef: DestroyRef = inject(DestroyRef);
+
+	/**
+	 *  Whether the control has errors
+	 */
+	protected hasErrors: WritableSignal<boolean> = signal(false);
 
 	/**
 	 *  The actual template of the input element
@@ -123,15 +165,29 @@ export class NgxFormsErrorsDirective implements AfterViewInit {
 			.pipe(
 				tap(([, touched]) => {
 					// Iben: Check whether we should show the error based on the provided config
-					const shouldShow =
+					this.hasErrors.set(
 						this.abstractControl.invalid &&
-						(this.config.showWhen === 'touched' ? touched : this.abstractControl.dirty);
+							(this.config.showWhen === 'touched'
+								? touched
+								: this.abstractControl.dirty)
+					);
+
+					// Iben: Set the errors class if needed
+					this.hasErrors()
+						? this.renderer.addClass(
+								this.renderer.nextSibling(this.elementRef.nativeElement),
+								'ngx-forms-errors-invalid'
+						  )
+						: this.renderer.removeClass(
+								this.renderer.nextSibling(this.elementRef.nativeElement),
+								'ngx-forms-errors-invalid'
+						  );
 
 					// Iben: Show the error based on whether or not a component was provided
 					if (!this.config.component) {
-						this.handleNoComponentFlow(shouldShow);
+						this.handleNoComponentFlow(this.hasErrors());
 					} else {
-						this.handleComponentRender(shouldShow);
+						this.handleComponentRender(this.hasErrors());
 					}
 
 					// Iben: Detect the changes so this works with (nested) OnPush components

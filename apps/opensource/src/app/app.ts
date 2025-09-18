@@ -11,7 +11,7 @@ import {
 	NgxTourService,
 	NgxTourShowWhenDirective,
 } from '@lib/ngx-inform';
-import { NgxButtonDirective } from '@lib/ngx-layout';
+import { NgxButtonDirective, NgxMediaQueryDirective, NgxMediaQueryService } from '@lib/ngx-layout';
 
 @Component({
 	imports: [
@@ -21,6 +21,7 @@ import { NgxButtonDirective } from '@lib/ngx-layout';
 		NgxToastContainerComponent,
 		TranslatePipe,
 		NgxButtonDirective,
+		NgxMediaQueryDirective,
 	],
 	selector: 'app-root',
 	templateUrl: './app.html',
@@ -31,9 +32,14 @@ export class App {
 	private readonly toastService = inject(NgxToastService);
 	private readonly modalService = inject(NgxModalService);
 	private readonly router: Router = inject(Router);
+	private readonly mediaQueryService = inject(NgxMediaQueryService);
 	private toastAmount: number = 1;
 
 	public loading: WritableSignal<boolean> = signal(false);
+
+	constructor() {
+		this.mediaQueryService.currentQueryMatch$.subscribe(console.log);
+	}
 
 	public startTour() {
 		this.modalService
