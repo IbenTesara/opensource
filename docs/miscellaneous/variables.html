@@ -319,6 +319,9 @@
                             <a href="#NgxIsAuthenticatedGuard" title="libs/angular/authentication/src/lib/guards/is-authenticated/is-authenticated.guard.ts" ><b>NgxIsAuthenticatedGuard</b>&nbsp;&nbsp;&nbsp;(libs/.../is-authenticated.guard.ts)</a>
                         </li>
                         <li>
+                            <a href="#NgxMediaQueriesToken" title="libs/angular/layout/src/lib/tokens/media-queries.token.ts" ><b>NgxMediaQueriesToken</b>&nbsp;&nbsp;&nbsp;(libs/.../media-queries.token.ts)</a>
+                        </li>
+                        <li>
                             <a href="#NgxMobileLayoutConfigurationToken" title="libs/angular/layout/src/lib/tokens/mobile-layout-configuration.token.ts" ><b>NgxMobileLayoutConfigurationToken</b>&nbsp;&nbsp;&nbsp;(libs/.../mobile-layout-configuration.token.ts)</a>
                         </li>
                         <li>
@@ -421,6 +424,9 @@
                             <a href="#provideNgxI18nConfiguration" title="libs/angular/i18n/src/lib/providers/i18n.providers.ts" ><b>provideNgxI18nConfiguration</b>&nbsp;&nbsp;&nbsp;(libs/.../i18n.providers.ts)</a>
                         </li>
                         <li>
+                            <a href="#provideNgxMediaQueries" title="libs/angular/layout/src/lib/providers/media-queries/media-queries.provider.ts" ><b>provideNgxMediaQueries</b>&nbsp;&nbsp;&nbsp;(libs/.../media-queries.provider.ts)</a>
+                        </li>
+                        <li>
                             <a href="#provideNgxMobileLayoutConfiguration" title="libs/angular/layout/src/lib/providers/mobile-layout/mobile-layout-configuration.provider.ts" ><b>provideNgxMobileLayoutConfiguration</b>&nbsp;&nbsp;&nbsp;(libs/.../mobile-layout-configuration.provider.ts)</a>
                         </li>
                         <li>
@@ -478,16 +484,16 @@
                             <a href="#updateAllValueAndValidity" title="libs/angular/forms/src/lib/utils/custom-update-value-and-validity/custom-update-value-and-validity.util.ts" ><b>updateAllValueAndValidity</b>&nbsp;&nbsp;&nbsp;(libs/.../custom-update-value-and-validity.util.ts)</a>
                         </li>
                         <li>
-                            <a href="#useMockDataDuringTour" title="libs/angular/inform/src/lib/operators/tour/use-mock-data-during-tour/use-mock-data-during-tour.operator.ts" ><b>useMockDataDuringTour</b>&nbsp;&nbsp;&nbsp;(libs/.../use-mock-data-during-tour.operator.ts)</a>
-                        </li>
-                        <li>
-                            <a href="#writeNgxTableValue" title="libs/angular/layout/src/lib/utils/table-form/handle-form-changes.util.ts" ><b>writeNgxTableValue</b>&nbsp;&nbsp;&nbsp;(libs/.../handle-form-changes.util.ts)</a>
-                        </li>
-                        <li>
                             <a href="#" title="libs/angular/store/src/lib/rxjs/spec/store-assets.ts" ><b></b>&nbsp;&nbsp;&nbsp;(libs/.../store-assets.ts)</a>
                         </li>
                         <li>
                             <a href="#" title="libs/angular/store/src/lib/rxjs/spec/store-state.service.ts" ><b></b>&nbsp;&nbsp;&nbsp;(libs/.../store-state.service.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#useMockDataDuringTour" title="libs/angular/inform/src/lib/operators/tour/use-mock-data-during-tour/use-mock-data-during-tour.operator.ts" ><b>useMockDataDuringTour</b>&nbsp;&nbsp;&nbsp;(libs/.../use-mock-data-during-tour.operator.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#writeNgxTableValue" title="libs/angular/layout/src/lib/utils/table-form/handle-form-changes.util.ts" ><b>writeNgxTableValue</b>&nbsp;&nbsp;&nbsp;(libs/.../handle-form-changes.util.ts)</a>
                         </li>
                     </ul>
                 </td>
@@ -4276,6 +4282,35 @@ By default, a take(1) is applied to the source, so the source observable can be 
         </tbody>
     </table>
 </section>
+    <h3>libs/angular/layout/src/lib/tokens/media-queries.token.ts</h3>
+    <section data-compodoc="block-properties">
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="NgxMediaQueriesToken"></a>
+                    <span class="name">
+                        <span ><b>NgxMediaQueriesToken</b></span>
+                        <a href="#NgxMediaQueriesToken"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>new InjectionToken&lt;NgxMediaQuery[]&gt;(&#x27;NgxMediaQueriesToken&#x27;)</code>
+                    </td>
+                </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>A list of media queries we wish to listen to on start</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+</section>
     <h3>libs/angular/layout/src/lib/tokens/mobile-layout-configuration.token.ts</h3>
     <section data-compodoc="block-properties">
     <h3></h3>    <table class="table table-sm table-bordered">
@@ -5625,6 +5660,40 @@ This implementation is provided given that pluck has a higher readability than a
         </tbody>
     </table>
 </section>
+    <h3>libs/angular/layout/src/lib/providers/media-queries/media-queries.provider.ts</h3>
+    <section data-compodoc="block-properties">
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="provideNgxMediaQueries"></a>
+                    <span class="name">
+                        <span ><b>provideNgxMediaQueries</b></span>
+                        <a href="#provideNgxMediaQueries"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>(queries: NgxMediaQuery[]): Provider &#x3D;&gt; {
+	return {
+		provide: NgxMediaQueriesToken,
+		useValue: queries,
+	};
+}</code>
+                    </td>
+                </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Provides an optional list of media queries for the <code>NgxMediaQueryService</code></p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+</section>
     <h3>libs/angular/layout/src/lib/providers/mobile-layout/mobile-layout-configuration.provider.ts</h3>
     <section data-compodoc="block-properties">
     <h3></h3>    <table class="table table-sm table-bordered">
@@ -6333,6 +6402,39 @@ documentation of the <code>NgxTourStep</code>.</p>
         </tbody>
     </table>
 </section>
+    <h3>libs/angular/store/src/lib/rxjs/spec/store-state.service.ts</h3>
+    <section data-compodoc="block-properties">
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name=""></a>
+                    <span class="name">
+                        <span ><b></b></span>
+                        <a href="#"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>createStoreAssets&lt;StoreState&gt;(&#x27;state&#x27;, [
+	{
+		subSlice: &#x27;data&#x27;,
+		generator: createEntityAdapterStoreAssets&lt;string&gt;,
+		selectId: (item) &#x3D;&gt; item,
+	},
+	{
+		subSlice: &#x27;isCompleted&#x27;,
+		generator: createBaseStoreAssets&lt;boolean&gt;,
+	},
+])</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+</section>
     <h3>libs/angular/inform/src/lib/operators/tour/use-mock-data-during-tour/use-mock-data-during-tour.operator.ts</h3>
     <section data-compodoc="block-properties">
     <h3></h3>    <table class="table table-sm table-bordered">
@@ -6378,39 +6480,6 @@ documentation of the <code>NgxTourStep</code>.</p>
 </div>
                 </td>
             </tr>
-
-        </tbody>
-    </table>
-</section>
-    <h3>libs/angular/store/src/lib/rxjs/spec/store-state.service.ts</h3>
-    <section data-compodoc="block-properties">
-    <h3></h3>    <table class="table table-sm table-bordered">
-        <tbody>
-            <tr>
-                <td class="col-md-4">
-                    <a name=""></a>
-                    <span class="name">
-                        <span ><b></b></span>
-                        <a href="#"><span class="icon ion-ios-link"></span></a>
-                    </span>
-                </td>
-            </tr>
-                <tr>
-                    <td class="col-md-4">
-                        <i>Default value : </i><code>createStoreAssets&lt;StoreState&gt;(&#x27;state&#x27;, [
-	{
-		subSlice: &#x27;data&#x27;,
-		generator: createEntityAdapterStoreAssets&lt;string&gt;,
-		selectId: (item) &#x3D;&gt; item,
-	},
-	{
-		subSlice: &#x27;isCompleted&#x27;,
-		generator: createBaseStoreAssets&lt;boolean&gt;,
-	},
-])</code>
-                    </td>
-                </tr>
-
 
         </tbody>
     </table>

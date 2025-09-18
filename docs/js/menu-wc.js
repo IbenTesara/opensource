@@ -195,6 +195,9 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                                     <a href="directives/NgxIsAuthenticatedDirective.html" data-type="entity-link" >NgxIsAuthenticatedDirective</a>
                                 </li>
                                 <li class="link">
+                                    <a href="directives/NgxMediaQueryDirective.html" data-type="entity-link" >NgxMediaQueryDirective</a>
+                                </li>
+                                <li class="link">
                                     <a href="directives/NgxModalAbstractComponent.html" data-type="entity-link" >NgxModalAbstractComponent</a>
                                 </li>
                                 <li class="link">
@@ -315,6 +318,9 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                                 </li>
                                 <li class="link">
                                     <a href="injectables/NgxMediaQueryService.html" data-type="entity-link" >NgxMediaQueryService</a>
+                                </li>
+                                <li class="link">
+                                    <a href="injectables/NgxMediaQueryService-1.html" data-type="entity-link" >NgxMediaQueryService</a>
                                 </li>
                                 <li class="link">
                                     <a href="injectables/NgxMobileLayoutService.html" data-type="entity-link" >NgxMobileLayoutService</a>
@@ -478,6 +484,9 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                             </li>
                             <li class="link">
                                 <a href="interfaces/NgxImageMarkerView.html" data-type="entity-link" >NgxImageMarkerView</a>
+                            </li>
+                            <li class="link">
+                                <a href="interfaces/NgxMediaQuery.html" data-type="entity-link" >NgxMediaQuery</a>
                             </li>
                             <li class="link">
                                 <a href="interfaces/NgxMobileLayout.html" data-type="entity-link" >NgxMobileLayout</a>
