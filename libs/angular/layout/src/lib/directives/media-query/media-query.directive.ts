@@ -55,7 +55,7 @@ export class NgxMediaQueryDirective implements OnDestroy {
 	/**
 	 * The query it should match
 	 */
-	public ngxMediaQuery: InputSignal<string> = input();
+	public ngxMediaQuery: InputSignal<string | string[]> = input();
 
 	/**
 	 * The else template in case the query isn't matched

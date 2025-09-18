@@ -103,22 +103,27 @@ export class NgxMediaQueryService implements OnDestroy {
 	 *
 	 * @param id - The id of the query we wish to match
 	 */
-	public matchesQuery(id: string): Observable<boolean> {
+	public matchesQuery(id: string | string[]): Observable<boolean> {
+		const ids = Array.isArray(id) ? id : [id];
+
 		// Iben: If the listener does not exist yet, throw an error
-		if (!this.listeners[id]) {
+		if (ids.every((item) => !this.listeners[item])) {
 			return throwError(
 				() =>
 					new Error(
-						'@ibenvandeveire/ngx-layout: NgxMediaQueryService: A query with this id does not exist.'
+						'@ibenvandeveire/ngx-layout: NgxMediaQueryService: No provided query matched with the provided ids.'
 					)
 			);
 		}
+
+		// Iben: Create a matching set
+		const matchingSet = new Set(ids);
 
 		// Iben: Return whether the current screen size matches the query
 		return this.currentQueryMatch.pipe(
 			filter(Boolean),
 			distinctUntilChanged(),
-			map((query) => query === id)
+			map((query) => matchingSet.has(query))
 		);
 	}
 }
