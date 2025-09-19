@@ -1,9 +1,10 @@
-import { inject, Injectable } from '@angular/core';
+import { inject, Injectable, signal, Signal, WritableSignal } from '@angular/core';
+import { get } from 'lodash';
 import clean from 'obj-clean';
-import { BehaviorSubject, filter, Observable, take, tap } from 'rxjs';
+import { BehaviorSubject, distinctUntilChanged, filter, map, Observable, take, tap } from 'rxjs';
 
 import { NgxMobileLayoutConfigurationToken } from '../../tokens';
-import { ComponentType, NgxMobileLayout, NgxMobileLayoutConfiguration } from '../../types';
+import { ComponentType, NgxMobileLayout, NgxMobileLayoutElements } from '../../types';
 
 /**
  * The `NgxMobileLayoutService` allows us to configure an entire layout based on routing rather than on HTML. This allows for an easier use for mobile-first applications.
@@ -15,46 +16,53 @@ export class NgxMobileLayoutService {
 	/**
 	 * A subject holding whether the initial layout has been set
 	 */
-	private readonly initialLayoutSetSubject$: BehaviorSubject<boolean> = new BehaviorSubject(
+	protected readonly initialLayoutSetSubject$: BehaviorSubject<boolean> = new BehaviorSubject(
 		false
 	);
 
 	/**
 	 * Whether the initial layout has been set
 	 */
-	private readonly initialLayoutSet$: Observable<boolean> = this.initialLayoutSetSubject$;
+	protected readonly initialLayoutSet$: Observable<boolean> = this.initialLayoutSetSubject$;
 
 	/**
 	 * An optional default layout that was provided
 	 */
-	private readonly defaultLayout: NgxMobileLayoutConfiguration | undefined = inject(
+	protected readonly defaultLayout: NgxMobileLayout | undefined = inject(
 		NgxMobileLayoutConfigurationToken,
 		{ optional: true }
 	);
 
 	/**
-	 * A subject holding whether the flyout is being added or not
-	 */
-	private readonly flyoutStateSubject$: BehaviorSubject<'IN' | 'OUT'> = new BehaviorSubject(
-		undefined
-	);
-
-	/**
-	 * Whether the flyout is being added or removed
-	 */
-	public readonly flyoutState$: Observable<'IN' | 'OUT'> =
-		this.flyoutStateSubject$.asObservable();
-
-	/**
 	 * A subject holding the current layout of the application
 	 */
-	private readonly layoutSubject$: BehaviorSubject<NgxMobileLayout> =
+	protected readonly layoutSubject$: BehaviorSubject<NgxMobileLayout> =
 		new BehaviorSubject<NgxMobileLayout>(undefined);
+
+	/**
+	 * Whether the flyout should be shown
+	 */
+	protected showFlyout: WritableSignal<boolean> = signal(false);
+
+	/**
+	 * Whether the aside should be shown
+	 */
+	protected showAside: WritableSignal<boolean> = signal(false);
 
 	/**
 	 * The current layout of the application as an Observable
 	 */
 	public readonly layout$: Observable<NgxMobileLayout> = this.layoutSubject$.asObservable();
+
+	/**
+	 * Whether the flyout is visible
+	 */
+	public flyoutShown: Signal<boolean> = this.showFlyout.asReadonly();
+
+	/**
+	 * Whether the aside is visible
+	 */
+	public asideShown: Signal<boolean> = this.showAside.asReadonly();
 
 	/**
 	 * Sets the provided layout for the
@@ -67,8 +75,6 @@ export class NgxMobileLayoutService {
 			filter(Boolean),
 			take(1),
 			tap(() => {
-				const defaultLayout = this.defaultLayout.layout;
-
 				// Iben: If no default layout is provided, we set the layout as is
 				if (!this.defaultLayout && layout) {
 					this.layoutSubject$.next(clean(layout) as NgxMobileLayout);
@@ -78,7 +84,7 @@ export class NgxMobileLayoutService {
 
 				// Iben: If layout is provided, we set the default layout
 				if (!layout && this.defaultLayout) {
-					this.layoutSubject$.next(clean(defaultLayout) as NgxMobileLayout);
+					this.layoutSubject$.next(clean(this.defaultLayout) as NgxMobileLayout);
 
 					return;
 				}
@@ -89,21 +95,24 @@ export class NgxMobileLayoutService {
 						header: {
 							left: this.getComponent(
 								layout.header?.left,
-								defaultLayout.header?.left
+								this.defaultLayout.header?.left
 							),
 							main: this.getComponent(
 								layout.header?.main,
-								defaultLayout.header?.main
+								this.defaultLayout.header?.main
 							),
 							right: this.getComponent(
 								layout.header?.right,
-								defaultLayout.header?.right
+								this.defaultLayout.header?.right
 							),
 						},
-						navigation: this.getComponent(layout.navigation, defaultLayout.navigation),
-						// Iben: The flyout is the only item that does not have a default element, so we don't have to fetch it using getComponent
-						flyout: layout.flyout,
-						footer: this.getComponent(layout.footer, defaultLayout.footer),
+						navigation: this.getComponent(
+							layout.navigation,
+							this.defaultLayout.navigation
+						),
+						flyout: this.getComponent(layout.footer, this.defaultLayout.flyout),
+						aside: this.getComponent(layout.aside, this.defaultLayout.aside),
+						footer: this.getComponent(layout.footer, this.defaultLayout.footer),
 					}) as NgxMobileLayout
 				);
 			})
@@ -111,35 +120,43 @@ export class NgxMobileLayoutService {
 	}
 
 	/**
-	 * Open a provided flyout
+	 * Open a flyout
 	 *
-	 * @param flyout - The provided flyout
+	 * @param flyout - An optional flyout
 	 */
-	public openFlyout(flyout: ComponentType) {
-		// Iben: Notify the component that a flyout is about to be added
-		this.flyoutStateSubject$.next('IN');
+	public openFlyout(flyout?: ComponentType): void {
+		// Iben: Add the flyout if there wasn't one defined
+		if (flyout) {
+			this.layoutSubject$.next({
+				...this.layoutSubject$.getValue(),
+				flyout,
+			});
 
-		// Iben: Add the flyout
-		this.layoutSubject$.next({
-			...this.layoutSubject$.getValue(),
-			flyout,
-		});
+			// Iben: Make the flyout visible
+			this.showFlyout.set(true);
+		}
 	}
 
 	/**
 	 * Close the currently open flyout
 	 */
-	public closeFlyout() {
-		// Iben: Notify the component that a flyout is about to be removed
-		this.flyoutStateSubject$.next('OUT');
+	public closeFlyout(): void {
+		// Iben: Make the flyout invisible
+		this.showFlyout.set(false);
+	}
 
-		// Iben: Remove the flyout after the specified time
-		setTimeout(() => {
-			// eslint-disable-next-line @typescript-eslint/no-unused-vars
-			const { flyout, ...rest } = this.layoutSubject$.getValue();
+	/**
+	 * Open a aside
+	 */
+	public openAside(): void {
+		this.showAside.set(true);
+	}
 
-			this.layoutSubject$.next(rest);
-		}, this.defaultLayout?.flyoutAnimationDuration || 300);
+	/**
+	 * Close the currently open aside
+	 */
+	public closeAside(): void {
+		this.showAside.set(false);
 	}
 
 	/**
@@ -147,12 +164,25 @@ export class NgxMobileLayoutService {
 	 */
 	public setUpInitialLayout(markAsInitial: boolean = true): void {
 		// Iben: Set initial layout
-		this.layoutSubject$.next(clean(this.defaultLayout?.layout) as NgxMobileLayout);
+		this.layoutSubject$.next(clean(this.defaultLayout) as NgxMobileLayout);
 
 		// Iben: Mark the initial layout set as true
 		if (markAsInitial) {
 			this.initialLayoutSetSubject$.next(true);
 		}
+	}
+
+	/**
+	 * Returns whether an element is defined in the layout
+	 *
+	 * @param element - The element we wish to check
+	 */
+	public hasElement(element: NgxMobileLayoutElements): Observable<boolean> {
+		return this.layout$.pipe(
+			filter(Boolean),
+			distinctUntilChanged(),
+			map((layout) => Boolean(get(layout, element)))
+		);
 	}
 
 	/**

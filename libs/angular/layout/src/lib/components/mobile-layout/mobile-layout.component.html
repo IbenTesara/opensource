@@ -15,6 +15,14 @@
 	<nav class="ngx-mobile-layout-navigation">
 		<ng-template [ngComponentOutlet]="layout().navigation" />
 	</nav>
+	} @if(layout().aside && asideShown()) {
+	<aside
+		class="ngx-mobile-layout-aside"
+		animate.enter="ngx-mobile-layout-aside-in"
+		animate.leave="ngx-mobile-layout-aside-out"
+	>
+		<ng-template [ngComponentOutlet]="layout().aside" />
+	</aside>
 	}
 
 	<div class="ngx-mobile-layout-content">
@@ -25,8 +33,12 @@
 		}
 	</div>
 
-	@if(layout().flyout) {
-	<div [class]="['ngx-mobile-layout-flyout', flyoutClass()]">
+	@if(layout().flyout && flyoutShown()) {
+	<div
+		class="ngx-mobile-layout-flyout"
+		animate.enter="ngx-mobile-layout-flyout-in"
+		animate.leave="ngx-mobile-layout-flyout-out"
+	>
 		<ng-template [ngComponentOutlet]="layout().flyout" />
 	</div>
 	} @if(layout().footer) {

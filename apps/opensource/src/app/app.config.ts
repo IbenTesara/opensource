@@ -57,13 +57,11 @@ export const appConfig: ApplicationConfig = {
 			},
 		}),
 		provideNgxMobileLayoutConfiguration({
-			layout: {
-				header: {
-					main: MainHeaderComponent,
-					right: RightHeaderComponent,
-				},
-				navigation: NavigationComponent,
+			header: {
+				main: MainHeaderComponent,
+				right: RightHeaderComponent,
 			},
+			navigation: NavigationComponent,
 		}),
 		provideNgxToastConfiguration({
 			component: ToastComponent,

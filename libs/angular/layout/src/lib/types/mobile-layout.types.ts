@@ -28,6 +28,10 @@ export interface NgxMobileLayout {
 	 */
 	flyout?: ComponentType;
 	/**
+	 * An optional aside we wish to render
+	 */
+	aside?: ComponentType;
+	/**
 	 * An optional navigation we wish to render
 	 */
 	navigation?: ComponentType;
@@ -38,15 +42,8 @@ export interface NgxMobileLayout {
 }
 
 /**
- * An optional configuration for the `NgxMobileLayoutService`
+ * All possible elements of the mobile layout
  */
-export interface NgxMobileLayoutConfiguration {
-	/**
-	 * An optional default layout we always wish to show
-	 */
-	layout?: Omit<NgxMobileLayout, 'flyout'>;
-	/**
-	 * The amount of time it takes (in milliseconds) for the flyout animation to be played
-	 */
-	flyoutAnimationDuration?: number;
-}
+export type NgxMobileLayoutElements =
+	| keyof Omit<NgxMobileLayout, 'header'>
+	| `header.${keyof NgxMobileLayout['header']}`;
