@@ -142,27 +142,25 @@
                     <td class="col-md-4">
                         <ul class="index-list">
                             <li>
-                                    <span class="modifier">Private</span>
+                                    <span class="modifier">Public</span>
+                                <a href="#asideShown" >asideShown</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Protected</span>
                                     <span class="modifier">Readonly</span>
                                 <a href="#defaultLayout" >defaultLayout</a>
                             </li>
                             <li>
                                     <span class="modifier">Public</span>
-                                    <span class="modifier">Readonly</span>
-                                <a href="#flyoutState$" >flyoutState$</a>
+                                <a href="#flyoutShown" >flyoutShown</a>
                             </li>
                             <li>
-                                    <span class="modifier">Private</span>
-                                    <span class="modifier">Readonly</span>
-                                <a href="#flyoutStateSubject$" >flyoutStateSubject$</a>
-                            </li>
-                            <li>
-                                    <span class="modifier">Private</span>
+                                    <span class="modifier">Protected</span>
                                     <span class="modifier">Readonly</span>
                                 <a href="#initialLayoutSet$" >initialLayoutSet$</a>
                             </li>
                             <li>
-                                    <span class="modifier">Private</span>
+                                    <span class="modifier">Protected</span>
                                     <span class="modifier">Readonly</span>
                                 <a href="#initialLayoutSetSubject$" >initialLayoutSetSubject$</a>
                             </li>
@@ -172,9 +170,17 @@
                                 <a href="#layout$" >layout$</a>
                             </li>
                             <li>
-                                    <span class="modifier">Private</span>
+                                    <span class="modifier">Protected</span>
                                     <span class="modifier">Readonly</span>
                                 <a href="#layoutSubject$" >layoutSubject$</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Protected</span>
+                                <a href="#showAside" >showAside</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Protected</span>
+                                <a href="#showFlyout" >showFlyout</a>
                             </li>
                         </ul>
                     </td>
@@ -190,11 +196,23 @@
                         <ul class="index-list">
                             <li>
                                     <span class="modifier">Public</span>
+                                <a href="#closeAside" >closeAside</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
                                 <a href="#closeFlyout" >closeFlyout</a>
                             </li>
                             <li>
                                     <span class="modifier">Private</span>
                                 <a href="#getComponent" >getComponent</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#hasElement" >hasElement</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#openAside" >openAside</a>
                             </li>
                             <li>
                                     <span class="modifier">Public</span>
@@ -230,6 +248,47 @@
         <tbody>
             <tr>
                 <td class="col-md-4">
+                    <a name="closeAside"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                        <span ><b>closeAside</b></span>
+                        <a href="#closeAside"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>closeAside()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="158"
+                                    class="link-to-prism">libs/angular/layout/src/lib/services/mobile-layout/mobile-layout.service.ts:158</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Close the currently open aside</p>
+</div>
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
                     <a name="closeFlyout"></a>
                     <span class="name">
                             <span class="modifier">Public</span>
@@ -248,8 +307,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="132"
-                                    class="link-to-prism">libs/angular/layout/src/lib/services/mobile-layout/mobile-layout.service.ts:132</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="143"
+                                    class="link-to-prism">libs/angular/layout/src/lib/services/mobile-layout/mobile-layout.service.ts:143</a></div>
                         </td>
                     </tr>
 
@@ -289,8 +348,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="164"
-                                    class="link-to-prism">libs/angular/layout/src/lib/services/mobile-layout/mobile-layout.service.ts:164</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="194"
+                                    class="link-to-prism">libs/angular/layout/src/lib/services/mobile-layout/mobile-layout.service.ts:194</a></div>
                         </td>
                     </tr>
 
@@ -367,6 +426,125 @@
         <tbody>
             <tr>
                 <td class="col-md-4">
+                    <a name="hasElement"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                        <span ><b>hasElement</b></span>
+                        <a href="#hasElement"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>hasElement(element: <a href="../undefineds/NgxMobileLayoutElements.html" target="_self">NgxMobileLayoutElements</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="180"
+                                    class="link-to-prism">libs/angular/layout/src/lib/services/mobile-layout/mobile-layout.service.ts:180</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Returns whether an element is defined in the layout</p>
+</div>
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                                <td>Description</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>element</td>
+                                            <td>
+                                                            <code><a href="../miscellaneous/typealiases.html#NgxMobileLayoutElements" target="_self" >NgxMobileLayoutElements</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                            <td>
+                                                    <ul>
+<li>The element we wish to check</li>
+</ul>
+
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>    <code>Observable&lt;boolean&gt;</code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="openAside"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                        <span ><b>openAside</b></span>
+                        <a href="#openAside"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>openAside()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="151"
+                                    class="link-to-prism">libs/angular/layout/src/lib/services/mobile-layout/mobile-layout.service.ts:151</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Open a aside</p>
+</div>
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
                     <a name="openFlyout"></a>
                     <span class="name">
                             <span class="modifier">Public</span>
@@ -378,22 +556,22 @@
             <tr>
                 <td class="col-md-4">
                         <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>openFlyout(flyout: <a href="../undefineds/ComponentType.html" target="_self">ComponentType</a>)</code>
+                    <code>openFlyout(flyout?: <a href="../undefineds/ComponentType.html" target="_self">ComponentType</a>)</code>
                 </td>
             </tr>
 
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="118"
-                                    class="link-to-prism">libs/angular/layout/src/lib/services/mobile-layout/mobile-layout.service.ts:118</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="127"
+                                    class="link-to-prism">libs/angular/layout/src/lib/services/mobile-layout/mobile-layout.service.ts:127</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
-                        <div class="io-description"><p>Open a provided flyout</p>
+                        <div class="io-description"><p>Open a flyout</p>
 </div>
 
                             <div class="io-description">
@@ -416,13 +594,13 @@
                                             </td>
 
                                             <td>
-                                                    No
+                                                    Yes
                                             </td>
 
 
                                             <td>
                                                     <ul>
-<li>The provided flyout</li>
+<li>An optional flyout</li>
 </ul>
 
                                             </td>
@@ -463,8 +641,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="64"
-                                    class="link-to-prism">libs/angular/layout/src/lib/services/mobile-layout/mobile-layout.service.ts:64</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="72"
+                                    class="link-to-prism">libs/angular/layout/src/lib/services/mobile-layout/mobile-layout.service.ts:72</a></div>
                         </td>
                     </tr>
 
@@ -541,8 +719,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="148"
-                                    class="link-to-prism">libs/angular/layout/src/lib/services/mobile-layout/mobile-layout.service.ts:148</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="165"
+                                    class="link-to-prism">libs/angular/layout/src/lib/services/mobile-layout/mobile-layout.service.ts:165</a></div>
                         </td>
                     </tr>
 
@@ -604,9 +782,47 @@
         <tbody>
             <tr>
                 <td class="col-md-4">
+                    <a name="asideShown"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                        <span ><b>asideShown</b></span>
+                        <a href="#asideShown"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>Signal&lt;boolean&gt;</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>this.showAside.asReadonly()</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="65" class="link-to-prism">libs/angular/layout/src/lib/services/mobile-layout/mobile-layout.service.ts:65</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Whether the aside is visible</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
                     <a name="defaultLayout"></a>
                     <span class="name">
-                            <span class="modifier">Private</span>
+                            <span class="modifier">Protected</span>
                             <span class="modifier">Readonly</span>
                         <span ><b>defaultLayout</b></span>
                         <a href="#defaultLayout"><span class="icon ion-ios-link"></span></a>
@@ -615,7 +831,7 @@
             </tr>
                 <tr>
                     <td class="col-md-4">
-                        <i>Type : </i>    <code>NgxMobileLayoutConfiguration | undefined</code>
+                        <i>Type : </i>        <code><a href="../interfaces/NgxMobileLayout.html" target="_self" >NgxMobileLayout | undefined</a></code>
 
                     </td>
                 </tr>
@@ -629,7 +845,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="30" class="link-to-prism">libs/angular/layout/src/lib/services/mobile-layout/mobile-layout.service.ts:30</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="31" class="link-to-prism">libs/angular/layout/src/lib/services/mobile-layout/mobile-layout.service.ts:31</a></div>
                         </td>
                     </tr>
 
@@ -646,76 +862,34 @@
         <tbody>
             <tr>
                 <td class="col-md-4">
-                    <a name="flyoutState$"></a>
+                    <a name="flyoutShown"></a>
                     <span class="name">
                             <span class="modifier">Public</span>
-                            <span class="modifier">Readonly</span>
-                        <span ><b>flyoutState$</b></span>
-                        <a href="#flyoutState$"><span class="icon ion-ios-link"></span></a>
+                        <span ><b>flyoutShown</b></span>
+                        <a href="#flyoutShown"><span class="icon ion-ios-link"></span></a>
                     </span>
                 </td>
             </tr>
                 <tr>
                     <td class="col-md-4">
-                        <i>Type : </i>    <code>Observable&lt;&quot;IN&quot; | &quot;OUT&quot;&gt;</code>
+                        <i>Type : </i>    <code>Signal&lt;boolean&gt;</code>
 
                     </td>
                 </tr>
                 <tr>
                     <td class="col-md-4">
-                        <i>Default value : </i><code>this.flyoutStateSubject$.asObservable()</code>
+                        <i>Default value : </i><code>this.showFlyout.asReadonly()</code>
                     </td>
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="45" class="link-to-prism">libs/angular/layout/src/lib/services/mobile-layout/mobile-layout.service.ts:45</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="60" class="link-to-prism">libs/angular/layout/src/lib/services/mobile-layout/mobile-layout.service.ts:60</a></div>
                         </td>
                     </tr>
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-description"><p>Whether the flyout is being added or removed</p>
-</div>
-                </td>
-            </tr>
-
-        </tbody>
-    </table>
-    <table class="table table-sm table-bordered">
-        <tbody>
-            <tr>
-                <td class="col-md-4">
-                    <a name="flyoutStateSubject$"></a>
-                    <span class="name">
-                            <span class="modifier">Private</span>
-                            <span class="modifier">Readonly</span>
-                        <span ><b>flyoutStateSubject$</b></span>
-                        <a href="#flyoutStateSubject$"><span class="icon ion-ios-link"></span></a>
-                    </span>
-                </td>
-            </tr>
-                <tr>
-                    <td class="col-md-4">
-                        <i>Type : </i>    <code>BehaviorSubject&lt;&quot;IN&quot; | &quot;OUT&quot;&gt;</code>
-
-                    </td>
-                </tr>
-                <tr>
-                    <td class="col-md-4">
-                        <i>Default value : </i><code>new BehaviorSubject(
-		undefined
-	)</code>
-                    </td>
-                </tr>
-                    <tr>
-                        <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="38" class="link-to-prism">libs/angular/layout/src/lib/services/mobile-layout/mobile-layout.service.ts:38</a></div>
-                        </td>
-                    </tr>
-
-            <tr>
-                <td class="col-md-4">
-                    <div class="io-description"><p>A subject holding whether the flyout is being added or not</p>
+                    <div class="io-description"><p>Whether the flyout is visible</p>
 </div>
                 </td>
             </tr>
@@ -728,7 +902,7 @@
                 <td class="col-md-4">
                     <a name="initialLayoutSet$"></a>
                     <span class="name">
-                            <span class="modifier">Private</span>
+                            <span class="modifier">Protected</span>
                             <span class="modifier">Readonly</span>
                         <span ><b>initialLayoutSet$</b></span>
                         <a href="#initialLayoutSet$"><span class="icon ion-ios-link"></span></a>
@@ -748,7 +922,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="25" class="link-to-prism">libs/angular/layout/src/lib/services/mobile-layout/mobile-layout.service.ts:25</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="26" class="link-to-prism">libs/angular/layout/src/lib/services/mobile-layout/mobile-layout.service.ts:26</a></div>
                         </td>
                     </tr>
 
@@ -767,7 +941,7 @@
                 <td class="col-md-4">
                     <a name="initialLayoutSetSubject$"></a>
                     <span class="name">
-                            <span class="modifier">Private</span>
+                            <span class="modifier">Protected</span>
                             <span class="modifier">Readonly</span>
                         <span ><b>initialLayoutSetSubject$</b></span>
                         <a href="#initialLayoutSetSubject$"><span class="icon ion-ios-link"></span></a>
@@ -789,7 +963,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="18" class="link-to-prism">libs/angular/layout/src/lib/services/mobile-layout/mobile-layout.service.ts:18</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="19" class="link-to-prism">libs/angular/layout/src/lib/services/mobile-layout/mobile-layout.service.ts:19</a></div>
                         </td>
                     </tr>
 
@@ -828,7 +1002,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="57" class="link-to-prism">libs/angular/layout/src/lib/services/mobile-layout/mobile-layout.service.ts:57</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="55" class="link-to-prism">libs/angular/layout/src/lib/services/mobile-layout/mobile-layout.service.ts:55</a></div>
                         </td>
                     </tr>
 
@@ -847,7 +1021,7 @@
                 <td class="col-md-4">
                     <a name="layoutSubject$"></a>
                     <span class="name">
-                            <span class="modifier">Private</span>
+                            <span class="modifier">Protected</span>
                             <span class="modifier">Readonly</span>
                         <span ><b>layoutSubject$</b></span>
                         <a href="#layoutSubject$"><span class="icon ion-ios-link"></span></a>
@@ -867,7 +1041,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="51" class="link-to-prism">libs/angular/layout/src/lib/services/mobile-layout/mobile-layout.service.ts:51</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="39" class="link-to-prism">libs/angular/layout/src/lib/services/mobile-layout/mobile-layout.service.ts:39</a></div>
                         </td>
                     </tr>
 
@@ -880,18 +1054,95 @@
 
         </tbody>
     </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="showAside"></a>
+                    <span class="name">
+                            <span class="modifier">Protected</span>
+                        <span ><b>showAside</b></span>
+                        <a href="#showAside"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>WritableSignal&lt;boolean&gt;</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>signal(false)</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="50" class="link-to-prism">libs/angular/layout/src/lib/services/mobile-layout/mobile-layout.service.ts:50</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Whether the aside should be shown</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="showFlyout"></a>
+                    <span class="name">
+                            <span class="modifier">Protected</span>
+                        <span ><b>showFlyout</b></span>
+                        <a href="#showFlyout"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>WritableSignal&lt;boolean&gt;</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>signal(false)</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="45" class="link-to-prism">libs/angular/layout/src/lib/services/mobile-layout/mobile-layout.service.ts:45</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Whether the flyout should be shown</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
 </section>
 
     </div>
 
 
     <div class="tab-pane fade  tab-source-code" id="source">
-        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { inject, Injectable } from &#x27;@angular/core&#x27;;
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { inject, Injectable, signal, Signal, WritableSignal } from &#x27;@angular/core&#x27;;
+import { get } from &#x27;lodash&#x27;;
 import clean from &#x27;obj-clean&#x27;;
-import { BehaviorSubject, filter, Observable, take, tap } from &#x27;rxjs&#x27;;
+import { BehaviorSubject, distinctUntilChanged, filter, map, Observable, take, tap } from &#x27;rxjs&#x27;;
 
 import { NgxMobileLayoutConfigurationToken } from &#x27;../../tokens&#x27;;
-import { ComponentType, NgxMobileLayout, NgxMobileLayoutConfiguration } from &#x27;../../types&#x27;;
+import { ComponentType, NgxMobileLayout, NgxMobileLayoutElements } from &#x27;../../types&#x27;;
 
 /**
  * The &#x60;NgxMobileLayoutService&#x60; allows us to configure an entire layout based on routing rather than on HTML. This allows for an easier use for mobile-first applications.
@@ -903,46 +1154,53 @@ export class NgxMobileLayoutService {
 	/**
 	 * A subject holding whether the initial layout has been set
 	 */
-	private readonly initialLayoutSetSubject$: BehaviorSubject&lt;boolean&gt; &#x3D; new BehaviorSubject(
+	protected readonly initialLayoutSetSubject$: BehaviorSubject&lt;boolean&gt; &#x3D; new BehaviorSubject(
 		false
 	);
 
 	/**
 	 * Whether the initial layout has been set
 	 */
-	private readonly initialLayoutSet$: Observable&lt;boolean&gt; &#x3D; this.initialLayoutSetSubject$;
+	protected readonly initialLayoutSet$: Observable&lt;boolean&gt; &#x3D; this.initialLayoutSetSubject$;
 
 	/**
 	 * An optional default layout that was provided
 	 */
-	private readonly defaultLayout: NgxMobileLayoutConfiguration | undefined &#x3D; inject(
+	protected readonly defaultLayout: NgxMobileLayout | undefined &#x3D; inject(
 		NgxMobileLayoutConfigurationToken,
 		{ optional: true }
 	);
 
 	/**
-	 * A subject holding whether the flyout is being added or not
-	 */
-	private readonly flyoutStateSubject$: BehaviorSubject&lt;&#x27;IN&#x27; | &#x27;OUT&#x27;&gt; &#x3D; new BehaviorSubject(
-		undefined
-	);
-
-	/**
-	 * Whether the flyout is being added or removed
-	 */
-	public readonly flyoutState$: Observable&lt;&#x27;IN&#x27; | &#x27;OUT&#x27;&gt; &#x3D;
-		this.flyoutStateSubject$.asObservable();
-
-	/**
 	 * A subject holding the current layout of the application
 	 */
-	private readonly layoutSubject$: BehaviorSubject&lt;NgxMobileLayout&gt; &#x3D;
+	protected readonly layoutSubject$: BehaviorSubject&lt;NgxMobileLayout&gt; &#x3D;
 		new BehaviorSubject&lt;NgxMobileLayout&gt;(undefined);
+
+	/**
+	 * Whether the flyout should be shown
+	 */
+	protected showFlyout: WritableSignal&lt;boolean&gt; &#x3D; signal(false);
+
+	/**
+	 * Whether the aside should be shown
+	 */
+	protected showAside: WritableSignal&lt;boolean&gt; &#x3D; signal(false);
 
 	/**
 	 * The current layout of the application as an Observable
 	 */
 	public readonly layout$: Observable&lt;NgxMobileLayout&gt; &#x3D; this.layoutSubject$.asObservable();
+
+	/**
+	 * Whether the flyout is visible
+	 */
+	public flyoutShown: Signal&lt;boolean&gt; &#x3D; this.showFlyout.asReadonly();
+
+	/**
+	 * Whether the aside is visible
+	 */
+	public asideShown: Signal&lt;boolean&gt; &#x3D; this.showAside.asReadonly();
 
 	/**
 	 * Sets the provided layout for the
@@ -955,8 +1213,6 @@ export class NgxMobileLayoutService {
 			filter(Boolean),
 			take(1),
 			tap(() &#x3D;&gt; {
-				const defaultLayout &#x3D; this.defaultLayout.layout;
-
 				// Iben: If no default layout is provided, we set the layout as is
 				if (!this.defaultLayout &amp;&amp; layout) {
 					this.layoutSubject$.next(clean(layout) as NgxMobileLayout);
@@ -966,7 +1222,7 @@ export class NgxMobileLayoutService {
 
 				// Iben: If layout is provided, we set the default layout
 				if (!layout &amp;&amp; this.defaultLayout) {
-					this.layoutSubject$.next(clean(defaultLayout) as NgxMobileLayout);
+					this.layoutSubject$.next(clean(this.defaultLayout) as NgxMobileLayout);
 
 					return;
 				}
@@ -977,21 +1233,24 @@ export class NgxMobileLayoutService {
 						header: {
 							left: this.getComponent(
 								layout.header?.left,
-								defaultLayout.header?.left
+								this.defaultLayout.header?.left
 							),
 							main: this.getComponent(
 								layout.header?.main,
-								defaultLayout.header?.main
+								this.defaultLayout.header?.main
 							),
 							right: this.getComponent(
 								layout.header?.right,
-								defaultLayout.header?.right
+								this.defaultLayout.header?.right
 							),
 						},
-						navigation: this.getComponent(layout.navigation, defaultLayout.navigation),
-						// Iben: The flyout is the only item that does not have a default element, so we don&#x27;t have to fetch it using getComponent
-						flyout: layout.flyout,
-						footer: this.getComponent(layout.footer, defaultLayout.footer),
+						navigation: this.getComponent(
+							layout.navigation,
+							this.defaultLayout.navigation
+						),
+						flyout: this.getComponent(layout.footer, this.defaultLayout.flyout),
+						aside: this.getComponent(layout.aside, this.defaultLayout.aside),
+						footer: this.getComponent(layout.footer, this.defaultLayout.footer),
 					}) as NgxMobileLayout
 				);
 			})
@@ -999,35 +1258,43 @@ export class NgxMobileLayoutService {
 	}
 
 	/**
-	 * Open a provided flyout
+	 * Open a flyout
 	 *
-	 * @param flyout - The provided flyout
+	 * @param flyout - An optional flyout
 	 */
-	public openFlyout(flyout: ComponentType) {
-		// Iben: Notify the component that a flyout is about to be added
-		this.flyoutStateSubject$.next(&#x27;IN&#x27;);
+	public openFlyout(flyout?: ComponentType): void {
+		// Iben: Add the flyout if there wasn&#x27;t one defined
+		if (flyout) {
+			this.layoutSubject$.next({
+				...this.layoutSubject$.getValue(),
+				flyout,
+			});
 
-		// Iben: Add the flyout
-		this.layoutSubject$.next({
-			...this.layoutSubject$.getValue(),
-			flyout,
-		});
+			// Iben: Make the flyout visible
+			this.showFlyout.set(true);
+		}
 	}
 
 	/**
 	 * Close the currently open flyout
 	 */
-	public closeFlyout() {
-		// Iben: Notify the component that a flyout is about to be removed
-		this.flyoutStateSubject$.next(&#x27;OUT&#x27;);
+	public closeFlyout(): void {
+		// Iben: Make the flyout invisible
+		this.showFlyout.set(false);
+	}
 
-		// Iben: Remove the flyout after the specified time
-		setTimeout(() &#x3D;&gt; {
-			// eslint-disable-next-line @typescript-eslint/no-unused-vars
-			const { flyout, ...rest } &#x3D; this.layoutSubject$.getValue();
+	/**
+	 * Open a aside
+	 */
+	public openAside(): void {
+		this.showAside.set(true);
+	}
 
-			this.layoutSubject$.next(rest);
-		}, this.defaultLayout?.flyoutAnimationDuration || 300);
+	/**
+	 * Close the currently open aside
+	 */
+	public closeAside(): void {
+		this.showAside.set(false);
 	}
 
 	/**
@@ -1035,12 +1302,25 @@ export class NgxMobileLayoutService {
 	 */
 	public setUpInitialLayout(markAsInitial: boolean &#x3D; true): void {
 		// Iben: Set initial layout
-		this.layoutSubject$.next(clean(this.defaultLayout?.layout) as NgxMobileLayout);
+		this.layoutSubject$.next(clean(this.defaultLayout) as NgxMobileLayout);
 
 		// Iben: Mark the initial layout set as true
 		if (markAsInitial) {
 			this.initialLayoutSetSubject$.next(true);
 		}
+	}
+
+	/**
+	 * Returns whether an element is defined in the layout
+	 *
+	 * @param element - The element we wish to check
+	 */
+	public hasElement(element: NgxMobileLayoutElements): Observable&lt;boolean&gt; {
+		return this.layout$.pipe(
+			filter(Boolean),
+			distinctUntilChanged(),
+			map((layout) &#x3D;&gt; Boolean(get(layout, element)))
+		);
 	}
 
 	/**

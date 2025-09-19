@@ -4326,7 +4326,7 @@ By default, a take(1) is applied to the source, so the source observable can be 
             </tr>
                 <tr>
                     <td class="col-md-4">
-                        <i>Default value : </i><code>new InjectionToken&lt;NgxMobileLayoutConfiguration&gt;(
+                        <i>Default value : </i><code>new InjectionToken&lt;NgxMobileLayout&gt;(
 	&#x27;NgxMobileLayoutConfiguration&#x27;
 )</code>
                     </td>
@@ -5709,9 +5709,7 @@ This implementation is provided given that pluck has a higher readability than a
             </tr>
                 <tr>
                     <td class="col-md-4">
-                        <i>Default value : </i><code>(
-	configuration: NgxMobileLayoutConfiguration
-): Provider &#x3D;&gt; {
+                        <i>Default value : </i><code>(configuration: NgxMobileLayout): Provider &#x3D;&gt; {
 	return {
 		provide: NgxMobileLayoutConfigurationToken,
 		useValue: configuration,

@@ -492,9 +492,6 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                                 <a href="interfaces/NgxMobileLayout.html" data-type="entity-link" >NgxMobileLayout</a>
                             </li>
                             <li class="link">
-                                <a href="interfaces/NgxMobileLayoutConfiguration.html" data-type="entity-link" >NgxMobileLayoutConfiguration</a>
-                            </li>
-                            <li class="link">
                                 <a href="interfaces/NgxModalAriaLabelBaseOptions.html" data-type="entity-link" >NgxModalAriaLabelBaseOptions</a>
                             </li>
                             <li class="link">
