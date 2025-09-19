@@ -2,7 +2,6 @@ import { NgComponentOutlet, NgTemplateOutlet } from '@angular/common';
 import { Component, contentChild, inject, OnInit, Signal, TemplateRef } from '@angular/core';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { RouterModule } from '@angular/router';
-import { map } from 'rxjs';
 
 import { NgxMobileLayoutService } from '../../services';
 import { NgxMobileLayout } from '../../types';
@@ -27,15 +26,14 @@ export class NgxMobileLayoutComponent implements OnInit {
 	protected layout: Signal<NgxMobileLayout> = toSignal(this.layoutService.layout$);
 
 	/**
-	 * A class added to the flyout element when it gets added or removed
+	 * Whether the flyout needs to be shown
 	 */
-	protected flyoutClass: Signal<string> = toSignal(
-		this.layoutService.flyoutState$.pipe(
-			map((state) =>
-				state === 'IN' ? 'ngx-mobile-layout-flyout-in' : 'ngx-mobile-layout-flyout-out'
-			)
-		)
-	);
+	protected readonly flyoutShown: Signal<boolean> = this.layoutService.flyoutShown;
+
+	/**
+	 * Whether the aside needs to be shown
+	 */
+	protected readonly asideShown: Signal<boolean> = this.layoutService.asideShown;
 
 	/**
 	 * An optional template we can pass to replace the default routerOutlet
