@@ -108,7 +108,7 @@ export class NgxButtonDirective implements OnInit {
 	/**
 	 * An optional icon we wish to display alongside the button text
 	 */
-	public icon: InputSignal<string> = input();
+	public icon: InputSignal<any> = input();
 
 	/**
 	 * The position of the icon when provided, by default this is Left unless overwritten in the configuration
