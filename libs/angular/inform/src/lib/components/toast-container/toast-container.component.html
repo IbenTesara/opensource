@@ -6,7 +6,7 @@
 	(mouseleave)="setFocus(false)"
 >
 	@for (toast of toasts(); track toast.id) {
-	<li class="ngx-toast-item" [class.ngx-toast-item-out]="toast.toBeRemoved">
+	<li class="ngx-toast-item" animate.enter="ngx-toast-item-in" animate.leave="ngx-toast-item-out">
 		<ng-template
 			[ngComponentOutlet]="toast.configuration?.component || configuration.component"
 			[ngComponentOutletInputs]="{toast}"

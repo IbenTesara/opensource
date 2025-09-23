@@ -43,7 +43,6 @@ describe('NgxToastService', () => {
 
 			expect(toast.text).toEqual(text);
 			expect(toast.id).toBeDefined();
-			expect(toast.toBeRemoved).toBeFalsy();
 
 			expect(service.toasts()).toEqual([toast]);
 		});
@@ -59,7 +58,6 @@ describe('NgxToastService', () => {
 			expect(toast.data).toEqual('success');
 			expect(toast.configuration.autoClose).toBeFalsy();
 			expect(toast.id).toBeDefined();
-			expect(toast.toBeRemoved).toBeFalsy();
 
 			expect(service.toasts()).toEqual([toast]);
 		});
@@ -85,7 +83,6 @@ describe('NgxToastService', () => {
 
 			expect(toast.text).toEqual(text);
 			expect(toast.id).toBeDefined();
-			expect(toast.toBeRemoved).toBeFalsy();
 
 			expect(service.toasts()).toEqual([toast]);
 		});
@@ -101,7 +98,6 @@ describe('NgxToastService', () => {
 			expect(toast.data).toEqual('success');
 			expect(toast.configuration.autoClose).toBeFalsy();
 			expect(toast.id).toBeDefined();
-			expect(toast.toBeRemoved).toBeFalsy();
 
 			expect(service.toasts()).toEqual([toast]);
 		});
@@ -141,7 +137,6 @@ describe('NgxToastService', () => {
 
 			expect(toast.text).toEqual(text);
 			expect(toast.id).toBeDefined();
-			expect(toast.toBeRemoved).toBeFalsy();
 
 			expect(service.toasts()).toEqual([toast]);
 		});
@@ -157,7 +152,6 @@ describe('NgxToastService', () => {
 			expect(toast.data).toEqual('success');
 			expect(toast.configuration.autoClose).toBeFalsy();
 			expect(toast.id).toBeDefined();
-			expect(toast.toBeRemoved).toBeFalsy();
 
 			expect(service.toasts()).toEqual([toast]);
 		});
@@ -205,7 +199,6 @@ describe('NgxToastService', () => {
 
 			expect(toast.text).toEqual(text);
 			expect(toast.id).toBeDefined();
-			expect(toast.toBeRemoved).toBeFalsy();
 
 			expect(service.toasts()).toEqual([toast]);
 		});
@@ -221,7 +214,6 @@ describe('NgxToastService', () => {
 			expect(toast.data).toEqual('success');
 			expect(toast.configuration.autoClose).toBeFalsy();
 			expect(toast.id).toBeDefined();
-			expect(toast.toBeRemoved).toBeFalsy();
 
 			expect(service.toasts()).toEqual([toast]);
 		});

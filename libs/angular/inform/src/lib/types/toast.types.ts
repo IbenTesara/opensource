@@ -63,7 +63,6 @@ export interface NgxToast<DataType = unknown> {
 	id: string;
 	text: string;
 	data?: DataType;
-	toBeRemoved?: boolean;
 	configuration?: NgxToastConfiguration;
 }
 
