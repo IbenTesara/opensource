@@ -1,6 +1,6 @@
 {
 	"name": "@ibenvandeveire/ngx-inform",
-	"version": "20.2.2",
+	"version": "20.2.3",
 	"description": "A lightweight ARIA compliant customizable approach for common and complex inform flows in Angular, created by Iben Van de Veire.",
 	"keywords": [
 		"angular",
