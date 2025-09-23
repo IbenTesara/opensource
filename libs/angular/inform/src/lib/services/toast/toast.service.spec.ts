@@ -72,7 +72,6 @@ describe('NgxToastService', () => {
 					provideNgxToastConfiguration({
 						...configuration,
 						maxAmount: { amount: 1, strategy: 'ignore' },
-						animationTime: 0,
 					}),
 					NgxToastService,
 				],
@@ -129,7 +128,6 @@ describe('NgxToastService', () => {
 					provideNgxToastConfiguration({
 						...configuration,
 						maxAmount: { amount: 1, strategy: 'wait' },
-						animationTime: 0,
 					}),
 					NgxToastService,
 				],

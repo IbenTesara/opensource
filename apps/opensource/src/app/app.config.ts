@@ -2,7 +2,6 @@ import { provideHttpClient } from '@angular/common/http';
 import {
 	ApplicationConfig,
 	provideBrowserGlobalErrorListeners,
-	provideZoneChangeDetection,
 	provideZonelessChangeDetection,
 } from '@angular/core';
 import { provideRouter } from '@angular/router';
@@ -67,8 +66,8 @@ export const appConfig: ApplicationConfig = {
 			component: ToastComponent,
 			position: 'top-right',
 			maxAmount: {
-				strategy: 'ignore',
-				amount: 1,
+				strategy: 'wait',
+				amount: 4,
 			},
 		}),
 		provideNgxButtonConfiguration({

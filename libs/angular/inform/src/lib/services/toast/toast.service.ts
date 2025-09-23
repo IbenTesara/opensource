@@ -122,23 +122,8 @@ export class NgxToastService {
 							// Iben: Get the index of the toast we need to update or remove
 							const index = queue.findIndex(({ id }) => id === toast.id);
 
-							// Iben: If we need to update it, we mark it as being removed
-							if (type === 'update' && !toast.toBeRemoved) {
-								this.queue$.next([
-									...queue.slice(0, index),
-									{
-										...toast,
-										toBeRemoved: true,
-									},
-									...queue.slice(index + 1),
-								]);
-							} else {
-								// Iben: Remove the toast when needed
-								this.queue$.next([
-									...queue.slice(0, index),
-									...queue.slice(index + 1),
-								]);
-							}
+							// Iben: Remove the toast when needed
+							this.queue$.next([...queue.slice(0, index), ...queue.slice(index + 1)]);
 						})
 					);
 				}),
@@ -213,28 +198,11 @@ export class NgxToastService {
 			return;
 		}
 
-		// Iben: Update the toast
+		// Iben: If the toast list isn't focussed on, we remove it from the dom
 		this.toastEvents$.next({
 			toast,
-			type: 'update',
+			type: 'remove',
 		});
-
-		// Iben: Determine the animation time, by default this is 300ms if no other animationTime was provided
-		const animationTime =
-			this.configuration.animationTime === undefined ? this.configuration.animationTime : 300;
-
-		// Iben: Remove the toast
-		setTimeout(
-			() => {
-				// Iben: If the toast list isn't focussed on, we remove it from the dom
-				this.toastEvents$.next({
-					toast,
-					type: 'remove',
-				});
-				// Iben: Subtract an extra millisecond from the animationTime for the Angular changeDetection tick
-			},
-			animationTime === 0 ? animationTime : animationTime - 1
-		);
 	}
 
 	/**
