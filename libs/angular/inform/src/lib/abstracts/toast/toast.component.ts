@@ -8,7 +8,7 @@ import { NgxToast } from '../../types';
 		'attr.role': 'alert',
 	},
 })
-export abstract class NgxToastComponent implements AfterViewInit {
+export abstract class NgxToastComponent<DataType = unknown> implements AfterViewInit {
 	/**
 	 * Instance of the toast service
 	 */
@@ -17,7 +17,7 @@ export abstract class NgxToastComponent implements AfterViewInit {
 	/**
 	 * The toast we wish to show
 	 */
-	public toast: InputSignal<NgxToast> = input.required();
+	public toast: InputSignal<NgxToast<DataType>> = input.required();
 
 	public ngAfterViewInit(): void {
 		// Iben: Mark the toast as rendered so it can auto remove itself if need be
