@@ -270,8 +270,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="254"
-                                    class="link-to-prism">libs/angular/inform/src/lib/services/toast/toast.service.ts:254</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="222"
+                                    class="link-to-prism">libs/angular/inform/src/lib/services/toast/toast.service.ts:222</a></div>
                         </td>
                     </tr>
 
@@ -348,8 +348,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="201"
-                                    class="link-to-prism">libs/angular/inform/src/lib/services/toast/toast.service.ts:201</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="186"
+                                    class="link-to-prism">libs/angular/inform/src/lib/services/toast/toast.service.ts:186</a></div>
                         </td>
                     </tr>
 
@@ -426,8 +426,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="245"
-                                    class="link-to-prism">libs/angular/inform/src/lib/services/toast/toast.service.ts:245</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="213"
+                                    class="link-to-prism">libs/angular/inform/src/lib/services/toast/toast.service.ts:213</a></div>
                         </td>
                     </tr>
 
@@ -504,8 +504,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="275"
-                                    class="link-to-prism">libs/angular/inform/src/lib/services/toast/toast.service.ts:275</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="243"
+                                    class="link-to-prism">libs/angular/inform/src/lib/services/toast/toast.service.ts:243</a></div>
                         </td>
                     </tr>
 
@@ -545,8 +545,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="170"
-                                    class="link-to-prism">libs/angular/inform/src/lib/services/toast/toast.service.ts:170</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="155"
+                                    class="link-to-prism">libs/angular/inform/src/lib/services/toast/toast.service.ts:155</a></div>
                         </td>
                     </tr>
 
@@ -1073,23 +1073,8 @@ export class NgxToastService {
 							// Iben: Get the index of the toast we need to update or remove
 							const index &#x3D; queue.findIndex(({ id }) &#x3D;&gt; id &#x3D;&#x3D;&#x3D; toast.id);
 
-							// Iben: If we need to update it, we mark it as being removed
-							if (type &#x3D;&#x3D;&#x3D; &#x27;update&#x27; &amp;&amp; !toast.toBeRemoved) {
-								this.queue$.next([
-									...queue.slice(0, index),
-									{
-										...toast,
-										toBeRemoved: true,
-									},
-									...queue.slice(index + 1),
-								]);
-							} else {
-								// Iben: Remove the toast when needed
-								this.queue$.next([
-									...queue.slice(0, index),
-									...queue.slice(index + 1),
-								]);
-							}
+							// Iben: Remove the toast when needed
+							this.queue$.next([...queue.slice(0, index), ...queue.slice(index + 1)]);
 						})
 					);
 				}),
@@ -1164,28 +1149,11 @@ export class NgxToastService {
 			return;
 		}
 
-		// Iben: Update the toast
+		// Iben: If the toast list isn&#x27;t focussed on, we remove it from the dom
 		this.toastEvents$.next({
 			toast,
-			type: &#x27;update&#x27;,
+			type: &#x27;remove&#x27;,
 		});
-
-		// Iben: Determine the animation time, by default this is 300ms if no other animationTime was provided
-		const animationTime &#x3D;
-			this.configuration.animationTime &#x3D;&#x3D;&#x3D; undefined ? this.configuration.animationTime : 300;
-
-		// Iben: Remove the toast
-		setTimeout(
-			() &#x3D;&gt; {
-				// Iben: If the toast list isn&#x27;t focussed on, we remove it from the dom
-				this.toastEvents$.next({
-					toast,
-					type: &#x27;remove&#x27;,
-				});
-				// Iben: Subtract an extra millisecond from the animationTime for the Angular changeDetection tick
-			},
-			animationTime &#x3D;&#x3D;&#x3D; 0 ? animationTime : animationTime - 1
-		);
 	}
 
 	/**

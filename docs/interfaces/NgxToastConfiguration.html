@@ -353,7 +353,6 @@ export interface NgxToastDefaultConfiguration extends Omit&lt;NgxToastConfigurat
 	component: Type&lt;NgxToastComponent&gt;;
 	position: NgxToastPosition;
 	maxAmount?: NgxToastMaxAmountConfiguration;
-	animationTime?: number;
 	maxTime?: number;
 }
 
@@ -378,7 +377,7 @@ export type NgxToastCreator&lt;DataType &#x3D; unknown&gt; &#x3D; Omit&lt;NgxToa
  */
 export interface NgxToastEvent {
 	toast: NgxToast;
-	type: &#x27;add&#x27; | &#x27;update&#x27; | &#x27;remove&#x27;;
+	type: &#x27;add&#x27; | &#x27;remove&#x27;;
 }
 </code></pre>
     </div>
