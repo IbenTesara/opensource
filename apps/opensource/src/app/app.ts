@@ -13,6 +13,8 @@ import {
 } from '@lib/ngx-inform';
 import { NgxButtonDirective, NgxMediaQueryDirective, NgxMediaQueryService } from '@lib/ngx-layout';
 
+import { ButtonTestComponent } from '../packages/layout/components/button/button.component';
+
 @Component({
 	imports: [
 		RouterModule,
@@ -22,6 +24,7 @@ import { NgxButtonDirective, NgxMediaQueryDirective, NgxMediaQueryService } from
 		TranslatePipe,
 		NgxButtonDirective,
 		NgxMediaQueryDirective,
+		ButtonTestComponent,
 	],
 	selector: 'app-root',
 	templateUrl: './app.html',
