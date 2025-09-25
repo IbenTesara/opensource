@@ -9,3 +9,4 @@ export * from './tree-grid.types';
 export * from './mobile-layout.types';
 export * from './button.types';
 export * from './media-query.types';
+export * from './link.types';
