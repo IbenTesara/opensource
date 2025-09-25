@@ -166,10 +166,10 @@
                             <a href="#HideHeaderRowOptions" title="libs/angular/layout/src/lib/tokens/ngx-table-config.token.ts" ><b>HideHeaderRowOptions</b>&nbsp;&nbsp;&nbsp;(libs/.../ngx-table-config.token.ts)</a>
                         </li>
                         <li>
-                            <a href="#Join" title="libs/angular/forms/src/lib/interfaces/form-accessor-control-keys.ts" ><b>Join</b>&nbsp;&nbsp;&nbsp;(libs/.../form-accessor-control-keys.ts)</a>
+                            <a href="#Join" title="libs/angular/utils/src/lib/types/cypress.types.ts" ><b>Join</b>&nbsp;&nbsp;&nbsp;(libs/.../cypress.types.ts)</a>
                         </li>
                         <li>
-                            <a href="#Join" title="libs/angular/utils/src/lib/types/cypress.types.ts" ><b>Join</b>&nbsp;&nbsp;&nbsp;(libs/.../cypress.types.ts)</a>
+                            <a href="#Join" title="libs/angular/forms/src/lib/interfaces/form-accessor-control-keys.ts" ><b>Join</b>&nbsp;&nbsp;&nbsp;(libs/.../form-accessor-control-keys.ts)</a>
                         </li>
                         <li>
                             <a href="#KeyValuePair" title="libs/javascript/utils/src/lib/object/merge/merge.util.ts" ><b>KeyValuePair</b>&nbsp;&nbsp;&nbsp;(libs/.../merge.util.ts)</a>
@@ -248,6 +248,21 @@
                         </li>
                         <li>
                             <a href="#NgxImageMarkerState" title="libs/angular/layout/src/lib/types/image-marker.types.ts" ><b>NgxImageMarkerState</b>&nbsp;&nbsp;&nbsp;(libs/.../image-marker.types.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#NgxLinkContext" title="libs/angular/layout/src/lib/types/link.types.ts" ><b>NgxLinkContext</b>&nbsp;&nbsp;&nbsp;(libs/.../link.types.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#NgxLinkDestination" title="libs/angular/layout/src/lib/types/link.types.ts" ><b>NgxLinkDestination</b>&nbsp;&nbsp;&nbsp;(libs/.../link.types.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#NgxLinkIconPosition" title="libs/angular/layout/src/lib/types/link.types.ts" ><b>NgxLinkIconPosition</b>&nbsp;&nbsp;&nbsp;(libs/.../link.types.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#NgxLinkPriority" title="libs/angular/layout/src/lib/types/link.types.ts" ><b>NgxLinkPriority</b>&nbsp;&nbsp;&nbsp;(libs/.../link.types.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#NgxLinkType" title="libs/angular/layout/src/lib/types/link.types.ts" ><b>NgxLinkType</b>&nbsp;&nbsp;&nbsp;(libs/.../link.types.ts)</a>
                         </li>
                         <li>
                             <a href="#NgxMobileLayoutElements" title="libs/angular/layout/src/lib/types/mobile-layout.types.ts" ><b>NgxMobileLayoutElements</b>&nbsp;&nbsp;&nbsp;(libs/.../mobile-layout.types.ts)</a>
@@ -409,10 +424,10 @@
                             <a href="#Previous" title="libs/angular/forms/src/lib/interfaces/form-accessor-control-keys.ts" ><b>Previous</b>&nbsp;&nbsp;&nbsp;(libs/.../form-accessor-control-keys.ts)</a>
                         </li>
                         <li>
-                            <a href="#RequireAtLeastOne" title="libs/angular/layout/src/lib/types/internal-helpers.ts" ><b>RequireAtLeastOne</b>&nbsp;&nbsp;&nbsp;(libs/.../internal-helpers.ts)</a>
+                            <a href="#RequireAtLeastOne" title="libs/angular/store/src/lib/rxjs/interfaces/require-at-least-one.ts" ><b>RequireAtLeastOne</b>&nbsp;&nbsp;&nbsp;(libs/.../require-at-least-one.ts)</a>
                         </li>
                         <li>
-                            <a href="#RequireAtLeastOne" title="libs/angular/store/src/lib/rxjs/interfaces/require-at-least-one.ts" ><b>RequireAtLeastOne</b>&nbsp;&nbsp;&nbsp;(libs/.../require-at-least-one.ts)</a>
+                            <a href="#RequireAtLeastOne" title="libs/angular/layout/src/lib/types/internal-helpers.ts" ><b>RequireAtLeastOne</b>&nbsp;&nbsp;&nbsp;(libs/.../internal-helpers.ts)</a>
                         </li>
                         <li>
                             <a href="#ShowDetailRowOption" title="libs/angular/layout/src/lib/tokens/ngx-table-config.token.ts" ><b>ShowDetailRowOption</b>&nbsp;&nbsp;&nbsp;(libs/.../ngx-table-config.token.ts)</a>
@@ -1786,6 +1801,118 @@
             </tr>
         </tbody>
     </table>
+</section>    <h3>libs/angular/layout/src/lib/types/link.types.ts</h3>
+    <section data-compodoc="block-typealias">
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="NgxLinkContext"></a>
+                    <span class="name "><b>NgxLinkContext</b><a href="#NgxLinkContext"><span class="icon ion-ios-link"></span></a></span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>The context of the link</p>
+</div>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <code>    <code>&quot;navigation&quot; | &quot;breadcrumb&quot; | &quot;anchor&quot; | &quot;form&quot; | &quot;footer&quot;</code>
+</code>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="NgxLinkDestination"></a>
+                    <span class="name "><b>NgxLinkDestination</b><a href="#NgxLinkDestination"><span class="icon ion-ios-link"></span></a></span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Whether the link is an internal link or external link</p>
+</div>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <code>    <code>&quot;internal&quot; | &quot;external&quot;</code>
+</code>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="NgxLinkIconPosition"></a>
+                    <span class="name "><b>NgxLinkIconPosition</b><a href="#NgxLinkIconPosition"><span class="icon ion-ios-link"></span></a></span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>The position of the icon in the button</p>
+</div>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <code>    <code>&quot;left&quot; | &quot;right&quot;</code>
+</code>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="NgxLinkPriority"></a>
+                    <span class="name "><b>NgxLinkPriority</b><a href="#NgxLinkPriority"><span class="icon ion-ios-link"></span></a></span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>The priority of the link</p>
+</div>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <code>    <code>&quot;primary&quot; | &quot;secondary&quot; | &quot;tertiary&quot; | &quot;danger&quot;</code>
+</code>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="NgxLinkType"></a>
+                    <span class="name "><b>NgxLinkType</b><a href="#NgxLinkType"><span class="icon ion-ios-link"></span></a></span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>The type of the link</p>
+</div>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <code>    <code>&quot;text&quot; | &quot;icon&quot; | &quot;button&quot;</code>
+</code>
+                </td>
+            </tr>
+        </tbody>
+    </table>
 </section>    <h3>libs/angular/inform/src/lib/types/modal.types.ts</h3>
     <section data-compodoc="block-typealias">
     <table class="table table-sm table-bordered">
@@ -2500,7 +2627,7 @@
             </tr>
         </tbody>
     </table>
-</section>    <h3>libs/angular/layout/src/lib/types/internal-helpers.ts</h3>
+</section>    <h3>libs/angular/store/src/lib/rxjs/interfaces/require-at-least-one.ts</h3>
     <section data-compodoc="block-typealias">
     <table class="table table-sm table-bordered">
         <tbody>
@@ -2518,7 +2645,7 @@
             </tr>
         </tbody>
     </table>
-</section>    <h3>libs/angular/store/src/lib/rxjs/interfaces/require-at-least-one.ts</h3>
+</section>    <h3>libs/angular/layout/src/lib/types/internal-helpers.ts</h3>
     <section data-compodoc="block-typealias">
     <table class="table table-sm table-bordered">
         <tbody>

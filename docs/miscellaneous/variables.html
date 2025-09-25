@@ -319,6 +319,9 @@
                             <a href="#NgxIsAuthenticatedGuard" title="libs/angular/authentication/src/lib/guards/is-authenticated/is-authenticated.guard.ts" ><b>NgxIsAuthenticatedGuard</b>&nbsp;&nbsp;&nbsp;(libs/.../is-authenticated.guard.ts)</a>
                         </li>
                         <li>
+                            <a href="#NgxLinkConfigurationToken" title="libs/angular/layout/src/lib/tokens/link-configuration.token.ts" ><b>NgxLinkConfigurationToken</b>&nbsp;&nbsp;&nbsp;(libs/.../link-configuration.token.ts)</a>
+                        </li>
+                        <li>
                             <a href="#NgxMediaQueriesToken" title="libs/angular/layout/src/lib/tokens/media-queries.token.ts" ><b>NgxMediaQueriesToken</b>&nbsp;&nbsp;&nbsp;(libs/.../media-queries.token.ts)</a>
                         </li>
                         <li>
@@ -391,10 +394,10 @@
                             <a href="#OverlayMock" title="libs/angular/inform/src/lib/mocks/overlay.mock.ts" ><b>OverlayMock</b>&nbsp;&nbsp;&nbsp;(libs/.../overlay.mock.ts)</a>
                         </li>
                         <li>
-                            <a href="#Pipes" title="libs/angular/layout/src/lib/pipes/index.ts" ><b>Pipes</b>&nbsp;&nbsp;&nbsp;(libs/.../index.ts)</a>
+                            <a href="#Pipes" title="libs/angular/utils/src/lib/pipes/index.ts" ><b>Pipes</b>&nbsp;&nbsp;&nbsp;(libs/.../index.ts)</a>
                         </li>
                         <li>
-                            <a href="#Pipes" title="libs/angular/utils/src/lib/pipes/index.ts" ><b>Pipes</b>&nbsp;&nbsp;&nbsp;(libs/.../index.ts)</a>
+                            <a href="#Pipes" title="libs/angular/layout/src/lib/pipes/index.ts" ><b>Pipes</b>&nbsp;&nbsp;&nbsp;(libs/.../index.ts)</a>
                         </li>
                         <li>
                             <a href="#pluck" title="libs/javascript/rxjs/src/lib/operators/pluck/pluck.operator.ts" ><b>pluck</b>&nbsp;&nbsp;&nbsp;(libs/.../pluck.operator.ts)</a>
@@ -422,6 +425,9 @@
                         </li>
                         <li>
                             <a href="#provideNgxI18nConfiguration" title="libs/angular/i18n/src/lib/providers/i18n.providers.ts" ><b>provideNgxI18nConfiguration</b>&nbsp;&nbsp;&nbsp;(libs/.../i18n.providers.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#provideNgxLinkConfiguration" title="libs/angular/layout/src/lib/providers/link/link-configuration.provider.ts" ><b>provideNgxLinkConfiguration</b>&nbsp;&nbsp;&nbsp;(libs/.../link-configuration.provider.ts)</a>
                         </li>
                         <li>
                             <a href="#provideNgxMediaQueries" title="libs/angular/layout/src/lib/providers/media-queries/media-queries.provider.ts" ><b>provideNgxMediaQueries</b>&nbsp;&nbsp;&nbsp;(libs/.../media-queries.provider.ts)</a>
@@ -481,13 +487,13 @@
                             <a href="#touchedEventListener" title="libs/angular/forms/src/lib/utils/touched-event-listener/touched-event-listener.ts" ><b>touchedEventListener</b>&nbsp;&nbsp;&nbsp;(libs/.../touched-event-listener.ts)</a>
                         </li>
                         <li>
-                            <a href="#updateAllValueAndValidity" title="libs/angular/forms/src/lib/utils/custom-update-value-and-validity/custom-update-value-and-validity.util.ts" ><b>updateAllValueAndValidity</b>&nbsp;&nbsp;&nbsp;(libs/.../custom-update-value-and-validity.util.ts)</a>
-                        </li>
-                        <li>
                             <a href="#" title="libs/angular/store/src/lib/rxjs/spec/store-assets.ts" ><b></b>&nbsp;&nbsp;&nbsp;(libs/.../store-assets.ts)</a>
                         </li>
                         <li>
                             <a href="#" title="libs/angular/store/src/lib/rxjs/spec/store-state.service.ts" ><b></b>&nbsp;&nbsp;&nbsp;(libs/.../store-state.service.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#updateAllValueAndValidity" title="libs/angular/forms/src/lib/utils/custom-update-value-and-validity/custom-update-value-and-validity.util.ts" ><b>updateAllValueAndValidity</b>&nbsp;&nbsp;&nbsp;(libs/.../custom-update-value-and-validity.util.ts)</a>
                         </li>
                         <li>
                             <a href="#useMockDataDuringTour" title="libs/angular/inform/src/lib/operators/tour/use-mock-data-during-tour/use-mock-data-during-tour.operator.ts" ><b>useMockDataDuringTour</b>&nbsp;&nbsp;&nbsp;(libs/.../use-mock-data-during-tour.operator.ts)</a>
@@ -4282,6 +4288,37 @@ By default, a take(1) is applied to the source, so the source observable can be 
         </tbody>
     </table>
 </section>
+    <h3>libs/angular/layout/src/lib/tokens/link-configuration.token.ts</h3>
+    <section data-compodoc="block-properties">
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="NgxLinkConfigurationToken"></a>
+                    <span class="name">
+                        <span ><b>NgxLinkConfigurationToken</b></span>
+                        <a href="#NgxLinkConfigurationToken"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>new InjectionToken&lt;NgxLinkConfiguration&gt;(
+	&#x27;NgxLinkConfiguration&#x27;
+)</code>
+                    </td>
+                </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>A token to provide the necessary configuration to the NgxLink directive</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+</section>
     <h3>libs/angular/layout/src/lib/tokens/media-queries.token.ts</h3>
     <section data-compodoc="block-properties">
     <h3></h3>    <table class="table table-sm table-bordered">
@@ -5126,6 +5163,35 @@ due to testing frameworks (like Storybook) not being able to resolve the Injecti
         </tbody>
     </table>
 </section>
+    <h3>libs/angular/utils/src/lib/pipes/index.ts</h3>
+    <section data-compodoc="block-properties">
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="Pipes"></a>
+                    <span class="name">
+                        <span ><b>Pipes</b></span>
+                        <a href="#Pipes"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>[]</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[BtwPipe, HasObserversPipe, IbanPipe, TransformPipe, NgxReplaceElementsPipe]</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+</section>
     <h3>libs/angular/layout/src/lib/pipes/index.ts</h3>
     <section data-compodoc="block-properties">
     <h3></h3>    <table class="table table-sm table-bordered">
@@ -5154,35 +5220,6 @@ due to testing frameworks (like Storybook) not being able to resolve the Injecti
 	NgxTableShowHeaderPipe,
 	NgxAriaSortPipe,
 ]</code>
-                    </td>
-                </tr>
-
-
-        </tbody>
-    </table>
-</section>
-    <h3>libs/angular/utils/src/lib/pipes/index.ts</h3>
-    <section data-compodoc="block-properties">
-    <h3></h3>    <table class="table table-sm table-bordered">
-        <tbody>
-            <tr>
-                <td class="col-md-4">
-                    <a name="Pipes"></a>
-                    <span class="name">
-                        <span ><b>Pipes</b></span>
-                        <a href="#Pipes"><span class="icon ion-ios-link"></span></a>
-                    </span>
-                </td>
-            </tr>
-                <tr>
-                    <td class="col-md-4">
-                        <i>Type : </i>    <code>[]</code>
-
-                    </td>
-                </tr>
-                <tr>
-                    <td class="col-md-4">
-                        <i>Default value : </i><code>[BtwPipe, HasObserversPipe, IbanPipe, TransformPipe, NgxReplaceElementsPipe]</code>
                     </td>
                 </tr>
 
@@ -5653,6 +5690,40 @@ This implementation is provided given that pluck has a higher readability than a
             <tr>
                 <td class="col-md-4">
                     <div class="io-description"><p>Returns a route with the provided translations</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+</section>
+    <h3>libs/angular/layout/src/lib/providers/link/link-configuration.provider.ts</h3>
+    <section data-compodoc="block-properties">
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="provideNgxLinkConfiguration"></a>
+                    <span class="name">
+                        <span ><b>provideNgxLinkConfiguration</b></span>
+                        <a href="#provideNgxLinkConfiguration"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>(configuration: NgxLinkConfiguration): Provider &#x3D;&gt; {
+	return {
+		provide: NgxLinkConfigurationToken,
+		useValue: configuration,
+	};
+}</code>
+                    </td>
+                </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Provides the configuration for the NgxLink directive</p>
 </div>
                 </td>
             </tr>

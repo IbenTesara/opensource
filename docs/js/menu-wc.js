@@ -195,6 +195,9 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                                     <a href="directives/NgxIsAuthenticatedDirective.html" data-type="entity-link" >NgxIsAuthenticatedDirective</a>
                                 </li>
                                 <li class="link">
+                                    <a href="directives/NgxLinkDirective.html" data-type="entity-link" >NgxLinkDirective</a>
+                                </li>
+                                <li class="link">
                                     <a href="directives/NgxMediaQueryDirective.html" data-type="entity-link" >NgxMediaQueryDirective</a>
                                 </li>
                                 <li class="link">
@@ -484,6 +487,9 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                             </li>
                             <li class="link">
                                 <a href="interfaces/NgxImageMarkerView.html" data-type="entity-link" >NgxImageMarkerView</a>
+                            </li>
+                            <li class="link">
+                                <a href="interfaces/NgxLinkConfiguration.html" data-type="entity-link" >NgxLinkConfiguration</a>
                             </li>
                             <li class="link">
                                 <a href="interfaces/NgxMediaQuery.html" data-type="entity-link" >NgxMediaQuery</a>
