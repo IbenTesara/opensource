@@ -89,7 +89,7 @@ export class NgxButtonDirective implements OnInit {
     ngx-button-${this.buttonType()}
     ngx-button-${this.priority()}
     ngx-button-${this.buttonWidth()}
-    ${this.display() !== 'both' ? `ngx-button-${this.display()} ` : ''}
+    ${this.display() !== 'both' ? `ngx-button-${this.display()}-only ` : ''}
     ${this.loading() ? 'ngx-button-loading ' : ''}
     ${this.icon() ? 'ngx-button-with-icon ' : ''}`;
 	});
