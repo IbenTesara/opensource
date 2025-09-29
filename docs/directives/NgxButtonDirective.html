@@ -549,7 +549,7 @@
     ngx-button-${this.buttonWidth()}
     ${this.display() !&#x3D;&#x3D; &#x27;both&#x27; ? &#x60;ngx-button-${this.display()}-only &#x60; : &#x27;&#x27;}
     ${this.loading() ? &#x27;ngx-button-loading &#x27; : &#x27;&#x27;}
-    ${this.icon() ? &#x27;ngx-button-with-icon &#x27; : &#x27;&#x27;}&#x60;;
+    ${this.icon() ? &#x60;ngx-button-icon-${this.iconPosition()}&#x60; : &#x27;&#x27;}&#x60;;
 	})</code>
                     </td>
                 </tr>
@@ -1250,7 +1250,7 @@ export class NgxButtonDirective implements OnInit {
     ngx-button-${this.buttonWidth()}
     ${this.display() !&#x3D;&#x3D; &#x27;both&#x27; ? &#x60;ngx-button-${this.display()}-only &#x60; : &#x27;&#x27;}
     ${this.loading() ? &#x27;ngx-button-loading &#x27; : &#x27;&#x27;}
-    ${this.icon() ? &#x27;ngx-button-with-icon &#x27; : &#x27;&#x27;}&#x60;;
+    ${this.icon() ? &#x60;ngx-button-icon-${this.iconPosition()}&#x60; : &#x27;&#x27;}&#x60;;
 	});
 
 	/**
