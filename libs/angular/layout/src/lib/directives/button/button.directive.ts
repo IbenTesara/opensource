@@ -16,9 +16,11 @@ import { NgxDisplayContentComponent } from '../../abstracts';
 import { NgxButtonConfigurationToken } from '../../tokens';
 import {
 	NgxButtonConfiguration,
+	NgxButtonDisplayType,
 	NgxButtonIconPosition,
 	NgxButtonPriority,
 	NgxButtonType,
+	NgxButtonWidth,
 } from '../../types';
 
 /**
@@ -86,8 +88,10 @@ export class NgxButtonDirective implements OnInit {
     ngx-button
     ngx-button-${this.buttonType()}
     ngx-button-${this.priority()}
-    ${this.loading() ? 'ngx-button-loading' : ''}
-    ${this.icon() ? 'ngx-button-with-icon' : ''}`;
+    ngx-button-${this.buttonWidth()}
+    ${this.display() !== 'both' ? `ngx-button-${this.display()} ` : ''}
+    ${this.loading() ? 'ngx-button-loading ' : ''}
+    ${this.icon() ? 'ngx-button-with-icon ' : ''}`;
 	});
 
 	/**
@@ -101,14 +105,24 @@ export class NgxButtonDirective implements OnInit {
 	public loadingData: InputSignal<any> = input();
 
 	/**
-	 * Whether the button is a Regular, Icon, Link or Fab button. By default, this is Regular.
+	 * Whether the button is a regular, outline, text or fab button. By default, this is regular.
 	 */
 	public buttonType: InputSignal<NgxButtonType> = input('regular');
 
 	/**
-	 * Whether the button has Primary, Secondary or Tertiary priority. By default, this is Primary.
+	 * Whether the button has primary, secondary, tertiary or danger priority. By default, this is primary.
 	 */
 	public priority: InputSignal<NgxButtonPriority> = input('primary');
+
+	/**
+	 * Whether the button has to show only the icon, the text or both. By default, this is both.
+	 */
+	public display: InputSignal<NgxButtonDisplayType> = input('both');
+
+	/**
+	 * The width of the button, either full or fit. By default, this is fit.
+	 */
+	public buttonWidth: InputSignal<NgxButtonWidth> = input('fit');
 
 	/**
 	 * An optional icon we wish to display alongside the button text

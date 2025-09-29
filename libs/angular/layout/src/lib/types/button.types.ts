@@ -10,12 +10,22 @@ export type NgxButtonPriority = 'primary' | 'secondary' | 'tertiary' | 'danger';
 /**
  * The type of the button
  */
-export type NgxButtonType = 'regular' | 'icon' | 'fab' | 'text' | 'outline';
+export type NgxButtonType = 'regular' | 'fab' | 'text' | 'outline';
 
 /**
  * The position of the icon in the button
  */
 export type NgxButtonIconPosition = 'left' | 'right';
+
+/**
+ * The width of the button
+ */
+export type NgxButtonWidth = 'full' | 'fit';
+
+/**
+ * Whether the text and icon or only the icon needs to be shown
+ */
+export type NgxButtonDisplayType = 'icon' | 'text' | 'both';
 
 /**
  * The default configuration of the button
