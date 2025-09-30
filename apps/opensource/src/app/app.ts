@@ -11,7 +11,12 @@ import {
 	NgxTourService,
 	NgxTourShowWhenDirective,
 } from '@lib/ngx-inform';
-import { NgxButtonDirective, NgxMediaQueryDirective, NgxMediaQueryService } from '@lib/ngx-layout';
+import {
+	NgxButtonDirective,
+	NgxMatchesQueryPipe,
+	NgxMediaQueryDirective,
+	NgxMediaQueryService,
+} from '@lib/ngx-layout';
 
 import { ButtonTestComponent } from '../packages/layout/components/button/button.component';
 
@@ -25,6 +30,7 @@ import { ButtonTestComponent } from '../packages/layout/components/button/button
 		NgxButtonDirective,
 		NgxMediaQueryDirective,
 		ButtonTestComponent,
+		NgxMatchesQueryPipe,
 	],
 	selector: 'app-root',
 	templateUrl: './app.html',

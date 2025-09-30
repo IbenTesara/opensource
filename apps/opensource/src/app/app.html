@@ -24,7 +24,9 @@
 
 <button ngxButton buttonType="text">Home</button>
 
-<button ngxButton buttonType="icon" icon="fa fa-home">{{''}}</button>
+<button ngxButton buttonType="text" display="icon" icon="fa fa-home">{{''}}</button>
 <button-test label="Hello" />
+
+{{['Desktop', 'Tablet'] | ngxMatchesQuery}}
 
 <router-outlet></router-outlet>

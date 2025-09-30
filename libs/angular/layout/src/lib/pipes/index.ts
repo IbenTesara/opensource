@@ -10,6 +10,7 @@ export * from './sort-icon/sort-icon.pipe';
 export * from './get-pipe/get.pipe';
 export * from './show-header/show-header.pipe';
 export * from './aria-sort/aria-sort.pipe';
+export * from './matches-query/matches-query.pipe';
 
 export const Pipes = [
 	NgxTableHasObserversPipe,
