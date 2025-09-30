@@ -266,8 +266,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="158"
-                                    class="link-to-prism">libs/angular/layout/src/lib/services/mobile-layout/mobile-layout.service.ts:158</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="177"
+                                    class="link-to-prism">libs/angular/layout/src/lib/services/mobile-layout/mobile-layout.service.ts:177</a></div>
                         </td>
                     </tr>
 
@@ -307,8 +307,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="143"
-                                    class="link-to-prism">libs/angular/layout/src/lib/services/mobile-layout/mobile-layout.service.ts:143</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="153"
+                                    class="link-to-prism">libs/angular/layout/src/lib/services/mobile-layout/mobile-layout.service.ts:153</a></div>
                         </td>
                     </tr>
 
@@ -348,8 +348,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="194"
-                                    class="link-to-prism">libs/angular/layout/src/lib/services/mobile-layout/mobile-layout.service.ts:194</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="213"
+                                    class="link-to-prism">libs/angular/layout/src/lib/services/mobile-layout/mobile-layout.service.ts:213</a></div>
                         </td>
                     </tr>
 
@@ -444,8 +444,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="180"
-                                    class="link-to-prism">libs/angular/layout/src/lib/services/mobile-layout/mobile-layout.service.ts:180</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="199"
+                                    class="link-to-prism">libs/angular/layout/src/lib/services/mobile-layout/mobile-layout.service.ts:199</a></div>
                         </td>
                     </tr>
 
@@ -522,8 +522,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="151"
-                                    class="link-to-prism">libs/angular/layout/src/lib/services/mobile-layout/mobile-layout.service.ts:151</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="161"
+                                    class="link-to-prism">libs/angular/layout/src/lib/services/mobile-layout/mobile-layout.service.ts:161</a></div>
                         </td>
                     </tr>
 
@@ -556,7 +556,7 @@
             <tr>
                 <td class="col-md-4">
                         <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>openFlyout(flyout?: <a href="../undefineds/ComponentType.html" target="_self">ComponentType</a>)</code>
+                    <code>openFlyout(component?: <a href="../undefineds/ComponentType.html" target="_self">ComponentType</a>)</code>
                 </td>
             </tr>
 
@@ -583,12 +583,11 @@
                                             <td>Name</td>
                                                 <td>Type</td>
                                             <td>Optional</td>
-                                                <td>Description</td>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <tr>
-                                                <td>flyout</td>
+                                                <td>component</td>
                                             <td>
                                                             <code><a href="../miscellaneous/typealiases.html#ComponentType" target="_self" >ComponentType</a></code>
                                             </td>
@@ -598,12 +597,6 @@
                                             </td>
 
 
-                                            <td>
-                                                    <ul>
-<li>An optional flyout</li>
-</ul>
-
-                                            </td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -719,8 +712,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="165"
-                                    class="link-to-prism">libs/angular/layout/src/lib/services/mobile-layout/mobile-layout.service.ts:165</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="184"
+                                    class="link-to-prism">libs/angular/layout/src/lib/services/mobile-layout/mobile-layout.service.ts:184</a></div>
                         </td>
                     </tr>
 
@@ -1262,17 +1255,27 @@ export class NgxMobileLayoutService {
 	 *
 	 * @param flyout - An optional flyout
 	 */
-	public openFlyout(flyout?: ComponentType): void {
-		// Iben: Add the flyout if there wasn&#x27;t one defined
-		if (flyout) {
-			this.layoutSubject$.next({
-				...this.layoutSubject$.getValue(),
-				flyout,
-			});
+	public openFlyout(component?: ComponentType): void {
+		//Iben: Get the flyout based on whether one was provided
+		const flyout &#x3D; component || this.defaultLayout.flyout;
 
-			// Iben: Make the flyout visible
-			this.showFlyout.set(true);
+		// Iben: Early exit if needed
+		if (!flyout) {
+			console.warn(
+				&#x27;@ibenvandeveire/ngx-layout - NgxMobileLayoutService: No flyout component was provided to the method or to the default configuration.&#x27;
+			);
+
+			return;
 		}
+
+		// Iben: Add the flyout if there wasn&#x27;t one defined
+		this.layoutSubject$.next({
+			...this.layoutSubject$.getValue(),
+			flyout,
+		});
+
+		// Iben: Make the flyout visible
+		this.showFlyout.set(true);
 	}
 
 	/**
@@ -1287,6 +1290,15 @@ export class NgxMobileLayoutService {
 	 * Open a aside
 	 */
 	public openAside(): void {
+		// Iben: Early exit if needed
+		if (!this.layoutSubject$.getValue().aside) {
+			console.warn(
+				&#x27;@ibenvandeveire/ngx-layout - NgxMobileLayoutService: No aside component was provided to the configuration.&#x27;
+			);
+
+			return;
+		}
+
 		this.showAside.set(true);
 	}
 
