@@ -1,10 +1,26 @@
 import { inject, Injectable, signal, Signal, WritableSignal } from '@angular/core';
 import { get } from 'lodash';
 import clean from 'obj-clean';
-import { BehaviorSubject, distinctUntilChanged, filter, map, Observable, take, tap } from 'rxjs';
+import {
+	BehaviorSubject,
+	combineLatest,
+	distinctUntilChanged,
+	filter,
+	map,
+	Observable,
+	take,
+	tap,
+} from 'rxjs';
 
 import { NgxMobileLayoutConfigurationToken } from '../../tokens';
-import { ComponentType, NgxMobileLayout, NgxMobileLayoutElements } from '../../types';
+import {
+	ComponentType,
+	NgxMobileLayout,
+	NgxMobileLayoutConfiguration,
+	NgxMobileLayoutElements,
+	NgxMobileLayoutItem,
+} from '../../types';
+import { NgxMediaQueryService } from '../media-query/media-query.service';
 
 /**
  * The `NgxMobileLayoutService` allows us to configure an entire layout based on routing rather than on HTML. This allows for an easier use for mobile-first applications.
@@ -13,6 +29,11 @@ import { ComponentType, NgxMobileLayout, NgxMobileLayoutElements } from '../../t
 	providedIn: 'root',
 })
 export class NgxMobileLayoutService {
+	/**
+	 * An instance of the NgxMediaQueryService
+	 */
+	protected readonly mediaService: NgxMediaQueryService = inject(NgxMediaQueryService);
+
 	/**
 	 * A subject holding whether the initial layout has been set
 	 */
@@ -28,7 +49,7 @@ export class NgxMobileLayoutService {
 	/**
 	 * An optional default layout that was provided
 	 */
-	protected readonly defaultLayout: NgxMobileLayout | undefined = inject(
+	protected readonly defaultLayout: NgxMobileLayoutConfiguration | undefined = inject(
 		NgxMobileLayoutConfigurationToken,
 		{ optional: true }
 	);
@@ -36,8 +57,8 @@ export class NgxMobileLayoutService {
 	/**
 	 * A subject holding the current layout of the application
 	 */
-	protected readonly layoutSubject$: BehaviorSubject<NgxMobileLayout> =
-		new BehaviorSubject<NgxMobileLayout>(undefined);
+	protected readonly layoutSubject$: BehaviorSubject<NgxMobileLayoutConfiguration> =
+		new BehaviorSubject<NgxMobileLayoutConfiguration>(undefined);
 
 	/**
 	 * Whether the flyout should be shown
@@ -52,7 +73,24 @@ export class NgxMobileLayoutService {
 	/**
 	 * The current layout of the application as an Observable
 	 */
-	public readonly layout$: Observable<NgxMobileLayout> = this.layoutSubject$.asObservable();
+	public readonly layout$: Observable<NgxMobileLayout> = combineLatest([
+		this.mediaService.currentQueryMatch$.pipe(distinctUntilChanged()),
+		this.layoutSubject$.asObservable().pipe(distinctUntilChanged(), filter(Boolean)),
+	]).pipe(
+		map(([query, layout]) => {
+			return clean({
+				header: {
+					left: this.extractComponent(layout.header.left, query),
+					main: this.extractComponent(layout.header.main, query),
+					right: this.extractComponent(layout.header.right, query),
+				},
+				navigation: this.extractComponent(layout.navigation, query),
+				flyout: this.extractComponent(layout.flyout, query),
+				aside: this.extractComponent(layout.aside, query),
+				footer: this.extractComponent(layout.footer, query),
+			}) as NgxMobileLayout;
+		})
+	);
 
 	/**
 	 * Whether the flyout is visible
@@ -69,7 +107,7 @@ export class NgxMobileLayoutService {
 	 *
 	 * @param layout - The layout we wish to set
 	 */
-	public setLayout(layout: NgxMobileLayout): Observable<boolean> {
+	public setLayout(layout: NgxMobileLayoutConfiguration): Observable<boolean> {
 		// Iben: To prevent timing issues, we wait until the initial layout has been set
 		return this.initialLayoutSet$.pipe(
 			filter(Boolean),
@@ -77,14 +115,16 @@ export class NgxMobileLayoutService {
 			tap(() => {
 				// Iben: If no default layout is provided, we set the layout as is
 				if (!this.defaultLayout && layout) {
-					this.layoutSubject$.next(clean(layout) as NgxMobileLayout);
+					this.layoutSubject$.next(clean(layout) as NgxMobileLayoutConfiguration);
 
 					return;
 				}
 
 				// Iben: If layout is provided, we set the default layout
 				if (!layout && this.defaultLayout) {
-					this.layoutSubject$.next(clean(this.defaultLayout) as NgxMobileLayout);
+					this.layoutSubject$.next(
+						clean(this.defaultLayout) as NgxMobileLayoutConfiguration
+					);
 
 					return;
 				}
@@ -113,7 +153,7 @@ export class NgxMobileLayoutService {
 						flyout: this.getComponent(layout.footer, this.defaultLayout.flyout),
 						aside: this.getComponent(layout.aside, this.defaultLayout.aside),
 						footer: this.getComponent(layout.footer, this.defaultLayout.footer),
-					}) as NgxMobileLayout
+					}) as NgxMobileLayoutConfiguration
 				);
 			})
 		);
@@ -164,7 +204,7 @@ export class NgxMobileLayoutService {
 	 */
 	public setUpInitialLayout(markAsInitial: boolean = true): void {
 		// Iben: Set initial layout
-		this.layoutSubject$.next(clean(this.defaultLayout) as NgxMobileLayout);
+		this.layoutSubject$.next(clean(this.defaultLayout) as NgxMobileLayoutConfiguration);
 
 		// Iben: Mark the initial layout set as true
 		if (markAsInitial) {
@@ -191,7 +231,10 @@ export class NgxMobileLayoutService {
 	 * @param component - The component
 	 * @param fallback - The fallback
 	 */
-	private getComponent(component: ComponentType, fallback: ComponentType): ComponentType {
+	private getComponent(
+		component: NgxMobileLayoutItem,
+		fallback: NgxMobileLayoutItem
+	): NgxMobileLayoutItem {
 		// Iben: If the component was explicitly set to `null`, we know we need to remove the current component and not fall back to the fallback
 		if (component === null) {
 			return undefined;
@@ -199,5 +242,27 @@ export class NgxMobileLayoutService {
 
 		// Iben: Either return the component, or the fallback
 		return component || fallback;
+	}
+
+	/**
+	 * Extract the component based on the provided query
+	 *
+	 * @param component - A component or component record
+	 * @param query - An optional query
+	 */
+	private extractComponent(component: NgxMobileLayoutItem, query?: string): ComponentType {
+		// Iben: If no component was provided, we early exit
+		if (!component) {
+			return null;
+		}
+
+		// Iben: If a default property exists, we assume we are dealing with a record
+		if (component['default']) {
+			// Iben: Return the component matching the query or the default
+			return component[(query || 'default').toLowerCase()] || component['default'];
+		}
+
+		// Iben: Return the component as is
+		return component as ComponentType;
 	}
 }

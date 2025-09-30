@@ -1,10 +1,10 @@
 import { InjectionToken } from '@angular/core';
 
-import { NgxMobileLayout } from '../types';
+import { NgxMobileLayoutConfiguration } from '../types';
 
 /**
  * An optional token to provide the base mobile configuration to the `NgxMobileLayoutService`
  */
-export const NgxMobileLayoutConfigurationToken = new InjectionToken<NgxMobileLayout>(
+export const NgxMobileLayoutConfigurationToken = new InjectionToken<NgxMobileLayoutConfiguration>(
 	'NgxMobileLayoutConfiguration'
 );
