@@ -670,6 +670,9 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                                     <a href="pipes/NgxHasPermissionPipe.html" data-type="entity-link" >NgxHasPermissionPipe</a>
                                 </li>
                                 <li class="link">
+                                    <a href="pipes/NgxMatchesQueryPipe.html" data-type="entity-link" >NgxMatchesQueryPipe</a>
+                                </li>
+                                <li class="link">
                                     <a href="pipes/NgxReplaceElementsPipe.html" data-type="entity-link" >NgxReplaceElementsPipe</a>
                                 </li>
                                 <li class="link">
