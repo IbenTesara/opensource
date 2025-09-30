@@ -124,17 +124,27 @@ export class NgxMobileLayoutService {
 	 *
 	 * @param flyout - An optional flyout
 	 */
-	public openFlyout(flyout?: ComponentType): void {
-		// Iben: Add the flyout if there wasn't one defined
-		if (flyout) {
-			this.layoutSubject$.next({
-				...this.layoutSubject$.getValue(),
-				flyout,
-			});
+	public openFlyout(component?: ComponentType): void {
+		//Iben: Get the flyout based on whether one was provided
+		const flyout = component || this.defaultLayout.flyout;
 
-			// Iben: Make the flyout visible
-			this.showFlyout.set(true);
+		// Iben: Early exit if needed
+		if (!flyout) {
+			console.warn(
+				'@ibenvandeveire/ngx-layout - NgxMobileLayoutService: No flyout component was provided to the method or to the default configuration.'
+			);
+
+			return;
 		}
+
+		// Iben: Add the flyout if there wasn't one defined
+		this.layoutSubject$.next({
+			...this.layoutSubject$.getValue(),
+			flyout,
+		});
+
+		// Iben: Make the flyout visible
+		this.showFlyout.set(true);
 	}
 
 	/**
@@ -149,6 +159,15 @@ export class NgxMobileLayoutService {
 	 * Open a aside
 	 */
 	public openAside(): void {
+		// Iben: Early exit if needed
+		if (!this.layoutSubject$.getValue().aside) {
+			console.warn(
+				'@ibenvandeveire/ngx-layout - NgxMobileLayoutService: No aside component was provided to the configuration.'
+			);
+
+			return;
+		}
+
 		this.showAside.set(true);
 	}
 

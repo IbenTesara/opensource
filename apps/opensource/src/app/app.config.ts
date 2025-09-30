@@ -24,6 +24,7 @@ import { ToastComponent } from '../packages/inform/components/toast/toast.compon
 import { TooltipComponent } from '../packages/inform/components/tooltip/tooltip.component';
 import { TourStepComponent } from '../packages/inform/components/tour-step/tour-step.component';
 import { TestLoadingComponent } from '../packages/layout/components/display-content/display.content.component';
+import { FlyoutComponent } from '../packages/mobile-layout/components/flyout/flyout.component';
 import { MainHeaderComponent } from '../packages/mobile-layout/components/headers/main/main-header.component';
 import { RightHeaderComponent } from '../packages/mobile-layout/components/headers/right/right-header.component';
 import { NavigationComponent } from '../packages/mobile-layout/components/nav/nav.component';
@@ -61,6 +62,7 @@ export const appConfig: ApplicationConfig = {
 				right: RightHeaderComponent,
 			},
 			navigation: NavigationComponent,
+			flyout: FlyoutComponent,
 		}),
 		provideNgxToastConfiguration({
 			component: ToastComponent,
