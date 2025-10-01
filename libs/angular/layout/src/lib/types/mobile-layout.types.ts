@@ -4,7 +4,7 @@ export type ComponentType = Type<any> | null;
 
 export type NgxMobileLayoutItem = ComponentType | Record<string, ComponentType>;
 
-interface NgxMobileLayoutBase<DataType> {
+export interface NgxMobileLayoutBase<DataType> {
 	/**
 	 * The header we wish to render
 	 */
