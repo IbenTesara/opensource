@@ -58,7 +58,8 @@ export const appConfig: ApplicationConfig = {
 		provideNgxMobileLayoutConfiguration({
 			header: {
 				main: {
-					default: MainHeaderComponent,
+					tablet: MainHeaderComponent,
+					desktop: MainHeaderComponent,
 					mobile: NavigationComponent,
 				},
 				right: RightHeaderComponent,

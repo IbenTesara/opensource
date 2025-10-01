@@ -126,4 +126,8 @@ export class NgxMediaQueryService implements OnDestroy {
 			map((query) => matchingSet.has(query))
 		);
 	}
+
+	public get queries() {
+		return Object.keys(this.listeners);
+	}
 }

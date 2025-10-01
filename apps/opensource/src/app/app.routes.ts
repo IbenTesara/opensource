@@ -65,7 +65,9 @@ export const appRoutes: Route[] = [
 							data: {
 								mobileLayout: {
 									header: {
-										right: null,
+										right: {
+											mobile: null,
+										},
 									},
 								},
 							},

@@ -2,18 +2,13 @@ import { Type } from '@angular/core';
 
 export type ComponentType = Type<any> | null;
 
-export interface ComponentRecord {
-	default: ComponentType;
-	[key: string]: ComponentType;
-}
-
-export type NgxMobileLayoutItem = ComponentType | ComponentRecord;
+export type NgxMobileLayoutItem = ComponentType | Record<string, ComponentType>;
 
 interface NgxMobileLayoutBase<DataType> {
 	/**
 	 * The header we wish to render
 	 */
-	header?: {
+	header: {
 		/**
 		 * The center part of the header we wish to render
 		 */
@@ -30,30 +25,32 @@ interface NgxMobileLayoutBase<DataType> {
 	/**
 	 * An optional flyout we wish to render
 	 */
-	flyout?: DataType;
+	flyout: DataType;
 	/**
 	 * An optional aside we wish to render
 	 */
-	aside?: DataType;
+	aside: DataType;
 	/**
 	 * An optional navigation we wish to render
 	 */
-	navigation?: DataType;
+	navigation: DataType;
 	/**
 	 * The footer we wish to render
 	 */
-	footer?: DataType;
+	footer: DataType;
 }
 
 /**
  * A layout for the `NgxMobileLayoutService`
  */
-export type NgxMobileLayout = NgxMobileLayoutBase<ComponentType>;
+export type NgxMobileLayout = Partial<NgxMobileLayoutBase<ComponentType>>;
 
 /**
  * A layout configuration for the `NgxMobileLayoutService`
  */
-export type NgxMobileLayoutConfiguration = NgxMobileLayoutBase<NgxMobileLayoutItem>;
+export type NgxMobileLayoutConfiguration = Partial<NgxMobileLayoutBase<NgxMobileLayoutItem>>;
+
+export type NgxMobileLayoutByQuery = NgxMobileLayoutBase<Record<string, ComponentType>>;
 
 /**
  * All possible elements of the mobile layout
