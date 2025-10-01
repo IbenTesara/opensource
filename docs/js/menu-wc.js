@@ -399,9 +399,6 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                                 <a href="interfaces/BasicEntityState.html" data-type="entity-link" >BasicEntityState</a>
                             </li>
                             <li class="link">
-                                <a href="interfaces/ComponentRecord.html" data-type="entity-link" >ComponentRecord</a>
-                            </li>
-                            <li class="link">
                                 <a href="interfaces/ComponentTypeWrapper.html" data-type="entity-link" >ComponentTypeWrapper</a>
                             </li>
                             <li class="link">

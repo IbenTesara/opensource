@@ -190,6 +190,12 @@
                             <a href="#enableControls" title="libs/angular/forms/src/lib/utils/form-accessor/form-accessor.utils.ts" ><b>enableControls</b>&nbsp;&nbsp;&nbsp;(libs/.../form-accessor.utils.ts)</a>
                         </li>
                         <li>
+                            <a href="#extractComponents" title="libs/angular/layout/src/lib/utils/extract-layout/extract-layout.util.ts" ><b>extractComponents</b>&nbsp;&nbsp;&nbsp;(libs/.../extract-layout.util.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#extractLayout" title="libs/angular/layout/src/lib/utils/extract-layout/extract-layout.util.ts" ><b>extractLayout</b>&nbsp;&nbsp;&nbsp;(libs/.../extract-layout.util.ts)</a>
+                        </li>
+                        <li>
                             <a href="#fetchIf" title="libs/javascript/rxjs/src/lib/operators/fetch-if/fetch-if.operator.ts" ><b>fetchIf</b>&nbsp;&nbsp;&nbsp;(libs/.../fetch-if.operator.ts)</a>
                         </li>
                         <li>
@@ -2571,6 +2577,123 @@ the relative position of the element to the center of the viewport.s</p>
             <tr>
                 <td class="col-md-4">
                     <div class="io-description"><p>Updates a form and all the form-accessors this form i</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+</section>
+    <h3>libs/angular/layout/src/lib/utils/extract-layout/extract-layout.util.ts</h3>
+    <section data-compodoc="block-properties">
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="extractComponents"></a>
+                    <span class="name">
+                        <span ><b>extractComponents</b></span>
+                        <a href="#extractComponents"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>(
+	item: NgxMobileLayoutItem,
+	defaultLayout: NgxMobileLayoutItem,
+	queries: string[]
+): Record&lt;string, ComponentType&gt; &#x3D;&gt; {
+	// Iben: If the item is null, we return an empty object
+	if (item &#x3D;&#x3D;&#x3D; null) {
+		return {};
+	}
+
+	// Iben: If a single component is presented, we use this component for each query
+	if (item instanceof Type) {
+		const result &#x3D; {};
+
+		queries.forEach((query) &#x3D;&gt; {
+			result[query] &#x3D; item;
+		});
+
+		return result;
+	}
+
+	// Iben: In this case, a record of components was provided
+	const result &#x3D; { ...(item || {}) };
+
+	// Iben: If no default was provided, we return the record as is.
+	if (!defaultLayout) {
+		return result;
+	}
+
+	// Iben: If the default layout is a single component, we fill in the missing gaps
+	if (defaultLayout instanceof Type) {
+		queries.forEach((query) &#x3D;&gt; {
+			if (result[query] &#x3D;&#x3D;&#x3D; undefined) {
+				result[query] &#x3D; defaultLayout;
+			}
+		});
+	} else {
+		// Iben: If the default layout is a a record, we fill in the missing gaps with the ones that are provided
+		queries.forEach((query) &#x3D;&gt; {
+			if (result[query] &#x3D;&#x3D;&#x3D; undefined) {
+				result[query] &#x3D; defaultLayout[query];
+			}
+		});
+	}
+
+	return result;
+}</code>
+                    </td>
+                </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Extracts the components from the item and creates a layout item per query</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="extractLayout"></a>
+                    <span class="name">
+                        <span ><b>extractLayout</b></span>
+                        <a href="#extractLayout"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>(
+	layout: NgxMobileLayoutConfiguration,
+	defaultLayout: NgxMobileLayoutConfiguration | undefined,
+	queries: string[]
+): NgxMobileLayoutByQuery &#x3D;&gt; {
+	return {
+		header: {
+			left: extractComponents(layout?.header?.left, defaultLayout?.header?.left, queries),
+			main: extractComponents(layout?.header?.main, defaultLayout?.header?.main, queries),
+			right: extractComponents(layout?.header?.right, defaultLayout?.header?.right, queries),
+		},
+		navigation: extractComponents(layout?.navigation, defaultLayout?.navigation, queries),
+		aside: extractComponents(layout?.aside, defaultLayout?.aside, queries),
+		flyout: extractComponents(layout?.flyout, defaultLayout?.flyout, queries),
+		footer: extractComponents(layout?.footer, defaultLayout?.footer, queries),
+	};
+}</code>
+                    </td>
+                </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Extracts the layout from the configuration and sorts them by query</p>
 </div>
                 </td>
             </tr>

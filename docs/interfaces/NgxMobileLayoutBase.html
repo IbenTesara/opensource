@@ -141,35 +141,30 @@
                         <td class="col-md-4">
                             <ul class="index-list">
                                 <li>
-                                            <span class="modifier">Optional</span>
                                         <a href="#aside" 
 >
                                             aside
                                         </a>
                                 </li>
                                 <li>
-                                            <span class="modifier">Optional</span>
                                         <a href="#flyout" 
 >
                                             flyout
                                         </a>
                                 </li>
                                 <li>
-                                            <span class="modifier">Optional</span>
                                         <a href="#footer" 
 >
                                             footer
                                         </a>
                                 </li>
                                 <li>
-                                            <span class="modifier">Optional</span>
                                         <a href="#header" 
 >
                                             header
                                         </a>
                                 </li>
                                 <li>
-                                            <span class="modifier">Optional</span>
                                         <a href="#navigation" 
 >
                                             navigation
@@ -213,11 +208,6 @@
                                         </td>
                                     </tr>
 
-                                    <tr>
-                                        <td class="col-md-4">
-                                            <i>Optional</i>
-                                        </td>
-                                    </tr>
 
 
 
@@ -257,11 +247,6 @@
                                         </td>
                                     </tr>
 
-                                    <tr>
-                                        <td class="col-md-4">
-                                            <i>Optional</i>
-                                        </td>
-                                    </tr>
 
 
 
@@ -301,11 +286,6 @@
                                         </td>
                                     </tr>
 
-                                    <tr>
-                                        <td class="col-md-4">
-                                            <i>Optional</i>
-                                        </td>
-                                    </tr>
 
 
 
@@ -345,11 +325,6 @@
                                         </td>
                                     </tr>
 
-                                    <tr>
-                                        <td class="col-md-4">
-                                            <i>Optional</i>
-                                        </td>
-                                    </tr>
 
 
 
@@ -389,11 +364,6 @@
                                         </td>
                                     </tr>
 
-                                    <tr>
-                                        <td class="col-md-4">
-                                            <i>Optional</i>
-                                        </td>
-                                    </tr>
 
 
 
@@ -415,18 +385,13 @@
 
 export type ComponentType &#x3D; Type&lt;any&gt; | null;
 
-export interface ComponentRecord {
-	default: ComponentType;
-	[key: string]: ComponentType;
-}
-
-export type NgxMobileLayoutItem &#x3D; ComponentType | ComponentRecord;
+export type NgxMobileLayoutItem &#x3D; ComponentType | Record&lt;string, ComponentType&gt;;
 
 interface NgxMobileLayoutBase&lt;DataType&gt; {
 	/**
 	 * The header we wish to render
 	 */
-	header?: {
+	header: {
 		/**
 		 * The center part of the header we wish to render
 		 */
@@ -443,30 +408,32 @@ interface NgxMobileLayoutBase&lt;DataType&gt; {
 	/**
 	 * An optional flyout we wish to render
 	 */
-	flyout?: DataType;
+	flyout: DataType;
 	/**
 	 * An optional aside we wish to render
 	 */
-	aside?: DataType;
+	aside: DataType;
 	/**
 	 * An optional navigation we wish to render
 	 */
-	navigation?: DataType;
+	navigation: DataType;
 	/**
 	 * The footer we wish to render
 	 */
-	footer?: DataType;
+	footer: DataType;
 }
 
 /**
  * A layout for the &#x60;NgxMobileLayoutService&#x60;
  */
-export type NgxMobileLayout &#x3D; NgxMobileLayoutBase&lt;ComponentType&gt;;
+export type NgxMobileLayout &#x3D; Partial&lt;NgxMobileLayoutBase&lt;ComponentType&gt;&gt;;
 
 /**
  * A layout configuration for the &#x60;NgxMobileLayoutService&#x60;
  */
-export type NgxMobileLayoutConfiguration &#x3D; NgxMobileLayoutBase&lt;NgxMobileLayoutItem&gt;;
+export type NgxMobileLayoutConfiguration &#x3D; Partial&lt;NgxMobileLayoutBase&lt;NgxMobileLayoutItem&gt;&gt;;
+
+export type NgxMobileLayoutByQuery &#x3D; NgxMobileLayoutBase&lt;Record&lt;string, ComponentType&gt;&gt;;
 
 /**
  * All possible elements of the mobile layout
