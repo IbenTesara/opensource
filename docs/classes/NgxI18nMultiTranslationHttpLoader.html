@@ -579,8 +579,9 @@ export class NgxI18nMultiTranslationHttpLoader implements TranslateLoader {
 
 				// Iben: Check if we have a custom client, if not, we use the basic HTTPClient
 				return (
-					this.customClient.getTranslations(path, lang, this.config.cacheBust) ||
-					new HttpClient(this.httpBackend).get(fetchPath)
+					this.customClient
+						? this.customClient.getTranslations(path, lang, this.config.cacheBust)
+						: new HttpClient(this.httpBackend).get(fetchPath)
 				).pipe(
 					// Iben: Map this to an object so we can track which results corresponds with which path
 					map((translations) &#x3D;&gt; {
