@@ -144,11 +144,11 @@
                     <td class="col-md-4">
                         <ul class="index-list">
                             <li>
-                                    <span class="modifier">Private</span>
+                                    <span class="modifier">Protected</span>
                                 <a href="#broadcastChannel" >broadcastChannel</a>
                             </li>
                             <li>
-                                    <span class="modifier">Private</span>
+                                    <span class="modifier">Protected</span>
                                     <span class="modifier">Readonly</span>
                                 <a href="#windowService" >windowService</a>
                             </li>
@@ -653,7 +653,7 @@
                 <td class="col-md-4">
                     <a name="broadcastChannel"></a>
                     <span class="name">
-                            <span class="modifier">Private</span>
+                            <span class="modifier">Protected</span>
                         <span ><b>broadcastChannel</b></span>
                         <a href="#broadcastChannel"><span class="icon ion-ios-link"></span></a>
                     </span>
@@ -691,7 +691,7 @@
                 <td class="col-md-4">
                     <a name="windowService"></a>
                     <span class="name">
-                            <span class="modifier">Private</span>
+                            <span class="modifier">Protected</span>
                             <span class="modifier">Readonly</span>
                         <span ><b>windowService</b></span>
                         <a href="#windowService"><span class="icon ion-ios-link"></span></a>
@@ -732,12 +732,12 @@ import { EMPTY, fromEvent, Observable } from &#x27;rxjs&#x27;;
 	providedIn: &#x27;root&#x27;,
 })
 export class NgxBroadcastChannelService {
-	private readonly windowService &#x3D; inject(NgxWindowService);
+	protected readonly windowService &#x3D; inject(NgxWindowService);
 
 	/**
 	 * A record holding all the broadcast channels
 	 */
-	private broadcastChannel: Record&lt;string, BroadcastChannel&gt; &#x3D; {};
+	protected broadcastChannel: Record&lt;string, BroadcastChannel&gt; &#x3D; {};
 
 	/**
 	 * initChannel

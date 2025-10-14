@@ -326,7 +326,7 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                                     <a href="injectables/NgxMediaQueryService.html" data-type="entity-link" >NgxMediaQueryService</a>
                                 </li>
                                 <li class="link">
-                                    <a href="injectables/NgxMediaQueryService-1.html" data-type="entity-link" >NgxMediaQueryService</a>
+                                    <a href="injectables/NgxMediaQueryService-1.html" data-type="entity-link" class="deprecated-name">NgxMediaQueryService</a>
                                 </li>
                                 <li class="link">
                                     <a href="injectables/NgxMobileLayoutService.html" data-type="entity-link" >NgxMobileLayoutService</a>

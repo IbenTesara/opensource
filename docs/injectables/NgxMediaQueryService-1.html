@@ -91,7 +91,9 @@
 
 <ol class="breadcrumb">
   <li class="breadcrumb-item">Injectables</li>
-  <li class="breadcrumb-item" >NgxMediaQueryService</li>
+  <li class="breadcrumb-item" 
+        class="breadcrumb-item deprecated-name"
+    >NgxMediaQueryService</li>
 </ol>
 
 <ul class="nav nav-tabs" role="tablist">
@@ -118,17 +120,13 @@
             <code>libs/angular/utils/src/lib/services/media-query/mediaquery.service.ts</code>
         </p>
 
-
             <p class="comment">
-                <h3>Description</h3>
+                <h3 class="deprecated">Deprecated</h3>
             </p>
             <p class="comment">
-                <p>A service that can be used to track media queries and their changes. It exposes a method
-to register media queries, which takes an array of tuples with the id of the media query
-and the query itself. The service will then emit the id of the media query that has
-changed when subscribed to the <code>getMatchingQuery$</code> method.</p>
-
+                This service will be deprecated in the next major release. Please use the NgxMediaQueryService from `@ibenvandeveire/ngx-layout` instead.
             </p>
+
 
 
 
@@ -233,8 +231,8 @@ changed when subscribed to the <code>getMatchingQuery$</code> method.</p>
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="102"
-                                    class="link-to-prism">libs/angular/utils/src/lib/services/media-query/mediaquery.service.ts:102</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="99"
+                                    class="link-to-prism">libs/angular/utils/src/lib/services/media-query/mediaquery.service.ts:99</a></div>
                         </td>
                     </tr>
 
@@ -312,8 +310,8 @@ changed when subscribed to the <code>getMatchingQuery$</code> method.</p>
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="121"
-                                    class="link-to-prism">libs/angular/utils/src/lib/services/media-query/mediaquery.service.ts:121</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="118"
+                                    class="link-to-prism">libs/angular/utils/src/lib/services/media-query/mediaquery.service.ts:118</a></div>
                         </td>
                     </tr>
 
@@ -353,8 +351,8 @@ changed when subscribed to the <code>getMatchingQuery$</code> method.</p>
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="44"
-                                    class="link-to-prism">libs/angular/utils/src/lib/services/media-query/mediaquery.service.ts:44</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="41"
+                                    class="link-to-prism">libs/angular/utils/src/lib/services/media-query/mediaquery.service.ts:41</a></div>
                         </td>
                     </tr>
 
@@ -441,7 +439,7 @@ changed when subscribed to the <code>getMatchingQuery$</code> method.</p>
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="29" class="link-to-prism">libs/angular/utils/src/lib/services/media-query/mediaquery.service.ts:29</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="26" class="link-to-prism">libs/angular/utils/src/lib/services/media-query/mediaquery.service.ts:26</a></div>
                         </td>
                     </tr>
 
@@ -474,7 +472,7 @@ changed when subscribed to the <code>getMatchingQuery$</code> method.</p>
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="37" class="link-to-prism">libs/angular/utils/src/lib/services/media-query/mediaquery.service.ts:37</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="34" class="link-to-prism">libs/angular/utils/src/lib/services/media-query/mediaquery.service.ts:34</a></div>
                         </td>
                     </tr>
 
@@ -513,7 +511,7 @@ changed when subscribed to the <code>getMatchingQuery$</code> method.</p>
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="23" class="link-to-prism">libs/angular/utils/src/lib/services/media-query/mediaquery.service.ts:23</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="20" class="link-to-prism">libs/angular/utils/src/lib/services/media-query/mediaquery.service.ts:20</a></div>
                         </td>
                     </tr>
 
@@ -552,7 +550,7 @@ changed when subscribed to the <code>getMatchingQuery$</code> method.</p>
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="18" class="link-to-prism">libs/angular/utils/src/lib/services/media-query/mediaquery.service.ts:18</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="15" class="link-to-prism">libs/angular/utils/src/lib/services/media-query/mediaquery.service.ts:15</a></div>
                         </td>
                     </tr>
 
@@ -585,7 +583,7 @@ changed when subscribed to the <code>getMatchingQuery$</code> method.</p>
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="13" class="link-to-prism">libs/angular/utils/src/lib/services/media-query/mediaquery.service.ts:13</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="10" class="link-to-prism">libs/angular/utils/src/lib/services/media-query/mediaquery.service.ts:10</a></div>
                         </td>
                     </tr>
 
@@ -603,10 +601,7 @@ import { NgxWindowService } from &#x27;@ibenvandeveire/ngx-core&#x27;;
 import { filter, map, Observable, ReplaySubject } from &#x27;rxjs&#x27;;
 
 /**
- * A service that can be used to track media queries and their changes. It exposes a method
- * to register media queries, which takes an array of tuples with the id of the media query
- * and the query itself. The service will then emit the id of the media query that has
- * changed when subscribed to the &#x60;getMatchingQuery$&#x60; method.
+ * @deprecated This service will be deprecated in the next major release. Please use the NgxMediaQueryService from &#x60;@ibenvandeveire/ngx-layout&#x60; instead.
  */
 @Injectable({ providedIn: &#x27;root&#x27; })
 export class NgxMediaQueryService implements OnDestroy {

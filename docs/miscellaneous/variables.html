@@ -280,6 +280,9 @@
                             <a href="#NgxAuthenticationUrlHandlerToken" title="libs/angular/authentication/src/lib/tokens/authentication-configuration.token.ts" ><b>NgxAuthenticationUrlHandlerToken</b>&nbsp;&nbsp;&nbsp;(libs/.../authentication-configuration.token.ts)</a>
                         </li>
                         <li>
+                            <a href="#NgxBroadcastChannelServiceMock" title="libs/angular/utils/src/lib/mocks/broadcast-channel.service.mock.ts" ><b>NgxBroadcastChannelServiceMock</b>&nbsp;&nbsp;&nbsp;(libs/.../broadcast-channel.service.mock.ts)</a>
+                        </li>
+                        <li>
                             <a href="#NgxButtonConfigurationToken" title="libs/angular/layout/src/lib/tokens/button-configuration.token.ts" ><b>NgxButtonConfigurationToken</b>&nbsp;&nbsp;&nbsp;(libs/.../button-configuration.token.ts)</a>
                         </li>
                         <li>
@@ -362,6 +365,9 @@
                         </li>
                         <li>
                             <a href="#NgxSaveOnExitGuard" title="libs/angular/forms/src/lib/guards/save-on-exit/save-on-exit.guard.ts" ><b>NgxSaveOnExitGuard</b>&nbsp;&nbsp;&nbsp;(libs/.../save-on-exit.guard.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#NgxStorageServiceMock" title="libs/angular/utils/src/lib/mocks/storage.service.mock.ts" ><b>NgxStorageServiceMock</b>&nbsp;&nbsp;&nbsp;(libs/.../storage.service.mock.ts)</a>
                         </li>
                         <li>
                             <a href="#NgxTable" title="libs/angular/layout/src/lib/components/index.ts" ><b>NgxTable</b>&nbsp;&nbsp;&nbsp;(libs/.../index.ts)</a>
@@ -3681,6 +3687,41 @@ By default, a take(1) is applied to the source, so the source observable can be 
         </tbody>
     </table>
 </section>
+    <h3>libs/angular/utils/src/lib/mocks/broadcast-channel.service.mock.ts</h3>
+    <section data-compodoc="block-properties">
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="NgxBroadcastChannelServiceMock"></a>
+                    <span class="name">
+                        <span ><b>NgxBroadcastChannelServiceMock</b></span>
+                        <a href="#NgxBroadcastChannelServiceMock"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>(testFunction: Function) &#x3D;&gt; ({
+	initChannel: testFunction,
+	closeChannel: testFunction,
+	postMessage: testFunction,
+	selectChannelMessages: testFunction,
+	selectChannelMessageErrors: testFunction,
+})</code>
+                    </td>
+                </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Returns a mock version of the <code>NgxBroadcastChannelService</code></p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+</section>
     <h3>libs/angular/layout/src/lib/tokens/button-configuration.token.ts</h3>
     <section data-compodoc="block-properties">
     <h3></h3>    <table class="table table-sm table-bordered">
@@ -4908,6 +4949,51 @@ By default, a take(1) is applied to the source, so the source observable can be 
             <tr>
                 <td class="col-md-4">
                     <div class="io-description"><p>Checks whether or not we can navigate away from a page</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+</section>
+    <h3>libs/angular/utils/src/lib/mocks/storage.service.mock.ts</h3>
+    <section data-compodoc="block-properties">
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="NgxStorageServiceMock"></a>
+                    <span class="name">
+                        <span ><b>NgxStorageServiceMock</b></span>
+                        <a href="#NgxStorageServiceMock"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>(testFunction: Function) &#x3D;&gt; ({
+	storageEvents$: new Subject(),
+	localStorage: {
+		getItem: testFunction,
+		getItemObservable: testFunction,
+		removeItem: testFunction,
+		setItem: testFunction,
+		clear: testFunction,
+	},
+	sessionStorage: {
+		getItem: testFunction,
+		getItemObservable: testFunction,
+		removeItem: testFunction,
+		setItem: testFunction,
+		clear: testFunction,
+	},
+})</code>
+                    </td>
+                </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Returns a mock version of the <code>NgxStorageServiceMock</code>.</p>
 </div>
                 </td>
             </tr>
