@@ -5,9 +5,14 @@ import { deepmerge } from 'deepmerge-ts';
 import { forkJoin, Observable, of } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
 
+import { NgxI18nAbstractClient } from '../../abstracts';
 import { NgxI18nConfiguration } from '../../i18n.types';
 import { NgxI18nLoadingService } from '../../services';
-import { NgxI18nConfigurationToken, NgxI18nTranslationPathsToken } from '../../tokens';
+import {
+	NgxI18nClientToken,
+	NgxI18nConfigurationToken,
+	NgxI18nTranslationPathsToken,
+} from '../../tokens';
 
 /**
  * A loader that allows to load in multiple translation JSON files at the same time
@@ -18,6 +23,13 @@ export class NgxI18nMultiTranslationHttpLoader implements TranslateLoader {
 	 */
 	private readonly translationLoadingService: NgxI18nLoadingService =
 		inject(NgxI18nLoadingService);
+
+	/**
+	 * An optional custom client we use to provide the translations
+	 */
+	private readonly customClient: NgxI18nAbstractClient = inject(NgxI18nClientToken, {
+		optional: true,
+	});
 
 	/**
 	 * The configuration for the NgxI18nModule.
@@ -60,7 +72,11 @@ export class NgxI18nMultiTranslationHttpLoader implements TranslateLoader {
 					this.config.cacheBust ? '?v=' + this.config.cacheBust : ''
 				}`;
 
-				return new HttpClient(this.httpBackend).get(fetchPath).pipe(
+				// Iben: Check if we have a custom client, if not, we use the basic HTTPClient
+				return (
+					this.customClient.getTranslations(path, lang, this.config.cacheBust) ||
+					new HttpClient(this.httpBackend).get(fetchPath)
+				).pipe(
 					// Iben: Map this to an object so we can track which results corresponds with which path
 					map((translations) => {
 						return {

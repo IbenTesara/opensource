@@ -1,3 +1,7 @@
+import { Type } from '@angular/core';
+
+import { NgxI18nAbstractClient } from './abstracts';
+
 /**
  * The configuration we can pass to the translation system
  */
@@ -32,4 +36,8 @@ export interface NgxI18nConfiguration {
 	 * `?v=1743428073628` when `cacheBust: String(Date.now())`
 	 */
 	cacheBust?: string;
+	/**
+	 * An optional client we use to fetch the translations with
+	 */
+	client?: Type<NgxI18nAbstractClient>;
 }

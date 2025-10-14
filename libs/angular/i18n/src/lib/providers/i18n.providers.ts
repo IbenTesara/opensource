@@ -11,7 +11,11 @@ import { NgxI18nConfiguration } from '../i18n.types';
 import { NgxI18nMultiTranslationHttpLoader } from '../loader';
 import { NgxI18nTranslationLoaderResolver } from '../resolvers';
 import { NgxI18nService } from '../services';
-import { NgxI18nConfigurationToken, NgxI18nTranslationPathsToken } from '../tokens';
+import {
+	NgxI18nClientToken,
+	NgxI18nConfigurationToken,
+	NgxI18nTranslationPathsToken,
+} from '../tokens';
 
 /**
  * Returns the root providers for the NgxI18nModule
@@ -25,6 +29,14 @@ export const provideNgxI18nConfiguration = (
 ): (Provider | EnvironmentProviders)[] => {
 	// Iben: Return the providers from the module
 	return [
+		...(config.client
+			? [
+					{
+						provide: NgxI18nClientToken,
+						useClass: config.client,
+					},
+			  ]
+			: []),
 		{
 			provide: NgxI18nTranslationPathsToken,
 			useValue: paths || config.defaultAssetPaths,
