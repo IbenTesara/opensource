@@ -4,3 +4,4 @@ export * from './services';
 export * from './components';
 export * from './i18n.types';
 export * from './providers';
+export * from './mocks';

@@ -11,14 +11,14 @@ import { NgxI18nRootService } from '../root-i18n/root-i18n.service';
 @Injectable()
 export class NgxI18nService implements NgxI18nAbstractService {
 	/**
-	 * Instance of the ngx-translate TranslateService
-	 */
-	public readonly translateService: TranslateService = inject(TranslateService);
-
-	/**
 	 * Instance of the NgxI8nRootService
 	 */
-	private readonly rootI18nService: NgxI18nRootService = inject(NgxI18nRootService);
+	protected readonly rootI18nService: NgxI18nRootService = inject(NgxI18nRootService);
+
+	/**
+	 * Instance of the ngx-translate TranslateService
+	 */
+	protected readonly translateService: TranslateService = inject(TranslateService);
 
 	/**
 	 * Returns the current language of the application

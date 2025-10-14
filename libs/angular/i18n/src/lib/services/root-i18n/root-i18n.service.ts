@@ -14,24 +14,25 @@ export class NgxI18nRootService {
 	/**
 	 * Instance of the configuration
 	 */
-	private readonly configuration: NgxI18nConfiguration = inject(NgxI18nConfigurationToken);
+	protected readonly configuration: NgxI18nConfiguration = inject(NgxI18nConfigurationToken);
 
 	/**
 	 * Instance of the @ibenvandeveire/ngx-core NgxWindowService
 	 */
-	private readonly windowsService: NgxWindowService = inject(NgxWindowService);
+	protected readonly windowsService: NgxWindowService = inject(NgxWindowService);
 
 	/**
 	 * A subject to hold the current language
 	 */
-	private readonly currentLanguageSubject: BehaviorSubject<string> = new BehaviorSubject<string>(
-		undefined
-	);
+	protected readonly currentLanguageSubject: BehaviorSubject<string> =
+		new BehaviorSubject<string>(undefined);
 
 	/**
 	 * A subject to hold the available languages
 	 */
-	private readonly availableLanguagesSubject: BehaviorSubject<string[]> = new BehaviorSubject([]);
+	protected readonly availableLanguagesSubject: BehaviorSubject<string[]> = new BehaviorSubject(
+		[]
+	);
 
 	/**
 	 * The available languages
