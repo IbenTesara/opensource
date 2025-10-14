@@ -307,6 +307,9 @@
                             <a href="#NgxHasPermissionGuard" title="libs/angular/authentication/src/lib/guards/has-permission/has-permission.guard.ts" ><b>NgxHasPermissionGuard</b>&nbsp;&nbsp;&nbsp;(libs/.../has-permission.guard.ts)</a>
                         </li>
                         <li>
+                            <a href="#NgxI18nClientToken" title="libs/angular/i18n/src/lib/tokens/i18n-client.token.ts" ><b>NgxI18nClientToken</b>&nbsp;&nbsp;&nbsp;(libs/.../i18n-client.token.ts)</a>
+                        </li>
+                        <li>
                             <a href="#NgxI18nConfigurationToken" title="libs/angular/i18n/src/lib/tokens/i18n.token.ts" ><b>NgxI18nConfigurationToken</b>&nbsp;&nbsp;&nbsp;(libs/.../i18n.token.ts)</a>
                         </li>
                         <li>
@@ -493,13 +496,13 @@
                             <a href="#touchedEventListener" title="libs/angular/forms/src/lib/utils/touched-event-listener/touched-event-listener.ts" ><b>touchedEventListener</b>&nbsp;&nbsp;&nbsp;(libs/.../touched-event-listener.ts)</a>
                         </li>
                         <li>
-                            <a href="#updateAllValueAndValidity" title="libs/angular/forms/src/lib/utils/custom-update-value-and-validity/custom-update-value-and-validity.util.ts" ><b>updateAllValueAndValidity</b>&nbsp;&nbsp;&nbsp;(libs/.../custom-update-value-and-validity.util.ts)</a>
-                        </li>
-                        <li>
                             <a href="#" title="libs/angular/store/src/lib/rxjs/spec/store-assets.ts" ><b></b>&nbsp;&nbsp;&nbsp;(libs/.../store-assets.ts)</a>
                         </li>
                         <li>
                             <a href="#" title="libs/angular/store/src/lib/rxjs/spec/store-state.service.ts" ><b></b>&nbsp;&nbsp;&nbsp;(libs/.../store-state.service.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#updateAllValueAndValidity" title="libs/angular/forms/src/lib/utils/custom-update-value-and-validity/custom-update-value-and-validity.util.ts" ><b>updateAllValueAndValidity</b>&nbsp;&nbsp;&nbsp;(libs/.../custom-update-value-and-validity.util.ts)</a>
                         </li>
                         <li>
                             <a href="#useMockDataDuringTour" title="libs/angular/inform/src/lib/operators/tour/use-mock-data-during-tour/use-mock-data-during-tour.operator.ts" ><b>useMockDataDuringTour</b>&nbsp;&nbsp;&nbsp;(libs/.../use-mock-data-during-tour.operator.ts)</a>
@@ -4185,6 +4188,35 @@ By default, a take(1) is applied to the source, so the source observable can be 
         </tbody>
     </table>
 </section>
+    <h3>libs/angular/i18n/src/lib/tokens/i18n-client.token.ts</h3>
+    <section data-compodoc="block-properties">
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="NgxI18nClientToken"></a>
+                    <span class="name">
+                        <span ><b>NgxI18nClientToken</b></span>
+                        <a href="#NgxI18nClientToken"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>new InjectionToken&lt;NgxI18nAbstractClient&gt;(&#x27;NgxI18nClientToken&#x27;)</code>
+                    </td>
+                </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>A token to pass the i18n client to the service</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+</section>
     <h3>libs/angular/i18n/src/lib/tokens/i18n.token.ts</h3>
     <section data-compodoc="block-properties">
     <h3></h3>    <table class="table table-sm table-bordered">
@@ -5747,6 +5779,14 @@ This implementation is provided given that pluck has a higher readability than a
 ): (Provider | EnvironmentProviders)[] &#x3D;&gt; {
 	// Iben: Return the providers from the module
 	return [
+		...(config.client
+			? [
+					{
+						provide: NgxI18nClientToken,
+						useClass: config.client,
+					},
+			  ]
+			: []),
 		{
 			provide: NgxI18nTranslationPathsToken,
 			useValue: paths || config.defaultAssetPaths,

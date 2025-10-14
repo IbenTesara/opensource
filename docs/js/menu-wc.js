@@ -271,6 +271,9 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                                 <a href="classes/NgxAuthenticationAbstractService.html" data-type="entity-link" >NgxAuthenticationAbstractService</a>
                             </li>
                             <li class="link">
+                                <a href="classes/NgxI18nAbstractClient.html" data-type="entity-link" >NgxI18nAbstractClient</a>
+                            </li>
+                            <li class="link">
                                 <a href="classes/NgxI18nAbstractService.html" data-type="entity-link" >NgxI18nAbstractService</a>
                             </li>
                             <li class="link">
