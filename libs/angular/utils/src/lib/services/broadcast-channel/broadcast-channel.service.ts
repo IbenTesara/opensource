@@ -12,12 +12,12 @@ import { EMPTY, fromEvent, Observable } from 'rxjs';
 	providedIn: 'root',
 })
 export class NgxBroadcastChannelService {
-	private readonly windowService = inject(NgxWindowService);
+	protected readonly windowService = inject(NgxWindowService);
 
 	/**
 	 * A record holding all the broadcast channels
 	 */
-	private broadcastChannel: Record<string, BroadcastChannel> = {};
+	protected broadcastChannel: Record<string, BroadcastChannel> = {};
 
 	/**
 	 * initChannel

@@ -17,20 +17,20 @@ import {
  */
 @Injectable({ providedIn: 'root' })
 export class NgxStorageService {
-	private readonly windowService = inject(NgxWindowService);
+	protected readonly windowService = inject(NgxWindowService);
 
 	/**
 	 * A record to hold the properties in the sessionStorage
 	 */
-	private readonly sessionStorageRecord: NgxStorageRecord = {};
+	protected readonly sessionStorageRecord: NgxStorageRecord = {};
 	/**
 	 * A record to hold the properties in the localStorage
 	 */
-	private readonly localStorageRecord: NgxStorageRecord = {};
+	protected readonly localStorageRecord: NgxStorageRecord = {};
 	/**
 	 * A subject to hold the events of the storage
 	 */
-	private readonly storageEventSubject: Subject<NgxStorageEvent> = new Subject();
+	protected readonly storageEventSubject: Subject<NgxStorageEvent> = new Subject();
 
 	/**
 	 * An observable that emits whenever the session- or the localStorage was updated
@@ -80,7 +80,7 @@ export class NgxStorageService {
 		};
 	}
 
-	private getItem<DataType = any>(key: string, storage: Storage): DataType {
+	protected getItem<DataType = any>(key: string, storage: Storage): DataType {
 		return this.parseValue(storage.getItem(key));
 	}
 
@@ -90,7 +90,7 @@ export class NgxStorageService {
 	 * @param key - The key of the storage value
 	 * @param record  - The storage record
 	 */
-	private getItemObservable<DataType>(
+	protected getItemObservable<DataType>(
 		key: string,
 		record: NgxStorageRecord
 	): Observable<DataType> {
@@ -119,7 +119,7 @@ export class NgxStorageService {
 	 * @param storage - The storage in which we want to save the item
 	 * @param record - The corresponding storage record
 	 */
-	private setItem<DataType = any>(
+	protected setItem<DataType = any>(
 		key: string,
 		item: DataType,
 		storage: Storage,
@@ -172,7 +172,7 @@ export class NgxStorageService {
 	 * @param record - The record with the subject
 	 * @param type - The type of storage
 	 */
-	private removeItem(
+	protected removeItem(
 		key: string,
 		storage: Storage,
 		record: NgxStorageRecord,
@@ -211,7 +211,7 @@ export class NgxStorageService {
 	 * @param record - The record with the subjects
 	 * @param type - The type of storage
 	 */
-	private clearStorage(
+	protected clearStorage(
 		storage: Storage,
 		record: NgxStorageRecord,
 		type: NgxStorageType
@@ -251,7 +251,7 @@ export class NgxStorageService {
 	 * @param {NgxStorageRecord} record
 	 * @memberof NgxStorageService
 	 */
-	private setupStorage(storage: Storage, record: NgxStorageRecord) {
+	protected setupStorage(storage: Storage, record: NgxStorageRecord) {
 		Object.entries(storage).forEach(([key, value]) => {
 			record[key] = new BehaviorSubject(this.parseValue(value));
 		});
@@ -262,7 +262,7 @@ export class NgxStorageService {
 	 *
 	 * @param value - The provided string value
 	 */
-	private parseValue(value: string): any {
+	protected parseValue(value: string): any {
 		// Iben: If the value does not exist, return the value
 		if (!value) {
 			return value;

@@ -3,10 +3,7 @@ import { NgxWindowService } from '@ibenvandeveire/ngx-core';
 import { filter, map, Observable, ReplaySubject } from 'rxjs';
 
 /**
- * A service that can be used to track media queries and their changes. It exposes a method
- * to register media queries, which takes an array of tuples with the id of the media query
- * and the query itself. The service will then emit the id of the media query that has
- * changed when subscribed to the `getMatchingQuery$` method.
+ * @deprecated This service will be deprecated in the next major release. Please use the NgxMediaQueryService from `@ibenvandeveire/ngx-layout` instead.
  */
 @Injectable({ providedIn: 'root' })
 export class NgxMediaQueryService implements OnDestroy {
