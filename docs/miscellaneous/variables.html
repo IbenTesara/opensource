@@ -316,6 +316,12 @@
                             <a href="#NgxI18nGuard" title="libs/angular/i18n/src/lib/guards/i18n/i18n.guard.ts" ><b>NgxI18nGuard</b>&nbsp;&nbsp;&nbsp;(libs/.../i18n.guard.ts)</a>
                         </li>
                         <li>
+                            <a href="#NgxI18nRootServiceMock" title="libs/angular/i18n/src/lib/mocks/i18n-root.service.mock.ts" ><b>NgxI18nRootServiceMock</b>&nbsp;&nbsp;&nbsp;(libs/.../i18n-root.service.mock.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#NgxI18nServiceMock" title="libs/angular/i18n/src/lib/mocks/i18n.service.mock.ts" ><b>NgxI18nServiceMock</b>&nbsp;&nbsp;&nbsp;(libs/.../i18n.service.mock.ts)</a>
+                        </li>
+                        <li>
                             <a href="#NgxI18nSetLanguageGuard" title="libs/angular/i18n/src/lib/guards/set-language/set-language.guard.ts" ><b>NgxI18nSetLanguageGuard</b>&nbsp;&nbsp;&nbsp;(libs/.../set-language.guard.ts)</a>
                         </li>
                         <li>
@@ -4241,6 +4247,95 @@ By default, a take(1) is applied to the source, so the source observable can be 
             <tr>
                 <td class="col-md-4">
                     <div class="io-description"><p>A token to pass the i18n configuration to the service</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+</section>
+    <h3>libs/angular/i18n/src/lib/mocks/i18n-root.service.mock.ts</h3>
+    <section data-compodoc="block-properties">
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="NgxI18nRootServiceMock"></a>
+                    <span class="name">
+                        <span ><b>NgxI18nRootServiceMock</b></span>
+                        <a href="#NgxI18nRootServiceMock"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>(
+	testFunction: Function,
+	defaultLanguage: string,
+	languageRouteParam?: string
+) &#x3D;&gt; {
+	const currentLanguage$ &#x3D; new BehaviorSubject(defaultLanguage);
+
+	return {
+		availableLanguages$: new Subject(),
+		defaultLanguage,
+		languageRouteParam: languageRouteParam || &#x27;language&#x27;,
+		currentLanguage$,
+		currentLanguage: () &#x3D;&gt; currentLanguage$.getValue(),
+		setCurrentLanguage: testFunction,
+		initializeLanguage: testFunction,
+		setAvailableLanguages: testFunction,
+		getNewLanguage: testFunction,
+	};
+}</code>
+                    </td>
+                </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Returns a mock version of the NgxI18nRootService</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+</section>
+    <h3>libs/angular/i18n/src/lib/mocks/i18n.service.mock.ts</h3>
+    <section data-compodoc="block-properties">
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="NgxI18nServiceMock"></a>
+                    <span class="name">
+                        <span ><b>NgxI18nServiceMock</b></span>
+                        <a href="#NgxI18nServiceMock"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>(
+	testFunction: Function,
+	currentLanguage: string,
+	defaultLanguage: string,
+	availableLanguages: string[]
+) &#x3D;&gt; ({
+	currentLanguage,
+	availableLanguages,
+	defaultLanguage,
+	initI18n: testFunction,
+	setLanguage: testFunction,
+	getTranslation: testFunction,
+	getTranslationObservable: testFunction,
+})</code>
+                    </td>
+                </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Returns a mock version of the NgxI18nService</p>
 </div>
                 </td>
             </tr>
