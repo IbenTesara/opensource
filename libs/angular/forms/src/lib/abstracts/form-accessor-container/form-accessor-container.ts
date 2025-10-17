@@ -2,7 +2,7 @@ import { Directive, OnDestroy, viewChildren } from '@angular/core';
 import { AbstractControl } from '@angular/forms';
 import { Subject } from 'rxjs';
 
-import { FormStateOptionsEntity } from '../../interfaces';
+import { FormStateOptionsEntity } from '../../types';
 import {
 	handleFormAccessorMarkAsDirty,
 	handleFormAccessorMarkAsTouched,
@@ -32,7 +32,7 @@ export class FormAccessorContainer implements OnDestroy {
 	 */
 	public markAllAsDirty(form: AbstractControl, options: FormStateOptionsEntity = {}): void {
 		this.handleAccessorsAction(() => {
-			handleFormAccessorMarkAsDirty(form, this.accessors() as any || [], options);
+			handleFormAccessorMarkAsDirty(form, (this.accessors() as any) || [], options);
 		});
 	}
 
@@ -46,7 +46,7 @@ export class FormAccessorContainer implements OnDestroy {
 	 */
 	public markAllAsTouched(form: AbstractControl, options: FormStateOptionsEntity = {}): void {
 		this.handleAccessorsAction(() => {
-			handleFormAccessorMarkAsTouched(form, this.accessors() as any || [], options);
+			handleFormAccessorMarkAsTouched(form, (this.accessors() as any) || [], options);
 		});
 	}
 
@@ -63,7 +63,7 @@ export class FormAccessorContainer implements OnDestroy {
 		this.handleAccessorsAction(() => {
 			handleFormAccessorUpdateValueAndValidity(
 				form,
-				this.accessors() as any || [],
+				(this.accessors() as any) || [],
 				options
 			);
 		});
@@ -85,7 +85,7 @@ export class FormAccessorContainer implements OnDestroy {
 	private handleAccessorsAction(action: () => void) {
 		// Iben: Throw a warn in case there are no accessors found
 		const accessors = this.accessors();
-  if (!accessors || accessors.length === 0) {
+		if (!accessors || accessors.length === 0) {
 			console.warn(
 				'NgxForms: No (Data)FormAccessors were found in this component. Check if each (Data)FormAccessor also provides the BaseFormAccessor in its providers array. If this is intentional, this warning can be ignored.'
 			);

@@ -1,7 +1,7 @@
 import { AbstractControl, FormGroup } from '@angular/forms';
 
 import { DataFormAccessor, FormAccessor } from '../../abstracts';
-import { FormStateOptionsEntity } from '../../interfaces';
+import { FormStateOptionsEntity } from '../../types';
 import { updateAllValueAndValidity } from '../custom-update-value-and-validity/custom-update-value-and-validity.util';
 import { markAllAsDirty } from '../mark-all-as-dirty/mark-all-as-dirty.util';
 

@@ -1,6 +1,6 @@
 import { AbstractControl } from '@angular/forms';
 
-import { FormStateOptionsEntity } from '../../interfaces';
+import { FormStateOptionsEntity } from '../../types';
 
 /**
  * Adds a deep update value and validity to the existing update value and validity

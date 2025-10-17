@@ -1,7 +1,7 @@
 import { Provider } from '@angular/core';
 
-import { NgxFormsErrorConfigurationOptions } from '../../interfaces';
 import { NgxFormsErrorsConfigurationToken } from '../../tokens';
+import { NgxFormsErrorConfigurationOptions } from '../../types';
 
 /**
  * Provides the necessary configuration for the NgxFormErrorsDirective

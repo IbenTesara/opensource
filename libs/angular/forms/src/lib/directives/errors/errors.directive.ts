@@ -25,8 +25,8 @@ import {
 import { combineLatest, startWith, tap } from 'rxjs';
 
 import { NgxFormsErrorAbstractComponent } from '../../abstracts';
-import { NgxFormsErrorConfigurationOptions } from '../../interfaces';
 import { NgxFormsErrorsConfigurationToken } from '../../tokens';
+import { NgxFormsErrorConfigurationOptions } from '../../types';
 import { touchedEventListener } from '../../utils';
 
 @Directive({

@@ -33,7 +33,7 @@ import {
 	tap,
 } from 'rxjs';
 
-import { FormAccessorControlsEntity, FormStateOptionsEntity } from '../../interfaces';
+import { FormAccessorControlsEntity, FormStateOptionsEntity } from '../../types';
 import {
 	handleFormAccessorControlDisabling,
 	handleFormAccessorMarkAsDirty,

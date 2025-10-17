@@ -1,6 +1,6 @@
 import { AbstractControl } from '@angular/forms';
 
-import { FormStateOptionsEntity } from '../../interfaces';
+import { FormStateOptionsEntity } from '../../types';
 
 /**
  * Allows for a deep markAsDirty of all controls. Can be used for a FormGroup or a FormArray
