@@ -725,7 +725,7 @@ Marks the form and all the inputs of every subsequent form-accessors as touched
 import { AbstractControl } from &#x27;@angular/forms&#x27;;
 import { Subject } from &#x27;rxjs&#x27;;
 
-import { FormStateOptionsEntity } from &#x27;../../interfaces&#x27;;
+import { FormStateOptionsEntity } from &#x27;../../types&#x27;;
 import {
 	handleFormAccessorMarkAsDirty,
 	handleFormAccessorMarkAsTouched,
@@ -755,7 +755,7 @@ export class FormAccessorContainer implements OnDestroy {
 	 */
 	public markAllAsDirty(form: AbstractControl, options: FormStateOptionsEntity &#x3D; {}): void {
 		this.handleAccessorsAction(() &#x3D;&gt; {
-			handleFormAccessorMarkAsDirty(form, this.accessors() as any || [], options);
+			handleFormAccessorMarkAsDirty(form, (this.accessors() as any) || [], options);
 		});
 	}
 
@@ -769,7 +769,7 @@ export class FormAccessorContainer implements OnDestroy {
 	 */
 	public markAllAsTouched(form: AbstractControl, options: FormStateOptionsEntity &#x3D; {}): void {
 		this.handleAccessorsAction(() &#x3D;&gt; {
-			handleFormAccessorMarkAsTouched(form, this.accessors() as any || [], options);
+			handleFormAccessorMarkAsTouched(form, (this.accessors() as any) || [], options);
 		});
 	}
 
@@ -786,7 +786,7 @@ export class FormAccessorContainer implements OnDestroy {
 		this.handleAccessorsAction(() &#x3D;&gt; {
 			handleFormAccessorUpdateValueAndValidity(
 				form,
-				this.accessors() as any || [],
+				(this.accessors() as any) || [],
 				options
 			);
 		});
@@ -808,7 +808,7 @@ export class FormAccessorContainer implements OnDestroy {
 	private handleAccessorsAction(action: () &#x3D;&gt; void) {
 		// Iben: Throw a warn in case there are no accessors found
 		const accessors &#x3D; this.accessors();
-  if (!accessors || accessors.length &#x3D;&#x3D;&#x3D; 0) {
+		if (!accessors || accessors.length &#x3D;&#x3D;&#x3D; 0) {
 			console.warn(
 				&#x27;NgxForms: No (Data)FormAccessors were found in this component. Check if each (Data)FormAccessor also provides the BaseFormAccessor in its providers array. If this is intentional, this warning can be ignored.&#x27;
 			);
