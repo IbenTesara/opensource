@@ -12,8 +12,6 @@ import {
 	DestroyRef,
 	WritableSignal,
 	signal,
-	computed,
-	Signal,
 } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import {
@@ -131,6 +129,14 @@ export class NgxFormsErrorsDirective implements AfterViewInit {
 		this.viewContainer.clear();
 		this.viewContainer.createEmbeddedView(this.template);
 
+		//Iben: Set a base class to the element
+		const element: HTMLElement =
+			this.templateRef.elementRef.nativeElement.previousElementSibling;
+
+		if (element) {
+			this.renderer.addClass(element, 'ngx-forms-errors-input');
+		}
+
 		// Iben: If no control was provided, we early exit and log an error
 		const control = this.control();
 		if (!control) {
@@ -173,15 +179,12 @@ export class NgxFormsErrorsDirective implements AfterViewInit {
 					);
 
 					// Iben: Set the errors class if needed
-					this.hasErrors() && this.renderer.nextSibling(this.elementRef.nativeElement)
-						? this.renderer.addClass(
-								this.renderer.nextSibling(this.elementRef.nativeElement),
-								'ngx-forms-errors-invalid'
-						  )
-						: this.renderer.removeClass(
-								this.renderer.nextSibling(this.elementRef.nativeElement),
-								'ngx-forms-errors-invalid'
-						  );
+
+					if (element) {
+						this.hasErrors()
+							? this.renderer.addClass(element, 'ngx-forms-errors-invalid')
+							: this.renderer.removeClass(element, 'ngx-forms-errors-invalid');
+					}
 
 					// Iben: Show the error based on whether or not a component was provided
 					if (!this.config.component) {

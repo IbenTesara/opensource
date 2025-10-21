@@ -1,7 +1,7 @@
 <input *ngxFormsErrors="control" type="text" [formControl]="control" />
 
-<div>
-	<input *ngxFormsErrors="control" ngxInput [formControl]="control" label="Hello" type="text" />
+<div *ngxFormsErrors="control">
+	<input ngxInput [formControl]="control" label="Hello" type="text" />
 </div>
 
 <data-form [formControl]="control" [data]="options()" />
