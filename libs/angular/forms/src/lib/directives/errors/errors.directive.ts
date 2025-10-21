@@ -173,7 +173,7 @@ export class NgxFormsErrorsDirective implements AfterViewInit {
 					);
 
 					// Iben: Set the errors class if needed
-					this.hasErrors()
+					this.hasErrors() && this.renderer.nextSibling(this.elementRef.nativeElement)
 						? this.renderer.addClass(
 								this.renderer.nextSibling(this.elementRef.nativeElement),
 								'ngx-forms-errors-invalid'
