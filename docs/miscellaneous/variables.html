@@ -1520,11 +1520,15 @@
 			data: initialData,
 			loading: false,
 			error: false,
+			saving: false,
 		}),
 		// Iben: Methods
 		withMethods((store) &#x3D;&gt; ({
 			set(data: DataType) {
-				patchState(store, () &#x3D;&gt; ({ data, loading: false, error: false }));
+				patchState(store, () &#x3D;&gt; ({ data, loading: false, error: false, saving: false }));
+			},
+			save(data: DataType) {
+				patchState(store, () &#x3D;&gt; ({ data, loading: false, error: false, saving: false }));
 			},
 			add(data: DataType | ArrayElementType&lt;DataType&gt;) {
 				patchState(store, (state) &#x3D;&gt; {
@@ -1601,6 +1605,9 @@
 			setError(error: boolean) {
 				patchState(store, () &#x3D;&gt; ({ error }));
 			},
+			setSaving(saving: boolean) {
+				patchState(store, () &#x3D;&gt; ({ saving }));
+			},
 			reset() {
 				patchState(store, () &#x3D;&gt; ({ data: initialData }));
 			},
@@ -1643,14 +1650,21 @@
 			data: initialData,
 			loading: false,
 			error: false,
+			saving: false,
 		}),
 		// Iben: Methods
 		withMethods((store) &#x3D;&gt; ({
 			set(data: DataType) {
-				patchState(store, () &#x3D;&gt; ({ data, loading: false, error: false }));
+				patchState(store, () &#x3D;&gt; ({ data, loading: false, error: false, saving: false }));
+			},
+			save(data: DataType) {
+				patchState(store, () &#x3D;&gt; ({ data, loading: false, error: false, saving: false }));
 			},
 			setLoading(loading: boolean) {
 				patchState(store, () &#x3D;&gt; ({ loading }));
+			},
+			setSaving(saving: boolean) {
+				patchState(store, () &#x3D;&gt; ({ saving }));
 			},
 			setError(error: boolean) {
 				patchState(store, () &#x3D;&gt; ({ error }));
@@ -2096,8 +2110,8 @@
 	store: NgxSignalStore,
 	action: NgxSignalStoreDispatchActions &#x3D; &#x27;set&#x27;
 ): Observable&lt;void&gt; &#x3D;&gt; {
-	// Iben: Set the loading to true and the error to false
-	store[slice].setLoading(true);
+	// Iben: Set the loading/saving to true and the error to false
+	action &#x3D;&#x3D;&#x3D; &#x27;set&#x27; ? store[slice].setLoading(true) : store[slice].setSaving(true);
 	store[slice].setError(false);
 
 	// Iben: Respond to the data
@@ -2114,9 +2128,9 @@
 		}),
 		// Iben: Map to undefined so no data from the observable leaks to the
 		map(() &#x3D;&gt; undefined),
-		// Iben: Set the loading back to false regardless of success
+		// Iben: Set the loading/saving back to false regardless of success
 		finalize(() &#x3D;&gt; {
-			store[slice].setLoading(false);
+			action &#x3D;&#x3D;&#x3D; &#x27;set&#x27; ? store[slice].setLoading(false) : store[slice].setSaving(false);
 		})
 	);
 }</code>
