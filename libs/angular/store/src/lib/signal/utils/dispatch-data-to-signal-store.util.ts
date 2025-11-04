@@ -17,8 +17,8 @@ export const dispatchDataToSignalStore = <DataType>(
 	store: NgxSignalStore,
 	action: NgxSignalStoreDispatchActions = 'set'
 ): Observable<void> => {
-	// Iben: Set the loading to true and the error to false
-	store[slice].setLoading(true);
+	// Iben: Set the loading/saving to true and the error to false
+	action === 'set' ? store[slice].setLoading(true) : store[slice].setSaving(true);
 	store[slice].setError(false);
 
 	// Iben: Respond to the data
@@ -35,9 +35,9 @@ export const dispatchDataToSignalStore = <DataType>(
 		}),
 		// Iben: Map to undefined so no data from the observable leaks to the
 		map(() => undefined),
-		// Iben: Set the loading back to false regardless of success
+		// Iben: Set the loading/saving back to false regardless of success
 		finalize(() => {
-			store[slice].setLoading(false);
+			action === 'set' ? store[slice].setLoading(false) : store[slice].setSaving(false);
 		})
 	);
 };

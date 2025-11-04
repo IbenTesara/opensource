@@ -16,14 +16,21 @@ export const createNgxSignalStoreSlice = <DataType>(initialData?: DataType) => {
 			data: initialData,
 			loading: false,
 			error: false,
+			saving: false,
 		}),
 		// Iben: Methods
 		withMethods((store) => ({
 			set(data: DataType) {
-				patchState(store, () => ({ data, loading: false, error: false }));
+				patchState(store, () => ({ data, loading: false, error: false, saving: false }));
+			},
+			save(data: DataType) {
+				patchState(store, () => ({ data, loading: false, error: false, saving: false }));
 			},
 			setLoading(loading: boolean) {
 				patchState(store, () => ({ loading }));
+			},
+			setSaving(saving: boolean) {
+				patchState(store, () => ({ saving }));
 			},
 			setError(error: boolean) {
 				patchState(store, () => ({ error }));
@@ -54,11 +61,15 @@ export const createNgxSignalStoreArraySlice = <DataType extends any[]>(
 			data: initialData,
 			loading: false,
 			error: false,
+			saving: false,
 		}),
 		// Iben: Methods
 		withMethods((store) => ({
 			set(data: DataType) {
-				patchState(store, () => ({ data, loading: false, error: false }));
+				patchState(store, () => ({ data, loading: false, error: false, saving: false }));
+			},
+			save(data: DataType) {
+				patchState(store, () => ({ data, loading: false, error: false, saving: false }));
 			},
 			add(data: DataType | ArrayElementType<DataType>) {
 				patchState(store, (state) => {
@@ -134,6 +145,9 @@ export const createNgxSignalStoreArraySlice = <DataType extends any[]>(
 			},
 			setError(error: boolean) {
 				patchState(store, () => ({ error }));
+			},
+			setSaving(saving: boolean) {
+				patchState(store, () => ({ saving }));
 			},
 			reset() {
 				patchState(store, () => ({ data: initialData }));

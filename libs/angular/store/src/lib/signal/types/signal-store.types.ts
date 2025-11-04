@@ -17,6 +17,7 @@ export interface NgxSignalStoreSlice<DataType = unknown> {
 	data: DataType;
 	loading: boolean;
 	error: boolean;
+	saving: boolean;
 }
 
 /**
@@ -73,10 +74,12 @@ type NgxSignalStoreSliceMethods<DataType> = [DataType] extends [unknown[]]
  */
 export interface NgxSignalStoreSliceBaseMethods<DataType> extends MethodsDictionary {
 	set: (data: DataType extends [never] ? boolean : DataType) => void;
+	save: (data: DataType extends [never] ? boolean : DataType) => void;
 	reset: () => void;
 	clear: () => void;
 	setError: (error: boolean) => void;
 	setLoading: (loading: boolean) => void;
+	setSaving: (saving: boolean) => void;
 }
 
 /**
@@ -117,6 +120,7 @@ export type NgxSignalStoreViewState<StateType extends NgxSignalStoreState> = {
 		data: Signal<NgxSignalStoreSliceDataType<StateType[Key]>>;
 		loading: Signal<boolean>;
 		error: Signal<boolean>;
+		saving: Signal<boolean>;
 	};
 };
 
@@ -128,5 +132,6 @@ export type NgxSignalStore<StateType extends NgxSignalStoreState = any> = {
 		data: Signal<NgxSignalStoreSliceDataType<StateType[Key]>>;
 		loading: Signal<boolean>;
 		error: Signal<boolean>;
+		saving: Signal<boolean>;
 	} & NgxSignalStoreSliceMethods<NgxSignalStoreSliceDataType<StateType[Key]>>;
 };
