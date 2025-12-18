@@ -17,7 +17,7 @@ import { DataFormTest } from './components/data-form.component';
 	templateUrl: './forms.component.html',
 })
 export class FormsPageComponent {
-	public readonly control: FormControl = new FormControl('', Validators.required);
+	public readonly control: FormControl = new FormControl(null, Validators.required);
 
 	public options = signal(['A', 'B', 'C']);
 

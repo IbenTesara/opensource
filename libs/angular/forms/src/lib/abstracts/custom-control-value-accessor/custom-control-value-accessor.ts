@@ -57,6 +57,11 @@ export abstract class NgxFormsControlValueAccessor<
 	private readonly injector: Injector = inject(Injector);
 
 	/**
+	 *  The initial value of the form
+	 */
+	protected defaultValue: Partial<FormValueType>;
+
+	/**
 	 *  The OnDestroyRef reference
 	 */
 	protected readonly destroyRef: DestroyRef = inject(DestroyRef);
@@ -312,7 +317,7 @@ export abstract class NgxFormsControlValueAccessor<
 					}
 
 					// Iben: Reset the current form without emitEvent to not trigger the valueChanges
-					this.form.reset(undefined, { emitEvent: false });
+					this.form.reset(this.defaultValue || undefined, { emitEvent: false });
 
 					// Iben: Patch the current form with the new value without emitEvent to not trigger the valueChanges
 					if (value !== undefined && value !== null) {

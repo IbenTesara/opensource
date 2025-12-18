@@ -56,6 +56,9 @@ export abstract class DataFormAccessor<
 					// Set the inner form
 					this.form = this.initForm(data);
 
+					// Iben: Set the default value
+					this.defaultValue = this.form.getRawValue();
+
 					// Iben: Early exit in case the form was not found
 					if (!this.form) {
 						console.error(

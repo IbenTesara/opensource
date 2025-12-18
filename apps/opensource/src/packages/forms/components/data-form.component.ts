@@ -12,6 +12,6 @@ import { createAccessorProviders, DataFormAccessor } from '@lib/ngx-forms';
 })
 export class DataFormTest extends DataFormAccessor<string[]> {
 	override initForm(data: unknown): FormControl<any> {
-		return new FormControl();
+		return new FormControl('A');
 	}
 }
