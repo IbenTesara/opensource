@@ -213,6 +213,10 @@
                                 <a href="#linkType" >linkType</a>
                             </li>
                             <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#linkWidth" >linkWidth</a>
+                            </li>
+                            <li>
                                     <span class="modifier">Protected</span>
                                     <span class="modifier">Readonly</span>
                                 <a href="#nativeElement" >nativeElement</a>
@@ -466,6 +470,7 @@
     ngx-link-${this.linkType()}
     ngx-link-${this.priority()}
     ngx-link-${this.destination()}
+    ngx-link-${this.linkWidth()}
     ${this.context() ? &#x60;ngx-link-${this.context()}&#x60; : &#x27;&#x27;}
     ${this.icon() ? &#x27;ngx-link-with-icon&#x27; : &#x27;&#x27;}
     &#x60;;
@@ -828,6 +833,44 @@
         <tbody>
             <tr>
                 <td class="col-md-4">
+                    <a name="linkWidth"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                        <span ><b>linkWidth</b></span>
+                        <a href="#linkWidth"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../miscellaneous/typealiases.html#NgxLinkWidth" target="_self" >InputSignal&lt;NgxLinkWidth&gt;</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>input(&#x27;fit&#x27;)</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="112" class="link-to-prism">libs/angular/layout/src/lib/directives/link/link.directive.ts:112</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>The width of the link, either full or fit. By default, this is fit.</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
                     <a name="nativeElement"></a>
                     <span class="name">
                             <span class="modifier">Protected</span>
@@ -1046,6 +1089,7 @@ import {
 	NgxLinkIconPosition,
 	NgxLinkPriority,
 	NgxLinkType,
+	NgxLinkWidth,
 } from &#x27;../../types&#x27;;
 
 /**
@@ -1110,6 +1154,7 @@ export class NgxLinkDirective implements OnInit {
     ngx-link-${this.linkType()}
     ngx-link-${this.priority()}
     ngx-link-${this.destination()}
+    ngx-link-${this.linkWidth()}
     ${this.context() ? &#x60;ngx-link-${this.context()}&#x60; : &#x27;&#x27;}
     ${this.icon() ? &#x27;ngx-link-with-icon&#x27; : &#x27;&#x27;}
     &#x60;;
@@ -1128,6 +1173,11 @@ export class NgxLinkDirective implements OnInit {
 	 * The options are &#x60;text&#x60;, &#x60;button&#x60; and &#x60;icon&#x60;.
 	 */
 	public readonly linkType: InputSignal&lt;NgxLinkType&gt; &#x3D; input(&#x27;text&#x27;);
+
+	/**
+	 * The width of the link, either full or fit. By default, this is fit.
+	 */
+	public linkWidth: InputSignal&lt;NgxLinkWidth&gt; &#x3D; input(&#x27;fit&#x27;);
 
 	/**
 	 * The context in which the link is used, by default undefined.
