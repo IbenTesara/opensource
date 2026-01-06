@@ -67,6 +67,7 @@ In order to contribute to this repository you must:
 - [Abdurrahman Ekinci](https://github.com/ekincia)
 - [Ian Emsens](https://github.com/ian-emsens-shd)
 - [Femke Reunes](https://github.com/reunefe)
+- [Silke Derudder](https://github.com/silkederudder)
 
 
 ## License
