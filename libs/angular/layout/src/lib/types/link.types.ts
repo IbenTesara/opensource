@@ -18,6 +18,11 @@ export type NgxLinkIconPosition = 'left' | 'right';
 export type NgxLinkType = 'text' | 'icon' | 'button';
 
 /**
+ * The width of the link
+ */
+export type NgxLinkWidth = 'full' | 'fit';
+
+/**
  * The context of the link
  */
 export type NgxLinkContext = 'navigation' | 'breadcrumb' | 'anchor' | 'form' | 'footer';

@@ -21,6 +21,7 @@ import {
 	NgxLinkIconPosition,
 	NgxLinkPriority,
 	NgxLinkType,
+	NgxLinkWidth,
 } from '../../types';
 
 /**
@@ -85,6 +86,7 @@ export class NgxLinkDirective implements OnInit {
     ngx-link-${this.linkType()}
     ngx-link-${this.priority()}
     ngx-link-${this.destination()}
+    ngx-link-${this.linkWidth()}
     ${this.context() ? `ngx-link-${this.context()}` : ''}
     ${this.icon() ? 'ngx-link-with-icon' : ''}
     `;
@@ -103,6 +105,11 @@ export class NgxLinkDirective implements OnInit {
 	 * The options are `text`, `button` and `icon`.
 	 */
 	public readonly linkType: InputSignal<NgxLinkType> = input('text');
+
+	/**
+	 * The width of the link, either full or fit. By default, this is fit.
+	 */
+	public linkWidth: InputSignal<NgxLinkWidth> = input('fit');
 
 	/**
 	 * The context in which the link is used, by default undefined.
