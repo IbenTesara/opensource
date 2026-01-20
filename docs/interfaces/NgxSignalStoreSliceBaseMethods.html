@@ -138,7 +138,7 @@
                 <h3>Extends</h3>
             </p>
             <p class="comment">
-                        <code>MethodsDictionary</code>
+                            <code><a href="../miscellaneous/typealiases.html#MethodsDictionary" target="_self" >MethodsDictionary</a></code>
             </p>
 
         <section data-compodoc="block-index">
@@ -444,7 +444,6 @@
     <div class="tab-pane fade  tab-source-code" id="source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Signal } from &#x27;@angular/core&#x27;;
 import { SignalStoreFeature } from &#x27;@ngrx/signals&#x27;;
-import { MethodsDictionary } from &#x27;node_modules/@ngrx/signals/src/signal-store-models&#x27;;
 
 import {
 	ArrayElementType,
@@ -452,6 +451,8 @@ import {
 	NgxSignalStoreSliceArrayGenerator,
 	NgxSignalStoreSliceGenerator,
 } from &#x27;./signal-store-generator.types&#x27;;
+
+export type MethodsDictionary &#x3D; Record&lt;string, any&gt;
 
 /**
  * Data of an individual slice within an NgxSignalStore
