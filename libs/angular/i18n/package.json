@@ -31,7 +31,7 @@
 		"@ngx-translate/core": "^17.0.0",
 		"deepmerge-ts": "^7.1.5",
 		"uuid": "^11.1.0",
-		"@ibenvandeveire/ngx-core": "^20.0.0"
+		"@ibenvandeveire/ngx-core": "^21.0.0"
 	},
 	"sideEffects": false
 }
