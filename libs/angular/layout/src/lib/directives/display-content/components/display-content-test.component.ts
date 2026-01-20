@@ -1,4 +1,3 @@
-import { CommonModule } from '@angular/common';
 import { Component, input } from '@angular/core';
 
 import { NgxDisplayContentComponent } from '../../../abstracts';
@@ -56,7 +55,7 @@ export class TestDisplayContentComponent {
 
 		<ng-template #loadingTmpl><p class="custom-loading">Custom loading</p></ng-template>
 	`,
-	imports: [NgxDisplayContentDirective, CommonModule],
+	imports: [NgxDisplayContentDirective],
 })
 export class TestOverrideDisplayContentComponent {
 	readonly conditions = input<NgxDisplayContentConditions>();

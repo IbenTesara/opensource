@@ -17,8 +17,8 @@
 		"directory": "libs/angular/core/src/lib"
 	},
 	"peerDependencies": {
-		"@angular/common": "^20.0.0",
-		"@angular/core": "^20.2.0",
+		"@angular/common": "21.0.9",
+		"@angular/core": "21.0.9",
 		"rxjs": "~7.8.0"
 	},
 	"sideEffects": false

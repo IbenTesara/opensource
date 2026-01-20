@@ -25,14 +25,14 @@
 	},
 	"license": "MIT",
 	"peerDependencies": {
-		"@angular/common": "^20.0.0",
-		"@angular/core": "^20.2.0",
+		"@angular/common": "21.0.9",
+		"@angular/core": "21.0.9",
 		"rxjs": "~7.8.0",
 		"lodash": "^4.17.21",
-		"@ngrx/effects": "^20.0.0",
-		"@ngrx/entity": "^20.0.0",
-		"@ngrx/signals": "^20.0.0",
-		"@ngrx/store": "^20.0.0"
+		"@ngrx/effects": "21.0.1",
+		"@ngrx/entity": "21.0.1",
+		"@ngrx/signals": "21.0.1",
+		"@ngrx/store": "21.0.1"
 	},
 	"sideEffects": false,
 	"devDependencies": {
