@@ -1,6 +1,5 @@
 import { Signal } from '@angular/core';
 import { SignalStoreFeature } from '@ngrx/signals';
-import { MethodsDictionary } from 'node_modules/@ngrx/signals/src/signal-store-models';
 
 import {
 	ArrayElementType,
@@ -8,6 +7,8 @@ import {
 	NgxSignalStoreSliceArrayGenerator,
 	NgxSignalStoreSliceGenerator,
 } from './signal-store-generator.types';
+
+export type MethodsDictionary = Record<string, any>
 
 /**
  * Data of an individual slice within an NgxSignalStore

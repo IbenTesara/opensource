@@ -14,7 +14,7 @@ import { TestState, TestStore } from './store';
 export class StoreService extends NgxSignalStoreService<TestState> {
 	protected override store: NgxSignalStore<TestState> = injectNgxSignalStore(TestStore);
 
-	public sayHello(): Observable<void> {
+  public sayHello (): Observable<void> {
 		return dispatchDataToSignalStore<string>(
 			'hello',
 			of('Hello there!').pipe(delay(500)),
