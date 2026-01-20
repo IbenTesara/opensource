@@ -675,7 +675,7 @@
                 </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="134" class="link-to-prism">libs/angular/layout/src/lib/services/media-query/media-query.service.ts:134</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="137" class="link-to-prism">libs/angular/layout/src/lib/services/media-query/media-query.service.ts:137</a></div>
                                 </td>
                             </tr>
 
@@ -798,8 +798,11 @@ export class NgxMediaQueryService implements OnDestroy {
 	): Observable&lt;boolean&gt; {
 		const ids &#x3D; Array.isArray(id) ? id : [id];
 
+		// Iben: Check if the query matches
+		const hasQuery &#x3D; ids[predicate]((item) &#x3D;&gt; this.listeners[item]);
+
 		// Iben: If the listener does not exist yet, throw an error
-		if (ids[predicate]((item) &#x3D;&gt; !this.listeners[item])) {
+		if (!hasQuery) {
 			return throwError(
 				() &#x3D;&gt;
 					new Error(
