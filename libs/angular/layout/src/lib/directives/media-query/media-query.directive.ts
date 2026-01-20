@@ -13,6 +13,7 @@ import { takeUntilDestroyed, toObservable } from '@angular/core/rxjs-interop';
 import { Subject, tap, takeUntil, combineLatest } from 'rxjs';
 
 import { NgxMediaQueryService } from '../../services';
+import { NgxMediaQueryMatchingPredicate } from '../../types';
 
 /**
  * A directive that will render a part of the template based on whether the current screen size matches the provided query
@@ -67,6 +68,14 @@ export class NgxMediaQueryDirective implements OnDestroy {
 	 */
 	public ngxMediaQueryShouldMatch: InputSignal<boolean> = input(true);
 
+	/**
+	 * Whether every or just some parts of the query needs to be matched
+	 *
+	 * By default this is `every`.
+	 */
+	public ngxMediaQueryMatchingPredicate: InputSignal<NgxMediaQueryMatchingPredicate> =
+		input('every');
+
 	constructor() {
 		const templateRef = this.templateRef;
 
@@ -103,7 +112,7 @@ export class NgxMediaQueryDirective implements OnDestroy {
 
 		// Iben: Render the views based on the correct state
 		this.mediaQueryService
-			.matchesQuery(this.ngxMediaQuery())
+			.matchesQuery(this.ngxMediaQuery(), this.ngxMediaQueryMatchingPredicate())
 			.pipe(
 				tap((matchesQuery) => {
 					// Iben: Clear the current view

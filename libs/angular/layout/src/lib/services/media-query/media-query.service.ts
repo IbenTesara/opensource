@@ -3,7 +3,7 @@ import { NgxWindowService } from '@ibenvandeveire/ngx-core';
 import { BehaviorSubject, distinctUntilChanged, filter, map, Observable, throwError } from 'rxjs';
 
 import { NgxMediaQueriesToken } from '../../tokens';
-import { NgxMediaQuery } from '../../types';
+import { NgxMediaQuery, NgxMediaQueryMatchingPredicate } from '../../types';
 
 /**
  * A service that can be used to track media queries and their changes.
@@ -102,12 +102,16 @@ export class NgxMediaQueryService implements OnDestroy {
 	 * Check if the query matches with the current screen size
 	 *
 	 * @param id - The id of the query we wish to match
+	 * @param predicate - Whether every or some part(s) of the query have to be matched
 	 */
-	public matchesQuery(id: string | string[]): Observable<boolean> {
+	public matchesQuery(
+		id: string | string[],
+		predicate: NgxMediaQueryMatchingPredicate = 'every'
+	): Observable<boolean> {
 		const ids = Array.isArray(id) ? id : [id];
 
 		// Iben: If the listener does not exist yet, throw an error
-		if (ids.every((item) => !this.listeners[item])) {
+		if (ids[predicate]((item) => !this.listeners[item])) {
 			return throwError(
 				() =>
 					new Error(
