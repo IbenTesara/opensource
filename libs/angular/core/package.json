@@ -1,6 +1,6 @@
 {
 	"name": "@ibenvandeveire/ngx-core",
-	"version": "20.1.0",
+	"version": "21.0.0",
 	"description": "A library of core functionality used by the Angular packages by Iben Van de Veire.",
 	"keywords": [
 		"angular",
