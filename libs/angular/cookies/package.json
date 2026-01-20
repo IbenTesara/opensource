@@ -1,6 +1,6 @@
 {
 	"name": "@ibenvandeveire/ngx-cookies",
-	"version": "21.1.0",
+	"version": "21.1.1",
 	"description": "An integrated Angular approach to the vanilla cookieconsent library, created by Iben Van de Veire.",
 	"keywords": [
 		"angular",
