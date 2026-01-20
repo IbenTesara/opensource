@@ -27,6 +27,6 @@
 <button ngxButton buttonType="text" display="icon" icon="fa fa-home">{{''}}</button>
 <button-test label="Hello" />
 
-{{['Desktop', 'Tablet'] | ngxMatchesQuery}}
+{{['Desktop', 'DesktopWide', 'Tablet'] | ngxMatchesQuery: 'some'}}
 
 <router-outlet></router-outlet>

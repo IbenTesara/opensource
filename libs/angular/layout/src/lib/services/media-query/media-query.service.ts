@@ -110,8 +110,11 @@ export class NgxMediaQueryService implements OnDestroy {
 	): Observable<boolean> {
 		const ids = Array.isArray(id) ? id : [id];
 
+		// Iben: Check if the query matches
+		const hasQuery = ids[predicate]((item) => this.listeners[item]);
+
 		// Iben: If the listener does not exist yet, throw an error
-		if (ids[predicate]((item) => !this.listeners[item])) {
+		if (!hasQuery) {
 			return throwError(
 				() =>
 					new Error(

@@ -80,15 +80,19 @@ export const appConfig: ApplicationConfig = {
 		provideNgxMediaQueries([
 			{
 				id: 'Mobile',
-				query: '(width < 600px)',
+				query: '(width <= 875px)',
 			},
 			{
 				id: 'Tablet',
-				query: '(width >= 600px) and (width < 800px)',
+				query: '(width > 875px) and (width < 1024px)',
 			},
 			{
 				id: 'Desktop',
-				query: '(width > 800px)',
+				query: '(width >= 1024px) and (width < 1440px)',
+			},
+			{
+				id: 'DesktopWide',
+				query: '(width >= 1440px)',
 			},
 		]),
 	],
