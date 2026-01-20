@@ -2,6 +2,7 @@ import { ChangeDetectorRef, OnDestroy, Pipe, PipeTransform, inject } from '@angu
 import { Observable, Subject, takeUntil, tap } from 'rxjs';
 
 import { NgxMediaQueryService } from '../../services';
+import { NgxMediaQueryMatchingPredicate } from '../../types';
 
 /**
  * A pipe that returns whether a (list of) query(s) have been matched
@@ -47,9 +48,13 @@ export class NgxMatchesQueryPipe implements PipeTransform, OnDestroy {
 	 * Returns whether or not a query is matched
 	 *
 	 * @param query - The provided query
+	 * @param predicate - Whether every or some part(s) of the query have to be matched
 	 */
-	public transform(query: string | string[]): boolean {
-		this.subscribe(this.mediaService.matchesQuery(query));
+	public transform(
+		query: string | string[],
+		predicate: NgxMediaQueryMatchingPredicate = 'every'
+	): boolean {
+		this.subscribe(this.mediaService.matchesQuery(query, predicate));
 
 		return this.matchesQuery;
 	}
