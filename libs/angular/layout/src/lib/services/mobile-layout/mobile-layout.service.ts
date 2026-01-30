@@ -1,4 +1,4 @@
-import { inject, Injectable, signal, Signal, WritableSignal } from '@angular/core';
+import { inject, Injectable, signal, Signal, WritableSignal, Injector } from '@angular/core';
 import { get } from 'lodash';
 import clean from 'obj-clean';
 import {
@@ -71,6 +71,9 @@ export class NgxMobileLayoutService {
 	 */
 	protected readonly showAside: WritableSignal<boolean> = signal(false);
 
+	/**
+	 * An array of queries
+	 */
 	protected queries: string[];
 
 	/**
@@ -104,6 +107,16 @@ export class NgxMobileLayoutService {
 	public flyoutShown: Signal<boolean> = this.showFlyout.asReadonly();
 
 	/**
+	 * The Injection context of the flyout
+	 */
+	public flyoutInjector: WritableSignal<Injector> = signal(undefined);
+
+	/**
+	 * The Injection context of the aside
+	 */
+	public asideInjector: WritableSignal<Injector> = signal(undefined);
+
+	/**
 	 * Whether the aside is visible
 	 */
 	public asideShown: Signal<boolean> = this.showAside.asReadonly();
@@ -128,8 +141,10 @@ export class NgxMobileLayoutService {
 	 * Open a flyout
 	 *
 	 * @param flyout - An optional flyout
+	 * @param injector - An optional injector
+	 *
 	 */
-	public openFlyout(flyout?: ComponentType): void {
+	public openFlyout(flyout?: ComponentType, injector?: Injector): void {
 		// Iben: Add the flyout if there wasn't one defined
 		if (flyout) {
 			this.layoutSubject$.next({
@@ -142,8 +157,9 @@ export class NgxMobileLayoutService {
 				}, {}),
 			});
 
-			// Iben: Make the flyout visible
+			// Iben: Make the flyout visible and add the injector
 			this.showFlyout.set(true);
+			this.flyoutInjector.set(injector);
 		}
 	}
 
@@ -153,13 +169,32 @@ export class NgxMobileLayoutService {
 	public closeFlyout(): void {
 		// Iben: Make the flyout invisible
 		this.showFlyout.set(false);
+		this.flyoutInjector.set(undefined);
 	}
 
 	/**
 	 * Open a aside
+	 *
+	 * @param aside - An optional aside component
+	 * @param injector - An optional injector
 	 */
-	public openAside(): void {
+	public openAside(aside?: ComponentType, injector?: Injector): void {
+		// Iben: Add the aside if there wasn't one defined
+		if (aside) {
+			this.layoutSubject$.next({
+				...this.layoutSubject$.getValue(),
+				aside: this.queries.reduce((previous, current) => {
+					return {
+						...previous,
+						[current]: aside,
+					};
+				}, {}),
+			});
+		}
+
+		// Iben: Show the aside and add the injector
 		this.showAside.set(true);
+		this.asideInjector.set(injector);
 	}
 
 	/**
@@ -167,6 +202,7 @@ export class NgxMobileLayoutService {
 	 */
 	public closeAside(): void {
 		this.showAside.set(false);
+		this.asideInjector.set(undefined);
 	}
 
 	/**

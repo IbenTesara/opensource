@@ -1,5 +1,13 @@
 import { NgComponentOutlet, NgTemplateOutlet } from '@angular/common';
-import { Component, contentChild, inject, OnInit, Signal, TemplateRef } from '@angular/core';
+import {
+	Component,
+	contentChild,
+	inject,
+	Injector,
+	OnInit,
+	Signal,
+	TemplateRef,
+} from '@angular/core';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { RouterModule } from '@angular/router';
 
@@ -34,6 +42,16 @@ export class NgxMobileLayoutComponent implements OnInit {
 	 * Whether the aside needs to be shown
 	 */
 	protected readonly asideShown: Signal<boolean> = this.layoutService.asideShown;
+
+	/**
+	 * The injector context for the aside
+	 */
+	protected readonly asideInjector: Signal<Injector> = this.layoutService.asideInjector;
+
+	/**
+	 * The injector context for the flyout
+	 */
+	protected readonly flyoutInjector: Signal<Injector> = this.layoutService.flyoutInjector;
 
 	/**
 	 * An optional template we can pass to replace the default routerOutlet

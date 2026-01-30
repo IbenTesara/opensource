@@ -21,7 +21,14 @@
 		animate.enter="ngx-mobile-layout-aside-in"
 		animate.leave="ngx-mobile-layout-aside-out"
 	>
+		@if(!asideInjector()){
 		<ng-template [ngComponentOutlet]="layout().aside" />
+		} @else {
+		<ng-template
+			[ngComponentOutlet]="layout().aside"
+			[ngComponentOutletInjector]="asideInjector()"
+		/>
+		}
 	</aside>
 	}
 
@@ -39,7 +46,14 @@
 		animate.enter="ngx-mobile-layout-flyout-in"
 		animate.leave="ngx-mobile-layout-flyout-out"
 	>
+		@if(!flyoutInjector()){
 		<ng-template [ngComponentOutlet]="layout().flyout" />
+		} @else {
+		<ng-template
+			[ngComponentOutlet]="layout().flyout"
+			[ngComponentOutletInjector]="flyoutInjector()"
+		/>
+		}
 	</div>
 	} @if(layout().footer) {
 	<footer class="ngx-mobile-layout-footer">
