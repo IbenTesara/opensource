@@ -5,7 +5,7 @@ import { NgxDisplayContentComponent } from '../abstracts';
 /**
  * The priority of the button
  */
-export type NgxButtonPriority = 'primary' | 'secondary' | 'tertiary' | 'danger';
+export type NgxButtonPriority = 'primary' | 'secondary' | 'tertiary' | 'danger' | 'success';
 
 /**
  * The type of the button

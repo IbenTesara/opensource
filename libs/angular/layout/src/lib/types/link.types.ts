@@ -5,7 +5,7 @@ import { NgxDisplayContentComponent } from '../abstracts';
 /**
  * The priority of the link
  */
-export type NgxLinkPriority = 'primary' | 'secondary' | 'tertiary' | 'danger';
+export type NgxLinkPriority = 'primary' | 'secondary' | 'tertiary' | 'danger' | 'success';
 
 /**
  * The position of the icon in the button
