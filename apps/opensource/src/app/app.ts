@@ -81,6 +81,9 @@ export class App {
 	public showToast() {
 		this.toastService.showToast({
 			text: `Hello, this is toast ${this.toastAmount}`,
+			configuration: {
+				autoClose: false,
+			},
 		});
 
 		this.toastAmount++;

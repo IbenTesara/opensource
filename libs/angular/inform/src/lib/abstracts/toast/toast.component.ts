@@ -28,6 +28,6 @@ export abstract class NgxToastComponent<DataType = unknown> implements AfterView
 	 * Removes the toast from the DOM after the animation is played
 	 */
 	public close(): void {
-		this.toastService.removeToast(this.toast());
+		this.toastService.removeToast(this.toast(), true);
 	}
 }

@@ -182,15 +182,21 @@ export class NgxToastService {
 	 * Removes a toast based on the provided id
 	 *
 	 * @param toast - The toast we wish to remove
+	 * @param force - Whether we want to forcefully remove a toast
 	 */
-	public removeToast(toast: NgxToast): void {
+	public removeToast(toast: NgxToast, force: boolean = false): void {
 		// Iben: If the toast is no longer in the queue, because it was removed by the end user, we early exit
 		if (!this.queue$.getValue().find(({ id }) => toast.id === id)) {
 			return;
 		}
 
 		// Iben: If the toast list is currently being focussed on, we try again within 5 seconds
-		if (this.isFocussed && (this.configuration.autoClose || toast.configuration?.autoClose)) {
+		if (
+			(this.isFocussed ||
+				this.configuration.autoClose === false ||
+				toast.configuration?.autoClose === false) &&
+			!force
+		) {
 			setTimeout(() => {
 				this.removeToast(toast);
 			}, 5000);
