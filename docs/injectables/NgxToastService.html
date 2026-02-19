@@ -270,8 +270,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="222"
-                                    class="link-to-prism">libs/angular/inform/src/lib/services/toast/toast.service.ts:222</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="228"
+                                    class="link-to-prism">libs/angular/inform/src/lib/services/toast/toast.service.ts:228</a></div>
                         </td>
                     </tr>
 
@@ -341,15 +341,15 @@
             <tr>
                 <td class="col-md-4">
                         <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>removeToast(toast: <a href="../interfaces/NgxToast.html" target="_self">NgxToast</a>)</code>
+                    <code>removeToast(toast: <a href="../interfaces/NgxToast.html" target="_self">NgxToast</a>, force: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank">boolean</a>)</code>
                 </td>
             </tr>
 
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="186"
-                                    class="link-to-prism">libs/angular/inform/src/lib/services/toast/toast.service.ts:186</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="187"
+                                    class="link-to-prism">libs/angular/inform/src/lib/services/toast/toast.service.ts:187</a></div>
                         </td>
                     </tr>
 
@@ -368,6 +368,7 @@
                                             <td>Name</td>
                                                 <td>Type</td>
                                             <td>Optional</td>
+                                                <td>Default value</td>
                                                 <td>Description</td>
                                         </tr>
                                     </thead>
@@ -382,10 +383,33 @@
                                                     No
                                             </td>
 
+                                            <td>
+                                            </td>
 
                                             <td>
                                                     <ul>
 <li>The toast we wish to remove</li>
+</ul>
+
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                                <td>force</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+                                            <td>
+                                                    <code>false</code>
+                                            </td>
+
+                                            <td>
+                                                    <ul>
+<li>Whether we want to forcefully remove a toast</li>
 </ul>
 
                                             </td>
@@ -426,8 +450,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="213"
-                                    class="link-to-prism">libs/angular/inform/src/lib/services/toast/toast.service.ts:213</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="219"
+                                    class="link-to-prism">libs/angular/inform/src/lib/services/toast/toast.service.ts:219</a></div>
                         </td>
                     </tr>
 
@@ -504,8 +528,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="243"
-                                    class="link-to-prism">libs/angular/inform/src/lib/services/toast/toast.service.ts:243</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="249"
+                                    class="link-to-prism">libs/angular/inform/src/lib/services/toast/toast.service.ts:249</a></div>
                         </td>
                     </tr>
 
@@ -1133,15 +1157,21 @@ export class NgxToastService {
 	 * Removes a toast based on the provided id
 	 *
 	 * @param toast - The toast we wish to remove
+	 * @param force - Whether we want to forcefully remove a toast
 	 */
-	public removeToast(toast: NgxToast): void {
+	public removeToast(toast: NgxToast, force: boolean &#x3D; false): void {
 		// Iben: If the toast is no longer in the queue, because it was removed by the end user, we early exit
 		if (!this.queue$.getValue().find(({ id }) &#x3D;&gt; toast.id &#x3D;&#x3D;&#x3D; id)) {
 			return;
 		}
 
 		// Iben: If the toast list is currently being focussed on, we try again within 5 seconds
-		if (this.isFocussed &amp;&amp; (this.configuration.autoClose || toast.configuration?.autoClose)) {
+		if (
+			(this.isFocussed ||
+				this.configuration.autoClose &#x3D;&#x3D;&#x3D; false ||
+				toast.configuration?.autoClose &#x3D;&#x3D;&#x3D; false) &amp;&amp;
+			!force
+		) {
 			setTimeout(() &#x3D;&gt; {
 				this.removeToast(toast);
 			}, 5000);

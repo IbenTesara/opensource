@@ -435,7 +435,7 @@ export abstract class NgxToastComponent&lt;DataType &#x3D; unknown&gt; implement
 	 * Removes the toast from the DOM after the animation is played
 	 */
 	public close(): void {
-		this.toastService.removeToast(this.toast());
+		this.toastService.removeToast(this.toast(), true);
 	}
 }
 </code></pre>
