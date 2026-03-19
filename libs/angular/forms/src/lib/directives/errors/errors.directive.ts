@@ -12,6 +12,7 @@ import {
 	DestroyRef,
 	WritableSignal,
 	signal,
+	EmbeddedViewRef,
 } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import {
@@ -32,6 +33,8 @@ import { touchedEventListener } from '../../utils';
 	standalone: true,
 })
 export class NgxFormsErrorsDirective implements AfterViewInit {
+	protected errorViewContainer: EmbeddedViewRef<NgxFormsErrorAbstractComponent>;
+
 	/**
 	 *  An optional instance of the FormGroup directive
 	 */
@@ -211,6 +214,8 @@ export class NgxFormsErrorsDirective implements AfterViewInit {
 		if (!shouldShow) {
 			if (this.errorComponent) {
 				this.componentRef.destroy();
+				this.errorViewContainer.destroy();
+				this.errorViewContainer = undefined;
 				this.componentRef = undefined;
 				this.errorComponent = undefined;
 			}
@@ -226,7 +231,10 @@ export class NgxFormsErrorsDirective implements AfterViewInit {
 
 		// Iben: Add the new component to the view
 		this.componentRef = this.viewContainer.createComponent<NgxFormsErrorAbstractComponent>(
-			this.config.component
+			this.config.component,
+			{
+				index: (this.config?.location || 'after') === 'after' ? 1 : 0,
+			}
 		);
 		this.errorComponent = this.componentRef.instance;
 
@@ -267,12 +275,18 @@ export class NgxFormsErrorsDirective implements AfterViewInit {
 			this.getErrors(this.abstractControl.errors).errors.join(', ')
 		);
 
-		// Iben: insert the paragraph underneath the input component
-		this.renderer.insertBefore(
-			this.elementRef.nativeElement.parentNode,
-			this.errorsElement,
-			this.renderer.nextSibling(this.elementRef.nativeElement)
-		);
+		// Iben: insert the paragraph before or after the input component
+		return (this.config?.location || 'after') === 'after'
+			? this.renderer.insertBefore(
+					this.elementRef.nativeElement.parentNode,
+					this.errorsElement,
+					this.renderer.nextSibling(this.elementRef.nativeElement)
+			  )
+			: this.renderer.insertBefore(
+					this.elementRef.nativeElement.parentNode,
+					this.errorsElement,
+					this.elementRef.nativeElement.previousSibling
+			  );
 	}
 
 	/**

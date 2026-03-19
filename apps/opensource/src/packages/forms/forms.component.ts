@@ -4,13 +4,19 @@ import { FormControl, ReactiveFormsModule, Validators } from '@angular/forms';
 import { NgxFormsErrorsConfigurationToken, NgxFormsErrorsDirective } from '@lib/ngx-forms';
 
 import { DataFormTest } from './components/data-form.component';
+import { ErrorComponent } from './components/errors.component';
 
 @Component({
 	selector: 'ngx-forms-page',
 	providers: [
 		{
 			provide: NgxFormsErrorsConfigurationToken,
-			useValue: { showWhen: 'touched', errors: { required: 'Dit veld is verplicht' } },
+			useValue: {
+				showWhen: 'touched',
+				errors: { required: 'Dit veld is verplicht' },
+				location: 'before',
+				component: ErrorComponent,
+			},
 		},
 	],
 	imports: [ReactiveFormsModule, NgxFormsErrorsDirective, DataFormTest],
