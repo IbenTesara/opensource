@@ -14,6 +14,7 @@ import { NgxMobileLayoutPageComponent } from '../packages/mobile-layout/mobile-l
 import { Page1Component } from '../packages/mobile-layout/pages/page-1.component';
 import { Page2Component } from '../packages/mobile-layout/pages/page-2.component';
 import { NgxSignalStoreComponent } from '../packages/store/store.component';
+import { NgxErrorPageComponent } from '../packages/errors/errors.page.component';
 
 export const appRoutes: Route[] = [
 	{
@@ -38,6 +39,10 @@ export const appRoutes: Route[] = [
 			{
 				path: 'layout',
 				component: NgxLayoutPageComponent,
+			},
+			{
+				path: 'errors',
+				component: NgxErrorPageComponent,
 			},
 			{
 				path: 'store',

@@ -6,6 +6,7 @@ import {
 } from '@angular/core';
 import { provideRouter } from '@angular/router';
 
+import { provideNgxErrorBoundaryConfiguration } from '@lib/ngx-errors';
 import { provideNgxI18nConfiguration } from '@lib/ngx-i18n';
 import {
 	provideNgxModalConfiguration,
@@ -19,6 +20,8 @@ import {
 	provideNgxMobileLayoutConfiguration,
 } from '@lib/ngx-layout';
 
+import { NgxErrorHandlerComponent } from '../packages/errors/error/error.component';
+import { ErrorHandlerService } from '../packages/errors/handler/error.handler';
 import { ConfirmModalComponent } from '../packages/inform/components/confirm/confirm.component';
 import { ToastComponent } from '../packages/inform/components/toast/toast.component';
 import { TooltipComponent } from '../packages/inform/components/tooltip/tooltip.component';
@@ -95,5 +98,9 @@ export const appConfig: ApplicationConfig = {
 				query: '(width >= 1440px)',
 			},
 		]),
+		provideNgxErrorBoundaryConfiguration({
+			component: NgxErrorHandlerComponent,
+			handler: ErrorHandlerService,
+		}),
 	],
 };
