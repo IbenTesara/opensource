@@ -11,3 +11,4 @@ export * from './lib/directives';
 export * from './lib/tokens';
 export * from './lib/guards';
 export * from './lib/providers';
+export * from './lib/components';

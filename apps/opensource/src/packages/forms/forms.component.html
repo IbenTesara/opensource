@@ -4,6 +4,18 @@
 	<input ngxInput [formControl]="control" label="Hello" type="text" />
 </div>
 
+<p>
+	<ngx-dynamic-form options="Hello this is a label!" key="text" [formControl]="textControl" />
+
+	Text: {{ textControl.value }}
+</p>
+
+<p>
+	<ngx-dynamic-form key="textField" [formControl]="textFieldControl" />
+
+	Text: {{ textFieldControl.value }}
+</p>
+
 <data-form [formControl]="control" [data]="options()" />
 
 <button (click)="addOption()">Add option</button>

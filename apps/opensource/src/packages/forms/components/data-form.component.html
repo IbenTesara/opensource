@@ -1,6 +1,7 @@
 <fieldset>
 	{{ form.value | json }}
-	@for(item of data(); track item) {
-	<input type="radio" [value]="item" name="test" [id]="item" [formControl]="form" /> {{ item }}
+	@for (item of data(); track item) {
+		<input type="radio" [value]="item" name="test" [id]="item" [formControl]="form" />
+		{{ item }}
 	}
 </fieldset>

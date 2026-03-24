@@ -48,13 +48,13 @@ import { BaseFormAccessor } from '../base-form/base-form.accessor';
 export abstract class NgxFormsControlValueAccessor<
 	DataType = unknown,
 	FormAccessorFormType extends AbstractControl = FormControl,
-	FormValueType = DataType
+	FormValueType = DataType,
 > implements ControlValueAccessor
 {
 	/**
 	 *  The Injector needed in the constructor
 	 */
-	private readonly injector: Injector = inject(Injector);
+	protected readonly injector: Injector = inject(Injector);
 
 	/**
 	 *  The initial value of the form

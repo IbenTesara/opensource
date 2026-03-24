@@ -1,10 +1,17 @@
 import { Component, signal } from '@angular/core';
 import { FormControl, ReactiveFormsModule, Validators } from '@angular/forms';
 
-import { NgxFormsErrorsConfigurationToken, NgxFormsErrorsDirective } from '@lib/ngx-forms';
+import {
+	NgxDynamicFormComponent,
+	NgxFormsErrorsConfigurationToken,
+	NgxFormsErrorsDirective,
+	provideNgxDynamicFormConfiguration,
+} from '@lib/ngx-forms';
 
 import { DataFormTest } from './components/data-form.component';
 import { ErrorComponent } from './components/errors.component';
+import { TextFieldFormComponent } from './components/text-field.component';
+import { TextFormComponent } from './components/text-form.component';
 
 @Component({
 	selector: 'ngx-forms-page',
@@ -18,12 +25,19 @@ import { ErrorComponent } from './components/errors.component';
 				component: ErrorComponent,
 			},
 		},
+		provideNgxDynamicFormConfiguration({
+			text: TextFormComponent,
+			textField: TextFieldFormComponent,
+		}),
 	],
-	imports: [ReactiveFormsModule, NgxFormsErrorsDirective, DataFormTest],
+	imports: [ReactiveFormsModule, NgxFormsErrorsDirective, DataFormTest, NgxDynamicFormComponent],
 	templateUrl: './forms.component.html',
 })
 export class FormsPageComponent {
 	public readonly control: FormControl = new FormControl(null, Validators.required);
+
+	public textControl = new FormControl('', Validators.required);
+	public textFieldControl = new FormControl('', Validators.required);
 
 	public options = signal(['A', 'B', 'C']);
 
