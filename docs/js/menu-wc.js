@@ -83,6 +83,9 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                                 <a href="components/NgxDateTableCellComponent.html" data-type="entity-link" >NgxDateTableCellComponent</a>
                             </li>
                             <li class="link">
+                                <a href="components/NgxDynamicFormComponent.html" data-type="entity-link" >NgxDynamicFormComponent</a>
+                            </li>
+                            <li class="link">
                                 <a href="components/NgxI18nEmptyComponent.html" data-type="entity-link" >NgxI18nEmptyComponent</a>
                             </li>
                             <li class="link">
@@ -166,6 +169,12 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                                 </li>
                                 <li class="link">
                                     <a href="directives/NgxDisplayContentDirective.html" data-type="entity-link" >NgxDisplayContentDirective</a>
+                                </li>
+                                <li class="link">
+                                    <a href="directives/NgxDynamicFormDirective.html" data-type="entity-link" >NgxDynamicFormDirective</a>
+                                </li>
+                                <li class="link">
+                                    <a href="directives/NgxDynamicFormInputComponent.html" data-type="entity-link" >NgxDynamicFormInputComponent</a>
                                 </li>
                                 <li class="link">
                                     <a href="directives/NgxFormsControlValueAccessor.html" data-type="entity-link" >NgxFormsControlValueAccessor</a>
