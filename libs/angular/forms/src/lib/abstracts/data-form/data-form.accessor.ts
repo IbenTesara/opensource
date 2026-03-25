@@ -12,7 +12,7 @@ export abstract class DataFormAccessor<
 		ConstructionDataType = unknown,
 		DataType = unknown,
 		FormAccessorFormType extends AbstractControl = FormControl,
-		FormValueType = DataType
+		FormValueType = DataType,
 	>
 	extends NgxFormsControlValueAccessor<DataType, FormAccessorFormType, FormValueType>
 	implements OnDestroy, OnInit
@@ -35,12 +35,20 @@ export abstract class DataFormAccessor<
 	 */
 	public readonly data: InputSignal<ConstructionDataType> = input.required();
 
+	/**
+	 * Whether we want to preserve previously filled in form data when new data is provided. By default, this is false.
+	 */
+	public readonly preserveFormValueOnNewData: InputSignal<boolean> = input(false);
+
 	private readonly data$: Observable<ConstructionDataType> = toObservable(this.data);
 
 	public ngOnInit(): void {
 		this.data$
 			.pipe(
 				switchMap((data) => {
+					// Iben: Get the current data of the form.
+					const currentFormValue = this.form?.getRawValue();
+
 					// Iben: If we already have current data and the current data matches the new data, we don't make a new form
 					if (this.currentData && isEqual(this.currentData, data)) {
 						this.currentData = data;
@@ -55,6 +63,11 @@ export abstract class DataFormAccessor<
 
 					// Set the inner form
 					this.form = this.initForm(data);
+
+					// Iben: If we want to preserver our previous filled in data, we patch this form
+					if (this.preserveFormValueOnNewData && currentFormValue) {
+						this.form.patchValue(currentFormValue);
+					}
 
 					// Iben: Set the default value
 					this.defaultValue = this.form.getRawValue();
