@@ -6,6 +6,8 @@ import {
 	input,
 	inputBinding,
 	InputSignal,
+	Signal,
+	viewChild,
 	ViewContainerRef,
 } from '@angular/core';
 import { FormControl } from '@angular/forms';
@@ -26,7 +28,7 @@ import { createAccessorProviders } from '../../utils';
  */
 @Component({
 	selector: 'ngx-dynamic-form',
-	template: ``,
+	template: `<ng-container #ngxDynamicFormContainer />`,
 	providers: [createAccessorProviders(NgxDynamicFormComponent)],
 	changeDetection: ChangeDetectionStrategy.OnPush,
 })
@@ -44,7 +46,10 @@ export class NgxDynamicFormComponent<
 	/**
 	 * An instance of the ViewContainer
 	 */
-	protected readonly viewContainerRef: ViewContainerRef = inject(ViewContainerRef);
+	protected readonly viewContainerRef: Signal<ViewContainerRef> = viewChild(
+		'ngxDynamicFormContainer',
+		{ read: ViewContainerRef }
+	);
 
 	/**
 	 * Options passed to the rendered input component
@@ -70,7 +75,7 @@ export class NgxDynamicFormComponent<
 			}
 
 			// Iben: Create the component and add it to the viewContainerRef
-			this.viewContainerRef.createComponent(this.dynamicFormConfiguration[this.key()], {
+			this.viewContainerRef().createComponent(this.dynamicFormConfiguration[this.key()], {
 				bindings: [inputBinding('options', () => this.options())],
 				// Iben: Provide the injector so the CustomControlValueAccessor keeps working
 				injector: this.injector,
