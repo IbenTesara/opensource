@@ -785,8 +785,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="137"
-                                    class="link-to-prism">libs/angular/layout/src/lib/components/accordion/item/accordion-item.component.ts:137</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="142"
+                                    class="link-to-prism">libs/angular/layout/src/lib/components/accordion/item/accordion-item.component.ts:142</a></div>
                         </td>
                     </tr>
 
@@ -826,8 +826,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="193"
-                                    class="link-to-prism">libs/angular/layout/src/lib/components/accordion/item/accordion-item.component.ts:193</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="198"
+                                    class="link-to-prism">libs/angular/layout/src/lib/components/accordion/item/accordion-item.component.ts:198</a></div>
                         </td>
                     </tr>
 
@@ -952,8 +952,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="160"
-                                    class="link-to-prism">libs/angular/layout/src/lib/components/accordion/item/accordion-item.component.ts:160</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="165"
+                                    class="link-to-prism">libs/angular/layout/src/lib/components/accordion/item/accordion-item.component.ts:165</a></div>
                         </td>
                     </tr>
 
@@ -993,8 +993,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="184"
-                                    class="link-to-prism">libs/angular/layout/src/lib/components/accordion/item/accordion-item.component.ts:184</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="189"
+                                    class="link-to-prism">libs/angular/layout/src/lib/components/accordion/item/accordion-item.component.ts:189</a></div>
                         </td>
                     </tr>
 
@@ -1034,8 +1034,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="153"
-                                    class="link-to-prism">libs/angular/layout/src/lib/components/accordion/item/accordion-item.component.ts:153</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="158"
+                                    class="link-to-prism">libs/angular/layout/src/lib/components/accordion/item/accordion-item.component.ts:158</a></div>
                         </td>
                     </tr>
 
@@ -1075,8 +1075,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="146"
-                                    class="link-to-prism">libs/angular/layout/src/lib/components/accordion/item/accordion-item.component.ts:146</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="151"
+                                    class="link-to-prism">libs/angular/layout/src/lib/components/accordion/item/accordion-item.component.ts:151</a></div>
                         </td>
                     </tr>
 
@@ -1595,22 +1595,22 @@
     <div class="tab-pane fade  tab-source-code" id="source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { NgTemplateOutlet } from &#x27;@angular/common&#x27;;
 import {
-  AfterViewInit,
-  ChangeDetectionStrategy,
-  ChangeDetectorRef,
-  Component,
-  ElementRef,
-  HostListener,
-  inject,
-  OnDestroy,
-  OnInit,
-  Renderer2,
-  TemplateRef,
-  input,
-  viewChild,
-  contentChild,
-  WritableSignal,
-  signal
+	AfterViewInit,
+	ChangeDetectionStrategy,
+	ChangeDetectorRef,
+	Component,
+	ElementRef,
+	HostListener,
+	inject,
+	OnDestroy,
+	OnInit,
+	Renderer2,
+	TemplateRef,
+	input,
+	viewChild,
+	contentChild,
+	WritableSignal,
+	signal,
 } from &#x27;@angular/core&#x27;;
 import { v4 as uuid } from &#x27;uuid&#x27;;
 
@@ -1721,7 +1721,12 @@ export class NgxAccordionItemComponent implements OnInit, AfterViewInit, OnDestr
 	 */
 	public updateAccordionItemState(isOpen: boolean): void {
 		// Iben: Sets the item to open and updates the parent state
-		this.isOpen.set(isOpen)
+		this.isOpen.set(isOpen);
+
+		// Iben: If the item is opened, we update the other items
+		if (isOpen) {
+			this.parent.handleOpenState(this.id);
+		}
 
 		// Iben: Trigger the visual changes
 		this.cdRef.detectChanges();
