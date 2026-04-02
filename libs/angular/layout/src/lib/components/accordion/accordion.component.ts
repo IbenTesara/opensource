@@ -1,14 +1,15 @@
 import {
 	ChangeDetectionStrategy,
 	Component,
-	effect,
+	DestroyRef,
+	inject,
 	input,
 	InputSignal,
-	OnDestroy,
 } from '@angular/core';
-import { Subject, take, tap } from 'rxjs';
+import { takeUntilDestroyed, toObservable } from '@angular/core/rxjs-interop';
+import { combineLatest, distinctUntilChanged, Observable, shareReplay, Subject, tap } from 'rxjs';
 
-import { NgxAccordionOpenBehavior } from '../../types';
+import { NgxAccordionOpenBehavior, NgxAccordionOpenStateBehavior } from '../../types';
 
 import { NgxAccordionItemComponent } from './item/accordion-item.component';
 
@@ -26,16 +27,22 @@ import { NgxAccordionItemComponent } from './item/accordion-item.component';
 		role: 'region',
 	},
 })
-export class NgxAccordionComponent implements OnDestroy {
+export class NgxAccordionComponent {
+	/**
+	 * An instance of the DestroyRef
+	 */
+	protected readonly destroyRef: DestroyRef = inject(DestroyRef);
 	/**
 	 * A subject to hold a registered event
 	 */
-	private itemRegisteredSubject: Subject<void> = new Subject<void>();
+	protected readonly itemRegisteredSubject: Subject<void> = new Subject<void>();
 
 	/**
-	 * A subject to hold the destroyed event
+	 * An observable based on the itemRegisteredSubject, sharing its replay
 	 */
-	private destroyedSubject: Subject<void> = new Subject<void>();
+	protected readonly itemRegistered$: Observable<void> = this.itemRegisteredSubject
+		.asObservable()
+		.pipe(shareReplay(1));
 
 	/**
 	 * A list of all accordion items
@@ -47,16 +54,18 @@ export class NgxAccordionComponent implements OnDestroy {
 	 */
 	public open: InputSignal<NgxAccordionOpenBehavior> = input();
 
-	constructor() {
-		effect(() => {
-			const open = this.open();
+	/**
+	 * Whether all or just one item can be opened at the same time; by default this is `all`
+	 */
+	public openStateBehavior: InputSignal<NgxAccordionOpenStateBehavior> = input('all');
 
-			this.itemRegisteredSubject.pipe(
-				take(1),
-				tap(() => {
+	constructor() {
+		combineLatest([toObservable(this.open), this.itemRegistered$])
+			.pipe(
+				distinctUntilChanged(),
+				tap(([open]) => {
 					// Iben: Use a setTimeOut so we wait an extra tick
 					setTimeout(() => {
-						// Iben: Open all items
 						if (open === 'all') {
 							this.items.forEach((item) => item.updateAccordionItemState(true));
 						} else {
@@ -69,9 +78,10 @@ export class NgxAccordionComponent implements OnDestroy {
 							});
 						}
 					});
-				})
-			);
-		});
+				}),
+				takeUntilDestroyed(this.destroyRef)
+			)
+			.subscribe();
 	}
 
 	/**
@@ -123,10 +133,21 @@ export class NgxAccordionComponent implements OnDestroy {
 	}
 
 	/**
-	 * Handle the destroyed state
+	 * Update the state of other accordion items based on the openStateBehavior
+	 *
+	 * @param id - The recently opened item
 	 */
-	public ngOnDestroy(): void {
-		this.destroyedSubject.next();
-		this.destroyedSubject.complete();
+	public handleOpenState(id: string): void {
+		// Iben: If we can open all items, we early exit
+		if (this.openStateBehavior() !== 'one') {
+			return;
+		}
+
+		// Iben: Close all other items in the accordion
+		this.items.forEach((item) => {
+			if (item.id !== id) {
+				item.updateAccordionItemState(false);
+			}
+		});
 	}
 }

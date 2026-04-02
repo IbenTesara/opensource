@@ -1,21 +1,21 @@
 import { NgTemplateOutlet } from '@angular/common';
 import {
-  AfterViewInit,
-  ChangeDetectionStrategy,
-  ChangeDetectorRef,
-  Component,
-  ElementRef,
-  HostListener,
-  inject,
-  OnDestroy,
-  OnInit,
-  Renderer2,
-  TemplateRef,
-  input,
-  viewChild,
-  contentChild,
-  WritableSignal,
-  signal
+	AfterViewInit,
+	ChangeDetectionStrategy,
+	ChangeDetectorRef,
+	Component,
+	ElementRef,
+	HostListener,
+	inject,
+	OnDestroy,
+	OnInit,
+	Renderer2,
+	TemplateRef,
+	input,
+	viewChild,
+	contentChild,
+	WritableSignal,
+	signal,
 } from '@angular/core';
 import { v4 as uuid } from 'uuid';
 
@@ -126,7 +126,12 @@ export class NgxAccordionItemComponent implements OnInit, AfterViewInit, OnDestr
 	 */
 	public updateAccordionItemState(isOpen: boolean): void {
 		// Iben: Sets the item to open and updates the parent state
-		this.isOpen.set(isOpen)
+		this.isOpen.set(isOpen);
+
+		// Iben: If the item is opened, we update the other items
+		if (isOpen) {
+			this.parent.handleOpenState(this.id);
+		}
 
 		// Iben: Trigger the visual changes
 		this.cdRef.detectChanges();
