@@ -1,5 +1,5 @@
 import { Directive, input, InputSignal } from '@angular/core';
-import { AbstractControl, FormControl } from '@angular/forms';
+import { AbstractControl } from '@angular/forms';
 
 import { FormAccessor } from '../form/form.accessor';
 
@@ -13,9 +13,9 @@ import { FormAccessor } from '../form/form.accessor';
  */
 @Directive()
 export abstract class NgxDynamicFormInputComponent<
-	OptionsType = unknown,
-	DataType = unknown,
-	FormAccessorFormType extends AbstractControl = FormControl,
+	OptionsType,
+	DataType,
+	FormAccessorFormType extends AbstractControl,
 	FormValueType = DataType,
 > extends FormAccessor<DataType, FormAccessorFormType, FormValueType> {
 	/**
