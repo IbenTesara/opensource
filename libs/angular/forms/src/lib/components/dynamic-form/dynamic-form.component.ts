@@ -41,7 +41,7 @@ export class NgxDynamicFormComponent<
 	 */
 	protected readonly dynamicFormConfiguration: NgxDynamicFormConfiguration = inject(
 		NgxDynamicFormConfigurationToken
-	);
+  );
 
 	/**
 	 * An instance of the ViewContainer
@@ -86,7 +86,10 @@ export class NgxDynamicFormComponent<
 						bindings: [inputBinding('formControl', () => this.form)],
 					},
 				],
-			});
+      } );
+
+      // Iben: Detect changes after the component was added
+      this.cdRef.detectChanges();
 		});
 	}
 
