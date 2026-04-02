@@ -2190,7 +2190,7 @@ By default, this is true</p>
 
     <div class="tab-pane fade  tab-source-code" id="source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Directive, input, InputSignal } from &#x27;@angular/core&#x27;;
-import { AbstractControl, FormControl } from &#x27;@angular/forms&#x27;;
+import { AbstractControl } from &#x27;@angular/forms&#x27;;
 
 import { FormAccessor } from &#x27;../form/form.accessor&#x27;;
 
@@ -2204,9 +2204,9 @@ import { FormAccessor } from &#x27;../form/form.accessor&#x27;;
  */
 @Directive()
 export abstract class NgxDynamicFormInputComponent&lt;
-	OptionsType &#x3D; unknown,
-	DataType &#x3D; unknown,
-	FormAccessorFormType extends AbstractControl &#x3D; FormControl,
+	OptionsType,
+	DataType,
+	FormAccessorFormType extends AbstractControl,
 	FormValueType &#x3D; DataType,
 &gt; extends FormAccessor&lt;DataType, FormAccessorFormType, FormValueType&gt; {
 	/**
