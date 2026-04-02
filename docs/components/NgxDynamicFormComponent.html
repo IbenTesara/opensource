@@ -542,7 +542,7 @@ By default, this is true</p>
                     </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in         <code><a href="../directives/FormAccessor.html#source" target="_self" >FormAccessor:93</a></code>
+                                <div class="io-line">Defined in         <code><a href="../directives/FormAccessor.html#source" target="_self" >FormAccessor:96</a></code>
 </div>
                         </td>
                     </tr>
@@ -1573,7 +1573,7 @@ By default, this is true</p>
                     <td class="col-md-4">
                         <i>Default value : </i><code>inject(
 		NgxDynamicFormConfigurationToken
-	)</code>
+  )</code>
                     </td>
                 </tr>
                     <tr>
@@ -2461,7 +2461,7 @@ export class NgxDynamicFormComponent&lt;
 	 */
 	protected readonly dynamicFormConfiguration: NgxDynamicFormConfiguration &#x3D; inject(
 		NgxDynamicFormConfigurationToken
-	);
+  );
 
 	/**
 	 * An instance of the ViewContainer
@@ -2506,7 +2506,10 @@ export class NgxDynamicFormComponent&lt;
 						bindings: [inputBinding(&#x27;formControl&#x27;, () &#x3D;&gt; this.form)],
 					},
 				],
-			});
+      } );
+
+      // Iben: Detect changes after the component was added
+      this.cdRef.detectChanges();
 		});
 	}
 
