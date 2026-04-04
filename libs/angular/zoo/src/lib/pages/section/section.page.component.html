@@ -1,0 +1,67 @@
+@if (section().image) {
+	<img class="ngx-content-page-image" [src]="section().image" role="presentation" alt="" />
+}
+
+<div [innerHTML]="section().content | ngxMarkdown"></div>
+
+@if (section().highlights) {
+	<div class="ngx-section-page-highlights">
+		@for (highlight of section().highlights; track highlight.id) {
+			<ngx-content-item [content]="highlight" />
+		}
+	</div>
+}
+
+@if (section().animals) {
+	<div class="ngx-section-page-animals">
+		@for (animal of section().animals; track animal) {
+			<ngx-animal [id]="animal" display="short" />
+		}
+	</div>
+}
+
+@if (section().activities) {
+	<div class="ngx-section-page-activities">
+		@for (activity of section().activities; track activity.id) {
+			<ngx-content-item [content]="activity" />
+		}
+	</div>
+}
+
+@if (section().facilities) {
+	<div class="ngx-section-page-facilities">
+		@for (facility of section().facilities; track facility.id) {
+			<ngx-content-item [content]="facility" />
+		}
+	</div>
+}
+
+@if (section().accommodations) {
+	<div class="ngx-section-page-accommodations">
+		@for (accommodation of section().accommodations; track accommodation.id) {
+			<ngx-content-item [content]="accommodation" />
+		}
+	</div>
+}
+
+@if (section().news) {
+	<div class="ngx-section-page-news">
+		@for (news of section().news; track news.id) {
+			<ngx-content-item [content]="news" />
+		}
+	</div>
+}
+
+@if (section().projects) {
+	<div class="ngx-section-page-projects">
+		@for (project of section().projects; track project.id) {
+			<ngx-content-item [content]="project" />
+		}
+	</div>
+}
+
+@if (section().faq) {
+	<div class="ngx-section-page-faq">
+		@for (faq of section().faq; track faq.id) {}
+	</div>
+}

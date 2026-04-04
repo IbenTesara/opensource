@@ -1,0 +1,48 @@
+{
+	"name": "zoo",
+	"$schema": "../../../node_modules/nx/schemas/project-schema.json",
+	"sourceRoot": "libs/angular/zoo/src",
+	"prefix": "lib",
+	"projectType": "library",
+	"release": {
+		"version": {
+			"manifestRootsToUpdate": ["dist/{projectRoot}"],
+			"currentVersionResolver": "git-tag",
+			"fallbackCurrentVersionResolver": "disk"
+		}
+	},
+	"tags": [],
+	"targets": {
+		"build": {
+			"executor": "@nx/angular:package",
+			"outputs": ["{workspaceRoot}/dist/{projectRoot}"],
+			"options": {
+				"project": "libs/angular/zoo/ng-package.json",
+				"tsConfig": "libs/angular/zoo/tsconfig.lib.json"
+			},
+			"configurations": {
+				"production": {
+					"tsConfig": "libs/angular/zoo/tsconfig.lib.prod.json"
+				},
+				"development": {}
+			},
+			"defaultConfiguration": "production"
+		},
+		"nx-release-publish": {
+			"options": {
+				"packageRoot": "dist/{projectRoot}"
+			}
+		},
+		"test": {
+			"executor": "@nx/jest:jest",
+			"outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+			"options": {
+				"jestConfig": "libs/angular/zoo/jest.config.cts",
+				"tsConfig": "libs/angular/zoo/tsconfig.spec.json"
+			}
+		},
+		"lint": {
+			"executor": "@nx/eslint:lint"
+		}
+	}
+}

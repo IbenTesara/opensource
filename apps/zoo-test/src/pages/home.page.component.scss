@@ -1,0 +1,29 @@
+:host {
+  display: grid;
+  grid-template-areas: 'header' 'content';
+  grid-template-rows: 400px 1fr;
+  height: 100%;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    grid-area: header;
+  }
+
+  h1 {
+    grid-area:header;
+    place-self: end start;
+    text-transform: uppercase;
+    color: white;
+    font-weight: bold;
+    font-size: 68px;
+    padding: 0 16px;
+    width: 200px;
+    margin-left: 16px;
+  }
+
+  span {
+    color: #7b1f11;
+  }
+}

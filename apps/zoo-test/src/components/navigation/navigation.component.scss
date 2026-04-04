@@ -1,0 +1,14 @@
+:host {
+  display: block;
+  height: 100%;
+  padding: 0 4px;
+
+  ul {
+    display: grid;
+    place-items: center;
+    height: 100%;
+    grid-auto-columns: max-content;
+    grid-auto-flow: column;
+    gap: 16px;
+  }
+}

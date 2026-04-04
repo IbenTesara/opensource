@@ -1,0 +1,11 @@
+<section class="ngx-content-item">
+	@if (content().image) {
+		<img class="ngx-content-item-image" role="presentation" alt="" [src]="content().image" />
+	}
+
+	<div [innerHTML]="content().content | ngxMarkdown"></div>
+
+	@if (content().link) {
+		<ngx-content-link [link]="content().link" />
+	}
+</section>

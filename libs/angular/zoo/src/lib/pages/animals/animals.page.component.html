@@ -1,0 +1,40 @@
+@if (contentPage()) {
+	@for (item of contentPage()?.content; track item.id) {
+		<div class="ngx-animals-content">
+			@if (item.image) {
+				<img class="ngx-content-page-image" role="presentation" [src]="item.image" alt="" />
+			}
+			<ngx-content-item [content]="item" />
+
+			@if (item.link) {
+				<ngx-content-link [link]="item.link" />
+			}
+		</div>
+	}
+}
+
+<div class="ngx-animals-page-filters" [formGroup]="filters">
+	<fieldset>
+		@for (section of sections(); track section.id) {
+			<label [for]="section.id">
+				{{ section.name }}
+				<input
+					id="section"
+					type="checkbox"
+					formControlName="section"
+					[value]="section.id"
+				/>
+			</label>
+		}
+	</fieldset>
+
+	<fieldset>
+		<input id="name" type="text" formControlName="name" />
+	</fieldset>
+</div>
+
+<div class="ngx-animals-page-list">
+	@for (animal of animals(); track animal.id) {
+		<ngx-animal [id]="animal.id" display="short" />
+	}
+</div>

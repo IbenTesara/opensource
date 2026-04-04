@@ -1,0 +1,10 @@
+@for (item of contentPage().content; track item.id) {
+	@if (item.image) {
+		<img class="ngx-content-page-image" role="presentation" [src]="item.image" alt="" />
+	}
+	<ngx-content-item [content]="item" />
+
+	@if (item.link) {
+		<ngx-content-link [link]="item.link" />
+	}
+}

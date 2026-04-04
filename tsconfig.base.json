@@ -32,7 +32,8 @@
 			"@lib/ngx-utils": ["libs/angular/utils/src/index.ts"],
 			"@lib/rxjs": ["libs/javascript/rxjs/src/index.ts"],
 			"@lib/types/authentication": ["libs/javascript/types/authentication/src/index.ts"],
-			"@lib/utils": ["libs/javascript/utils/src/index.ts"]
+			"@lib/utils": ["libs/javascript/utils/src/index.ts"],
+			"@lib/zoo": ["libs/angular/zoo/src/index.ts"]
 		}
 	},
 	"exclude": ["node_modules", "tmp"]

@@ -1,0 +1,31 @@
+@if (display() === 'full') {
+	<section class="ngx-animal-full">
+		<img [src]="animal().image" [alt]="animal().name" />
+
+		<header class="ngx-animal-header">
+			<span class="ngx-animal-name">{{ animal().name }}</span>
+			<span class="ngx-animal-latin-name">{{ animal().latinName }}</span>
+		</header>
+
+		@if (animal().content) {
+			@for (content of animal().content; track content.id) {
+				<ngx-content-item [content]="content" />
+			}
+		}
+	</section>
+}
+
+@if (display() === 'short') {
+	<article class="ngx-animal-short">
+		@if (animal().image) {
+			<img [src]="animal().image" [alt]="animal().name" />
+		}
+
+		<header class="ngx-animal-header">
+			<span class="ngx-animal-name">{{ animal().name }}</span>
+			@if (animal().link) {
+				<ngx-content-link [link]="animal().link" />
+			}
+		</header>
+	</article>
+}

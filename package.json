@@ -4,6 +4,7 @@
 	"license": "MIT",
 	"scripts": {
 		"start": "npx nx serve opensource",
+		"start-zoo": "npx nx serve zoo-test",
 		"build": "nx build --configuration production",
 		"test": "nx test --code-coverage",
 		"test:watch": "nx test --watch",
@@ -26,12 +27,14 @@
 		"@angular/platform-browser": "21.0.9",
 		"@angular/platform-browser-dynamic": "21.0.9",
 		"@angular/router": "21.0.9",
-		"@ibenvandeveire/ngx-core": "21.0.0",
+		"@ibenvandeveire/ngx-core": "21.0.1",
+		"@ibenvandeveire/ngx-layout": "21.4.0",
+		"@ibenvandeveire/ngx-store": "^21.0.1",
 		"@ibenvandeveire/types-authentication": "^1.0.0",
-		"@ngrx/effects": "21.0.1",
-		"@ngrx/entity": "21.0.1",
-		"@ngrx/signals": "21.0.1",
-		"@ngrx/store": "21.0.1",
+		"@ngrx/effects": "21.1.0",
+		"@ngrx/entity": "21.1.0",
+		"@ngrx/signals": "21.1.0",
+		"@ngrx/store": "21.1.0",
 		"@ngx-translate/core": "17.0.0",
 		"date-fns": "^4.1.0",
 		"deepmerge-ts": "^7.1.5",
@@ -86,7 +89,7 @@
 		"nx": "22.3.3",
 		"postcss": "^8.4.5",
 		"postcss-url": "~10.1.3",
-		"prettier": "^2.6.2",
+		"prettier": "~3.6.2",
 		"ts-jest": "29.4.6",
 		"ts-node": "10.9.1",
 		"tslib": "^2.3.0",
@@ -98,18 +101,6 @@
 		"includedScripts": []
 	},
 	"overrides": {
-		"@ngrx/signals": {
-			"@angular/common": "$@angular/common",
-			"@angular/core": "$@angular/core"
-		},
-		"@ngrx/entity": {
-			"@angular/common": "$@angular/common",
-			"@angular/core": "$@angular/core"
-		},
-		"@ngrx/effects": {
-			"@angular/common": "$@angular/common",
-			"@angular/core": "$@angular/core"
-		},
 		"jest-preset-angular": {
 			"jest": "$jest"
 		}
