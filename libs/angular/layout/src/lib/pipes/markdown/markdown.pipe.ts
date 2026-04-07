@@ -1,4 +1,12 @@
-import { ChangeDetectorRef, inject, Pipe, PipeTransform, OnDestroy } from '@angular/core';
+import {
+	ChangeDetectorRef,
+	inject,
+	Pipe,
+	PipeTransform,
+	OnDestroy,
+	ElementRef,
+	Renderer2,
+} from '@angular/core';
 import { MarkedOptions } from 'marked';
 import { Observable, Subject, takeUntil, tap } from 'rxjs';
 
@@ -21,7 +29,17 @@ export class NgxMarkdownPipe implements PipeTransform, OnDestroy {
 	/**
 	 * An instance of the ChangeDetectorRef
 	 */
-	private readonly cdRef = inject(ChangeDetectorRef);
+	private readonly cdRef: ChangeDetectorRef = inject(ChangeDetectorRef);
+
+	/**
+	 * An instance of the ElementRef
+	 */
+	private readonly elementRef: ElementRef = inject(ElementRef);
+
+	/**
+	 * An instance of the Renderer2
+	 */
+	private readonly renderer: Renderer2 = inject(Renderer2);
 
 	/**
 	 * Subject to hold the destroyed state of the current observable
@@ -34,9 +52,9 @@ export class NgxMarkdownPipe implements PipeTransform, OnDestroy {
 	private parsed: string;
 
 	/**
-   * The previous value of the markdown string
-   */
-  private previousValue: string;
+	 * The previous value of the markdown string
+	 */
+	private previousValue: string;
 
 	/**
 	 * Instance of the change detector ref, implemented like this according to the async pipe implementation
@@ -49,6 +67,11 @@ export class NgxMarkdownPipe implements PipeTransform, OnDestroy {
 
 		// Iben: Use instance of cdRef like this to prevent memory leaks (see Angular async Pipe implementation)
 		this.changeDetectorRef = cdRef;
+
+		// Iben: Add a `ngx-markdown-element` class to the element
+		if (this.elementRef?.nativeElement) {
+			this.renderer.addClass(this.elementRef.nativeElement, 'ngx-markdown-element');
+		}
 	}
 
 	/**
