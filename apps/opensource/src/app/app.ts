@@ -69,7 +69,7 @@ export class App {
 									content: 'This is where we have the display content directive!',
 									tourItem: 'display-content',
 									beforeVisible: () => {
-										return from(this.router.navigate(['layout']));
+										return from(this.router.navigate(['../../en','layout']));
 									},
 								},
 						  ]);
