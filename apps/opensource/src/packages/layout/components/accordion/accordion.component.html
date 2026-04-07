@@ -5,6 +5,17 @@
 	</ngx-accordion-item>
 
 	<ngx-accordion-item>
+		<ng-template #headerTmpl> Markdown? </ng-template>
+		<ng-template #contentTmpl>
+			@defer(on viewport) {
+			<div [innerHTML]="'*hello world*' | ngxMarkdown"></div>
+			} @placeholder {
+			<p></p>
+			}
+		</ng-template>
+	</ngx-accordion-item>
+
+	<ngx-accordion-item>
 		<ng-template #headerTmpl> Planet...? </ng-template>
 		<ng-template #contentTmpl> Zoo! </ng-template>
 	</ngx-accordion-item>
