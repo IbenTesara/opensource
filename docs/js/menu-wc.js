@@ -332,6 +332,9 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                                     <a href="injectables/NgxImageMarkerService.html" data-type="entity-link" >NgxImageMarkerService</a>
                                 </li>
                                 <li class="link">
+                                    <a href="injectables/NgxMarkdownService.html" data-type="entity-link" >NgxMarkdownService</a>
+                                </li>
+                                <li class="link">
                                     <a href="injectables/NgxMediaQueryService.html" data-type="entity-link" >NgxMediaQueryService</a>
                                 </li>
                                 <li class="link">
@@ -680,6 +683,9 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                                 </li>
                                 <li class="link">
                                     <a href="pipes/NgxHasPermissionPipe.html" data-type="entity-link" >NgxHasPermissionPipe</a>
+                                </li>
+                                <li class="link">
+                                    <a href="pipes/NgxMarkdownPipe.html" data-type="entity-link" >NgxMarkdownPipe</a>
                                 </li>
                                 <li class="link">
                                     <a href="pipes/NgxMatchesQueryPipe.html" data-type="entity-link" >NgxMatchesQueryPipe</a>
