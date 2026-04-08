@@ -1,4 +1,4 @@
-import { inject, Injectable, signal, Signal, WritableSignal, Injector } from '@angular/core';
+import { inject, Injectable, signal, Signal, WritableSignal } from '@angular/core';
 import { get } from 'lodash';
 import clean from 'obj-clean';
 import {
@@ -19,6 +19,7 @@ import {
 	NgxMobileLayoutByQuery,
 	NgxMobileLayoutConfiguration,
 	NgxMobileLayoutElements,
+	NgxMobileLayoutOutletParams,
 } from '../../types';
 import { extractLayout } from '../../utils';
 import { NgxMediaQueryService } from '../media-query/media-query.service';
@@ -107,14 +108,14 @@ export class NgxMobileLayoutService {
 	public flyoutShown: Signal<boolean> = this.showFlyout.asReadonly();
 
 	/**
-	 * The Injection context of the flyout
+	 * The parameter context of the flyout
 	 */
-	public flyoutInjector: WritableSignal<Injector> = signal(undefined);
+	public flyoutParams: WritableSignal<NgxMobileLayoutOutletParams> = signal(undefined);
 
 	/**
-	 * The Injection context of the aside
+	 * The parameter context of the aside
 	 */
-	public asideInjector: WritableSignal<Injector> = signal(undefined);
+	public asideParams: WritableSignal<NgxMobileLayoutOutletParams> = signal(undefined);
 
 	/**
 	 * Whether the aside is visible
@@ -141,10 +142,10 @@ export class NgxMobileLayoutService {
 	 * Open a flyout
 	 *
 	 * @param flyout - An optional flyout
-	 * @param injector - An optional injector
+	 * @param params - An optional set of parameters for the flyout
 	 *
 	 */
-	public openFlyout(flyout?: ComponentType, injector?: Injector): void {
+	public openFlyout(flyout?: ComponentType, params?: NgxMobileLayoutOutletParams): void {
 		// Iben: Add the flyout if there wasn't one defined
 		if (flyout) {
 			this.layoutSubject$.next({
@@ -159,7 +160,7 @@ export class NgxMobileLayoutService {
 
 			// Iben: Make the flyout visible and add the injector
 			this.showFlyout.set(true);
-			this.flyoutInjector.set(injector);
+			this.flyoutParams.set(params);
 		}
 	}
 
@@ -169,16 +170,16 @@ export class NgxMobileLayoutService {
 	public closeFlyout(): void {
 		// Iben: Make the flyout invisible
 		this.showFlyout.set(false);
-		this.flyoutInjector.set(undefined);
+		this.flyoutParams.set(undefined);
 	}
 
 	/**
 	 * Open a aside
 	 *
 	 * @param aside - An optional aside component
-	 * @param injector - An optional injector
+	 * @param params - An set of parameters for the aside
 	 */
-	public openAside(aside?: ComponentType, injector?: Injector): void {
+	public openAside(aside?: ComponentType, params?: NgxMobileLayoutOutletParams): void {
 		// Iben: Add the aside if there wasn't one defined
 		if (aside) {
 			this.layoutSubject$.next({
@@ -194,7 +195,7 @@ export class NgxMobileLayoutService {
 
 		// Iben: Show the aside and add the injector
 		this.showAside.set(true);
-		this.asideInjector.set(injector);
+		this.asideParams.set(params);
 	}
 
 	/**
@@ -202,7 +203,7 @@ export class NgxMobileLayoutService {
 	 */
 	public closeAside(): void {
 		this.showAside.set(false);
-		this.asideInjector.set(undefined);
+		this.asideParams.set(undefined);
 	}
 
 	/**

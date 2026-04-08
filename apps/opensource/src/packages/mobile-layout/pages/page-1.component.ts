@@ -18,9 +18,10 @@ export class Page1Component {
 	protected readonly layoutService: NgxMobileLayoutService = inject(NgxMobileLayoutService);
 
 	protected open() {
-		this.layoutService.openFlyout(
-			FlyoutComponent,
-			Injector.create({ providers: [{ provide: Page1Service, useValue: this.pageService }] })
-		);
+		this.layoutService.openFlyout(FlyoutComponent, {
+			injector: Injector.create({
+				providers: [{ provide: Page1Service, useValue: this.pageService }],
+			}),
+		});
 	}
 }

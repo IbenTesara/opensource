@@ -1,64 +1,65 @@
-@if(layout()) {
-<main class="ngx-mobile-layout-main">
-	@if(layout().header) {
-	<header class="ngx-mobile-layout-header">
-		@if(layout().header.left) {
-		<ng-template [ngComponentOutlet]="layout().header.left" />
-		}
-		<ng-template [ngComponentOutlet]="layout().header.main" />
+@if (layout()) {
+	<main class="ngx-mobile-layout-main">
+		@if (layout().header) {
+			<header class="ngx-mobile-layout-header">
+				@if (layout().header.left) {
+					<ng-template [ngComponentOutlet]="layout().header.left" />
+				}
+				<ng-template [ngComponentOutlet]="layout().header.main" />
 
-		@if(layout().header.right) {
-		<ng-template [ngComponentOutlet]="layout().header.right" />
+				@if (layout().header.right) {
+					<ng-template [ngComponentOutlet]="layout().header.right" />
+				}
+			</header>
 		}
-	</header>
-	} @if(layout().navigation) {
-	<nav class="ngx-mobile-layout-navigation">
-		<ng-template [ngComponentOutlet]="layout().navigation" />
-	</nav>
-	} @if(layout().aside && asideShown()) {
-	<aside
-		class="ngx-mobile-layout-aside"
-		animate.enter="ngx-mobile-layout-aside-in"
-		animate.leave="ngx-mobile-layout-aside-out"
-	>
-		@if(!asideInjector()){
-		<ng-template [ngComponentOutlet]="layout().aside" />
-		} @else {
-		<ng-template
-			[ngComponentOutlet]="layout().aside"
-			[ngComponentOutletInjector]="asideInjector()"
-		/>
+		@if (layout().navigation) {
+			<nav class="ngx-mobile-layout-navigation">
+				<ng-template [ngComponentOutlet]="layout().navigation" />
+			</nav>
 		}
-	</aside>
-	}
+		@if (layout().aside && asideShown()) {
+			<aside
+				class="ngx-mobile-layout-aside"
+				animate.enter="ngx-mobile-layout-aside-in"
+				animate.leave="ngx-mobile-layout-aside-out"
+			>
+				<ng-template
+					[ngComponentOutlet]="layout().aside"
+					[ngComponentOutletInjector]="asideParams()?.injector"
+					[ngComponentOutletInputs]="asideParams()?.inputs"
+					[ngComponentOutletEnvironmentInjector]="asideParams()?.environmentInjector"
+					[ngComponentOutletContent]="asideParams()?.content"
+				/>
+			</aside>
+		}
 
-	<div class="ngx-mobile-layout-content">
-		@if(contentTemplate()) {
-		<ng-template [ngTemplateOutlet]="contentTemplate()" />
-		} @else {
-		<router-outlet />
-		}
-	</div>
+		<div class="ngx-mobile-layout-content">
+			@if (contentTemplate()) {
+				<ng-template [ngTemplateOutlet]="contentTemplate()" />
+			} @else {
+				<router-outlet />
+			}
+		</div>
 
-	@if(layout().flyout && flyoutShown()) {
-	<div
-		class="ngx-mobile-layout-flyout"
-		animate.enter="ngx-mobile-layout-flyout-in"
-		animate.leave="ngx-mobile-layout-flyout-out"
-	>
-		@if(!flyoutInjector()){
-		<ng-template [ngComponentOutlet]="layout().flyout" />
-		} @else {
-		<ng-template
-			[ngComponentOutlet]="layout().flyout"
-			[ngComponentOutletInjector]="flyoutInjector()"
-		/>
+		@if (layout().flyout && flyoutShown()) {
+			<div
+				class="ngx-mobile-layout-flyout"
+				animate.enter="ngx-mobile-layout-flyout-in"
+				animate.leave="ngx-mobile-layout-flyout-out"
+			>
+				<ng-template
+					[ngComponentOutlet]="layout().flyout"
+					[ngComponentOutletInjector]="flyoutParams()?.injector"
+					[ngComponentOutletInputs]="flyoutParams()?.inputs"
+					[ngComponentOutletEnvironmentInjector]="flyoutParams()?.environmentInjector"
+					[ngComponentOutletContent]="flyoutParams()?.content"
+				/>
+			</div>
 		}
-	</div>
-	} @if(layout().footer) {
-	<footer class="ngx-mobile-layout-footer">
-		<ng-template [ngComponentOutlet]="layout().footer" />
-	</footer>
-	}
-</main>
+		@if (layout().footer) {
+			<footer class="ngx-mobile-layout-footer">
+				<ng-template [ngComponentOutlet]="layout().footer" />
+			</footer>
+		}
+	</main>
 }

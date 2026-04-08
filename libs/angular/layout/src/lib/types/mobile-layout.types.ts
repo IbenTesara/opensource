@@ -1,4 +1,4 @@
-import { Type } from '@angular/core';
+import { EnvironmentInjector, Injector, Type } from '@angular/core';
 
 export type ComponentType = Type<any> | null;
 
@@ -38,6 +38,13 @@ export interface NgxMobileLayoutBase<DataType> {
 	 * The footer we wish to render
 	 */
 	footer: DataType;
+}
+
+export interface NgxMobileLayoutOutletParams {
+	injector?: Injector;
+	inputs?: Record<string, unknown>;
+	content?: Node[][];
+	environmentInjector?: EnvironmentInjector;
 }
 
 /**
