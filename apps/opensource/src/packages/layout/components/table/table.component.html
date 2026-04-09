@@ -8,9 +8,14 @@
 	[columns]="['user', 'hello', 'amount']"
 >
 	<ngx-table-cell column="user">
-		<ng-template #headerTmpl> User </ng-template>
+		<ng-template #headerTmpl> User I </ng-template>
 		<ng-template #cellTmpl let-row="row"> {{ row.firstName }} {{ row.name }} </ng-template>
 	</ngx-table-cell>
+
+  <ngx-table-cell column="hello">
+    <ng-template #headerTmpl> Hello </ng-template>
+    <ng-template #cellTmpl let-element> {{ element }} Iben</ng-template>
+  </ngx-table-cell>
 
 	<ngx-table-currency-cell column="amount">
 		<ng-template #headerTmpl> Amount </ng-template>
