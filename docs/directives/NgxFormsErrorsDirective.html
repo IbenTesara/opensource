@@ -1430,7 +1430,7 @@ export class NgxFormsErrorsDirective implements AfterViewInit {
 		if (!shouldShow) {
 			if (this.errorComponent) {
 				this.componentRef.destroy();
-				this.errorViewContainer.destroy();
+				this.errorViewContainer?.destroy();
 				this.errorViewContainer &#x3D; undefined;
 				this.componentRef &#x3D; undefined;
 				this.errorComponent &#x3D; undefined;
