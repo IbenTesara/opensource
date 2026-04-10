@@ -6,8 +6,11 @@ import { createAccessorProviders, NgxDynamicFormInputComponent } from '@lib/ngx-
 @Component({
 	selector: 'text-form',
 	template: `
-		<p>{{ options() }}</p>
-		<input type="text" [formControl]="form" />
+		<div [style.margin.px]="15">
+			<p>{{ options() }}</p>
+			<input type="text" [formControl]="form" />
+			{{ form.touched }}
+		</div>
 	`,
 	imports: [ReactiveFormsModule],
 	providers: [createAccessorProviders(TextFormComponent)],

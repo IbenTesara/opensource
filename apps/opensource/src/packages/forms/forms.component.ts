@@ -1,5 +1,5 @@
 import { Component, signal } from '@angular/core';
-import { FormControl, ReactiveFormsModule, Validators } from '@angular/forms';
+import { AbstractControl, FormControl, ReactiveFormsModule, Validators } from '@angular/forms';
 
 import {
 	NgxDynamicFormComponent,
@@ -47,5 +47,9 @@ export class FormsPageComponent {
 
 	public setValue() {
 		this.control.setValue('A');
+	}
+
+	public markElementAsTouched(control: AbstractControl) {
+		control.markAsTouched();
 	}
 }

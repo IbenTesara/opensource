@@ -33,6 +33,7 @@ import {
 	tap,
 } from 'rxjs';
 
+import { NgxDynamicFormDirective } from '../../directives';
 import { FormAccessorControlsEntity, FormStateOptionsEntity } from '../../types';
 import {
 	handleFormAccessorControlDisabling,
@@ -144,7 +145,7 @@ export abstract class NgxFormsControlValueAccessor<
 		// Iben: Use setTimeOut to avoid the circular dependency issue
 		setTimeout(() => {
 			try {
-				const parentControl = this.injector.get(NgControl);
+				const parentControl = this.injector.get(NgControl) || this.injector.get(NgxDynamicFormDirective);
 
 				// Iben: If for some reason we can't find the control or the ngControl, early exit and throw an error
 				if (!parentControl?.control) {
