@@ -286,8 +286,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="211"
-                                    class="link-to-prism">libs/angular/layout/src/lib/services/mobile-layout/mobile-layout.service.ts:211</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="218"
+                                    class="link-to-prism">libs/angular/layout/src/lib/services/mobile-layout/mobile-layout.service.ts:218</a></div>
                         </td>
                     </tr>
 
@@ -327,8 +327,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="177"
-                                    class="link-to-prism">libs/angular/layout/src/lib/services/mobile-layout/mobile-layout.service.ts:177</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="183"
+                                    class="link-to-prism">libs/angular/layout/src/lib/services/mobile-layout/mobile-layout.service.ts:183</a></div>
                         </td>
                     </tr>
 
@@ -368,8 +368,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="243"
-                                    class="link-to-prism">libs/angular/layout/src/lib/services/mobile-layout/mobile-layout.service.ts:243</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="250"
+                                    class="link-to-prism">libs/angular/layout/src/lib/services/mobile-layout/mobile-layout.service.ts:250</a></div>
                         </td>
                     </tr>
 
@@ -446,8 +446,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="189"
-                                    class="link-to-prism">libs/angular/layout/src/lib/services/mobile-layout/mobile-layout.service.ts:189</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="196"
+                                    class="link-to-prism">libs/angular/layout/src/lib/services/mobile-layout/mobile-layout.service.ts:196</a></div>
                         </td>
                     </tr>
 
@@ -542,8 +542,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="154"
-                                    class="link-to-prism">libs/angular/layout/src/lib/services/mobile-layout/mobile-layout.service.ts:154</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="160"
+                                    class="link-to-prism">libs/angular/layout/src/lib/services/mobile-layout/mobile-layout.service.ts:160</a></div>
                         </td>
                     </tr>
 
@@ -738,8 +738,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="219"
-                                    class="link-to-prism">libs/angular/layout/src/lib/services/mobile-layout/mobile-layout.service.ts:219</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="226"
+                                    class="link-to-prism">libs/angular/layout/src/lib/services/mobile-layout/mobile-layout.service.ts:226</a></div>
                         </td>
                     </tr>
 
@@ -1504,9 +1504,15 @@ export class NgxMobileLayoutService {
 		return this.initialLayoutSet$.pipe(
 			filter(Boolean),
 			take(1),
-			tap(() &#x3D;&gt; {
-				this.layoutSubject$.next(extractLayout(layout, this.defaultLayout, this.queries));
-			})
+      tap( () &#x3D;&gt; {
+			// Iben: Preserve the flyout if it was required
+			const result &#x3D; this.preserveFlyout()
+				? { ...layout, flyout: this.layoutSubject$.value.flyout }
+        : layout;
+
+      // Iben: Update the layout
+			this.layoutSubject$.next(extractLayout(result, this.defaultLayout, this.queries));
+		})
 		);
 	}
 
@@ -1542,7 +1548,8 @@ export class NgxMobileLayoutService {
 	 */
 	public closeFlyout(): void {
 		// Iben: Make the flyout invisible
-		this.showFlyout.set(false);
+    this.preserveFlyout.set( false );
+    this.showFlyout.set( false );
 		this.flyoutParams.set(undefined);
 	}
 
