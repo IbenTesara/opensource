@@ -138,9 +138,15 @@ export class NgxMobileLayoutService {
 		return this.initialLayoutSet$.pipe(
 			filter(Boolean),
 			take(1),
-			tap(() => {
-				this.layoutSubject$.next(extractLayout(layout, this.defaultLayout, this.queries));
-			})
+      tap( () => {
+			// Iben: Preserve the flyout if it was required
+			const result = this.preserveFlyout()
+				? { ...layout, flyout: this.layoutSubject$.value.flyout }
+        : layout;
+
+      // Iben: Update the layout
+			this.layoutSubject$.next(extractLayout(result, this.defaultLayout, this.queries));
+		})
 		);
 	}
 
@@ -176,7 +182,8 @@ export class NgxMobileLayoutService {
 	 */
 	public closeFlyout(): void {
 		// Iben: Make the flyout invisible
-		this.showFlyout.set(false);
+    this.preserveFlyout.set( false );
+    this.showFlyout.set( false );
 		this.flyoutParams.set(undefined);
 	}
 
