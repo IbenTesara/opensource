@@ -90,7 +90,7 @@ interface TableCellTemplate {
 		NgComponentOutlet,
 	],
 	host: {
-		'class.ngx-table-loading': 'loading()',
+		'[class.ngx-table-loading]': 'loading()',
 	},
 })
 export class NgxTableComponent
