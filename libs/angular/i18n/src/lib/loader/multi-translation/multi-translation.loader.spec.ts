@@ -31,88 +31,82 @@ describe('NgxI18nMultiTranslationHttpLoader', () => {
 	};
 
 	describe('getTranslation', () => {
-		it(
-			'should not persist a failed fetch to the translations store, so it can be retried when the next loader is called that has overlap for that path.',
-			(done) => {
-				const failingPath = './assets/i18n/failing-path/';
-				const translations = { foo: 'bar' };
+		it('should not persist a failed fetch to the translations store, so it can be retried when the next loader is called that has overlap for that path.', (done) => {
+			const failingPath = './assets/i18n/failing-path/';
+			const translations = { foo: 'bar' };
 
-				/**
-				 * Denis: NgxI18nLoadingService is providedIn: 'root'. So in an actual app, a single instance
-				 * is shared between the root-scoped loader and every lazy route's own loader (created via
-				 * provideWithTranslations), which is what makes this cross-loader issues possible.
-				 */
-				const loadingService = new NgxI18nLoadingService();
+			/**
+			 * Denis: NgxI18nLoadingService is providedIn: 'root'. So in an actual app, a single instance
+			 * is shared between the root-scoped loader and every lazy route's own loader (created via
+			 * provideWithTranslations), which is what makes this cross-loader issues possible.
+			 */
+			const loadingService = new NgxI18nLoadingService();
 
-				const failingClient = {
-					getTranslations: jest
-						.fn()
-						.mockReturnValue(throwError(() => new Error('network error'))),
-				};
-				const firstLoader = createLoader(loadingService, failingClient, [failingPath]);
+			const failingClient = {
+				getTranslations: jest
+					.fn()
+					.mockReturnValue(throwError(() => new Error('network error'))),
+			};
+			const firstLoader = createLoader(loadingService, failingClient, [failingPath]);
 
-				firstLoader.getTranslation('nl').subscribe(() => {
-					// Denis: the failed path should not be cached as "loaded".
-					expect(loadingService.getTranslations()[failingPath]).toBeUndefined();
+			firstLoader.getTranslation('nl').subscribe(() => {
+				// Denis: the failed path should not be cached as "loaded".
+				expect(loadingService.getTranslations()[failingPath]).toBeUndefined();
 
-					const recoveredClient = {
-						getTranslations: jest.fn().mockReturnValue(of(translations)),
-					};
-					const secondLoader = createLoader(loadingService, recoveredClient, [
-						failingPath,
-						'./assets/i18n/other-path/',
-					]);
-
-					secondLoader.getTranslation('nl').subscribe((result) => {
-						expect(recoveredClient.getTranslations).toHaveBeenCalledWith(
-							failingPath,
-							'nl',
-							undefined
-						);
-						expect(result).toEqual(translations);
-
-						done();
-					});
-				});
-			}
-		);
-
-		it(
-			'should persist a successful fetch to the translations store so it is reused by a later loader for an overlapping path.',
-			(done) => {
-				const path = './assets/i18n/working-path/';
-				const translations = { foo: 'bar' };
-
-				const loadingService = new NgxI18nLoadingService();
-
-				const client = {
+				const recoveredClient = {
 					getTranslations: jest.fn().mockReturnValue(of(translations)),
 				};
-				const firstLoader = createLoader(loadingService, client, [path]);
+				const secondLoader = createLoader(loadingService, recoveredClient, [
+					failingPath,
+					'./assets/i18n/other-path/',
+				]);
 
-				firstLoader.getTranslation('nl').subscribe(() => {
-					expect(loadingService.getTranslations()[path]).toEqual(translations);
+				secondLoader.getTranslation('nl').subscribe((result) => {
+					expect(recoveredClient.getTranslations).toHaveBeenCalledWith(
+						failingPath,
+						'nl',
+						undefined
+					);
+					expect(result).toEqual(translations);
 
-					const secondClient = {
-						getTranslations: jest.fn().mockReturnValue(of({})),
-					};
-					const secondLoader = createLoader(loadingService, secondClient, [
-						path,
-						'./assets/i18n/other-path/',
-					]);
-
-					secondLoader.getTranslation('nl').subscribe(() => {
-						// Denis: the already-loaded path should come from the store, not a fresh fetch.
-						expect(secondClient.getTranslations).not.toHaveBeenCalledWith(
-							path,
-							'nl',
-							undefined
-						);
-
-						done();
-					});
+					done();
 				});
-			}
-		);
+			});
+		});
+
+		it('should persist a successful fetch to the translations store so it is reused by a later loader for an overlapping path.', (done) => {
+			const path = './assets/i18n/working-path/';
+			const translations = { foo: 'bar' };
+
+			const loadingService = new NgxI18nLoadingService();
+
+			const client = {
+				getTranslations: jest.fn().mockReturnValue(of(translations)),
+			};
+			const firstLoader = createLoader(loadingService, client, [path]);
+
+			firstLoader.getTranslation('nl').subscribe(() => {
+				expect(loadingService.getTranslations()[path]).toEqual(translations);
+
+				const secondClient = {
+					getTranslations: jest.fn().mockReturnValue(of({})),
+				};
+				const secondLoader = createLoader(loadingService, secondClient, [
+					path,
+					'./assets/i18n/other-path/',
+				]);
+
+				secondLoader.getTranslation('nl').subscribe(() => {
+					// Denis: the already-loaded path should come from the store, not a fresh fetch.
+					expect(secondClient.getTranslations).not.toHaveBeenCalledWith(
+						path,
+						'nl',
+						undefined
+					);
+
+					done();
+				});
+			});
+		});
 	});
 });
