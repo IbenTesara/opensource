@@ -1,6 +1,5 @@
 import { EntityAdapter, createEntityAdapter } from '@ngrx/entity';
 import { createAction, createReducer, createSelector, on, props } from '@ngrx/store';
-import { get } from 'lodash';
 
 import {
 	BasicEntityState,
@@ -82,7 +81,8 @@ export const createEntityAdapterStoreAssets = <
 	};
 
 	// Iben: Create state selectors
-	const featureSelector = (state): any => get(state, slice);
+	const featureSelector = (state): any =>
+		slice.split('.').reduce((acc, key) => (acc == null ? undefined : acc[key]), state);
 
 	const selectors = {
 		selectAll: createSelector(featureSelector, adapter.getSelectors().selectAll),

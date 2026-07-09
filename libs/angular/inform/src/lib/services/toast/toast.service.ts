@@ -1,6 +1,6 @@
 import { computed, inject, Injectable, Signal, Type } from '@angular/core';
 import { takeUntilDestroyed, toSignal } from '@angular/core/rxjs-interop';
-import { uniqBy } from 'lodash';
+import { uniqueBy } from 'remeda';
 import {
 	BehaviorSubject,
 	combineLatest,
@@ -65,7 +65,7 @@ export class NgxToastService {
 		combineLatest([this.queue$, this.showBundledToasts$]).pipe(
 			map(([toasts, showBundled]) => {
 				// Iben: Prevent duplicates
-				const result = uniqBy(toasts, (item) => item.id) || [];
+				const result = uniqueBy(toasts, (item) => item.id) || [];
 
 				// Iben: If there is no max amount, we return the toasts as is
 				if (!this.configuration.maxAmount || showBundled) {

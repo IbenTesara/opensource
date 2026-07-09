@@ -11,7 +11,6 @@ import {
 	input,
 	InputSignal,
 } from '@angular/core';
-import { flatten } from 'lodash';
 import { Subject, tap, takeUntil, combineLatest, map } from 'rxjs';
 
 import { NgxCookiesFallBackComponent } from '../../abstracts';
@@ -119,7 +118,7 @@ export class NgxHasCookieDirective implements OnDestroy {
 		)
 			.pipe(
 				map((hasCookies) => {
-					return flatten(hasCookies).every((hasCookie) => hasCookie);
+					return hasCookies.flat().every((hasCookie) => hasCookie);
 				}),
 				tap((hasCookie) => {
 					// Iben: Clear the current view

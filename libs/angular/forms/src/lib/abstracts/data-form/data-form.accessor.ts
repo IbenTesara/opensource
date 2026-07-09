@@ -1,7 +1,7 @@
 import { Directive, input, InputSignal, OnDestroy, OnInit } from '@angular/core';
 import { takeUntilDestroyed, toObservable } from '@angular/core/rxjs-interop';
 import { AbstractControl, FormControl } from '@angular/forms';
-import { isEqual } from 'lodash';
+import { isDeepEqual } from 'remeda';
 import { Observable, of, Subject } from 'rxjs';
 import { switchMap, takeUntil, tap } from 'rxjs/operators';
 
@@ -12,7 +12,7 @@ export abstract class DataFormAccessor<
 		ConstructionDataType = unknown,
 		DataType = unknown,
 		FormAccessorFormType extends AbstractControl = FormControl,
-		FormValueType = DataType,
+		FormValueType = DataType
 	>
 	extends NgxFormsControlValueAccessor<DataType, FormAccessorFormType, FormValueType>
 	implements OnDestroy, OnInit
@@ -50,7 +50,7 @@ export abstract class DataFormAccessor<
 					const currentFormValue = this.form?.getRawValue();
 
 					// Iben: If we already have current data and the current data matches the new data, we don't make a new form
-					if (this.currentData && isEqual(this.currentData, data)) {
+					if (this.currentData && isDeepEqual(this.currentData, data)) {
 						this.currentData = data;
 						return of();
 					}

@@ -1,5 +1,4 @@
 import { inject, Injectable, signal, Signal, WritableSignal } from '@angular/core';
-import { get } from 'lodash';
 import clean from 'obj-clean';
 import {
 	BehaviorSubject,
@@ -67,16 +66,15 @@ export class NgxMobileLayoutService {
 	 */
 	protected readonly showFlyout: WritableSignal<boolean> = signal(false);
 
-  /**
-   * Whether the currently opened flyout should be preserved when the route changes
-   */
-  protected readonly preserveFlyout: WritableSignal<boolean> = signal( false );
+	/**
+	 * Whether the currently opened flyout should be preserved when the route changes
+	 */
+	protected readonly preserveFlyout: WritableSignal<boolean> = signal(false);
 
 	/**
 	 * Whether the aside should be shown
 	 */
-  protected readonly showAside: WritableSignal<boolean> = signal( false );
-
+	protected readonly showAside: WritableSignal<boolean> = signal(false);
 
 	/**
 	 * An array of queries
@@ -138,15 +136,15 @@ export class NgxMobileLayoutService {
 		return this.initialLayoutSet$.pipe(
 			filter(Boolean),
 			take(1),
-      tap( () => {
-			// Iben: Preserve the flyout if it was required
-			const result = this.preserveFlyout()
-				? { ...layout, flyout: this.layoutSubject$.value.flyout }
-        : layout;
+			tap(() => {
+				// Iben: Preserve the flyout if it was required
+				const result = this.preserveFlyout()
+					? { ...layout, flyout: this.layoutSubject$.value.flyout }
+					: layout;
 
-      // Iben: Update the layout
-			this.layoutSubject$.next(extractLayout(result, this.defaultLayout, this.queries));
-		})
+				// Iben: Update the layout
+				this.layoutSubject$.next(extractLayout(result, this.defaultLayout, this.queries));
+			})
 		);
 	}
 
@@ -157,7 +155,11 @@ export class NgxMobileLayoutService {
 	 * @param params - An optional set of parameters for the flyout
 	 *
 	 */
-	public openFlyout(flyout?: ComponentType, params?: NgxMobileLayoutOutletParams, preserveFlyout: boolean = false): void {
+	public openFlyout(
+		flyout?: ComponentType,
+		params?: NgxMobileLayoutOutletParams,
+		preserveFlyout: boolean = false
+	): void {
 		// Iben: Add the flyout if there wasn't one defined
 		if (flyout) {
 			this.layoutSubject$.next({
@@ -171,8 +173,8 @@ export class NgxMobileLayoutService {
 			});
 
 			// Iben: Make the flyout visible and add the injector
-      this.showFlyout.set( true );
-      this.preserveFlyout.set(preserveFlyout)
+			this.showFlyout.set(true);
+			this.preserveFlyout.set(preserveFlyout);
 			this.flyoutParams.set(params);
 		}
 	}
@@ -182,8 +184,8 @@ export class NgxMobileLayoutService {
 	 */
 	public closeFlyout(): void {
 		// Iben: Make the flyout invisible
-    this.preserveFlyout.set( false );
-    this.showFlyout.set( false );
+		this.preserveFlyout.set(false);
+		this.showFlyout.set(false);
 		this.flyoutParams.set(undefined);
 	}
 
@@ -223,17 +225,18 @@ export class NgxMobileLayoutService {
 	/**
 	 * Provides an initial layout if one was provided
 	 */
-  public setUpInitialLayout ( markAsInitial: boolean = true ): void {
-
+	public setUpInitialLayout(markAsInitial: boolean = true): void {
 		// Iben: Set up the initial queries and set it as 'default' if
 		this.queries = this.mediaService.queries.length
 			? this.mediaService.queries.map((query) => query.toLowerCase())
 			: ['default'];
 
-    // Iben: Preserve the flyout if it was required
-      const layout = this.preserveFlyout() ? { ...this.defaultLayout,flyout: this.layoutSubject$.value.flyout } : this.defaultLayout;
+		// Iben: Preserve the flyout if it was required
+		const layout = this.preserveFlyout()
+			? { ...this.defaultLayout, flyout: this.layoutSubject$.value.flyout }
+			: this.defaultLayout;
 
-      // Iben: Set initial layout
+		// Iben: Set initial layout
 		this.layoutSubject$.next(extractLayout(layout, {}, this.queries));
 
 		// Iben: Mark the initial layout set as true
@@ -251,7 +254,17 @@ export class NgxMobileLayoutService {
 		return this.layout$.pipe(
 			filter(Boolean),
 			distinctUntilChanged(),
-			map((layout) => Boolean(get(layout, element)))
+			map((layout) =>
+				Boolean(
+					element
+						.split('.')
+						.reduce<unknown>(
+							(acc, key) =>
+								acc == null ? undefined : (acc as Record<string, unknown>)[key],
+							layout
+						)
+				)
+			)
 		);
 	}
 }

@@ -1,6 +1,5 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { createAction, createReducer, createSelector, on, props } from '@ngrx/store';
-import { get } from 'lodash';
 
 import { BaseStore, BaseStoreAssets, BaseStoreAssetsGeneratorOptions } from '../../interfaces';
 import { BaseStoreEffectsInterface } from '../../interfaces/effects';
@@ -9,10 +8,11 @@ import { BaseStoreEffectsInterface } from '../../interfaces/effects';
  * Creates store assets to save basic properties (object, string, number, etc.) into the store
  *
  * @param slice - The slice we wish to save the data in
+ * @param initialStateValue - The actual value of the initial state
  */
 export const createBaseStoreAssets = <
 	StateInterface,
-	EffectsInterface extends BaseStoreEffectsInterface = any,
+	EffectsInterface extends BaseStoreEffectsInterface = any
 >({
 	slice,
 	initialStateValue,
@@ -72,7 +72,8 @@ export const createBaseStoreAssets = <
 	);
 
 	// Iben: Create selectors
-	const featureSelector = (state) => get(state, slice);
+	const featureSelector = (state) =>
+		slice.split('.').reduce((acc, key) => (acc == null ? undefined : acc[key]), state);
 
 	const selectors = {
 		select: createSelector(featureSelector, (state: BaseStore<StateInterface>) => state.data),

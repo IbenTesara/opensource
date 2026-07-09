@@ -1,5 +1,71 @@
 import { of } from 'rxjs';
-import { populate } from './populate.operator';
+import { getByPath, populate, setByPath } from './populate.operator';
+
+describe('getByPath', () => {
+	it('should return the value of a top-level property', () => {
+		expect(getByPath({ title: 'Test' }, 'title')).toEqual('Test');
+	});
+
+	it('should return the value of a nested property', () => {
+		expect(getByPath({ ads: { adsId: '1' } }, 'ads.adsId')).toEqual('1');
+	});
+
+	it('should return undefined if the path does not exist', () => {
+		expect(getByPath({ title: 'Test' }, 'description')).toBeUndefined();
+	});
+
+	it('should return undefined if an intermediate segment of the path does not exist', () => {
+		expect(getByPath({ title: 'Test' }, 'ads.adsId')).toBeUndefined();
+	});
+
+	it('should return undefined if the data itself is null or undefined', () => {
+		expect(getByPath(null, 'title')).toBeUndefined();
+		expect(getByPath(undefined, 'title')).toBeUndefined();
+	});
+});
+
+describe('setByPath', () => {
+	it('should set a top-level property', () => {
+		const target = { title: 'Test' };
+
+		setByPath(target, 'title', 'Updated');
+
+		expect(target).toEqual({ title: 'Updated' });
+	});
+
+	it('should set a nested property when the intermediate object already exists', () => {
+		const target = { ads: { adsId: '1' } };
+
+		setByPath(target, 'ads.items', ['1']);
+
+		expect(target).toEqual({ ads: { adsId: '1', items: ['1'] } });
+	});
+
+	it('should create intermediate objects when they do not exist yet', () => {
+		const target: Record<string, unknown> = {};
+
+		setByPath(target, 'hello.world', 'value');
+
+		expect(target).toEqual({ hello: { world: 'value' } });
+	});
+
+	it('should overwrite a non-object intermediate value when setting a deeper path', () => {
+		const target: Record<string, unknown> = { ads: 'not-an-object' };
+
+		setByPath(target, 'ads.items', ['1']);
+
+		expect(target).toEqual({ ads: { items: ['1'] } });
+	});
+
+	it('should mutate the provided target in place', () => {
+		const target: Record<string, unknown> = {};
+
+		const result = setByPath(target, 'title', 'Test');
+
+		expect(result).toBeUndefined();
+		expect(target).toEqual({ title: 'Test' });
+	});
+});
 
 describe('populate', () => {
 	describe('Default populateIf', () => {
