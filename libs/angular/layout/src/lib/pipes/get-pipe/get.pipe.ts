@@ -1,5 +1,4 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import { get } from 'lodash';
 
 /**
  * This pipe returns a value based on a provided path
@@ -33,6 +32,11 @@ export class NgxTableGetPipe implements PipeTransform {
 		}
 
 		// Iben: Return the property
-		return get(value, path);
+		return path
+			.split('.')
+			.reduce<unknown>(
+				(acc, key) => (acc == null ? undefined : (acc as Record<string, unknown>)[key]),
+				value
+			);
 	}
 }

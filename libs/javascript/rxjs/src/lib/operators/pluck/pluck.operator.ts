@@ -1,4 +1,3 @@
-import { getOr } from 'lodash/fp';
 import { OperatorFunction } from 'rxjs';
 import { map } from 'rxjs/operators';
 
@@ -22,10 +21,16 @@ export const pluck = <ValueType, PropertyType>(
 	return map<ValueType, PropertyType>((value) => {
 		// Iben: Return an empty value if the value is undefined
 		if (!value) {
-			return;
+			return undefined as PropertyType;
 		}
 
 		// Iben: Return the value of the property
-		return getOr(undefined, properties, value);
+		return properties.reduce<unknown>(
+			(accumulator, property) =>
+				accumulator == null
+					? undefined
+					: (accumulator as Record<string, unknown>)[property],
+			value
+		) as PropertyType;
 	});
 };

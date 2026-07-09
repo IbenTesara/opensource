@@ -31,7 +31,7 @@ import {
 	NG_VALUE_ACCESSOR,
 	ReactiveFormsModule,
 } from '@angular/forms';
-import { isEmpty } from 'lodash';
+import { isEmptyish } from 'remeda';
 import { Subject } from 'rxjs';
 import { takeUntil, tap } from 'rxjs/operators';
 
@@ -726,7 +726,7 @@ export class NgxTableComponent
 	private handleCurrentSort(event: NgxTableSortEvent): void {
 		// Iben: Early exit if the sortable cell record is empty or if the cell already has the sortDirection of the event
 		if (
-			isEmpty(
+			isEmptyish(
 				this.sortableTableCellRecord() ||
 					(event &&
 						this.sortableTableCellRecord()[event.column].sortDirection ===
