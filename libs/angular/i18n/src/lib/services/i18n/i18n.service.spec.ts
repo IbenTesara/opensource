@@ -11,7 +11,10 @@ const translateService: any = {
 	getLangs: jest.fn().mockReturnValue(['nl', 'en']),
 	getFallbackLang: jest.fn().mockReturnValue('nl'),
 	use: jest.fn(),
-	reloadLang: jest.fn().mockReturnValue(of('nl')),
+	setTranslation: jest.fn(),
+	currentLoader: {
+		getTranslation: jest.fn().mockReturnValue(of({ SOME_KEY: 'some value' })),
+	},
 	get: jest.fn().mockReturnValue(of('something')),
 	instant: jest.fn().mockReturnValue('something'),
 };
@@ -67,11 +70,25 @@ describe('NgxI18nService', () => {
 	});
 
 	describe('initI18n', () => {
-		it('should set the language to use in the translateService & reload', (done) => {
+		it('should set the language to use in the translateService & fetch the new translations', (done) => {
 			subscriptions.push(
 				service.initI18n('nl').subscribe(() => {
 					expect(translateService.use).toHaveBeenCalledWith('nl');
-					expect(translateService.reloadLang).toHaveBeenCalledWith('nl');
+					expect(translateService.currentLoader.getTranslation).toHaveBeenCalledWith(
+						'nl'
+					);
+
+					done();
+				})
+			);
+		});
+
+		it('should only swap the translations, once they have been fetched', (done) => {
+			subscriptions.push(
+				service.initI18n('nl').subscribe(() => {
+					expect(translateService.setTranslation).toHaveBeenCalledWith('nl', {
+						SOME_KEY: 'some value',
+					});
 
 					done();
 				})
