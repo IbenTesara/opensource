@@ -1,4 +1,4 @@
-<ngx-accordion open="first" openStateBehavior="one">
+<ngx-accordion open="first" openStateBehavior="one" ariaLabel="Demo Accordion">
 	<ngx-accordion-item>
 		<ng-template #headerTmpl> Hello...? </ng-template>
 		<ng-template #contentTmpl> World! </ng-template>
@@ -7,10 +7,10 @@
 	<ngx-accordion-item>
 		<ng-template #headerTmpl> Markdown? </ng-template>
 		<ng-template #contentTmpl>
-			@defer(on viewport) {
-			<div [innerHTML]="'*hello world*' | ngxMarkdown"></div>
+			@defer (on viewport) {
+				<div [innerHTML]="'*hello world*' | ngxMarkdown"></div>
 			} @placeholder {
-			<p></p>
+				<p></p>
 			}
 		</ng-template>
 	</ngx-accordion-item>

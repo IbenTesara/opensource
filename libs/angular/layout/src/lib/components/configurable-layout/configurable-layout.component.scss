@@ -31,12 +31,17 @@
 				cursor: move;
 			}
 		}
+
+		&:focus-visible {
+			outline: var(--ngx-focus-outline, 2px solid #005fcc);
+			outline-offset: var(--ngx-focus-outline-offset, 2px);
+		}
 	}
 
 	// Iben: This is a default styling provided by CDK, this can be overwritten by the end user.
 	.ngx-layout-drag-placeholder {
-		background: #ccc;
-		border: dotted 3px #999;
+		background: var(--ngx-layout-drag-placeholder-bg, #ccc);
+		border: dotted 3px var(--ngx-layout-drag-placeholder-border, #666);
 		min-height: 60px;
 		transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
 	}

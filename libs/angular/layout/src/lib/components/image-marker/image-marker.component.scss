@@ -19,7 +19,7 @@
 
 		// Iben: Because setting the style classes overwrites the existing style we need to set the color to white
 		.ngx-image-marker-toolbox-button {
-			fill: white;
+			fill: var(--ngx-image-marker-toolbar-btn-fill, white);
 		}
 	}
 }

@@ -1,5 +1,14 @@
+import { A11yModule } from '@angular/cdk/a11y';
 import { NgComponentOutlet, NgTemplateOutlet } from '@angular/common';
-import { Component, contentChild, inject, OnInit, Signal, TemplateRef } from '@angular/core';
+import {
+	Component,
+	contentChild,
+	effect,
+	inject,
+	OnInit,
+	Signal,
+	TemplateRef,
+} from '@angular/core';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { RouterModule } from '@angular/router';
 
@@ -11,10 +20,15 @@ import { NgxMobileLayout, NgxMobileLayoutOutletParams } from '../../types';
  */
 @Component({
 	selector: 'ngx-mobile-layout',
-	imports: [NgComponentOutlet, NgTemplateOutlet, RouterModule],
+	imports: [NgComponentOutlet, NgTemplateOutlet, RouterModule, A11yModule],
 	templateUrl: './mobile-layout.component.html',
 })
 export class NgxMobileLayoutComponent implements OnInit {
+	/**
+	 * The previous active element
+	 */
+	protected previousActiveElement: HTMLElement;
+
 	/**
 	 * The instance of the NgxMobileLayoutService
 	 */
@@ -51,6 +65,26 @@ export class NgxMobileLayoutComponent implements OnInit {
 	 * An optional template we can pass to replace the default routerOutlet
 	 */
 	public readonly contentTemplate = contentChild<TemplateRef<any>>('contentTmpl');
+
+	constructor() {
+		// Iben: Track the active element when aside or flyout opens to restore focus when they close
+		effect(() => {
+			const isOpen = this.asideShown() || this.flyoutShown();
+
+			if (isOpen) {
+				// Iben: Store the active element before the dialog opens
+				if (!this.previousActiveElement && document.activeElement instanceof HTMLElement) {
+					this.previousActiveElement = document.activeElement;
+				}
+			} else {
+				// Iben: Restore focus to the original triggering element
+				if (this.previousActiveElement) {
+					this.previousActiveElement.focus();
+					this.previousActiveElement = null;
+				}
+			}
+		});
+	}
 
 	ngOnInit(): void {
 		// Iben: Sets up the initial layout if one was provided

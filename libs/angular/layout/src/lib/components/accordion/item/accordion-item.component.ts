@@ -177,6 +177,14 @@ export class NgxAccordionItemComponent implements OnInit, AfterViewInit, OnDestr
 			}
 		});
 
+		// Iben: Prevent the accordion from being opened if it is disabled (keyboard events)
+		this.renderer.listen(detailsElement.nativeElement, 'keydown', (event: KeyboardEvent) => {
+			if (this.disabled() && (event.key === ' ' || event.key === 'Enter')) {
+				event.preventDefault();
+				event.stopImmediatePropagation();
+			}
+		});
+
 		// Iben: Listen to the open state of details and update the internal one
 		this.renderer.listen(detailsElement.nativeElement, 'toggle', (event: ToggleEvent) => {
 			this.updateAccordionItemState(event.newState === 'open');

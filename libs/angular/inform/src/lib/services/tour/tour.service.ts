@@ -1,3 +1,4 @@
+import { FocusTrapFactory, FocusTrap } from '@angular/cdk/a11y';
 import { ConnectedPosition, Overlay, OverlayConfig, OverlayRef } from '@angular/cdk/overlay';
 import { ComponentPortal } from '@angular/cdk/portal';
 import { ComponentRef, Injectable, OnDestroy, inject } from '@angular/core';
@@ -47,6 +48,17 @@ export class NgxTourService implements OnDestroy {
 	private readonly cdkOverlayService = inject(Overlay);
 	private readonly windowService = inject(NgxWindowService);
 	private readonly configuration = inject<NgxTourTokenConfiguration>(NgxTourStepToken);
+	private readonly focusTrapFactory = inject(FocusTrapFactory);
+
+	/**
+	 * The focus trap of the current tour step card
+	 */
+	private focusTrap: FocusTrap;
+
+	/**
+	 * The element that was focused when startTour was called
+	 */
+	private triggeringElement: HTMLElement;
 
 	/**
 	 * A subject to hold the destroyed event
@@ -232,6 +244,9 @@ export class NgxTourService implements OnDestroy {
 		}
 
 		this.windowService.runInBrowser(({ browserWindow, browserDocument }) => {
+			// Iben: Save the current triggering element for focus restoration
+			this.triggeringElement = browserDocument.activeElement as HTMLElement;
+
 			// Iben: Save the current scroll position so we can return to it when we close the tour
 			this.startingScrollPosition = browserWindow.scrollY;
 
@@ -322,6 +337,12 @@ export class NgxTourService implements OnDestroy {
 	 * Closes the currently running tour
 	 */
 	public closeTour(): Observable<NgxTourInteraction> {
+		// Iben: Dispose focus trap if it exists
+		if (this.focusTrap) {
+			this.focusTrap.destroy();
+			this.focusTrap = undefined;
+		}
+
 		// Iben: Remove the current overlay
 		if (this.overlayRef) {
 			this.overlayRef.dispose();
@@ -344,6 +365,12 @@ export class NgxTourService implements OnDestroy {
 		// Wouter: Remove the body class
 		this.handleBodyClass('remove');
 
+		// Iben: Restore the triggering element focus
+		if (this.triggeringElement) {
+			this.triggeringElement.focus();
+			this.triggeringElement = undefined;
+		}
+
 		// Iben: Emit the end of the tour
 		this.tourEndedSubject.next();
 
@@ -352,6 +379,12 @@ export class NgxTourService implements OnDestroy {
 	}
 
 	ngOnDestroy(): void {
+		// Iben: Clean up focus trap
+		if (this.focusTrap) {
+			this.focusTrap.destroy();
+			this.focusTrap = undefined;
+		}
+
 		// Iben: Complete all subscriptions
 		this.destroyedSubject.next();
 		this.destroyedSubject.complete();
@@ -414,7 +447,7 @@ export class NgxTourService implements OnDestroy {
 							: this.elements[currentStep.tourItem].pipe(
 									// Iben: If no delay was provided, we use the default of 100ms
 									auditTime(currentStep.delay || 100)
-							  );
+								);
 					}),
 					take(1),
 					switchMap((item) => {
@@ -465,7 +498,7 @@ export class NgxTourService implements OnDestroy {
 	): ComponentRef<NgxTourStepComponent> {
 		return this.windowService.runInBrowser(({ browserDocument, browserWindow }) => {
 			// Iben: Update the previous and current step subject
-      this.previousStepSubject.next( this.currentStepSubject.getValue() );
+			this.previousStepSubject.next(this.currentStepSubject.getValue());
 			this.currentStepSubject.next(currentStep);
 
 			// Iben: Restore the body overflow so we can scroll to the right element
@@ -524,6 +557,38 @@ export class NgxTourService implements OnDestroy {
 
 				// Create the overlay
 				this.overlayRef = this.cdkOverlayService.create(config);
+
+				// Iben: Handle accessible keyboard navigation for the active tour
+				this.overlayRef
+					.keydownEvents()
+					.pipe(
+						switchMap((event) => {
+							// Iben: Close the tour if the user presses escape
+							if (event.key === 'Escape') {
+								return this.closeTour();
+							}
+
+							// Iben: Move to the next step if the user presses arrow right
+							if (event.key === 'ArrowRight') {
+								const index = this.currentIndexSubject.getValue();
+								if (index < this.amountOfSteps - 1) {
+									return this.handleNext('next');
+								}
+							}
+
+							// Iben: Move to the previous step if the user presses arrow left
+							if (event.key === 'ArrowLeft') {
+								const index = this.currentIndexSubject.getValue();
+								if (index > 0) {
+									return this.handleNext('back');
+								}
+							}
+
+							return of(null);
+						}),
+						takeUntil(this.destroyedSubject)
+					)
+					.subscribe();
 			} else {
 				// Iben: Detach the previous portal
 				this.overlayRef.detach();
@@ -537,6 +602,12 @@ export class NgxTourService implements OnDestroy {
 				}
 			}
 
+			// Iben: Destroy focus trap if it exists
+			if (this.focusTrap) {
+				this.focusTrap.destroy();
+				this.focusTrap = undefined;
+			}
+
 			// Iben: Create a portal and attach the component
 			const portal = new ComponentPortal<NgxTourStepComponent>(
 				// Iben: If the currentStep has its own component, we overwrite it
@@ -544,6 +615,10 @@ export class NgxTourService implements OnDestroy {
 			);
 
 			const componentRef = this.overlayRef.attach(portal);
+
+			// Iben: Create a focus trap and focus the initial element
+			this.focusTrap = this.focusTrapFactory.create(this.overlayRef.overlayElement);
+			this.focusTrap.focusInitialElementWhenReady();
 
 			// Iben: Update the data of the component
 			componentRef.setInput('content', currentStep.content);

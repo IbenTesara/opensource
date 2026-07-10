@@ -3,20 +3,30 @@
 	[class]="`ngx-toast-position-${this.configuration.position}`"
 	(mouseenter)="setFocus(true)"
 	(mouseleave)="setFocus(false)"
+	(focusin)="setFocus(true)"
+	(focusout)="setFocus(false)"
+	aria-live="polite"
 >
 	@for (toast of toasts(); track toast.id) {
-	<li class="ngx-toast-item" animate.enter="ngx-toast-item-in" animate.leave="ngx-toast-item-out">
-		<ng-template
-			[ngComponentOutlet]="toast.configuration?.component || configuration.component"
-			[ngComponentOutletInputs]="{toast}"
-		/>
-	</li>
-	} @if(hasBundledToasts()) {
-	<li class="ngx-toast-item">
-		<ng-template
-			[ngComponentOutlet]="bundledComponent"
-			[ngComponentOutletInputs]="{ amount: hasBundledToasts() }"
-		/>
-	</li>
+		<li
+			tabindex="0"
+			class="ngx-toast-item"
+			animate.enter="ngx-toast-item-in"
+			animate.leave="ngx-toast-item-out"
+			(keydown.escape)="dismissToast(toast)"
+		>
+			<ng-template
+				[ngComponentOutlet]="toast.configuration?.component || configuration.component"
+				[ngComponentOutletInputs]="{ toast }"
+			/>
+		</li>
+	}
+	@if (hasBundledToasts()) {
+		<li class="ngx-toast-item">
+			<ng-template
+				[ngComponentOutlet]="bundledComponent"
+				[ngComponentOutletInputs]="{ amount: hasBundledToasts() }"
+			/>
+		</li>
 	}
 </ul>

@@ -1,4 +1,13 @@
-import { Directive, ElementRef, HostListener, OnDestroy, OutputEmitterRef, inject, input, output } from '@angular/core';
+import {
+	Directive,
+	ElementRef,
+	HostListener,
+	OnDestroy,
+	OutputEmitterRef,
+	inject,
+	input,
+	output,
+} from '@angular/core';
 
 import { NgxTreeGridCellTarget, NgxTreeGridRowTarget } from '../../types';
 import { NgxHasFocusDirective } from '../has-focus-action';
@@ -46,13 +55,13 @@ export class NgxTreeGridRowDirective extends NgxHasFocusDirective implements OnD
 	}
 
 	/**
-	 * Sets the focus on the first cell in the row or closes the row when expanded
+	 * Sets the focus on the first cell in the row or expands the row when collapsed
 	 */
 	@HostListener('keydown.ArrowRight') public arrowRight(): void {
 		this.handleWhenFocussed(() => {
 			// Iben: Only when the row is not expanded we can move to the next cell, as by WCAG design
-			if (this.parent.ngxTreeGridExpandable() && this.ngxTreeGridRowExpanded()) {
-				this.ngxTreeGridRowExpandRow.emit(false);
+			if (this.parent.ngxTreeGridExpandable() && !this.ngxTreeGridRowExpanded()) {
+				this.ngxTreeGridRowExpandRow.emit(true);
 				return;
 			}
 
@@ -66,7 +75,7 @@ export class NgxTreeGridRowDirective extends NgxHasFocusDirective implements OnD
 	 */
 	@HostListener('keydown.ArrowLeft') public arrowLeft(): void {
 		this.handleWhenFocussed(() => {
-			this.ngxTreeGridRowExpandRow.emit(true);
+			this.ngxTreeGridRowExpandRow.emit(false);
 		});
 	}
 

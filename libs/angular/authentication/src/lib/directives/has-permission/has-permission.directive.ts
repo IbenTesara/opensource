@@ -20,6 +20,13 @@ import { convertToArray } from '../../utils';
  * A directive that will render a part of the template based on whether the required permissions(s) are provided.
  *
  * Based upon `*ngIf`. See https://github.com/angular/angular/blob/master/packages/common/src/directives/ng_if.ts
+ *
+ * ## Accessibility (WCAG 2.2 SC 4.1.3 - Status Messages)
+ * Since this directive dynamically inserts or removes elements from the DOM, screen readers may not automatically
+ * announce the status change. However, because DOM changes in this directive typically happen on initial load
+ * or directly in response to an explicit user interaction (e.g. settings updates), standard page/focus navigation
+ * is sufficient and wrapping in an `aria-live` region is not required. If the dynamic view updates are transient,
+ * critical status messages, it is recommended to wrap the toggleable section in an `aria-live` region (e.g. `aria-live="polite"`).
  */
 
 //TODO: Iben: Implement Cypress/PlayWright tests

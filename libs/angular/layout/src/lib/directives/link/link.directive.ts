@@ -32,6 +32,7 @@ import {
 	host: {
 		'[attr.class]': 'classes()',
 		'[attr.target]': 'target()',
+		'[attr.rel]': 'destination() === "external" ? "noopener noreferrer" : null',
 	},
 })
 export class NgxLinkDirective implements OnInit {
@@ -179,6 +180,8 @@ export class NgxLinkDirective implements OnInit {
 					// Iben: Create a new icon element
 					this.iconElement = this.renderer.createElement('i');
 					this.iconElement.className = `ngx-link-icon ${this.icon()}`;
+					// Iben: Hide the icon screen readers
+					this.renderer.setAttribute(this.iconElement, 'aria-hidden', 'true');
 				} else {
 					// Iben: Create new component and add the icon
 					this.iconComponent =
@@ -187,9 +190,18 @@ export class NgxLinkDirective implements OnInit {
 							{ index: 0 }
 						);
 					this.iconComponent.setInput('data', this.icon());
+
+					// Iben: Set the class of the icon
 					this.renderer.addClass(
 						this.iconComponent.instance.elementRef.nativeElement,
 						'ngx-link-icon'
+					);
+
+					// Iben: Hide the icon for screen readers
+					this.renderer.setAttribute(
+						this.iconComponent.instance.elementRef.nativeElement,
+						'aria-hidden',
+						'true'
 					);
 				}
 
@@ -200,11 +212,11 @@ export class NgxLinkDirective implements OnInit {
 							this.iconElement ||
 								this.iconComponent.instance.elementRef.nativeElement,
 							this.nativeElement.firstChild
-					  )
+						)
 					: this.renderer.appendChild(
 							this.nativeElement,
 							this.iconElement || this.iconComponent.instance.elementRef.nativeElement
-					  );
+						);
 			}
 		}
 		// Iben: If an icon already exists and we no longer have an icon presented, we remove it

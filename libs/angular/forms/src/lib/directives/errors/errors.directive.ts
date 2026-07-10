@@ -22,6 +22,7 @@ import {
 	ValidationErrors,
 } from '@angular/forms';
 import { combineLatest, startWith, tap } from 'rxjs';
+import { v4 as uuid } from 'uuid';
 
 import { NgxFormsErrorAbstractComponent } from '../../abstracts';
 import { NgxFormsErrorsConfigurationToken } from '../../tokens';
@@ -89,6 +90,11 @@ export class NgxFormsErrorsDirective implements AfterViewInit {
 	 *  Whether the control has errors
 	 */
 	protected hasErrors: WritableSignal<boolean> = signal(false);
+
+	/**
+	 *  A unique error id for aria association
+	 */
+	private readonly errorId = `ngx-forms-error-${uuid()}`;
 
 	/**
 	 *  The actual template of the input element
@@ -181,12 +187,35 @@ export class NgxFormsErrorsDirective implements AfterViewInit {
 								: this.abstractControl.dirty)
 					);
 
-					// Iben: Set the errors class if needed
-
+					// Iben: Set the errors class and aria attributes if needed
 					if (element) {
-						this.hasErrors()
-							? this.renderer.addClass(element, 'ngx-forms-errors-invalid')
-							: this.renderer.removeClass(element, 'ngx-forms-errors-invalid');
+						if (this.hasErrors()) {
+							this.renderer.addClass(element, 'ngx-forms-errors-invalid');
+							this.renderer.setAttribute(element, 'aria-invalid', 'true');
+
+							// Iben: Add the errorId to the aria-describedby list if it's not present
+							const currentDescribedBy = element.getAttribute('aria-describedby') || '';
+							const ids = currentDescribedBy.split(' ').map(id => id.trim()).filter(Boolean);
+							if (!ids.includes(this.errorId)) {
+								ids.push(this.errorId);
+								this.renderer.setAttribute(element, 'aria-describedby', ids.join(' '));
+							}
+						} else {
+							this.renderer.removeClass(element, 'ngx-forms-errors-invalid');
+							this.renderer.removeAttribute(element, 'aria-invalid');
+
+							// Iben: Remove the errorId from the aria-describedby list if it is present
+							const currentDescribedBy = element.getAttribute('aria-describedby') || '';
+							const ids = currentDescribedBy.split(' ').map(id => id.trim()).filter(Boolean);
+							if (ids.includes(this.errorId)) {
+								const remainingIds = ids.filter(id => id !== this.errorId);
+								if (remainingIds.length > 0) {
+									this.renderer.setAttribute(element, 'aria-describedby', remainingIds.join(' '));
+								} else {
+									this.renderer.removeAttribute(element, 'aria-describedby');
+								}
+							}
+						}
 					}
 
 					// Iben: Show the error based on whether or not a component was provided
@@ -238,6 +267,12 @@ export class NgxFormsErrorsDirective implements AfterViewInit {
 		);
 		this.errorComponent = this.componentRef.instance;
 
+		// Iben: Set the error id on the component element for ARIA
+		this.renderer.setAttribute(this.componentRef.location.nativeElement, 'id', this.errorId);
+
+		// Iben: Set the role to alert for immediate screen reader announcement
+		this.renderer.setAttribute(this.componentRef.location.nativeElement, 'role', 'alert');
+
 		// Iben: Set the data of the error component
 		const { errors, errorKeys, data } = this.getErrors(this.abstractControl.errors);
 
@@ -267,6 +302,10 @@ export class NgxFormsErrorsDirective implements AfterViewInit {
 		// Iben: Create a new error paragraph
 		this.errorsElement = this.renderer.createElement('p');
 		this.renderer.setAttribute(this.errorsElement, 'class', 'ngx-forms-error');
+		this.renderer.setAttribute(this.errorsElement, 'id', this.errorId);
+
+		// Iben: Set the role to alert for immediate screen reader announcement
+		this.renderer.setAttribute(this.errorsElement, 'role', 'alert');
 
 		// Iben: Set the errors based on the keys
 		this.renderer.setProperty(

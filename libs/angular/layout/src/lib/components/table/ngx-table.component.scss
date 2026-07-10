@@ -67,11 +67,40 @@
 
 		border-right: 1px solid black;
 		border-bottom: 1px solid black;
+
+		scroll-margin-top: var(--ngx-table-scroll-margin-top, 60px);
+		scroll-margin-bottom: var(--ngx-table-scroll-margin-bottom, 60px);
 	}
 
 	.ngx-table-detail-row {
 		&:not(.ngx-table-detail-row-open) {
 			display: none;
 		}
+	}
+
+	.ngx-table-row {
+		scroll-margin-top: var(--ngx-table-scroll-margin-top, 60px);
+		scroll-margin-bottom: var(--ngx-table-scroll-margin-bottom, 60px);
+
+		&:focus-visible {
+			outline: var(--ngx-focus-outline, 2px solid #005fcc);
+			outline-offset: var(--ngx-focus-outline-offset, -2px);
+		}
+	}
+
+	.ngx-table-sorting-cell-button:focus-visible {
+		outline: var(--ngx-focus-outline, 2px solid #005fcc);
+		outline-offset: var(--ngx-focus-outline-offset, -2px);
+	}
+
+	.ngx-table-cell:focus-visible {
+		outline: var(--ngx-focus-outline, 2px solid #005fcc);
+		outline-offset: var(--ngx-focus-outline-offset, -2px);
+	}
+
+	.ngx-table-checkbox:focus-visible,
+	.ngx-table-radio:focus-visible {
+		outline: var(--ngx-focus-outline, 2px solid #005fcc);
+		outline-offset: var(--ngx-focus-outline-offset, 2px);
 	}
 }

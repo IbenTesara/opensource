@@ -67,16 +67,15 @@ export class NgxMobileLayoutService {
 	 */
 	protected readonly showFlyout: WritableSignal<boolean> = signal(false);
 
-  /**
-   * Whether the currently opened flyout should be preserved when the route changes
-   */
-  protected readonly preserveFlyout: WritableSignal<boolean> = signal( false );
+	/**
+	 * Whether the currently opened flyout should be preserved when the route changes
+	 */
+	protected readonly preserveFlyout: WritableSignal<boolean> = signal(false);
 
 	/**
 	 * Whether the aside should be shown
 	 */
-  protected readonly showAside: WritableSignal<boolean> = signal( false );
-
+	protected readonly showAside: WritableSignal<boolean> = signal(false);
 
 	/**
 	 * An array of queries
@@ -138,26 +137,31 @@ export class NgxMobileLayoutService {
 		return this.initialLayoutSet$.pipe(
 			filter(Boolean),
 			take(1),
-      tap( () => {
-			// Iben: Preserve the flyout if it was required
-			const result = this.preserveFlyout()
-				? { ...layout, flyout: this.layoutSubject$.value.flyout }
-        : layout;
+			tap(() => {
+				// Iben: Preserve the flyout if it was required
+				const result = this.preserveFlyout()
+					? { ...layout, flyout: this.layoutSubject$.value.flyout }
+					: layout;
 
-      // Iben: Update the layout
-			this.layoutSubject$.next(extractLayout(result, this.defaultLayout, this.queries));
-		})
+				// Iben: Update the layout
+				this.layoutSubject$.next(extractLayout(result, this.defaultLayout, this.queries));
+			})
 		);
 	}
 
 	/**
 	 * Open a flyout
 	 *
-	 * @param flyout - An optional flyout
-	 * @param params - An optional set of parameters for the flyout
+	 * @param flyout - The flyout component
+	 * @param params - The required parameters for the flyout
+	 * @param preserveFlyout - Whether the flyout needs to be preserved
 	 *
 	 */
-	public openFlyout(flyout?: ComponentType, params?: NgxMobileLayoutOutletParams, preserveFlyout: boolean = false): void {
+	public openFlyout(
+		flyout: ComponentType,
+		params: NgxMobileLayoutOutletParams,
+		preserveFlyout: boolean = false
+	): void {
 		// Iben: Add the flyout if there wasn't one defined
 		if (flyout) {
 			this.layoutSubject$.next({
@@ -171,8 +175,8 @@ export class NgxMobileLayoutService {
 			});
 
 			// Iben: Make the flyout visible and add the injector
-      this.showFlyout.set( true );
-      this.preserveFlyout.set(preserveFlyout)
+			this.showFlyout.set(true);
+			this.preserveFlyout.set(preserveFlyout);
 			this.flyoutParams.set(params);
 		}
 	}
@@ -182,18 +186,18 @@ export class NgxMobileLayoutService {
 	 */
 	public closeFlyout(): void {
 		// Iben: Make the flyout invisible
-    this.preserveFlyout.set( false );
-    this.showFlyout.set( false );
+		this.preserveFlyout.set(false);
+		this.showFlyout.set(false);
 		this.flyoutParams.set(undefined);
 	}
 
 	/**
-	 * Open a aside
+	 * Open an aside
 	 *
-	 * @param aside - An optional aside component
-	 * @param params - An set of parameters for the aside
+	 * @param aside - The aside component
+	 * @param params - The required parameters for the aside
 	 */
-	public openAside(aside?: ComponentType, params?: NgxMobileLayoutOutletParams): void {
+	public openAside(aside: ComponentType, params: NgxMobileLayoutOutletParams): void {
 		// Iben: Add the aside if there wasn't one defined
 		if (aside) {
 			this.layoutSubject$.next({
@@ -223,17 +227,18 @@ export class NgxMobileLayoutService {
 	/**
 	 * Provides an initial layout if one was provided
 	 */
-  public setUpInitialLayout ( markAsInitial: boolean = true ): void {
-
+	public setUpInitialLayout(markAsInitial: boolean = true): void {
 		// Iben: Set up the initial queries and set it as 'default' if
 		this.queries = this.mediaService.queries.length
 			? this.mediaService.queries.map((query) => query.toLowerCase())
 			: ['default'];
 
-    // Iben: Preserve the flyout if it was required
-      const layout = this.preserveFlyout() ? { ...this.defaultLayout,flyout: this.layoutSubject$.value.flyout } : this.defaultLayout;
+		// Iben: Preserve the flyout if it was required
+		const layout = this.preserveFlyout()
+			? { ...this.defaultLayout, flyout: this.layoutSubject$.value.flyout }
+			: this.defaultLayout;
 
-      // Iben: Set initial layout
+		// Iben: Set initial layout
 		this.layoutSubject$.next(extractLayout(layout, {}, this.queries));
 
 		// Iben: Mark the initial layout set as true

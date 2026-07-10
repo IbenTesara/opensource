@@ -21,6 +21,9 @@ import { createAccessorProviders } from '../../utils';
 /**
  * A dynamic form component that will dynamically render an input component based on the provided key
  *
+ * ## Accessibility Guidelines
+ * - **Explicit Label Association**: When rendering dynamic input components using `<ngx-dynamic-form>`, developers must ensure that every generated form control is linked to an accessible label via a native `<label>` element with a matching `for` attribute pointing to the input element's `id`. Alternatively, if a visual label is not used, provide a clear and descriptive `aria-label` or `aria-labelledby` attribute on the input element.
+ *
  * @export
  * @class NgxDynamicFormComponent
  * @template DataType - The type of the data in the form

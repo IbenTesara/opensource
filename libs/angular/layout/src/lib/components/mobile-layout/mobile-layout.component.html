@@ -22,6 +22,12 @@
 				class="ngx-mobile-layout-aside"
 				animate.enter="ngx-mobile-layout-aside-in"
 				animate.leave="ngx-mobile-layout-aside-out"
+				role="dialog"
+				aria-modal="true"
+				[attr.aria-label]="asideParams().label"
+				cdkTrapFocus
+				cdkTrapFocusAutoCapture
+				(keydown.escape)="layoutService.closeAside()"
 			>
 				<ng-template
 					[ngComponentOutlet]="layout().aside"
@@ -46,6 +52,12 @@
 				class="ngx-mobile-layout-flyout"
 				animate.enter="ngx-mobile-layout-flyout-in"
 				animate.leave="ngx-mobile-layout-flyout-out"
+				role="dialog"
+				aria-modal="true"
+				[attr.aria-label]="flyoutParams().label"
+				cdkTrapFocus
+				cdkTrapFocusAutoCapture
+				(keydown.escape)="layoutService.closeFlyout()"
 			>
 				<ng-template
 					[ngComponentOutlet]="layout().flyout"

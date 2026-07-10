@@ -19,6 +19,7 @@ export class Page1Component {
 
 	protected open() {
 		this.layoutService.openFlyout(FlyoutComponent, {
+			label: 'Sample Flyout',
 			injector: Injector.create({
 				providers: [{ provide: Page1Service, useValue: this.pageService }],
 			}),

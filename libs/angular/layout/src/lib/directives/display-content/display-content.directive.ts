@@ -166,6 +166,7 @@ export class NgxDisplayContentDirective implements AfterViewInit, OnDestroy {
 	}
 
 	public ngOnDestroy(): void {
+		this.elementRef.nativeElement.parentElement?.removeAttribute('aria-busy');
 		this.onDestroySubject.next();
 		this.onDestroySubject.complete();
 	}

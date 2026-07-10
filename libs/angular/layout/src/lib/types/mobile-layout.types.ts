@@ -40,10 +40,33 @@ export interface NgxMobileLayoutBase<DataType> {
 	footer: DataType;
 }
 
+/**
+ * Parameters configured when opening a component inside a mobile layout outlet (aside or flyout).
+ */
 export interface NgxMobileLayoutOutletParams {
+	/**
+	 * The accessible name (ARIA label) for the dialog or flyout container.
+	 */
+	label: string;
+
+	/**
+	 * An optional parent injector to use for the instantiated component.
+	 */
 	injector?: Injector;
+
+	/**
+	 * An optional set of input values to pass to the component.
+	 */
 	inputs?: Record<string, unknown>;
+
+	/**
+	 * Optional projectable nodes to project into the component.
+	 */
 	content?: Node[][];
+
+	/**
+	 * An optional environment injector to use for compiling components.
+	 */
 	environmentInjector?: EnvironmentInjector;
 }
 

@@ -110,6 +110,14 @@ export class NgxTreeGridCellDirective extends NgxHasFocusDirective implements Af
 		this.moveToCell(this.ngxTreeGridCell(), 'last');
 	}
 
+	@HostListener('focusin') onFocusIn() {
+		this.hasFocus = true;
+	}
+
+	@HostListener('focusout') onFocusOut() {
+		this.hasFocus = false;
+	}
+
 	/**
 	 * The index of the cell in the row
 	 */
@@ -130,6 +138,8 @@ export class NgxTreeGridCellDirective extends NgxHasFocusDirective implements Af
 		// Iben: If no element was focusable, focus on the current element
 		if (!focusableElement) {
 			this.elementRef.nativeElement.focus();
+		} else {
+			focusableElement.focus();
 		}
 	}
 
@@ -150,25 +160,24 @@ export class NgxTreeGridCellDirective extends NgxHasFocusDirective implements Af
 	 * Searches for a focusable element in the cell
 	 */
 	private findFocusableElement(): HTMLElement | undefined {
-		let result: HTMLElement;
-
-		// Iben: Loop over each first-level element of the children
-		for (const element of [...this.elementRef.nativeElement.children]) {
-			if (!result) {
-				// Iben: Check if we can focus on the element
-        element.focus();
-
-				// Iben: If the current active element is the same as the element we focussed, on, we break
-				if (element === document?.activeElement) {
-					result = element;
-					this.hasFocus = true;
-
-					break;
-				}
+		// Iben: Standard CSS selector to find naturally focusable elements (links, buttons, inputs, textareas, selects) 
+		// that are not disabled, as well as any elements with a custom tab index other than -1.
+		const selector = 'a[href], button:not([disabled]), input:not([disabled]), textarea:not([disabled]), select:not([disabled]), [tabindex]:not([tabindex="-1"])';
+		
+		// Iben: Retrieve all matching interactive elements in the cell's DOM subtree
+		const elements = this.elementRef.nativeElement.querySelectorAll(selector);
+		
+		// Iben: Iterate over the found elements to locate the first visible and rendered one
+		for (const el of Array.from(elements)) {
+			const htmlEl = el as HTMLElement;
+			
+			// Iben: Check that the element has layout dimensions (is visible and rendered) before returning it as focusable
+			if (htmlEl.offsetWidth > 0 || htmlEl.offsetHeight > 0 || htmlEl.getClientRects().length > 0) {
+				return htmlEl;
 			}
 		}
-
-		return result;
+		
+		return undefined;
 	}
 
 	public ngAfterViewInit(): void {

@@ -52,6 +52,7 @@
 									[ngTemplateOutlet]="checkboxTemplate() || defaultCheckBoxTmpl"
 									[ngTemplateOutletContext]="{
 										$implicit: isActiveFormRecord.controls[item.key],
+										label: itemLabelRecord()[item.key] || itemLabel() || item.key,
 									}"
 								>
 								</ng-template>
@@ -65,6 +66,11 @@
 	}
 </div>
 
-<ng-template #defaultCheckBoxTmpl let-control>
-	<input class="ngx-layout-item-toggle" type="checkbox" [formControl]="control" />
+<ng-template #defaultCheckBoxTmpl let-control let-label="label">
+	<input
+		class="ngx-layout-item-toggle"
+		type="checkbox"
+		[formControl]="control"
+		[attr.aria-label]="'Toggle ' + label"
+	/>
 </ng-template>

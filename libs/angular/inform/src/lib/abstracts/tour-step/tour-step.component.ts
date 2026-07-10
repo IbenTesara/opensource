@@ -15,6 +15,7 @@ import {
 } from '@angular/core';
 import { v4 as uuid } from 'uuid';
 
+import { NgxFocusTrapDirective } from '../../directives';
 import { NgxTourService } from '../../services';
 import { NgxTourInteraction, NgxTourStepPosition } from '../../types';
 
@@ -28,6 +29,7 @@ import { NgxTourInteraction, NgxTourStepPosition } from '../../types';
 		'[attr.aria-labelledby]': 'titleId()',
 		'[attr.aria-details]': 'elementId()',
 	},
+	hostDirectives: [NgxFocusTrapDirective],
 })
 export abstract class NgxTourStepComponent<DataType = any> implements OnInit, AfterViewInit {
 	private readonly tourService = inject(NgxTourService);

@@ -62,6 +62,7 @@ export interface NgxToastDefaultConfiguration extends Omit<NgxToastConfiguration
 export interface NgxToast<DataType = unknown> {
 	id: string;
 	text: string;
+	role?: 'alert' | 'status';
 	data?: DataType;
 	configuration?: NgxToastConfiguration;
 }

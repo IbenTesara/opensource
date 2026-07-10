@@ -4,7 +4,7 @@ import { NgxToastService } from '../../services';
 
 @Directive({
 	host: {
-		'attr.role': 'alert',
+		role: 'status',
 	},
 })
 export abstract class NgxToastBundlerComponent {

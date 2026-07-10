@@ -12,6 +12,8 @@ export class RightHeaderComponent {
 	private layoutService: NgxMobileLayoutService = inject(NgxMobileLayoutService);
 
 	public open(): void {
-		this.layoutService.openFlyout(FlyoutComponent);
+		this.layoutService.openFlyout(FlyoutComponent, {
+			label: 'Header Flyout',
+		});
 	}
 }

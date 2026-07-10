@@ -2,6 +2,7 @@ import {
 	ComponentRef,
 	computed,
 	Directive,
+	effect,
 	ElementRef,
 	inject,
 	input,
@@ -30,6 +31,9 @@ import {
 	selector: '[ngxButton]',
 	host: {
 		'[attr.class]': 'buttonClasses()',
+		'[attr.aria-busy]': 'loading() ? "true" : null',
+		'[attr.aria-disabled]': 'loading() ? "true" : null',
+		'[attr.disabled]': 'loading() ? "true" : null',
 	},
 })
 export class NgxButtonDirective implements OnInit {
@@ -136,6 +140,23 @@ export class NgxButtonDirective implements OnInit {
 		this.configuration?.iconPosition || 'left'
 	);
 
+	constructor() {
+		// Iben: Verify that icon-only buttons have an accessible name for screen readers
+		effect(() => {
+			if (this.display() === 'icon') {
+				const hasAriaLabel =
+					this.nativeElement.hasAttribute('aria-label') ||
+					this.nativeElement.hasAttribute('aria-labelledby');
+
+				if (!hasAriaLabel) {
+					console.error(
+						'NgxLayout: NgxButtonDirective is used in icon-only mode, but no accessible name (aria-label or aria-labelledby) was found on the element. Screen readers will not be able to announce this button.'
+					);
+				}
+			}
+		});
+	}
+
 	ngOnInit() {
 		// Iben: Wrap the base text in an element
 		const wrapperElement: HTMLSpanElement = this.renderer.createElement(
@@ -169,6 +190,11 @@ export class NgxButtonDirective implements OnInit {
 			this.loadingComponent.setInput('data', this.loadingData());
 
 			// Iben: Add the loading component to the button
+			this.renderer.setAttribute(
+				this.loadingComponent.instance.elementRef.nativeElement,
+				'aria-hidden',
+				'true'
+			);
 			this.renderer.appendChild(
 				this.nativeElement,
 				this.loadingComponent.instance.elementRef.nativeElement
@@ -195,6 +221,8 @@ export class NgxButtonDirective implements OnInit {
 					// Iben: Create a new icon element
 					this.iconElement = this.renderer.createElement('i');
 					this.iconElement.className = `ngx-button-icon ${this.icon()}`;
+					// Iben: Hide the icon for screen readers
+					this.renderer.setAttribute(this.iconElement, 'aria-hidden', 'true');
 				} else {
 					// Iben: Create new component and add the icon
 					this.iconComponent =
@@ -207,6 +235,12 @@ export class NgxButtonDirective implements OnInit {
 						this.iconComponent.instance.elementRef.nativeElement,
 						'ngx-button-icon'
 					);
+					// Iben: Hide the icon for screen readers
+					this.renderer.setAttribute(
+						this.iconComponent.instance.elementRef.nativeElement,
+						'aria-hidden',
+						'true'
+					);
 				}
 
 				// Iben: Add the icon depending on whether we want to add it on the left or the right
@@ -216,11 +250,11 @@ export class NgxButtonDirective implements OnInit {
 							this.iconElement ||
 								this.iconComponent.instance.elementRef.nativeElement,
 							this.nativeElement.firstChild
-					  )
+						)
 					: this.renderer.appendChild(
 							this.nativeElement,
 							this.iconElement || this.iconComponent.instance.elementRef.nativeElement
-					  );
+						);
 			}
 		}
 		// Iben: If an icon already exists and we no longer have an icon presented, we remove it

@@ -52,4 +52,13 @@ export class NgxToastContainerComponent {
 	public setFocus(hasFocus: boolean): void {
 		this.toastService.setFocus(hasFocus);
 	}
+
+	/**
+	 * Forcefully dismisses a toast item from the screen
+	 *
+	 * @param toast - The toast item to remove
+	 */
+	public dismissToast(toast: NgxToast): void {
+		this.toastService.removeToast(toast, true);
+	}
 }

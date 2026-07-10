@@ -2,31 +2,33 @@
 	[formControl]="control"
 	[selectable]="true"
 	[selectableKey]="'id'"
-  [resetFormOnNewData]="false"
+	[resetFormOnNewData]="false"
 	[loading]="loading()"
 	[data]="data()"
 	[columns]="['user', 'hello', 'amount']"
+	ariaLabel="User overview table"
 >
 	<ngx-table-cell column="user">
 		<ng-template #headerTmpl> User I </ng-template>
 		<ng-template #cellTmpl let-row="row"> {{ row.firstName }} {{ row.name }} </ng-template>
 	</ngx-table-cell>
 
-  <ngx-table-cell column="hello">
-    <ng-template #headerTmpl> Hello </ng-template>
-    <ng-template #cellTmpl let-element> {{ element }} Iben</ng-template>
-  </ngx-table-cell>
+	<ngx-table-cell column="hello">
+		<ng-template #headerTmpl> Hello </ng-template>
+		<ng-template #cellTmpl let-element> {{ element }} Iben</ng-template>
+	</ngx-table-cell>
 
 	<ngx-table-currency-cell column="amount">
 		<ng-template #headerTmpl> Amount </ng-template>
 	</ngx-table-currency-cell>
 
-	@if(hasDetailRow()) {
-	<ng-template #detailRowTmpl let-detail>
-		This is a detail row for {{ detail.firstName }};
-	</ng-template>
-	} @if(hasLoadingTemplate()) {
-	<ng-template #loadingTmpl> This is a custom loading template! </ng-template>
+	@if (hasDetailRow()) {
+		<ng-template #detailRowTmpl let-detail>
+			This is a detail row for {{ detail.firstName }};
+		</ng-template>
+	}
+	@if (hasLoadingTemplate()) {
+		<ng-template #loadingTmpl> This is a custom loading template! </ng-template>
 	}
 </ngx-table>
 

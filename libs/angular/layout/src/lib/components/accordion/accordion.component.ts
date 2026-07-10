@@ -24,7 +24,6 @@ import { NgxAccordionItemComponent } from './item/accordion-item.component';
 	changeDetection: ChangeDetectionStrategy.OnPush,
 	host: {
 		class: 'ngx-accordion',
-		role: 'region',
 	},
 })
 export class NgxAccordionComponent {

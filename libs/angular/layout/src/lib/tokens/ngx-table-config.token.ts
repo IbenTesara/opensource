@@ -6,6 +6,7 @@ import {
 	NgxTableSelectTemplateAbstractComponent,
 	NgxTableSortTemplateAbstractComponent,
 } from '../abstracts';
+import { NgxTableAriaLabels } from '../types';
 
 type HideHeaderRowOptions = 'when-loading' | 'when-empty';
 export type HideHeaderRowOption =
@@ -26,6 +27,7 @@ export type ShowDetailRowOption = 'always' | 'on-click' | 'on-single-item';
  * emitValueOnSingleItem - Defines whether we want to emit the rowClicked when there's only one item in the table and the showDetailRow is set to 'on-single-item'
  * hideHeaderWhen - Defines whether we want to show the header when the table is empty or loading
  * components - A set of components we can use as defaults for the loading, error and empty state of the
+ * ariaLabels - Configurable fallback ARIA labels for accessibility purposes.
  */
 export interface NgxTableConfiguration {
 	showDetailRow?: ShowDetailRowOption;
@@ -44,6 +46,7 @@ export interface NgxTableConfiguration {
 		openRowState?: Type<NgxTableOpenRowStateTemplateAbstractComponent>;
 		sort?: Type<NgxTableSortTemplateAbstractComponent>;
 	};
+	ariaLabels?: NgxTableAriaLabels;
 }
 
 export const NgxTableConfigurationToken = new InjectionToken<NgxTableConfiguration>(

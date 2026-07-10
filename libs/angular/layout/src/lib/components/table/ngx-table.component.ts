@@ -5,9 +5,9 @@ import {
 	ChangeDetectionStrategy,
 	ChangeDetectorRef,
 	Component,
+	DestroyRef,
 	HostBinding,
 	Inject,
-	OnDestroy,
 	OnInit,
 	TemplateRef,
 	WritableSignal,
@@ -24,6 +24,7 @@ import {
 	computed,
 	Signal,
 } from '@angular/core';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import {
 	ControlValueAccessor,
 	FormControl,
@@ -32,8 +33,7 @@ import {
 	ReactiveFormsModule,
 } from '@angular/forms';
 import { isEmpty } from 'lodash';
-import { Subject } from 'rxjs';
-import { takeUntil, tap } from 'rxjs/operators';
+import { tap } from 'rxjs/operators';
 
 import { NgxTreeGrid } from '../../directives';
 import {
@@ -41,6 +41,7 @@ import {
 	NgxTableHasObserversPipe,
 	NgxTableShowHeaderPipe,
 	NgxTableSortIconPipe,
+	NgxTableAriaLabelPipe,
 } from '../../pipes';
 import {
 	HideHeaderRowOption,
@@ -48,7 +49,7 @@ import {
 	NgxTableConfigurationToken,
 	ShowDetailRowOption,
 } from '../../tokens';
-import { NgxTableCypressDataTags, NgxTableSortEvent } from '../../types';
+import { NgxTableCypressDataTags, NgxTableSortEvent, NgxTableAriaLabels } from '../../types';
 import {
 	generateNgxTableForm,
 	handleNgxTableHeaderValueChanges,
@@ -65,6 +66,13 @@ interface TableCellTemplate {
 	cellClass?: string;
 }
 
+/**
+ * A customizable and accessible data table component.
+ *
+ * ## Accessibility Guidelines
+ * - **Table Cell Templates**: When defining custom templates via `cellTemplate` or `headerTemplate`, ensure all interactive elements are nested inside a native `<button>` or a valid `<a>` element rather than applying click listeners to non-semantic elements.
+ * - **Color Contrast & Outlines**: Ensure overridden focus ring CSS variables (e.g. `--ngx-focus-outline`) maintain at least a **3:1** contrast ratio against the background.
+ */
 @Component({
 	selector: 'ngx-table',
 	templateUrl: './ngx-table.component.html',
@@ -88,15 +96,21 @@ interface TableCellTemplate {
 		NgxAriaSortPipe,
 		NgxTreeGrid,
 		NgComponentOutlet,
+		NgxTableAriaLabelPipe,
 	],
 	host: {
 		'[class.ngx-table-loading]': 'loading()',
 	},
 })
-export class NgxTableComponent
-	implements AfterContentChecked, ControlValueAccessor, OnInit, OnDestroy
-{
+export class NgxTableComponent implements AfterContentChecked, ControlValueAccessor, OnInit {
+	/**
+	 * An instance of the ChangeDetectorRef
+	 */
 	private cdRef: ChangeDetectorRef = inject(ChangeDetectorRef);
+
+	/**
+	 * An instance of the NgxTableConfiguration
+	 */
 	@Inject(NgxTableConfigurationToken)
 	public readonly ngxTableConfiguration: NgxTableConfiguration = inject(
 		NgxTableConfigurationToken,
@@ -104,15 +118,16 @@ export class NgxTableComponent
 	);
 
 	/**
+	 * An instance of the destroyRef
+	 */
+	protected readonly destroyRef: DestroyRef = inject(DestroyRef);
+
+	/**
 	 * Default class that will be put on the ngx-table component
 	 */
 	@HostBinding('class') public readonly componentClass =
 		this.ngxTableConfiguration?.ngxTableClass || '';
 
-	/**
-	 * A subject to handle the observables when the component gets destroyed
-	 */
-	private readonly destroyed$ = new Subject();
 	/**
 	 * onTouch function for the control value accessor
 	 */
@@ -228,6 +243,60 @@ export class NgxTableComponent
 	protected readonly radioControl = new FormControl();
 
 	/**
+	 * Whether the table functions as a treegrid
+	 */
+	public readonly isTreeGrid: Signal<boolean> = computed(() => {
+		return this.detailRowTemplate() !== undefined || this.selectable();
+	});
+
+	/**
+	 * Precalculates the base sort labels for each column.
+	 * This only re-evaluates when the sortable columns are updated.
+	 */
+	protected readonly baseSortLabels: Signal<Record<string, string>> = computed(() => {
+		const record = this.sortableTableCellRecord();
+		const result: Record<string, string> = {};
+
+		Object.keys(record).forEach((column) => {
+			result[column] = `Sort by ${column}`;
+		});
+
+		return result;
+	});
+
+	/**
+	 * Reactively resolves the full ARIA label for each sort button.
+	 */
+	public readonly sortAriaLabels: Signal<Record<string, string>> = computed(() => {
+		// Iben: Subscribe to the values
+		const baseLabels = this.baseSortLabels();
+		const activeSort = this.currentSortingEvent();
+		const globalAriaLabels = this.ariaLabels();
+		const result: Record<string, string> = {};
+
+		// Iben: Generate the labels
+		Object.keys(baseLabels).forEach((column) => {
+			const direction = activeSort?.column === column ? activeSort.direction : null;
+			const labelConfiguration =
+				globalAriaLabels?.sortColumn ?? this.ngxTableConfiguration?.ariaLabels?.sortColumn;
+
+			if (typeof labelConfiguration === 'function') {
+				result[column] = labelConfiguration(column, direction);
+			} else if (typeof labelConfiguration === 'string') {
+				result[column] = labelConfiguration;
+			} else {
+				// Iben: Fallback to the standard English label
+				const directionSuffix = direction
+					? `, currently sorted ${direction.toLowerCase()}`
+					: '';
+				result[column] = `${baseLabels[column]}${directionSuffix}`;
+			}
+		});
+
+		return result;
+	});
+
+	/**
 	 * A list of all defined columns
 	 */
 	protected definedColumns: WritableSignal<string[]> = linkedSignal(() => {
@@ -316,6 +385,11 @@ export class NgxTableComponent
 	 * A template to provide a open state template
 	 */
 	protected readonly openRowStateTemplate = contentChild<TemplateRef<any>>('openRowStateTmpl');
+
+	/**
+	 * The accessible name we wish to set on the table for screen readers
+	 */
+	public readonly ariaLabel = input.required<string>();
 
 	/**
 	 * A list of all column names we want to represent in the table
@@ -427,6 +501,29 @@ export class NgxTableComponent
 	public readonly hideHeaderWhen = input<HideHeaderRowOption>(
 		this.ngxTableConfiguration?.hideHeaderWhen || 'never'
 	);
+
+	/**
+	 * An optional set of ARIA labels we wish to set on the checkboxes and radio buttons in the table selection column
+	 */
+	public readonly ariaLabels = input<NgxTableAriaLabels>({});
+
+	/**
+	 * Resolves the ARIA label for the selection column header.
+	 */
+	protected readonly selectionColumnAriaLabel = computed(() => {
+		const local = this.ariaLabels()?.selectionColumn;
+		const global = this.ngxTableConfiguration?.ariaLabels?.selectionColumn;
+		return local ?? global ?? 'Selection column';
+	});
+
+	/**
+	 * Resolves the ARIA label for the expansion column header.
+	 */
+	protected readonly expansionColumnAriaLabel = computed(() => {
+		const local = this.ariaLabels()?.expansionColumn;
+		const global = this.ngxTableConfiguration?.ariaLabels?.expansionColumn;
+		return local ?? global ?? 'Expansion column';
+	});
 
 	/**
 	 * The loading state of our table
@@ -791,7 +888,7 @@ export class NgxTableComponent
 					this.onChanged(handleNgxTableValueChanges(value));
 					this.onTouch();
 				}),
-				takeUntil(this.destroyed$)
+				takeUntilDestroyed(this.destroyRef)
 			)
 			.subscribe();
 
@@ -802,7 +899,7 @@ export class NgxTableComponent
 					this.onChanged(value);
 					this.onTouch();
 				}),
-				takeUntil(this.destroyed$)
+				takeUntilDestroyed(this.destroyRef)
 			)
 			.subscribe();
 
@@ -819,13 +916,8 @@ export class NgxTableComponent
 						this.rowsFormGroup.reset();
 					}
 				}),
-				takeUntil(this.destroyed$)
+				takeUntilDestroyed(this.destroyRef)
 			)
 			.subscribe();
-	}
-
-	public ngOnDestroy() {
-		this.destroyed$.next(null);
-		this.destroyed$.complete();
 	}
 }

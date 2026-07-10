@@ -3,11 +3,13 @@
 		class="ngx-accordion-header"
 		#summary
 		[class.is-disabled]="disabled()"
-    [class.is-open]="isOpen()"
+		[class.is-open]="isOpen()"
 		[attr.disabled]="disabled()"
+		[attr.aria-disabled]="disabled()"
 		[id]="id"
 		[attr.aria-controls]="'accordion-content-' + id"
 		[attr.aria-expanded]="isOpen()"
+		[attr.tabindex]="disabled() ? -1 : 0"
 		(focus)="setFocus(true)"
 		(blur)="setFocus(false)"
 	>
@@ -19,7 +21,7 @@
 
 	<div
 		class="ngx-accordion-content"
-    [class.is-open]="isOpen()"
+		[class.is-open]="isOpen()"
 		role="region"
 		[id]="'accordion-content-' + id"
 		[attr.aria-labelledby]="id"

@@ -13,6 +13,7 @@ export * from './show-header/show-header.pipe';
 export * from './aria-sort/aria-sort.pipe';
 export * from './matches-query/matches-query.pipe';
 export * from './markdown/markdown.pipe';
+export * from './table-aria-label/table-aria-label.pipe';
 
 export const Pipes = [
 	NgxTableHasObserversPipe,

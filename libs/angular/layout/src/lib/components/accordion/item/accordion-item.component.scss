@@ -15,5 +15,10 @@
     &.is-disabled {
       cursor: not-allowed;
     }
+
+    &:focus-visible {
+      outline: var(--ngx-focus-outline, 2px solid #005fcc);
+      outline-offset: var(--ngx-focus-outline-offset, 2px);
+    }
   }
 }

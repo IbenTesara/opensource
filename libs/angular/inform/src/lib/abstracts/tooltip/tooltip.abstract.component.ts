@@ -8,9 +8,9 @@ import { NgxTooltipPosition, NgxTooltipPositionClass } from '../../types';
  */
 @Directive({
 	host: {
-		id: 'id()',
-    class: 'positionClass()',
-    'attr.role': 'tooltip'
+		'[attr.id]': 'id()',
+		'[class]': 'positionClass()',
+		'[attr.role]': "'tooltip'",
 	},
 })
 export abstract class NgxTooltipAbstractComponent {

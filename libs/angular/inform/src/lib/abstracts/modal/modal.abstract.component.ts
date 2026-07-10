@@ -10,12 +10,17 @@ import {
 } from '@angular/core';
 import { NgxWindowService } from '@ibenvandeveire/ngx-core';
 
+import { NgxFocusTrapDirective } from '../../directives';
 import { NgxModalActionType } from '../../types';
 
 /**
  * An abstract for the NgxModalService
+ *
+ * WCAG: The role of the modal will be set programmatically by the NgxModalService and does not to be set here manually.
  */
-@Directive()
+@Directive({
+	hostDirectives: [NgxFocusTrapDirective],
+})
 export class NgxModalAbstractComponent<ActionType extends NgxModalActionType, DataType = any>
 	implements AfterViewInit
 {
