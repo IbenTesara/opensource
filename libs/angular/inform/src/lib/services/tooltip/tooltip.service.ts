@@ -21,28 +21,41 @@ import {
 	providedIn: 'root',
 })
 export class NgxTooltipService {
-	private readonly configuration = inject<NgxTooltipConfiguration>(NgxTooltipConfigurationToken);
-	private readonly overlayService = inject(Overlay);
-	private readonly overlayPositionBuilder = inject(OverlayPositionBuilder);
+	/**
+	 * The configuration of the tooltip service
+	 */
+	protected readonly configuration = inject<NgxTooltipConfiguration>(NgxTooltipConfigurationToken);
 
-	// Iben: The id of the active tooltip
-	private activeTooltip: string = undefined;
+	/**
+	 * An instance of the Overlay service
+	 */
+	protected readonly overlayService = inject(Overlay);
+
+	/**
+	 * An instance of the OverlayPositionBuilder
+	 */
+	protected readonly overlayPositionBuilder = inject(OverlayPositionBuilder);
+
+	/**
+	 * The id of the active tooltip
+	 */
+	protected activeTooltip: string = undefined;
 
 	/**
 	 * A subject to hold the tooltip events
 	 */
-	private readonly tooltipEventsSubject: BehaviorSubject<NgxTooltipEvent | undefined> =
+	protected readonly tooltipEventsSubject: BehaviorSubject<NgxTooltipEvent | undefined> =
 		new BehaviorSubject<NgxTooltipEvent | undefined>(undefined);
 
 	/**
 	 * The overlayRef used to attach the tooltip too
 	 */
-	private overlayRef: OverlayRef;
+	protected overlayRef: OverlayRef;
 
 	/**
 	 * The position record for the tooltip
 	 */
-	private readonly positionRecord: Record<NgxTooltipPosition, ConnectedPosition> = {
+	protected readonly positionRecord: Record<NgxTooltipPosition, ConnectedPosition> = {
 		below: { originX: 'start', originY: 'bottom', overlayX: 'start', overlayY: 'top' },
 		above: { originX: 'start', originY: 'top', overlayX: 'start', overlayY: 'bottom' },
 		left: { originX: 'start', originY: 'center', overlayX: 'end', overlayY: 'center' },

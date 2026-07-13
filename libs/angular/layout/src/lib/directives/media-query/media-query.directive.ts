@@ -103,7 +103,7 @@ export class NgxMediaQueryDirective implements OnDestroy {
 	/**
 	 * Updates the view and hides/renders the template as needed
 	 */
-	private updateView(): void {
+	protected updateView(): void {
 		// Iben: Dispose the current subscription
 		this.dispose();
 
@@ -157,7 +157,7 @@ export class NgxMediaQueryDirective implements OnDestroy {
 	/**
 	 * Dispose the current subscription
 	 */
-	private dispose(): void {
+	protected dispose(): void {
 		if (this.destroyed$) {
 			this.destroyed$.next();
 			this.destroyed$.complete();

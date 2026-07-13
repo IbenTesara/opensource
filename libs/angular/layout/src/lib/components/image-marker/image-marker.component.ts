@@ -44,19 +44,30 @@ import {
 	},
 })
 export class NgxImageMarkerComponent implements AfterViewInit, OnChanges, OnDestroy {
-	private readonly imageMarkerService: NgxImageMarkerService = inject(NgxImageMarkerService);
-	private readonly windowService: NgxWindowService = inject(NgxWindowService);
-	private readonly elementRef: ElementRef = inject(ElementRef);
+	/**
+	 * An instance of the NgxImageMarkerService
+	 */
+	protected readonly imageMarkerService: NgxImageMarkerService = inject(NgxImageMarkerService);
+
+	/**
+	 * An instance of the NgxWindowService
+	 */
+	protected readonly windowService: NgxWindowService = inject(NgxWindowService);
+
+	/**
+	 * An instance of the ElementRef
+	 */
+	protected readonly elementRef: ElementRef = inject(ElementRef);
 
 	/**
 	 * The currently created marker
 	 */
-	private currentMarker: NgxImageMarker;
+	protected currentMarker: NgxImageMarker;
 
 	/**
 	 * A subject holding the destroy state of the marker
 	 */
-	private readonly markerDestroyedSubject: Subject<void> = new Subject<void>();
+	protected readonly markerDestroyedSubject: Subject<void> = new Subject<void>();
 
 	/**
 	 * The rendered image element
@@ -146,7 +157,7 @@ export class NgxImageMarkerComponent implements AfterViewInit, OnChanges, OnDest
 	/**
 	 * Creates a MarkerJs view based on the provided configuration
 	 */
-	private createMarker() {
+	protected createMarker() {
 		// Iben: Only create the image when we're in the browser
 		this.windowService.runInBrowser(() => {
 			// Iben: Close the existing marker if needed

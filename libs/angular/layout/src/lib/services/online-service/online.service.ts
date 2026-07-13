@@ -8,12 +8,15 @@ import { Observable, Subject, fromEvent, tap } from 'rxjs';
  */
 @Injectable({ providedIn: 'root' })
 export class NgxOnlineService {
-	private readonly windowService = inject(NgxWindowService);
+	/**
+	 * An instance of the window service
+	 */
+	protected readonly windowService = inject(NgxWindowService);
 
 	/**
 	 * A subject that emits whenever the application is on or offline
 	 */
-	private readonly onlineSubject: Subject<boolean> = new Subject<boolean>();
+	protected readonly onlineSubject: Subject<boolean> = new Subject<boolean>();
 
 	/**
 	 * An observable that emits whenever the application is on or offline

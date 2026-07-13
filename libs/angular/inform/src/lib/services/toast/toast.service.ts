@@ -34,29 +34,29 @@ export class NgxToastService {
 	/**
 	 * The default configuration required for the toast
 	 */
-	private readonly configuration: NgxToastDefaultConfiguration = inject(
+	protected readonly configuration: NgxToastDefaultConfiguration = inject(
 		NgxToastConfigurationToken
 	);
 
 	/**
 	 * The queue with all the toasts in it
 	 */
-	private queue$: BehaviorSubject<NgxToast[]> = new BehaviorSubject([]);
+	protected queue$: BehaviorSubject<NgxToast[]> = new BehaviorSubject([]);
 
 	/**
 	 * The toast event handler that will handle updates to the queue
 	 */
-	private toastEvents$: Subject<NgxToastEvent> = new Subject<NgxToastEvent>();
+	protected toastEvents$: Subject<NgxToastEvent> = new Subject<NgxToastEvent>();
 
 	/**
 	 * Whether we want to show the bundled toasts
 	 */
-	private showBundledToasts$: BehaviorSubject<boolean> = new BehaviorSubject(false);
+	protected showBundledToasts$: BehaviorSubject<boolean> = new BehaviorSubject(false);
 
 	/**
 	 * Whether the list of all toasts is focussed upon, either by focus or by hover
 	 */
-	private isFocussed: boolean = false;
+	protected isFocussed: boolean = false;
 
 	/**
 	 * A list of all the currently visible toasts

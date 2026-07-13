@@ -24,43 +24,43 @@ export class NgxMarkdownPipe implements PipeTransform, OnDestroy {
 	/**
 	 * An instance of the NgxMarkdownService
 	 */
-	private readonly markdownService: NgxMarkdownService = inject(NgxMarkdownService);
+	protected readonly markdownService: NgxMarkdownService = inject(NgxMarkdownService);
 
 	/**
 	 * An instance of the ChangeDetectorRef
 	 */
-	private readonly cdRef: ChangeDetectorRef = inject(ChangeDetectorRef);
+	protected readonly cdRef: ChangeDetectorRef = inject(ChangeDetectorRef);
 
 	/**
 	 * An instance of the ElementRef
 	 */
-	private readonly elementRef: ElementRef = inject(ElementRef);
+	protected readonly elementRef: ElementRef = inject(ElementRef);
 
 	/**
 	 * An instance of the Renderer2
 	 */
-	private readonly renderer: Renderer2 = inject(Renderer2);
+	protected readonly renderer: Renderer2 = inject(Renderer2);
 
 	/**
 	 * Subject to hold the destroyed state of the current observable
 	 */
-	private destroyed$: Subject<void>;
+	protected destroyed$: Subject<void>;
 
 	/**
 	 * The latest value of the Observable, the parsed markdown
 	 */
-	private parsed: string;
+	protected parsed: string;
 
 	/**
 	 * The previous value of the markdown string
 	 */
-	private previousValue: string;
+	protected previousValue: string;
 
 	/**
 	 * Instance of the change detector ref, implemented like this according to the async pipe implementation
 	 * https://github.com/angular/angular/blob/main/packages/common/src/pipes/async_pipe.ts
 	 */
-	private changeDetectorRef: ChangeDetectorRef | null;
+	protected changeDetectorRef: ChangeDetectorRef | null;
 
 	constructor() {
 		const cdRef = this.cdRef;
@@ -100,7 +100,7 @@ export class NgxMarkdownPipe implements PipeTransform, OnDestroy {
 	 *
 	 * @param observable - The parsed markdown observable
 	 */
-	private subscribe(observable: Observable<string>): void {
+	protected subscribe(observable: Observable<string>): void {
 		// Iben: Dispose the current subscription
 		this.dispose();
 
@@ -132,7 +132,7 @@ export class NgxMarkdownPipe implements PipeTransform, OnDestroy {
 	/**
 	 * Dispose of the matchesQuery observable when existing
 	 */
-	private dispose(): void {
+	protected dispose(): void {
 		// Iben: In case there's a destroyed, we have an observable and we destroy the subscription and reset the observable
 		if (this.destroyed$) {
 			this.destroyed$.next();

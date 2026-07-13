@@ -89,13 +89,13 @@ export class NgxConfigurableLayoutComponent
 	/**
 	 * A subject to mark the isActiveFormRecord as initialized
 	 */
-	private readonly isActiveFormRecordInitializedSubject: BehaviorSubject<boolean> =
+	protected readonly isActiveFormRecordInitializedSubject: BehaviorSubject<boolean> =
 		new BehaviorSubject(false);
 
 	/**
 	 * A subject to hold the destroy flow
 	 */
-	private readonly destroyRef = inject(DestroyRef);
+	protected readonly destroyRef = inject(DestroyRef);
 
 	/**
 	 * A list of the configurable item templates.
@@ -297,9 +297,14 @@ export class NgxConfigurableLayoutComponent
 		this.handleItemTemplates();
 	}
 
-	// TODO: use the ngx-forms formAccessor instead of copying its internal way of working
-	private onChanged: Function = () => {};
-	private onTouched: Function = () => {};
+	/**
+	 * Callback function for ControlValueAccessor onChange
+	 */
+	protected onChanged: Function = () => {};
+	/**
+	 * Callback function for ControlValueAccessor onTouched
+	 */
+	protected onTouched: Function = () => {};
 
 	writeValue(value: NgxConfigurableLayoutGrid): void {
 		// Iben: Update the inner form.
@@ -415,12 +420,12 @@ export class NgxConfigurableLayoutComponent
 	/**
 	 * Handles the drop predicate
 	 *
-	 * @private
+	 * @protected
 	 * @param eventType - Whether we're moving or sorting
 	 * @param draggedElement - The element that's being dragged
 	 * @param list - The list into which we're dragging the element
 	 */
-	private dropPredicateHandler(
+	protected dropPredicateHandler(
 		eventType: 'sorting' | 'moving',
 		draggedElement: CdkDrag<NgxConfigurableLayoutItemEntity>,
 		list: CdkDropList
@@ -451,7 +456,7 @@ export class NgxConfigurableLayoutComponent
 	/**
 	 * Update the item layout template order.
 	 */
-	private handleItemTemplates(): void {
+	protected handleItemTemplates(): void {
 		// Wouter: Clear the current item template record
 		this.itemTemplateRecord.set({});
 		this.itemLabelRecord.set({});

@@ -106,7 +106,7 @@ export class NgxTableComponent implements AfterContentChecked, ControlValueAcces
 	/**
 	 * An instance of the ChangeDetectorRef
 	 */
-	private cdRef: ChangeDetectorRef = inject(ChangeDetectorRef);
+	protected cdRef: ChangeDetectorRef = inject(ChangeDetectorRef);
 
 	/**
 	 * An instance of the NgxTableConfiguration
@@ -131,17 +131,17 @@ export class NgxTableComponent implements AfterContentChecked, ControlValueAcces
 	/**
 	 * onTouch function for the control value accessor
 	 */
-	private onTouch: Function = () => {};
+	protected onTouch: Function = () => {};
 	/**
 	 * onChanged function for the control value accessor
 	 */
 	// eslint-disable-next-line @typescript-eslint/no-unused-vars
-	private onChanged: Function = (_: any) => {};
+	protected onChanged: Function = (_: any) => {};
 
 	/**
 	 * Whether or not the form was generated
 	 */
-	private formGenerated: boolean = false;
+	protected formGenerated: boolean = false;
 	/**
 	 * The current sorting event
 	 */
@@ -700,7 +700,7 @@ export class NgxTableComponent implements AfterContentChecked, ControlValueAcces
 	/**
 	 * Assigns the templates of each cell to the correct columns
 	 */
-	private handleTableCellTemplates(): void {
+	protected handleTableCellTemplates(): void {
 		// Iben: Reset the provided records
 		this.tableCellTemplateRecord.set({});
 		this.sortableTableCellRecord.set({});
@@ -820,7 +820,7 @@ export class NgxTableComponent implements AfterContentChecked, ControlValueAcces
 	 *
 	 * @param event - The new sorting event
 	 */
-	private handleCurrentSort(event: NgxTableSortEvent): void {
+	protected handleCurrentSort(event: NgxTableSortEvent): void {
 		// Iben: Early exit if the sortable cell record is empty or if the cell already has the sortDirection of the event
 		if (
 			isEmpty(
@@ -848,7 +848,7 @@ export class NgxTableComponent implements AfterContentChecked, ControlValueAcces
 	/**
 	 * Setup the columns array
 	 */
-	private handleRowColumns(): void {
+	protected handleRowColumns(): void {
 		// Iben: Make sure that the select option, the open row state and the defined actions are correctly placed
 		const columns = this.columns();
 		const actions = this.actions();

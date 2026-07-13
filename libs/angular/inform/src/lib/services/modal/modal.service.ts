@@ -25,16 +25,21 @@ import { NgxModalActionType, NgxModalConfiguration, NgxModalOptions } from '../.
  */
 @Injectable({ providedIn: 'root' })
 export class NgxModalService {
-	// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-	private readonly configuration = inject<NgxModalConfiguration>(NgxModalConfigurationToken, {
+	/**
+	 * The configuration of the modal service
+	 */
+	protected readonly configuration = inject<NgxModalConfiguration>(NgxModalConfigurationToken, {
 		optional: true,
 	})!;
-	private readonly dialogService = inject(Dialog);
+	/**
+	 * An instance of the CDK Dialog service
+	 */
+	protected readonly dialogService = inject(Dialog);
 
 	/**
 	 * A subject that keeps track of whether a modal is currently active
 	 */
-	private hasModalSubject: BehaviorSubject<boolean> = new BehaviorSubject(false);
+	protected hasModalSubject: BehaviorSubject<boolean> = new BehaviorSubject(false);
 
 	/**
 	 * An observable that keeps track of whether a modal is currently active.
@@ -143,7 +148,7 @@ export class NgxModalService {
 	 * @param options - The options of the modal
 	 * @param  component - The component we wish to render
 	 */
-	private runARIAChecks<ActionType extends NgxModalActionType>(
+	protected runARIAChecks<ActionType extends NgxModalActionType>(
 		options: NgxModalOptions<ActionType>,
 		component: Type<NgxModalAbstractComponent<ActionType>>
 	): boolean {
@@ -174,7 +179,7 @@ export class NgxModalService {
 	 * @param options - The options of the modal
 	 * @param  component - The component we wish to render
 	 */
-	private createModalComponent<ActionType extends NgxModalActionType, DataType = any>(
+	protected createModalComponent<ActionType extends NgxModalActionType, DataType = any>(
 		options: NgxModalOptions<ActionType>,
 		component: Type<NgxModalAbstractComponent<ActionType, DataType>>
 	): NgxModalAbstractComponent<ActionType> {
@@ -219,7 +224,7 @@ export class NgxModalService {
 	 *
 	 * @param options - The options of the modal
 	 */
-	private hasRequiredDescription<ActionType extends NgxModalActionType>(
+	protected hasRequiredDescription<ActionType extends NgxModalActionType>(
 		options: NgxModalOptions<ActionType>
 	): boolean {
 		// Iben: If the options has provided a default type, we check based on the configuration role
@@ -236,12 +241,12 @@ export class NgxModalService {
 	/**
 	 * Returns a value based on whether one of the overwrites is defined
 	 *
-	 * @private
+	 * @protected
 	 * @param configurationValue - The overwrite on configuration level
 	 * @param optionsValue - The overwrite on options level
 	 * @param defaultValue - The default value if no overwrite was defined
 	 */
-	private getValue(configurationValue: any, optionsValue: any, defaultValue: any): any {
+	protected getValue(configurationValue: any, optionsValue: any, defaultValue: any): any {
 		if (configurationValue === undefined && optionsValue === undefined) {
 			return defaultValue;
 		}

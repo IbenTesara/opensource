@@ -45,51 +45,63 @@ import { elementIsVisibleInViewport } from '../../utils';
 	providedIn: 'root',
 })
 export class NgxTourService implements OnDestroy {
-	private readonly cdkOverlayService = inject(Overlay);
-	private readonly windowService = inject(NgxWindowService);
-	private readonly configuration = inject<NgxTourTokenConfiguration>(NgxTourStepToken);
-	private readonly focusTrapFactory = inject(FocusTrapFactory);
+	/**
+	 * An instance of the Overlay service
+	 */
+	protected readonly cdkOverlayService = inject(Overlay);
+	/**
+	 * An instance of the NgxWindowService
+	 */
+	protected readonly windowService = inject(NgxWindowService);
+	/**
+	 * The configuration for the tour steps
+	 */
+	protected readonly configuration = inject<NgxTourTokenConfiguration>(NgxTourStepToken);
+	/**
+	 * An instance of the FocusTrapFactory
+	 */
+	protected readonly focusTrapFactory = inject(FocusTrapFactory);
 
 	/**
 	 * The focus trap of the current tour step card
 	 */
-	private focusTrap: FocusTrap;
+	protected focusTrap: FocusTrap;
 
 	/**
 	 * The element that was focused when startTour was called
 	 */
-	private triggeringElement: HTMLElement;
+	protected triggeringElement: HTMLElement;
 
 	/**
 	 * A subject to hold the destroyed event
 	 */
-	private readonly destroyRef = inject(DestroyRef);
+	protected readonly destroyRef = inject(DestroyRef);
 
 	/**
 	 * A subject to hold the window resize event
 	 */
-	private readonly windowResizeSubject: Subject<void> = new Subject<void>();
+	protected readonly windowResizeSubject: Subject<void> = new Subject<void>();
 
 	/**
 	 * A subject to hold the backdrop clip event
 	 */
-	private readonly backdropClipEventSubject: Subject<NgxTourBackdropClipEvent> =
+	protected readonly backdropClipEventSubject: Subject<NgxTourBackdropClipEvent> =
 		new Subject<NgxTourBackdropClipEvent>();
 
 	/**
 	 * A record of registered step elements we wish to highlight
 	 */
-	private elements: Record<string, BehaviorSubject<NgxTourItemDirective>> = {};
+	protected elements: Record<string, BehaviorSubject<NgxTourItemDirective>> = {};
 
 	/**
 	 * Property to hold the current body overflow behavior
 	 */
-	private bodyOverflow: string;
+	protected bodyOverflow: string;
 
 	/**
 	 * A record of positions to place the
 	 */
-	private readonly positionMap: Record<NgxTourStepPosition, ConnectedPosition> = {
+	protected readonly positionMap: Record<NgxTourStepPosition, ConnectedPosition> = {
 		below: { originX: 'start', originY: 'bottom', overlayX: 'start', overlayY: 'top' },
 		above: { originX: 'start', originY: 'top', overlayX: 'start', overlayY: 'bottom' },
 		left: { originX: 'start', originY: 'bottom', overlayX: 'end', overlayY: 'bottom' },
@@ -99,64 +111,64 @@ export class NgxTourService implements OnDestroy {
 	/**
 	 * The currently active overlay
 	 */
-	private overlayRef: OverlayRef;
+	protected overlayRef: OverlayRef;
 
 	/**
 	 * The amount of steps of the current tour
 	 */
-	private amountOfSteps: number = 0;
+	protected amountOfSteps: number = 0;
 
 	/**
 	 * The current direction we're moving the tour in
 	 */
-	private currentDirection: NgxTourDirection;
+	protected currentDirection: NgxTourDirection;
 
 	/**
 	 * The currently active step in the tour as a subject
 	 */
-	private readonly currentStepSubject: BehaviorSubject<NgxTourStep> =
+	protected readonly currentStepSubject: BehaviorSubject<NgxTourStep> =
 		new BehaviorSubject<NgxTourStep>(undefined);
 
 	/**
 	 * The previously active step in the tour as a subject
 	 */
-	private readonly previousStepSubject: BehaviorSubject<NgxTourStep> =
+	protected readonly previousStepSubject: BehaviorSubject<NgxTourStep> =
 		new BehaviorSubject<NgxTourStep>(undefined);
 
 	/**
 	 * The index of the current step of the tour as a subject
 	 */
-	private readonly currentIndexSubject: BehaviorSubject<number> = new BehaviorSubject<number>(
+	protected readonly currentIndexSubject: BehaviorSubject<number> = new BehaviorSubject<number>(
 		undefined
 	);
 
 	/**
 	 * Whether the tour has started as a subject
 	 */
-	private readonly tourStartedSubject: Subject<void> = new Subject();
+	protected readonly tourStartedSubject: Subject<void> = new Subject();
 
 	/**
 	 * Whether the tour has ended as a subject
 	 */
-	private readonly tourEndedSubject: Subject<void> = new Subject();
+	protected readonly tourEndedSubject: Subject<void> = new Subject();
 
 	/**
 	 * The currently active tour as a subject
 	 */
-	private readonly currentTourSubject: BehaviorSubject<NgxTourStep[]> = new BehaviorSubject<
+	protected readonly currentTourSubject: BehaviorSubject<NgxTourStep[]> = new BehaviorSubject<
 		NgxTourStep[]
 	>(undefined);
 
 	/**
 	 * A subject to hold the registration events
 	 */
-	private readonly registerElementSubject: Subject<NgxTourRegistrationEvent> =
+	protected readonly registerElementSubject: Subject<NgxTourRegistrationEvent> =
 		new Subject<NgxTourRegistrationEvent>();
 
 	/**
 	 * The start scroll position of the page
 	 */
-	private startingScrollPosition: number;
+	protected startingScrollPosition: number;
 
 	/**
 	 * The currently active tour
@@ -405,7 +417,7 @@ export class NgxTourService implements OnDestroy {
 	 *
 	 * @param currentStep - The provided step we want to set
 	 */
-	private setStep(currentStep: NgxTourStep): Observable<NgxTourInteraction> {
+	protected setStep(currentStep: NgxTourStep): Observable<NgxTourInteraction> {
 		// Iben: Get the previous step, if it exists
 		const previousStep = this.currentStepSubject.getValue();
 		const previousItem = this.elements[previousStep?.tourItem]?.getValue();
@@ -466,7 +478,7 @@ export class NgxTourService implements OnDestroy {
 	 *
 	 * @param direction - The direction we wish to move in
 	 */
-	private handleNext(direction: NgxTourDirection): Observable<NgxTourInteraction> {
+	protected handleNext(direction: NgxTourDirection): Observable<NgxTourInteraction> {
 		// Iben set the current direction so we know in which way we're moving the tour
 		this.currentDirection = direction;
 
@@ -490,7 +502,7 @@ export class NgxTourService implements OnDestroy {
 	 * @param currentStep - The step we wish to visualize
 	 * @param item - The item we wish to highlight
 	 */
-	private visualizeStep(
+	protected visualizeStep(
 		currentStep: NgxTourStep,
 		item?: NgxTourItemDirective
 	): ComponentRef<NgxTourStepComponent> {
@@ -652,7 +664,7 @@ export class NgxTourService implements OnDestroy {
 	 * @param  currentStep - The provided step
 	 * @param  item - An optional item
 	 */
-	private handleStepInteractions(
+	protected handleStepInteractions(
 		currentStep: NgxTourStep,
 		item?: NgxTourItemDirective
 	): Observable<NgxTourInteraction> {
@@ -679,7 +691,7 @@ export class NgxTourService implements OnDestroy {
 	 *
 	 * @param stepFunction - The provided step function
 	 */
-	private runStepFunction(stepFunction?: NgxTourAction): Observable<unknown> {
+	protected runStepFunction(stepFunction?: NgxTourAction): Observable<unknown> {
 		// Iben: If no step function was provided, we simply return a single void of
 		if (!stepFunction) {
 			return of(null);
@@ -703,7 +715,7 @@ export class NgxTourService implements OnDestroy {
 	 * @param event.item - The item we wish to surround
 	 * @param event.cutoutMargin - The amount of margin we want around the item
 	 */
-	private setClipPath(event: NgxTourBackdropClipEvent): void {
+	protected setClipPath(event: NgxTourBackdropClipEvent): void {
 		const { backdrop, item, cutoutMargin } = event;
 
 		// Iben: Early exit in case no backdrop or item is present
@@ -730,7 +742,7 @@ export class NgxTourService implements OnDestroy {
 	 *
 	 * @param event - The registration event we wish to handle
 	 */
-	private handleRegistrationEvent(event: NgxTourRegistrationEvent): Observable<null> {
+	protected handleRegistrationEvent(event: NgxTourRegistrationEvent): Observable<null> {
 		// Iben: Early exit if no event was found
 		if (!event) {
 			return of(null);
@@ -771,14 +783,14 @@ export class NgxTourService implements OnDestroy {
 	 *
 	 * @param step - The current step
 	 */
-	private getCutoutMargin(step: NgxTourStep): number {
+	protected getCutoutMargin(step: NgxTourStep): number {
 		return step?.cutoutMargin === undefined ? 5 : step.cutoutMargin;
 	}
 
 	/**
 	 * Sets or removes the body class to indicate the tour is active
 	 */
-	private handleBodyClass(action: 'set' | 'remove'): void {
+	protected handleBodyClass(action: 'set' | 'remove'): void {
 		this.windowService.runInBrowser(({ browserDocument }) => {
 			if (action === 'set') {
 				browserDocument.body.classList.add('ngx-tour-active');

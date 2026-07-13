@@ -31,28 +31,43 @@ import { NgxAuthenticationServiceToken } from '../../tokens';
 	selector: '[ngxIsAuthenticated]',
 })
 export class NgxIsAuthenticatedDirective implements OnDestroy {
-	private readonly authenticationService = inject<NgxAuthenticationAbstractService>(
+	/**
+	 * The provided AuthenticationService implementation
+	 */
+	protected readonly authenticationService = inject<NgxAuthenticationAbstractService>(
 		NgxAuthenticationServiceToken
 	);
-	private viewContainer = inject(ViewContainerRef);
+	/**
+	 * An instance of the ViewContainerRef
+	 */
+	protected viewContainer = inject(ViewContainerRef);
 
 	/**
 	 * The destroyed state of the directive
 	 */
-	private destroyed$: Subject<void>;
+	protected destroyed$: Subject<void>;
 
 	/**
-	 * The needed templateRefs
+	 * The templateRef for the then block
 	 */
-	private thenTemplateRef: TemplateRef<any> | null = null;
-	private thenViewRef: EmbeddedViewRef<any> | null = null;
-	private elseTemplateRef: TemplateRef<any> | null = null;
-	private elseViewRef: EmbeddedViewRef<any> | null = null;
+	protected thenTemplateRef: TemplateRef<any> | null = null;
+	/**
+	 * The viewRef for the then block
+	 */
+	protected thenViewRef: EmbeddedViewRef<any> | null = null;
+	/**
+	 * The templateRef for the else block
+	 */
+	protected elseTemplateRef: TemplateRef<any> | null = null;
+	/**
+	 * The viewRef for the else block
+	 */
+	protected elseViewRef: EmbeddedViewRef<any> | null = null;
 
 	/**
 	 * Whether the user has to be authenticated
 	 */
-	private shouldBeAuthenticated: boolean = true;
+	protected shouldBeAuthenticated: boolean = true;
 
 	constructor() {
 		const templateRef = inject<TemplateRef<any>>(TemplateRef);
@@ -84,7 +99,10 @@ export class NgxIsAuthenticatedDirective implements OnDestroy {
 		this.dispose();
 	}
 
-	private updateView(): void {
+	/**
+	 * Updates the view according to the authentication status
+	 */
+	protected updateView(): void {
 		// Iben: Dispose the current subscription
 		this.dispose();
 
@@ -129,7 +147,7 @@ export class NgxIsAuthenticatedDirective implements OnDestroy {
 	/**
 	 * Dispose the current subscription
 	 */
-	private dispose(): void {
+	protected dispose(): void {
 		if (this.destroyed$) {
 			this.destroyed$.next();
 			this.destroyed$.complete();

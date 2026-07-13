@@ -28,34 +28,34 @@ export class NgxCookieService {
 	/**
 	 * Subject to hold the onFirstConsent event
 	 */
-	private readonly firstCookiesConsentedSubject: Subject<NgxCookieEvent> = new Subject();
+	protected readonly firstCookiesConsentedSubject: Subject<NgxCookieEvent> = new Subject();
 
 	/**
 	 * Subject to hold the onConsent event
 	 */
-	private readonly cookiesConsentedSubject: Subject<NgxCookieEvent> = new Subject();
+	protected readonly cookiesConsentedSubject: Subject<NgxCookieEvent> = new Subject();
 
 	/**
 	 * Subject to hold the consentChanged event
 	 */
-	private readonly cookiesConsentChangedSubject: Subject<NgxCookieChangedEvent> = new Subject();
+	protected readonly cookiesConsentChangedSubject: Subject<NgxCookieChangedEvent> = new Subject();
 
 	/**
 	 * Subject to hold the modalVisible event
 	 */
-	private readonly modalVisibleSubject: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(
+	protected readonly modalVisibleSubject: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(
 		false
 	);
 
 	/**
 	 * Subject to hold the cookiesChanged event
 	 */
-	private readonly cookiesChangedSubject: Subject<Record<string, any>> = new Subject();
+	protected readonly cookiesChangedSubject: Subject<Record<string, any>> = new Subject();
 
 	/**
 	 * Instance of the window service
 	 */
-	private readonly windowService: NgxWindowService = inject(NgxWindowService);
+	protected readonly windowService: NgxWindowService = inject(NgxWindowService);
 
 	/**
 	 * An event triggered only the very first time that the user expresses their choice of consent

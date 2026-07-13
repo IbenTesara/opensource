@@ -17,13 +17,15 @@ export abstract class DataFormAccessor<
 	extends NgxFormsControlValueAccessor<DataType, FormAccessorFormType, FormValueType>
 	implements OnDestroy, OnInit
 {
-	// Iben: Keep a reference to the current data so we don't make a new form if the data itself hasn't changed
-	private currentData: ConstructionDataType;
+	/**
+	 * Keep a reference to the current data so we don't make a new form if the data itself hasn't changed
+	 */
+	protected currentData: ConstructionDataType;
 
 	/**
 	 * A subject that emits when the form has been destroyed in favor of a new one
 	 */
-	private readonly destroyFormSubject$: Subject<void> = new Subject();
+	protected readonly destroyFormSubject$: Subject<void> = new Subject();
 
 	/**
 	 * Method to set up the inner form
@@ -40,7 +42,10 @@ export abstract class DataFormAccessor<
 	 */
 	public readonly preserveFormValueOnNewData: InputSignal<boolean> = input(false);
 
-	private readonly data$: Observable<ConstructionDataType> = toObservable(this.data);
+	/**
+	 * An observable that emits when the input data changes
+	 */
+	protected readonly data$: Observable<ConstructionDataType> = toObservable(this.data);
 
 	public ngOnInit(): void {
 		this.data$

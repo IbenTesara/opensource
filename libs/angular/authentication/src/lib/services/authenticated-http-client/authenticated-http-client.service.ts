@@ -4,16 +4,21 @@ import clean from 'obj-clean';
 import { map, Observable } from 'rxjs';
 
 import { NgxAuthenticationUrlHandlerToken } from '../../tokens';
-import { NgxAuthenticatedHttpClientConfiguration } from '../../types';
 
 /**
  * An opinionated wrapper of the HttpClient providing easy ways to make authenticated and unauthenticated calls
  */
 @Injectable({ providedIn: 'root' })
 export class NgxAuthenticatedHttpClient {
-	private readonly httpClient = inject(HttpClient);
+	/**
+	 * An instance of the HttpClient
+	 */
+	protected readonly httpClient = inject(HttpClient);
 
-	private baseUrl: string;
+	/**
+	 * The base URL of the HTTP client
+	 */
+	protected baseUrl: string;
 
 	constructor() {
 		const baseUrlHandler = inject(NgxAuthenticationUrlHandlerToken);
@@ -26,7 +31,7 @@ export class NgxAuthenticatedHttpClient {
 	 * Adds a base-url to every request
 	 * @param {string} url - The url of the request
 	 */
-	private handleUrl(url: string): string {
+	protected handleUrl(url: string): string {
 		return `${this.baseUrl}/${url}`;
 	}
 

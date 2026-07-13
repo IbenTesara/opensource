@@ -11,18 +11,26 @@ import { TranslationLoaderActionEntity } from './i18n-loading.types';
 	providedIn: 'root',
 })
 export class NgxI18nLoadingService {
-	// Iben: Keep a subject to store all the translation loading actions
-	private readonly translationLoaderActionsSubject$ =
+	/**
+	 * A subject to store all the translation loading actions
+	 */
+	protected readonly translationLoaderActionsSubject$ =
 		new Subject<TranslationLoaderActionEntity>();
 
 	/**
 	 * A subject to store all the currently loaded translation files in
 	 */
-	private readonly translationsSubject$ = new BehaviorSubject<Record<string, unknown>>({});
+	protected readonly translationsSubject$ = new BehaviorSubject<Record<string, unknown>>({});
 
-	private readonly translationsFailedSubject$ = new BehaviorSubject<boolean>(false);
+	/**
+	 * A subject to store the failed state of translations
+	 */
+	protected readonly translationsFailedSubject$ = new BehaviorSubject<boolean>(false);
 
-	private translationsLoading: Record<string, Observable<any>> = {};
+	/**
+	 * A record of translation files currently loading
+	 */
+	protected translationsLoading: Record<string, Observable<any>> = {};
 
 	// Iben: Check if all translations actions have completed
 	public readonly translationsLoaded$ = this.translationLoaderActionsSubject$.pipe(

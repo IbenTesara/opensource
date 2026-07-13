@@ -39,47 +39,56 @@ export class NgxHasFeatureDirective<FeatureType extends string> implements OnDes
 	 */
 	templateRef = inject<TemplateRef<any>>(TemplateRef);
 	/**
-	 * The provided ViewContainerRef
+	 * An instance of the ViewContainerRef
 	 */
-	private viewContainer = inject(ViewContainerRef);
+	protected viewContainer = inject(ViewContainerRef);
 	/**
 	 * The provided AuthenticationService implementation
 	 */
-	private readonly authenticationService = inject<NgxAuthenticationAbstractService>(
+	protected readonly authenticationService = inject<NgxAuthenticationAbstractService>(
 		NgxAuthenticationServiceToken
 	);
 	/**
 	 * The provided ChangeDetectorRef
 	 */
-	private readonly cdRef = inject(ChangeDetectorRef);
+	protected readonly cdRef = inject(ChangeDetectorRef);
 
 	/**
 	 * The destroyed state of the directive
 	 */
-	private destroyed$: Subject<void>;
+	protected destroyed$: Subject<void>;
 
 	/**
-	 * The needed templateRefs
+	 * The templateRef for the then block
 	 */
-	private thenTemplateRef: TemplateRef<any> | null = null;
-	private thenViewRef: EmbeddedViewRef<any> | null = null;
-	private elseTemplateRef: TemplateRef<any> | null = null;
-	private elseViewRef: EmbeddedViewRef<any> | null = null;
+	protected thenTemplateRef: TemplateRef<any> | null = null;
+	/**
+	 * The viewRef for the then block
+	 */
+	protected thenViewRef: EmbeddedViewRef<any> | null = null;
+	/**
+	 * The templateRef for the else block
+	 */
+	protected elseTemplateRef: TemplateRef<any> | null = null;
+	/**
+	 * The viewRef for the else block
+	 */
+	protected elseViewRef: EmbeddedViewRef<any> | null = null;
 
 	/**
 	 * The (list of) feature(s) we need to check
 	 */
-	private feature: FeatureType | FeatureType[] = [];
+	protected feature: FeatureType | FeatureType[] = [];
 
 	/**
 	 * Whether the feature should be enabled
 	 */
-	private shouldHaveFeature: boolean = true;
+	protected shouldHaveFeature: boolean = true;
 
 	/**
 	 * Whether all features should be enabled
 	 */
-	private shouldHaveAllFeatures: boolean = true;
+	protected shouldHaveAllFeatures: boolean = true;
 
 	/**
 	 * A feature or list of features the item should have
@@ -127,7 +136,7 @@ export class NgxHasFeatureDirective<FeatureType extends string> implements OnDes
 	/**
 	 * Updates the view and hides/renders the template as needed
 	 */
-	private updateView(): void {
+	protected updateView(): void {
 		// Iben: Dispose the current subscription
 		this.dispose();
 
@@ -179,7 +188,7 @@ export class NgxHasFeatureDirective<FeatureType extends string> implements OnDes
 	/**
 	 * Dispose the current subscription
 	 */
-	private dispose(): void {
+	protected dispose(): void {
 		if (this.destroyed$) {
 			this.destroyed$.next();
 			this.destroyed$.complete();

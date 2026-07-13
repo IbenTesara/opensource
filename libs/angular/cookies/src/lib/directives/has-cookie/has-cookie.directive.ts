@@ -38,32 +38,50 @@ export class NgxHasCookieDirective implements OnDestroy {
 	/**
 	 * The destroyed state of the directive
 	 */
-	private destroyed$: Subject<void>;
+	protected destroyed$: Subject<void>;
 
-	private readonly templateRef: TemplateRef<any> = inject(TemplateRef);
-	private viewContainer: ViewContainerRef = inject(ViewContainerRef);
-	private readonly ngxCookieService: NgxCookieService = inject(NgxCookieService);
-	private readonly cdRef: ChangeDetectorRef = inject(ChangeDetectorRef);
-	private readonly component: Type<NgxCookiesFallBackComponent> = inject(
+	/**
+	 * An instance of the TemplateRef
+	 */
+	protected readonly templateRef: TemplateRef<any> = inject(TemplateRef);
+	/**
+	 * An instance of the ViewContainerRef
+	 */
+	protected viewContainer: ViewContainerRef = inject(ViewContainerRef);
+	/**
+	 * An instance of the NgxCookieService
+	 */
+	protected readonly ngxCookieService: NgxCookieService = inject(NgxCookieService);
+	/**
+	 * An instance of the ChangeDetectorRef
+	 */
+	protected readonly cdRef: ChangeDetectorRef = inject(ChangeDetectorRef);
+	/**
+	 * The custom fallback component type
+	 */
+	protected readonly component: Type<NgxCookiesFallBackComponent> = inject(
 		NgxCookiesFallbackComponentToken,
 		{ optional: true }
 	);
 
 	/**
-	 * The needed templateRefs
+	 * The templateRef for the then block
 	 */
-	private thenTemplateRef: TemplateRef<any> | null = null;
-	private elseTemplateRef: TemplateRef<any> | null = null;
+	protected thenTemplateRef: TemplateRef<any> | null = null;
+	/**
+	 * The templateRef for the else block
+	 */
+	protected elseTemplateRef: TemplateRef<any> | null = null;
 
 	/**
 	 * The ref of the component we wish to render as a fallback
 	 */
-	private componentRef: ComponentRef<NgxCookiesFallBackComponent>;
+	protected componentRef: ComponentRef<NgxCookiesFallBackComponent>;
 
 	/**
 	 * The list of cookies we need to check
 	 */
-	private cookies: NgxHasCookieConfiguration[] = [];
+	protected cookies: NgxHasCookieConfiguration[] = [];
 
 	/**
 	 * A cookie or list of cookies the item should have
@@ -100,7 +118,7 @@ export class NgxHasCookieDirective implements OnDestroy {
 	/**
 	 * Updates the view and hides/renders the template as needed
 	 */
-	private updateView(): void {
+	protected updateView(): void {
 		// Iben: Dispose the current subscription
 		this.dispose();
 
@@ -152,7 +170,7 @@ export class NgxHasCookieDirective implements OnDestroy {
 	/**
 	 * Dispose the current subscription
 	 */
-	private dispose(): void {
+	protected dispose(): void {
 		if (this.destroyed$) {
 			this.destroyed$.next();
 			this.destroyed$.complete();
@@ -162,7 +180,7 @@ export class NgxHasCookieDirective implements OnDestroy {
 	/**
 	 * Render the template on which the directive is set
 	 */
-	private renderThenTemplate(): void {
+	protected renderThenTemplate(): void {
 		// Iben: If a thenTemplateRef is provided, render the template
 		if (this.thenTemplateRef) {
 			this.viewContainer.createEmbeddedView(this.thenTemplateRef);
@@ -172,7 +190,7 @@ export class NgxHasCookieDirective implements OnDestroy {
 	/**
 	 * Render the fallbackTemplate or fallBackComponent
 	 */
-	private renderElseTemplate(): void {
+	protected renderElseTemplate(): void {
 		// Iben: If a custom template ref was provided, render the template and early exit
 		if (this.hasCookieElse()) {
 			this.viewContainer.createEmbeddedView(this.hasCookieElse());

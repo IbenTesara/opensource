@@ -75,7 +75,7 @@ export abstract class NgxFormsControlValueAccessor<
 	/**
 	 * A subject to hold the parent control
 	 */
-	private readonly parent: WritableSignal<AbstractControl> = signal<AbstractControl>(undefined);
+	protected readonly parent: WritableSignal<AbstractControl> = signal<AbstractControl>(undefined);
 
 	/**
 	 * A reference to the control tied to this control value accessor

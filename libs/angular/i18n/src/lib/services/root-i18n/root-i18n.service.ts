@@ -127,7 +127,7 @@ export class NgxI18nRootService {
 	 *
 	 * @param {string} language - The newly proposed language
 	 */
-	private getNewLanguage(language: string): string {
+	protected getNewLanguage(language: string): string {
 		// Iben: Save the currently being set language
 		let newLanguage = language;
 

@@ -34,39 +34,57 @@ import { convertToArray } from '../../utils';
 	selector: '[ngxHasPermission]',
 })
 export class NgxHasPermissionDirective<PermissionType extends string> implements OnDestroy {
-	private viewContainer = inject(ViewContainerRef);
-	private readonly authenticationService = inject<NgxAuthenticationAbstractService>(
+	/**
+	 * An instance of the ViewContainerRef
+	 */
+	protected viewContainer = inject(ViewContainerRef);
+	/**
+	 * The provided AuthenticationService implementation
+	 */
+	protected readonly authenticationService = inject<NgxAuthenticationAbstractService>(
 		NgxAuthenticationServiceToken
 	);
-	private readonly cdRef = inject(ChangeDetectorRef);
+	/**
+	 * The provided ChangeDetectorRef
+	 */
+	protected readonly cdRef = inject(ChangeDetectorRef);
 
 	/**
 	 * The destroyed state of the directive
 	 */
-	private destroyed$: Subject<void>;
+	protected destroyed$: Subject<void>;
 
 	/**
-	 * The needed templateRefs
+	 * The templateRef for the then block
 	 */
-	private thenTemplateRef: TemplateRef<any> | null = null;
-	private thenViewRef: EmbeddedViewRef<any> | null = null;
-	private elseTemplateRef: TemplateRef<any> | null = null;
-	private elseViewRef: EmbeddedViewRef<any> | null = null;
+	protected thenTemplateRef: TemplateRef<any> | null = null;
+	/**
+	 * The viewRef for the then block
+	 */
+	protected thenViewRef: EmbeddedViewRef<any> | null = null;
+	/**
+	 * The templateRef for the else block
+	 */
+	protected elseTemplateRef: TemplateRef<any> | null = null;
+	/**
+	 * The viewRef for the else block
+	 */
+	protected elseViewRef: EmbeddedViewRef<any> | null = null;
 
 	/**
 	 * The (list of) permission(s) we need to check
 	 */
-	private permission: PermissionType | PermissionType[] = [];
+	protected permission: PermissionType | PermissionType[] = [];
 
 	/**
 	 * Whether the permission should be enabled
 	 */
-	private shouldHavePermission: boolean = true;
+	protected shouldHavePermission: boolean = true;
 
 	/**
 	 * Whether all permissions should be enabled
 	 */
-	private shouldHaveAllPermissions: boolean = true;
+	protected shouldHaveAllPermissions: boolean = true;
 
 	/**
 	 * A permission or list of permissions the item should have
@@ -114,7 +132,7 @@ export class NgxHasPermissionDirective<PermissionType extends string> implements
 	/**
 	 * Updates the view and hides/renders the template as needed
 	 */
-	private updateView(): void {
+	protected updateView(): void {
 		// Iben: Dispose the current subscription
 		this.dispose();
 
@@ -171,7 +189,7 @@ export class NgxHasPermissionDirective<PermissionType extends string> implements
 	/**
 	 * Dispose the current subscription
 	 */
-	private dispose(): void {
+	protected dispose(): void {
 		if (this.destroyed$) {
 			this.destroyed$.next();
 			this.destroyed$.complete();

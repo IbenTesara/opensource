@@ -37,9 +37,20 @@ import { NgxAccordionComponent } from '../accordion.component';
 	},
 })
 export class NgxAccordionItemComponent implements OnInit, AfterViewInit, OnDestroy {
-	private readonly parent: NgxAccordionComponent = inject(NgxAccordionComponent);
-	private readonly cdRef: ChangeDetectorRef = inject(ChangeDetectorRef);
-	private readonly renderer: Renderer2 = inject(Renderer2);
+	/**
+	 * An instance of the parent NgxAccordionComponent
+	 */
+	protected readonly parent: NgxAccordionComponent = inject(NgxAccordionComponent);
+
+	/**
+	 * An instance of the ChangeDetectorRef
+	 */
+	protected readonly cdRef: ChangeDetectorRef = inject(ChangeDetectorRef);
+
+	/**
+	 * An instance of the Renderer2
+	 */
+	protected readonly renderer: Renderer2 = inject(Renderer2);
 
 	/**
 	 * The details element
@@ -119,7 +130,7 @@ export class NgxAccordionItemComponent implements OnInit, AfterViewInit, OnDestr
 	/**
 	 * Whether the accordion item is focussed
 	 */
-	private hasFocus: WritableSignal<boolean> = signal(false);
+	protected hasFocus: WritableSignal<boolean> = signal(false);
 
 	/**
 	 * Updates the current open/closed state of the accordion item, regardless of the disabled state
@@ -203,7 +214,7 @@ export class NgxAccordionItemComponent implements OnInit, AfterViewInit, OnDestr
 	 *
 	 * @param  action - The provided action
 	 */
-	private handleWhenFocussed(action: () => void) {
+	protected handleWhenFocussed(action: () => void) {
 		// Iben: Early exit if there's no focus
 		if (!this.hasFocus()) {
 			return;

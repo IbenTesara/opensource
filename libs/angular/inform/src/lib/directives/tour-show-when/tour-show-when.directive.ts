@@ -23,21 +23,40 @@ import { NgxTourService } from '../../services';
 	selector: '[ngxTourShowWhen]',
 })
 export class NgxTourShowWhenDirective implements OnDestroy {
-	private readonly tourService = inject<NgxTourService>(NgxTourService);
-	private viewContainer = inject(ViewContainerRef);
+	/**
+	 * An instance of the NgxTourService
+	 */
+	protected readonly tourService = inject<NgxTourService>(NgxTourService);
+
+	/**
+	 * An instance of the ViewContainerRef
+	 */
+	protected viewContainer = inject(ViewContainerRef);
 
 	/**
 	 * The destroyed state of the directive
 	 */
-	private destroyed$: Subject<void>;
+	protected destroyed$: Subject<void>;
 
 	/**
-	 * The needed templateRefs
+	 * The templateRef for the then block
 	 */
-	private thenTemplateRef: TemplateRef<any> | null = null;
-	private thenViewRef: EmbeddedViewRef<any> | null = null;
-	private elseTemplateRef: TemplateRef<any> | null = null;
-	private elseViewRef: EmbeddedViewRef<any> | null = null;
+	protected thenTemplateRef: TemplateRef<any> | null = null;
+
+	/**
+	 * The viewRef for the then block
+	 */
+	protected thenViewRef: EmbeddedViewRef<any> | null = null;
+
+	/**
+	 * The templateRef for the else block
+	 */
+	protected elseTemplateRef: TemplateRef<any> | null = null;
+
+	/**
+	 * The viewRef for the else block
+	 */
+	protected elseViewRef: EmbeddedViewRef<any> | null = null;
 
 	constructor() {
 		const templateRef = inject<TemplateRef<any>>(TemplateRef);
@@ -71,7 +90,10 @@ export class NgxTourShowWhenDirective implements OnDestroy {
 		this.dispose();
 	}
 
-	private updateView(): void {
+	/**
+	 * Updates the view according to the current tour index
+	 */
+	protected updateView(): void {
 		// Iben: Dispose the current subscription
 		this.dispose();
 
@@ -120,7 +142,7 @@ export class NgxTourShowWhenDirective implements OnDestroy {
 	/**
 	 * Dispose the current subscription
 	 */
-	private dispose(): void {
+	protected dispose(): void {
 		if (this.destroyed$) {
 			this.destroyed$.next();
 			this.destroyed$.complete();

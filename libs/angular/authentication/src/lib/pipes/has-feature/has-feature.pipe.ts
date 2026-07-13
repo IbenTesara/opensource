@@ -13,22 +13,29 @@ import { convertToArray } from '../../utils';
 	pure: false,
 })
 export class NgxHasFeaturePipe<FeatureType extends string> implements PipeTransform, OnDestroy {
-	private readonly authenticationService = inject<NgxAuthenticationAbstractService>(NgxAuthenticationServiceToken);
-	private readonly cdRef = inject(ChangeDetectorRef);
+	/**
+	 * An instance of the NgxAuthenticationAbstractService
+	 */
+	protected readonly authenticationService = inject<NgxAuthenticationAbstractService>(NgxAuthenticationServiceToken);
+
+	/**
+	 * An instance of the ChangeDetectorRef
+	 */
+	protected readonly cdRef = inject(ChangeDetectorRef);
 
 	/**
 	 * Subject to hold the destroyed state of the current observable
 	 */
-	private destroyed$: Subject<void>;
+	protected destroyed$: Subject<void>;
 	/**
 	 * The latest value of the Observable, whether or not the feature is provided
 	 */
-	private hasFeature: boolean;
+	protected hasFeature: boolean;
 	/**
 	 * Instance of the change detector ref, implemented like this according to the async pipe implementation
 	 * https://github.com/angular/angular/blob/main/packages/common/src/pipes/async_pipe.ts
 	 */
-	private changeDetectorRef: ChangeDetectorRef | null;
+	protected changeDetectorRef: ChangeDetectorRef | null;
 
 	constructor() {
 		const cdRef = this.cdRef;
@@ -61,7 +68,7 @@ export class NgxHasFeaturePipe<FeatureType extends string> implements PipeTransf
 	 *
 	 * @param observable - The hasFeature observable
 	 */
-	private subscribe(observable: Observable<boolean>): void {
+	protected subscribe(observable: Observable<boolean>): void {
 		// Iben: Dispose the current subscription
 		this.dispose();
 
@@ -85,7 +92,7 @@ export class NgxHasFeaturePipe<FeatureType extends string> implements PipeTransf
 	/**
 	 * Dispose of the feature observable when existing
 	 */
-	private dispose(): void {
+	protected dispose(): void {
 		// Iben: In case there's a destroyed, we have an observable and we destroy the subscription and reset the observable
 		if (this.destroyed$) {
 			this.destroyed$.next();
