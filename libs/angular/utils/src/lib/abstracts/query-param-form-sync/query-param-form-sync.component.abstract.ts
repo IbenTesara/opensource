@@ -1,7 +1,8 @@
-import { Directive, OnDestroy, OnInit, inject } from '@angular/core';
+import { Directive, OnDestroy, OnInit, inject, DestroyRef } from '@angular/core';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { AbstractControl } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Observable, Subject, filter, take, takeUntil, tap } from 'rxjs';
+import { Observable, filter, take, tap } from 'rxjs';
 
 export type StringifiedQueryParamsType<QueryParamsType> = {
 	[key in keyof QueryParamsType]: string;
@@ -17,7 +18,7 @@ export abstract class NgxQueryParamFormSyncComponent<
 	protected readonly route = inject(ActivatedRoute);
 	protected readonly router = inject(Router);
 
-	protected readonly destroyed$: Subject<void> = new Subject();
+	protected readonly destroyRef = inject(DestroyRef);
 
 	/**
 	 * The form in which we will save the queryParam data
@@ -58,7 +59,7 @@ export abstract class NgxQueryParamFormSyncComponent<
 						this.handleDataChanges(data);
 					}
 				}),
-				takeUntil(this.destroyed$)
+				takeUntilDestroyed(this.destroyRef)
 			)
 			.subscribe();
 
@@ -92,15 +93,12 @@ export abstract class NgxQueryParamFormSyncComponent<
 					// Iben: Set the current form value
 					this.form.setValue(value);
 				}),
-				takeUntil(this.destroyed$)
+				takeUntilDestroyed(this.destroyRef)
 			)
 			.subscribe();
 	}
 
 	public ngOnDestroy(): void {
-		this.destroyed$.next();
-		this.destroyed$.complete();
-
 		this.clearData();
 	}
 

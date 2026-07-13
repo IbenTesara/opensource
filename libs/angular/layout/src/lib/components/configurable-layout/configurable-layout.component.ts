@@ -12,7 +12,6 @@ import {
 	AfterContentChecked,
 	Component,
 	OnChanges,
-	OnDestroy,
 	OnInit,
 	TemplateRef,
 	WritableSignal,
@@ -25,7 +24,10 @@ import {
 	contentChild,
 	effect,
 	InputSignal,
+	DestroyRef,
+	inject,
 } from '@angular/core';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import {
 	ControlValueAccessor,
 	FormControl,
@@ -33,16 +35,7 @@ import {
 	NG_VALUE_ACCESSOR,
 	ReactiveFormsModule,
 } from '@angular/forms';
-import {
-	BehaviorSubject,
-	Observable,
-	Subject,
-	filter,
-	switchMap,
-	take,
-	takeUntil,
-	tap,
-} from 'rxjs';
+import { BehaviorSubject, filter, switchMap, take, tap } from 'rxjs';
 
 import { NgxAccessibleDragAndDrop } from '../../directives';
 import { NgxConfigurableLayoutItemSizePipe } from '../../pipes';
@@ -91,19 +84,18 @@ import { NgxConfigurableLayoutItemComponent } from '../configurable-layout-item/
 	changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class NgxConfigurableLayoutComponent
-	implements
-		ControlValueAccessor,
-		OnInit,
-		AfterContentChecked,
-		OnDestroy,
-		OnChanges,
-		AfterViewInit
+	implements ControlValueAccessor, OnInit, AfterContentChecked, OnChanges, AfterViewInit
 {
 	/**
 	 * A subject to mark the isActiveFormRecord as initialized
 	 */
 	private readonly isActiveFormRecordInitializedSubject: BehaviorSubject<boolean> =
 		new BehaviorSubject(false);
+
+	/**
+	 * A subject to hold the destroy flow
+	 */
+	private readonly destroyRef = inject(DestroyRef);
 
 	/**
 	 * A list of the configurable item templates.
@@ -119,9 +111,6 @@ export class NgxConfigurableLayoutComponent
 	// Until we have moved to an NX workspace setup, we are unable to install the required
 	//  dependencies to make the `ngx-forms` work.
 	//
-	// TODO: use the ngx-forms formAccessor instead of copying its internal way of working
-	private readonly destroyedSubject: Subject<void> = new Subject();
-	private readonly destroyed$: Observable<void> = this.destroyedSubject.asObservable();
 	public readonly form: FormControl<NgxConfigurableLayoutGrid> =
 		new FormControl<NgxConfigurableLayoutGrid>([]);
 	public readonly isActiveFormRecord: FormRecord<FormControl<boolean>> = new FormRecord({});
@@ -237,7 +226,7 @@ export class NgxConfigurableLayoutComponent
 					this.onChanged(this.form.value);
 					this.onTouched();
 				}),
-				takeUntil(this.destroyed$)
+				takeUntilDestroyed(this.destroyRef)
 			)
 			.subscribe();
 
@@ -265,7 +254,7 @@ export class NgxConfigurableLayoutComponent
 					// Iben: Update the parent form
 					this.form.setValue(result);
 				}),
-				takeUntil(this.destroyed$)
+				takeUntilDestroyed(this.destroyRef)
 			)
 			.subscribe();
 	}
@@ -306,11 +295,6 @@ export class NgxConfigurableLayoutComponent
 	public ngAfterViewInit(): void {
 		// Femke: Run after view init so we have the initial templates
 		this.handleItemTemplates();
-	}
-
-	public ngOnDestroy(): void {
-		this.destroyedSubject.next();
-		this.destroyedSubject.complete();
 	}
 
 	// TODO: use the ngx-forms formAccessor instead of copying its internal way of working

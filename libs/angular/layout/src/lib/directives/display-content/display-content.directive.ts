@@ -11,8 +11,10 @@ import {
 	effect,
 	inject,
 	input,
+	DestroyRef,
 } from '@angular/core';
-import { Subject, distinctUntilChanged, takeUntil, tap } from 'rxjs';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { Subject, distinctUntilChanged, tap } from 'rxjs';
 
 import { NgxDisplayContentComponent } from '../../abstracts';
 import { NgxOnlineService } from '../../services';
@@ -33,34 +35,55 @@ import {
 	standalone: true,
 })
 export class NgxDisplayContentDirective implements AfterViewInit, OnDestroy {
-	private readonly elementRef = inject(ElementRef);
-	private readonly templateRef = inject<TemplateRef<any>>(TemplateRef);
-	private readonly cdRef = inject(ChangeDetectorRef);
-	private readonly viewContainer = inject(ViewContainerRef);
-	private readonly onlineService = inject(NgxOnlineService);
-	private readonly configuration = inject<NgxDisplayContentConfiguration>(
+	/**
+	 * An instance of the ElementRef
+	 */
+	protected readonly elementRef = inject(ElementRef);
+	/**
+	 * An instance of the TemplateRef
+	 */
+	protected readonly templateRef = inject<TemplateRef<any>>(TemplateRef);
+	/**
+	 * An instance of the ChangeDetectorRef
+	 */
+	protected readonly cdRef = inject(ChangeDetectorRef);
+
+	/**
+	 * An instance of the ViewContainerRef
+	 */
+	protected readonly viewContainer = inject(ViewContainerRef);
+
+	/**
+	 * An instance of the OnlineService
+	 */
+	protected readonly onlineService = inject(NgxOnlineService);
+
+	/**
+	 * The configuration used to display the content
+	 */
+	protected readonly configuration = inject<NgxDisplayContentConfiguration>(
 		NgxDisplayContentConfigurationToken
 	);
 
 	/**
-	 * A subject to handle the destroyed flow
+	 * A subject to hold the destroy flow
 	 */
-	private readonly onDestroySubject: Subject<void> = new Subject<void>();
+	protected readonly destroyRef = inject(DestroyRef);
 
 	/**
 	 * A subject to know when we need to update the view
 	 */
-	private readonly updateViewSubject: Subject<void> = new Subject<void>();
+	protected readonly updateViewSubject: Subject<void> = new Subject<void>();
 
 	/**
 	 * Holds an optional override configuration
 	 */
-	private overrideConfiguration: NgxDisplayContentOverrideConfiguration = {};
+	protected overrideConfiguration: NgxDisplayContentOverrideConfiguration = {};
 
 	/**
 	 * Holds the conditions we use to render the component
 	 */
-	private conditions: NgxDisplayContentConditions = {};
+	protected conditions: NgxDisplayContentConditions = {};
 
 	/**
 	 * Renders the item or a default fallback based on the provided conditions
@@ -93,7 +116,7 @@ export class NgxDisplayContentDirective implements AfterViewInit, OnDestroy {
 						// Iben: Notify that the view needs to be updated
 						this.updateViewSubject.next();
 					}),
-					takeUntil(this.onDestroySubject)
+					takeUntilDestroyed()
 				)
 				.subscribe();
 		}
@@ -157,7 +180,7 @@ export class NgxDisplayContentDirective implements AfterViewInit, OnDestroy {
 					// Iben: Detect the changes so this works with (nested) OnPush component
 					this.cdRef.detectChanges();
 				}),
-				takeUntil(this.onDestroySubject.asObservable())
+				takeUntilDestroyed(this.destroyRef)
 			)
 			.subscribe();
 
@@ -167,8 +190,6 @@ export class NgxDisplayContentDirective implements AfterViewInit, OnDestroy {
 
 	public ngOnDestroy(): void {
 		this.elementRef.nativeElement.parentElement?.removeAttribute('aria-busy');
-		this.onDestroySubject.next();
-		this.onDestroySubject.complete();
 	}
 
 	/**
@@ -177,7 +198,7 @@ export class NgxDisplayContentDirective implements AfterViewInit, OnDestroy {
 	 * @param  status - The status we're handling
 	 * @param  component - The component we're wishing to render
 	 */
-	private renderTemplate(
+	protected renderTemplate(
 		status: NgxDisplayContentStatus,
 		component: Type<NgxDisplayContentComponent>
 	): void {
@@ -212,7 +233,7 @@ export class NgxDisplayContentDirective implements AfterViewInit, OnDestroy {
 	/**
 	 * Renders the initial template
 	 */
-	private renderInitialTemplate(): void {
+	protected renderInitialTemplate(): void {
 		this.viewContainer.createEmbeddedView(this.templateRef);
 	}
 
@@ -221,7 +242,7 @@ export class NgxDisplayContentDirective implements AfterViewInit, OnDestroy {
 	 *
 	 * @param conditions - The conditions we want to merge with the current set
 	 */
-	private updateConditions(conditions: NgxDisplayContentConditions): void {
+	protected updateConditions(conditions: NgxDisplayContentConditions): void {
 		// Iben: Update the conditions, but use a merge so that the online status can be preserved
 		if (conditions) {
 			this.conditions = {
@@ -235,7 +256,7 @@ export class NgxDisplayContentDirective implements AfterViewInit, OnDestroy {
 	 * Sets the aria-live tag of the item
 	 * @param  value - The value we wish to set
 	 */
-	private setAriaLiveTag(value: 'polite' | 'assertive' | 'off'): void {
+	protected setAriaLiveTag(value: 'polite' | 'assertive' | 'off'): void {
 		// Iben: Get the parent element and early exit if it isn't found
 		const parentElement: HTMLElement = this.elementRef.nativeElement.parentElement;
 
@@ -275,7 +296,7 @@ export class NgxDisplayContentDirective implements AfterViewInit, OnDestroy {
 	 * Sets the aria-busy tag of the item
 	 * @param  isLoading - The loading state of the item
 	 */
-	private setAriaBusyTag(isLoading: boolean): void {
+	protected setAriaBusyTag(isLoading: boolean): void {
 		this.elementRef.nativeElement.parentElement?.setAttribute('aria-busy', `${isLoading}`);
 	}
 }

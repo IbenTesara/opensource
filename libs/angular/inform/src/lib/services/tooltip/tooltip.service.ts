@@ -5,8 +5,9 @@ import {
 	OverlayRef,
 } from '@angular/cdk/overlay';
 import { ComponentPortal } from '@angular/cdk/portal';
-import { Injectable, OnDestroy, inject } from '@angular/core';
-import { BehaviorSubject, pairwise, Subject, takeUntil, tap } from 'rxjs';
+import { Injectable, inject } from '@angular/core';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { BehaviorSubject, pairwise, tap } from 'rxjs';
 
 import { NgxTooltipConfigurationToken } from '../../tokens';
 import {
@@ -19,7 +20,7 @@ import {
 @Injectable({
 	providedIn: 'root',
 })
-export class NgxTooltipService implements OnDestroy {
+export class NgxTooltipService {
 	private readonly configuration = inject<NgxTooltipConfiguration>(NgxTooltipConfigurationToken);
 	private readonly overlayService = inject(Overlay);
 	private readonly overlayPositionBuilder = inject(OverlayPositionBuilder);
@@ -32,11 +33,6 @@ export class NgxTooltipService implements OnDestroy {
 	 */
 	private readonly tooltipEventsSubject: BehaviorSubject<NgxTooltipEvent | undefined> =
 		new BehaviorSubject<NgxTooltipEvent | undefined>(undefined);
-
-	/**
-	 * A subject to hold the destroy event
-	 */
-	private readonly onDestroySubject: Subject<void> = new Subject();
 
 	/**
 	 * The overlayRef used to attach the tooltip too
@@ -109,7 +105,7 @@ export class NgxTooltipService implements OnDestroy {
 						this.removeToolTip();
 					}
 				}),
-				takeUntil(this.onDestroySubject.asObservable())
+				takeUntilDestroyed()
 			)
 			.subscribe();
 	}
@@ -154,7 +150,7 @@ export class NgxTooltipService implements OnDestroy {
 		const tooltipPortal = new ComponentPortal(component || this.configuration.component);
 
 		// Iben: Attach the tooltipPortal to the overlayRef
-    const tooltipRef = this.overlayRef.attach( tooltipPortal );
+		const tooltipRef = this.overlayRef.attach(tooltipPortal);
 
 		// Iben: Pass the data to the component
 		tooltipRef.setInput('text', text);
@@ -189,13 +185,5 @@ export class NgxTooltipService implements OnDestroy {
 			},
 			event.active ? 0 : 100
 		);
-	}
-
-	/**
-	 * Emit the destroy event
-	 */
-	public ngOnDestroy(): void {
-		this.onDestroySubject.next();
-		this.onDestroySubject.complete();
 	}
 }

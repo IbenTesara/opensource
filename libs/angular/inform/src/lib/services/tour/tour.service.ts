@@ -1,8 +1,8 @@
 import { FocusTrapFactory, FocusTrap } from '@angular/cdk/a11y';
 import { ConnectedPosition, Overlay, OverlayConfig, OverlayRef } from '@angular/cdk/overlay';
 import { ComponentPortal } from '@angular/cdk/portal';
-import { ComponentRef, Injectable, OnDestroy, inject } from '@angular/core';
-import { outputToObservable } from '@angular/core/rxjs-interop';
+import { ComponentRef, Injectable, OnDestroy, inject, DestroyRef } from '@angular/core';
+import { outputToObservable, takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { NgxWindowService } from '@ibenvandeveire/ngx-core';
 import {
 	BehaviorSubject,
@@ -63,7 +63,7 @@ export class NgxTourService implements OnDestroy {
 	/**
 	 * A subject to hold the destroyed event
 	 */
-	private readonly destroyedSubject: Subject<void> = new Subject<void>();
+	private readonly destroyRef = inject(DestroyRef);
 
 	/**
 	 * A subject to hold the window resize event
@@ -210,7 +210,7 @@ export class NgxTourService implements OnDestroy {
 				concatMap((event) => {
 					return this.handleRegistrationEvent(event);
 				}),
-				takeUntil(this.destroyedSubject)
+				takeUntilDestroyed()
 			)
 			.subscribe();
 
@@ -386,8 +386,6 @@ export class NgxTourService implements OnDestroy {
 		}
 
 		// Iben: Complete all subscriptions
-		this.destroyedSubject.next();
-		this.destroyedSubject.complete();
 		this.tourEndedSubject.next();
 		this.tourEndedSubject.complete();
 		this.windowResizeSubject.next();
@@ -586,7 +584,7 @@ export class NgxTourService implements OnDestroy {
 
 							return of(null);
 						}),
-						takeUntil(this.destroyedSubject)
+						takeUntilDestroyed(this.destroyRef)
 					)
 					.subscribe();
 			} else {

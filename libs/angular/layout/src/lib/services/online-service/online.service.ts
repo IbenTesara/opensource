@@ -1,23 +1,19 @@
-import { Injectable, OnDestroy, inject } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { NgxWindowService } from '@ibenvandeveire/ngx-core';
-import { Observable, Subject, fromEvent, takeUntil, tap } from 'rxjs';
+import { Observable, Subject, fromEvent, tap } from 'rxjs';
 
 /**
  * A service that provides the currently online status of the application
  */
 @Injectable({ providedIn: 'root' })
-export class NgxOnlineService implements OnDestroy {
+export class NgxOnlineService {
 	private readonly windowService = inject(NgxWindowService);
 
 	/**
 	 * A subject that emits whenever the application is on or offline
 	 */
 	private readonly onlineSubject: Subject<boolean> = new Subject<boolean>();
-
-	/**
-	 * A subject to handle the destroyed flow
-	 */
-	private readonly onDestroySubject: Subject<void> = new Subject();
 
 	/**
 	 * An observable that emits whenever the application is on or offline
@@ -33,7 +29,7 @@ export class NgxOnlineService implements OnDestroy {
 					tap(() => {
 						this.onlineSubject.next(true);
 					}),
-					takeUntil(this.onDestroySubject.asObservable())
+					takeUntilDestroyed()
 				)
 				.subscribe();
 
@@ -42,15 +38,9 @@ export class NgxOnlineService implements OnDestroy {
 					tap(() => {
 						this.onlineSubject.next(false);
 					}),
-					takeUntil(this.onDestroySubject.asObservable())
+					takeUntilDestroyed()
 				)
 				.subscribe();
 		}
-	}
-
-	ngOnDestroy(): void {
-		// Iben: Complete the destroyed subject
-		this.onDestroySubject.next();
-		this.onDestroySubject.complete();
 	}
 }
