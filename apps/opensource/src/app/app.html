@@ -1,5 +1,9 @@
 <ngx-toast-container />
 
+@if (navigating()) {
+<div class="nav-loading-indicator" role="status" aria-live="polite">Loading…</div>
+}
+
 <h1>{{'title' | translate}}</h1>
 
 <ng-container *ngxMediaQuery="['Desktop', 'Tablet']">
@@ -28,5 +32,24 @@
 <button-test label="Hello" />
 
 {{['Desktop', 'DesktopWide', 'Tablet'] | ngxMatchesQuery: 'some'}}
+
+<nav>
+	<ul>
+		<li>
+			<a
+				[routerLink]="navigating() ? null : ['/', i18nService.currentLanguage, 'lib-1']"
+				[attr.aria-disabled]="navigating()"
+				>Move to lazy loaded lib-1</a
+			>
+		</li>
+		<li>
+			<a
+				[routerLink]="navigating() ? null : ['/', i18nService.currentLanguage, 'lib-2']"
+				[attr.aria-disabled]="navigating()"
+				>Move to lazy loaded lib-2</a
+			>
+		</li>
+	</ul>
+</nav>
 
 <router-outlet></router-outlet>

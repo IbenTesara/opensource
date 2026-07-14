@@ -1,8 +1,17 @@
-import { Component, inject, signal, WritableSignal, ChangeDetectionStrategy } from '@angular/core';
-import { Router, RouterModule } from '@angular/router';
+import { Component, inject, Signal, signal, WritableSignal, ChangeDetectionStrategy } from '@angular/core';
+import { toSignal } from '@angular/core/rxjs-interop';
+import {
+	NavigationCancel,
+	NavigationEnd,
+	NavigationError,
+	NavigationStart,
+	Router,
+	RouterModule,
+} from '@angular/router';
 import { TranslatePipe } from '@ngx-translate/core';
-import { from, of, switchMap } from 'rxjs';
+import { filter, from, map, of, switchMap } from 'rxjs';
 
+import { NgxI18nService } from '@lib/ngx-i18n';
 import {
 	NgxModalService,
 	NgxToastContainerComponent,
@@ -43,9 +52,29 @@ export class App {
 	private readonly modalService = inject(NgxModalService);
 	private readonly router: Router = inject(Router);
 	private readonly mediaQueryService = inject(NgxMediaQueryService);
+	protected readonly i18nService: NgxI18nService = inject(NgxI18nService);
 	private toastAmount: number = 1;
 
 	public loading: WritableSignal<boolean> = signal(false);
+
+	/**
+	 * Guards/resolvers on a route (e.g. the lib-2 start resolver) can take a while to settle.
+	 * Angular keeps the previously activated route rendered in the meantime, so without this
+	 * indicator that wait is invisible and a click during it just cancels the navigation.
+	 */
+	public readonly navigating: Signal<boolean> = toSignal(
+		this.router.events.pipe(
+			filter(
+				(event) =>
+					event instanceof NavigationStart ||
+					event instanceof NavigationEnd ||
+					event instanceof NavigationCancel ||
+					event instanceof NavigationError
+			),
+			map((event) => event instanceof NavigationStart)
+		),
+		{ initialValue: false }
+	);
 
 	constructor() {
 		this.mediaQueryService.currentQueryMatch$.subscribe(console.log);
