@@ -24,9 +24,11 @@
 			"cache": true,
 			"inputs": [
 				"default",
+				"^default",
 				"{workspaceRoot}/.eslintrc.json",
 				"{workspaceRoot}/.eslintignore",
-				"{workspaceRoot}/eslint.config.mjs"
+				"{workspaceRoot}/eslint.config.mjs",
+				"{workspaceRoot}/tools/eslint-rules/**/*"
 			]
 		},
 		"@nx/jest:jest": {
@@ -80,5 +82,7 @@
 				"targetName": "eslint:lint"
 			}
 		}
-	]
+	],
+	"analytics": false,
+	"neverConnectToCloud": true
 }

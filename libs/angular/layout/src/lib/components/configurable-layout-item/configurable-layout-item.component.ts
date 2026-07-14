@@ -1,4 +1,4 @@
-import { Component, TemplateRef, input, viewChild } from '@angular/core';
+import { Component, TemplateRef, input, viewChild, ChangeDetectionStrategy } from '@angular/core';
 
 /**
  * The layout item pairs with the `<ngx-configurable-layout>` container.
@@ -10,6 +10,7 @@ import { Component, TemplateRef, input, viewChild } from '@angular/core';
 @Component({
 	selector: 'ngx-configurable-layout-item',
 	templateUrl: './configurable-layout-item.component.html',
+	changeDetection: ChangeDetectionStrategy.Eager,
 	standalone: true,
 })
 export class NgxConfigurableLayoutItemComponent {

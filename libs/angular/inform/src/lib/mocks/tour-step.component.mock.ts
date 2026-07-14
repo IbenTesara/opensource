@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 
 import { NgxTourStepComponent } from '../abstracts';
 
@@ -6,6 +6,7 @@ import { NgxTourStepComponent } from '../abstracts';
 @Component({
 	selector: 'mock-tour-step-component',
 	template: '',
+	changeDetection: ChangeDetectionStrategy.Eager,
 	standalone: true,
 })
 export class MockTourStepComponent extends NgxTourStepComponent {}

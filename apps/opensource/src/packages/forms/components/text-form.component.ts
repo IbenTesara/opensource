@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
 
 import { createAccessorProviders, NgxDynamicFormInputComponent } from '@lib/ngx-forms';
@@ -13,6 +13,7 @@ import { createAccessorProviders, NgxDynamicFormInputComponent } from '@lib/ngx-
 		</div>
 	`,
 	imports: [ReactiveFormsModule],
+	changeDetection: ChangeDetectionStrategy.Eager,
 	providers: [createAccessorProviders(TextFormComponent)],
 })
 export class TextFormComponent extends NgxDynamicFormInputComponent<

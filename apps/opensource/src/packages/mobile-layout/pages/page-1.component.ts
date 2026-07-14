@@ -1,4 +1,4 @@
-import { Component, inject, Injector } from '@angular/core';
+import { Component, inject, Injector, ChangeDetectionStrategy } from '@angular/core';
 import { TranslatePipe } from '@ngx-translate/core';
 
 import { NgxMobileLayoutService } from '@lib/ngx-layout';
@@ -11,6 +11,7 @@ import { Page1Service } from './page1.service';
 	selector: 'page-1',
 	template: `{{ 'content' | translate }} <button (click)="open()">Open flyout</button>`,
 	imports: [TranslatePipe],
+	changeDetection: ChangeDetectionStrategy.Eager,
 	providers: [Page1Service],
 })
 export class Page1Component {

@@ -1,4 +1,4 @@
-import { Component, inject, signal, WritableSignal } from '@angular/core';
+import { Component, inject, signal, WritableSignal, ChangeDetectionStrategy } from '@angular/core';
 import { Router, RouterModule } from '@angular/router';
 import { TranslatePipe } from '@ngx-translate/core';
 import { from, of, switchMap } from 'rxjs';
@@ -34,6 +34,7 @@ import { ButtonTestComponent } from '../packages/layout/components/button/button
 	],
 	selector: 'app-root',
 	templateUrl: './app.html',
+	changeDetection: ChangeDetectionStrategy.Eager,
 	styleUrl: './app.scss',
 })
 export class App {
@@ -69,7 +70,7 @@ export class App {
 									content: 'This is where we have the display content directive!',
 									tourItem: 'display-content',
 									beforeVisible: () => {
-										return from(this.router.navigate(['../../en','layout']));
+										return from(this.router.navigate(['../../en', 'layout']));
 									},
 								},
 						  ]);

@@ -1,4 +1,4 @@
-import { Component, signal, WritableSignal } from '@angular/core';
+import { Component, signal, WritableSignal, ChangeDetectionStrategy } from '@angular/core';
 
 import { NgxTourItemDirective } from '@lib/ngx-inform';
 import { NgxDisplayContentDirective, provideNgxDisplayContentConfiguration } from '@lib/ngx-layout';
@@ -30,6 +30,7 @@ import { TableComponent } from './components/table/table.component';
 		DashboardTestComponent,
 		NgxTourItemDirective,
 	],
+	changeDetection: ChangeDetectionStrategy.Eager,
 	templateUrl: './layout.component.html',
 })
 export class NgxLayoutPageComponent {

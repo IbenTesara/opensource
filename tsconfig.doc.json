@@ -1,4 +1,11 @@
 {
 	"include": ["libs/**/*.ts"],
-	"exclude": ["src/test.ts", "src/**/*.spec.ts"]
+	"exclude": ["src/test.ts", "src/**/*.spec.ts"],
+	"compilerOptions": {
+		"strict": false,
+		"noUncheckedSideEffectImports": false,
+		"types": ["*"],
+		"esModuleInterop": false,
+		"ignoreDeprecations": "6.0"
+	}
 }

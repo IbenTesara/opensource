@@ -1,4 +1,4 @@
-import { Component, signal } from '@angular/core';
+import { Component, signal, ChangeDetectionStrategy } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { NgxTreeGridRowDirective } from './tree-grid-row.directive';
@@ -8,6 +8,7 @@ import { NgxTreeGridDirective } from './tree-grid.directive';
 @Component({
 	standalone: true,
 	imports: [NgxTreeGridDirective, NgxTreeGridRowDirective, NgxTreeGridCellDirective],
+	changeDetection: ChangeDetectionStrategy.Eager,
 	template: `
 		<table [ngxTreeGrid]="isTreeGrid()" [ngxTreeGridExpandable]="isExpandable()">
 			<tr

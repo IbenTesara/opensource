@@ -1,4 +1,4 @@
-import { Component, input } from '@angular/core';
+import { Component, input, ChangeDetectionStrategy } from '@angular/core';
 
 import {
 	NgxDisplayContentComponent,
@@ -9,6 +9,7 @@ import {
 	selector: 'test-loading',
 	standalone: true,
 	template: '<p class="loading">Loading</p>',
+	changeDetection: ChangeDetectionStrategy.Eager,
 	host: {
 		class: 'loading-component',
 	},
@@ -17,6 +18,7 @@ export class TestLoadingComponent extends NgxDisplayContentComponent {}
 @Component({
 	selector: 'test-error',
 	standalone: true,
+	changeDetection: ChangeDetectionStrategy.Eager,
 	template: '<p class="error">Error</p>',
 })
 export class TestErrorComponent extends NgxDisplayContentComponent {}
@@ -24,6 +26,7 @@ export class TestErrorComponent extends NgxDisplayContentComponent {}
 @Component({
 	selector: 'test-offline',
 	standalone: true,
+	changeDetection: ChangeDetectionStrategy.Eager,
 	template: '<p class="offline">Offline</p>',
 })
 export class TestOfflineComponent extends NgxDisplayContentComponent {}
@@ -31,6 +34,7 @@ export class TestOfflineComponent extends NgxDisplayContentComponent {}
 @Component({
 	selector: 'test-data-error',
 	standalone: true,
+	changeDetection: ChangeDetectionStrategy.Eager,
 	template: '<p class="error">Error {{data()}}</p>',
 })
 export class TestErrorDataComponent extends NgxDisplayContentComponent {}
@@ -38,6 +42,7 @@ export class TestErrorDataComponent extends NgxDisplayContentComponent {}
 @Component({
 	selector: 'test-data',
 	template: '<p *displayContent="conditions()" class="content">Content</p>',
+	changeDetection: ChangeDetectionStrategy.Eager,
 	imports: [NgxDisplayContentDirective],
 })
 export class TestDisplayContentComponent {
@@ -59,6 +64,7 @@ export class TestDisplayContentComponent {
 
 		<ng-template #loadingTmpl><p class="custom-loading">Custom loading</p></ng-template>
 	`,
+	changeDetection: ChangeDetectionStrategy.Eager,
 	imports: [NgxDisplayContentDirective],
 })
 export class TestOverrideDisplayContentComponent {

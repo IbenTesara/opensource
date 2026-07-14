@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
 import { finalize, of, take } from 'rxjs';
 
@@ -10,6 +10,7 @@ import { openNgxModal } from './open-modal.operator';
 
 @Component({
 	selector: 'test-modal',
+	changeDetection: ChangeDetectionStrategy.Eager,
 	template: '',
 })
 class TestModalComponent extends NgxModalAbstractComponent<'Hello'> {}
@@ -29,7 +30,10 @@ describe('showNgxModal', () => {
 		source
 			.pipe(
 				take(1),
-				openNgxModal({ component: TestModalComponent, role: 'alertdialog', label: 'Test' }, service),
+				openNgxModal(
+					{ component: TestModalComponent, role: 'alertdialog', label: 'Test' },
+					service
+				),
 				finalize(() => {
 					done();
 				})

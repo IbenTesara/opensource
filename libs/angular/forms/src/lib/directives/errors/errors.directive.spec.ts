@@ -1,4 +1,10 @@
-import { ChangeDetectorRef, Component, Injector, forwardRef } from '@angular/core';
+import {
+	ChangeDetectorRef,
+	Component,
+	Injector,
+	forwardRef,
+	ChangeDetectionStrategy,
+} from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import {
 	FormControl,
@@ -40,6 +46,7 @@ import { NgxFormsErrorsDirective } from './errors.directive';
 			useExisting: forwardRef(() => FormAccessorComponent),
 		},
 	],
+	changeDetection: ChangeDetectionStrategy.Eager,
 	imports: [ReactiveFormsModule, NgxFormsErrorsDirective],
 })
 export class FormAccessorComponent extends FormAccessor<any, any> {
@@ -54,6 +61,7 @@ export class FormAccessorComponent extends FormAccessor<any, any> {
 @Component({
 	selector: 'kp-error',
 	template: `<p class="kp-error">{{ errors()[0] }}</p>`,
+	changeDetection: ChangeDetectionStrategy.Eager,
 	imports: [ReactiveFormsModule],
 })
 export class FormErrorComponent extends NgxFormsErrorAbstractComponent {}
@@ -73,14 +81,14 @@ describe('NgxFormsErrorsDirective', () => {
 				providers: [
 					ChangeDetectorRef,
 					Injector,
-					NgControl,
+					{ provide: NgControl, useValue: { control: new FormControl() } },
 					{
 						provide: NgxFormsErrorsConfigurationToken,
 						useValue: { showWhen: 'dirty', errors },
 					},
 				],
-      } );
-      TestBed.compileComponents();
+			});
+			TestBed.compileComponents();
 
 			fixture = TestBed.createComponent(FormAccessorComponent);
 
@@ -133,14 +141,14 @@ describe('NgxFormsErrorsDirective', () => {
 				providers: [
 					ChangeDetectorRef,
 					Injector,
-					NgControl,
+					{ provide: NgControl, useValue: { control: new FormControl() } },
 					{
 						provide: NgxFormsErrorsConfigurationToken,
 						useValue: { showWhen: 'touched', errors, component: FormErrorComponent },
 					},
 				],
 			});
-      TestBed.compileComponents();
+			TestBed.compileComponents();
 
 			fixture = TestBed.createComponent(FormAccessorComponent);
 
@@ -158,9 +166,9 @@ describe('NgxFormsErrorsDirective', () => {
 		});
 
 		it('should show the error when the control is touched and invalid ', () => {
-      fixture.componentRef.instance.form.get( 'hello' ).markAsTouched();
+			fixture.componentRef.instance.form.get('hello').markAsTouched();
 			fixture.detectChanges();
-      const errorElements = fixture.nativeElement.querySelectorAll( '.kp-error' );
+			const errorElements = fixture.nativeElement.querySelectorAll('.kp-error');
 
 			expect(errorElements.length).toBe(1);
 			expect(errorElements[0].textContent).toEqual(errors.required);

@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, ChangeDetectionStrategy } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 
 import { useMockDataDuringTour } from '../operators';
@@ -8,6 +8,7 @@ import { NgxTourService } from '../services';
 @Component({
 	selector: 'mock-tour-holder',
 	template: '',
+	changeDetection: ChangeDetectionStrategy.Eager,
 	standalone: true,
 })
 export class MockTourHolderComponent {

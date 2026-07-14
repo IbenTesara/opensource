@@ -1,5 +1,5 @@
 import { Overlay, OverlayPositionBuilder } from '@angular/cdk/overlay';
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
 
 import { NgxTooltipAbstractComponent } from '../../abstracts';
@@ -10,6 +10,7 @@ import { NgxTooltipService } from './tooltip.service';
 @Component({
 	selector: 'test-tooltip',
 	template: `{{ text }}`,
+	changeDetection: ChangeDetectionStrategy.Eager,
 	standalone: true,
 })
 class TestTooltipComponent extends NgxTooltipAbstractComponent {}
@@ -19,7 +20,10 @@ describe('NgxTooltipService', () => {
 		updatePositionStrategy: jest.fn(),
 		attach: jest
 			.fn()
-			.mockReturnValue({ instance: { text: '', position: '', postionClass: '' }, setInput: jest.fn() }),
+			.mockReturnValue({
+				instance: { text: '', position: '', postionClass: '' },
+				setInput: jest.fn(),
+			}),
 		detach: jest.fn(),
 		hasAttached: jest.fn(),
 	};

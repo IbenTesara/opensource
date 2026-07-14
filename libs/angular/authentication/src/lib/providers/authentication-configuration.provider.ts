@@ -1,4 +1,4 @@
-import { provideHttpClient, withInterceptors } from '@angular/common/http';
+import { provideHttpClient, withInterceptors, withXhr } from '@angular/common/http';
 import { EnvironmentProviders, Provider } from '@angular/core';
 
 import { NgxAuthenticatedHttpInterceptor } from '../interceptors';
@@ -34,11 +34,12 @@ export const provideNgxAuthenticationConfiguration = (
 						useValue: configuration.httpClientConfiguration.authenticatedCallHandler,
 					},
 					provideHttpClient(
+						withXhr(),
 						withInterceptors([
 							NgxAuthenticatedHttpInterceptor,
 							...(configuration.httpClientConfiguration.interceptors || []),
 						])
 					),
-				]),
+			  ]),
 	];
 };

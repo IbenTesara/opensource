@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
 
 import { NgxConfigurableLayout, provideNgxDragAndDropService } from '@lib/ngx-layout';
@@ -9,6 +9,7 @@ import { DragAndDropService } from '../../services';
 	selector: 'dashboard-test',
 	templateUrl: './dashboard.component.html',
 	imports: [NgxConfigurableLayout, ReactiveFormsModule],
+	changeDetection: ChangeDetectionStrategy.Eager,
 	providers: [provideNgxDragAndDropService(DragAndDropService)],
 })
 export class DashboardTestComponent {

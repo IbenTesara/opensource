@@ -33,7 +33,11 @@
 			"@lib/rxjs": ["libs/javascript/rxjs/src/index.ts"],
 			"@lib/types/authentication": ["libs/javascript/types/authentication/src/index.ts"],
 			"@lib/utils": ["libs/javascript/utils/src/index.ts"]
-		}
+		},
+		"strict": false,
+		"noUncheckedSideEffectImports": false,
+		"types": ["*"],
+		"ignoreDeprecations": "6.0"
 	},
 	"exclude": ["node_modules", "tmp"]
 }

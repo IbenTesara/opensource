@@ -1,6 +1,6 @@
 import { InteractivityChecker } from '@angular/cdk/a11y';
 import { Platform } from '@angular/cdk/platform';
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { ComponentFixture, TestBed, fakeAsync, tick } from '@angular/core/testing';
 
 import { NgxFocusTrapDirective } from './focus-trap.directive';
@@ -10,12 +10,13 @@ import { NgxFocusTrapDirective } from './focus-trap.directive';
 	template: `
 		<button id="trigger">Trigger</button>
 		@if (showTrap) {
-			<div id="trap" ngxFocusTrap>
-				<button id="inside-1">Inside 1</button>
-				<button id="inside-2">Inside 2</button>
-			</div>
+		<div id="trap" ngxFocusTrap>
+			<button id="inside-1">Inside 1</button>
+			<button id="inside-2">Inside 2</button>
+		</div>
 		}
 	`,
+	changeDetection: ChangeDetectionStrategy.Eager,
 	imports: [NgxFocusTrapDirective],
 })
 class TestFocusTrapComponent {

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 
 import { NgxTourShowWhenDirective, NgxTourStepComponent } from '@lib/ngx-inform';
 
@@ -20,6 +20,7 @@ import { NgxTourShowWhenDirective, NgxTourStepComponent } from '@lib/ngx-inform'
 		</button>
 		<button (click)="handleInteraction.emit('close')">Close</button>
 	`,
+	changeDetection: ChangeDetectionStrategy.Eager,
 	styleUrl: './tour-step.component.scss',
 })
 export class TourStepComponent extends NgxTourStepComponent {}

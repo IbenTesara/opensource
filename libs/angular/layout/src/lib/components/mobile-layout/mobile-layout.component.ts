@@ -8,6 +8,7 @@ import {
 	OnInit,
 	Signal,
 	TemplateRef,
+	ChangeDetectionStrategy,
 } from '@angular/core';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { RouterModule } from '@angular/router';
@@ -21,6 +22,7 @@ import { NgxMobileLayout, NgxMobileLayoutOutletParams } from '../../types';
 @Component({
 	selector: 'ngx-mobile-layout',
 	imports: [NgComponentOutlet, NgTemplateOutlet, RouterModule, A11yModule],
+	changeDetection: ChangeDetectionStrategy.Eager,
 	templateUrl: './mobile-layout.component.html',
 })
 export class NgxMobileLayoutComponent implements OnInit {

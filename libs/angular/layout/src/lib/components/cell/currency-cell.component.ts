@@ -13,7 +13,7 @@ import { NgxAbstractTableCellDirective } from './cell.directive';
 	],
 	template: `
 		<ng-template #cellTmpl let-item>
-			{{ item | currency: currency() }}
+			{{ item | currency : currency() }}
 		</ng-template>
 	`,
 	imports: [CurrencyPipe],
@@ -41,7 +41,8 @@ export class NgxCurrencyTableCellComponent extends NgxAbstractTableCellDirective
 	 * ViewChild that represents the cell template
 	 */
 
-	@ViewChild('cellTmpl', { static: true }) public override cellTemplate: TemplateRef<any> = undefined;
+	@ViewChild('cellTmpl', { static: true }) public override cellTemplate: TemplateRef<any> =
+		undefined;
 
 	/**
 	 * A generic class to indicate that this is a currency cell

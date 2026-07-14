@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
 import { NgxLinkDirective } from '@lib/ngx-layout';
@@ -6,6 +6,7 @@ import { NgxLinkDirective } from '@lib/ngx-layout';
 @Component({
 	selector: 'navigation',
 	imports: [RouterModule, NgxLinkDirective],
+	changeDetection: ChangeDetectionStrategy.Eager,
 	template: `
 		<a ngxLink [routerLink]="['page1']"> Page 1 </a>
 		<a ngxLink [routerLink]="['page2']"> Page 2 </a>

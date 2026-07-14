@@ -4,6 +4,7 @@ import { NgxButtonDirective } from '@lib/ngx-layout';
 
 @Component({
 	selector: 'button-child-test',
+	changeDetection: ChangeDetectionStrategy.Eager,
 	template: `{{ label() ? 'YE' : 'HA' }} {{ label() }}`,
 })
 export class ButtonChildComponent {

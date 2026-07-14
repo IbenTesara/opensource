@@ -46,7 +46,11 @@ describe('FormAccessor', () => {
 	beforeEach(() => {
 		TestBed.configureTestingModule({
 			imports: [ReactiveFormsModule, FormAccessorComponent],
-			providers: [ChangeDetectorRef, Injector, NgControl],
+			providers: [
+				ChangeDetectorRef,
+				Injector,
+				{ provide: NgControl, useValue: { control: new FormControl() } },
+			],
 		});
 
 		fixture = TestBed.createComponent(FormAccessorComponent, {

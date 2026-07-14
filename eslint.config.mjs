@@ -5,21 +5,22 @@ import importPlugin from 'eslint-plugin-import';
 export default [
 	...nx.configs['flat/base'],
 	...nx.configs['flat/typescript'],
-  ...nx.configs['flat/javascript'],
-  eslintConfigPrettier,
+	...nx.configs['flat/javascript'],
+	eslintConfigPrettier,
 	{
 		ignores: ['**/dist'],
 	},
 	{
-    files: ['**/*.ts', '**/*.tsx', '**/*.js', '**/*.jsx'],
-    plugins: {
-			import: importPlugin
+		files: ['**/*.ts', '**/*.tsx', '**/*.js', '**/*.jsx'],
+		plugins: {
+			import: importPlugin,
 		},
-    rules: {
-      '@typescript-eslint/no-unused-expressions': 'off',
-      '@typescript-eslint/no-empty-function': 'off',
-      '@typescript-eslint/no-unsafe-function-type': 'off',
-      '@angular-eslint/no-input-rename': 'off',
+		rules: {
+			'@typescript-eslint/no-unused-expressions': 'off',
+			'@typescript-eslint/no-empty-function': 'off',
+			'@typescript-eslint/no-unsafe-function-type': 'off',
+			'@angular-eslint/no-input-rename': 'off',
+			'@angular-eslint/prefer-on-push-component-change-detection': 'off',
 			'@nx/enforce-module-boundaries': [
 				'error',
 				{
@@ -39,19 +40,19 @@ export default [
 				{
 					alphabetize: {
 						order: 'asc',
-						caseInsensitive: true
+						caseInsensitive: true,
 					},
 					'newlines-between': 'always',
 					pathGroups: [
 						{
 							pattern: '@lib/**',
-							group: 'internal'
+							group: 'internal',
 						},
 					],
 					pathGroupsExcludedImportTypes: ['builtin', 'object'],
-					groups: ['index', 'external', 'type', 'internal', 'parent', 'sibling']
-				}
-			]
+					groups: ['index', 'external', 'type', 'internal', 'parent', 'sibling'],
+				},
+			],
 		},
 	},
 	{

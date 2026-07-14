@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, ChangeDetectionStrategy } from '@angular/core';
 
 import { NgxMobileLayoutService } from '@lib/ngx-layout';
 
@@ -6,6 +6,7 @@ import { FlyoutComponent } from '../../flyout/flyout.component';
 
 @Component({
 	selector: 'right-header',
+	changeDetection: ChangeDetectionStrategy.Eager,
 	template: '<button (click)="open()">Open</button>',
 })
 export class RightHeaderComponent {

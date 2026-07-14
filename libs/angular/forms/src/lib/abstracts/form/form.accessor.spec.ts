@@ -1,4 +1,4 @@
-import { ChangeDetectorRef, Component, Injector } from '@angular/core';
+import { ChangeDetectorRef, Component, Injector, ChangeDetectionStrategy } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { FormControl, FormGroup, NgControl, ReactiveFormsModule, Validators } from '@angular/forms';
 
@@ -9,6 +9,7 @@ import { createAccessorProviders } from '../../utils';
 	selector: 'kp-form-accessor',
 	template: ``,
 	providers: [createAccessorProviders(FormAccessorComponent)],
+	changeDetection: ChangeDetectionStrategy.Eager,
 	imports: [ReactiveFormsModule],
 })
 export class FormAccessorComponent extends FormAccessor<any, any> {
@@ -27,7 +28,11 @@ describe('FormAccessor', () => {
 	beforeEach(() => {
 		TestBed.configureTestingModule({
 			imports: [ReactiveFormsModule, FormAccessorComponent],
-			providers: [ChangeDetectorRef, Injector, NgControl],
+			providers: [
+				ChangeDetectorRef,
+				Injector,
+				{ provide: NgControl, useValue: { control: new FormControl() } },
+			],
 		});
 
 		fixture = TestBed.createComponent(FormAccessorComponent);
@@ -62,8 +67,8 @@ describe('FormAccessor', () => {
 	});
 
 	it('should disable the form', () => {
-    //Iben: Set this as the component is not rendered
-    fixture.componentRef.setInput('skipInitialSetDisable', false)
+		//Iben: Set this as the component is not rendered
+		fixture.componentRef.setInput('skipInitialSetDisable', false);
 		component.setDisabledState(true);
 
 		expect(component.form.disabled).toBeTruthy();
@@ -80,6 +85,7 @@ describe('FormAccessor', () => {
 	selector: 'kp-test-form-accessor',
 	template: ``,
 	providers: [createAccessorProviders(FormAccessorComponent)],
+	changeDetection: ChangeDetectionStrategy.Eager,
 	imports: [ReactiveFormsModule],
 })
 export class TestComponent extends FormAccessor<string, FormControl<number>, number> {
@@ -103,7 +109,11 @@ describe('FormAccessor with mapper', () => {
 	beforeEach(() => {
 		TestBed.configureTestingModule({
 			imports: [ReactiveFormsModule, TestComponent],
-			providers: [ChangeDetectorRef, Injector, NgControl],
+			providers: [
+				ChangeDetectorRef,
+				Injector,
+				{ provide: NgControl, useValue: { control: new FormControl() } },
+			],
 		});
 
 		fixture = TestBed.createComponent(TestComponent);

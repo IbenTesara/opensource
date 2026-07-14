@@ -1,4 +1,4 @@
-import { Component, signal } from '@angular/core';
+import { Component, signal, ChangeDetectionStrategy } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { NgxTableSortDirection } from '../../enums/sort-direction.enum';
@@ -10,6 +10,7 @@ import { NgxTableComponent } from './ngx-table.component';
 @Component({
 	standalone: true,
 	imports: [NgxTableComponent, NgxTableCellDirective],
+	changeDetection: ChangeDetectionStrategy.Eager,
 	template: `
 		<ngx-table
 			[ariaLabel]="'Test Table'"
@@ -63,7 +64,9 @@ describe('NgxTableComponent WCAG Sort Buttons', () => {
 		hostComponent = fixture.componentInstance;
 		fixture.detectChanges();
 
-		buttons = Array.from(fixture.nativeElement.querySelectorAll('.ngx-table-sorting-cell-button'));
+		buttons = Array.from(
+			fixture.nativeElement.querySelectorAll('.ngx-table-sorting-cell-button')
+		);
 	});
 
 	it('should render sort buttons for sortable columns', () => {
@@ -80,14 +83,18 @@ describe('NgxTableComponent WCAG Sort Buttons', () => {
 		buttons[0].click();
 		fixture.detectChanges();
 
-		expect(buttons[0].getAttribute('aria-label')).toBe('Sort by name, currently sorted ascending');
+		expect(buttons[0].getAttribute('aria-label')).toBe(
+			'Sort by name, currently sorted ascending'
+		);
 		expect(buttons[1].getAttribute('aria-label')).toBe('Sort by age'); // unchanged
 
 		// Iben: Click again to toggle sorting to descending
 		buttons[0].click();
 		fixture.detectChanges();
 
-		expect(buttons[0].getAttribute('aria-label')).toBe('Sort by name, currently sorted descending');
+		expect(buttons[0].getAttribute('aria-label')).toBe(
+			'Sort by name, currently sorted descending'
+		);
 	});
 
 	it('should allow custom static strings for the sort column label', () => {
@@ -138,10 +145,14 @@ describe('NgxTableComponent Column Header ARIA Labels', () => {
 		fixture.detectChanges();
 
 		const headers = fixture.nativeElement.querySelectorAll('th');
-		const selectHeader = Array.from(headers).find((th: any) => th.classList.contains('ngx-table-selectable-cell'));
+		const selectHeader = Array.from(headers).find((th: any) =>
+			th.classList.contains('ngx-table-selectable-cell')
+		);
 		expect(selectHeader?.getAttribute('aria-label')).toBe('Selection column');
 
-		const expandHeader = Array.from(headers).find((th: any) => !th.classList.contains('ngx-table-selectable-cell') && !th.textContent);
+		const expandHeader = Array.from(headers).find(
+			(th: any) => !th.classList.contains('ngx-table-selectable-cell') && !th.textContent
+		);
 		expect(expandHeader?.getAttribute('aria-label')).toBe('Expansion column');
 	});
 
@@ -155,10 +166,14 @@ describe('NgxTableComponent Column Header ARIA Labels', () => {
 		fixture.detectChanges();
 
 		const headers = fixture.nativeElement.querySelectorAll('th');
-		const selectHeader = Array.from(headers).find((th: any) => th.classList.contains('ngx-table-selectable-cell'));
+		const selectHeader = Array.from(headers).find((th: any) =>
+			th.classList.contains('ngx-table-selectable-cell')
+		);
 		expect(selectHeader?.getAttribute('aria-label')).toBe('Custom Select Header');
 
-		const expandHeader = Array.from(headers).find((th: any) => !th.classList.contains('ngx-table-selectable-cell') && !th.textContent);
+		const expandHeader = Array.from(headers).find(
+			(th: any) => !th.classList.contains('ngx-table-selectable-cell') && !th.textContent
+		);
 		expect(expandHeader?.getAttribute('aria-label')).toBe('Custom Expand Header');
 	});
 });

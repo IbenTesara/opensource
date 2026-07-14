@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, ChangeDetectionStrategy } from '@angular/core';
 
 import { NgxMobileLayoutService } from '@lib/ngx-layout';
 
@@ -6,6 +6,7 @@ import { Page1Service } from '../../pages/page1.service';
 
 @Component({
 	selector: 'flyout',
+	changeDetection: ChangeDetectionStrategy.Eager,
 	template: ` <p>Hey, this is a flyout!</p>
 		{{ pageService?.name }}
 		<button (click)="close()">Close</button>`,

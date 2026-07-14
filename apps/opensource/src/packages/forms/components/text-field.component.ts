@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
 
 import { createAccessorProviders, NgxDynamicFormInputComponent } from '@lib/ngx-forms';
@@ -7,6 +7,7 @@ import { createAccessorProviders, NgxDynamicFormInputComponent } from '@lib/ngx-
 	selector: 'text-field',
 	template: `<textarea [formControl]="form"></textarea>`,
 	imports: [ReactiveFormsModule],
+	changeDetection: ChangeDetectionStrategy.Eager,
 	providers: [createAccessorProviders(TextFieldFormComponent)],
 })
 export class TextFieldFormComponent extends NgxDynamicFormInputComponent<

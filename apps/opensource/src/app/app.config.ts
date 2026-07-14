@@ -1,4 +1,4 @@
-import { provideHttpClient } from '@angular/common/http';
+import { provideHttpClient, withXhr } from '@angular/common/http';
 import {
 	ApplicationConfig,
 	provideBrowserGlobalErrorListeners,
@@ -32,7 +32,7 @@ import { appRoutes } from './app.routes';
 
 export const appConfig: ApplicationConfig = {
 	providers: [
-		provideHttpClient(),
+		provideHttpClient(withXhr()),
 		provideBrowserGlobalErrorListeners(),
 		provideNgxI18nConfiguration({
 			defaultAssetPaths: ['./i18n/core/'],

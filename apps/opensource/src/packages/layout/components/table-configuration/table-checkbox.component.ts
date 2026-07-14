@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 
 import { NgxTableSelectTemplateAbstractComponent } from '@lib/ngx-layout';
@@ -6,6 +6,7 @@ import { NgxTableSelectTemplateAbstractComponent } from '@lib/ngx-layout';
 @Component({
 	selector: 'table-checkbox',
 	imports: [ReactiveFormsModule],
+	changeDetection: ChangeDetectionStrategy.Eager,
 	template: `
 		{{ index() }}
 

@@ -1,4 +1,4 @@
-import { Component, signal } from '@angular/core';
+import { Component, signal, ChangeDetectionStrategy } from '@angular/core';
 import { AbstractControl, FormControl, ReactiveFormsModule, Validators } from '@angular/forms';
 
 import {
@@ -31,6 +31,7 @@ import { TextFormComponent } from './components/text-form.component';
 		}),
 	],
 	imports: [ReactiveFormsModule, NgxFormsErrorsDirective, DataFormTest, NgxDynamicFormComponent],
+	changeDetection: ChangeDetectionStrategy.Eager,
 	templateUrl: './forms.component.html',
 })
 export class FormsPageComponent {

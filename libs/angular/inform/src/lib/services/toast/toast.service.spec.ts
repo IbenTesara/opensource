@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
 
 import { NgxToastBundlerComponent, NgxToastComponent } from '../../abstracts';
@@ -9,12 +9,14 @@ import { NgxToastService } from './toast.service';
 
 @Component({
 	selector: 'test-toast',
+	changeDetection: ChangeDetectionStrategy.Eager,
 	template: `{{ toast().text }}`,
 })
 class TestToastComponent extends NgxToastComponent {}
 
 @Component({
 	selector: 'test-toast',
+	changeDetection: ChangeDetectionStrategy.Eager,
 	template: `{{ amount() }}`,
 })
 class TestToastBundlerComponent extends NgxToastBundlerComponent {}
