@@ -72,6 +72,10 @@ export class TableComponent {
 	public hasLoadingTemplate: WritableSignal<boolean> = signal<boolean>(true);
 	private currentDataSet = 1;
 
+	public removeFirstItem() {
+		this.data.set([dataSet1[1], dataSet1[2]]);
+	}
+
 	public toggleDataSet() {
 		this.data.set(this.currentDataSet === 1 ? dataSet2 : dataSet1);
 		this.currentDataSet = this.currentDataSet === 1 ? 0 : 1;

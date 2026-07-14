@@ -36,7 +36,9 @@ export const allOrNothingRequiredValidator = (
 		// Iben: Check if the control is empty
 		const isEmpty =
 			typeof control.value === 'object' && control.value !== null
-				? Object.keys(clean(control.value)).length === 0
+				? control.value instanceof Date
+					? false
+					: Object.keys(clean(control.value)).length === 0
 				: EMPTY_SET.has(control.value);
 
 		// Iben: Add/remove the errors when needed

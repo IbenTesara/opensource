@@ -49,7 +49,7 @@ import { BaseFormAccessor } from '../base-form/base-form.accessor';
 export abstract class NgxFormsControlValueAccessor<
 	DataType = unknown,
 	FormAccessorFormType extends AbstractControl = FormControl,
-	FormValueType = DataType,
+	FormValueType = DataType
 > implements ControlValueAccessor
 {
 	/**
@@ -145,7 +145,8 @@ export abstract class NgxFormsControlValueAccessor<
 		// Iben: Use setTimeOut to avoid the circular dependency issue
 		setTimeout(() => {
 			try {
-				const parentControl = this.injector.get(NgControl) || this.injector.get(NgxDynamicFormDirective);
+				const parentControl =
+					this.injector.get(NgControl) || this.injector.get(NgxDynamicFormDirective);
 
 				// Iben: If for some reason we can't find the control or the ngControl, early exit and throw an error
 				if (!parentControl?.control) {
@@ -335,7 +336,8 @@ export abstract class NgxFormsControlValueAccessor<
 
 					// Iben: Detect changes so the changes are visible in the dom
 					this.cdRef.detectChanges();
-				})
+				}),
+				takeUntilDestroyed(this.destroyRef)
 			)
 			.subscribe();
 	}

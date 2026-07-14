@@ -111,7 +111,6 @@ export class NgxTableComponent implements AfterContentChecked, ControlValueAcces
 	/**
 	 * An instance of the NgxTableConfiguration
 	 */
-	@Inject(NgxTableConfigurationToken)
 	public readonly ngxTableConfiguration: NgxTableConfiguration = inject(
 		NgxTableConfigurationToken,
 		{ optional: true }
@@ -246,7 +245,7 @@ export class NgxTableComponent implements AfterContentChecked, ControlValueAcces
 	 * Whether the table functions as a treegrid
 	 */
 	public readonly isTreeGrid: Signal<boolean> = computed(() => {
-		return this.detailRowTemplate() !== undefined || this.selectable();
+		return this.detailRowTemplate() !== undefined;
 	});
 
 	/**
@@ -681,7 +680,7 @@ export class NgxTableComponent implements AfterContentChecked, ControlValueAcces
 		// Wouter: When the detail row should be shown due to global config, we add the index to the open rows
 		if (
 			this.showDetailRow() === 'always' ||
-			(this.showDetailRow() === 'on-single-item' && this.data.length === 1)
+			(this.showDetailRow() === 'on-single-item' && this.data().length === 1)
 		) {
 			this.openedRows.update((value) => ({ ...value, 0: true }));
 			// Iben: Depending on whether we allow multiple rows to be open at the same time, we toggle the open rows accordingly
@@ -690,7 +689,7 @@ export class NgxTableComponent implements AfterContentChecked, ControlValueAcces
 		else if (this.allowMultipleOpenRows()) {
 			this.openedRows.update((value) => ({
 				...value,
-				index: action === 'open',
+				[index]: action === 'open',
 			}));
 		} else {
 			this.openedRows.set(action === 'open' ? { [index]: true } : {});
@@ -812,7 +811,7 @@ export class NgxTableComponent implements AfterContentChecked, ControlValueAcces
 		const selectableKey = this.selectableKey();
 		this.rowsFormGroup
 			.get(selectableKey ? `${this.data()[index][selectableKey]}` : `${index}`)
-			.patchValue(true);
+			?.patchValue(true);
 	}
 
 	/**
@@ -823,12 +822,9 @@ export class NgxTableComponent implements AfterContentChecked, ControlValueAcces
 	protected handleCurrentSort(event: NgxTableSortEvent): void {
 		// Iben: Early exit if the sortable cell record is empty or if the cell already has the sortDirection of the event
 		if (
-			isEmpty(
-				this.sortableTableCellRecord() ||
-					(event &&
-						this.sortableTableCellRecord()[event.column].sortDirection ===
-							event.direction)
-			)
+			isEmpty(this.sortableTableCellRecord()) ||
+			(event &&
+				this.sortableTableCellRecord()[event.column]?.sortDirection === event.direction)
 		) {
 			return;
 		}

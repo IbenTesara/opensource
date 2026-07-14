@@ -11,7 +11,6 @@ import { NgTemplateOutlet, NgStyle, CommonModule } from '@angular/common';
 import {
 	AfterContentChecked,
 	Component,
-	OnChanges,
 	OnInit,
 	TemplateRef,
 	WritableSignal,
@@ -84,7 +83,7 @@ import { NgxConfigurableLayoutItemComponent } from '../configurable-layout-item/
 	changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class NgxConfigurableLayoutComponent
-	implements ControlValueAccessor, OnInit, AfterContentChecked, OnChanges, AfterViewInit
+	implements ControlValueAccessor, OnInit, AfterContentChecked, AfterViewInit
 {
 	/**
 	 * A subject to mark the isActiveFormRecord as initialized
@@ -216,6 +215,31 @@ export class NgxConfigurableLayoutComponent
 				{ emitEvent: false }
 			);
 		});
+
+		effect(() => {
+			if (this.layoutType() === 'static') {
+				// Iben: If no keys are provided, we return an error, as without it, there nothing will be rendered and the layout will not work.
+				if (!this.keys()) {
+					console.error(
+						'NgxLayout: The configurable layout was set to "static" but no 2D array of keys was provided. Provide an 2D array of keys to visualize the items. For more information, check the readme.'
+					);
+				}
+
+				// Iben: If either of the properties was set, we simply warn the user that these will have no effect as this will not influence the setup.
+				if (this.allowDragAndDrop() !== undefined || this.showInactive() !== undefined) {
+					console.warn(
+						'NgxLayout: The configurable layout was set to "static". Properties "allowDragAndDrop" and "showInactive" will have no effect. For more information, check the readme.'
+					);
+				}
+			} else {
+				// Iben: If keys are provided, there's possible inconsistent behavior. We return an error so the user is notified.
+				if (this.keys()) {
+					console.error(
+						'NgxLayout: The configurable layout was set to "editable". The property "keys" will have cause inconsistent behavior. For more information, check the readme.'
+					);
+				}
+			}
+		});
 	}
 
 	public ngOnInit(): void {
@@ -257,34 +281,6 @@ export class NgxConfigurableLayoutComponent
 				takeUntilDestroyed(this.destroyRef)
 			)
 			.subscribe();
-	}
-
-	public ngOnChanges(changes: any) {
-		if ((changes.layoutType?.currentValue || this.layoutType()) === 'static') {
-			// Iben: If no keys are provided, we return an error, as without it, there nothing will be rendered and the layout will not work.
-			if (!(changes.keys?.currentValue || this.keys())) {
-				console.error(
-					'NgxLayout: The configurable layout was set to "static" but no 2D array of keys was provided. Provide an 2D array of keys to visualize the items. For more information, check the readme.'
-				);
-			}
-
-			// Iben: If either of the properties was set, we simply warn the user that these will have no effect as this will not influence the setup.
-			if (
-				(changes.allowDragAndDrop?.currentValue || this.allowDragAndDrop()) !== undefined ||
-				(changes.showInactive?.currentValue || this.showInactive()) !== undefined
-			) {
-				console.warn(
-					'NgxLayout: The configurable layout was set to "static". Properties "allowDragAndDrop" and "showInactive" will have no effect. For more information, check the readme.'
-				);
-			}
-		} else {
-			// Iben: If keys are provided, there's possible inconsistent behavior. We return an error so the user is notified.
-			if (changes.keys?.currentValue || this.keys()) {
-				console.error(
-					'NgxLayout: The configurable layout was set to "editable". The property "keys" will have cause inconsistent behavior. For more information, check the readme.'
-				);
-			}
-		}
 	}
 
 	public ngAfterContentChecked(): void {

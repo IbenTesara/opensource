@@ -23,12 +23,11 @@
 	</ngx-table-currency-cell>
 
 	@if (hasDetailRow()) {
-		<ng-template #detailRowTmpl let-detail>
-			This is a detail row for {{ detail.firstName }};
-		</ng-template>
-	}
-	@if (hasLoadingTemplate()) {
-		<ng-template #loadingTmpl> This is a custom loading template! </ng-template>
+	<ng-template #detailRowTmpl let-detail>
+		This is a detail row for {{ detail.firstName }};
+	</ng-template>
+	} @if (hasLoadingTemplate()) {
+	<ng-template #loadingTmpl> This is a custom loading template! </ng-template>
 	}
 </ngx-table>
 
@@ -42,3 +41,4 @@ Selected: {{ control.value | json }}
 <button (click)="toggleDetailRow()">Toggle detail row</button>
 <button (click)="toggleLoading()">Toggle loading</button>
 <button (click)="toggleHasLoadingTemplate()">Toggle custom loading template</button>
+<button (click)="removeFirstItem()">Remove first item</button>

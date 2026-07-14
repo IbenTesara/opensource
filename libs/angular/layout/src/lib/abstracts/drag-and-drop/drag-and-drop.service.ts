@@ -1,5 +1,6 @@
 import { LiveAnnouncer } from '@angular/cdk/a11y';
 import { inject } from '@angular/core';
+import { NgxWindowService } from '@ibenvandeveire/ngx-core';
 import { filter, map, Observable, of, take, tap } from 'rxjs';
 import { v4 as uuid } from 'uuid';
 
@@ -17,7 +18,12 @@ export abstract class NgxAccessibleDragAndDropAbstractService {
 	/**
 	 * The live region service
 	 */
-	private readonly liveRegionService: LiveAnnouncer = inject(LiveAnnouncer);
+	protected readonly liveRegionService: LiveAnnouncer = inject(LiveAnnouncer);
+
+	/**
+	 * The window service
+	 */
+	protected readonly windowService: NgxWindowService = inject(NgxWindowService);
 
 	/**
 	 * A method that passes the current language, can either be a string or an Observable

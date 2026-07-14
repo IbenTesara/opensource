@@ -18,6 +18,6 @@ export const sortArray = <DataType>(
 		}
 
 		// Iben: sort the array
-		return data.sort(compareFunction);
+		return [...data].sort(compareFunction);
 	});
 };

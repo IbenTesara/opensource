@@ -103,7 +103,7 @@ export class NgxAccordionComponent {
 		const index = this.items.findIndex(({ id }) => id === item.id);
 
 		// Iben: If no item was found, we early exit
-		if (index === undefined) {
+		if (index === -1) {
 			return;
 		}
 

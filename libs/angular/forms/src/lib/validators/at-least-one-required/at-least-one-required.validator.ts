@@ -61,9 +61,12 @@ export const atLeastOneRequiredValidator = <KeyType extends string = string>(
 			}
 		}
 
-		// Iben: In case there are no errors, clean the required errors and return null
-		for (const control of controls) {
-			clearFormError(control, 'required');
+		// Iben: In case there are no errors, clean the required errors and return null.
+		const targetKeys = keys || Object.keys(group.controls);
+
+		// Iben: Only clear errors on the controls that this validator actually targets
+		for (const key of targetKeys) {
+			clearFormError(group.get(key), 'required');
 		}
 
 		return null;

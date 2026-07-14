@@ -164,7 +164,7 @@ export class NgxButtonDirective implements OnInit {
 		);
 
 		// Iben: Append all the child nodes
-		this.nativeElement.childNodes.forEach((node) => {
+		Array.from(this.nativeElement.childNodes).forEach((node) => {
 			this.renderer.appendChild(wrapperElement, node);
 		});
 
@@ -250,11 +250,11 @@ export class NgxButtonDirective implements OnInit {
 							this.iconElement ||
 								this.iconComponent.instance.elementRef.nativeElement,
 							this.nativeElement.firstChild
-						)
+					  )
 					: this.renderer.appendChild(
 							this.nativeElement,
 							this.iconElement || this.iconComponent.instance.elementRef.nativeElement
-						);
+					  );
 			}
 		}
 		// Iben: If an icon already exists and we no longer have an icon presented, we remove it
