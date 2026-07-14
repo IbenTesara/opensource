@@ -1,5 +1,6 @@
 import { HttpBackend } from '@angular/common/http';
 import { Injector, runInInjectionContext } from '@angular/core';
+import { subscribeSpyTo } from '@hirez_io/observer-spy';
 import { of, throwError } from 'rxjs';
 
 import { NgxI18nLoadingService } from '../../services';
@@ -31,7 +32,7 @@ describe('NgxI18nMultiTranslationHttpLoader', () => {
 	};
 
 	describe('getTranslation', () => {
-		it('should not persist a failed fetch to the translations store, so it can be retried when the next loader is called that has overlap for that path.', (done) => {
+		it('should not persist a failed fetch to the translations store, so it can be retried when the next loader is called that has overlap for that path.', () => {
 			const failingPath = './assets/i18n/failing-path/';
 			const translations = { foo: 'bar' };
 
@@ -49,32 +50,30 @@ describe('NgxI18nMultiTranslationHttpLoader', () => {
 			};
 			const firstLoader = createLoader(loadingService, failingClient, [failingPath]);
 
-			firstLoader.getTranslation('nl').subscribe(() => {
-				// Denis: the failed path should not be cached as "loaded".
-				expect(loadingService.getTranslations()[failingPath]).toBeUndefined();
+			subscribeSpyTo(firstLoader.getTranslation('nl'));
 
-				const recoveredClient = {
-					getTranslations: jest.fn().mockReturnValue(of(translations)),
-				};
-				const secondLoader = createLoader(loadingService, recoveredClient, [
-					failingPath,
-					'./assets/i18n/other-path/',
-				]);
+			// Denis: the failed path should not be cached as "loaded".
+			expect(loadingService.getTranslations()[failingPath]).toBeUndefined();
 
-				secondLoader.getTranslation('nl').subscribe((result) => {
-					expect(recoveredClient.getTranslations).toHaveBeenCalledWith(
-						failingPath,
-						'nl',
-						undefined
-					);
-					expect(result).toEqual(translations);
+			const recoveredClient = {
+				getTranslations: jest.fn().mockReturnValue(of(translations)),
+			};
+			const secondLoader = createLoader(loadingService, recoveredClient, [
+				failingPath,
+				'./assets/i18n/other-path/',
+			]);
 
-					done();
-				});
-			});
+			const secondSpy = subscribeSpyTo(secondLoader.getTranslation('nl'));
+
+			expect(recoveredClient.getTranslations).toHaveBeenCalledWith(
+				failingPath,
+				'nl',
+				undefined
+			);
+			expect(secondSpy.getFirstValue()).toEqual(translations);
 		});
 
-		it('should persist a successful fetch to the translations store so it is reused by a later loader for an overlapping path.', (done) => {
+		it('should persist a successful fetch to the translations store so it is reused by a later loader for an overlapping path.', () => {
 			const path = './assets/i18n/working-path/';
 			const translations = { foo: 'bar' };
 
@@ -85,28 +84,22 @@ describe('NgxI18nMultiTranslationHttpLoader', () => {
 			};
 			const firstLoader = createLoader(loadingService, client, [path]);
 
-			firstLoader.getTranslation('nl').subscribe(() => {
-				expect(loadingService.getTranslations()[path]).toEqual(translations);
+			subscribeSpyTo(firstLoader.getTranslation('nl'));
 
-				const secondClient = {
-					getTranslations: jest.fn().mockReturnValue(of({})),
-				};
-				const secondLoader = createLoader(loadingService, secondClient, [
-					path,
-					'./assets/i18n/other-path/',
-				]);
+			expect(loadingService.getTranslations()[path]).toEqual(translations);
 
-				secondLoader.getTranslation('nl').subscribe(() => {
-					// Denis: the already-loaded path should come from the store, not a fresh fetch.
-					expect(secondClient.getTranslations).not.toHaveBeenCalledWith(
-						path,
-						'nl',
-						undefined
-					);
+			const secondClient = {
+				getTranslations: jest.fn().mockReturnValue(of({})),
+			};
+			const secondLoader = createLoader(loadingService, secondClient, [
+				path,
+				'./assets/i18n/other-path/',
+			]);
 
-					done();
-				});
-			});
+			subscribeSpyTo(secondLoader.getTranslation('nl'));
+
+			// Denis: the already-loaded path should come from the store, not a fresh fetch.
+			expect(secondClient.getTranslations).not.toHaveBeenCalledWith(path, 'nl', undefined);
 		});
 	});
 });
