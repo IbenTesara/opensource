@@ -38,7 +38,7 @@ export const clearFormError = (control: AbstractControl, error: string): void =>
  * @param error - Name of the error to attach to the control.
  * @param value - Value of the error being attached to the control
  */
-export const setFormError = (control: AbstractControl, error: string, value: any = true): void => {
+export const setFormError = (control: AbstractControl, error: string, value: unknown = true): void => {
 	// Iben: Early exit in case the control already has the error
 	if (control.hasError(error)) {
 		return;

@@ -1,4 +1,4 @@
-import { Directive, OutputEmitterRef, TemplateRef, input, output } from '@angular/core';
+import { Directive, OutputEmitterRef, Signal, TemplateRef, input, output } from '@angular/core';
 
 import { NgxTableSortDirection } from '../../enums/sort-direction.enum';
 import { NgxTableCypressDataTags, NgxTableSortEvent } from '../../types';
@@ -16,9 +16,9 @@ export class NgxAbstractTableCellDirective {
 	/**
 	 * The templates used to set in the table
 	 */
-	public footerTemplate: TemplateRef<any>;
-	public headerTemplate: TemplateRef<any>;
-	public cellTemplate: TemplateRef<any>;
+	public footerTemplate: Signal<TemplateRef<any>>;
+	public headerTemplate: Signal<TemplateRef<any>>;
+	public cellTemplate: Signal<TemplateRef<any>>;
 
 	/**
 	 * An optional class that can be set for the cell

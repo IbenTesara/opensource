@@ -1,4 +1,4 @@
-import { ContentChild, Directive, TemplateRef } from '@angular/core';
+import { Directive, TemplateRef, contentChild } from '@angular/core';
 
 import { NgxAbstractTableCellDirective } from './cell.directive';
 
@@ -17,18 +17,15 @@ export class NgxTableCellDirective extends NgxAbstractTableCellDirective {
 	 * A template for the header of the cell
 	 */
 
-	@ContentChild('headerTmpl', { static: false })
-	public override headerTemplate: TemplateRef<any> = undefined;
+	public override readonly headerTemplate = contentChild<TemplateRef<any>>('headerTmpl');
 	/**
 	 * A template for the body of the cell
 	 */
 
-	@ContentChild('cellTmpl', { static: false })
-	public override cellTemplate: TemplateRef<any> = undefined;
+	public override readonly cellTemplate = contentChild<TemplateRef<any>>('cellTmpl');
 	/**
 	 * A template for the footer of the cell
 	 */
 
-	@ContentChild('footerTmpl', { static: false })
-	public override footerTemplate: TemplateRef<any> = undefined;
+	public override readonly footerTemplate = contentChild<TemplateRef<any>>('footerTmpl');
 }

@@ -60,9 +60,9 @@ import {
 import { NgxAbstractTableCellDirective } from '../cell';
 
 interface TableCellTemplate {
-	headerTemplate?: TemplateRef<any>;
-	cellTemplate?: TemplateRef<any>;
-	footerTemplate?: TemplateRef<any>;
+	headerTemplate?: Signal<TemplateRef<any>>;
+	cellTemplate?: Signal<TemplateRef<any>>;
+	footerTemplate?: Signal<TemplateRef<any>>;
 	cellClass?: string;
 }
 
@@ -776,7 +776,7 @@ export class NgxTableComponent implements AfterContentChecked, ControlValueAcces
 		// Iben: Check if at least one template has a footer template, so that we know whether or not we have to render the footer row
 		this.hasFooterTemplates.set(
 			Array.from(this.tableCellTemplates()).some((cellTemplate) =>
-				Boolean(cellTemplate.footerTemplate)
+				Boolean(cellTemplate.footerTemplate())
 			)
 		);
 

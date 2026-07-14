@@ -167,11 +167,11 @@
 						[attr.aria-label]="sortAriaLabels()[column]"
 						(click)="handleSort(column)"
 					>
-						@if (tableCellTemplateRecord()[column]?.headerTemplate) {
+						@if (tableCellTemplateRecord()[column]?.headerTemplate()) {
 							<!-- Wouter: Check if a custom template has been provided -->
 							<ng-template
 								[ngTemplateOutlet]="
-									tableCellTemplateRecord()[column].headerTemplate
+									tableCellTemplateRecord()[column].headerTemplate()
 								"
 							>
 							</ng-template>
@@ -207,10 +207,10 @@
 						}
 					</button>
 				} @else {
-					@if (tableCellTemplateRecord()[column]?.headerTemplate) {
+					@if (tableCellTemplateRecord()[column]?.headerTemplate()) {
 						<!-- Wouter: Check if a custom template has been provided -->
 						<ng-template
-							[ngTemplateOutlet]="tableCellTemplateRecord()[column].headerTemplate"
+							[ngTemplateOutlet]="tableCellTemplateRecord()[column].headerTemplate()"
 						>
 						</ng-template>
 					} @else {
@@ -238,9 +238,9 @@
 				(keydown.enter)="handleRowClicked(row, index)"
 				(keydown.space)="$event.preventDefault(); handleRowClicked(row, index)"
 			>
-				@if (tableCellTemplateRecord()[column]?.cellTemplate) {
+				@if (tableCellTemplateRecord()[column]?.cellTemplate()) {
 					<ng-template
-						[ngTemplateOutlet]="tableCellTemplateRecord()[column].cellTemplate"
+						[ngTemplateOutlet]="tableCellTemplateRecord()[column].cellTemplate()"
 						[ngTemplateOutletContext]="{
 							$implicit: row[column],
 							row: row,
@@ -262,9 +262,9 @@
 				cdk-footer-cell
 				[attr.data-cy]="tableCypressRecord()[column]?.footer || ''"
 			>
-				@if (tableCellTemplateRecord()[column]?.footerTemplate) {
+				@if (tableCellTemplateRecord()[column]?.footerTemplate()) {
 					<ng-template
-						[ngTemplateOutlet]="tableCellTemplateRecord()[column].footerTemplate"
+						[ngTemplateOutlet]="tableCellTemplateRecord()[column].footerTemplate()"
 					>
 					</ng-template>
 				}

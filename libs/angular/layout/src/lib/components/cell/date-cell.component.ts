@@ -1,5 +1,5 @@
 import { DatePipe } from '@angular/common';
-import { Component, ContentChild, TemplateRef, ViewChild, input } from '@angular/core';
+import { Component, TemplateRef, contentChild, input, viewChild } from '@angular/core';
 
 import { NgxTableGetPipe } from '../../pipes/get-pipe/get.pipe';
 
@@ -55,21 +55,18 @@ export class NgxDateTableCellComponent extends NgxAbstractTableCellDirective {
 	 * A template for the header of the cell
 	 */
 
-	@ContentChild('headerTmpl', { static: false })
-	public override headerTemplate: TemplateRef<unknown> = undefined;
+	public override readonly headerTemplate = contentChild<TemplateRef<unknown>>('headerTmpl');
 	/**
 	 * A template for the footer of the cell
 	 */
 
-	@ContentChild('footerTmpl', { static: false })
-	public override footerTemplate: TemplateRef<unknown> = undefined;
+	public override readonly footerTemplate = contentChild<TemplateRef<unknown>>('footerTmpl');
 
 	/**
 	 * ViewChild that represents the cell template
 	 */
 
-	@ViewChild('cellTmpl', { static: true })
-	public override cellTemplate: TemplateRef<any> = undefined;
+	public override readonly cellTemplate = viewChild<TemplateRef<any>>('cellTmpl');
 
 	/**
 	 * A generic class to indicate that this is a date cell
