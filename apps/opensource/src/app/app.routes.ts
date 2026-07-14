@@ -76,6 +76,16 @@ export const appRoutes: Route[] = [
 				},
 				['i18n/layout/']
 			),
+			{
+				path: 'lib-1',
+				loadChildren: () =>
+					import('../lazy-loaded/lib-1/lib-1.routes').then((m) => m.LazyLoadedLib1Routes),
+			},
+			{
+				path: 'lib-2',
+				loadChildren: () =>
+					import('../lazy-loaded/lib-2/lib-2.routes').then((m) => m.LazyLoadedLib2Routes),
+			},
 		],
 	},
 ];

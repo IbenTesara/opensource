@@ -17,6 +17,16 @@
 					{
 						"glob": "**/*",
 						"input": "apps/opensource/public"
+					},
+					{
+						"input": "apps/opensource/src/lazy-loaded/lib-1/i18n/assets/",
+						"glob": "*.json",
+						"output": "assets/i18n/lazy-loaded/lib-1"
+					},
+					{
+						"input": "apps/opensource/src/lazy-loaded/lib-2/i18n/assets/",
+						"glob": "*.json",
+						"output": "assets/i18n/lazy-loaded/lib-2"
 					}
 				],
 				"styles": ["apps/opensource/src/styles.scss"]
