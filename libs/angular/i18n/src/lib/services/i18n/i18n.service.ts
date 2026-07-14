@@ -1,6 +1,7 @@
 import { inject, Injectable } from '@angular/core';
-import { TranslateService } from '@ngx-translate/core';
+import { TranslateService, TranslationObject } from '@ngx-translate/core';
 import { Observable } from 'rxjs';
+import { tap } from 'rxjs/operators';
 
 import { NgxI18nAbstractService } from '../../abstracts';
 import { NgxI18nRootService } from '../root-i18n/root-i18n.service';
@@ -54,7 +55,22 @@ export class NgxI18nService implements NgxI18nAbstractService {
 
 		this.translateService.use(this.rootI18nService.currentLanguage);
 
-		return this.translateService.reloadLang(language);
+		/**
+		 * Denis (9/7/2026)
+		 *
+		 * `TranslateService.reloadLang` will delete translations immediately
+		 * when attempting to fetch new ones. Because the currently rendered components all share the same store,
+		 * this creates a short instant where it is left without translations.
+		 *
+		 * By only switching out the translations when they are loaded, we close that gap.
+		 */
+		return this.translateService.currentLoader
+			.getTranslation(language)
+			.pipe(
+				tap((translations: TranslationObject) =>
+					this.translateService.setTranslation(language, translations)
+				)
+			);
 	}
 
 	/**
