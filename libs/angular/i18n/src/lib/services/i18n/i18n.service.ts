@@ -68,7 +68,9 @@ export class NgxI18nService implements NgxI18nAbstractService {
 	};
 
 	/**
-	 * Returns an instant translation based on a provided key and params
+	 * Returns an instant translation based on a provided key and params.
+	 *
+	 * Note: `params` is typed as `any` to match `@ngx-translate/core` parameter interpolation signatures.
 	 *
 	 * @param key - The key of the translation
 	 * @param params - An optional set of params
@@ -79,7 +81,9 @@ export class NgxI18nService implements NgxI18nAbstractService {
 
 	// Denis: Set the default to string but allow for others.
 	/**
-	 * Returns a observable based translation based on a provided key and params
+	 * Returns a observable based translation based on a provided key and params.
+	 *
+	 * Note: `params` is typed as `any` to match `@ngx-translate/core` parameter interpolation signatures.
 	 *
 	 * @param key - The key of the translation
 	 * @param params - An optional set of params

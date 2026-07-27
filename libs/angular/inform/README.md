@@ -1,7 +1,13 @@
-# inform
+# `@ibenvandeveire/ngx-inform`
 
-This library was generated with [Nx](https://nx.dev).
+This Angular package provides tools to build guided walkthroughs (tours), tooltips, toast notifications, and modal dialogs.
 
-## Running unit tests
+## Documentation
+
+Full documentation, usage examples, and API reference for `@ibenvandeveire/ngx-inform` are available on the [OpenSource Wiki](https://github.com/IbenTesara/opensource/wiki).
+
+Detailed component-level API documentation is also available via the [Compodoc Documentation](https://ibentesara.github.io/opensource/).
+
+## Running Unit Tests
 
 Run `nx test inform` to execute the unit tests.

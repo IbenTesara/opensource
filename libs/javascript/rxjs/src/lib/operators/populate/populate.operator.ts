@@ -1,11 +1,13 @@
 import { cloneDeep, get, set } from 'lodash';
 import { Observable, OperatorFunction, combineLatest, map, of, switchMap } from 'rxjs';
 
-//TODO: Iben: Find out a way to type this better than with any, but without introducing a complex typing hell
 /**
- * Populates an existing data source with additional data from provided observables
+ * Populates an existing data source with additional data from provided observables.
  *
- * @param  populater - A record of which keys need to be updated with a provided observable
+ * Note: `any` is intentionally used for `Observable<any>` and `populateIf(value: any)` to keep consuming code
+ * ergonomic for package developers, avoiding complex mapped generic types when populating dynamic nested paths.
+ *
+ * @param populater - A record of which keys need to be updated with a provided observable
  * @param populateIf - An optional function to determine when a value needs to be fetched
  */
 export const populate = <DataType extends object>(

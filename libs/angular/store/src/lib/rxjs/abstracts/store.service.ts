@@ -34,7 +34,10 @@ export class NgxStoreService<StoreAssetsType extends StoreFlowAssets = any> {
 	}
 
 	/**
-	 * Select the data of a store slice
+	 * Select the data of a store slice.
+	 *
+	 * Note: `selector` parameter is typed as `any` to allow package developers to pass custom NgRx selector dictionaries,
+	 * string paths, or slice objects without requiring verbose generic type casts.
 	 *
 	 * @template StoreItem - The interface of the selected item/items
 	 * @param selector - The selector object
@@ -46,6 +49,8 @@ export class NgxStoreService<StoreAssetsType extends StoreFlowAssets = any> {
 	/**
 	 * Select the loading state of a store slice
 	 *
+	 * Note: `selector` parameter is typed as `any` to accept various selector dictionary shapes.
+	 *
 	 * @param selector - The selector object
 	 */
 	public selectLoadingFromStore(selector: any): Observable<boolean> {
@@ -55,6 +60,8 @@ export class NgxStoreService<StoreAssetsType extends StoreFlowAssets = any> {
 	/**
 	 * Select the error state of a store slice
 	 *
+	 * Note: `selector` parameter is typed as `any` to accept various selector dictionary shapes.
+	 *
 	 * @param selector - The selector object
 	 */
 	public selectErrorFromStore(selector: any): Observable<boolean> {
@@ -63,6 +70,8 @@ export class NgxStoreService<StoreAssetsType extends StoreFlowAssets = any> {
 
 	/**
 	 * Select the error message state of a store slice
+	 *
+	 * Note: `selector` parameter is typed as `any` to accept various selector dictionary shapes.
 	 *
 	 * @param selector - The selector object
 	 */

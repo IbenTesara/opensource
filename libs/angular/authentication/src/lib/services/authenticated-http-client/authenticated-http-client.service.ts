@@ -116,7 +116,10 @@ export class NgxAuthenticatedHttpClient {
 	/**
 	 * Constructs a POST request to the provided API
 	 *
-	 * @param  url - The url of the API
+	 * Note: `body` is typed as `any` to match Angular's `HttpClient.post` signature, allowing developers
+	 * to pass JSON payloads, FormData, string content, or Blobs without explicit type casting.
+	 *
+	 * @param url - The url of the API
 	 * @param body - The body we wish to send
 	 * @param params - An optional set of params we wish to send to the API
 	 * @param withCredentials - Whether the call is made by an authenticated user, by default true
@@ -139,7 +142,9 @@ export class NgxAuthenticatedHttpClient {
 	/**
 	 * Constructs a PUT request to the provided API
 	 *
-	 * @param  url - The url of the API
+	 * Note: `body` is typed as `any` to match Angular's `HttpClient.put` signature.
+	 *
+	 * @param url - The url of the API
 	 * @param body - The body we wish to send
 	 * @param params - An optional set of params we wish to send to the API
 	 * @param withCredentials - Whether the call is made by an authenticated user, by default true
@@ -162,7 +167,9 @@ export class NgxAuthenticatedHttpClient {
 	/**
 	 * Constructs a PATCH request to the provided API
 	 *
-	 * @param  url - The url of the API
+	 * Note: `body` is typed as `any` to match Angular's `HttpClient.patch` signature.
+	 *
+	 * @param url - The url of the API
 	 * @param body - The body we wish to send
 	 * @param params - An optional set of params we wish to send to the API
 	 * @param withCredentials - Whether the call is made by an authenticated user, by default true

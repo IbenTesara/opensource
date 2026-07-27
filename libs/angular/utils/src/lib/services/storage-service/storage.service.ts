@@ -258,7 +258,10 @@ export class NgxStorageService {
 	}
 
 	/**
-	 * Parses a string value from the storage to an actual value
+	 * Parses a string value from the storage to an actual value.
+	 *
+	 * Note: Return type is `any` because storage entries may be parsed into booleans, numbers,
+	 * JSON objects/arrays, or raw strings depending on the stored key content.
 	 *
 	 * @param value - The provided string value
 	 */
