@@ -1,6 +1,6 @@
 {
 	"name": "@ibenvandeveire/rxjs-utils",
-	"version": "1.0.0",
+	"version": "1.1.0",
 	"description": "A package containing common RXJS use-cases, created by Iben Van de Veire.",
 	"keywords": [
 		"rxjs",
