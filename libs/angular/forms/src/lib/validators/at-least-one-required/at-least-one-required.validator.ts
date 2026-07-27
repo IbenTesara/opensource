@@ -25,10 +25,12 @@ export const atLeastOneRequiredValidator = <KeyType extends string = string>(
 			conditionalFunction = options.conditionalFunction;
 			keys = options.controls;
 		}
+		// Iben: In case there are no errors, clean the required errors and return null.
+		const targetKeys = keys || (Object.keys(group.controls) as KeyType[]);
+
 		// Iben: Setup the needed variables to handle the validator
 		const cleanedFormValue = clean(group.value);
 		const cleanedKeys = new Set(Object.keys(cleanedFormValue));
-		const controls = Object.values(group.controls);
 		const empty = cleanedKeys.size === 0;
 
 		// Iben: If nothing is filled in, we return an error
@@ -36,8 +38,8 @@ export const atLeastOneRequiredValidator = <KeyType extends string = string>(
 			(empty && !conditionalFunction) ||
 			(empty && conditionalFunction && conditionalFunction(group.value))
 		) {
-			for (const control of controls) {
-				setFormError(control, 'required');
+			for (const key of targetKeys) {
+				setFormError(group.get(key), 'required');
 			}
 
 			return { atLeastOneRequiredError: true };
@@ -53,7 +55,7 @@ export const atLeastOneRequiredValidator = <KeyType extends string = string>(
 				(!hasOneKey && !conditionalFunction) ||
 				(!hasOneKey && conditionalFunction && conditionalFunction(group.value))
 			) {
-				for (const key of keys) {
+				for (const key of targetKeys) {
 					setFormError(group.get(key), 'required');
 				}
 
@@ -62,9 +64,6 @@ export const atLeastOneRequiredValidator = <KeyType extends string = string>(
 		}
 
 		// Iben: In case there are no errors, clean the required errors and return null.
-		const targetKeys = keys || Object.keys(group.controls);
-
-		// Iben: Only clear errors on the controls that this validator actually targets
 		for (const key of targetKeys) {
 			clearFormError(group.get(key), 'required');
 		}
