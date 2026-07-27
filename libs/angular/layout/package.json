@@ -1,6 +1,6 @@
 {
 	"name": "@ibenvandeveire/ngx-layout",
-	"version": "21.6.0",
+	"version": "22.0.0",
 	"description": "An Angular package with several common layout use-cases, created by Iben Van de Veire.",
 	"keywords": [
 		"angular",
