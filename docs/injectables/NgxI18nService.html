@@ -239,15 +239,16 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="76"
-                                    class="link-to-prism">libs/angular/i18n/src/lib/services/i18n/i18n.service.ts:76</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="78"
+                                    class="link-to-prism">libs/angular/i18n/src/lib/services/i18n/i18n.service.ts:78</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
-                        <div class="io-description"><p>Returns an instant translation based on a provided key and params</p>
+                        <div class="io-description"><p>Returns an instant translation based on a provided key and params.</p>
+<p>Note: <code>params</code> is typed as <code>any</code> to match <code>@ngx-translate/core</code> parameter interpolation signatures.</p>
 </div>
 
                             <div class="io-description">
@@ -335,8 +336,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="87"
-                                    class="link-to-prism">libs/angular/i18n/src/lib/services/i18n/i18n.service.ts:87</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="91"
+                                    class="link-to-prism">libs/angular/i18n/src/lib/services/i18n/i18n.service.ts:91</a></div>
                         </td>
                     </tr>
 
@@ -351,7 +352,8 @@
 
             <tr>
                 <td class="col-md-4">
-                        <div class="io-description"><p>Returns a observable based translation based on a provided key and params</p>
+                        <div class="io-description"><p>Returns a observable based translation based on a provided key and params.</p>
+<p>Note: <code>params</code> is typed as <code>any</code> to match <code>@ngx-translate/core</code> parameter interpolation signatures.</p>
 </div>
 
                             <div class="io-description">
@@ -817,7 +819,9 @@ export class NgxI18nService implements NgxI18nAbstractService {
 	};
 
 	/**
-	 * Returns an instant translation based on a provided key and params
+	 * Returns an instant translation based on a provided key and params.
+	 *
+	 * Note: &#x60;params&#x60; is typed as &#x60;any&#x60; to match &#x60;@ngx-translate/core&#x60; parameter interpolation signatures.
 	 *
 	 * @param key - The key of the translation
 	 * @param params - An optional set of params
@@ -828,7 +832,9 @@ export class NgxI18nService implements NgxI18nAbstractService {
 
 	// Denis: Set the default to string but allow for others.
 	/**
-	 * Returns a observable based translation based on a provided key and params
+	 * Returns a observable based translation based on a provided key and params.
+	 *
+	 * Note: &#x60;params&#x60; is typed as &#x60;any&#x60; to match &#x60;@ngx-translate/core&#x60; parameter interpolation signatures.
 	 *
 	 * @param key - The key of the translation
 	 * @param params - An optional set of params

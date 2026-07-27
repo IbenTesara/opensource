@@ -594,15 +594,17 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="265"
-                                    class="link-to-prism">libs/angular/utils/src/lib/services/storage-service/storage.service.ts:265</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="268"
+                                    class="link-to-prism">libs/angular/utils/src/lib/services/storage-service/storage.service.ts:268</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
-                        <div class="io-description"><p>Parses a string value from the storage to an actual value</p>
+                        <div class="io-description"><p>Parses a string value from the storage to an actual value.</p>
+<p>Note: Return type is <code>any</code> because storage entries may be parsed into booleans, numbers,
+JSON objects/arrays, or raw strings depending on the stored key content.</p>
 </div>
 
                             <div class="io-description">
@@ -1586,7 +1588,10 @@ export class NgxStorageService {
 	}
 
 	/**
-	 * Parses a string value from the storage to an actual value
+	 * Parses a string value from the storage to an actual value.
+	 *
+	 * Note: Return type is &#x60;any&#x60; because storage entries may be parsed into booleans, numbers,
+	 * JSON objects/arrays, or raw strings depending on the stored key content.
 	 *
 	 * @param value - The provided string value
 	 */

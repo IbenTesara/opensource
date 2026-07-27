@@ -144,7 +144,7 @@
 
             <tr>
                 <td class="col-md-3">changeDetection</td>
-                <td class="col-md-9"><code>ChangeDetectionStrategy.Eager</code></td>
+                <td class="col-md-9"><code>ChangeDetectionStrategy.OnPush</code></td>
             </tr>
 
 
@@ -669,7 +669,7 @@ import { NgxMobileLayout, NgxMobileLayoutOutletParams } from &#x27;../../types&#
 @Component({
 	selector: &#x27;ngx-mobile-layout&#x27;,
 	imports: [NgComponentOutlet, NgTemplateOutlet, RouterModule, A11yModule],
-	changeDetection: ChangeDetectionStrategy.Eager,
+	changeDetection: ChangeDetectionStrategy.OnPush,
 	templateUrl: &#x27;./mobile-layout.component.html&#x27;,
 })
 export class NgxMobileLayoutComponent implements OnInit {

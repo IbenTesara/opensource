@@ -131,6 +131,10 @@
     <table class="table table-sm table-hover metadata">
         <tbody>
 
+            <tr>
+                <td class="col-md-3">changeDetection</td>
+                <td class="col-md-9"><code>ChangeDetectionStrategy.OnPush</code></td>
+            </tr>
 
 
 
@@ -668,7 +672,7 @@ See <a href="https://docs.cypress.io/guides/references/best-practices#Selecting-
                         </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in         <code><a href="../directives/NgxAbstractTableCellDirective.html#source" target="_self" >NgxAbstractTableCellDirective:47</a></code>
+                                <div class="io-line">Defined in         <code><a href="../directives/NgxAbstractTableCellDirective.html#source" target="_self" >NgxAbstractTableCellDirective:55</a></code>
 </div>
                         </td>
                     </tr>
@@ -709,7 +713,7 @@ See <a href="https://docs.cypress.io/guides/references/best-practices#Selecting-
                         </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in         <code><a href="../directives/NgxAbstractTableCellDirective.html#source" target="_self" >NgxAbstractTableCellDirective:42</a></code>
+                                <div class="io-line">Defined in         <code><a href="../directives/NgxAbstractTableCellDirective.html#source" target="_self" >NgxAbstractTableCellDirective:50</a></code>
 </div>
                         </td>
                     </tr>
@@ -743,7 +747,7 @@ See <a href="https://docs.cypress.io/guides/references/best-practices#Selecting-
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="25" class="link-to-prism">libs/angular/layout/src/lib/components/cell/currency-cell.component.ts:25</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="33" class="link-to-prism">libs/angular/layout/src/lib/components/cell/currency-cell.component.ts:33</a></div>
                         </td>
                     </tr>
 
@@ -783,7 +787,7 @@ See <a href="https://docs.cypress.io/guides/references/best-practices#Selecting-
                         </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in         <code><a href="../directives/NgxAbstractTableCellDirective.html#source" target="_self" >NgxAbstractTableCellDirective:36</a></code>
+                                <div class="io-line">Defined in         <code><a href="../directives/NgxAbstractTableCellDirective.html#source" target="_self" >NgxAbstractTableCellDirective:44</a></code>
 </div>
                         </td>
                     </tr>
@@ -824,7 +828,7 @@ See <a href="https://docs.cypress.io/guides/references/best-practices#Selecting-
                         </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in         <code><a href="../directives/NgxAbstractTableCellDirective.html#source" target="_self" >NgxAbstractTableCellDirective:31</a></code>
+                                <div class="io-line">Defined in         <code><a href="../directives/NgxAbstractTableCellDirective.html#source" target="_self" >NgxAbstractTableCellDirective:39</a></code>
 </div>
                         </td>
                     </tr>
@@ -1086,12 +1090,20 @@ See <a href="https://docs.cypress.io/guides/references/best-practices#Selecting-
 
     <div class="tab-pane fade  tab-source-code" id="source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { CurrencyPipe } from &#x27;@angular/common&#x27;;
-import { Component, TemplateRef, contentChild, input, viewChild } from &#x27;@angular/core&#x27;;
+import {
+	ChangeDetectionStrategy,
+	Component,
+	TemplateRef,
+	contentChild,
+	input,
+	viewChild,
+} from &#x27;@angular/core&#x27;;
 
 import { NgxAbstractTableCellDirective } from &#x27;./cell.directive&#x27;;
 
 @Component({
 	selector: &#x27;ngx-table-currency-cell&#x27;,
+	changeDetection: ChangeDetectionStrategy.OnPush,
 	providers: [
 		{
 			provide: NgxAbstractTableCellDirective,

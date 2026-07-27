@@ -765,8 +765,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="171"
-                                    class="link-to-prism">libs/angular/authentication/src/lib/services/authenticated-http-client/authenticated-http-client.service.ts:171</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="178"
+                                    class="link-to-prism">libs/angular/authentication/src/lib/services/authenticated-http-client/authenticated-http-client.service.ts:178</a></div>
                         </td>
                     </tr>
 
@@ -782,6 +782,7 @@
             <tr>
                 <td class="col-md-4">
                         <div class="io-description"><p>Constructs a PATCH request to the provided API</p>
+<p>Note: <code>body</code> is typed as <code>any</code> to match Angular&#39;s <code>HttpClient.patch</code> signature.</p>
 </div>
 
                             <div class="io-description">
@@ -934,8 +935,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="125"
-                                    class="link-to-prism">libs/angular/authentication/src/lib/services/authenticated-http-client/authenticated-http-client.service.ts:125</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="128"
+                                    class="link-to-prism">libs/angular/authentication/src/lib/services/authenticated-http-client/authenticated-http-client.service.ts:128</a></div>
                         </td>
                     </tr>
 
@@ -951,6 +952,8 @@
             <tr>
                 <td class="col-md-4">
                         <div class="io-description"><p>Constructs a POST request to the provided API</p>
+<p>Note: <code>body</code> is typed as <code>any</code> to match Angular&#39;s <code>HttpClient.post</code> signature, allowing developers
+to pass JSON payloads, FormData, string content, or Blobs without explicit type casting.</p>
 </div>
 
                             <div class="io-description">
@@ -1103,8 +1106,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="148"
-                                    class="link-to-prism">libs/angular/authentication/src/lib/services/authenticated-http-client/authenticated-http-client.service.ts:148</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="153"
+                                    class="link-to-prism">libs/angular/authentication/src/lib/services/authenticated-http-client/authenticated-http-client.service.ts:153</a></div>
                         </td>
                     </tr>
 
@@ -1120,6 +1123,7 @@
             <tr>
                 <td class="col-md-4">
                         <div class="io-description"><p>Constructs a PUT request to the provided API</p>
+<p>Note: <code>body</code> is typed as <code>any</code> to match Angular&#39;s <code>HttpClient.put</code> signature.</p>
 </div>
 
                             <div class="io-description">
@@ -1446,7 +1450,10 @@ export class NgxAuthenticatedHttpClient {
 	/**
 	 * Constructs a POST request to the provided API
 	 *
-	 * @param  url - The url of the API
+	 * Note: &#x60;body&#x60; is typed as &#x60;any&#x60; to match Angular&#x27;s &#x60;HttpClient.post&#x60; signature, allowing developers
+	 * to pass JSON payloads, FormData, string content, or Blobs without explicit type casting.
+	 *
+	 * @param url - The url of the API
 	 * @param body - The body we wish to send
 	 * @param params - An optional set of params we wish to send to the API
 	 * @param withCredentials - Whether the call is made by an authenticated user, by default true
@@ -1469,7 +1476,9 @@ export class NgxAuthenticatedHttpClient {
 	/**
 	 * Constructs a PUT request to the provided API
 	 *
-	 * @param  url - The url of the API
+	 * Note: &#x60;body&#x60; is typed as &#x60;any&#x60; to match Angular&#x27;s &#x60;HttpClient.put&#x60; signature.
+	 *
+	 * @param url - The url of the API
 	 * @param body - The body we wish to send
 	 * @param params - An optional set of params we wish to send to the API
 	 * @param withCredentials - Whether the call is made by an authenticated user, by default true
@@ -1492,7 +1501,9 @@ export class NgxAuthenticatedHttpClient {
 	/**
 	 * Constructs a PATCH request to the provided API
 	 *
-	 * @param  url - The url of the API
+	 * Note: &#x60;body&#x60; is typed as &#x60;any&#x60; to match Angular&#x27;s &#x60;HttpClient.patch&#x60; signature.
+	 *
+	 * @param url - The url of the API
 	 * @param body - The body we wish to send
 	 * @param params - An optional set of params we wish to send to the API
 	 * @param withCredentials - Whether the call is made by an authenticated user, by default true

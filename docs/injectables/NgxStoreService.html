@@ -273,8 +273,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="60"
-                                    class="link-to-prism">libs/angular/store/src/lib/rxjs/abstracts/store.service.ts:60</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="67"
+                                    class="link-to-prism">libs/angular/store/src/lib/rxjs/abstracts/store.service.ts:67</a></div>
                         </td>
                     </tr>
 
@@ -282,6 +282,7 @@
             <tr>
                 <td class="col-md-4">
                         <div class="io-description"><p>Select the error state of a store slice</p>
+<p>Note: <code>selector</code> parameter is typed as <code>any</code> to accept various selector dictionary shapes.</p>
 </div>
 
                             <div class="io-description">
@@ -351,8 +352,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="69"
-                                    class="link-to-prism">libs/angular/store/src/lib/rxjs/abstracts/store.service.ts:69</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="78"
+                                    class="link-to-prism">libs/angular/store/src/lib/rxjs/abstracts/store.service.ts:78</a></div>
                         </td>
                     </tr>
 
@@ -368,6 +369,7 @@
             <tr>
                 <td class="col-md-4">
                         <div class="io-description"><p>Select the error message state of a store slice</p>
+<p>Note: <code>selector</code> parameter is typed as <code>any</code> to accept various selector dictionary shapes.</p>
 </div>
 
                             <div class="io-description">
@@ -437,8 +439,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="42"
-                                    class="link-to-prism">libs/angular/store/src/lib/rxjs/abstracts/store.service.ts:42</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="45"
+                                    class="link-to-prism">libs/angular/store/src/lib/rxjs/abstracts/store.service.ts:45</a></div>
                         </td>
                     </tr>
 
@@ -453,7 +455,9 @@
 
             <tr>
                 <td class="col-md-4">
-                        <div class="io-description"><p>Select the data of a store slice</p>
+                        <div class="io-description"><p>Select the data of a store slice.</p>
+<p>Note: <code>selector</code> parameter is typed as <code>any</code> to allow package developers to pass custom NgRx selector dictionaries,
+string paths, or slice objects without requiring verbose generic type casts.</p>
 </div>
 
                             <div class="io-description">
@@ -523,8 +527,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="51"
-                                    class="link-to-prism">libs/angular/store/src/lib/rxjs/abstracts/store.service.ts:51</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="56"
+                                    class="link-to-prism">libs/angular/store/src/lib/rxjs/abstracts/store.service.ts:56</a></div>
                         </td>
                     </tr>
 
@@ -532,6 +536,7 @@
             <tr>
                 <td class="col-md-4">
                         <div class="io-description"><p>Select the loading state of a store slice</p>
+<p>Note: <code>selector</code> parameter is typed as <code>any</code> to accept various selector dictionary shapes.</p>
 </div>
 
                             <div class="io-description">
@@ -673,7 +678,7 @@
                 </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="78" class="link-to-prism">libs/angular/store/src/lib/rxjs/abstracts/store.service.ts:78</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="87" class="link-to-prism">libs/angular/store/src/lib/rxjs/abstracts/store.service.ts:87</a></div>
                                 </td>
                             </tr>
                     <tr>
@@ -731,7 +736,10 @@ export class NgxStoreService&lt;StoreAssetsType extends StoreFlowAssets &#x3D; a
 	}
 
 	/**
-	 * Select the data of a store slice
+	 * Select the data of a store slice.
+	 *
+	 * Note: &#x60;selector&#x60; parameter is typed as &#x60;any&#x60; to allow package developers to pass custom NgRx selector dictionaries,
+	 * string paths, or slice objects without requiring verbose generic type casts.
 	 *
 	 * @template StoreItem - The interface of the selected item/items
 	 * @param selector - The selector object
@@ -743,6 +751,8 @@ export class NgxStoreService&lt;StoreAssetsType extends StoreFlowAssets &#x3D; a
 	/**
 	 * Select the loading state of a store slice
 	 *
+	 * Note: &#x60;selector&#x60; parameter is typed as &#x60;any&#x60; to accept various selector dictionary shapes.
+	 *
 	 * @param selector - The selector object
 	 */
 	public selectLoadingFromStore(selector: any): Observable&lt;boolean&gt; {
@@ -752,6 +762,8 @@ export class NgxStoreService&lt;StoreAssetsType extends StoreFlowAssets &#x3D; a
 	/**
 	 * Select the error state of a store slice
 	 *
+	 * Note: &#x60;selector&#x60; parameter is typed as &#x60;any&#x60; to accept various selector dictionary shapes.
+	 *
 	 * @param selector - The selector object
 	 */
 	public selectErrorFromStore(selector: any): Observable&lt;boolean&gt; {
@@ -760,6 +772,8 @@ export class NgxStoreService&lt;StoreAssetsType extends StoreFlowAssets &#x3D; a
 
 	/**
 	 * Select the error message state of a store slice
+	 *
+	 * Note: &#x60;selector&#x60; parameter is typed as &#x60;any&#x60; to accept various selector dictionary shapes.
 	 *
 	 * @param selector - The selector object
 	 */

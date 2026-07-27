@@ -5837,8 +5837,10 @@ This implementation is provided given that pluck has a higher readability than a
 		// Iben: Loop over the provided observables and populate the data
 		return combineLatest(observables).pipe(
 			map((results) &#x3D;&gt; {
-				// Iben: Use cloneDeep to avoid issues with readonly properties
-				const result &#x3D; cloneDeep(data) as DataType;
+				// Iben: Use structuredClone with cloneDeep fallback to avoid memory overhead
+				const result &#x3D; (
+					typeof structuredClone &#x3D;&#x3D;&#x3D; &#x27;function&#x27; ? structuredClone(data) : cloneDeep(data)
+				) as DataType;
 
 				// Iben: Loop over the results and merge them into the value
 				results.forEach((value, index) &#x3D;&gt; {
@@ -5855,7 +5857,9 @@ This implementation is provided given that pluck has a higher readability than a
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-description"><p>Populates an existing data source with additional data from provided observables</p>
+                    <div class="io-description"><p>Populates an existing data source with additional data from provided observables.</p>
+<p>Note: <code>any</code> is intentionally used for <code>Observable&lt;any&gt;</code> and <code>populateIf(value: any)</code> to keep consuming code
+ergonomic for package developers, avoiding complex mapped generic types when populating dynamic nested paths.</p>
 </div>
                 </td>
             </tr>

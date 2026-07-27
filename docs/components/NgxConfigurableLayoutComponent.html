@@ -237,6 +237,14 @@ change the order in which the elements get rendered. The control will always ove
                             </li>
                             <li>
                                     <span class="modifier">Public</span>
+                                <a href="#beforeDrop" >beforeDrop</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#beforeSort" >beforeSort</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
                                     <span class="modifier">Readonly</span>
                                 <a href="#checkboxTemplate" >checkboxTemplate</a>
                             </li>
@@ -342,14 +350,6 @@ change the order in which the elements get rendered. The control will always ove
                 <tr>
                     <td class="col-md-4">
                         <ul class="index-list">
-                            <li>
-                                    <span class="modifier">Public</span>
-                                <a href="#beforeDrop" >beforeDrop</a>
-                            </li>
-                            <li>
-                                    <span class="modifier">Public</span>
-                                <a href="#beforeSort" >beforeSort</a>
-                            </li>
                             <li>
                                     <span class="modifier">Public</span>
                                 <a href="#drop" >drop</a>
@@ -678,212 +678,6 @@ If the layout is <code>editable</code>, a form control needs to be provided to t
     <h3 id="methods">
         Methods
     </h3>
-    <table class="table table-sm table-bordered">
-        <tbody>
-            <tr>
-                <td class="col-md-4">
-                    <a name="beforeDrop"></a>
-                    <span class="name">
-                            <span class="modifier">Public</span>
-                        <span ><b>beforeDrop</b></span>
-                        <a href="#beforeDrop"><span class="icon ion-ios-link"></span></a>
-                    </span>
-                </td>
-            </tr>
-            <tr>
-                <td class="col-md-4">
-                        <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>beforeDrop(draggedElement: CdkDrag, list: CdkDropList)</code>
-                </td>
-            </tr>
-
-
-                    <tr>
-                        <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="412"
-                                    class="link-to-prism">libs/angular/layout/src/lib/components/configurable-layout/configurable-layout.component.ts:412</a></div>
-                        </td>
-                    </tr>
-
-
-            <tr>
-                <td class="col-md-4">
-                        <div class="io-description"><p>The predicate we run before moving</p>
-</div>
-
-                            <div class="io-description">
-                                <b>Parameters :</b>
-                                
-                                <table class="params">
-                                    <thead>
-                                        <tr>
-                                            <td>Name</td>
-                                                <td>Type</td>
-                                            <td>Optional</td>
-                                                <td>Description</td>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                                <td>draggedElement</td>
-                                            <td>
-                                                        <code>CdkDrag</code>
-                                            </td>
-
-                                            <td>
-                                                    No
-                                            </td>
-
-
-                                            <td>
-                                                    <ul>
-<li>The dragged element</li>
-</ul>
-
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                                <td>list</td>
-                                            <td>
-                                                        <code>CdkDropList</code>
-                                            </td>
-
-                                            <td>
-                                                    No
-                                            </td>
-
-
-                                            <td>
-                                                    <ul>
-<li>The list into which we&#39;re dragging the element</li>
-</ul>
-
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                        <div class="io-description">
-                            <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
-
-                        </div>
-                            <div class="io-description">
-                                
-                            </div>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-    <table class="table table-sm table-bordered">
-        <tbody>
-            <tr>
-                <td class="col-md-4">
-                    <a name="beforeSort"></a>
-                    <span class="name">
-                            <span class="modifier">Public</span>
-                        <span ><b>beforeSort</b></span>
-                        <a href="#beforeSort"><span class="icon ion-ios-link"></span></a>
-                    </span>
-                </td>
-            </tr>
-            <tr>
-                <td class="col-md-4">
-                        <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>beforeSort(_: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>, draggedElement: CdkDrag, list: CdkDropList)</code>
-                </td>
-            </tr>
-
-
-                    <tr>
-                        <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="402"
-                                    class="link-to-prism">libs/angular/layout/src/lib/components/configurable-layout/configurable-layout.component.ts:402</a></div>
-                        </td>
-                    </tr>
-
-
-            <tr>
-                <td class="col-md-4">
-                        <div class="io-description"><p>The predicate we run before sorting</p>
-</div>
-
-                            <div class="io-description">
-                                <b>Parameters :</b>
-                                
-                                <table class="params">
-                                    <thead>
-                                        <tr>
-                                            <td>Name</td>
-                                                <td>Type</td>
-                                            <td>Optional</td>
-                                                <td>Description</td>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                                <td>_</td>
-                                            <td>
-                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
-                                            </td>
-
-                                            <td>
-                                                    No
-                                            </td>
-
-
-                                            <td>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                                <td>draggedElement</td>
-                                            <td>
-                                                        <code>CdkDrag</code>
-                                            </td>
-
-                                            <td>
-                                                    No
-                                            </td>
-
-
-                                            <td>
-                                                    <ul>
-<li>The dragged element</li>
-</ul>
-
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                                <td>list</td>
-                                            <td>
-                                                        <code>CdkDropList</code>
-                                            </td>
-
-                                            <td>
-                                                    No
-                                            </td>
-
-
-                                            <td>
-                                                    <ul>
-<li>The list into which we&#39;re dragging the element</li>
-</ul>
-
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                        <div class="io-description">
-                            <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
-
-                        </div>
-                            <div class="io-description">
-                                
-                            </div>
-                </td>
-            </tr>
-        </tbody>
-    </table>
     <table class="table table-sm table-bordered">
         <tbody>
             <tr>
@@ -1614,6 +1408,140 @@ If the layout is <code>editable</code>, a form control needs to be provided to t
                 </td>
             </tr>
 
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="beforeDrop"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                        <span ><b>beforeDrop</b></span>
+                        <a href="#beforeDrop"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>() &#x3D;&gt; {...}</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="412" class="link-to-prism">libs/angular/layout/src/lib/components/configurable-layout/configurable-layout.component.ts:412</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>The predicate we run before moving</p>
+</div>
+                </td>
+            </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description">
+                                <b>Parameters :</b>
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Description</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                            <tr>
+                                                    <td>draggedElement</td>
+                                                    <td>
+                                                            <code><ul>
+<li>The dragged element</li>
+</ul>
+</code>
+                                                    </td>
+                                            </tr>
+                                            <tr>
+                                                    <td>list</td>
+                                                    <td>
+                                                            <code><ul>
+<li>The list into which we&#39;re dragging the element</li>
+</ul>
+</code>
+                                                    </td>
+                                            </tr>
+                                    </tbody>
+                                </table>
+                        </div>
+                    </td>
+                </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="beforeSort"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                        <span ><b>beforeSort</b></span>
+                        <a href="#beforeSort"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>() &#x3D;&gt; {...}</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="402" class="link-to-prism">libs/angular/layout/src/lib/components/configurable-layout/configurable-layout.component.ts:402</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>The predicate we run before sorting</p>
+</div>
+                </td>
+            </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description">
+                                <b>Parameters :</b>
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Description</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                            <tr>
+                                                    <td>draggedElement</td>
+                                                    <td>
+                                                            <code><ul>
+<li>The dragged element</li>
+</ul>
+</code>
+                                                    </td>
+                                            </tr>
+                                            <tr>
+                                                    <td>list</td>
+                                                    <td>
+                                                            <code><ul>
+<li>The list into which we&#39;re dragging the element</li>
+</ul>
+</code>
+                                                    </td>
+                                            </tr>
+                                    </tbody>
+                                </table>
+                        </div>
+                    </td>
+                </tr>
         </tbody>
     </table>
     <table class="table table-sm table-bordered">
@@ -2683,9 +2611,9 @@ export class NgxConfigurableLayoutComponent
 	 * @param  draggedElement - The dragged element
 	 * @param  list - The list into which we&#x27;re dragging the element
 	 */
-	public beforeSort(_: number, draggedElement: CdkDrag, list: CdkDropList): boolean {
+	public beforeSort &#x3D; (_: number, draggedElement: CdkDrag, list: CdkDropList): boolean &#x3D;&gt; {
 		return this.dropPredicateHandler(&#x27;sorting&#x27;, draggedElement, list);
-	}
+	};
 
 	/**
 	 * The predicate we run before moving
@@ -2693,9 +2621,9 @@ export class NgxConfigurableLayoutComponent
 	 * @param  draggedElement - The dragged element
 	 * @param  list - The list into which we&#x27;re dragging the element
 	 */
-	public beforeDrop(draggedElement: CdkDrag, list: CdkDropList): boolean {
+	public beforeDrop &#x3D; (draggedElement: CdkDrag, list: CdkDropList): boolean &#x3D;&gt; {
 		return this.dropPredicateHandler(&#x27;moving&#x27;, draggedElement, list);
-	}
+	};
 
 	/**
 	 * Handles the drop predicate
@@ -2770,62 +2698,58 @@ export class NgxConfigurableLayoutComponent
 	[style.row-gap]&#x3D;&quot;rowGap()&quot;
 	[class.ngx-layout-grid-inactive-shown]&#x3D;&quot;showInactive()&quot;
 &gt;
-	@for (row of form.value; track row; let index &#x3D; $index) {
-		&lt;ul
-			class&#x3D;&quot;ngx-layout-row&quot;
-			cdkDropList
-			ngxAccessibleDragAndDropContainer
-			cdkDropListOrientation&#x3D;&quot;horizontal&quot;
-			[cdkDropListDisabled]&#x3D;&quot;!allowDragAndDrop() &amp;&amp; !form.disabled&quot;
-			[ngxAccessibleDragAndDropContainerIndex]&#x3D;&quot;index&quot;
-			[ngxAccessibleDragAndDropContainerLabel]&#x3D;&quot;rowLabel() ? rowLabel() + &#x27; &#x27; + (index + 1) : &#x27;&#x27;&quot;
-			[id]&#x3D;&quot;&#x27;ngx-layout-row-&#x27; + index&quot;
-			[ngStyle]&#x3D;&quot;{ keys: form.value, showInactive: showInactive() } | ngxConfigurableLayoutItemSize: itemSize()&quot;
-			[style.column-gap]&#x3D;&quot;columnGap()&quot;
-			[cdkDropListSortPredicate]&#x3D;&quot;beforeSort.bind(this)&quot;
-			[cdkDropListEnterPredicate]&#x3D;&quot;beforeDrop.bind(this)&quot;
-			(cdkDropListDropped)&#x3D;&quot;drop($event)&quot;
+	@for (row of form.value; track index; let index &#x3D; $index) {
+	&lt;ul
+		class&#x3D;&quot;ngx-layout-row&quot;
+		cdkDropList
+		ngxAccessibleDragAndDropContainer
+		cdkDropListOrientation&#x3D;&quot;horizontal&quot;
+		[cdkDropListDisabled]&#x3D;&quot;!allowDragAndDrop() &amp;&amp; !form.disabled&quot;
+		[ngxAccessibleDragAndDropContainerIndex]&#x3D;&quot;index&quot;
+		[ngxAccessibleDragAndDropContainerLabel]&#x3D;&quot;rowLabel() ? rowLabel() + &#x27; &#x27; + (index + 1) : &#x27;&#x27;&quot;
+		[id]&#x3D;&quot;&#x27;ngx-layout-row-&#x27; + index&quot;
+		[ngStyle]&#x3D;&quot;
+			{ keys: form.value, showInactive: showInactive() }
+				| ngxConfigurableLayoutItemSize : itemSize()
+		&quot;
+		[style.column-gap]&#x3D;&quot;columnGap()&quot;
+		[cdkDropListSortPredicate]&#x3D;&quot;beforeSort&quot;
+		[cdkDropListEnterPredicate]&#x3D;&quot;beforeDrop&quot;
+		(cdkDropListDropped)&#x3D;&quot;drop($event)&quot;
+	&gt;
+		@for (item of row; track item.key; let index &#x3D; $index) { @if
+		(itemTemplateRecord()[item.key]) { @if (showInactive() || item.isActive) {
+		&lt;li
+			class&#x3D;&quot;ngx-layout-item&quot;
+			cdkDrag
+			ngxAccessibleDragAndDropItem
+			cdkDragPreviewContainer&#x3D;&quot;parent&quot;
+			[class.ngx-layout-item-inactive]&#x3D;&quot;!item.isActive&quot;
+			[class.ngx-layout-item-disabled]&#x3D;&quot;item.disabled&quot;
+			[cdkDragData]&#x3D;&quot;item&quot;
+			[ngxAccessibleDragAndDropItemIndex]&#x3D;&quot;index&quot;
+			[ngxAccessibleDragAndDropItemId]&#x3D;&quot;item.key&quot;
+			[ngxAccessibleDragAndDropLabel]&#x3D;&quot;itemLabelRecord()[item.key] || itemLabel()&quot;
+			[ngxAccessibleDragAndDropDisabled]&#x3D;&quot;
+				item.disabled || (!allowDragAndDrop() &amp;&amp; !form.disabled)
+			&quot;
+			(ngxAccessibleDragAndDropItemMove)&#x3D;&quot;move($event)&quot;
 		&gt;
-			@for (item of row; track item.key; let index &#x3D; $index) {
-				@if (itemTemplateRecord()[item.key]) {
-					@if (showInactive() || item.isActive) {
-						&lt;li
-							class&#x3D;&quot;ngx-layout-item&quot;
-							cdkDrag
-							ngxAccessibleDragAndDropItem
-							cdkDragPreviewContainer&#x3D;&quot;parent&quot;
-							[class.ngx-layout-item-inactive]&#x3D;&quot;!item.isActive&quot;
-							[class.ngx-layout-item-disabled]&#x3D;&quot;item.disabled&quot;
-							[cdkDragData]&#x3D;&quot;item&quot;
-							[ngxAccessibleDragAndDropItemIndex]&#x3D;&quot;index&quot;
-							[ngxAccessibleDragAndDropItemId]&#x3D;&quot;item.key&quot;
-							[ngxAccessibleDragAndDropLabel]&#x3D;&quot;
-								itemLabelRecord()[item.key] || itemLabel()
-							&quot;
-							[ngxAccessibleDragAndDropDisabled]&#x3D;&quot;
-								item.disabled || (!allowDragAndDrop() &amp;&amp; !form.disabled)
-							&quot;
-							(ngxAccessibleDragAndDropItemMove)&#x3D;&quot;move($event)&quot;
-						&gt;
-							&lt;ng-template
-								[ngTemplateOutlet]&#x3D;&quot;itemTemplateRecord()[item.key]&quot;
-							&gt;&lt;/ng-template&gt;
-							@if (!form.disabled &amp;&amp; showInactive() &amp;&amp; !item.disabled) {
-								&lt;ng-template
-									[ngTemplateOutlet]&#x3D;&quot;checkboxTemplate() || defaultCheckBoxTmpl&quot;
-									[ngTemplateOutletContext]&#x3D;&quot;{
+			&lt;ng-template [ngTemplateOutlet]&#x3D;&quot;itemTemplateRecord()[item.key]&quot;&gt;&lt;/ng-template&gt;
+			@if (!form.disabled &amp;&amp; showInactive() &amp;&amp; !item.disabled) {
+			&lt;ng-template
+				[ngTemplateOutlet]&#x3D;&quot;checkboxTemplate() || defaultCheckBoxTmpl&quot;
+				[ngTemplateOutletContext]&#x3D;&quot;{
 										$implicit: isActiveFormRecord.controls[item.key],
 										label: itemLabelRecord()[item.key] || itemLabel() || item.key,
 									}&quot;
-								&gt;
-								&lt;/ng-template&gt;
-							}
-							&lt;div *cdkDragPlaceholder class&#x3D;&quot;ngx-layout-drag-placeholder&quot;&gt;&lt;/div&gt;
-						&lt;/li&gt;
-					}
-				}
+			&gt;
+			&lt;/ng-template&gt;
 			}
-		&lt;/ul&gt;
+			&lt;div *cdkDragPlaceholder class&#x3D;&quot;ngx-layout-drag-placeholder&quot;&gt;&lt;/div&gt;
+		&lt;/li&gt;
+		} } }
+	&lt;/ul&gt;
 	}
 &lt;/div&gt;
 
@@ -2866,7 +2790,7 @@ export class NgxConfigurableLayoutComponent
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><div	class="ngx-layout-grid"	cdkDropListGroup	ngxAccessibleDragAndDropHost	[ngxAccessibleDragAndDropHostDescription]="description()"	[class.ngx-layout-equal-size]="itemSize() === \'equal\'"	[style.row-gap]="rowGap()"	[class.ngx-layout-grid-inactive-shown]="showInactive()">	@for (row of form.value; track row; let index = $index) {		<ul			class="ngx-layout-row"			cdkDropList			ngxAccessibleDragAndDropContainer			cdkDropListOrientation="horizontal"			[cdkDropListDisabled]="!allowDragAndDrop() && !form.disabled"			[ngxAccessibleDragAndDropContainerIndex]="index"			[ngxAccessibleDragAndDropContainerLabel]="rowLabel() ? rowLabel() + \' \' + (index + 1) : \'\'"			[id]="\'ngx-layout-row-\' + index"			[ngStyle]="{ keys: form.value, showInactive: showInactive() } | ngxConfigurableLayoutItemSize: itemSize()"			[style.column-gap]="columnGap()"			[cdkDropListSortPredicate]="beforeSort.bind(this)"			[cdkDropListEnterPredicate]="beforeDrop.bind(this)"			(cdkDropListDropped)="drop($event)"		>			@for (item of row; track item.key; let index = $index) {				@if (itemTemplateRecord()[item.key]) {					@if (showInactive() || item.isActive) {						<li							class="ngx-layout-item"							cdkDrag							ngxAccessibleDragAndDropItem							cdkDragPreviewContainer="parent"							[class.ngx-layout-item-inactive]="!item.isActive"							[class.ngx-layout-item-disabled]="item.disabled"							[cdkDragData]="item"							[ngxAccessibleDragAndDropItemIndex]="index"							[ngxAccessibleDragAndDropItemId]="item.key"							[ngxAccessibleDragAndDropLabel]="								itemLabelRecord()[item.key] || itemLabel()							"							[ngxAccessibleDragAndDropDisabled]="								item.disabled || (!allowDragAndDrop() && !form.disabled)							"							(ngxAccessibleDragAndDropItemMove)="move($event)"						>							<ng-template								[ngTemplateOutlet]="itemTemplateRecord()[item.key]"							></ng-template>							@if (!form.disabled && showInactive() && !item.disabled) {								<ng-template									[ngTemplateOutlet]="checkboxTemplate() || defaultCheckBoxTmpl"									[ngTemplateOutletContext]="{										$implicit: isActiveFormRecord.controls[item.key],										label: itemLabelRecord()[item.key] || itemLabel() || item.key,									}"								>								</ng-template>							}							<div *cdkDragPlaceholder class="ngx-layout-drag-placeholder"></div>						</li>					}				}			}		</ul>	}</div><ng-template #defaultCheckBoxTmpl let-control let-label="label">	<input		class="ngx-layout-item-toggle"		type="checkbox"		[formControl]="control"		[attr.aria-label]="\'Toggle \' + label"	/></ng-template></div>'
+        var COMPONENT_TEMPLATE = '<div><div	class="ngx-layout-grid"	cdkDropListGroup	ngxAccessibleDragAndDropHost	[ngxAccessibleDragAndDropHostDescription]="description()"	[class.ngx-layout-equal-size]="itemSize() === \'equal\'"	[style.row-gap]="rowGap()"	[class.ngx-layout-grid-inactive-shown]="showInactive()">	@for (row of form.value; track index; let index = $index) {	<ul		class="ngx-layout-row"		cdkDropList		ngxAccessibleDragAndDropContainer		cdkDropListOrientation="horizontal"		[cdkDropListDisabled]="!allowDragAndDrop() && !form.disabled"		[ngxAccessibleDragAndDropContainerIndex]="index"		[ngxAccessibleDragAndDropContainerLabel]="rowLabel() ? rowLabel() + \' \' + (index + 1) : \'\'"		[id]="\'ngx-layout-row-\' + index"		[ngStyle]="			{ keys: form.value, showInactive: showInactive() }				| ngxConfigurableLayoutItemSize : itemSize()		"		[style.column-gap]="columnGap()"		[cdkDropListSortPredicate]="beforeSort"		[cdkDropListEnterPredicate]="beforeDrop"		(cdkDropListDropped)="drop($event)"	>		@for (item of row; track item.key; let index = $index) { @if		(itemTemplateRecord()[item.key]) { @if (showInactive() || item.isActive) {		<li			class="ngx-layout-item"			cdkDrag			ngxAccessibleDragAndDropItem			cdkDragPreviewContainer="parent"			[class.ngx-layout-item-inactive]="!item.isActive"			[class.ngx-layout-item-disabled]="item.disabled"			[cdkDragData]="item"			[ngxAccessibleDragAndDropItemIndex]="index"			[ngxAccessibleDragAndDropItemId]="item.key"			[ngxAccessibleDragAndDropLabel]="itemLabelRecord()[item.key] || itemLabel()"			[ngxAccessibleDragAndDropDisabled]="				item.disabled || (!allowDragAndDrop() && !form.disabled)			"			(ngxAccessibleDragAndDropItemMove)="move($event)"		>			<ng-template [ngTemplateOutlet]="itemTemplateRecord()[item.key]"></ng-template>			@if (!form.disabled && showInactive() && !item.disabled) {			<ng-template				[ngTemplateOutlet]="checkboxTemplate() || defaultCheckBoxTmpl"				[ngTemplateOutletContext]="{										$implicit: isActiveFormRecord.controls[item.key],										label: itemLabelRecord()[item.key] || itemLabel() || item.key,									}"			>			</ng-template>			}			<div *cdkDragPlaceholder class="ngx-layout-drag-placeholder"></div>		</li>		} } }	</ul>	}</div><ng-template #defaultCheckBoxTmpl let-control let-label="label">	<input		class="ngx-layout-item-toggle"		type="checkbox"		[formControl]="control"		[attr.aria-label]="\'Toggle \' + label"	/></ng-template></div>'
     var COMPONENTS = [{'name': 'MockTourHolderComponent', 'selector': 'mock-tour-holder'},{'name': 'MockTourStepComponent', 'selector': 'mock-tour-step-component'},{'name': 'NgxAccordionComponent', 'selector': 'ngx-accordion'},{'name': 'NgxAccordionItemComponent', 'selector': 'ngx-accordion-item'},{'name': 'NgxConfigurableLayoutComponent', 'selector': 'ngx-configurable-layout'},{'name': 'NgxConfigurableLayoutItemComponent', 'selector': 'ngx-configurable-layout-item'},{'name': 'NgxCurrencyTableCellComponent', 'selector': 'ngx-table-currency-cell'},{'name': 'NgxDateTableCellComponent', 'selector': 'ngx-table-date-cell'},{'name': 'NgxDynamicFormComponent', 'selector': 'ngx-dynamic-form'},{'name': 'NgxI18nEmptyComponent', 'selector': 'ngx-i18n-empty'},{'name': 'NgxImageMarkerComponent', 'selector': 'ngx-image-marker'},{'name': 'NgxMobileLayoutComponent', 'selector': 'ngx-mobile-layout'},{'name': 'NgxTableComponent', 'selector': 'ngx-table'},{'name': 'NgxToastContainerComponent', 'selector': 'ngx-toast-container'},{'name': 'TestDisplayContentComponent', 'selector': 'test-data'},{'name': 'TestErrorComponent', 'selector': 'test-error'},{'name': 'TestErrorDataComponent', 'selector': 'test-data-error'},{'name': 'TestLoadingComponent', 'selector': 'test-loading'},{'name': 'TestOfflineComponent', 'selector': 'test-offline'},{'name': 'TestOverrideDisplayContentComponent', 'selector': 'test-override-data'}];
     var DIRECTIVES = [{'name': 'DataFormAccessor', 'selector': ''},{'name': 'FocusClickDirective', 'selector': '[focusClick]'},{'name': 'FormAccessor', 'selector': ''},{'name': 'FormAccessorContainer', 'selector': ''},{'name': 'NgxAbstractTableCellDirective', 'selector': 'ngx-abstract-table-cell'},{'name': 'NgxAccessibleAbstractDragAndDropItemDirective', 'selector': ''},{'name': 'NgxAccessibleDragAndDropContainerDirective', 'selector': '[ngxAccessibleDragAndDropContainer]'},{'name': 'NgxAccessibleDragAndDropHostDirective', 'selector': '[ngxAccessibleDragAndDropHost]'},{'name': 'NgxAccessibleDragAndDropItemDirective', 'selector': '[ngxAccessibleDragAndDropItem]'},{'name': 'NgxButtonDirective', 'selector': '[ngxButton]'},{'name': 'NgxCookiesFallBackComponent', 'selector': ''},{'name': 'NgxCypressTagDirective', 'selector': '[cypressTag]'},{'name': 'NgxDisplayContentComponent', 'selector': ''},{'name': 'NgxDisplayContentDirective', 'selector': '[displayContent]'},{'name': 'NgxDynamicFormDirective', 'selector': ''},{'name': 'NgxDynamicFormInputComponent', 'selector': ''},{'name': 'NgxFocusTrapDirective', 'selector': '[ngxFocusTrap]'},{'name': 'NgxFormsControlValueAccessor', 'selector': ''},{'name': 'NgxFormsErrorAbstractComponent', 'selector': ''},{'name': 'NgxFormsErrorsDirective', 'selector': '[ngxFormsErrors]'},{'name': 'NgxHasCookieDirective', 'selector': '[hasCookie]'},{'name': 'NgxHasFeatureDirective', 'selector': '[ngxHasFeature]'},{'name': 'NgxHasFocusDirective', 'selector': ''},{'name': 'NgxHasFocusDragAndDropAbstractDirective', 'selector': ''},{'name': 'NgxHasPermissionDirective', 'selector': '[ngxHasPermission]'},{'name': 'NgxIsAuthenticatedDirective', 'selector': '[ngxIsAuthenticated]'},{'name': 'NgxLinkDirective', 'selector': '[ngxLink]'},{'name': 'NgxMediaQueryDirective', 'selector': '[ngxMediaQuery]'},{'name': 'NgxModalAbstractComponent', 'selector': ''},{'name': 'NgxQueryParamFormSyncComponent', 'selector': ''},{'name': 'NgxSaveOnExitComponent', 'selector': ''},{'name': 'NgxTableCellDirective', 'selector': 'ngx-table-cell'},{'name': 'NgxTableOpenRowStateTemplateAbstractComponent', 'selector': ''},{'name': 'NgxTableSelectTemplateAbstractComponent', 'selector': ''},{'name': 'NgxTableSortTemplateAbstractComponent', 'selector': ''},{'name': 'NgxToastBundlerComponent', 'selector': ''},{'name': 'NgxToastComponent', 'selector': ''},{'name': 'NgxTooltipAbstractComponent', 'selector': ''},{'name': 'NgxTooltipDirective', 'selector': '[ngxTooltip]'},{'name': 'NgxTourItemDirective', 'selector': '[tourItem]'},{'name': 'NgxTourShowWhenDirective', 'selector': '[ngxTourShowWhen]'},{'name': 'NgxTourStepComponent', 'selector': ''},{'name': 'NgxTreeGridCellDirective', 'selector': '[ngxTreeGridCell]'},{'name': 'NgxTreeGridDirective', 'selector': '[ngxTreeGrid]'},{'name': 'NgxTreeGridRowDirective', 'selector': '[ngxTreeGridRow]'}];
     var ACTUAL_COMPONENT = {'name': 'NgxConfigurableLayoutComponent'};

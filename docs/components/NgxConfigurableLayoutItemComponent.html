@@ -142,7 +142,7 @@ the items will be rendered.</p>
 
             <tr>
                 <td class="col-md-3">changeDetection</td>
-                <td class="col-md-9"><code>ChangeDetectionStrategy.Eager</code></td>
+                <td class="col-md-9"><code>ChangeDetectionStrategy.OnPush</code></td>
             </tr>
 
 
@@ -409,7 +409,7 @@ the items will be rendered.</p>
 @Component({
 	selector: &#x27;ngx-configurable-layout-item&#x27;,
 	templateUrl: &#x27;./configurable-layout-item.component.html&#x27;,
-	changeDetection: ChangeDetectionStrategy.Eager,
+	changeDetection: ChangeDetectionStrategy.OnPush,
 	standalone: true,
 })
 export class NgxConfigurableLayoutItemComponent {
