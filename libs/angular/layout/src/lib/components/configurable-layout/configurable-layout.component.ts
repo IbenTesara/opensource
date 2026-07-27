@@ -399,9 +399,9 @@ export class NgxConfigurableLayoutComponent
 	 * @param  draggedElement - The dragged element
 	 * @param  list - The list into which we're dragging the element
 	 */
-	public beforeSort(_: number, draggedElement: CdkDrag, list: CdkDropList): boolean {
+	public beforeSort = (_: number, draggedElement: CdkDrag, list: CdkDropList): boolean => {
 		return this.dropPredicateHandler('sorting', draggedElement, list);
-	}
+	};
 
 	/**
 	 * The predicate we run before moving
@@ -409,9 +409,9 @@ export class NgxConfigurableLayoutComponent
 	 * @param  draggedElement - The dragged element
 	 * @param  list - The list into which we're dragging the element
 	 */
-	public beforeDrop(draggedElement: CdkDrag, list: CdkDropList): boolean {
+	public beforeDrop = (draggedElement: CdkDrag, list: CdkDropList): boolean => {
 		return this.dropPredicateHandler('moving', draggedElement, list);
-	}
+	};
 
 	/**
 	 * Handles the drop predicate

@@ -39,8 +39,10 @@ export const populate = <DataType extends object>(
 		// Iben: Loop over the provided observables and populate the data
 		return combineLatest(observables).pipe(
 			map((results) => {
-				// Iben: Use cloneDeep to avoid issues with readonly properties
-				const result = cloneDeep(data) as DataType;
+				// Iben: Use structuredClone with cloneDeep fallback to avoid memory overhead
+				const result = (
+					typeof structuredClone === 'function' ? structuredClone(data) : cloneDeep(data)
+				) as DataType;
 
 				// Iben: Loop over the results and merge them into the value
 				results.forEach((value, index) => {

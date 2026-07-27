@@ -10,7 +10,7 @@ import { Component, TemplateRef, input, viewChild, ChangeDetectionStrategy } fro
 @Component({
 	selector: 'ngx-configurable-layout-item',
 	templateUrl: './configurable-layout-item.component.html',
-	changeDetection: ChangeDetectionStrategy.Eager,
+	changeDetection: ChangeDetectionStrategy.OnPush,
 	standalone: true,
 })
 export class NgxConfigurableLayoutItemComponent {

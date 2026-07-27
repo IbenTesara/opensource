@@ -1,10 +1,18 @@
 import { CurrencyPipe } from '@angular/common';
-import { Component, TemplateRef, contentChild, input, viewChild } from '@angular/core';
+import {
+	ChangeDetectionStrategy,
+	Component,
+	TemplateRef,
+	contentChild,
+	input,
+	viewChild,
+} from '@angular/core';
 
 import { NgxAbstractTableCellDirective } from './cell.directive';
 
 @Component({
 	selector: 'ngx-table-currency-cell',
+	changeDetection: ChangeDetectionStrategy.OnPush,
 	providers: [
 		{
 			provide: NgxAbstractTableCellDirective,

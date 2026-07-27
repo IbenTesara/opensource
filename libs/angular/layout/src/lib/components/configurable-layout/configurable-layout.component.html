@@ -7,62 +7,58 @@
 	[style.row-gap]="rowGap()"
 	[class.ngx-layout-grid-inactive-shown]="showInactive()"
 >
-	@for (row of form.value; track row; let index = $index) {
-		<ul
-			class="ngx-layout-row"
-			cdkDropList
-			ngxAccessibleDragAndDropContainer
-			cdkDropListOrientation="horizontal"
-			[cdkDropListDisabled]="!allowDragAndDrop() && !form.disabled"
-			[ngxAccessibleDragAndDropContainerIndex]="index"
-			[ngxAccessibleDragAndDropContainerLabel]="rowLabel() ? rowLabel() + ' ' + (index + 1) : ''"
-			[id]="'ngx-layout-row-' + index"
-			[ngStyle]="{ keys: form.value, showInactive: showInactive() } | ngxConfigurableLayoutItemSize: itemSize()"
-			[style.column-gap]="columnGap()"
-			[cdkDropListSortPredicate]="beforeSort.bind(this)"
-			[cdkDropListEnterPredicate]="beforeDrop.bind(this)"
-			(cdkDropListDropped)="drop($event)"
+	@for (row of form.value; track index; let index = $index) {
+	<ul
+		class="ngx-layout-row"
+		cdkDropList
+		ngxAccessibleDragAndDropContainer
+		cdkDropListOrientation="horizontal"
+		[cdkDropListDisabled]="!allowDragAndDrop() && !form.disabled"
+		[ngxAccessibleDragAndDropContainerIndex]="index"
+		[ngxAccessibleDragAndDropContainerLabel]="rowLabel() ? rowLabel() + ' ' + (index + 1) : ''"
+		[id]="'ngx-layout-row-' + index"
+		[ngStyle]="
+			{ keys: form.value, showInactive: showInactive() }
+				| ngxConfigurableLayoutItemSize : itemSize()
+		"
+		[style.column-gap]="columnGap()"
+		[cdkDropListSortPredicate]="beforeSort"
+		[cdkDropListEnterPredicate]="beforeDrop"
+		(cdkDropListDropped)="drop($event)"
+	>
+		@for (item of row; track item.key; let index = $index) { @if
+		(itemTemplateRecord()[item.key]) { @if (showInactive() || item.isActive) {
+		<li
+			class="ngx-layout-item"
+			cdkDrag
+			ngxAccessibleDragAndDropItem
+			cdkDragPreviewContainer="parent"
+			[class.ngx-layout-item-inactive]="!item.isActive"
+			[class.ngx-layout-item-disabled]="item.disabled"
+			[cdkDragData]="item"
+			[ngxAccessibleDragAndDropItemIndex]="index"
+			[ngxAccessibleDragAndDropItemId]="item.key"
+			[ngxAccessibleDragAndDropLabel]="itemLabelRecord()[item.key] || itemLabel()"
+			[ngxAccessibleDragAndDropDisabled]="
+				item.disabled || (!allowDragAndDrop() && !form.disabled)
+			"
+			(ngxAccessibleDragAndDropItemMove)="move($event)"
 		>
-			@for (item of row; track item.key; let index = $index) {
-				@if (itemTemplateRecord()[item.key]) {
-					@if (showInactive() || item.isActive) {
-						<li
-							class="ngx-layout-item"
-							cdkDrag
-							ngxAccessibleDragAndDropItem
-							cdkDragPreviewContainer="parent"
-							[class.ngx-layout-item-inactive]="!item.isActive"
-							[class.ngx-layout-item-disabled]="item.disabled"
-							[cdkDragData]="item"
-							[ngxAccessibleDragAndDropItemIndex]="index"
-							[ngxAccessibleDragAndDropItemId]="item.key"
-							[ngxAccessibleDragAndDropLabel]="
-								itemLabelRecord()[item.key] || itemLabel()
-							"
-							[ngxAccessibleDragAndDropDisabled]="
-								item.disabled || (!allowDragAndDrop() && !form.disabled)
-							"
-							(ngxAccessibleDragAndDropItemMove)="move($event)"
-						>
-							<ng-template
-								[ngTemplateOutlet]="itemTemplateRecord()[item.key]"
-							></ng-template>
-							@if (!form.disabled && showInactive() && !item.disabled) {
-								<ng-template
-									[ngTemplateOutlet]="checkboxTemplate() || defaultCheckBoxTmpl"
-									[ngTemplateOutletContext]="{
+			<ng-template [ngTemplateOutlet]="itemTemplateRecord()[item.key]"></ng-template>
+			@if (!form.disabled && showInactive() && !item.disabled) {
+			<ng-template
+				[ngTemplateOutlet]="checkboxTemplate() || defaultCheckBoxTmpl"
+				[ngTemplateOutletContext]="{
 										$implicit: isActiveFormRecord.controls[item.key],
 										label: itemLabelRecord()[item.key] || itemLabel() || item.key,
 									}"
-								>
-								</ng-template>
-							}
-							<div *cdkDragPlaceholder class="ngx-layout-drag-placeholder"></div>
-						</li>
-					}
-				}
+			>
+			</ng-template>
 			}
-		</ul>
+			<div *cdkDragPlaceholder class="ngx-layout-drag-placeholder"></div>
+		</li>
+		} } }
+	</ul>
 	}
 </div>
 

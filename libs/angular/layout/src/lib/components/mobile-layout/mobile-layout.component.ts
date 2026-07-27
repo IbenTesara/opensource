@@ -22,7 +22,7 @@ import { NgxMobileLayout, NgxMobileLayoutOutletParams } from '../../types';
 @Component({
 	selector: 'ngx-mobile-layout',
 	imports: [NgComponentOutlet, NgTemplateOutlet, RouterModule, A11yModule],
-	changeDetection: ChangeDetectionStrategy.Eager,
+	changeDetection: ChangeDetectionStrategy.OnPush,
 	templateUrl: './mobile-layout.component.html',
 })
 export class NgxMobileLayoutComponent implements OnInit {

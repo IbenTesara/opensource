@@ -1,5 +1,12 @@
 import { DatePipe } from '@angular/common';
-import { Component, TemplateRef, contentChild, input, viewChild } from '@angular/core';
+import {
+	ChangeDetectionStrategy,
+	Component,
+	TemplateRef,
+	contentChild,
+	input,
+	viewChild,
+} from '@angular/core';
 
 import { NgxTableGetPipe } from '../../pipes/get-pipe/get.pipe';
 
@@ -7,6 +14,7 @@ import { NgxAbstractTableCellDirective } from './cell.directive';
 
 @Component({
 	selector: 'ngx-table-date-cell',
+	changeDetection: ChangeDetectionStrategy.OnPush,
 	providers: [
 		{
 			provide: NgxAbstractTableCellDirective,
