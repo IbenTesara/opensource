@@ -81,6 +81,30 @@
 			"options": {
 				"targetName": "eslint:lint"
 			}
+		},
+		{
+			"plugin": "@nx/eslint/plugin",
+			"options": {
+				"targetName": "lint"
+			},
+			"include": [
+				"apps/opensource/**/*",
+				"libs/angular/authentication/**/*",
+				"libs/angular/cookies/**/*",
+				"libs/angular/core/**/*",
+				"libs/angular/forms/**/*",
+				"libs/angular/i18n/**/*",
+				"libs/angular/inform/**/*",
+				"libs/angular/layout/**/*",
+				"libs/angular/store/**/*",
+				"libs/angular/utils/**/*"
+			]
+		},
+		{
+			"plugin": "@nx/jest/plugin",
+			"options": {
+				"targetName": "test"
+			}
 		}
 	],
 	"analytics": false,

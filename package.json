@@ -5,9 +5,9 @@
 	"scripts": {
 		"start": "npx nx serve opensource",
 		"build": "nx build --configuration production",
-		"test": "nx test --code-coverage",
+		"test": "nx test --coverage",
 		"test:watch": "nx test --watch",
-		"test:all": "nx run-many --target=test --code-coverage",
+		"test:all": "nx run-many --target=test --coverage",
 		"test:affected": "npx nx affected --target=test --fix --base=origin/main --parallel",
 		"lint": "nx lint",
 		"lint:affected": "npx nx affected --target=lint --fix --base=origin/main --parallel",
