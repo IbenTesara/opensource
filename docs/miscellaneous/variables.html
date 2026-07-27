@@ -663,10 +663,12 @@
 			conditionalFunction &#x3D; options.conditionalFunction;
 			keys &#x3D; options.controls;
 		}
+		// Iben: In case there are no errors, clean the required errors and return null.
+		const targetKeys &#x3D; keys || (Object.keys(group.controls) as KeyType[]);
+
 		// Iben: Setup the needed variables to handle the validator
 		const cleanedFormValue &#x3D; clean(group.value);
 		const cleanedKeys &#x3D; new Set(Object.keys(cleanedFormValue));
-		const controls &#x3D; Object.values(group.controls);
 		const empty &#x3D; cleanedKeys.size &#x3D;&#x3D;&#x3D; 0;
 
 		// Iben: If nothing is filled in, we return an error
@@ -674,8 +676,8 @@
 			(empty &amp;&amp; !conditionalFunction) ||
 			(empty &amp;&amp; conditionalFunction &amp;&amp; conditionalFunction(group.value))
 		) {
-			for (const control of controls) {
-				setFormError(control, &#x27;required&#x27;);
+			for (const key of targetKeys) {
+				setFormError(group.get(key), &#x27;required&#x27;);
 			}
 
 			return { atLeastOneRequiredError: true };
@@ -691,7 +693,7 @@
 				(!hasOneKey &amp;&amp; !conditionalFunction) ||
 				(!hasOneKey &amp;&amp; conditionalFunction &amp;&amp; conditionalFunction(group.value))
 			) {
-				for (const key of keys) {
+				for (const key of targetKeys) {
 					setFormError(group.get(key), &#x27;required&#x27;);
 				}
 
@@ -700,9 +702,6 @@
 		}
 
 		// Iben: In case there are no errors, clean the required errors and return null.
-		const targetKeys &#x3D; keys || Object.keys(group.controls);
-
-		// Iben: Only clear errors on the controls that this validator actually targets
 		for (const key of targetKeys) {
 			clearFormError(group.get(key), &#x27;required&#x27;);
 		}
