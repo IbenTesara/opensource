@@ -79,7 +79,7 @@
                    <compodoc-menu mode="normal"></compodoc-menu>
                </div>
                <!-- START CONTENT -->
-               <div class="content injectable">
+               <div class="content pipe">
                    <div class="content-data">
 
 
@@ -89,9 +89,12 @@
 
 
 
+
+
+
 <ol class="breadcrumb">
-  <li class="breadcrumb-item">Injectables</li>
-  <li class="breadcrumb-item" >NgxOnlineService</li>
+  <li class="breadcrumb-item">Pipes</li>
+  <li class="breadcrumb-item" >NgxTableAriaLabelPipe</li>
 </ol>
 
 <ul class="nav nav-tabs" role="tablist">
@@ -111,84 +114,151 @@
 
 <div class="tab-content">
     <div class="tab-pane fade active in" id="info">
+
         <p class="comment">
             <h3>File</h3>
         </p>
         <p class="comment">
-            <code>libs/angular/layout/src/lib/services/online-service/online.service.ts</code>
+            <code>libs/angular/layout/src/lib/pipes/table-aria-label/table-aria-label.pipe.ts</code>
         </p>
 
 
-            <p class="comment">
-                <h3>Description</h3>
-            </p>
-            <p class="comment">
-                <p>A service that provides the currently online status of the application</p>
-
-            </p>
 
 
+        <section data-compodoc="block-metadata">
+            <h3>Metadata</h3>
+            <table class="table table-sm table-hover metadata">
+                <tbody>
+                    <tr>
+                        <td class="col-md-3">Name</td>
+                        <td class="col-md-9">ngxTableAriaLabel</td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-3">Standalone</td>
+                        <td class="col-md-9"><code>true</code></td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
 
-            <section data-compodoc="block-index">
-    <h3 id="index">Index</h3>
-    <table class="table table-sm table-bordered index-table">
+            <section data-compodoc="block-methods">
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
         <tbody>
-                <tr>
-                    <td class="col-md-4">
-                        <h6><b>Properties</b></h6>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="col-md-4">
-                        <ul class="index-list">
-                            <li>
-                                    <span class="modifier">Public</span>
-                                    <span class="modifier">Readonly</span>
-                                <a href="#online$" >online$</a>
-                            </li>
-                            <li>
-                                    <span class="modifier">Protected</span>
-                                    <span class="modifier">Readonly</span>
-                                <a href="#onlineSubject" >onlineSubject</a>
-                            </li>
-                            <li>
-                                    <span class="modifier">Protected</span>
-                                    <span class="modifier">Readonly</span>
-                                <a href="#windowService" >windowService</a>
-                            </li>
-                        </ul>
-                    </td>
-                </tr>
+            <tr>
+                <td class="col-md-4">
+                    <a name="transform"></a>
+                    <span class="name">
+                        <span ><b>transform</b></span>
+                        <a href="#transform"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>transform(index: number | undefined, type: "select" | "expand" | "collapse", config?: <a href="../interfaces/NgxTableAriaLabels.html" target="_self">NgxTableAriaLabels</a>)</code>
+                </td>
+            </tr>
 
 
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="30"
+                                    class="link-to-prism">libs/angular/layout/src/lib/pipes/table-aria-label/table-aria-label.pipe.ts:30</a></div>
+                        </td>
+                    </tr>
 
 
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Resolves the ARIA label we wish to set on the selection and expansion controls</p>
+</div>
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                                <td>Description</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>index</td>
+                                            <td>
+                                                        <code>number | undefined</code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
 
 
+                                            <td>
+                                                    <ul>
+<li>The index of the row we wish to target, undefined for the header controls</li>
+</ul>
+
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                                <td>type</td>
+                                            <td>
+                                                        <code>&quot;select&quot; | &quot;expand&quot; | &quot;collapse&quot;</code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                            <td>
+                                                    <ul>
+<li>The action type we wish to perform</li>
+</ul>
+
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                                <td>config</td>
+                                            <td>
+                                                            <code><a href="../interfaces/NgxTableAriaLabels.html" target="_self" >NgxTableAriaLabels</a></code>
+                                            </td>
+
+                                            <td>
+                                                    Yes
+                                            </td>
+
+
+                                            <td>
+                                                    <ul>
+<li>The custom ARIA labels configuration we wish to use</li>
+</ul>
+
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
         </tbody>
     </table>
 </section>
-
-            <section data-compodoc="block-constructor">
-    <h3 id="constructor">Constructor</h3>
-        <table class="table table-sm table-bordered">
-            <tbody>
-                <tr>
-                    <td class="col-md-4">
-<code>constructor()</code>
-                    </td>
-                </tr>
-                        <tr>
-                            <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="24" class="link-to-prism">libs/angular/layout/src/lib/services/online-service/online.service.ts:24</a></div>
-                            </td>
-                        </tr>
-
-            </tbody>
-        </table>
-</section>
-
-
             <section data-compodoc="block-properties">
     
     <h3 id="inputs">
@@ -198,107 +268,29 @@
         <tbody>
             <tr>
                 <td class="col-md-4">
-                    <a name="online$"></a>
+                    <a name="globalConfig"></a>
                     <span class="name">
-                            <span class="modifier">Public</span>
+                            <span class="modifier">Private</span>
                             <span class="modifier">Readonly</span>
-                        <span ><b>online$</b></span>
-                        <a href="#online$"><span class="icon ion-ios-link"></span></a>
+                        <span ><b>globalConfig</b></span>
+                        <a href="#globalConfig"><span class="icon ion-ios-link"></span></a>
                     </span>
                 </td>
             </tr>
                 <tr>
                     <td class="col-md-4">
-                        <i>Type : </i>    <code>Observable&lt;boolean&gt;</code>
-
-                    </td>
-                </tr>
-                <tr>
-                    <td class="col-md-4">
-                        <i>Default value : </i><code>this.onlineSubject.asObservable()</code>
+                        <i>Default value : </i><code>inject(NgxTableConfigurationToken, { optional: true })</code>
                     </td>
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="24" class="link-to-prism">libs/angular/layout/src/lib/services/online-service/online.service.ts:24</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="21" class="link-to-prism">libs/angular/layout/src/lib/pipes/table-aria-label/table-aria-label.pipe.ts:21</a></div>
                         </td>
                     </tr>
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-description"><p>An observable that emits whenever the application is on or offline</p>
-</div>
-                </td>
-            </tr>
-
-        </tbody>
-    </table>
-    <table class="table table-sm table-bordered">
-        <tbody>
-            <tr>
-                <td class="col-md-4">
-                    <a name="onlineSubject"></a>
-                    <span class="name">
-                            <span class="modifier">Protected</span>
-                            <span class="modifier">Readonly</span>
-                        <span ><b>onlineSubject</b></span>
-                        <a href="#onlineSubject"><span class="icon ion-ios-link"></span></a>
-                    </span>
-                </td>
-            </tr>
-                <tr>
-                    <td class="col-md-4">
-                        <i>Type : </i>    <code>Subject&lt;boolean&gt;</code>
-
-                    </td>
-                </tr>
-                <tr>
-                    <td class="col-md-4">
-                        <i>Default value : </i><code>new Subject&lt;boolean&gt;()</code>
-                    </td>
-                </tr>
-                    <tr>
-                        <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="19" class="link-to-prism">libs/angular/layout/src/lib/services/online-service/online.service.ts:19</a></div>
-                        </td>
-                    </tr>
-
-            <tr>
-                <td class="col-md-4">
-                    <div class="io-description"><p>A subject that emits whenever the application is on or offline</p>
-</div>
-                </td>
-            </tr>
-
-        </tbody>
-    </table>
-    <table class="table table-sm table-bordered">
-        <tbody>
-            <tr>
-                <td class="col-md-4">
-                    <a name="windowService"></a>
-                    <span class="name">
-                            <span class="modifier">Protected</span>
-                            <span class="modifier">Readonly</span>
-                        <span ><b>windowService</b></span>
-                        <a href="#windowService"><span class="icon ion-ios-link"></span></a>
-                    </span>
-                </td>
-            </tr>
-                <tr>
-                    <td class="col-md-4">
-                        <i>Default value : </i><code>inject(NgxWindowService)</code>
-                    </td>
-                </tr>
-                    <tr>
-                        <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="14" class="link-to-prism">libs/angular/layout/src/lib/services/online-service/online.service.ts:14</a></div>
-                        </td>
-                    </tr>
-
-            <tr>
-                <td class="col-md-4">
-                    <div class="io-description"><p>An instance of the window service</p>
+                    <div class="io-description"><p>The global configuration we wish to use for the table</p>
 </div>
                 </td>
             </tr>
@@ -311,62 +303,70 @@
 
 
     <div class="tab-pane fade  tab-source-code" id="source">
-        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Injectable, inject } from &#x27;@angular/core&#x27;;
-import { takeUntilDestroyed } from &#x27;@angular/core/rxjs-interop&#x27;;
-import { NgxWindowService } from &#x27;@ibenvandeveire/ngx-core&#x27;;
-import { Observable, Subject, fromEvent, tap } from &#x27;rxjs&#x27;;
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { inject, Pipe, PipeTransform } from &#x27;@angular/core&#x27;;
 
-/**
- * A service that provides the currently online status of the application
- */
-@Injectable({ providedIn: &#x27;root&#x27; })
-export class NgxOnlineService {
+import { NgxTableConfigurationToken } from &#x27;../../tokens&#x27;;
+import { NgxTableAriaLabels } from &#x27;../../types&#x27;;
+
+// Iben: Define configuration keys and fallback prefixes mapping at module level to prevent re-allocation
+const CONFIG_MAPPING &#x3D; {
+	select: { key: &#x27;selectRow&#x27; as const, fallbackPrefix: &#x27;Select&#x27; },
+	expand: { key: &#x27;expandRow&#x27; as const, fallbackPrefix: &#x27;Expand&#x27; },
+	collapse: { key: &#x27;collapseRow&#x27; as const, fallbackPrefix: &#x27;Collapse&#x27; },
+};
+
+@Pipe({
+	name: &#x27;ngxTableAriaLabel&#x27;,
+	standalone: true,
+})
+export class NgxTableAriaLabelPipe implements PipeTransform {
 	/**
-	 * An instance of the window service
+	 * The global configuration we wish to use for the table
 	 */
-	protected readonly windowService &#x3D; inject(NgxWindowService);
+	private readonly globalConfig &#x3D; inject(NgxTableConfigurationToken, { optional: true });
 
 	/**
-	 * A subject that emits whenever the application is on or offline
+	 * Resolves the ARIA label we wish to set on the selection and expansion controls
+	 *
+	 * @param index - The index of the row we wish to target, undefined for the header controls
+	 * @param type - The action type we wish to perform
+	 * @param config - The custom ARIA labels configuration we wish to use
 	 */
-	protected readonly onlineSubject: Subject&lt;boolean&gt; &#x3D; new Subject&lt;boolean&gt;();
-
-	/**
-	 * An observable that emits whenever the application is on or offline
-	 */
-	public readonly online$: Observable&lt;boolean&gt; &#x3D; this.onlineSubject.asObservable();
-
-	constructor() {
-		// Iben: When we&#x27;re in the browser, listen to the online and offline status of the application
-		if (this.windowService.isBrowser()) {
-			// Iben: Handle the on and offline status of the application
-			fromEvent(window, &#x27;online&#x27;)
-				.pipe(
-					tap(() &#x3D;&gt; {
-						this.onlineSubject.next(true);
-					}),
-					takeUntilDestroyed()
-				)
-				.subscribe();
-
-			fromEvent(window, &#x27;offline&#x27;)
-				.pipe(
-					tap(() &#x3D;&gt; {
-						this.onlineSubject.next(false);
-					}),
-					takeUntilDestroyed()
-				)
-				.subscribe();
+	transform(
+		index: number | undefined,
+		type: &#x27;select&#x27; | &#x27;expand&#x27; | &#x27;collapse&#x27;,
+		config?: NgxTableAriaLabels
+	): string {
+		// Iben: If the index is undefined, we resolve and return the select all label
+		if (index &#x3D;&#x3D;&#x3D; undefined) {
+			return (
+				config?.selectAll ?? this.globalConfig?.ariaLabels?.selectAll ?? &#x27;Select all rows&#x27;
+			);
 		}
+
+		const { key, fallbackPrefix } &#x3D; CONFIG_MAPPING[type];
+
+		// Iben: Resolve the configured label (local overrides global)
+		const label &#x3D; config?.[key] ?? this.globalConfig?.ariaLabels?.[key];
+
+		// Iben: Return dynamic callback value if it is a function
+		if (typeof label &#x3D;&#x3D;&#x3D; &#x27;function&#x27;) {
+			return label(index);
+		}
+
+		// Iben: Return static string if configured
+		if (typeof label &#x3D;&#x3D;&#x3D; &#x27;string&#x27;) {
+			return label;
+		}
+
+		// Iben: Fallback to the standard English label
+		return &#x60;${fallbackPrefix} row ${index + 1}&#x60;;
 	}
 }
 </code></pre>
     </div>
 
 </div>
-
-
-
 
 
 
@@ -402,8 +402,8 @@ export class NgxOnlineService {
 
        <script>
             var COMPODOC_CURRENT_PAGE_DEPTH = 1;
-            var COMPODOC_CURRENT_PAGE_CONTEXT = 'injectable';
-            var COMPODOC_CURRENT_PAGE_URL = 'NgxOnlineService.html';
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'pipe';
+            var COMPODOC_CURRENT_PAGE_URL = 'NgxTableAriaLabelPipe.html';
             var MAX_SEARCH_RESULTS = 15;
        </script>
 

@@ -147,7 +147,7 @@
                                 <a href="#cookiesChanged$" >cookiesChanged$</a>
                             </li>
                             <li>
-                                    <span class="modifier">Private</span>
+                                    <span class="modifier">Protected</span>
                                     <span class="modifier">Readonly</span>
                                 <a href="#cookiesChangedSubject" >cookiesChangedSubject</a>
                             </li>
@@ -157,7 +157,7 @@
                                 <a href="#cookiesConsentChanged$" >cookiesConsentChanged$</a>
                             </li>
                             <li>
-                                    <span class="modifier">Private</span>
+                                    <span class="modifier">Protected</span>
                                     <span class="modifier">Readonly</span>
                                 <a href="#cookiesConsentChangedSubject" >cookiesConsentChangedSubject</a>
                             </li>
@@ -167,7 +167,7 @@
                                 <a href="#cookiesConsented$" >cookiesConsented$</a>
                             </li>
                             <li>
-                                    <span class="modifier">Private</span>
+                                    <span class="modifier">Protected</span>
                                     <span class="modifier">Readonly</span>
                                 <a href="#cookiesConsentedSubject" >cookiesConsentedSubject</a>
                             </li>
@@ -177,7 +177,7 @@
                                 <a href="#firstCookiesConsented$" >firstCookiesConsented$</a>
                             </li>
                             <li>
-                                    <span class="modifier">Private</span>
+                                    <span class="modifier">Protected</span>
                                     <span class="modifier">Readonly</span>
                                 <a href="#firstCookiesConsentedSubject" >firstCookiesConsentedSubject</a>
                             </li>
@@ -187,12 +187,12 @@
                                 <a href="#modalVisible$" >modalVisible$</a>
                             </li>
                             <li>
-                                    <span class="modifier">Private</span>
+                                    <span class="modifier">Protected</span>
                                     <span class="modifier">Readonly</span>
                                 <a href="#modalVisibleSubject" >modalVisibleSubject</a>
                             </li>
                             <li>
-                                    <span class="modifier">Private</span>
+                                    <span class="modifier">Protected</span>
                                     <span class="modifier">Readonly</span>
                                 <a href="#windowService" >windowService</a>
                             </li>
@@ -1150,7 +1150,7 @@
                 <td class="col-md-4">
                     <a name="cookiesChangedSubject"></a>
                     <span class="name">
-                            <span class="modifier">Private</span>
+                            <span class="modifier">Protected</span>
                             <span class="modifier">Readonly</span>
                         <span ><b>cookiesChangedSubject</b></span>
                         <a href="#cookiesChangedSubject"><span class="icon ion-ios-link"></span></a>
@@ -1228,7 +1228,7 @@
                 <td class="col-md-4">
                     <a name="cookiesConsentChangedSubject"></a>
                     <span class="name">
-                            <span class="modifier">Private</span>
+                            <span class="modifier">Protected</span>
                             <span class="modifier">Readonly</span>
                         <span ><b>cookiesConsentChangedSubject</b></span>
                         <a href="#cookiesConsentChangedSubject"><span class="icon ion-ios-link"></span></a>
@@ -1306,7 +1306,7 @@
                 <td class="col-md-4">
                     <a name="cookiesConsentedSubject"></a>
                     <span class="name">
-                            <span class="modifier">Private</span>
+                            <span class="modifier">Protected</span>
                             <span class="modifier">Readonly</span>
                         <span ><b>cookiesConsentedSubject</b></span>
                         <a href="#cookiesConsentedSubject"><span class="icon ion-ios-link"></span></a>
@@ -1384,7 +1384,7 @@
                 <td class="col-md-4">
                     <a name="firstCookiesConsentedSubject"></a>
                     <span class="name">
-                            <span class="modifier">Private</span>
+                            <span class="modifier">Protected</span>
                             <span class="modifier">Readonly</span>
                         <span ><b>firstCookiesConsentedSubject</b></span>
                         <a href="#firstCookiesConsentedSubject"><span class="icon ion-ios-link"></span></a>
@@ -1462,7 +1462,7 @@
                 <td class="col-md-4">
                     <a name="modalVisibleSubject"></a>
                     <span class="name">
-                            <span class="modifier">Private</span>
+                            <span class="modifier">Protected</span>
                             <span class="modifier">Readonly</span>
                         <span ><b>modalVisibleSubject</b></span>
                         <a href="#modalVisibleSubject"><span class="icon ion-ios-link"></span></a>
@@ -1503,7 +1503,7 @@
                 <td class="col-md-4">
                     <a name="windowService"></a>
                     <span class="name">
-                            <span class="modifier">Private</span>
+                            <span class="modifier">Protected</span>
                             <span class="modifier">Readonly</span>
                         <span ><b>windowService</b></span>
                         <a href="#windowService"><span class="icon ion-ios-link"></span></a>
@@ -1572,34 +1572,34 @@ export class NgxCookieService {
 	/**
 	 * Subject to hold the onFirstConsent event
 	 */
-	private readonly firstCookiesConsentedSubject: Subject&lt;NgxCookieEvent&gt; &#x3D; new Subject();
+	protected readonly firstCookiesConsentedSubject: Subject&lt;NgxCookieEvent&gt; &#x3D; new Subject();
 
 	/**
 	 * Subject to hold the onConsent event
 	 */
-	private readonly cookiesConsentedSubject: Subject&lt;NgxCookieEvent&gt; &#x3D; new Subject();
+	protected readonly cookiesConsentedSubject: Subject&lt;NgxCookieEvent&gt; &#x3D; new Subject();
 
 	/**
 	 * Subject to hold the consentChanged event
 	 */
-	private readonly cookiesConsentChangedSubject: Subject&lt;NgxCookieChangedEvent&gt; &#x3D; new Subject();
+	protected readonly cookiesConsentChangedSubject: Subject&lt;NgxCookieChangedEvent&gt; &#x3D; new Subject();
 
 	/**
 	 * Subject to hold the modalVisible event
 	 */
-	private readonly modalVisibleSubject: BehaviorSubject&lt;boolean&gt; &#x3D; new BehaviorSubject&lt;boolean&gt;(
+	protected readonly modalVisibleSubject: BehaviorSubject&lt;boolean&gt; &#x3D; new BehaviorSubject&lt;boolean&gt;(
 		false
 	);
 
 	/**
 	 * Subject to hold the cookiesChanged event
 	 */
-	private readonly cookiesChangedSubject: Subject&lt;Record&lt;string, any&gt;&gt; &#x3D; new Subject();
+	protected readonly cookiesChangedSubject: Subject&lt;Record&lt;string, any&gt;&gt; &#x3D; new Subject();
 
 	/**
 	 * Instance of the window service
 	 */
-	private readonly windowService: NgxWindowService &#x3D; inject(NgxWindowService);
+	protected readonly windowService: NgxWindowService &#x3D; inject(NgxWindowService);
 
 	/**
 	 * An event triggered only the very first time that the user expresses their choice of consent

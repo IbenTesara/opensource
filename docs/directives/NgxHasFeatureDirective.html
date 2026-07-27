@@ -124,6 +124,12 @@
             <p class="comment">
                 <p>A directive that will render a part of the template based on whether the required feature(s) are provided.</p>
 <p>Based upon <code>*ngIf</code>. See <a href="https://github.com/angular/angular/blob/master/packages/common/src/directives/ng_if.ts">https://github.com/angular/angular/blob/master/packages/common/src/directives/ng_if.ts</a></p>
+<h2>Accessibility (WCAG 2.2 SC 4.1.3 - Status Messages)</h2>
+<p>Since this directive dynamically inserts or removes elements from the DOM, screen readers may not automatically
+announce the status change. However, because DOM changes in this directive typically happen on initial load
+or directly in response to an explicit user interaction (e.g. settings updates), standard page/focus navigation
+is sufficient and wrapping in an <code>aria-live</code> region is not required. If the dynamic view updates are transient,
+critical status messages, it is recommended to wrap the toggleable section in an <code>aria-live</code> region (e.g. <code>aria-live=&quot;polite&quot;</code>).</p>
 
             </p>
 
@@ -166,29 +172,29 @@
                     <td class="col-md-4">
                         <ul class="index-list">
                             <li>
-                                    <span class="modifier">Private</span>
+                                    <span class="modifier">Protected</span>
                                     <span class="modifier">Readonly</span>
                                 <a href="#authenticationService" >authenticationService</a>
                             </li>
                             <li>
-                                    <span class="modifier">Private</span>
+                                    <span class="modifier">Protected</span>
                                     <span class="modifier">Readonly</span>
                                 <a href="#cdRef" >cdRef</a>
                             </li>
                             <li>
-                                    <span class="modifier">Private</span>
+                                    <span class="modifier">Protected</span>
                                 <a href="#destroyed$" >destroyed$</a>
                             </li>
                             <li>
-                                    <span class="modifier">Private</span>
+                                    <span class="modifier">Protected</span>
                                 <a href="#elseTemplateRef" >elseTemplateRef</a>
                             </li>
                             <li>
-                                    <span class="modifier">Private</span>
+                                    <span class="modifier">Protected</span>
                                 <a href="#elseViewRef" >elseViewRef</a>
                             </li>
                             <li>
-                                    <span class="modifier">Private</span>
+                                    <span class="modifier">Protected</span>
                                 <a href="#feature" >feature</a>
                             </li>
                             <li>
@@ -208,26 +214,26 @@
                                 <a href="#ngxHasFeatureShouldHaveFeature" >ngxHasFeatureShouldHaveFeature</a>
                             </li>
                             <li>
-                                    <span class="modifier">Private</span>
+                                    <span class="modifier">Protected</span>
                                 <a href="#shouldHaveAllFeatures" >shouldHaveAllFeatures</a>
                             </li>
                             <li>
-                                    <span class="modifier">Private</span>
+                                    <span class="modifier">Protected</span>
                                 <a href="#shouldHaveFeature" >shouldHaveFeature</a>
                             </li>
                             <li>
                                 <a href="#templateRef" >templateRef</a>
                             </li>
                             <li>
-                                    <span class="modifier">Private</span>
+                                    <span class="modifier">Protected</span>
                                 <a href="#thenTemplateRef" >thenTemplateRef</a>
                             </li>
                             <li>
-                                    <span class="modifier">Private</span>
+                                    <span class="modifier">Protected</span>
                                 <a href="#thenViewRef" >thenViewRef</a>
                             </li>
                             <li>
-                                    <span class="modifier">Private</span>
+                                    <span class="modifier">Protected</span>
                                 <a href="#viewContainer" >viewContainer</a>
                             </li>
                         </ul>
@@ -243,7 +249,7 @@
                     <td class="col-md-4">
                         <ul class="index-list">
                             <li>
-                                    <span class="modifier">Private</span>
+                                    <span class="modifier">Protected</span>
                                 <a href="#dispose" >dispose</a>
                             </li>
                             <li>
@@ -251,7 +257,7 @@
                                 <a href="#ngOnDestroy" >ngOnDestroy</a>
                             </li>
                             <li>
-                                    <span class="modifier">Private</span>
+                                    <span class="modifier">Protected</span>
                                 <a href="#updateView" >updateView</a>
                             </li>
                         </ul>
@@ -300,7 +306,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="95" class="link-to-prism">libs/angular/authentication/src/lib/directives/has-feature/has-feature.directive.ts:95</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="111" class="link-to-prism">libs/angular/authentication/src/lib/directives/has-feature/has-feature.directive.ts:111</a></div>
                             </td>
                         </tr>
 
@@ -326,7 +332,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="80" class="link-to-prism">libs/angular/authentication/src/lib/directives/has-feature/has-feature.directive.ts:80</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="96" class="link-to-prism">libs/angular/authentication/src/lib/directives/has-feature/has-feature.directive.ts:96</a></div>
                             </td>
                         </tr>
                 <tr>
@@ -353,7 +359,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="85" class="link-to-prism">libs/angular/authentication/src/lib/directives/has-feature/has-feature.directive.ts:85</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="101" class="link-to-prism">libs/angular/authentication/src/lib/directives/has-feature/has-feature.directive.ts:101</a></div>
                             </td>
                         </tr>
                 <tr>
@@ -380,7 +386,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="95" class="link-to-prism">libs/angular/authentication/src/lib/directives/has-feature/has-feature.directive.ts:95</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="111" class="link-to-prism">libs/angular/authentication/src/lib/directives/has-feature/has-feature.directive.ts:111</a></div>
                             </td>
                         </tr>
                 <tr>
@@ -407,7 +413,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="90" class="link-to-prism">libs/angular/authentication/src/lib/directives/has-feature/has-feature.directive.ts:90</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="106" class="link-to-prism">libs/angular/authentication/src/lib/directives/has-feature/has-feature.directive.ts:106</a></div>
                             </td>
                         </tr>
                 <tr>
@@ -433,7 +439,7 @@
                 <td class="col-md-4">
                     <a name="dispose"></a>
                     <span class="name">
-                            <span class="modifier">Private</span>
+                            <span class="modifier">Protected</span>
                         <span ><b>dispose</b></span>
                         <a href="#dispose"><span class="icon ion-ios-link"></span></a>
                     </span>
@@ -449,8 +455,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="175"
-                                    class="link-to-prism">libs/angular/authentication/src/lib/directives/has-feature/has-feature.directive.ts:175</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="191"
+                                    class="link-to-prism">libs/angular/authentication/src/lib/directives/has-feature/has-feature.directive.ts:191</a></div>
                         </td>
                     </tr>
 
@@ -490,8 +496,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="116"
-                                    class="link-to-prism">libs/angular/authentication/src/lib/directives/has-feature/has-feature.directive.ts:116</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="132"
+                                    class="link-to-prism">libs/angular/authentication/src/lib/directives/has-feature/has-feature.directive.ts:132</a></div>
                         </td>
                     </tr>
 
@@ -513,7 +519,7 @@
                 <td class="col-md-4">
                     <a name="updateView"></a>
                     <span class="name">
-                            <span class="modifier">Private</span>
+                            <span class="modifier">Protected</span>
                         <span ><b>updateView</b></span>
                         <a href="#updateView"><span class="icon ion-ios-link"></span></a>
                     </span>
@@ -529,8 +535,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="123"
-                                    class="link-to-prism">libs/angular/authentication/src/lib/directives/has-feature/has-feature.directive.ts:123</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="139"
+                                    class="link-to-prism">libs/angular/authentication/src/lib/directives/has-feature/has-feature.directive.ts:139</a></div>
                         </td>
                     </tr>
 
@@ -560,7 +566,7 @@
                 <td class="col-md-4">
                     <a name="authenticationService"></a>
                     <span class="name">
-                            <span class="modifier">Private</span>
+                            <span class="modifier">Protected</span>
                             <span class="modifier">Readonly</span>
                         <span ><b>authenticationService</b></span>
                         <a href="#authenticationService"><span class="icon ion-ios-link"></span></a>
@@ -576,7 +582,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="41" class="link-to-prism">libs/angular/authentication/src/lib/directives/has-feature/has-feature.directive.ts:41</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="48" class="link-to-prism">libs/angular/authentication/src/lib/directives/has-feature/has-feature.directive.ts:48</a></div>
                         </td>
                     </tr>
 
@@ -595,7 +601,7 @@
                 <td class="col-md-4">
                     <a name="cdRef"></a>
                     <span class="name">
-                            <span class="modifier">Private</span>
+                            <span class="modifier">Protected</span>
                             <span class="modifier">Readonly</span>
                         <span ><b>cdRef</b></span>
                         <a href="#cdRef"><span class="icon ion-ios-link"></span></a>
@@ -609,7 +615,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="47" class="link-to-prism">libs/angular/authentication/src/lib/directives/has-feature/has-feature.directive.ts:47</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="54" class="link-to-prism">libs/angular/authentication/src/lib/directives/has-feature/has-feature.directive.ts:54</a></div>
                         </td>
                     </tr>
 
@@ -628,7 +634,7 @@
                 <td class="col-md-4">
                     <a name="destroyed$"></a>
                     <span class="name">
-                            <span class="modifier">Private</span>
+                            <span class="modifier">Protected</span>
                         <span ><b>destroyed$</b></span>
                         <a href="#destroyed$"><span class="icon ion-ios-link"></span></a>
                     </span>
@@ -642,7 +648,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="52" class="link-to-prism">libs/angular/authentication/src/lib/directives/has-feature/has-feature.directive.ts:52</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="59" class="link-to-prism">libs/angular/authentication/src/lib/directives/has-feature/has-feature.directive.ts:59</a></div>
                         </td>
                     </tr>
 
@@ -661,7 +667,7 @@
                 <td class="col-md-4">
                     <a name="elseTemplateRef"></a>
                     <span class="name">
-                            <span class="modifier">Private</span>
+                            <span class="modifier">Protected</span>
                         <span ><b>elseTemplateRef</b></span>
                         <a href="#elseTemplateRef"><span class="icon ion-ios-link"></span></a>
                     </span>
@@ -680,10 +686,16 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="59" class="link-to-prism">libs/angular/authentication/src/lib/directives/has-feature/has-feature.directive.ts:59</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="72" class="link-to-prism">libs/angular/authentication/src/lib/directives/has-feature/has-feature.directive.ts:72</a></div>
                         </td>
                     </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>The templateRef for the else block</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -693,7 +705,7 @@
                 <td class="col-md-4">
                     <a name="elseViewRef"></a>
                     <span class="name">
-                            <span class="modifier">Private</span>
+                            <span class="modifier">Protected</span>
                         <span ><b>elseViewRef</b></span>
                         <a href="#elseViewRef"><span class="icon ion-ios-link"></span></a>
                     </span>
@@ -712,10 +724,16 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="60" class="link-to-prism">libs/angular/authentication/src/lib/directives/has-feature/has-feature.directive.ts:60</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="76" class="link-to-prism">libs/angular/authentication/src/lib/directives/has-feature/has-feature.directive.ts:76</a></div>
                         </td>
                     </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>The viewRef for the else block</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -725,7 +743,7 @@
                 <td class="col-md-4">
                     <a name="feature"></a>
                     <span class="name">
-                            <span class="modifier">Private</span>
+                            <span class="modifier">Protected</span>
                         <span ><b>feature</b></span>
                         <a href="#feature"><span class="icon ion-ios-link"></span></a>
                     </span>
@@ -744,7 +762,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="65" class="link-to-prism">libs/angular/authentication/src/lib/directives/has-feature/has-feature.directive.ts:65</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="81" class="link-to-prism">libs/angular/authentication/src/lib/directives/has-feature/has-feature.directive.ts:81</a></div>
                         </td>
                     </tr>
 
@@ -777,7 +795,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="80" class="link-to-prism">libs/angular/authentication/src/lib/directives/has-feature/has-feature.directive.ts:80</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="96" class="link-to-prism">libs/angular/authentication/src/lib/directives/has-feature/has-feature.directive.ts:96</a></div>
                         </td>
                     </tr>
 
@@ -810,7 +828,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="85" class="link-to-prism">libs/angular/authentication/src/lib/directives/has-feature/has-feature.directive.ts:85</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="101" class="link-to-prism">libs/angular/authentication/src/lib/directives/has-feature/has-feature.directive.ts:101</a></div>
                         </td>
                     </tr>
 
@@ -843,7 +861,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="95" class="link-to-prism">libs/angular/authentication/src/lib/directives/has-feature/has-feature.directive.ts:95</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="111" class="link-to-prism">libs/angular/authentication/src/lib/directives/has-feature/has-feature.directive.ts:111</a></div>
                         </td>
                     </tr>
 
@@ -876,7 +894,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="90" class="link-to-prism">libs/angular/authentication/src/lib/directives/has-feature/has-feature.directive.ts:90</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="106" class="link-to-prism">libs/angular/authentication/src/lib/directives/has-feature/has-feature.directive.ts:106</a></div>
                         </td>
                     </tr>
 
@@ -895,7 +913,7 @@
                 <td class="col-md-4">
                     <a name="shouldHaveAllFeatures"></a>
                     <span class="name">
-                            <span class="modifier">Private</span>
+                            <span class="modifier">Protected</span>
                         <span ><b>shouldHaveAllFeatures</b></span>
                         <a href="#shouldHaveAllFeatures"><span class="icon ion-ios-link"></span></a>
                     </span>
@@ -914,7 +932,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="75" class="link-to-prism">libs/angular/authentication/src/lib/directives/has-feature/has-feature.directive.ts:75</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="91" class="link-to-prism">libs/angular/authentication/src/lib/directives/has-feature/has-feature.directive.ts:91</a></div>
                         </td>
                     </tr>
 
@@ -933,7 +951,7 @@
                 <td class="col-md-4">
                     <a name="shouldHaveFeature"></a>
                     <span class="name">
-                            <span class="modifier">Private</span>
+                            <span class="modifier">Protected</span>
                         <span ><b>shouldHaveFeature</b></span>
                         <a href="#shouldHaveFeature"><span class="icon ion-ios-link"></span></a>
                     </span>
@@ -952,7 +970,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="70" class="link-to-prism">libs/angular/authentication/src/lib/directives/has-feature/has-feature.directive.ts:70</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="86" class="link-to-prism">libs/angular/authentication/src/lib/directives/has-feature/has-feature.directive.ts:86</a></div>
                         </td>
                     </tr>
 
@@ -983,7 +1001,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="33" class="link-to-prism">libs/angular/authentication/src/lib/directives/has-feature/has-feature.directive.ts:33</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="40" class="link-to-prism">libs/angular/authentication/src/lib/directives/has-feature/has-feature.directive.ts:40</a></div>
                         </td>
                     </tr>
 
@@ -1002,7 +1020,7 @@
                 <td class="col-md-4">
                     <a name="thenTemplateRef"></a>
                     <span class="name">
-                            <span class="modifier">Private</span>
+                            <span class="modifier">Protected</span>
                         <span ><b>thenTemplateRef</b></span>
                         <a href="#thenTemplateRef"><span class="icon ion-ios-link"></span></a>
                     </span>
@@ -1021,13 +1039,13 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="57" class="link-to-prism">libs/angular/authentication/src/lib/directives/has-feature/has-feature.directive.ts:57</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="64" class="link-to-prism">libs/angular/authentication/src/lib/directives/has-feature/has-feature.directive.ts:64</a></div>
                         </td>
                     </tr>
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-description"><p>The needed templateRefs</p>
+                    <div class="io-description"><p>The templateRef for the then block</p>
 </div>
                 </td>
             </tr>
@@ -1040,7 +1058,7 @@
                 <td class="col-md-4">
                     <a name="thenViewRef"></a>
                     <span class="name">
-                            <span class="modifier">Private</span>
+                            <span class="modifier">Protected</span>
                         <span ><b>thenViewRef</b></span>
                         <a href="#thenViewRef"><span class="icon ion-ios-link"></span></a>
                     </span>
@@ -1059,10 +1077,16 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="58" class="link-to-prism">libs/angular/authentication/src/lib/directives/has-feature/has-feature.directive.ts:58</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="68" class="link-to-prism">libs/angular/authentication/src/lib/directives/has-feature/has-feature.directive.ts:68</a></div>
                         </td>
                     </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>The viewRef for the then block</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -1072,7 +1096,7 @@
                 <td class="col-md-4">
                     <a name="viewContainer"></a>
                     <span class="name">
-                            <span class="modifier">Private</span>
+                            <span class="modifier">Protected</span>
                         <span ><b>viewContainer</b></span>
                         <a href="#viewContainer"><span class="icon ion-ios-link"></span></a>
                     </span>
@@ -1085,13 +1109,13 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="37" class="link-to-prism">libs/angular/authentication/src/lib/directives/has-feature/has-feature.directive.ts:37</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="44" class="link-to-prism">libs/angular/authentication/src/lib/directives/has-feature/has-feature.directive.ts:44</a></div>
                         </td>
                     </tr>
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-description"><p>The provided ViewContainerRef</p>
+                    <div class="io-description"><p>An instance of the ViewContainerRef</p>
 </div>
                 </td>
             </tr>
@@ -1127,6 +1151,13 @@ import { convertToArray } from &#x27;../../utils&#x27;;
  * A directive that will render a part of the template based on whether the required feature(s) are provided.
  *
  * Based upon &#x60;*ngIf&#x60;. See https://github.com/angular/angular/blob/master/packages/common/src/directives/ng_if.ts
+ *
+ * ## Accessibility (WCAG 2.2 SC 4.1.3 - Status Messages)
+ * Since this directive dynamically inserts or removes elements from the DOM, screen readers may not automatically
+ * announce the status change. However, because DOM changes in this directive typically happen on initial load
+ * or directly in response to an explicit user interaction (e.g. settings updates), standard page/focus navigation
+ * is sufficient and wrapping in an &#x60;aria-live&#x60; region is not required. If the dynamic view updates are transient,
+ * critical status messages, it is recommended to wrap the toggleable section in an &#x60;aria-live&#x60; region (e.g. &#x60;aria-live&#x3D;&quot;polite&quot;&#x60;).
  */
 
 //TODO: Iben: Implement Cypress/PlayWright tests
@@ -1139,47 +1170,56 @@ export class NgxHasFeatureDirective&lt;FeatureType extends string&gt; implements
 	 */
 	templateRef &#x3D; inject&lt;TemplateRef&lt;any&gt;&gt;(TemplateRef);
 	/**
-	 * The provided ViewContainerRef
+	 * An instance of the ViewContainerRef
 	 */
-	private viewContainer &#x3D; inject(ViewContainerRef);
+	protected viewContainer &#x3D; inject(ViewContainerRef);
 	/**
 	 * The provided AuthenticationService implementation
 	 */
-	private readonly authenticationService &#x3D; inject&lt;NgxAuthenticationAbstractService&gt;(
+	protected readonly authenticationService &#x3D; inject&lt;NgxAuthenticationAbstractService&gt;(
 		NgxAuthenticationServiceToken
 	);
 	/**
 	 * The provided ChangeDetectorRef
 	 */
-	private readonly cdRef &#x3D; inject(ChangeDetectorRef);
+	protected readonly cdRef &#x3D; inject(ChangeDetectorRef);
 
 	/**
 	 * The destroyed state of the directive
 	 */
-	private destroyed$: Subject&lt;void&gt;;
+	protected destroyed$: Subject&lt;void&gt;;
 
 	/**
-	 * The needed templateRefs
+	 * The templateRef for the then block
 	 */
-	private thenTemplateRef: TemplateRef&lt;any&gt; | null &#x3D; null;
-	private thenViewRef: EmbeddedViewRef&lt;any&gt; | null &#x3D; null;
-	private elseTemplateRef: TemplateRef&lt;any&gt; | null &#x3D; null;
-	private elseViewRef: EmbeddedViewRef&lt;any&gt; | null &#x3D; null;
+	protected thenTemplateRef: TemplateRef&lt;any&gt; | null &#x3D; null;
+	/**
+	 * The viewRef for the then block
+	 */
+	protected thenViewRef: EmbeddedViewRef&lt;any&gt; | null &#x3D; null;
+	/**
+	 * The templateRef for the else block
+	 */
+	protected elseTemplateRef: TemplateRef&lt;any&gt; | null &#x3D; null;
+	/**
+	 * The viewRef for the else block
+	 */
+	protected elseViewRef: EmbeddedViewRef&lt;any&gt; | null &#x3D; null;
 
 	/**
 	 * The (list of) feature(s) we need to check
 	 */
-	private feature: FeatureType | FeatureType[] &#x3D; [];
+	protected feature: FeatureType | FeatureType[] &#x3D; [];
 
 	/**
 	 * Whether the feature should be enabled
 	 */
-	private shouldHaveFeature: boolean &#x3D; true;
+	protected shouldHaveFeature: boolean &#x3D; true;
 
 	/**
 	 * Whether all features should be enabled
 	 */
-	private shouldHaveAllFeatures: boolean &#x3D; true;
+	protected shouldHaveAllFeatures: boolean &#x3D; true;
 
 	/**
 	 * A feature or list of features the item should have
@@ -1227,7 +1267,7 @@ export class NgxHasFeatureDirective&lt;FeatureType extends string&gt; implements
 	/**
 	 * Updates the view and hides/renders the template as needed
 	 */
-	private updateView(): void {
+	protected updateView(): void {
 		// Iben: Dispose the current subscription
 		this.dispose();
 
@@ -1279,7 +1319,7 @@ export class NgxHasFeatureDirective&lt;FeatureType extends string&gt; implements
 	/**
 	 * Dispose the current subscription
 	 */
-	private dispose(): void {
+	protected dispose(): void {
 		if (this.destroyed$) {
 			this.destroyed$.next();
 			this.destroyed$.complete();

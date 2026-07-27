@@ -123,6 +123,12 @@
             </p>
             <p class="comment">
                 <p>A structural directive that provides a way to render UI elements based on whether a (set of) cookie(s) have been accepted by the user.</p>
+<h2>Accessibility (WCAG 2.2 SC 4.1.3 - Status Messages)</h2>
+<p>Since this directive dynamically inserts or removes elements from the DOM, screen readers may not automatically
+announce the status change. However, because DOM changes in this directive typically happen on initial load
+or directly in response to an explicit user interaction (e.g. cookie consent settings changes), standard page/focus navigation
+is sufficient and wrapping in an <code>aria-live</code> region is not required. If the dynamic view updates are transient,
+critical status messages, it is recommended to wrap the toggleable section in an <code>aria-live</code> region (e.g. <code>aria-live=&quot;polite&quot;</code>).</p>
 
             </p>
 
@@ -169,29 +175,29 @@
                     <td class="col-md-4">
                         <ul class="index-list">
                             <li>
-                                    <span class="modifier">Private</span>
+                                    <span class="modifier">Protected</span>
                                     <span class="modifier">Readonly</span>
                                 <a href="#cdRef" >cdRef</a>
                             </li>
                             <li>
-                                    <span class="modifier">Private</span>
+                                    <span class="modifier">Protected</span>
                                     <span class="modifier">Readonly</span>
                                 <a href="#component" >component</a>
                             </li>
                             <li>
-                                    <span class="modifier">Private</span>
+                                    <span class="modifier">Protected</span>
                                 <a href="#componentRef" >componentRef</a>
                             </li>
                             <li>
-                                    <span class="modifier">Private</span>
+                                    <span class="modifier">Protected</span>
                                 <a href="#cookies" >cookies</a>
                             </li>
                             <li>
-                                    <span class="modifier">Private</span>
+                                    <span class="modifier">Protected</span>
                                 <a href="#destroyed$" >destroyed$</a>
                             </li>
                             <li>
-                                    <span class="modifier">Private</span>
+                                    <span class="modifier">Protected</span>
                                 <a href="#elseTemplateRef" >elseTemplateRef</a>
                             </li>
                             <li>
@@ -203,21 +209,21 @@
                                 <a href="#hasCookieElse" >hasCookieElse</a>
                             </li>
                             <li>
-                                    <span class="modifier">Private</span>
+                                    <span class="modifier">Protected</span>
                                     <span class="modifier">Readonly</span>
                                 <a href="#ngxCookieService" >ngxCookieService</a>
                             </li>
                             <li>
-                                    <span class="modifier">Private</span>
+                                    <span class="modifier">Protected</span>
                                     <span class="modifier">Readonly</span>
                                 <a href="#templateRef" >templateRef</a>
                             </li>
                             <li>
-                                    <span class="modifier">Private</span>
+                                    <span class="modifier">Protected</span>
                                 <a href="#thenTemplateRef" >thenTemplateRef</a>
                             </li>
                             <li>
-                                    <span class="modifier">Private</span>
+                                    <span class="modifier">Protected</span>
                                 <a href="#viewContainer" >viewContainer</a>
                             </li>
                         </ul>
@@ -233,7 +239,7 @@
                     <td class="col-md-4">
                         <ul class="index-list">
                             <li>
-                                    <span class="modifier">Private</span>
+                                    <span class="modifier">Protected</span>
                                 <a href="#dispose" >dispose</a>
                             </li>
                             <li>
@@ -241,15 +247,15 @@
                                 <a href="#ngOnDestroy" >ngOnDestroy</a>
                             </li>
                             <li>
-                                    <span class="modifier">Private</span>
+                                    <span class="modifier">Protected</span>
                                 <a href="#renderElseTemplate" >renderElseTemplate</a>
                             </li>
                             <li>
-                                    <span class="modifier">Private</span>
+                                    <span class="modifier">Protected</span>
                                 <a href="#renderThenTemplate" >renderThenTemplate</a>
                             </li>
                             <li>
-                                    <span class="modifier">Private</span>
+                                    <span class="modifier">Protected</span>
                                 <a href="#updateView" >updateView</a>
                             </li>
                         </ul>
@@ -289,7 +295,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="70" class="link-to-prism">libs/angular/cookies/src/lib/directives/has-cookie/has-cookie.directive.ts:70</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="95" class="link-to-prism">libs/angular/cookies/src/lib/directives/has-cookie/has-cookie.directive.ts:95</a></div>
                             </td>
                         </tr>
 
@@ -320,7 +326,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="64" class="link-to-prism">libs/angular/cookies/src/lib/directives/has-cookie/has-cookie.directive.ts:64</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="89" class="link-to-prism">libs/angular/cookies/src/lib/directives/has-cookie/has-cookie.directive.ts:89</a></div>
                             </td>
                         </tr>
                 <tr>
@@ -346,7 +352,7 @@
                 <td class="col-md-4">
                     <a name="dispose"></a>
                     <span class="name">
-                            <span class="modifier">Private</span>
+                            <span class="modifier">Protected</span>
                         <span ><b>dispose</b></span>
                         <a href="#dispose"><span class="icon ion-ios-link"></span></a>
                     </span>
@@ -362,8 +368,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="148"
-                                    class="link-to-prism">libs/angular/cookies/src/lib/directives/has-cookie/has-cookie.directive.ts:148</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="173"
+                                    class="link-to-prism">libs/angular/cookies/src/lib/directives/has-cookie/has-cookie.directive.ts:173</a></div>
                         </td>
                     </tr>
 
@@ -403,8 +409,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="89"
-                                    class="link-to-prism">libs/angular/cookies/src/lib/directives/has-cookie/has-cookie.directive.ts:89</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="114"
+                                    class="link-to-prism">libs/angular/cookies/src/lib/directives/has-cookie/has-cookie.directive.ts:114</a></div>
                         </td>
                     </tr>
 
@@ -426,7 +432,7 @@
                 <td class="col-md-4">
                     <a name="renderElseTemplate"></a>
                     <span class="name">
-                            <span class="modifier">Private</span>
+                            <span class="modifier">Protected</span>
                         <span ><b>renderElseTemplate</b></span>
                         <a href="#renderElseTemplate"><span class="icon ion-ios-link"></span></a>
                     </span>
@@ -442,8 +448,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="168"
-                                    class="link-to-prism">libs/angular/cookies/src/lib/directives/has-cookie/has-cookie.directive.ts:168</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="193"
+                                    class="link-to-prism">libs/angular/cookies/src/lib/directives/has-cookie/has-cookie.directive.ts:193</a></div>
                         </td>
                     </tr>
 
@@ -467,7 +473,7 @@
                 <td class="col-md-4">
                     <a name="renderThenTemplate"></a>
                     <span class="name">
-                            <span class="modifier">Private</span>
+                            <span class="modifier">Protected</span>
                         <span ><b>renderThenTemplate</b></span>
                         <a href="#renderThenTemplate"><span class="icon ion-ios-link"></span></a>
                     </span>
@@ -483,8 +489,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="158"
-                                    class="link-to-prism">libs/angular/cookies/src/lib/directives/has-cookie/has-cookie.directive.ts:158</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="183"
+                                    class="link-to-prism">libs/angular/cookies/src/lib/directives/has-cookie/has-cookie.directive.ts:183</a></div>
                         </td>
                     </tr>
 
@@ -508,7 +514,7 @@
                 <td class="col-md-4">
                     <a name="updateView"></a>
                     <span class="name">
-                            <span class="modifier">Private</span>
+                            <span class="modifier">Protected</span>
                         <span ><b>updateView</b></span>
                         <a href="#updateView"><span class="icon ion-ios-link"></span></a>
                     </span>
@@ -524,8 +530,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="96"
-                                    class="link-to-prism">libs/angular/cookies/src/lib/directives/has-cookie/has-cookie.directive.ts:96</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="121"
+                                    class="link-to-prism">libs/angular/cookies/src/lib/directives/has-cookie/has-cookie.directive.ts:121</a></div>
                         </td>
                     </tr>
 
@@ -555,7 +561,7 @@
                 <td class="col-md-4">
                     <a name="cdRef"></a>
                     <span class="name">
-                            <span class="modifier">Private</span>
+                            <span class="modifier">Protected</span>
                             <span class="modifier">Readonly</span>
                         <span ><b>cdRef</b></span>
                         <a href="#cdRef"><span class="icon ion-ios-link"></span></a>
@@ -575,10 +581,16 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="39" class="link-to-prism">libs/angular/cookies/src/lib/directives/has-cookie/has-cookie.directive.ts:39</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="58" class="link-to-prism">libs/angular/cookies/src/lib/directives/has-cookie/has-cookie.directive.ts:58</a></div>
                         </td>
                     </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>An instance of the ChangeDetectorRef</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -588,7 +600,7 @@
                 <td class="col-md-4">
                     <a name="component"></a>
                     <span class="name">
-                            <span class="modifier">Private</span>
+                            <span class="modifier">Protected</span>
                             <span class="modifier">Readonly</span>
                         <span ><b>component</b></span>
                         <a href="#component"><span class="icon ion-ios-link"></span></a>
@@ -611,10 +623,16 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="40" class="link-to-prism">libs/angular/cookies/src/lib/directives/has-cookie/has-cookie.directive.ts:40</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="62" class="link-to-prism">libs/angular/cookies/src/lib/directives/has-cookie/has-cookie.directive.ts:62</a></div>
                         </td>
                     </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>The custom fallback component type</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -624,7 +642,7 @@
                 <td class="col-md-4">
                     <a name="componentRef"></a>
                     <span class="name">
-                            <span class="modifier">Private</span>
+                            <span class="modifier">Protected</span>
                         <span ><b>componentRef</b></span>
                         <a href="#componentRef"><span class="icon ion-ios-link"></span></a>
                     </span>
@@ -638,7 +656,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="54" class="link-to-prism">libs/angular/cookies/src/lib/directives/has-cookie/has-cookie.directive.ts:54</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="79" class="link-to-prism">libs/angular/cookies/src/lib/directives/has-cookie/has-cookie.directive.ts:79</a></div>
                         </td>
                     </tr>
 
@@ -657,7 +675,7 @@
                 <td class="col-md-4">
                     <a name="cookies"></a>
                     <span class="name">
-                            <span class="modifier">Private</span>
+                            <span class="modifier">Protected</span>
                         <span ><b>cookies</b></span>
                         <a href="#cookies"><span class="icon ion-ios-link"></span></a>
                     </span>
@@ -676,7 +694,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="59" class="link-to-prism">libs/angular/cookies/src/lib/directives/has-cookie/has-cookie.directive.ts:59</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="84" class="link-to-prism">libs/angular/cookies/src/lib/directives/has-cookie/has-cookie.directive.ts:84</a></div>
                         </td>
                     </tr>
 
@@ -695,7 +713,7 @@
                 <td class="col-md-4">
                     <a name="destroyed$"></a>
                     <span class="name">
-                            <span class="modifier">Private</span>
+                            <span class="modifier">Protected</span>
                         <span ><b>destroyed$</b></span>
                         <a href="#destroyed$"><span class="icon ion-ios-link"></span></a>
                     </span>
@@ -709,7 +727,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="34" class="link-to-prism">libs/angular/cookies/src/lib/directives/has-cookie/has-cookie.directive.ts:34</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="41" class="link-to-prism">libs/angular/cookies/src/lib/directives/has-cookie/has-cookie.directive.ts:41</a></div>
                         </td>
                     </tr>
 
@@ -728,7 +746,7 @@
                 <td class="col-md-4">
                     <a name="elseTemplateRef"></a>
                     <span class="name">
-                            <span class="modifier">Private</span>
+                            <span class="modifier">Protected</span>
                         <span ><b>elseTemplateRef</b></span>
                         <a href="#elseTemplateRef"><span class="icon ion-ios-link"></span></a>
                     </span>
@@ -747,10 +765,16 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="49" class="link-to-prism">libs/angular/cookies/src/lib/directives/has-cookie/has-cookie.directive.ts:49</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="74" class="link-to-prism">libs/angular/cookies/src/lib/directives/has-cookie/has-cookie.directive.ts:74</a></div>
                         </td>
                     </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>The templateRef for the else block</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -774,7 +798,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="64" class="link-to-prism">libs/angular/cookies/src/lib/directives/has-cookie/has-cookie.directive.ts:64</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="89" class="link-to-prism">libs/angular/cookies/src/lib/directives/has-cookie/has-cookie.directive.ts:89</a></div>
                         </td>
                     </tr>
 
@@ -812,7 +836,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="70" class="link-to-prism">libs/angular/cookies/src/lib/directives/has-cookie/has-cookie.directive.ts:70</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="95" class="link-to-prism">libs/angular/cookies/src/lib/directives/has-cookie/has-cookie.directive.ts:95</a></div>
                         </td>
                     </tr>
 
@@ -831,7 +855,7 @@
                 <td class="col-md-4">
                     <a name="ngxCookieService"></a>
                     <span class="name">
-                            <span class="modifier">Private</span>
+                            <span class="modifier">Protected</span>
                             <span class="modifier">Readonly</span>
                         <span ><b>ngxCookieService</b></span>
                         <a href="#ngxCookieService"><span class="icon ion-ios-link"></span></a>
@@ -851,10 +875,16 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="38" class="link-to-prism">libs/angular/cookies/src/lib/directives/has-cookie/has-cookie.directive.ts:38</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="54" class="link-to-prism">libs/angular/cookies/src/lib/directives/has-cookie/has-cookie.directive.ts:54</a></div>
                         </td>
                     </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>An instance of the NgxCookieService</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -864,7 +894,7 @@
                 <td class="col-md-4">
                     <a name="templateRef"></a>
                     <span class="name">
-                            <span class="modifier">Private</span>
+                            <span class="modifier">Protected</span>
                             <span class="modifier">Readonly</span>
                         <span ><b>templateRef</b></span>
                         <a href="#templateRef"><span class="icon ion-ios-link"></span></a>
@@ -884,10 +914,16 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="36" class="link-to-prism">libs/angular/cookies/src/lib/directives/has-cookie/has-cookie.directive.ts:36</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="46" class="link-to-prism">libs/angular/cookies/src/lib/directives/has-cookie/has-cookie.directive.ts:46</a></div>
                         </td>
                     </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>An instance of the TemplateRef</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -897,7 +933,7 @@
                 <td class="col-md-4">
                     <a name="thenTemplateRef"></a>
                     <span class="name">
-                            <span class="modifier">Private</span>
+                            <span class="modifier">Protected</span>
                         <span ><b>thenTemplateRef</b></span>
                         <a href="#thenTemplateRef"><span class="icon ion-ios-link"></span></a>
                     </span>
@@ -916,13 +952,13 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="48" class="link-to-prism">libs/angular/cookies/src/lib/directives/has-cookie/has-cookie.directive.ts:48</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="70" class="link-to-prism">libs/angular/cookies/src/lib/directives/has-cookie/has-cookie.directive.ts:70</a></div>
                         </td>
                     </tr>
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-description"><p>The needed templateRefs</p>
+                    <div class="io-description"><p>The templateRef for the then block</p>
 </div>
                 </td>
             </tr>
@@ -935,7 +971,7 @@
                 <td class="col-md-4">
                     <a name="viewContainer"></a>
                     <span class="name">
-                            <span class="modifier">Private</span>
+                            <span class="modifier">Protected</span>
                         <span ><b>viewContainer</b></span>
                         <a href="#viewContainer"><span class="icon ion-ios-link"></span></a>
                     </span>
@@ -954,10 +990,16 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="37" class="link-to-prism">libs/angular/cookies/src/lib/directives/has-cookie/has-cookie.directive.ts:37</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="50" class="link-to-prism">libs/angular/cookies/src/lib/directives/has-cookie/has-cookie.directive.ts:50</a></div>
                         </td>
                     </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>An instance of the ViewContainerRef</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -991,6 +1033,13 @@ import { NgxHasCookieConfiguration } from &#x27;../../types&#x27;;
 
 /**
  * A structural directive that provides a way to render UI elements based on whether a (set of) cookie(s) have been accepted by the user.
+ *
+ * ## Accessibility (WCAG 2.2 SC 4.1.3 - Status Messages)
+ * Since this directive dynamically inserts or removes elements from the DOM, screen readers may not automatically
+ * announce the status change. However, because DOM changes in this directive typically happen on initial load
+ * or directly in response to an explicit user interaction (e.g. cookie consent settings changes), standard page/focus navigation
+ * is sufficient and wrapping in an &#x60;aria-live&#x60; region is not required. If the dynamic view updates are transient,
+ * critical status messages, it is recommended to wrap the toggleable section in an &#x60;aria-live&#x60; region (e.g. &#x60;aria-live&#x3D;&quot;polite&quot;&#x60;).
  */
 @Directive({
 	selector: &#x27;[hasCookie]&#x27;,
@@ -1001,32 +1050,50 @@ export class NgxHasCookieDirective implements OnDestroy {
 	/**
 	 * The destroyed state of the directive
 	 */
-	private destroyed$: Subject&lt;void&gt;;
+	protected destroyed$: Subject&lt;void&gt;;
 
-	private readonly templateRef: TemplateRef&lt;any&gt; &#x3D; inject(TemplateRef);
-	private viewContainer: ViewContainerRef &#x3D; inject(ViewContainerRef);
-	private readonly ngxCookieService: NgxCookieService &#x3D; inject(NgxCookieService);
-	private readonly cdRef: ChangeDetectorRef &#x3D; inject(ChangeDetectorRef);
-	private readonly component: Type&lt;NgxCookiesFallBackComponent&gt; &#x3D; inject(
+	/**
+	 * An instance of the TemplateRef
+	 */
+	protected readonly templateRef: TemplateRef&lt;any&gt; &#x3D; inject(TemplateRef);
+	/**
+	 * An instance of the ViewContainerRef
+	 */
+	protected viewContainer: ViewContainerRef &#x3D; inject(ViewContainerRef);
+	/**
+	 * An instance of the NgxCookieService
+	 */
+	protected readonly ngxCookieService: NgxCookieService &#x3D; inject(NgxCookieService);
+	/**
+	 * An instance of the ChangeDetectorRef
+	 */
+	protected readonly cdRef: ChangeDetectorRef &#x3D; inject(ChangeDetectorRef);
+	/**
+	 * The custom fallback component type
+	 */
+	protected readonly component: Type&lt;NgxCookiesFallBackComponent&gt; &#x3D; inject(
 		NgxCookiesFallbackComponentToken,
 		{ optional: true }
 	);
 
 	/**
-	 * The needed templateRefs
+	 * The templateRef for the then block
 	 */
-	private thenTemplateRef: TemplateRef&lt;any&gt; | null &#x3D; null;
-	private elseTemplateRef: TemplateRef&lt;any&gt; | null &#x3D; null;
+	protected thenTemplateRef: TemplateRef&lt;any&gt; | null &#x3D; null;
+	/**
+	 * The templateRef for the else block
+	 */
+	protected elseTemplateRef: TemplateRef&lt;any&gt; | null &#x3D; null;
 
 	/**
 	 * The ref of the component we wish to render as a fallback
 	 */
-	private componentRef: ComponentRef&lt;NgxCookiesFallBackComponent&gt;;
+	protected componentRef: ComponentRef&lt;NgxCookiesFallBackComponent&gt;;
 
 	/**
 	 * The list of cookies we need to check
 	 */
-	private cookies: NgxHasCookieConfiguration[] &#x3D; [];
+	protected cookies: NgxHasCookieConfiguration[] &#x3D; [];
 
 	/**
 	 * A cookie or list of cookies the item should have
@@ -1063,7 +1130,7 @@ export class NgxHasCookieDirective implements OnDestroy {
 	/**
 	 * Updates the view and hides/renders the template as needed
 	 */
-	private updateView(): void {
+	protected updateView(): void {
 		// Iben: Dispose the current subscription
 		this.dispose();
 
@@ -1115,7 +1182,7 @@ export class NgxHasCookieDirective implements OnDestroy {
 	/**
 	 * Dispose the current subscription
 	 */
-	private dispose(): void {
+	protected dispose(): void {
 		if (this.destroyed$) {
 			this.destroyed$.next();
 			this.destroyed$.complete();
@@ -1125,7 +1192,7 @@ export class NgxHasCookieDirective implements OnDestroy {
 	/**
 	 * Render the template on which the directive is set
 	 */
-	private renderThenTemplate(): void {
+	protected renderThenTemplate(): void {
 		// Iben: If a thenTemplateRef is provided, render the template
 		if (this.thenTemplateRef) {
 			this.viewContainer.createEmbeddedView(this.thenTemplateRef);
@@ -1135,7 +1202,7 @@ export class NgxHasCookieDirective implements OnDestroy {
 	/**
 	 * Render the fallbackTemplate or fallBackComponent
 	 */
-	private renderElseTemplate(): void {
+	protected renderElseTemplate(): void {
 		// Iben: If a custom template ref was provided, render the template and early exit
 		if (this.hasCookieElse()) {
 			this.viewContainer.createEmbeddedView(this.hasCookieElse());

@@ -234,7 +234,7 @@
                     <td class="col-md-4">
                         <ul class="index-list">
                             <li>
-                                    <span class="modifier">Private</span>
+                                    <span class="modifier">Protected</span>
                                 <a href="#dispose" >dispose</a>
                             </li>
                             <li>
@@ -242,7 +242,7 @@
                                 <a href="#ngOnDestroy" >ngOnDestroy</a>
                             </li>
                             <li>
-                                    <span class="modifier">Private</span>
+                                    <span class="modifier">Protected</span>
                                 <a href="#updateView" >updateView</a>
                             </li>
                         </ul>
@@ -404,7 +404,7 @@
                 <td class="col-md-4">
                     <a name="dispose"></a>
                     <span class="name">
-                            <span class="modifier">Private</span>
+                            <span class="modifier">Protected</span>
                         <span ><b>dispose</b></span>
                         <a href="#dispose"><span class="icon ion-ios-link"></span></a>
                     </span>
@@ -484,7 +484,7 @@
                 <td class="col-md-4">
                     <a name="updateView"></a>
                     <span class="name">
-                            <span class="modifier">Private</span>
+                            <span class="modifier">Protected</span>
                         <span ><b>updateView</b></span>
                         <a href="#updateView"><span class="icon ion-ios-link"></span></a>
                     </span>
@@ -1084,7 +1084,7 @@ export class NgxMediaQueryDirective implements OnDestroy {
 	/**
 	 * Updates the view and hides/renders the template as needed
 	 */
-	private updateView(): void {
+	protected updateView(): void {
 		// Iben: Dispose the current subscription
 		this.dispose();
 
@@ -1138,7 +1138,7 @@ export class NgxMediaQueryDirective implements OnDestroy {
 	/**
 	 * Dispose the current subscription
 	 */
-	private dispose(): void {
+	protected dispose(): void {
 		if (this.destroyed$) {
 			this.destroyed$.next();
 			this.destroyed$.complete();

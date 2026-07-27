@@ -1103,7 +1103,7 @@ import { NgxTooltipPosition } from &#x27;../../types&#x27;;
 	standalone: true,
 	host: {
 		&#x27;[attr.aria-describedby]&#x27;: &#x27;ngxTooltipId()&#x27;,
-		tabIndex: &#x27;0&#x27;,
+		&#x27;[attr.tabindex]&#x27;: &#x27;ngxTooltipDisabled() ? null : &quot;0&quot;&#x27;,
 	},
 })
 export class NgxTooltipDirective {

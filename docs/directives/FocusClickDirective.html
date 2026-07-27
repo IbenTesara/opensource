@@ -124,8 +124,26 @@
         </p>
 
 
+            <p class="comment">
+                <h3>Description</h3>
+            </p>
+            <p class="comment">
+                <p>A directive that replaces the default click handler, enabling interactive components to respond to mouse clicks,
+Enter keypress, and Space keypress events (with default scroll prevention). This directive is not to be added to elements that are already clickable.</p>
+<h2>Accessibility Guidelines</h2>
+<ul>
+<li><strong>Accessible Names</strong>: Since this directive dynamically applies <code>role=&quot;button&quot;</code> and <code>tabindex=&quot;0&quot;</code>, developers must ensure that the host element has a clear accessible name (via text content, <code>aria-label</code>, or <code>aria-labelledby</code>) so that screen readers can announce it correctly.</li>
+</ul>
+
+            </p>
 
 
+            <p class="comment">
+                <h3>Implements</h3>
+            </p>
+            <p class="comment">
+                        <code>AfterViewInit</code>
+            </p>
 
 
         <section data-compodoc="block-metadata">
@@ -167,6 +185,11 @@
                                 <a href="#disabled" >disabled</a>
                             </li>
                             <li>
+                                    <span class="modifier">Protected</span>
+                                    <span class="modifier">Readonly</span>
+                                <a href="#elementRef" >elementRef</a>
+                            </li>
+                            <li>
                                     <span class="modifier">Public</span>
                                     <span class="modifier">Readonly</span>
                                 <a href="#focusClick" >focusClick</a>
@@ -192,6 +215,15 @@
                                     <span class="modifier"></span>
                                     <span class="modifier">Public</span>
                                 <a href="#isEntered" >isEntered</a>
+                            </li>
+                            <li>
+                                    <span class="modifier"></span>
+                                    <span class="modifier">Public</span>
+                                <a href="#isSpaced" >isSpaced</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#ngAfterViewInit" >ngAfterViewInit</a>
                             </li>
                         </ul>
                     </td>
@@ -228,6 +260,9 @@
                             <li>
                                 <a href="#keydown.enter" >keydown.enter</a>
                             </li>
+                            <li>
+                                <a href="#keydown.space" >keydown.space</a>
+                            </li>
                         </ul>
                     </td>
                 </tr>
@@ -254,9 +289,15 @@
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="12" class="link-to-prism">libs/angular/utils/src/lib/directives/focus-click/focus-click.directive.ts:12</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="37" class="link-to-prism">libs/angular/utils/src/lib/directives/focus-click/focus-click.directive.ts:37</a></div>
                             </td>
                         </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>Disabled property for the element</p>
+</div>
+                    </td>
+                </tr>
             </tbody>
         </table>
 </section>
@@ -285,8 +326,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="28"
-                            class="link-to-prism">libs/angular/utils/src/lib/directives/focus-click/focus-click.directive.ts:28</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="53"
+                            class="link-to-prism">libs/angular/utils/src/lib/directives/focus-click/focus-click.directive.ts:53</a></div>
                 </td>
             </tr>
 
@@ -310,8 +351,38 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="37"
-                            class="link-to-prism">libs/angular/utils/src/lib/directives/focus-click/focus-click.directive.ts:37</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="62"
+                            class="link-to-prism">libs/angular/utils/src/lib/directives/focus-click/focus-click.directive.ts:62</a></div>
+                </td>
+            </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="keydown.space"></a>
+                    <span class="name">
+                        <b>
+                            keydown.space
+                        </b>
+                        <a href="#keydown.space"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <i>Arguments : </i><code>'$event' </code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="71"
+                            class="link-to-prism">libs/angular/utils/src/lib/directives/focus-click/focus-click.directive.ts:71</a></div>
                 </td>
             </tr>
 
@@ -354,8 +425,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="28"
-                                    class="link-to-prism">libs/angular/utils/src/lib/directives/focus-click/focus-click.directive.ts:28</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="53"
+                                    class="link-to-prism">libs/angular/utils/src/lib/directives/focus-click/focus-click.directive.ts:53</a></div>
                         </td>
                     </tr>
 
@@ -431,8 +502,124 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="37"
-                                    class="link-to-prism">libs/angular/utils/src/lib/directives/focus-click/focus-click.directive.ts:37</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="62"
+                                    class="link-to-prism">libs/angular/utils/src/lib/directives/focus-click/focus-click.directive.ts:62</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="isSpaced"></a>
+                    <span class="name">
+                            <span class="modifier"></span>
+                            <span class="modifier">Public</span>
+                        <span ><b>isSpaced</b></span>
+                        <a href="#isSpaced"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>isSpaced(event: Event)</code>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <b>Decorators : </b>
+                    <br />
+                    <code>@HostListener(&#x27;keydown.space&#x27;, [&#x27;$event&#x27;])<br /></code>
+                </td>
+            </tr>
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="71"
+                                    class="link-to-prism">libs/angular/utils/src/lib/directives/focus-click/focus-click.directive.ts:71</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>event</td>
+                                            <td>
+                                                        <code>Event</code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngAfterViewInit"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                        <span ><b>ngAfterViewInit</b></span>
+                        <a href="#ngAfterViewInit"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>ngAfterViewInit()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="78"
+                                    class="link-to-prism">libs/angular/utils/src/lib/directives/focus-click/focus-click.directive.ts:78</a></div>
                         </td>
                     </tr>
 
@@ -474,10 +661,49 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="12" class="link-to-prism">libs/angular/utils/src/lib/directives/focus-click/focus-click.directive.ts:12</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="37" class="link-to-prism">libs/angular/utils/src/lib/directives/focus-click/focus-click.directive.ts:37</a></div>
                         </td>
                     </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Disabled property for the element</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="elementRef"></a>
+                    <span class="name">
+                            <span class="modifier">Protected</span>
+                            <span class="modifier">Readonly</span>
+                        <span ><b>elementRef</b></span>
+                        <a href="#elementRef"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>inject(ElementRef)</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="32" class="link-to-prism">libs/angular/utils/src/lib/directives/focus-click/focus-click.directive.ts:32</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>An instance of the ElementRef</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -507,15 +733,15 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="24" class="link-to-prism">libs/angular/utils/src/lib/directives/focus-click/focus-click.directive.ts:24</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="49" class="link-to-prism">libs/angular/utils/src/lib/directives/focus-click/focus-click.directive.ts:49</a></div>
                         </td>
                     </tr>
 
             <tr>
                 <td class="col-md-4">
                     <div class="io-description"><p>This directive replaces the default <code>click</code> directive and allows the user to execute
-the <code>click</code> event by clicking the mouse <strong>and</strong>  by using the <code>enter</code> key on focus.</p>
-<p>A tabindex of <code>0</code> gets added to the host.</p>
+the <code>click</code> event by clicking the mouse <strong>and</strong> by using the <code>enter</code> or <code>space</code> keys on focus.</p>
+<p>A tabindex of <code>0</code> is added, which turns to <code>-1</code> when disabled.</p>
 </div>
                 </td>
             </tr>
@@ -541,26 +767,51 @@ the <code>click</code> event by clicking the mouse <strong>and</strong> by using
     </div>
 
     <div class="tab-pane fade  tab-source-code" id="source">
-        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Directive, HostListener, OutputEmitterRef, input, output } from &#x27;@angular/core&#x27;;
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import {
+	AfterViewInit,
+	Directive,
+	ElementRef,
+	HostListener,
+	OutputEmitterRef,
+	inject,
+	input,
+	output,
+} from &#x27;@angular/core&#x27;;
 
+/**
+ * A directive that replaces the default click handler, enabling interactive components to respond to mouse clicks,
+ * Enter keypress, and Space keypress events (with default scroll prevention). This directive is not to be added to elements that are already clickable.
+ *
+ * ## Accessibility Guidelines
+ * - **Accessible Names**: Since this directive dynamically applies &#x60;role&#x3D;&quot;button&quot;&#x60; and &#x60;tabindex&#x3D;&quot;0&quot;&#x60;, developers must ensure that the host element has a clear accessible name (via text content, &#x60;aria-label&#x60;, or &#x60;aria-labelledby&#x60;) so that screen readers can announce it correctly.
+ */
 @Directive({
 	selector: &#x27;[focusClick]&#x27;,
 	standalone: true,
 	host: {
-		&#x27;[attr.tabIndex]&#x27;: &#x27;0&#x27;,
+		role: &#x27;button&#x27;,
+		&#x27;[attr.tabindex]&#x27;: &#x27;disabled() ? -1 : 0&#x27;,
+		&#x27;[attr.aria-disabled]&#x27;: &#x27;disabled()&#x27;,
 	},
 })
-export class FocusClickDirective {
-	// Allow the button to ignore click events when set to true
+export class FocusClickDirective implements AfterViewInit {
+	/**
+	 * An instance of the ElementRef
+	 */
+	protected readonly elementRef &#x3D; inject(ElementRef);
+
+	/**
+	 * Disabled property for the element
+	 */
 	public readonly disabled &#x3D; input&lt;boolean&gt;(false);
 
 	// Allow the function passed by the host to be executed
 	// when the emit() method gets called
 	/**
 	 * This directive replaces the default &#x60;click&#x60; directive and allows the user to execute
-	 * the &#x60;click&#x60; event by clicking the mouse **and**  by using the &#x60;enter&#x60; key on focus.
+	 * the &#x60;click&#x60; event by clicking the mouse **and** by using the &#x60;enter&#x60; or &#x60;space&#x60; keys on focus.
 	 *
-	 * A tabindex of &#x60;0&#x60; gets added to the host.
+	 * A tabindex of &#x60;0&#x60; is added, which turns to &#x60;-1&#x60; when disabled.
 	 *
 	 * @memberof FocusClickDirective
 	 */
@@ -580,6 +831,31 @@ export class FocusClickDirective {
 	public isEntered(): void {
 		if (!this.disabled()) {
 			this.focusClick.emit();
+		}
+	}
+
+	// Add eventhandler to keydown event When space is pressed, prevent page scrolling and
+	// execute the click function of the host
+	@HostListener(&#x27;keydown.space&#x27;, [&#x27;$event&#x27;])
+	public isSpaced(event: Event): void {
+		if (!this.disabled()) {
+			event.preventDefault();
+			this.focusClick.emit();
+		}
+	}
+
+	public ngAfterViewInit(): void {
+		// Iben: Verify that the element has an accessible name for screen readers
+		const nativeElement &#x3D; this.elementRef.nativeElement;
+		const hasAriaLabel &#x3D;
+			nativeElement.hasAttribute(&#x27;aria-label&#x27;) ||
+			nativeElement.hasAttribute(&#x27;aria-labelledby&#x27;) ||
+			nativeElement.textContent?.trim().length &gt; 0;
+
+		if (!hasAriaLabel) {
+			console.error(
+				&#x27;NgxUtils: FocusClickDirective is applied but no accessible name (inner text, aria-label, or aria-labelledby) was found on the element. Screen readers will not be able to announce this button correctly.&#x27;
+			);
 		}
 	}
 }

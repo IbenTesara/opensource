@@ -98,7 +98,7 @@
   <li class="breadcrumb-item">Interfaces</li>
   <li class="breadcrumb-item"
   >
-  NgxToast</li>
+  NgxTableAriaLabels</li>
 </ol>
 
 <ul class="nav nav-tabs" role="tablist">
@@ -122,17 +122,10 @@
             <h3>File</h3>
         </p>
         <p class="comment">
-            <code>libs/angular/inform/src/lib/types/toast.types.ts</code>
+            <code>libs/angular/layout/src/lib/types/table.types.ts</code>
         </p>
 
 
-            <p class="comment">
-                <h3>Description</h3>
-            </p>
-            <p class="comment">
-                <p>The interface for a toast in the NgxToastService</p>
-
-            </p>
 
 
         <section data-compodoc="block-index">
@@ -149,35 +142,51 @@
                             <ul class="index-list">
                                 <li>
                                             <span class="modifier">Optional</span>
-                                        <a href="#configuration" 
+                                        <a href="#collapseRow" 
 >
-                                            configuration
+                                            collapseRow
                                         </a>
                                 </li>
                                 <li>
                                             <span class="modifier">Optional</span>
-                                        <a href="#data" 
+                                        <a href="#expandRow" 
 >
-                                            data
-                                        </a>
-                                </li>
-                                <li>
-                                        <a href="#id" 
->
-                                            id
+                                            expandRow
                                         </a>
                                 </li>
                                 <li>
                                             <span class="modifier">Optional</span>
-                                        <a href="#role" 
+                                        <a href="#expansionColumn" 
 >
-                                            role
+                                            expansionColumn
                                         </a>
                                 </li>
                                 <li>
-                                        <a href="#text" 
+                                            <span class="modifier">Optional</span>
+                                        <a href="#selectAll" 
 >
-                                            text
+                                            selectAll
+                                        </a>
+                                </li>
+                                <li>
+                                            <span class="modifier">Optional</span>
+                                        <a href="#selectionColumn" 
+>
+                                            selectionColumn
+                                        </a>
+                                </li>
+                                <li>
+                                            <span class="modifier">Optional</span>
+                                        <a href="#selectRow" 
+>
+                                            selectRow
+                                        </a>
+                                </li>
+                                <li>
+                                            <span class="modifier">Optional</span>
+                                        <a href="#sortColumn" 
+>
+                                            sortColumn
                                         </a>
                                 </li>
                             </ul>
@@ -195,9 +204,9 @@
                         <tbody>
                                 <tr>
                                     <td class="col-md-4">
-                                        <a name="configuration"></a>
-                                        <span class="name "><b>configuration</b>
-                                            <a href="#configuration">
+                                        <a name="collapseRow"></a>
+                                        <span class="name "><b>collapseRow</b>
+                                            <a href="#collapseRow">
                                                 <span class="icon ion-ios-link"></span>
                                             </a>
                                         </span>
@@ -205,7 +214,7 @@
                                 </tr>
                                 <tr>
                                     <td class="col-md-4">
-                                        <code>configuration:         <code><a href="../interfaces/NgxToastConfiguration.html" target="_self" >NgxToastConfiguration</a></code>
+                                        <code>collapseRow:     <code>string | </code>
 </code>
                                     </td>
                                 </tr>
@@ -213,7 +222,7 @@
 
                                     <tr>
                                         <td class="col-md-4">
-                                            <i>Type : </i>        <code><a href="../interfaces/NgxToastConfiguration.html" target="_self" >NgxToastConfiguration</a></code>
+                                            <i>Type : </i>    <code>string | </code>
 
                                         </td>
                                     </tr>
@@ -227,15 +236,21 @@
 
 
 
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-description"><p>The ARIA label we wish to set on the collapse row button in individual table rows</p>
+</div>
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
                     <table class="table table-sm table-bordered">
                         <tbody>
                                 <tr>
                                     <td class="col-md-4">
-                                        <a name="data"></a>
-                                        <span class="name "><b>data</b>
-                                            <a href="#data">
+                                        <a name="expandRow"></a>
+                                        <span class="name "><b>expandRow</b>
+                                            <a href="#expandRow">
                                                 <span class="icon ion-ios-link"></span>
                                             </a>
                                         </span>
@@ -243,7 +258,7 @@
                                 </tr>
                                 <tr>
                                     <td class="col-md-4">
-                                        <code>data:         <code><a href="../miscellaneous/typealiases.html#DataType" target="_self" >DataType</a></code>
+                                        <code>expandRow:     <code>string | </code>
 </code>
                                     </td>
                                 </tr>
@@ -251,7 +266,7 @@
 
                                     <tr>
                                         <td class="col-md-4">
-                                            <i>Type : </i>        <code><a href="../miscellaneous/typealiases.html#DataType" target="_self" >DataType</a></code>
+                                            <i>Type : </i>    <code>string | </code>
 
                                         </td>
                                     </tr>
@@ -265,15 +280,21 @@
 
 
 
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-description"><p>The ARIA label we wish to set on the expand row button in individual table rows</p>
+</div>
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
                     <table class="table table-sm table-bordered">
                         <tbody>
                                 <tr>
                                     <td class="col-md-4">
-                                        <a name="id"></a>
-                                        <span class="name "><b>id</b>
-                                            <a href="#id">
+                                        <a name="expansionColumn"></a>
+                                        <span class="name "><b>expansionColumn</b>
+                                            <a href="#expansionColumn">
                                                 <span class="icon ion-ios-link"></span>
                                             </a>
                                         </span>
@@ -281,7 +302,7 @@
                                 </tr>
                                 <tr>
                                     <td class="col-md-4">
-                                        <code>id:         <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                        <code>expansionColumn:         <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
 </code>
                                     </td>
                                 </tr>
@@ -294,19 +315,30 @@
                                         </td>
                                     </tr>
 
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <i>Optional</i>
+                                        </td>
+                                    </tr>
 
 
 
 
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-description"><p>The ARIA label we wish to set on the expansion column header</p>
+</div>
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
                     <table class="table table-sm table-bordered">
                         <tbody>
                                 <tr>
                                     <td class="col-md-4">
-                                        <a name="role"></a>
-                                        <span class="name "><b>role</b>
-                                            <a href="#role">
+                                        <a name="selectAll"></a>
+                                        <span class="name "><b>selectAll</b>
+                                            <a href="#selectAll">
                                                 <span class="icon ion-ios-link"></span>
                                             </a>
                                         </span>
@@ -314,7 +346,7 @@
                                 </tr>
                                 <tr>
                                     <td class="col-md-4">
-                                        <code>role:     <code>&quot;alert&quot; | &quot;status&quot;</code>
+                                        <code>selectAll:         <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
 </code>
                                     </td>
                                 </tr>
@@ -322,7 +354,7 @@
 
                                     <tr>
                                         <td class="col-md-4">
-                                            <i>Type : </i>    <code>&quot;alert&quot; | &quot;status&quot;</code>
+                                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
 
                                         </td>
                                     </tr>
@@ -336,15 +368,21 @@
 
 
 
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-description"><p>The ARIA label we wish to set on the select-all checkbox in the table header</p>
+</div>
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
                     <table class="table table-sm table-bordered">
                         <tbody>
                                 <tr>
                                     <td class="col-md-4">
-                                        <a name="text"></a>
-                                        <span class="name "><b>text</b>
-                                            <a href="#text">
+                                        <a name="selectionColumn"></a>
+                                        <span class="name "><b>selectionColumn</b>
+                                            <a href="#selectionColumn">
                                                 <span class="icon ion-ios-link"></span>
                                             </a>
                                         </span>
@@ -352,7 +390,7 @@
                                 </tr>
                                 <tr>
                                     <td class="col-md-4">
-                                        <code>text:         <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                        <code>selectionColumn:         <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
 </code>
                                     </td>
                                 </tr>
@@ -365,10 +403,109 @@
                                         </td>
                                     </tr>
 
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <i>Optional</i>
+                                        </td>
+                                    </tr>
 
 
 
 
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-description"><p>The ARIA label we wish to set on the selection column header</p>
+</div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <a name="selectRow"></a>
+                                        <span class="name "><b>selectRow</b>
+                                            <a href="#selectRow">
+                                                <span class="icon ion-ios-link"></span>
+                                            </a>
+                                        </span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <code>selectRow:     <code>string | </code>
+</code>
+                                    </td>
+                                </tr>
+
+
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <i>Type : </i>    <code>string | </code>
+
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <i>Optional</i>
+                                        </td>
+                                    </tr>
+
+
+
+
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-description"><p>The ARIA label we wish to set on the checkbox/radio button in individual table rows</p>
+</div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <a name="sortColumn"></a>
+                                        <span class="name "><b>sortColumn</b>
+                                            <a href="#sortColumn">
+                                                <span class="icon ion-ios-link"></span>
+                                            </a>
+                                        </span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <code>sortColumn:     <code>string | </code>
+</code>
+                                    </td>
+                                </tr>
+
+
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <i>Type : </i>    <code>string | </code>
+
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <i>Optional</i>
+                                        </td>
+                                    </tr>
+
+
+
+
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-description"><p>The ARIA label we wish to set on the sort button in individual table headers</p>
+</div>
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
             </section>
@@ -376,86 +513,43 @@
 
 
     <div class="tab-pane fade  tab-source-code" id="source">
-        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Type } from &#x27;@angular/core&#x27;;
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { NgxTableSortDirection } from &#x27;../enums/sort-direction.enum&#x27;;
 
-import { NgxToastBundlerComponent, NgxToastComponent } from &#x27;../abstracts&#x27;;
+export interface NgxTableAriaLabels {
+	/**
+	 * The ARIA label we wish to set on the select-all checkbox in the table header
+	 */
+	selectAll?: string;
 
-/**
- * The configuration for an individual toast
- */
-export interface NgxToastConfiguration {
-	autoClose?: boolean;
-	hasPriority?: boolean;
-	component?: Type&lt;NgxToastComponent&gt;;
-}
+	/**
+	 * The ARIA label we wish to set on the checkbox/radio button in individual table rows
+	 */
+	selectRow?: string | ((index: number) &#x3D;&gt; string);
 
-/**
- * The position of a toast
- */
-export type NgxToastPosition &#x3D; &#x27;top-left&#x27; | &#x27;top-right&#x27; | &#x27;bottom-left&#x27; | &#x27;bottom-right&#x27;;
+	/**
+	 * The ARIA label we wish to set on the expand row button in individual table rows
+	 */
+	expandRow?: string | ((index: number) &#x3D;&gt; string);
 
-/**
- * The base configuration for a toast setup with a max amount
- */
-interface NgxToastMaxAmountBaseConfiguration {
-	amount: number;
-	strategy: &#x27;wait&#x27; | &#x27;ignore&#x27; | &#x27;bundle&#x27;;
-}
+	/**
+	 * The ARIA label we wish to set on the collapse row button in individual table rows
+	 */
+	collapseRow?: string | ((index: number) &#x3D;&gt; string);
 
-/**
- * The configuration for a toast setup with a max amount that need to be bundled
- */
-interface NgxToastMaxAmountBundleConfiguration extends NgxToastMaxAmountBaseConfiguration {
-	strategy: &#x27;bundle&#x27;;
-	component: Type&lt;NgxToastBundlerComponent&gt;;
-}
+	/**
+	 * The ARIA label we wish to set on the sort button in individual table headers
+	 */
+	sortColumn?: string | ((column: string, direction: NgxTableSortDirection | null) &#x3D;&gt; string);
 
-/**
- * The base configuration for a toast setup with a max amount that is not bundled
- */
-interface NgxToastMaxAmountOtherConfiguration extends NgxToastMaxAmountBaseConfiguration {
-	strategy: &#x27;wait&#x27; | &#x27;ignore&#x27;;
-}
+	/**
+	 * The ARIA label we wish to set on the selection column header
+	 */
+	selectionColumn?: string;
 
-/**
- * The configuration for a toast setup with a max amount
- */
-export type NgxToastMaxAmountConfiguration &#x3D;
-	| NgxToastMaxAmountBundleConfiguration
-	| NgxToastMaxAmountOtherConfiguration;
-
-/**
- * The configuration we wish to apply to every toast unless we override it
- */
-export interface NgxToastDefaultConfiguration extends Omit&lt;NgxToastConfiguration, &#x27;hasPriority&#x27;&gt; {
-	component: Type&lt;NgxToastComponent&gt;;
-	position: NgxToastPosition;
-	maxAmount?: NgxToastMaxAmountConfiguration;
-	maxTime?: number;
-}
-
-/**
- * The interface for a toast in the NgxToastService
- */
-export interface NgxToast&lt;DataType &#x3D; unknown&gt; {
-	id: string;
-	text: string;
-	role?: &#x27;alert&#x27; | &#x27;status&#x27;;
-	data?: DataType;
-	configuration?: NgxToastConfiguration;
-}
-
-/**
- * The interface needed to create a NgxToast
- */
-export type NgxToastCreator&lt;DataType &#x3D; unknown&gt; &#x3D; Omit&lt;NgxToast&lt;DataType&gt;, &#x27;id&#x27; | &#x27;toBeRemoved&#x27;&gt;;
-
-/**
- * An event for when toasts are shown, updated or removed
- */
-export interface NgxToastEvent {
-	toast: NgxToast;
-	type: &#x27;add&#x27; | &#x27;remove&#x27;;
+	/**
+	 * The ARIA label we wish to set on the expansion column header
+	 */
+	expansionColumn?: string;
 }
 </code></pre>
     </div>
@@ -494,7 +588,7 @@ export interface NgxToastEvent {
        <script>
             var COMPODOC_CURRENT_PAGE_DEPTH = 1;
             var COMPODOC_CURRENT_PAGE_CONTEXT = 'interface';
-            var COMPODOC_CURRENT_PAGE_URL = 'NgxToast.html';
+            var COMPODOC_CURRENT_PAGE_URL = 'NgxTableAriaLabels.html';
             var MAX_SEARCH_RESULTS = 15;
        </script>
 

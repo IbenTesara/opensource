@@ -122,7 +122,12 @@
                 <h3>Description</h3>
             </p>
             <p class="comment">
-                <p>An abstract component that can optionally be used as a fallback to content that depends on accepted cookies</p>
+                <p>An abstract component that can optionally be used as a fallback to content that depends on accepted cookies.</p>
+<h2>Accessibility Guidelines</h2>
+<ul>
+<li><strong>Blocked Content Explanations</strong>: When extending <code>NgxCookiesFallBackComponent</code>, developers must ensure that the custom UI includes clear, descriptive text explaining exactly <em>why</em> the content is blocked and <em>which</em> categories of cookies must be accepted to unlock it.</li>
+<li><strong>Example</strong>: <em>&quot;This YouTube video is blocked because you have not accepted Marketing cookies. Accept Marketing cookies to watch this video.&quot;</em></li>
+</ul>
 
             </p>
 
@@ -189,7 +194,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="13" class="link-to-prism">libs/angular/cookies/src/lib/abstracts/cookie-fallback/cookie-fallback.component.ts:13</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="17" class="link-to-prism">libs/angular/cookies/src/lib/abstracts/cookie-fallback/cookie-fallback.component.ts:17</a></div>
                         </td>
                     </tr>
 
@@ -214,7 +219,11 @@
 import { NgxHasCookieConfiguration } from &#x27;../../types&#x27;;
 
 /**
- *An abstract component that can optionally be used as a fallback to content that depends on accepted cookies
+ * An abstract component that can optionally be used as a fallback to content that depends on accepted cookies.
+ *
+ * ## Accessibility Guidelines
+ * - **Blocked Content Explanations**: When extending &#x60;NgxCookiesFallBackComponent&#x60;, developers must ensure that the custom UI includes clear, descriptive text explaining exactly *why* the content is blocked and *which* categories of cookies must be accepted to unlock it.
+ * - **Example**: *&quot;This YouTube video is blocked because you have not accepted Marketing cookies. Accept Marketing cookies to watch this video.&quot;*
  */
 @Directive()
 export abstract class NgxCookiesFallBackComponent {

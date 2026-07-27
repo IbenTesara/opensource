@@ -177,6 +177,9 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                                     <a href="directives/NgxDynamicFormInputComponent.html" data-type="entity-link" >NgxDynamicFormInputComponent</a>
                                 </li>
                                 <li class="link">
+                                    <a href="directives/NgxFocusTrapDirective.html" data-type="entity-link" >NgxFocusTrapDirective</a>
+                                </li>
+                                <li class="link">
                                     <a href="directives/NgxFormsControlValueAccessor.html" data-type="entity-link" >NgxFormsControlValueAccessor</a>
                                 </li>
                                 <li class="link">
@@ -579,6 +582,9 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                                 <a href="interfaces/NgxStore.html" data-type="entity-link" >NgxStore</a>
                             </li>
                             <li class="link">
+                                <a href="interfaces/NgxTableAriaLabels.html" data-type="entity-link" >NgxTableAriaLabels</a>
+                            </li>
+                            <li class="link">
                                 <a href="interfaces/NgxTableConfiguration.html" data-type="entity-link" >NgxTableConfiguration</a>
                             </li>
                             <li class="link">
@@ -695,6 +701,9 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                                 </li>
                                 <li class="link">
                                     <a href="pipes/NgxReplaceElementsPipe.html" data-type="entity-link" >NgxReplaceElementsPipe</a>
+                                </li>
+                                <li class="link">
+                                    <a href="pipes/NgxTableAriaLabelPipe.html" data-type="entity-link" >NgxTableAriaLabelPipe</a>
                                 </li>
                                 <li class="link">
                                     <a href="pipes/NgxTableGetPipe.html" data-type="entity-link" >NgxTableGetPipe</a>

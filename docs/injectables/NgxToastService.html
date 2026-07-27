@@ -146,7 +146,7 @@
                                 <a href="#bundledComponent" >bundledComponent</a>
                             </li>
                             <li>
-                                    <span class="modifier">Private</span>
+                                    <span class="modifier">Protected</span>
                                     <span class="modifier">Readonly</span>
                                 <a href="#configuration" >configuration</a>
                             </li>
@@ -155,19 +155,19 @@
                                 <a href="#hasBundledToasts" >hasBundledToasts</a>
                             </li>
                             <li>
-                                    <span class="modifier">Private</span>
+                                    <span class="modifier">Protected</span>
                                 <a href="#isFocussed" >isFocussed</a>
                             </li>
                             <li>
-                                    <span class="modifier">Private</span>
+                                    <span class="modifier">Protected</span>
                                 <a href="#queue$" >queue$</a>
                             </li>
                             <li>
-                                    <span class="modifier">Private</span>
+                                    <span class="modifier">Protected</span>
                                 <a href="#showBundledToasts$" >showBundledToasts$</a>
                             </li>
                             <li>
-                                    <span class="modifier">Private</span>
+                                    <span class="modifier">Protected</span>
                                 <a href="#toastEvents$" >toastEvents$</a>
                             </li>
                             <li>
@@ -683,7 +683,7 @@
                 <td class="col-md-4">
                     <a name="configuration"></a>
                     <span class="name">
-                            <span class="modifier">Private</span>
+                            <span class="modifier">Protected</span>
                             <span class="modifier">Readonly</span>
                         <span ><b>configuration</b></span>
                         <a href="#configuration"><span class="icon ion-ios-link"></span></a>
@@ -768,7 +768,7 @@
                 <td class="col-md-4">
                     <a name="isFocussed"></a>
                     <span class="name">
-                            <span class="modifier">Private</span>
+                            <span class="modifier">Protected</span>
                         <span ><b>isFocussed</b></span>
                         <a href="#isFocussed"><span class="icon ion-ios-link"></span></a>
                     </span>
@@ -806,7 +806,7 @@
                 <td class="col-md-4">
                     <a name="queue$"></a>
                     <span class="name">
-                            <span class="modifier">Private</span>
+                            <span class="modifier">Protected</span>
                         <span ><b>queue$</b></span>
                         <a href="#queue$"><span class="icon ion-ios-link"></span></a>
                     </span>
@@ -844,7 +844,7 @@
                 <td class="col-md-4">
                     <a name="showBundledToasts$"></a>
                     <span class="name">
-                            <span class="modifier">Private</span>
+                            <span class="modifier">Protected</span>
                         <span ><b>showBundledToasts$</b></span>
                         <a href="#showBundledToasts$"><span class="icon ion-ios-link"></span></a>
                     </span>
@@ -882,7 +882,7 @@
                 <td class="col-md-4">
                     <a name="toastEvents$"></a>
                     <span class="name">
-                            <span class="modifier">Private</span>
+                            <span class="modifier">Protected</span>
                         <span ><b>toastEvents$</b></span>
                         <a href="#toastEvents$"><span class="icon ion-ios-link"></span></a>
                     </span>
@@ -1009,29 +1009,29 @@ export class NgxToastService {
 	/**
 	 * The default configuration required for the toast
 	 */
-	private readonly configuration: NgxToastDefaultConfiguration &#x3D; inject(
+	protected readonly configuration: NgxToastDefaultConfiguration &#x3D; inject(
 		NgxToastConfigurationToken
 	);
 
 	/**
 	 * The queue with all the toasts in it
 	 */
-	private queue$: BehaviorSubject&lt;NgxToast[]&gt; &#x3D; new BehaviorSubject([]);
+	protected queue$: BehaviorSubject&lt;NgxToast[]&gt; &#x3D; new BehaviorSubject([]);
 
 	/**
 	 * The toast event handler that will handle updates to the queue
 	 */
-	private toastEvents$: Subject&lt;NgxToastEvent&gt; &#x3D; new Subject&lt;NgxToastEvent&gt;();
+	protected toastEvents$: Subject&lt;NgxToastEvent&gt; &#x3D; new Subject&lt;NgxToastEvent&gt;();
 
 	/**
 	 * Whether we want to show the bundled toasts
 	 */
-	private showBundledToasts$: BehaviorSubject&lt;boolean&gt; &#x3D; new BehaviorSubject(false);
+	protected showBundledToasts$: BehaviorSubject&lt;boolean&gt; &#x3D; new BehaviorSubject(false);
 
 	/**
 	 * Whether the list of all toasts is focussed upon, either by focus or by hover
 	 */
-	private isFocussed: boolean &#x3D; false;
+	protected isFocussed: boolean &#x3D; false;
 
 	/**
 	 * A list of all the currently visible toasts
