@@ -39,8 +39,8 @@
 		"@angular/router": ">=22.0.6",
 		"rxjs": "~7.8.0",
 		"@angular/platform-browser": ">=22.0.6",
-		"@ibenvandeveire/ngx-core": "^21.0.0",
-		"lodash": "^4.17.21"
+		"@ibenvandeveire/ngx-core": ">=22.0.0",
+		"lodash": ">=4.17.21"
 	},
 	"sideEffects": false
 }
