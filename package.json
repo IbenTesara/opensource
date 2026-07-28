@@ -8,7 +8,7 @@
 		"test": "nx test --coverage",
 		"test:watch": "nx test --watch",
 		"test:all": "nx run-many --target=test --coverage",
-		"test:affected": "npx nx affected --target=test --fix --base=origin/main --parallel",
+		"test:affected": "npx nx affected --target=test --base=origin/main --parallel",
 		"lint": "nx lint",
 		"lint:affected": "npx nx affected --target=lint --fix --base=origin/main --parallel",
 		"lint:all": "nx run-many --target=lint --fix --parallel",
