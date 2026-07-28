@@ -4,6 +4,7 @@ import {
 	Injector,
 	forwardRef,
 	ChangeDetectionStrategy,
+	signal,
 } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import {
@@ -15,6 +16,7 @@ import {
 	ReactiveFormsModule,
 	Validators,
 } from '@angular/forms';
+import { form, FormField, required } from '@angular/forms/signals';
 
 import { BaseFormAccessor, FormAccessor, NgxFormsErrorAbstractComponent } from '../../abstracts';
 import { NgxFormsErrorsConfigurationToken } from '../../tokens';
@@ -56,6 +58,23 @@ export class FormAccessorComponent extends FormAccessor<any, any> {
 			world: new FormControl(null, Validators.minLength(3)),
 		});
 	}
+}
+
+@Component({
+	selector: 'kp-signal-form-accessor',
+	template: `
+		<div>
+			<input *ngxFormsErrors="signalForm.hello" [formField]="signalForm.hello" type="text" />
+		</div>
+	`,
+	changeDetection: ChangeDetectionStrategy.Eager,
+	imports: [FormField, NgxFormsErrorsDirective],
+})
+export class SignalFormAccessorComponent {
+	public model = signal({ hello: '' });
+	public signalForm = form(this.model, (path) => {
+		required(path.hello);
+	});
 }
 
 @Component({
@@ -178,6 +197,61 @@ describe('NgxFormsErrorsDirective', () => {
 			fixture.componentRef.instance.form.get('hello').setValue('test@test.be');
 			fixture.componentRef.instance.form.get('hello').markAsTouched();
 			fixture.componentRef.instance.form.get('hello').updateValueAndValidity();
+			fixture.detectChanges();
+			const errorElements = fixture.nativeElement.querySelectorAll('.ngx-forms-error');
+
+			expect(errorElements.length).toBe(0);
+		});
+	});
+
+	describe('With Signal Forms', () => {
+		let fixture: ComponentFixture<SignalFormAccessorComponent>;
+
+		beforeEach(() => {
+			TestBed.configureTestingModule({
+				imports: [SignalFormAccessorComponent, NgxFormsErrorsDirective],
+				providers: [
+					ChangeDetectorRef,
+					Injector,
+					{
+						provide: NgxFormsErrorsConfigurationToken,
+						useValue: { showWhen: 'touched', errors },
+					},
+				],
+			});
+			TestBed.compileComponents();
+
+			fixture = TestBed.createComponent(SignalFormAccessorComponent);
+
+			try {
+				fixture.detectChanges();
+			} catch {
+				/* empty */
+			}
+		});
+
+		it('should not show the error as long as the control is pristine/untouched', () => {
+			const errorElements = fixture.nativeElement.querySelectorAll('.ngx-forms-error');
+
+			expect(errorElements.length).toBe(0);
+		});
+
+		it('should show the error when the signal control is touched and invalid', async () => {
+			fixture.componentRef.instance.signalForm.hello().markAsTouched();
+			fixture.detectChanges();
+			await fixture.whenStable();
+			fixture.detectChanges();
+			const errorElements = fixture.nativeElement.querySelectorAll('.ngx-forms-error');
+
+			expect(errorElements.length).toBe(1);
+			expect(errorElements[0].textContent).toEqual(errors.required);
+		});
+
+		it('should not show the error when the signal control is valid', async () => {
+			fixture.componentRef.instance.signalForm.hello().value.set('test');
+			fixture.componentRef.instance.signalForm.hello().markAsTouched();
+			fixture.detectChanges();
+			await fixture.whenStable();
 			fixture.detectChanges();
 			const errorElements = fixture.nativeElement.querySelectorAll('.ngx-forms-error');
 

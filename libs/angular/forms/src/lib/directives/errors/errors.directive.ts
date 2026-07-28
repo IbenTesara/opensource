@@ -13,6 +13,7 @@ import {
 	WritableSignal,
 	signal,
 	EmbeddedViewRef,
+	Injector,
 } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import {
@@ -21,13 +22,15 @@ import {
 	FormGroupName,
 	ValidationErrors,
 } from '@angular/forms';
-import { combineLatest, startWith, tap } from 'rxjs';
+import { tap } from 'rxjs';
 import { v4 as uuid } from 'uuid';
+
+import type { FieldState, ReadonlyFieldState, ValidationError } from '@angular/forms/signals';
 
 import { NgxFormsErrorAbstractComponent } from '../../abstracts';
 import { NgxFormsErrorsConfigurationToken } from '../../tokens';
-import { NgxFormsErrorConfigurationOptions } from '../../types';
-import { touchedEventListener } from '../../utils';
+import { NgxFormsErrorConfigurationOptions, NgxFormsErrorsControl } from '../../types';
+import { controlStateListener } from '../../utils';
 
 @Directive({
 	selector: '[ngxFormsErrors]',
@@ -87,6 +90,11 @@ export class NgxFormsErrorsDirective implements AfterViewInit {
 	protected readonly destroyRef: DestroyRef = inject(DestroyRef);
 
 	/**
+	 *  An instance of the Injector used for converting Signal Form signals to RxJS streams
+	 */
+	protected readonly injector: Injector = inject(Injector);
+
+	/**
 	 *  Whether the control has errors
 	 */
 	protected hasErrors: WritableSignal<boolean> = signal(false);
@@ -122,9 +130,9 @@ export class NgxFormsErrorsDirective implements AfterViewInit {
 	private componentRef: ComponentRef<NgxFormsErrorAbstractComponent>;
 
 	/**
-	 * A reference to a control or a string reference to the control
+	 * A reference to a control or a string reference to the control (supports Reactive Forms & Signal Forms)
 	 */
-	public readonly control = input<AbstractControl | string>(undefined, {
+	public readonly control = input<NgxFormsErrorsControl>(undefined, {
 		alias: 'ngxFormsErrors',
 	});
 
@@ -138,7 +146,7 @@ export class NgxFormsErrorsDirective implements AfterViewInit {
 		this.viewContainer.clear();
 		this.viewContainer.createEmbeddedView(this.template);
 
-		//Iben: Set a base class to the element
+		// Iben: Set a base class to the element
 		const element: HTMLElement =
 			this.templateRef.elementRef.nativeElement.previousElementSibling;
 
@@ -146,87 +154,24 @@ export class NgxFormsErrorsDirective implements AfterViewInit {
 			this.renderer.addClass(element, 'ngx-forms-errors-input');
 		}
 
-		// Iben: If no control was provided, we early exit and log an error
-		const control = this.control();
-		if (!control) {
+		// Iben: Resolve the control into an AbstractControl or FieldState
+		const resolvedControl = this.resolveControl(this.control());
+		if (!resolvedControl) {
 			console.error('NgxForms: No control was provided to the NgxFormsErrorDirective');
 
 			return;
 		}
 
-		// Iben: If the control is a string, we check the parent to find the actual control.
-		// If not, we use the provided control
-		if (typeof control === 'string') {
-			this.abstractControl = this.formGroupDirective
-				? this.formGroupDirective.form.get(control)
-				: this.formNameDirective?.control.get(control);
-		} else {
-			this.abstractControl = control;
+		// Iben: Store abstractControl if resolvedControl is an AbstractControl for backwards compatibility
+		if (resolvedControl instanceof AbstractControl) {
+			this.abstractControl = resolvedControl;
 		}
 
-		// Iben: If no control was found, we early exit and log an error
-		if (!this.abstractControl) {
-			console.error('NgxForms: No control was provided to the NgxFormsErrorDirective');
-
-			return;
-		}
-
-		// Iben: Listen to the value changes, status changes and the touched changes of the control
-		combineLatest([
-			this.abstractControl.valueChanges.pipe(startWith(this.abstractControl.value)),
-			touchedEventListener(this.abstractControl),
-			this.abstractControl.statusChanges.pipe(startWith(this.abstractControl.status)),
-		])
+		// Iben: Listen to state changes via controlStateListener utility and update directive state
+		controlStateListener(resolvedControl, this.injector)
 			.pipe(
-				tap(([, touched]) => {
-					// Iben: Check whether we should show the error based on the provided config
-					this.hasErrors.set(
-						this.abstractControl.invalid &&
-							(this.config.showWhen === 'touched'
-								? touched
-								: this.abstractControl.dirty)
-					);
-
-					// Iben: Set the errors class and aria attributes if needed
-					if (element) {
-						if (this.hasErrors()) {
-							this.renderer.addClass(element, 'ngx-forms-errors-invalid');
-							this.renderer.setAttribute(element, 'aria-invalid', 'true');
-
-							// Iben: Add the errorId to the aria-describedby list if it's not present
-							const currentDescribedBy = element.getAttribute('aria-describedby') || '';
-							const ids = currentDescribedBy.split(' ').map(id => id.trim()).filter(Boolean);
-							if (!ids.includes(this.errorId)) {
-								ids.push(this.errorId);
-								this.renderer.setAttribute(element, 'aria-describedby', ids.join(' '));
-							}
-						} else {
-							this.renderer.removeClass(element, 'ngx-forms-errors-invalid');
-							this.renderer.removeAttribute(element, 'aria-invalid');
-
-							// Iben: Remove the errorId from the aria-describedby list if it is present
-							const currentDescribedBy = element.getAttribute('aria-describedby') || '';
-							const ids = currentDescribedBy.split(' ').map(id => id.trim()).filter(Boolean);
-							if (ids.includes(this.errorId)) {
-								const remainingIds = ids.filter(id => id !== this.errorId);
-								if (remainingIds.length > 0) {
-									this.renderer.setAttribute(element, 'aria-describedby', remainingIds.join(' '));
-								} else {
-									this.renderer.removeAttribute(element, 'aria-describedby');
-								}
-							}
-						}
-					}
-
-					// Iben: Show the error based on whether or not a component was provided
-					if (!this.config.component) {
-						this.handleNoComponentFlow(this.hasErrors());
-					} else {
-						this.handleComponentRender(this.hasErrors());
-					}
-
-					// Iben: Detect the changes so this works with (nested) OnPush components
-					this.cdRef.detectChanges();
+				tap(({ invalid, touched, dirty, errors }) => {
+					this.updateErrorState(invalid, touched, dirty, errors, element);
 				}),
 				takeUntilDestroyed(this.destroyRef)
 			)
@@ -234,11 +179,117 @@ export class NgxFormsErrorsDirective implements AfterViewInit {
 	}
 
 	/**
+	 * Resolves the provided raw control input into an AbstractControl or Signal Form FieldState
+	 *
+	 * @param rawControl - The control input provided to the directive
+	 */
+	private resolveControl(
+		rawControl: NgxFormsErrorsControl
+	): AbstractControl | FieldState<any> | ReadonlyFieldState<any> | null {
+		// Iben: Early exit if no control was passed
+		if (!rawControl) {
+			return null;
+		}
+
+		// Iben: If the control is a string, check the parent directive for the AbstractControl
+		if (typeof rawControl === 'string') {
+			return this.formGroupDirective
+				? this.formGroupDirective.form.get(rawControl)
+				: this.formNameDirective?.control.get(rawControl);
+		}
+
+		// Iben: If the control is an AbstractControl, return it directly
+		if (rawControl instanceof AbstractControl) {
+			return rawControl;
+		}
+
+		// Iben: If the control is a callable Field/FieldTree function, execute it to obtain the FieldState; otherwise return the FieldState object
+		return typeof rawControl === 'function' ? (rawControl as Function)() : rawControl;
+	}
+
+	/**
+	 * Updates the error state, DOM classes, ARIA attributes, and renders the error component/element
+	 *
+	 * @param isInvalid - Whether the control is invalid
+	 * @param isTouched - Whether the control is touched
+	 * @param isDirty - Whether the control is dirty
+	 * @param errorsData - The raw errors data (ValidationErrors or ValidationError[])
+	 * @param element - The host HTML element
+	 */
+	private updateErrorState(
+		isInvalid: boolean,
+		isTouched: boolean,
+		isDirty: boolean,
+		errorsData: ValidationErrors | ValidationError[] | null | undefined,
+		element: HTMLElement
+	): void {
+		// Iben: Check whether we should show the error based on the provided config
+		this.hasErrors.set(
+			isInvalid && (this.config?.showWhen === 'touched' ? isTouched : isDirty)
+		);
+
+		// Iben: Set the errors class and aria attributes if needed
+		if (element) {
+			if (this.hasErrors()) {
+				this.renderer.addClass(element, 'ngx-forms-errors-invalid');
+				this.renderer.setAttribute(element, 'aria-invalid', 'true');
+
+				// Iben: Add the errorId to the aria-describedby list if it's not present
+				const currentDescribedBy = element.getAttribute('aria-describedby') || '';
+				const ids = currentDescribedBy
+					.split(' ')
+					.map((id) => id.trim())
+					.filter(Boolean);
+				if (!ids.includes(this.errorId)) {
+					ids.push(this.errorId);
+					this.renderer.setAttribute(element, 'aria-describedby', ids.join(' '));
+				}
+			} else {
+				this.renderer.removeClass(element, 'ngx-forms-errors-invalid');
+				this.renderer.removeAttribute(element, 'aria-invalid');
+
+				// Iben: Remove the errorId from the aria-describedby list if it is present
+				const currentDescribedBy = element.getAttribute('aria-describedby') || '';
+				const ids = currentDescribedBy
+					.split(' ')
+					.map((id) => id.trim())
+					.filter(Boolean);
+				if (ids.includes(this.errorId)) {
+					const remainingIds = ids.filter((id) => id !== this.errorId);
+					if (remainingIds.length > 0) {
+						this.renderer.setAttribute(
+							element,
+							'aria-describedby',
+							remainingIds.join(' ')
+						);
+					} else {
+						this.renderer.removeAttribute(element, 'aria-describedby');
+					}
+				}
+			}
+		}
+
+		// Iben: Show the error based on whether or not a component was provided
+		if (!this.config?.component) {
+			this.handleNoComponentFlow(this.hasErrors(), errorsData);
+		} else {
+			this.handleComponentRender(this.hasErrors(), errorsData);
+		}
+
+		// Iben: Detect the changes so this works with (nested) OnPush components
+		this.cdRef.markForCheck();
+	}
+
+	/**
 	 * Renders a provided custom component underneath the input component
 	 *
 	 * @param shouldShow - Whether the error should be shown
+	 * @param errorsData - The error data to pass to the component
 	 */
-	private handleComponentRender(shouldShow: boolean) {
+	private handleComponentRender(
+		shouldShow: boolean,
+		errorsData?: ValidationErrors | ValidationError[]
+	) {
 		// Iben: If the error should not be shown, we check if there's already an error component and destroy it if needed
 		if (!shouldShow) {
 			if (this.errorComponent) {
@@ -274,7 +325,7 @@ export class NgxFormsErrorsDirective implements AfterViewInit {
 		this.renderer.setAttribute(this.componentRef.location.nativeElement, 'role', 'alert');
 
 		// Iben: Set the data of the error component
-		const { errors, errorKeys, data } = this.getErrors(this.abstractControl.errors);
+		const { errors, errorKeys, data } = this.getErrors(errorsData);
 
 		this.componentRef.setInput('errors', errors);
 		this.componentRef.setInput('errorKeys', errorKeys);
@@ -285,8 +336,12 @@ export class NgxFormsErrorsDirective implements AfterViewInit {
 	 * Renders a p tag underneath the input component when no custom component was provided
 	 *
 	 * @param shouldShow - Whether the error should be shown
+	 * @param errorsData - The error data to render in the paragraph tag
 	 */
-	private handleNoComponentFlow(shouldShow: boolean) {
+	private handleNoComponentFlow(
+		shouldShow: boolean,
+		errorsData?: ValidationErrors | ValidationError[]
+	) {
 		// Iben: We remove the current errors so that we always have a new element to work with
 		if (this.errorsElement) {
 			this.renderer.removeChild(this.elementRef.nativeElement.parentNode, this.errorsElement);
@@ -311,7 +366,7 @@ export class NgxFormsErrorsDirective implements AfterViewInit {
 		this.renderer.setProperty(
 			this.errorsElement,
 			'innerHTML',
-			this.getErrors(this.abstractControl.errors).errors.join(', ')
+			this.getErrors(errorsData).errors.join(', ')
 		);
 
 		// Iben: insert the paragraph before or after the input component
@@ -329,16 +384,16 @@ export class NgxFormsErrorsDirective implements AfterViewInit {
 	}
 
 	/**
-	 * Returns the errors based on the provided settings
+	 * Returns the errors based on the provided settings for both Reactive Forms and Signal Forms
 	 *
-	 * @param data - The error data we wish to use
+	 * @param data - The error data we wish to use (ValidationErrors or ValidationError[])
 	 */
-	private getErrors(data: ValidationErrors): {
+	private getErrors(data: ValidationErrors | ValidationError[] | null | undefined): {
 		errors: string[];
-		data: ValidationErrors;
+		data: any;
 		errorKeys: string[];
 	} {
-		// Iben: Early exit in case the errors object is null
+		// Iben: Early exit in case the errors object is null or undefined
 		if (!data) {
 			return {
 				errors: [],
@@ -347,24 +402,36 @@ export class NgxFormsErrorsDirective implements AfterViewInit {
 			};
 		}
 
+		let rawKeys: string[] = [];
+		let rawMessages: string[] = [];
+
+		// Iben: Extract keys and messages based on whether data is a Signal Forms array or Reactive Forms object
+		if (Array.isArray(data)) {
+			rawKeys = data.map((err) => err.kind);
+			rawMessages = data.map(
+				(err) => this.config?.errors?.[err.kind] ?? err.message ?? err.kind
+			);
+		} else {
+			rawKeys = Object.keys(data);
+			rawMessages = rawKeys.map((key) => this.config?.errors?.[key] ?? key);
+		}
+
 		// Iben: If the config is set to all, we always show all errors
-		if (this.config.show === 'all') {
+		if (this.config?.show === 'all') {
 			return {
-				errors: Object.keys(data).map((key) => this.config.errors[key]),
-				errorKeys: Object.keys(data),
+				errors: rawMessages,
+				errorKeys: rawKeys,
 				data,
 			};
 		}
 
 		// Iben: If no limit is provided, we default to a single error
-		const limit = this.config.show === undefined ? 1 : this.config.show;
+		const limit = this.config?.show === undefined ? 1 : this.config.show;
 
 		// Iben: Slice the errors based on the provided limit
 		return {
-			errors: Object.keys(data)
-				.map((key) => this.config.errors[key])
-				.slice(0, limit),
-			errorKeys: Object.keys(data).slice(0, limit),
+			errors: rawMessages.slice(0, limit),
+			errorKeys: rawKeys.slice(0, limit),
 			data,
 		};
 	}

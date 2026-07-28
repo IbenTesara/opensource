@@ -1,10 +1,25 @@
 import { Type } from '@angular/core';
+import { AbstractControl } from '@angular/forms';
+
+import type { Field, FieldState, FieldTree, ReadonlyFieldState } from '@angular/forms/signals';
 
 import { NgxFormsErrorAbstractComponent } from '../abstracts';
 
 export type NgxFormsErrorLocationSettings = 'before' | 'after';
 export type NgxFormsErrorShowWhenSettings = 'touched' | 'dirty';
 export type NgxFormsErrorShowSettings = 'all' | number;
+
+/**
+ * Union type representing all supported control inputs for NgxFormsErrorsDirective,
+ * including Reactive Forms (AbstractControl, string) and Signal Forms (Field, FieldTree, FieldState).
+ */
+export type NgxFormsErrorsControl =
+	| AbstractControl
+	| string
+	| Field<any>
+	| FieldTree<any>
+	| FieldState<any>
+	| ReadonlyFieldState<any>;
 
 /**
  * Configuration for the ngx-errors directive
