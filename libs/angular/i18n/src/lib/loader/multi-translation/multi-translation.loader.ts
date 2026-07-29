@@ -64,6 +64,7 @@ export class NgxI18nMultiTranslationHttpLoader implements TranslateLoader {
 					translations: availableTranslations[path],
 					fromStore,
 					path,
+					failed: false,
 				});
 			} else {
 				// Iben: If the translations aren't available in the store, we fetch them from the server
@@ -84,6 +85,7 @@ export class NgxI18nMultiTranslationHttpLoader implements TranslateLoader {
 							translations,
 							path,
 							fromStore,
+							failed: false,
 						};
 					}),
 					// Iben: In case the translation is not loaded, we log an error
@@ -99,11 +101,16 @@ export class NgxI18nMultiTranslationHttpLoader implements TranslateLoader {
 							this.translationLoadingService.markTranslationsLoadedAsFailed();
 						}
 
-						// Iben: Return a translation loaded object so the translations service isn't broken
+						/**
+						 * Denis (9/7/2026): Mark the result as 'failed' so it isn't persisted to the translations store.
+						 * This will prevent it from being "permanently" treated as something that's already loaded.
+						 * In doing so, a retry can still occur.
+						 */
 						return of({
 							translations: {},
 							path,
 							fromStore,
+							failed: true,
 						});
 					})
 				);
@@ -115,10 +122,14 @@ export class NgxI18nMultiTranslationHttpLoader implements TranslateLoader {
 			this.translationsPaths.toString(),
 			forkJoin(requestedTranslations).pipe(
 				tap((translations) => {
-					// Iben: Filter out the newly requested translations, and add them to the loaded translations store
+					/**
+					 * Iben: Filter out the newly requested translations, and add them to the loaded translations store
+					 *
+					 * Denis (9/7/2026): Failed fetches are excluded so a retry can still happen for those translation paths.
+					 */
 					this.translationLoadingService.addLoadedTranslations(
 						translations
-							.filter((translation) => !translation.fromStore)
+							.filter((translation) => !translation.fromStore && !translation.failed)
 							.reduce((previous, next) => {
 								return {
 									...previous,
