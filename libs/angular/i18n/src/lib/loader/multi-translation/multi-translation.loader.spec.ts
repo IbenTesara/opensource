@@ -46,7 +46,7 @@ describe('NgxI18nMultiTranslationHttpLoader', () => {
 		beforeEach(() => {
 			loadingServiceMock = {
 				getTranslations: jest.fn().mockReturnValue({}),
-				loadTranslations: jest.fn().mockImplementation((_, obs) => obs),
+				loadTranslations: jest.fn().mockImplementation((_lang, _paths, obs) => obs),
 				addLoadedTranslations: jest.fn(),
 				markTranslationsLoadedAsFailed: jest.fn(),
 			};
@@ -86,7 +86,7 @@ describe('NgxI18nMultiTranslationHttpLoader', () => {
 				COMMON: { HELLO: 'Hello' },
 				FEATURE: { WORLD: 'World' },
 			});
-			expect(loadingServiceMock.addLoadedTranslations).toHaveBeenCalledWith({
+			expect(loadingServiceMock.addLoadedTranslations).toHaveBeenCalledWith('en', {
 				'assets/i18n/common/': { COMMON: { HELLO: 'Hello' } },
 				'assets/i18n/feature/': { FEATURE: { WORLD: 'World' } },
 			});
@@ -134,7 +134,7 @@ describe('NgxI18nMultiTranslationHttpLoader', () => {
 			subscribeSpyTo(firstLoader.getTranslation('nl'));
 
 			// Denis: the failed path should not be cached as "loaded".
-			expect(loadingService.getTranslations()[failingPath]).toBeUndefined();
+			expect(loadingService.getTranslations('nl')[failingPath]).toBeUndefined();
 
 			const recoveredClient = {
 				getTranslations: jest.fn().mockReturnValue(of(translations)),
@@ -167,7 +167,7 @@ describe('NgxI18nMultiTranslationHttpLoader', () => {
 
 			subscribeSpyTo(firstLoader.getTranslation('nl'));
 
-			expect(loadingService.getTranslations()[path]).toEqual(translations);
+			expect(loadingService.getTranslations('nl')[path]).toEqual(translations);
 
 			const secondClient = {
 				getTranslations: jest.fn().mockReturnValue(of({})),

@@ -36,7 +36,7 @@ export const appConfig: ApplicationConfig = {
 		provideBrowserGlobalErrorListeners(),
 		provideNgxI18nConfiguration({
 			defaultAssetPaths: ['./i18n/core/'],
-			availableLanguages: ['en'],
+			availableLanguages: ['en', 'nl'],
 			defaultLanguage: 'en',
 		}),
 		provideZonelessChangeDetection(),

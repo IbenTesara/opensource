@@ -1,0 +1,7 @@
+{
+	"lib-2": {
+		"start": {
+			"body": "<p>Angular (ook wel Angular 2+ genoemd) is een op TypeScript gebaseerd gratis en open-source webapplicatie-framework voor single-page applicaties. Het wordt ontwikkeld door Google en door een gemeenschap van individuen en bedrijven. Angular is een volledige herschrijving door hetzelfde team dat AngularJS heeft gebouwd. Het Angular-ecosysteem bestaat uit een diverse groep van meer dan 1,7 miljoen ontwikkelaars, bibliotheekauteurs en makers van inhoud. Volgens de Stack Overflow Developer Survey is Angular een van de meest gebruikte webframeworks.</p><p>Google heeft Angular ontworpen als een vanaf de grond opgebouwde herschrijving van AngularJS. In tegenstelling tot AngularJS kent Angular geen concept van \"scope\" of controllers; in plaats daarvan gebruikt het een hiërarchie van componenten als primaire architecturale eigenschap. Angular heeft een andere expressiesyntaxis, gericht op \"[ ]\" voor eigenschapsbinding en \"( )\" voor gebeurtenisbinding. Angular raadt het gebruik van Microsoft's TypeScript-taal aan, die functies introduceert zoals statische typering, generics en type-annotaties.</p>"
+		}
+	}
+}

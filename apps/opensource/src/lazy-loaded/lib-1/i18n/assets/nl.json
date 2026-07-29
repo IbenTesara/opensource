@@ -1,0 +1,7 @@
+{
+	"lib-1": {
+		"start": {
+			"body": "<p>AngularJS (ook bekend als Angular 1) is een stopgezet gratis en open-source op JavaScript gebaseerd webframework voor het ontwikkelen van single-page applicaties. Het werd voornamelijk onderhouden door Google en een gemeenschap van individuen en bedrijven. Het had tot doel zowel de ontwikkeling als het testen van dergelijke applicaties te vereenvoudigen door een framework te bieden voor client-side model–view–controller (MVC) en model–view–viewmodel (MVVM) architecturen, samen met componenten die veel worden gebruikt in webapplicaties en progressive web apps.</p><p>AngularJS werd gebruikt als de frontend van de MEAN-stack, die bestond uit de MongoDB-database, het Express.js-webapplicatieserverframework, AngularJS zelf (of Angular) en de Node.js-serverruntime-omgeving.</p><p>Sinds 1 januari 2022 werkt Google AngularJS niet langer bij om beveiligings-, browsercompatibiliteits- of jQuery-problemen op te lossen. Het Angular-team raadt aan te upgraden naar Angular (v2+) als de beste weg vooruit, maar ze boden ook enkele andere opties aan.</p>"
+		}
+	}
+}

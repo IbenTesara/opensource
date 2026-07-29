@@ -1,10 +1,12 @@
 import { TestBed } from '@angular/core/testing';
 import { TranslateService } from '@ngx-translate/core';
-import { of, Subscription } from 'rxjs';
+import { BehaviorSubject, of, Subscription } from 'rxjs';
 
 import { NgxI18nRootService } from '../root-i18n/root-i18n.service';
 
 import { NgxI18nService } from './i18n.service';
+
+const currentLanguage$ = new BehaviorSubject<string>('nl');
 
 const translateService: any = {
 	currentLang: 'nl',
@@ -20,8 +22,9 @@ const translateService: any = {
 };
 
 const rootI18nService: any = {
-	setCurrentLanguage: jest.fn(),
+	setCurrentLanguage: jest.fn((lang) => currentLanguage$.next(lang)),
 	currentLanguage: translateService.currentLang,
+	currentLanguage$,
 };
 
 describe('NgxI18nService', () => {
@@ -97,10 +100,24 @@ describe('NgxI18nService', () => {
 	});
 
 	describe('setLanguage', () => {
-		it('should set the language to use in the translateService', () => {
-			service.setLanguage('nl');
+		it('should reload translations for the new language via initI18n', (done) => {
+			subscriptions.push(
+				service.setLanguage('nl').subscribe(() => {
+					expect(rootI18nService.setCurrentLanguage).toHaveBeenCalledWith('nl');
+					expect(translateService.use).toHaveBeenCalledWith('nl');
+					expect(translateService.currentLoader.getTranslation).toHaveBeenCalledWith(
+						'nl'
+					);
 
-			expect(translateService.use).toHaveBeenCalledWith('nl');
+					done();
+				})
+			);
+		});
+
+		it('should reactively reload translations when currentLanguage$ emits a new language', () => {
+			translateService.use.mockClear();
+			currentLanguage$.next('en');
+			expect(translateService.use).toHaveBeenCalledWith('en');
 		});
 	});
 

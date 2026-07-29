@@ -52,8 +52,8 @@ export class NgxI18nMultiTranslationHttpLoader implements TranslateLoader {
 	 * @param  lang - The currently used language
 	 */
 	public getTranslation(lang: string): Observable<any> {
-		// Iben: Fetch the currently existing translations, so we can see if they already exist in the loading service
-		const availableTranslations = this.translationLoadingService.getTranslations();
+		// Iben: Fetch the currently existing translations for this language, so we can see if they already exist in the loading service
+		const availableTranslations = this.translationLoadingService.getTranslations(lang);
 
 		// Iben: Convert the translation paths to a combination of calls to get the translations or from the translations store
 		const requestedTranslations = this.translationsPaths.map((path) => {
@@ -119,6 +119,7 @@ export class NgxI18nMultiTranslationHttpLoader implements TranslateLoader {
 
 		// Iben: Join all the requests and merge them
 		return this.translationLoadingService.loadTranslations(
+			lang,
 			this.translationsPaths.toString(),
 			forkJoin(requestedTranslations).pipe(
 				tap((translations) => {
@@ -128,6 +129,7 @@ export class NgxI18nMultiTranslationHttpLoader implements TranslateLoader {
 					 * Denis (9/7/2026): Failed fetches are excluded so a retry can still happen for those translation paths.
 					 */
 					this.translationLoadingService.addLoadedTranslations(
+						lang,
 						translations
 							.filter((translation) => !translation.fromStore && !translation.failed)
 							.reduce((previous, next) => {

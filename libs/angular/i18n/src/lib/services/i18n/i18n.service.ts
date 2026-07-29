@@ -1,7 +1,8 @@
-import { inject, Injectable } from '@angular/core';
+import { DestroyRef, inject, Injectable } from '@angular/core';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { TranslateService, TranslationObject } from '@ngx-translate/core';
-import { Observable } from 'rxjs';
-import { tap } from 'rxjs/operators';
+import { Observable, skip } from 'rxjs';
+import { switchMap, tap } from 'rxjs/operators';
 
 import { NgxI18nAbstractService } from '../../abstracts';
 import { NgxI18nRootService } from '../root-i18n/root-i18n.service';
@@ -12,6 +13,11 @@ import { NgxI18nRootService } from '../root-i18n/root-i18n.service';
 @Injectable()
 export class NgxI18nService implements NgxI18nAbstractService {
 	/**
+	 * Instance of Angular's DestroyRef, used to clean up the language change subscription
+	 */
+	private readonly destroyRef: DestroyRef = inject(DestroyRef);
+
+	/**
 	 * Instance of the NgxI8nRootService
 	 */
 	protected readonly rootI18nService: NgxI18nRootService = inject(NgxI18nRootService);
@@ -20,6 +26,19 @@ export class NgxI18nService implements NgxI18nAbstractService {
 	 * Instance of the ngx-translate TranslateService
 	 */
 	protected readonly translateService: TranslateService = inject(TranslateService);
+
+	constructor() {
+		//Iben: When a new language is set, reload all translations for this scope.
+		this.rootI18nService.currentLanguage$
+			.pipe(
+				// Iben: Skip the initial BehaviorSubject emission (undefined / already-set language),
+				// so we only react to *changes* triggered after this instance is created.
+				skip(1),
+				switchMap((language) => this.initI18n(language)),
+				takeUntilDestroyed(this.destroyRef)
+			)
+			.subscribe();
+	}
 
 	/**
 	 * Returns the current language of the application
@@ -48,12 +67,9 @@ export class NgxI18nService implements NgxI18nAbstractService {
 	 * @param language - The provided language
 	 */
 	public initI18n(language: string): Observable<unknown> {
-		// Iben: If the language is provided, set it in the root service
-		if (language) {
-			this.rootI18nService.setCurrentLanguage(language);
-		}
+		const targetLanguage = language || this.rootI18nService.currentLanguage;
 
-		this.translateService.use(this.rootI18nService.currentLanguage);
+		this.translateService.use(targetLanguage);
 
 		/**
 		 * Denis (9/7/2026)
@@ -65,10 +81,10 @@ export class NgxI18nService implements NgxI18nAbstractService {
 		 * By only switching out the translations when they are loaded, we close that gap.
 		 */
 		return this.translateService.currentLoader
-			.getTranslation(language)
+			.getTranslation(targetLanguage)
 			.pipe(
 				tap((translations: TranslationObject) =>
-					this.translateService.setTranslation(language, translations)
+					this.translateService.setTranslation(targetLanguage, translations)
 				)
 			);
 	}
@@ -78,10 +94,14 @@ export class NgxI18nService implements NgxI18nAbstractService {
 	 *
 	 * @param language - The provided language
 	 */
-	public setLanguage = (language: string): void => {
+	public setLanguage(language: string): Observable<unknown> {
+		// Iben: Update the root service — this emits on currentLanguage$, which triggers
+		// the reactive subscription in every active NgxI18nService instance.
 		this.rootI18nService.setCurrentLanguage(language);
-		this.translateService.use(this.rootI18nService.currentLanguage);
-	};
+
+		// Iben: Return the local initI18n observable so callers can await completion.
+		return this.initI18n(language);
+	}
 
 	/**
 	 * Returns an instant translation based on a provided key and params.
