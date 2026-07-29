@@ -82,9 +82,12 @@ export class NgxI18nRootService {
 		// Iben: get the new language
 		const newLanguage = this.getNewLanguage(language);
 
-		// Iben: Save the current language to the localStorage when we're in the browser
-		this.windowsService.runInBrowser(() => {
+		// Iben: Save the current language to the localStorage and set the lang attribute when we're in the browser
+		this.windowsService.runInBrowser(({ browserDocument }) => {
 			localStorage.setItem('ngx-i18n-language', newLanguage);
+
+			// Iben: Set the html lang attribute for accessibility
+			browserDocument.documentElement?.setAttribute('lang', newLanguage);
 		});
 
 		// Iben: Update the subject

@@ -12,7 +12,7 @@ describe('NgxI18nRootService', () => {
 
 	beforeEach(() => {
 		windowServiceMock = {
-			runInBrowser: jest.fn((cb) => cb()),
+			runInBrowser: jest.fn((cb) => cb({ browserDocument: document })),
 		};
 
 		TestBed.configureTestingModule({
@@ -32,9 +32,10 @@ describe('NgxI18nRootService', () => {
 		service = TestBed.inject(NgxI18nRootService);
 	});
 
-	it('should set current language when supported', () => {
+	it('should set current language when supported and update html lang attribute', () => {
 		service.setCurrentLanguage('en');
 		expect(service.currentLanguage).toBe('en');
+		expect(document.documentElement.getAttribute('lang')).toBe('en');
 
 		const spy = subscribeSpyTo(service.currentLanguage$);
 		expect(spy.getLastValue()).toBe('en');
