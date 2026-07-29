@@ -279,8 +279,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="130"
-                                    class="link-to-prism">libs/angular/i18n/src/lib/services/root-i18n/root-i18n.service.ts:130</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="133"
+                                    class="link-to-prism">libs/angular/i18n/src/lib/services/root-i18n/root-i18n.service.ts:133</a></div>
                         </td>
                     </tr>
 
@@ -357,8 +357,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="99"
-                                    class="link-to-prism">libs/angular/i18n/src/lib/services/root-i18n/root-i18n.service.ts:99</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="102"
+                                    class="link-to-prism">libs/angular/i18n/src/lib/services/root-i18n/root-i18n.service.ts:102</a></div>
                         </td>
                     </tr>
 
@@ -399,8 +399,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="121"
-                                    class="link-to-prism">libs/angular/i18n/src/lib/services/root-i18n/root-i18n.service.ts:121</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="124"
+                                    class="link-to-prism">libs/angular/i18n/src/lib/services/root-i18n/root-i18n.service.ts:124</a></div>
                         </td>
                     </tr>
 
@@ -972,9 +972,12 @@ export class NgxI18nRootService {
 		// Iben: get the new language
 		const newLanguage &#x3D; this.getNewLanguage(language);
 
-		// Iben: Save the current language to the localStorage when we&#x27;re in the browser
-		this.windowsService.runInBrowser(() &#x3D;&gt; {
+		// Iben: Save the current language to the localStorage and set the lang attribute when we&#x27;re in the browser
+		this.windowsService.runInBrowser(({ browserDocument }) &#x3D;&gt; {
 			localStorage.setItem(&#x27;ngx-i18n-language&#x27;, newLanguage);
+
+			// Iben: Set the html lang attribute for accessibility
+			browserDocument.documentElement?.setAttribute(&#x27;lang&#x27;, newLanguage);
 		});
 
 		// Iben: Update the subject
