@@ -11,7 +11,7 @@
 			"fallbackCurrentVersionResolver": "disk"
 		}
 	},
-	"tags": [],
+	"tags": ["type:lib", "scope:ngx-i18n"],
 	"targets": {
 		"build": {
 			"executor": "@nx/angular:package",

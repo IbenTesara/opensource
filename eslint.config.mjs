@@ -28,8 +28,63 @@ export default [
 					allow: ['^.*/eslint(\\.base)?\\.config\\.[cm]?[jt]s$'],
 					depConstraints: [
 						{
-							sourceTag: '*',
-							onlyDependOnLibsWithTags: ['*'],
+							sourceTag: 'type:app',
+							onlyDependOnLibsWithTags: ['type:lib'],
+						},
+						{
+							sourceTag: 'scope:ngx-core',
+							onlyDependOnLibsWithTags: ['scope:ngx-core'],
+						},
+						{
+							sourceTag: 'scope:authentication-types',
+							onlyDependOnLibsWithTags: ['scope:authentication-types'],
+						},
+						{
+							sourceTag: 'scope:js-core',
+							onlyDependOnLibsWithTags: ['scope:js-core'],
+						},
+						{
+							sourceTag: 'scope:js-rxjs',
+							onlyDependOnLibsWithTags: ['scope:js-rxjs'],
+						},
+						{
+							sourceTag: 'scope:js-utils',
+							onlyDependOnLibsWithTags: ['scope:js-utils'],
+						},
+						{
+							sourceTag: 'scope:ngx-forms',
+							onlyDependOnLibsWithTags: ['scope:ngx-forms'],
+						},
+						{
+							sourceTag: 'scope:ngx-store',
+							onlyDependOnLibsWithTags: ['scope:ngx-store'],
+						},
+						{
+							sourceTag: 'scope:ngx-authentication',
+							onlyDependOnLibsWithTags: [
+								'scope:ngx-authentication',
+								'scope:authentication-types',
+							],
+						},
+						{
+							sourceTag: 'scope:ngx-cookies',
+							onlyDependOnLibsWithTags: ['scope:ngx-cookies', 'scope:ngx-core'],
+						},
+						{
+							sourceTag: 'scope:ngx-i18n',
+							onlyDependOnLibsWithTags: ['scope:ngx-i18n', 'scope:ngx-core'],
+						},
+						{
+							sourceTag: 'scope:ngx-inform',
+							onlyDependOnLibsWithTags: ['scope:ngx-inform', 'scope:ngx-core'],
+						},
+						{
+							sourceTag: 'scope:ngx-layout',
+							onlyDependOnLibsWithTags: ['scope:ngx-layout', 'scope:ngx-core'],
+						},
+						{
+							sourceTag: 'scope:ngx-utils',
+							onlyDependOnLibsWithTags: ['scope:ngx-utils', 'scope:ngx-core'],
 						},
 					],
 				},

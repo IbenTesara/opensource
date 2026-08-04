@@ -11,7 +11,7 @@
 			"fallbackCurrentVersionResolver": "disk"
 		}
 	},
-	"tags": [],
+	"tags": ["type:lib", "scope:ngx-cookies"],
 	"targets": {
 		"build": {
 			"executor": "@nx/angular:package",

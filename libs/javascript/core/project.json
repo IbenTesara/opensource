@@ -10,7 +10,7 @@
 			"fallbackCurrentVersionResolver": "disk"
 		}
 	},
-	"tags": [],
+	"tags": ["type:lib", "scope:js-core"],
 	"targets": {
 		"build": {
 			"executor": "@nx/esbuild:esbuild",
