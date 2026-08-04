@@ -12,27 +12,29 @@ export class NgxWindowService {
 	/**
 	 * Instance of the document if exists
 	 */
-	private readonly document: Document = inject(DOCUMENT);
+	protected readonly document: Document = inject(DOCUMENT);
 
 	/**
 	 * Instance of the platform detector
 	 */
-	private readonly platformId = inject(PLATFORM_ID);
+	protected readonly platformId = inject(PLATFORM_ID);
 
 	/**
 	 * Subject to hold the window-width, defaults to 1200 when no window is defined
 	 */
-	private widthSubject$: BehaviorSubject<number> = new BehaviorSubject<number>(1200);
+	protected widthSubject$: BehaviorSubject<number> = new BehaviorSubject<number>(1200);
 
 	/**
 	 * Subject to hold the scroll up event
 	 */
-	private scrollingUpSubject$: BehaviorSubject<boolean> = new BehaviorSubject(true);
+	protected scrollingUpSubject$: BehaviorSubject<boolean> = new BehaviorSubject(true);
 
 	/**
 	 * Subject to hold the current scroll position
 	 */
-	private currentScrollPositionSubject$: BehaviorSubject<number> = new BehaviorSubject<number>(0);
+	protected currentScrollPositionSubject$: BehaviorSubject<number> = new BehaviorSubject<number>(
+		0
+	);
 
 	/**
 	 * Observable to get the window-width, defaults to 1200 when no window is defined
@@ -87,10 +89,9 @@ export class NgxWindowService {
 	 * @param offset - Offset to which we want to scroll, scrolls to top when no offset is provided
 	 */
 	public scrollTo(offset: number = 0): void {
-		if (!this.window) {
-			return;
-		}
-		this.window.scrollTo(0, offset);
+		this.runInBrowser(({ browserWindow }) => {
+			browserWindow.scrollTo(0, offset);
+		});
 	}
 
 	/**
@@ -133,16 +134,18 @@ export class NgxWindowService {
 	 * @private
 	 * @memberof NgxWindowService
 	 */
-	private handleContentScroll(): void {
-		// Iben: Update the scrollUp subject
-		if (window.scrollY > this.currentScrollPosition) {
-			this.scrollingUpSubject$.next(false);
-		} else {
-			this.scrollingUpSubject$.next(true);
-		}
+	protected handleContentScroll(): void {
+		this.runInBrowser(({ browserWindow }) => {
+			// Iben: Update the scrollUp subject
+			if (browserWindow.scrollY > this.currentScrollPosition) {
+				this.scrollingUpSubject$.next(false);
+			} else {
+				this.scrollingUpSubject$.next(true);
+			}
 
-		// Iben: Update the current scroll position
-		this.currentScrollPosition = window.scrollY < 0 ? 0 : window.scrollY;
-		this.currentScrollPositionSubject$.next(this.currentScrollPosition);
+			// Iben: Update the current scroll position
+			this.currentScrollPosition = browserWindow.scrollY < 0 ? 0 : browserWindow.scrollY;
+			this.currentScrollPositionSubject$.next(this.currentScrollPosition);
+		});
 	}
 }
