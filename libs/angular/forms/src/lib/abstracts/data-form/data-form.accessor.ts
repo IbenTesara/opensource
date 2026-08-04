@@ -69,14 +69,6 @@ export abstract class DataFormAccessor<
 					// Set the inner form
 					this.form = this.initForm(data);
 
-					// Iben: If we want to preserver our previous filled in data, we patch this form
-					if (this.preserveFormValueOnNewData && currentFormValue) {
-						this.form.patchValue(currentFormValue);
-					}
-
-					// Iben: Set the default value
-					this.defaultValue = this.form.getRawValue();
-
 					// Iben: Early exit in case the form was not found
 					if (!this.form) {
 						console.error(
@@ -85,6 +77,14 @@ export abstract class DataFormAccessor<
 
 						return of();
 					}
+
+					// Iben: If we want to preserver our previous filled in data, we patch this form
+					if (this.preserveFormValueOnNewData && currentFormValue) {
+						this.form.patchValue(currentFormValue);
+					}
+
+					// Iben: Set the default value
+					this.defaultValue = this.form.getRawValue();
 
 					// Denis: set the initialized property
 					this.setInitializedWithData(data);

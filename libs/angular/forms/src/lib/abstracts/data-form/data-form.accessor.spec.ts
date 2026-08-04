@@ -79,4 +79,16 @@ describe('FormAccessor', () => {
 		expect(component.form.get('iben.world')).toBeDefined();
 		expect(component.form.get('iben.hello')).toBeDefined();
 	});
+
+	it('should handle null form initialization gracefully', () => {
+		const spy = jest.spyOn(console, 'error').mockImplementation(() => {});
+		jest.spyOn(component, 'initForm').mockReturnValue(null);
+		data.set(['null-test']);
+		fixture.detectChanges();
+
+		expect(spy).toHaveBeenCalledWith(
+			'NgxForms: No form was found after initializing. Check if the initForm method returns a form.'
+		);
+		spy.mockRestore();
+	});
 });

@@ -79,6 +79,17 @@ describe('FormAccessor', () => {
 	it('should validate the form', () => {
 		expect(component.validate()).toEqual({ invalidForm: true });
 	});
+
+	it('should handle null form initialization gracefully', () => {
+		const spy = jest.spyOn(console, 'error').mockImplementation(() => {});
+		jest.spyOn(component, 'initForm').mockReturnValue(null);
+		component.ngOnInit();
+
+		expect(spy).toHaveBeenCalledWith(
+			'NgxForms: No form was found after initializing. Check if the initForm method returns a form.'
+		);
+		spy.mockRestore();
+	});
 });
 
 @Component({
