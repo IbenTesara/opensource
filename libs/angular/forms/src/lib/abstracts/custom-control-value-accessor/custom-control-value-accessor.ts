@@ -286,8 +286,8 @@ export abstract class NgxFormsControlValueAccessor<
 	/**
 	 * Sets up the ControlValueAccessor connectors
 	 */
-	public onTouch: Function = () => {}; // tslint:disable-line:no-empty
-	public onChange: Function = (_: any) => {}; // tslint:disable-line:no-empty
+	public onTouch: Function = () => {};
+	public onChange: Function = (_: any) => {};
 
 	public registerOnChange(fn: any): void {
 		this.onChange = fn;
