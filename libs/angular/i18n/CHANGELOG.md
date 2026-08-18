@@ -5,6 +5,11 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [22.1.2] - 2026-08-18
+
+### Fixed
+- **TranslateLoader Provider Registration**: Explicitly configured `TranslateLoader` provider token with `NgxI18nMultiTranslationHttpLoader` in `provideNgxI18nConfiguration` and `provideWithTranslations` to ensure compatibility with `@ngx-translate/core` v17+ (workaround for ngx-translate #1651).
+
 ## [22.1.1] - 2026-08-03
 
 ### Fixed

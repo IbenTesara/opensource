@@ -2,8 +2,8 @@ import { EnvironmentProviders, Provider } from '@angular/core';
 import { Route } from '@angular/router';
 import {
 	provideChildTranslateService,
-	provideTranslateLoader,
 	provideTranslateService,
+	TranslateLoader,
 } from '@ngx-translate/core';
 
 import { NgxI18nTranslationLoaderGuard } from '../guards';
@@ -42,7 +42,9 @@ export const provideNgxI18nConfiguration = (
 			useValue: paths || config.defaultAssetPaths,
 		},
 		provideTranslateService({
-			loader: provideTranslateLoader(NgxI18nMultiTranslationHttpLoader),
+			// TODO: Iben: Check if this fix is still needed once the issue is fixed in ngx-translate.
+			// https://github.com/ngx-translate/core/issues/1651
+			loader: { provide: TranslateLoader, useClass: NgxI18nMultiTranslationHttpLoader },
 			lang: config.defaultLanguage,
 			fallbackLang: config.defaultLanguage,
 		}),
@@ -72,7 +74,7 @@ export const provideWithTranslations = (route: Route, paths: string[]): Route =>
 				useValue: paths,
 			},
 			provideChildTranslateService({
-				loader: provideTranslateLoader(NgxI18nMultiTranslationHttpLoader),
+				loader: { provide: TranslateLoader, useClass: NgxI18nMultiTranslationHttpLoader },
 			}),
 			NgxI18nService,
 			NgxI18nTranslationLoaderResolver,
