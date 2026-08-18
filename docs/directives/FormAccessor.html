@@ -2132,9 +2132,6 @@ export abstract class FormAccessor&lt;
 		// Iben: Set the inner form
 		this.form &#x3D; this.initForm();
 
-		// Iben: Set the default value
-		this.defaultValue &#x3D; this.form.getRawValue();
-
 		// Iben: Early exit in case the form was not found
 		if (!this.form) {
 			console.error(
@@ -2143,6 +2140,9 @@ export abstract class FormAccessor&lt;
 
 			return;
 		}
+
+		// Iben: Set the default value
+		this.defaultValue &#x3D; this.form.getRawValue();
 
 		// Iben: Warn the initialized$ observable that the form has been set up
 		this.initializedSubject$.next(true);

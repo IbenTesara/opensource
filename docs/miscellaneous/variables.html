@@ -6137,7 +6137,9 @@ ergonomic for package developers, avoiding complex mapped generic types when pop
 			useValue: paths || config.defaultAssetPaths,
 		},
 		provideTranslateService({
-			loader: provideTranslateLoader(NgxI18nMultiTranslationHttpLoader),
+			// TODO: Iben: Check if this fix is still needed once the issue is fixed in ngx-translate.
+			// https://github.com/ngx-translate/core/issues/1651
+			loader: { provide: TranslateLoader, useClass: NgxI18nMultiTranslationHttpLoader },
 			lang: config.defaultLanguage,
 			fallbackLang: config.defaultLanguage,
 		}),
@@ -6185,7 +6187,7 @@ ergonomic for package developers, avoiding complex mapped generic types when pop
 				useValue: paths,
 			},
 			provideChildTranslateService({
-				loader: provideTranslateLoader(NgxI18nMultiTranslationHttpLoader),
+				loader: { provide: TranslateLoader, useClass: NgxI18nMultiTranslationHttpLoader },
 			}),
 			NgxI18nService,
 			NgxI18nTranslationLoaderResolver,
