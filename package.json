@@ -26,7 +26,7 @@
 		"@angular/platform-browser": "22.0.6",
 		"@angular/platform-browser-dynamic": "22.0.6",
 		"@angular/router": "22.0.6",
-		"@ibenvandeveire/ngx-core": "22.0.0",
+		"@ibenvandeveire/ngx-core": "22.1.0",
 		"@ibenvandeveire/types-authentication": "^1.0.0",
 		"@ngrx/effects": "21.0.1",
 		"@ngrx/entity": "21.0.1",

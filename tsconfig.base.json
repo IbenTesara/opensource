@@ -18,7 +18,6 @@
 		"lib": ["es2020", "dom"],
 		"skipLibCheck": true,
 		"skipDefaultLibCheck": true,
-		"baseUrl": ".",
 		"paths": {
 			"@lib/core": ["libs/javascript/core/src/index.ts"],
 			"@lib/ngx-authentication": ["libs/angular/authentication/src/index.ts"],
