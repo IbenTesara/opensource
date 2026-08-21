@@ -32,7 +32,7 @@ git push --follow-tags
 cd ../../../
 # Build the package
 echo "Building package"
-npm run build "ngx-$package"
+npm run build "$package"
 # Go to dist folder
 cd dist/libs/javascript/$package
 # Publish the package
