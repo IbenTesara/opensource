@@ -14,7 +14,8 @@
 		"lint:all": "nx run-many --target=lint --fix --parallel",
 		"format": "npx nx format",
 		"documentation": "npx compodoc -p tsconfig.doc.json --output docs",
-		"publish": "bash publish.sh"
+		"publish": "bash publish.sh",
+    "publish-js": "bash publish-js.sh"
 	},
 	"private": true,
 	"dependencies": {

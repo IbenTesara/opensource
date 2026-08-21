@@ -499,6 +499,9 @@
                             <a href="#resetNgxTableForm" title="libs/angular/layout/src/lib/utils/table-form/reset-form.util.ts" ><b>resetNgxTableForm</b>&nbsp;&nbsp;&nbsp;(libs/.../reset-form.util.ts)</a>
                         </li>
                         <li>
+                            <a href="#safeGet" title="libs/javascript/utils/src/lib/object/get/safe-get.util.ts" ><b>safeGet</b>&nbsp;&nbsp;&nbsp;(libs/.../safe-get.util.ts)</a>
+                        </li>
+                        <li>
                             <a href="#setFormError" title="libs/angular/forms/src/lib/validators/utils/form-error.util.ts" ><b>setFormError</b>&nbsp;&nbsp;&nbsp;(libs/.../form-error.util.ts)</a>
                         </li>
                         <li>
@@ -6688,6 +6691,46 @@ documentation of the <code>NgxTourStep</code>.</p>
             <tr>
                 <td class="col-md-4">
                     <div class="io-description"><p>Resets the NgxTable form if new data is provided, so new controls can be added to the form</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+</section>
+    <h3>libs/javascript/utils/src/lib/object/get/safe-get.util.ts</h3>
+    <section data-compodoc="block-properties">
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="safeGet"></a>
+                    <span class="name">
+                        <span ><b>safeGet</b></span>
+                        <a href="#safeGet"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>&lt;DataType extends object &#x3D; object, KeyType extends keyof DataType &#x3D; any&gt;(
+	value: DataType,
+	key: KeyType
+): DataType[KeyType] | null &#x3D;&gt; {
+	// Iben: If the property is undefined, null or not an object, return null
+	if (value &#x3D;&#x3D;&#x3D; undefined || value &#x3D;&#x3D;&#x3D; null || typeof value !&#x3D;&#x3D; &#x27;object&#x27;) {
+		return null;
+	}
+
+	// Iben: Return the value
+	return value[key];
+}</code>
+                    </td>
+                </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Safely retrieves a property value from an object by key, returning <code>null</code> if the provided value is <code>undefined</code>, <code>null</code>, or not an object.</p>
 </div>
                 </td>
             </tr>
